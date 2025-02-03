@@ -1,0 +1,30 @@
+# perso
+biblio
+paperasse
+tmp
+
+# python
+**/.venv
+**/.vscode
+**/.ipynb_checkpoints
+**/__pycache__
+**/lightning_logs
+
+# latex
+**/*.aux
+**/*.bbl
+**/*.blg
+**/*.log 
+**/*.out
+**/*.pytxcode
+**/*.toc
+**/*.synctex.gz
+
+# data osef
+**/.data_sets
+
+#.archive
+**/.log
+
+#trop lourd
+**/*.mp4
