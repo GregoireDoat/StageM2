@@ -19,7 +19,11 @@
 % pour des matrices infernales
 \usepackage{easybmat}
 % pour rendre sommaire/table cliquable
-\usepackage{hyperref}
+\usepackage{hyperref, cleveref}
+
+
+
+
 % pour dessins et les diagrams
 \usepackage{tikz}\usepackage{tikz-cd}
 % pour les maxis graphs
@@ -105,6 +109,7 @@
 \renewcommand{\liminf}{\varliminf}
 \renewcommand{\stop}{\text{\;{\scriptsize$\top$}\;}}
 \newcommand{\sbot}{\text{\;{\scriptsize$\bot$}\;}}
+
 % Latin
 \newcommand{\etal}{\textit{et al}}
 \newcommand{\etc}{\textit{etc}}
@@ -119,6 +124,11 @@
 \newcommand{\Topp}[2]{\ \underset{#1}{\overset{#2}{\text{\huge{$\top$}}}}\ }
 \newcommand{\Bot}[1]{\underset{#1}{\ \text{\huge{$\bot$}}}\ }
 \newcommand{\Bott}[2]{\ \underset{#1}{\overset{#2}{\text{\huge{$\bot$}}}}\ }
+
+% tmp
+\newcommand{\phaset}{\Phi_{\text{tot}}}
+\newcommand{\phased}{\Phi_{\text{dyn}}}
+\newcommand{\phaseg}{\Phi_{\text{geo}}}
 
 
 	% set up ENONCES (PROP, DEF, RQ)
@@ -295,21 +305,6 @@
 %%%% PROG N PLOT %%%%
 
 
-% preset plot
-\tikzstyle{every node}=[font=\scriptsize]
-\pgfplotsset{standard/.style={width=8cm,
-		height=3cm,
-		compat=1.18,
-		trig format=rad,
-		enlargelimits,
-		axis x line=middle,
-		axis y line=middle,
-		enlarge x limits=0.15,
-		enlarge y limits=0.15,
-		every axis x label/.style={footnotesize, at={(current axis.right of origin)},anchor=north west},
-		every axis y label/.style={footnotesize, at={(current axis.above origin)},anchor=south east},
-		scale only axis=true}}
-
 % preset prog  
 \definecolor{codeblack}{gray}{0.2}
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -339,69 +334,286 @@
 	rulecolor=\color{lightgray}}
 \lstset{style=mystyle}
 
+% preset plot
+\tikzstyle{every node}=[font=\scriptsize]
+\pgfplotsset{standard/.style={width=8cm,
+		height=3cm,
+		compat=1.18,
+		trig format=rad,
+		enlargelimits,
+		axis x line=middle,
+		axis y line=middle,
+		enlarge x limits=0.15,
+		enlarge y limits=0.15,
+		every axis x label/.style={footnotesize, at={(current axis.right of origin)},anchor=north west},
+		every axis y label/.style={footnotesize, at={(current axis.above origin)},anchor=south east},
+		scale only axis=true}}
+	
 
 
 
 \begin{document}
+
+\begin{titlepage}
+	%\AddToShipoutPictureBG*{\put(80,655){\includegraphics[width=2.9cm]{Logo MIX.png}}}
+	%\AddToShipoutPictureBG*{\put(70,738){\includegraphics[width=5cm]{logo_lr.png}}}
+	%\hspace{0.0cm} 
+	%\AddToShipoutPictureBG*{\put(440,690){\includegraphics[width=3.0cm]{logo_sdis17.png}}}\\[5.0cm]
+	%{\color{white}l}\par
 	
-	\begin{titlepage}
-		%\AddToShipoutPictureBG*{\put(80,655){\includegraphics[width=2.9cm]{Logo MIX.png}}}
-		%\AddToShipoutPictureBG*{\put(70,738){\includegraphics[width=5cm]{logo_lr.png}}}
-		%\hspace{0.0cm} 
-		%\AddToShipoutPictureBG*{\put(440,690){\includegraphics[width=3.0cm]{logo_sdis17.png}}}\\[5.0cm]
-		%{\color{white}l}\par
-		
-		\centering
-		\vspace{1.5cm}
-		{\huge\textbf{Rapport de Stage de M2}}\par
-		
-		\vspace{2cm}
-		{\huge\textbf{\textsc{Des trucs sûrement très cools}}}\par 
-		\vspace{0.5cm}
-		
-		{\huge\textbf{\textsc{vraiment très très cool}}}\par
-		\vspace{2.0cm}
-		
-		{\large Grégoire \textsc{Doat}}\par
-		\vspace{0.5cm}
-		\vfill
-		
-		% Bottom of the page
-		{\large Encadré par Nicolas \textsc{Le Bihan},  Michel \textsc{Berthier}, \etal}\par
-		\vspace{0.5cm}
-		
-		\rule{10cm}{0.4pt}\par
-		\vspace{0.7cm}
-		
-		{Master \textsc{Mix} - Université de La Rochelle}\par
-		\vspace{0.25cm}
-		
-		{\large 2024 - 2025}
-	\end{titlepage}
+	\centering
+	\vspace{1.5cm}
+	{\huge\textbf{Rapport de Stage de M2}}\par
 	
-	\newpage
-	\tableofcontents
-	\thispagestyle{empty}
-	{\color{white}l}
+	\vspace{2cm}
+	{\huge\textbf{\textsc{Des trucs sûrement très cools}}}\par 
+	\vspace{0.5cm}
 	
+	{\huge\textbf{\textsc{vraiment très très cool}}}\par
+	\vspace{2.0cm}
 	
-	\newpage
-	\setcounter{page}{1}
+	{\large Grégoire \textsc{Doat}}\par
+	\vspace{0.5cm}
+	\vfill
 	
-	\phantomsection
-	\addcontentsline{toc}{section}{Introduction}
-	\section*{Introduction}
+	% Bottom of the page
+	{\large Encadré par Nicolas \textsc{Le Bihan},  Michel \textsc{Berthier}, \etal}\par
+	\vspace{0.5cm}
 	
+	\rule{10cm}{0.4pt}\par
+	\vspace{0.7cm}
 	
-	\setcounter{figure}{0}
-	\setcounter{lstlisting}{0}
-	\section{laminvrioeb}\label{sec:ouioui}
+	{Master \textsc{Mix} - Université de La Rochelle}\par
+	\vspace{0.25cm}
 	
+	{\large 2024 - 2025}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+{\color{white}l}
+
+
+\newpage
+\setcounter{page}{1}
+
+\phantomsection
+\addcontentsline{toc}{section}{Introduction}
+\section*{Introduction}
+
+Quote : The geometric phase is also one of the most beautiful examples of what Wigner once called "the unreasonable effectiveness of mathematics in the natural sciences." \cite[p. 4]{bohm_geometric_2003}
+
+
+\subsection{Réflexion autour du produit hermitien}
+
+Soit $x,y\in\C^n$ des vecteurs complexes et $X,Y\in\R^{2\times n}$ leur versions réelles. On note $x^j$ sa $j^{eme}$ composante complèxe et $x_1$ (resp. $x_2$) le vecteur composé de ses parties réelles (resp. imaginaires) :
+\[x = \big(x^j\big)_j =  x_1 + ix_2 =  \big(x^j_1\big)_j +i \big(x^j_2\big)_j\]
+\\
+On a deux façon d'écrire le produit hermitien (canonique) de $X$ avec $Y$ :
+\begin{align*}
+\langle x,y \rangle = \langle x_1 + ix_2, y_1 + iy_2\rangle &= \langle x_1, y_1\rangle - i \langle x_1,y_2\rangle +i\langle x_2, y_1\rangle + \langle x_2, y_2\rangle  \\
+	&= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
+		+ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
+	&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2
+		+ i\left(\sum_j x^j_2 y^j_1 -  x^j_1y^j_2\right) \\
+	&= \left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle
+		+ i\left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} -y_2 \\ y_1 \end{pmatrix}\right\rangle \\
+		&= \Big\langle X,Y\Big\rangle 
+		+ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle\\
+	&= \Big\langle X,Y\Big\rangle 
+		+ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}Y\right\rangle
+\end{align*}
+\\
+Cette formule peut s’interpréter en disant que le produit hermitien encode le produit scalaire entre $X$ et $Y$ et le produit scalaire de $X$ avec les vecteurs $y^j=(y^j_1, y^j_2)$  auquel on aurait applique une rotation de $90^\circ$ (rotation qui, par ailleurs, correspond à la multiplication par $i$ dans le plan complexe). Moralement, $\langle x,y \rangle =0$ demande une orthogonalité de $X$ à un plan, ce qui fait sens puisque cela tient compte du fait que les $x^j, y^j$ sont complexes (donc de dimension 2 en tant que $\R-$e.v.).
+\\
+On a aussi l'écriture (quand-même moins clair) :
+\begin{align*}
+\langle x,y \rangle &= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
++ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
+	&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2+ i\sum_j \big( x^j_2 y^j_1 - x^j_1y^j_2 \big) \\
+	&= \sum_j \big\langle X^j,Y^j\big\rangle - i\sum_j \det(X^j, Y^j)
+	%&= \sum_j \|X^j\|\|Y^j\| \cos \widehat{X^j,X^j} + i\sin \widehat{X^j,Y^j}
+\end{align*}
+Cette formule dit que les parties reélles et imaginaires du produit $\langle x,y \rangle$ encodent respectivement ``l'orthogonalité moyenne'' et la ``linéarité moyenne ''entre les familles de vecteurs $X^j\in\R^2$ et $Y^j\in\R^2$. L'orthogonalité d'une part parce que le produit scalaire s'annule en cas d'orthogonalité (no shit), la linéarité d'autre part car le déterminant s'annule en cas de colinéarité et moyenne car se sont des sommes sur $j$. \textbf{$\bf{\langle x,y \rangle=0}$ ne dit pas que les le vecteurs sont à la fois colinéaire et orthogonaux parce que ce sont des valeurs moyennes (\textit{e.i.} annuler une somme ne veut pas dire que chacun des termes sont nuls).}
+\\
+
+Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
+\begin{align*}
+\langle x+h, x+h \rangle = \langle x, x \rangle + \langle x, h \rangle + \langle h, x \rangle + \langle h, h \rangle 
+	&= \langle x, x \rangle + \langle x, h \rangle  + \overline{\langle x, h \rangle }+ \langle h, h \rangle \\
+	&= \langle x, x \rangle + 2\Re e \langle x, h \rangle + \langle h, h \rangle
+\end{align*}
+Donc si $x\in\C^n$ est fonction d'un paramètre $t$, dans le cas complexe, on plus l'égalité $\ \langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle\ $ du cas réel mais :
+\[\langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle + i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
+\\
+En particulier, quand bien-même $x$ serait de norme constante, on aurait toujours un degré de liberté pour $\ \langle x, \dot{x} \rangle$ :
+\[\|x\|=c\quad \Lr\quad \langle x, \dot{x} \rangle = i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
+\\
+
+\begin{definition}\label{def:phase_dyn}
+	Ainsi, il reste tout un degré de liberté au produit $\ \langle x, \dot{x} \rangle\ $ même si $x\in\S^{2n}$. En intégrant ce degré de liberté supplémentaire, c'est-à-dire en tenant compte de son évolution sur la période $[t_0,t]$, l'on obtient ce qui est appeller le \textit{phase dynamique} :
+	\[\phased = \int_{t_0}^t \Im m \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds\]
+	Elle dynamique en cela qu'elle est propre au variation de $\psi$ et qu'elle considère tout l'évolution de $\psi$ : ça dynamique.
 	
+	\textbf{... et pourquoi c'est une PHASE du coup ?}
+\end{definition}
+
+
+\begin{definition}[Connexion de Berry]\label{def:berry_connx}
+On appelle \textit{connexion de Berry} le champ de forme linéaire :
+\begin{equation}\label{eq:berry_connx}
+	\forall \psi\in\mathpzc{M},\quad A_\psi :\ \begin{aligned} T_\psi\mathpzc{M}\ &\lr\qquad\ \R \\ \phi\quad &\longmapsto\ \Im m \big\langle \psi(s) \, |\, \phi(s) \big\rangle
+	\end{aligned}
+\end{equation}
+\textbf{Elle a rien d'une connextion par contre :/}
+\end{definition}
+
+
+
+
+
+\setcounter{figure}{0}
+\setcounter{lstlisting}{0}
+\section{Description des signaux multivariés}\label{sec:bases}
+
+On s'intéresse au signaux multivariés.
+\\
+
+\begin{definition}[Signal multivarié] 
+Un \textit{signal multivarié}, ou \textit{$n-$varié}, signal à valeur dans $\C^n$. Formellement, c'est une fonction de carré intégrale à valeur de $\R$ dans $\C^n$, et l'ensemble de tel signaux seront noté $L^2\big(\R,\C^n\big)$.
+\\
+Dans le cas $n=2$, on parle de signal \textit{bivarié}.
+\end{definition}
+
+\begin{proposition}\label{prop:quatern}
+Les signaux bivariés se décrivent très simplement à l'aide des quaternions. En considérant $\{1, \bf{i},\bf{j},\bf{k}\}$ la base canonique des quaternions $\mathbb{H}$, on peut voir $\psi$ comme étant à valeur dans ${\C_{\bf{j}}}^n$ ($\C_{\bf{j}} :=\R\times \bf{j}\R$), de sorte que :
+\[\forall \psi\in L^2(\R,\mathbb{H}),\ \exists a,\theta,\chi,\varphi \in\mathcal{C}(\R)\ |\quad \psi(t) = a(t)e^{\bf{i}\theta(t)}e^{-\bf{k}\chi(t)}e^{\bf{j}\varphi(t)}\]
+\\
+Sous cette forme, les paramètres $a$ et $\varphi$ s'interprètent respectivement comme l'amplitude et la phase instantanée du signal. Les deux paramètres restant contrôle l'ellipticité ($\chi$) et l'orientation ($\theta$) de l’ellipse de polarisation instantanée. C'est-à-dire l'ellipse que suit la signal à l'instant $t$.
+\\
+Dit autrement, à tout instant $t$, $\psi(t)$ est vu comme une point d'une ellipse dont la taille est caractériser par $a(t)$, l'ellipticité par $\chi(t)$ et l'orientation par $\theta(t)$. $\phi(t)$ permet lui de situer $\varphi(t)$ sur cette ellipse.
+\\
+
+\textit{Le problème de cette représentation est qu'elle se généralise mal aux signaux plus que $2-$variés et, à notre connaissant, il n'existe pas d'extensions des quaternions à de plus haute dimension.} voir \cref{prop:gene_param_signal}, \cref{eq:phase_tot,eq:phase_dyn,eq:phase_geo} 
+\end{proposition}
+
+Il est évident que cette représentation est présent bien plus de paramètre que nécessaire, puisse que deux devrait suffire. Pour autant, elle permet de mieux \textbf{je sais quoi mais c'est sur qu'il y'a une raison}.
+\\
+Si cette représentation se généralise mal parce qu'elle demanderait d'avoir une extension de $\mathbb{H}$, sont interprétations graphique, elle, se généralise très bien. Par exemple, en dimension 3, alors l'ellipse devient une ellipsoïde. L'amplitude reste de dimension 1 parce qu'elle ne fait que contrôler la taille de cet ellipsoïde, mais les autres paramètres eux doivent être de dimension 2. L'ellipsoïde à besoin de deux angles pour être orienté, possède deux degrés d'ellipticité et ces points sont déteminés par deux angles.
+\\
+
+\begin{proposition}\label{prop:gene_param_signal}
+Plus généralement, tout signal multivarié $\psi$ est (\textit{devrait être}) caractérisé par quatre paramètres (donc $3n-2$ scalaires) :
+\begin{align*}
+	a&\in\mathcal{C}(\R,\R^+)  &  \varphi&\in\mathcal{C}(\R, [-\pi,\pi]^{n-1})  &  \theta&\in\mathcal{C}(\R, [-\pi/2,\pi/2]^{n-1})  &  \chi&\in\mathcal{C}(\R, [-\pi/4,\pi/4]^{n-1})
+\end{align*}	
+\end{proposition}
+
+\`A bien y réfléchir, décrire un ellipsoïde dans l'espace, c'est exactement de que font les matrices symétriques définies positives. Donc on pourrait tout à fait remplacer les informations $(a,\theta,\chi)$ par une matrice symétrique positive de dimension $n$. Il ne resterait alors plus que $\varphi$ qui, de toute façon ne devrait pas trop être lié aux autres paramètres.
+
+Enfin, surement que si parce que y'a un monde pour $\varphi=0_\R^n$ et c'est le reste des paramètres qui fait le travail. Mais clairement c'est pas intéressant comme description. L'idée serait plutôt décrire le signal $\psi$ en minimisant les variations de $(a,\theta,\chi)$.
+Ca appelle clairement à chercher que dans l'espace de Siegel mais pas seulement, parce que c'est pas juste des chemins chez Siegel qui nous intéresse.
+
+Ou alors c'est le jeu de jauge qui fait qu'on tue $\varphi$ ? auquel cas tout les jours Siegel.
+\\
+
+\textit{BTW, les quaternions c'est fait pour décrire les rotations et c'est (quasiment) ce qu'on fait avec, donc aller chercher dans un espace de matrices pour généraliser le principe c'est pas déconnant.}
+\\
+\textit{D'ailleurs, vu que c'est pas exactement ce qu'on fait avec, dans quelle mesure c'est pas le cas et est-ce qu'on exploite vraiment la structure des quaternions ?}
+
+
+
+
+\setcounter{figure}{0}
+\setcounter{lstlisting}{0}
+
+\section{Phase géométrique d'un signal}\label{sec:phasegeo}
+
+La phase géométrique est invariante par action du groupe $\mathbb{U}(1)$, c'est à dire invariante par changement de la phase instantanée. Elle ne regarde donc que les paramètres $a, \theta$ et $\chi$. En outre, elle ne regarde que la matrice semi-définie positive (potentiellement sans même regarder l'amplitude $a$ a.k.a. la norme de la matrice).
+
+Avec cette formulation il devient plus clair que $\phi$ peut être vu comme un fibré vectoriel (particulier parce que c'est bien un élément du produit $\R\times\C^n$ pas d'un espace qui s'en rapproche localement) et cette et que le groupe $\mathbb{U}(1)$ agit comme un jauge. En plus, Wikipédia dit que pour les fibrés vectoriels, il faut que l'action soit les changement de base (orthonormée ?), ce qui correspond bien à une changement de phase suivant les formules de la prop. \ref{prop:gene_param_signal}.
+
+La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\varphi)$ parce que encore une fois, y'a vraiment pas unicité de la décomposition et c'est loin d'être clair comment choisir la plus pertinente (et comment la calculer aussi !)
+
+
+
+\section{Trucs à voir}
+
+\subsection{Bilan des formules}
+
+\begin{itemize}
+	\item Les phases de $\psi$ entre les instants $t_0$ et $t$ :
+	\begin{equation}\label[COUILLE]{eq:phase_tot}
+		\phaset(\psi, t_0, t) \equiv \arg(\psi(t_0), \psi(t))
+	\end{equation}
 	
+	\begin{equation}\label{eq:phase_dyn}
+		\phased(\psi,t_0,t) \equiv \Im m \int_{t_0}^t\big\langle \psi(s) \,|\, \dot{\psi}(s) \big\rangle ds
+	\end{equation}
 	
-	\newpage
+	\begin{equation}\label{eq:phase_geo}
+		\phaseg(\psi, t_0, t) \equiv  \phaset(\psi, t_0, t) - \phased(\psi,t_0,t)
+	\end{equation}
 	
-	\bibliography{ref.bib}{}
-	\bibliographystyle{siam}
-	\end{document}
+	\item (conservative) Équation Schrödinger et de Liouville-von Neumann ($h(R)$ : Hamiltonien des paramètres $R$, $W$ : opérateurs statistique ) \cite[p.6]{bohm_geometric_2003} :
+	\begin{equation}\label{eq:schrodinger}
+		i\frac{d \psi(t)}{dt} = h(R)\psi(t)
+	\end{equation}
+	\begin{equation}\label{eq:liouville-neumann}
+		i\frac{d W(t)}{dt} = \big[h(R),W(t)\big] \qquad\qquad [\cdot\,,\cdot]=\text{ commutateur ?}
+	\end{equation}
+\end{itemize}
+
+
+\subsection{Général}
+
+\begin{itemize}
+	\item D'où sort l'interprétation géométrique + son lien avec quaternions (prop. \ref{prop:quatern})
+	\item Lien avec l'eq de Schrödinger (l'intérêt de $H$ et $K$ + d'où ils sortent)
+	\item J'ai rien compris au ``problème'' des formalisations vecteur et/vs complexe
+	\item Comment comprendre $\big\langle \psi\, |\, \dot{\psi} \big\rangle$ ?
+	
+	\item La ``Berry connection'' c'est une vraie connexion ? elle est où la covariance alors ?
+\end{itemize}
+
+\[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
+
+\begin{itemize}
+	\item ``horizontal lift'' : pourquoi horizontal ? en quel sens ?
+	\item Fréquence de Rubi
+	\item Matrice/base de Pauli et généralisation, groupe $SU(n)$ (un peu de quantique ?)
+	\item Produit hermitien : intuition géométrique
+	\item Monopole de Dirac + lien avec la phase géo (un peu d'électro-magnétisme ?)
+	\item Invariant de Bargmann + série de Dyson
+\end{itemize}
+
+
+
+\subsection{Point de vue des variétés}\label{subsec:phaseG_variete}
+
+\begin{itemize}
+	\item Ecriture en terme de fibré (principale ? vectoriel ?)
+	
+	\item Choix de l'action de groupe pour la jauge : $U(1)$ \textit{a priori}
+\end{itemize}
+
+\[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
+
+\begin{itemize}
+	\item Lien avec Siegel : assez clair avec la visualisation des ellipses, beaucoup moins avec les Hilberts même si $| \psi\rangle \langle \psi |\in$ Siegel \textit{a priori}
+	
+	\item ``\textit{Symplectique}'' (meaning + intérêt ?)
+	
+	\item 
+\end{itemize}
+
+
+
+
+
+\newpage
+
+\bibliography{ref.bib}{}
+\bibliographystyle{siam}
+\end{document}
