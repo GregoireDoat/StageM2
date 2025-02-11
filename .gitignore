@@ -19,6 +19,10 @@ tmp
 **/*.pytxcode
 **/*.toc
 **/*.synctex.gz
+**/*.lol
+**/*.lof
+**/*.lopytx
+**/*.thm
 
 # data osef
 **/.data_sets
