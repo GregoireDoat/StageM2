@@ -167,18 +167,18 @@
 \newtheorem{exercice}{Exercice}
 
 % pour cref au enoncé
-\crefname{definition}{définition}{Définition}
-\crefname{proposition}{proposition}{Proposition}
-\crefname{propriete}{propriété}{Propriété}
-\crefname{lemme}{lemme}{Lemme}
-\crefname{theoreme}{théorème}{Théorème}
-\crefname{corollaire}{corollaire}{Corollaire} 
+\crefname{definition}{Définition}{définition}
+\crefname{proposition}{Proposition}{proposition}
+\crefname{propriete}{Propriété}{propriété}
+\crefname{lemme}{Lemme}{lemme}
+\crefname{theoreme}{Théorème}{théorème}
+\crefname{corollaire}{Corollaire}{corollaire} 
 
-\crefname{remarque}{remarque}{Remarque}
-\crefname{rappel}{rappel}{Rappel}
-\crefname{exemple}{exemple}{Exemple}
+\crefname{remarque}{Remarque}{remarque}
+\crefname{rappel}{Rappel}{rappel}
+\crefname{exemple}{Exemple}{exemple}
 
-\crefname{exercice}{exercice}{Exercice}
+\crefname{exercice}{Exercice}{exercice}
 
 % démo (pas convaincu)
 \definecolor{mygray}{gray}{0.3}
@@ -498,25 +498,79 @@ On appelle \textit{connexion de Berry} le champ de forme linéaire :
 	\forall \psi\in\mathpzc{M},\quad A_\psi :\ \begin{aligned} T_\psi\mathpzc{M}\ &\lr\qquad\ \R \\ \phi\quad &\longmapsto\ \Im m \big\langle \psi(s) \, |\, \phi(s) \big\rangle
 	\end{aligned}
 \end{equation}
-\textbf{Elle a rien d'une connextion par contre :/}
+\textbf{Elle a rien d'une connexion par contre :/}
 \end{definition}
 
 
 
 
-\subsection{La base}
+\subsection{Signal analytique, transformé de Hilberts}\label{subsec:SA_Hilb}
 
-On s'intéresse à des signaux multivarié, c'est-à-dire des applications à valeur de $\R$ (le temps typiquement) dans $\R^n$.  Dans le cas $n=1$ un signal $x\in L^2(\R)$ s'écrit sous la forme :
+Un signal $x\in L^2(\R)$ peut s'écrire sous la forme :
 \begin{align*}
-x(t) &= a(t) \cos\phi(t)  &  	\text{avec }\quad a \in L^2(\R^+)\quad &\text{et}\quad \phi \in L^2(\R) \
+	x(t) &= a(t) \cos\phi(t)  &  	\text{avec }\quad a \in L^2(\R^+)\quad &\text{et}\quad \phi \in L^2(\R) \
 \end{align*}
+\\
+De façon générale, y'a pas du tout unicité de cette décomposition et pour qu'elle soit proprement définit on ajout la contrainte que $z_x=ae^{i\phi}$ soit un \textit{signal analytique}, \textit{e.i.} :
+\[\hat{z}_x(\nu) = 2\mathbbm{1}_{\R^+}(\nu)\hat{x}(\nu)\]
+\\
+De cette façon la paire $(a,\phi)$ est unique et on a :
+\[x = \Re e (z) \]
+\\
+blabla y'a plein d'autres propriétés qu'il faudrait aller voir \cite{picinbono_instantaneous_1997} et Cohen
 
 
-reovubrov
+
 
 \setcounter{figure}{0}
 \setcounter{lstlisting}{0}
 \section{Description des signaux multivariés}\label{sec:bases}
+
+\subsection{Version Lilly \cite{lilly_bivariate_2010, lilly_analysis_2012}}
+
+On a un signal bivarié $\bf{x}(t) = \big(x(t),y(t)\big)$ qu'on transforme (voir \cref{subsec:SA_Hilb}) soit la forme :
+\[z_x(t) = \begin{pmatrix}x_+(t) \\ y_+(t)\end{pmatrix} = \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^{i\phi_y(t)}\end{pmatrix}\in\C^2\]
+\\
+
+\`A côté de ça, on a les ellipses modulées :
+\[z(t) = e^{i\theta}\big(a(t)\cos\phi(t) + ib(t) \sin\phi(t)\big) = A(t) e^{i\theta} \big( \sin\chi(t) \cos\phi(t) + i\sin\chi(t) \sin\phi(t) \big) \in\C\]
+Qui sous forme vectoriel se réécrit :
+\begin{equation}\label{eq:exp_elliptik}
+	z(t) = e^{i\phi} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} \in\C^2,\qquad R_\theta\in\SO_2(\R) \
+\end{equation}
+\\
+
+Pour avoir la désinscription de $\bf{x}$ en terme d’ellipse, il suffit donc de poser :
+\[z_x(t) = z(t)\quad \Llr\quad \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^ {i\phi_y(t)}\end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}\]
+\\
+Ensuite, on pose :
+\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \begin{pmatrix}a_+ e^{i\phi_+} \\ a_- e^{i\phi_-}\end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}x_+ + iy_+ \\ x_+ - iy_+\end{pmatrix} = \begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\]
+\\
+Et on a :
+\begin{align*}
+	2\phi &= \phi_+ + \phi_-  &  a &= A\cos\chi = a_+ + a_- \\
+	2\theta &= \phi_+ - \phi_-  &  b &= A\sin\chi = a_+ - a_- 
+\end{align*}
+et on en déduit :
+\begin{align*}
+	A &= \sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}  &  \begin{aligned} \cos\chi &= \frac{a_+ + a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}  \\  \sin\chi &= \frac{a_+ - a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}	\end{aligned}
+\end{align*}
+Ce qui donne \textit{in fine} :
+\[\begin{pmatrix}x_+ \\ y_+\end{pmatrix} = e^{i\frac{\phi_+ + \phi_-}{2}} R_{\frac{\phi_+ - \phi_-}{2}} \begin{pmatrix}a_+ + a_- \\ -i(a_+ - a_-)\end{pmatrix}\]
+\\
+
+L'\cref{eq:exp_elliptik} ce généralise  très bien, il suffit d'augmenter la taille de $R_\theta\in\SO_n(\R)$ et de lui donner le vecteur étendu :
+\[z_x(t) = \begin{pmatrix}x_{1+}(t) \\ \vdots \\ 
+	x_{n+}(t)\end{pmatrix} = e^{i\phi} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix}\]
+\\
+Sachant que le vecteur contenant $a$ et $b$ est principalement nul, on peut réécrire le produit ne considérant que les deux premières colonnes de $R_\theta$.
+\\
+
+Maintenant, la question est de savoir comment généraliser la transformation en $(z_+, z_-)$ pour obtenir les paramètres $(A, \phi, R_\theta, \chi)$ dans ce cas...
+
+
+
+\subsection{Mon blabla}
 
 On s'intéresse au signaux multivariés. Dans cette \namecref{sec:bases}, on va ....
 \\
@@ -536,7 +590,7 @@ Sous cette forme, les paramètres $a$ et $\varphi$ s'interprètent respectivemen
 Dit autrement, à tout instant $t$, $\psi(t)$ est vu comme une point d'une ellipse dont la taille est caractériser par $a(t)$, l'ellipticité par $\chi(t)$ et l'orientation par $\theta(t)$. $\phi(t)$ permet lui de situer $\varphi(t)$ sur cette ellipse.
 \\
 
-\textit{Le problème de cette représentation est qu'elle se généralise mal aux signaux plus que $2-$variés et, à notre connaissant, il n'existe pas d'extensions des quaternions à de plus haute dimension.} voir \cref{prop:gene_param_signal}, \cref{eq:phase_tot,eq:phase_dyn,eq:phase_geo} 
+\textit{Le problème de cette représentation est qu'elle se généralise mal aux signaux plus que $2-$variés et, à notre connaissant, il n'existe pas d'extensions des quaternions à de plus haute dimension. voir \cref{prop:gene_param_signal_v1,prop:gene_param_signal_v2}, \cref{eq:phase_tot,,eq:phase_dyn,eq:phase_geo}} 
 \end{proposition}
 
 Il est évident que cette représentation est présent bien plus de paramètre que nécessaire, puisse que deux devrait suffire. Pour autant, elle permet de mieux \textbf{je sais quoi mais c'est sur qu'il y'a une raison}.
@@ -597,7 +651,7 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 
 \begin{itemize}
 	\item Les phases de $\psi$ entre les instants $t_0$ et $t$ :
-	\begin{equation}\label[COUILLE]{eq:phase_tot}
+	\begin{equation}\label{eq:phase_tot}
 		\phaset(\psi, t_0, t) \equiv \arg(\psi(t_0), \psi(t))
 	\end{equation}
 	
@@ -618,7 +672,7 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 	\end{equation}
 	
 	\item Moment angulaire (viteuf) $\forall z\in\C$ :
-	\[M(t) = \Re e \big(iz\overline{z}'\big)\]
+	\[M(t) = \Re e \big(iz\overline{z}'\big) = -\Im m z\overline{z}'\]
 \end{itemize}
 
 
@@ -675,6 +729,6 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 
 \newpage
 
-\bibliography{ref.bib}{}
+\bibliography{refs.bib}{}
 \bibliographystyle{siam}
 \end{document}
