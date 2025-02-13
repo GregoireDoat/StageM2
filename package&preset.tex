@@ -1,0 +1,417 @@
+
+%%%%    IMPORTS 2 BASE    %%%%
+
+
+\documentclass[hidelinks, french, oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% pour le mise en page
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\usepackage{fontsize} \changefontsize[13]{10}		
+\usepackage{xcolor}
+
+% mathsymbole
+\usepackage{amsmath, amssymb,stmaryrd}
+\usepackage{wasysym}[mathcal] % a quoi sert le [mathcal] ?
+\usepackage{nicefrac, units} % fraction pour text mode / unité
+
+% TBD
+\usepackage{mathcomp}
+\usepackage{mathrsfs} % pour \mathscr a priori
+
+% pour les belles fonts
+\usepackage{amsfonts}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+%\usepackage{euscript}[mathcal]
+%\usepackage{rsfso}
+\usepackage{bbm}	 % mathbb étendu
+
+% pour les hyprlien / cross-ref
+\usepackage{hyperref, cleveref}
+%\namecref{sec:label}
+
+%pour les figures
+\usepackage{graphicx} \usepackage{wrapfig, floatrow}
+%\usepackage{subcaption} % surement useless, parsk floatrow-like 
+
+% pour les beaux tableaux
+\usepackage{multirow}
+
+% pour des matrices infernales
+\usepackage{easybmat}
+
+% pour les citations (aucune idées de comment ca marche)
+\usepackage{csquotes}
+
+
+
+%%%%    RACCOURCIS    %%%%
+
+
+% bb / cal / frak
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}             % Note pour homo pour les updates
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\k}{\Bbbk}
+\newcommand{\U}{\mathbb{U}}
+\renewcommand{\u}{\text{U}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\one}{\mathbbm{1}}
+%\renewcommand{\S}{\mathfrak{S}}
+\renewcommand{\S}{\mathbb{S}}
+
+% arrows
+\newcommand{\lr}{\longrightarrow}
+\newcommand{\Lr}{\Longrightarrow}
+%\renewcommand{\ll}{\longleftarrow}
+\newcommand{\Ll}{\Longleftarrow}
+\newcommand{\llr}{\longleftrightarrowr}
+\newcommand{\Llr}{\Longleftrightarrow}
+
+% espaces
+\newcommand{\matk}{\mathpzc{M}_n(\mathbb{K})}
+\newcommand{\matr}{\mathpzc{M}_n(\mathbb{R})}
+
+% fonctions
+\newcommand{\Arccos}{\text{Arccos}} 
+\newcommand{\Arcsin}{\text{Arcsin}} 
+\newcommand{\Arctan}{\text{Arctan}} 
+\newcommand{\Argch}{\text{Argch}}       
+\newcommand{\Argsh}{\text{Argsh}}
+
+\newcommand{\argmin}[1]{\underset{#1}{\text{argmin}}}
+\newcommand{\argmax}[1]{\underset{#1}{\text{argmax}}}
+
+\newcommand{\pgcd}{\text{pgcd}}
+\newcommand{\PGCD}{\text{PGCD}}
+\newcommand{\ppmc}{\text{ppcm}}
+\newcommand{\sign}{\text{sign}}
+
+\newcommand{\sgn}{\text{sgn}}
+%\newcommand{\deg}{\text{deg}}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\rot}{\text{rot}}
+
+%\renewcommand{\det}{\text{det}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\rg}{\text{rg}}
+\newcommand{\Co}{\text{com}}
+\newcommand{\codim}{\text{codim}}
+
+%espaces
+%\renewcommand{\Vec}{\text{Vec}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\Ker}{\text{Ker}}
+\newcommand{\Ann}{\text{Ann}}
+\newcommand{\Sp}{\text{Sp}} 
+\newcommand{\GL}{\text{GL}}
+\newcommand{\SL}{\text{SL}}
+\newcommand{\SO}{\text{SO}}
+\newcommand{\SU}{\text{SU}}
+%\renewcommand{\div}{\text{div}}
+
+\newcommand{\Aff}{\text{Aff}}
+\newcommand{\HT}{\text{HT}}
+\newcommand{\GA}{\text{GA}}
+
+% spé proba
+\newcommand{\Esp}[2][]{\mathbb{E}_{#1}\left[\, #2\, \right]}
+\newcommand{\Var}{\mathbb{V}}%\text{ar}}
+
+% plus jolie
+\renewcommand{\O}{\varnothing}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\subsetneq}{\varsubsetneq}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\limsup}{\varlimsup}
+\renewcommand{\liminf}{\varliminf}
+
+% autre
+\renewcommand{\bf}[1]{\boldsymbol{#1}}
+\renewcommand{\AC}{\sim}
+\newcommand{\para}{\sslash}
+
+
+% latin
+\newcommand{\etal}{\textit{et al}}
+\newcommand{\etc}{\textit{etc}}
+\newcommand{\apriori}{\textit{a priori}}
+\newcommand{\afortiori}{\textit{a fortiori}}
+\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\eg}{\textit{e.g.}}
+
+% tmp
+\newcommand{\phaset}{\Phi_{\text{tot}}}
+\newcommand{\phased}{\Phi_{\text{dyn}}}
+\newcommand{\phaseg}{\Phi_{\text{geo}}}
+
+
+
+%%%%    ENONCES (PROP, DEF, RQ)    %%%%
+
+
+\usepackage{amsthm}
+
+% les styles
+\newtheoremstyle{enonce}{0pt}{25pt}{}{}{\scshape}{\quad ---\quad }{0em}{}
+\newtheoremstyle{special}{0pt}{25pt}{}{}{\scshape}{\quad ---\quad }{0em}{\thmnote{#3}}
+\newtheoremstyle{rqlike}{0pt}{25pt}{\itshape}{}{\scshape}{\quad ---\quad}{0em}{}
+\newtheoremstyle{exo}{0pt}{25pt}{\color{blue}}{}{\scshape\color{blue}}{: \newline}{0em}{}
+
+% énoncés classiques
+\theoremstyle{enonce}
+\newtheorem{definition}{Définition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{propriete}{Propriété}
+\newtheorem{propricarac}[propriete]{Propriété Caractéristique}
+\newtheorem{lemme}{Lemme}
+\newtheorem{theoreme}{Théorème}[section]
+\newtheorem{theodef}[theoreme]{Théorème et Définition}
+\newtheorem{corollaire}{\qquad Corollaire}[theoreme]
+
+% énoncé type
+\theoremstyle{special}
+\newtheorem{enonce}{}
+
+% énoncé numérotation-less
+\theoremstyle{rqlike}
+\newtheorem*{remarque}{\qquad Remarque}
+\newtheorem*{rappel}{\qquad Rappel}
+\newtheorem*{exemple}{\qquad Exemple}
+
+\theoremstyle{exo}
+\newtheorem{exercice}{Exercice}
+
+% pour cref aux enoncés
+\crefname{definition}{définition}{Définition}
+\crefname{proposition}{proposition}{Proposition}
+\crefname{propriete}{propriété}{Propriété}
+\crefname{lemme}{lemme}{Lemme}
+\crefname{theoreme}{théorème}{Théorème}
+\crefname{corollaire}{corollaire}{Corollaire} 
+
+\crefname{remarque}{remarque}{Remarque}
+\crefname{rappel}{rappel}{Rappel}
+\crefname{exemple}{exemple}{Exemple}
+
+\crefname{exercice}{exercice}{Exercice}
+
+% espace démo  (pas convaincu)
+\definecolor{mygray}{gray}{0.3}
+\newtheoremstyle{demo}{8pt}{0pt}{\color{mygray}}{}{\itshape\color{mygray}}{\newline\newline}{0em}{}
+
+\theoremstyle{demo}
+\newtheorem*{demo}{\qquad\qquad\qquad\rule{3.5cm}{0.4pt}\qquad\quad Démonstration\qquad\quad \rule{3.5cm}{0.4pt}}
+%\begin{center}\rule{8cm}{0.4pt}\end{center}
+
+
+
+%%%%    PROG N PLOT    %%%%
+
+
+% Prog
+
+%\usepackage{fancyvrb} % pour le lore, mais useless AF
+\usepackage{listings} 
+\usepackage{pythontex}	% surement une dingz, à approfondire
+
+% preset
+\definecolor{codeblack}{gray}{0.2}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{gray}{0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.98,0.98,0.95}
+
+\lstdefinestyle{mystyle}{
+backgroundcolor=\color{backcolour},   
+commentstyle=\color{codegray},
+keywordstyle=\color{orange},
+numberstyle=\tiny\color{codegray},
+stringstyle=\color{codegreen},
+basicstyle=\color{codeblack}\ttfamily\footnotesize,
+breakatwhitespace=false,         
+breaklines=true,                 
+captionpos=b,
+abovecaptionskip=12,
+belowcaptionskip=18,
+keepspaces=true,                 
+numbers=left,                    
+numbersep=5pt,                  
+showspaces=false,                
+showstringspaces=false,
+showtabs=false,                  
+tabsize=2,
+frame=single,
+rulecolor=\color{lightgray}}
+\lstset{style=mystyle}
+
+
+% Plot
+
+% pour dessins et les diagrams
+\usepackage{tikz, tikz-cd, tkz-euclide}
+\usepackage{scalerel, pict2e}
+\usetikzlibrary{calc, patterns, shapes.arrows, arrows.meta, shadows, external} 
+
+% pour les maxis plots
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest, scaled y ticks=false}
+\usepgfplotslibrary{groupplots, dateplot, statistics, fillbetween}
+
+\tikzstyle{every node}=[font=\scriptsize]
+\pgfplotsset{standard/.style={width=8cm,
+	height=3cm,
+	compat=1.18,
+	trig format=rad,
+	enlargelimits,
+	axis x line=middle,
+	axis y line=middle,
+	enlarge x limits=0.15,
+	enlarge y limits=0.15,
+	every axis x label/.style={footnotesize, at={(current axis.right of origin)},anchor=north west},
+	every axis y label/.style={footnotesize, at={(current axis.above origin)},anchor=south east},
+	scale only axis=true}}
+	
+	
+	
+	%%%%    CAPTIONS 2 FIGURES    %%%%
+	
+	
+	% set up des captions figures (extrêmement BG)
+	
+	% pos et séparateur générale
+	\captionsetup{justification=centering}
+	\DeclareCaptionLabelSeparator{custom}{\, ---\, }
+	
+	% spécial figure
+	\DeclareCaptionLabelFormat{customfig}{\textit{fig. #2}}
+	\DeclareCaptionFormat{customfig}{#1#2#3}
+	%\DeclareCaptionFont{customfig}{\itshape} %marche pas jsppk
+	\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+	\captionsetup[figure]{labelformat=customfig, labelsep=custom}
+	
+	% spécial code (listings)
+	\DeclareCaptionLabelFormat{customcode}{\textit{code \arabic{section}.#2}}
+	\DeclareCaptionFormat{customcode}{#1#2#3}
+	%\renewcommand{\thelstlisting}{\arabic{section}.\arabic{lstlisting}}
+	\captionsetup[lstlisting]{labelformat=customcode, labelsep=custom}
+	
+	
+	
+	%%%%    TABLES/REF  &  HAUT/BAS DE PAGES    %%%%
+	
+	
+	% nom des tables et références
+	
+	\renewcommand{\contentsname}{\begin{center}\textsc{Tables des Matrières}\end{center}}
+	\renewcommand{\listfigurename}{\begin{center}\textsc{Table des Figures}\end{center}}
+	\renewcommand{\lstlistlistingname}{\begin{center}\textsc{Table des Codes}\end{center}}
+	\renewcommand{\refname}{\begin{center}\textsc{Références}\end{center}}
+	
+	% bas/haut de page (à optimiser à l'occas')
+	
+	\usepackage{fancyhdr}
+	\pagestyle{fancy}                       
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\cfoot{\thepage}
+	
+	%version2réjane  :
+	%\usepackage{eso-pic}
+	%\renewcommand\headrulewidth{1pt}
+	%\fancyhead[L]{\includegraphics[width=3cm]{logo_lr.png}}
+	%\fancyhead[R]{\includegraphics[width=1cm]{logo_sdis17.png}}
+	%\setlength{\headsep}{45pt}
+	
+	
+	
+	%%%%    SECTIONS ET TOC    %%%%
+	
+	
+	% génération des sections
+	
+	\usepackage[loadonly, toctitles, clearempty]{titlesec}
+	
+	% liste des sections
+	\titleclass{\part}[-1]{top}
+	\titleclass{\section}{straight}[\part]
+	\titleclass{\subsection}{straight}[\section]
+	\titleclass{\subsubsection}{straight}[\subsection]
+	
+	% génère les numérotations avec format
+	%\newcounter{part}
+	\renewcommand{\thepart}{\Roman{part}}
+	%\newcounter{section}
+	\renewcommand{\thesection}{\Roman{section}}
+	%\newcounter{subsection}
+	\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+	%\newcounter{subsubsection}
+	\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+	
+	% formatage
+	\titleformat{\part}[display]{\bfseries\scshape\Large}{\centering \rule{3.5cm}{0.4pt}\qquad Chapitre\quad \thepart \qquad \rule{3.5cm}{0.4pt}}{15pt}{\centering}
+	\titlespacing{\part}{0pt}{50pt}{80pt}
+	\newcommand{\partbreak}{\clearpage}
+	
+	\titleformat{\section}{\bfseries\Large}{\thesection\quad ---}{15pt}{}
+	\titlespacing{\section}{10pt}{15pt}{10pt}
+	%\newcommand{\sectionbreak}{\clearpage}
+	
+	\titleformat{\subsection}{\bfseries\large}{\thesubsection}{15pt}{}
+	\titlespacing{\subsection}{20pt}{15pt}{10pt}
+	
+	\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{15pt}{}
+	\titlespacing{\subsubsection}{30pt}{15pt}{10pt}
+	
+	% pour cref aux enoncés
+	\crefname{part}{partie}{Partie}
+	\crefname{section}{section}{Section}
+	\crefname{subsection}{sous-section}{Sous-section}
+	
+	% set up d'un environnement pour les annexes
+	
+	\newenvironment{annexe}{%
+\newpage
+
+% changement title sec
+\titleformat{\section}[display]{\bfseries\scshape\Large}{\centering}{15pt}{\centering}
+\titlespacing{\section}{0pt}{30pt}{40pt}
+
+\titleformat{\subsection}{\bfseries\large}{Annexe \thesubsection\quad ---\quad}{0pt}{}
+
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{15pt}{}
+
+% changement title toc
+\titlecontents{section}[0.25em]{\addvspace{0.5em}\bfseries}{}{\hspace*{-1.5em}}{\titlerule*[0.75pc]{.}\contentspage}
+
+\titlecontents{subsection}[1.5em]{\normalfont Annexe\hspace*{2.5em}}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
+
+\titlecontents{subsubsection}[6em]{\normalfont}{\contentslabel{2.75em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
+
+% changment de la numéritations
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\renewcommand{\thesubsubsection}{\Alph{subsection}.\arabic{subsubsection}.}
+% mise à zéro des compters
+%\setcounter{section}{0}
+}{}
+
+
+% le TOC en lé-gende
+
+\usepackage{titletoc}
+%\contentsmargin{2em}
+
+\titlecontents{part}[]{\rule{\textwidth}{0.5}\\* \bfseries\large\scshape Partie }{\contentslabel{15em}}{}{\hfill\contentspage}[\rule{\textwidth}{0.5}\quad]
+
+\titlecontents{section}[1.5em]{\addvspace{0.1em}\addvspace{0.5em}\bfseries}{\contentslabel{1.25em} ---\quad}{\hspace*{-1.75em}}{\titlerule*[0.75pc]{.}\contentspage}[\addvspace{0.2em}]
+
+\titlecontents{subsection}[3.8em]{\addvspace{0.15em}\normalfont}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
+
+\titlecontents{subsubsection}[6.8em]{\normalfont}{\contentslabel{2.75em}}{\hspace*{-2.5em}}{\titlerule*[0.75pc]{.}\contentspage}

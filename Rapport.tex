@@ -1,369 +1,4 @@
-\documentclass[hidelinks, french, oneside]{article}
-\usepackage[utf8]{inputenc}\usepackage[a4paper, total={6.5in, 10in}]{geometry} 
-% get fontsized kido
-\usepackage{fontsize}
-\changefontsize[13]{10}
-\usepackage{amsmath}\usepackage{amssymb}\usepackage{mathcomp}
-\usepackage{xcolor}\usepackage{mathrsfs}\usepackage{euscript}\usepackage{wasysym}[mathcal]\usepackage{stmaryrd}\usepackage{rsfso}
-\usepackage{csquotes}
-% pour les belles fonts
-\usepackage{amsfonts}\usepackage{bbm}\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
-% pour les titres
-\usepackage[T1]{fontenc}
-%\usepackage{titlesec}
-% pour les beaux tableaux
-\usepackage{multirow}
-% pour gérer les figures
-\usepackage{graphicx}
-\usepackage{wrapfig}
-% pour des matrices infernales
-\usepackage{easybmat}
-% pour rendre sommaire/table cliquable
-\usepackage{hyperref, cleveref}
-
-
-
-
-% pour dessins et les diagrams
-\usepackage{tikz}\usepackage{tikz-cd}
-% pour les maxis graphs
-\usepackage{scalerel}\usepackage{pict2e}\usepackage{tkz-euclide}
-\usetikzlibrary{calc}\usetikzlibrary{patterns,arrows.meta} \usetikzlibrary{shadows}\usetikzlibrary{external}
-% pour les maxis plots
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}
-\pgfplotsset{scaled y ticks=false}
-\usepgfplotslibrary{groupplots}
-\usepgfplotslibrary{dateplot}
-\usetikzlibrary{patterns,shapes.arrows,arrows.meta}
-\usepgfplotslibrary{statistics}\usepgfplotslibrary{fillbetween} \usepackage{nicefrac}
-% pour la prog
-\usepackage{fancyvrb}\usepackage{listings}
-% pour la prog -test-
-\usepackage{pythontex}
-
-
-
-%%%%    RACCOURCIS    %%%%
-
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}             % Note pour homo pour les updates
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\K}{\mathbb{K}}
-\renewcommand{\k}{\Bbbk}
-\newcommand{\U}{\mathbb{U}}
-\renewcommand{\u}{\text{U}}
-\newcommand{\A}{\mathbb{A}}
-\newcommand{\T}{\mathscr{T}}
-\newcommand{\I}{\mathbb{I}}
-%\renewcommand{\S}{\mathfrak{S}}
-\renewcommand{\S}{\mathbb{S}}
-\newcommand{\matk}{\mathpzc{M}_n(\mathbb{K})}
-\newcommand{\matr}{\mathpzc{M}_n(\mathbb{R})}
-\newcommand{\lr}{\longrightarrow}
-\newcommand{\Lr}{\Longrightarrow}
-%\renewcommand{\ll}{\longleftarrow}
-\newcommand{\Ll}{\Longleftarrow}
-\newcommand{\llr}{\longleftrightarrowr}
-\newcommand{\Llr}{\Longleftrightarrow}
-\newcommand{\para}{\sslash}
-\newcommand{\Arccos}{\text{Arccos}} 
-\newcommand{\Arcsin}{\text{Arcsin}} 
-\newcommand{\Arctan}{\text{Arctan}} 
-\newcommand{\Argch}{\text{Argch}}       
-\newcommand{\Argsh}{\text{Argsh}}
-\newcommand{\pgcd}{\text{pgcd}}
-\newcommand{\PGCD}{\text{PGCD}}
-\newcommand{\ppmc}{\text{ppcm}}
-\newcommand{\sign}{\text{sign}}
-%\renewcommand{\Vec}{\text{Vec}}
-\newcommand{\Aff}{\text{Aff}}
-\newcommand{\sgn}{\text{sgn}}
-\newcommand{\Deg}{\text{Deg}}
-\newcommand{\ord}{\text{ord}}
-%\renewcommand{\det}{\text{det}}
-\newcommand{\Ker}{\text{Ker}}
-\newcommand{\Ann}{\text{Ann}}
-\newcommand{\codim}{\text{codim}}
-\newcommand{\tr}{\text{tr}}
-\newcommand{\rg}{\text{rg}}
-\newcommand{\Co}{\text{com}}
-\newcommand{\Sp}{\text{Sp}} 
-\newcommand{\GL}{\text{GL}}
-\newcommand{\GA}{\text{GA}}
-\newcommand{\SL}{\text{SL}}
-\newcommand{\SO}{\text{SO}}
-\newcommand{\HT}{\text{HT}}
-\newcommand{\im}{\text{Im}}
-%\renewcommand{\div}{\text{div}}
-\newcommand{\rot}{\text{rot}}
-\renewcommand{\O}{\varnothing}
-\renewcommand{\epsilon}{\varepsilon}
-\renewcommand{\subsetneq}{\varsubsetneq}
-\renewcommand{\leq}{\leqslant}
-\renewcommand{\geq}{\geqslant}
-\renewcommand{\AC}{\sim}
-\renewcommand{\limsup}{\varlimsup}
-\renewcommand{\liminf}{\varliminf}
-\renewcommand{\stop}{\text{\;{\scriptsize$\top$}\;}}
-\newcommand{\sbot}{\text{\;{\scriptsize$\bot$}\;}}
-
-% Latin
-\newcommand{\etal}{\textit{et al}}
-\newcommand{\etc}{\textit{etc}}
-\newcommand{\apriori}{\textit{a priori}}
-\newcommand{\afortiori}{\textit{a fortiori}}
-
-% Avec Paramètre
-\renewcommand{\bf}[1]{\boldsymbol{#1}}
-\newcommand{\argmin}[1]{\underset{#1}{\text{argmin}}}
-\newcommand{\argmax}[1]{\underset{#1}{\text{argmax}}}
-\newcommand{\Top}[1]{\underset{#1}{\ \text{\huge{$\top$}}}\ }
-\newcommand{\Topp}[2]{\ \underset{#1}{\overset{#2}{\text{\huge{$\top$}}}}\ }
-\newcommand{\Bot}[1]{\underset{#1}{\ \text{\huge{$\bot$}}}\ }
-\newcommand{\Bott}[2]{\ \underset{#1}{\overset{#2}{\text{\huge{$\bot$}}}}\ }
-
-% tmp
-\newcommand{\phaset}{\Phi_{\text{tot}}}
-\newcommand{\phased}{\Phi_{\text{dyn}}}
-\newcommand{\phaseg}{\Phi_{\text{geo}}}
-
-
-	% set up ENONCES (PROP, DEF, RQ)
-	
-\usepackage{amsthm}
-
-% les styles
-\newtheoremstyle{enonce}{0pt}{25pt}{}{}{\scshape}{\quad ---\quad }{0em}{}
-\newtheoremstyle{special}{0pt}{25pt}{}{}{\scshape}{\quad ---\quad }{0em}{\thmnote{#3}}
-\newtheoremstyle{rqlike}{0pt}{25pt}{\itshape}{}{\scshape}{\quad ---\quad}{0em}{}
-\newtheoremstyle{exo}{0pt}{25pt}{\color{blue}}{}{\scshape\color{blue}}{: \newline}{0em}{}
-\newtheoremstyle{demo}{8pt}{0pt}{\color{mygray}}{}{\itshape\color{mygray}}{\newline\newline}{0em}{}
-
-% énoncés classiques
-\theoremstyle{enonce}
-\newtheorem{definition}{Définition}
-\newtheorem{proposition}{Proposition}
-\newtheorem{propriete}{Propriété}
-\newtheorem{propricarac}[propriete]{Propriété Caractéristique}
-\newtheorem{lemme}{Lemme}
-\newtheorem{theoreme}{Théorème}[section]
-\newtheorem{theodef}[theoreme]{Théorème et Définition}
-\newtheorem{corollaire}{\qquad Corollaire}[theoreme]
-
-% énoncé type
-\theoremstyle{special}
-\newtheorem{enonce}{}
-
-% numérotation-less
-\theoremstyle{rqlike}
-\newtheorem*{remarque}{\qquad Remarque}
-\newtheorem*{rappel}{\qquad Rappel}
-\newtheorem*{exemple}{\qquad Exemple}
-
-\theoremstyle{exo}
-\newtheorem{exercice}{Exercice}
-
-% pour cref au enoncé
-\crefname{definition}{Définition}{définition}
-\crefname{proposition}{Proposition}{proposition}
-\crefname{propriete}{Propriété}{propriété}
-\crefname{lemme}{Lemme}{lemme}
-\crefname{theoreme}{Théorème}{théorème}
-\crefname{corollaire}{Corollaire}{corollaire} 
-
-\crefname{remarque}{Remarque}{remarque}
-\crefname{rappel}{Rappel}{rappel}
-\crefname{exemple}{Exemple}{exemple}
-
-\crefname{exercice}{Exercice}{exercice}
-
-% démo (pas convaincu)
-\definecolor{mygray}{gray}{0.3}
-\theoremstyle{demo}
-\newtheorem*{demo}{\qquad\qquad\qquad\rule{3.5cm}{0.4pt}\qquad\quad Démonstration\qquad\quad \rule{3.5cm}{0.4pt}}
-%\begin{center}\rule{8cm}{0.4pt}\end{center}
-
-
-
-%%%%    SET UP    %%%%
-
-
-	% génère les sections
-
-\usepackage[loadonly, toctitles, clearempty]{titlesec}
-
-% liste des sections
-\titleclass{\part}[-2]{top}
-\titleclass{\section}{straight}[\part]
-\titleclass{\subsection}{straight}[\section]
-\titleclass{\subsubsection}{straight}[\subsection]
-
-% génère les numérotations avec format
-%\newcounter{part}
-\renewcommand{\thepart}{\Roman{part}}
-%\newcounter{section}
-\renewcommand{\thesection}{\Roman{section}}
-%\newcounter{subsection}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
-%\newcounter{subsubsection}
-\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
-
-% formatage
-\titleformat{\part}[display]{\bfseries\scshape\Large}{\centering \rule{3.5cm}{0.4pt}\qquad Chapitre\quad \thechapter \qquad \rule{3.5cm}{0.4pt}}{15pt}{\centering}
-\titlespacing{\chapter}{0pt}{50pt}{80pt}
-\newcommand{\chapterbreak}{\clearpage}
-
-\titleformat{\section}{\bfseries\Large}{\thesection\quad ---}{15pt}{}
-\titlespacing{\section}{10pt}{15pt}{10pt}
-%\newcommand{\sectionbreak}{\clearpage}
-
-\titleformat{\subsection}{\bfseries\large}{\thesubsection}{15pt}{}
-\titlespacing{\subsection}{20pt}{15pt}{10pt}
-
-\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{15pt}{}
-\titlespacing{\subsubsection}{30pt}{15pt}{10pt}
-
-
-	% set up annexes
-
-\newenvironment{annexe}{%
-	\newpage
-	
-	% changement title sec
-	\titleformat{\section}[display]{\bfseries\scshape\Large}{\centering}{15pt}{\centering}
-	\titlespacing{\section}{0pt}{30pt}{40pt}
-	
-	\titleformat{\subsection}{\bfseries\large}{Annexe \thesubsection\quad ---\quad}{0pt}{}
-	
-	\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{15pt}{}
-	
-	% changement title toc
-	\titlecontents{section}[0.25em]{\addvspace{0.5em}\bfseries}{}{\hspace*{-1.5em}}{\titlerule*[0.75pc]{.}\contentspage}
-	
-	\titlecontents{subsection}[1.5em]{\normalfont Annexe\hspace*{2.5em}}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
-	
-	\titlecontents{subsubsection}[6em]{\normalfont}{\contentslabel{2.75em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
-	
-	% changment de la numéritations
-	\renewcommand{\thesubsection}{\Alph{subsection}}
-	\renewcommand{\thesubsubsection}{\Alph{subsection}.\arabic{subsubsection}.}
-	% mise à zéro des compters
-	%\setcounter{section}{0}
-}{}
-
-
-	% le TOC en légende
-
-\usepackage{titletoc}
-%\contentsmargin{2em}
-
-\titlecontents{part}[]{\rule{\textwidth}{0.5}\\* \bfseries\large\scshape Partie }{\contentslabel{15em}}{}{\hfill\contentspage}[\rule{\textwidth}{0.5}\quad]
-
-\titlecontents{section}[1.5em]{\addvspace{0.1em}\addvspace{0.5em}\bfseries}{\contentslabel{1.25em} ---\quad}{\hspace*{-1.75em}}{\titlerule*[0.75pc]{.}\contentspage}[\addvspace{0.2em}]
-
-\titlecontents{subsection}[3.8em]{\addvspace{0.15em}\normalfont}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
-
-\titlecontents{subsubsection}[6.8em]{\normalfont}{\contentslabel{2.75em}}{\hspace*{-2.5em}}{\titlerule*[0.75pc]{.}\contentspage}
-
-
-	% set up nom des tables et références
-
-\renewcommand{\contentsname}{\begin{center}\textsc{Tables des Matrières}\end{center}}
-\renewcommand{\listfigurename}{\begin{center}\textsc{Table des Figures}\end{center}}
-\renewcommand{\lstlistlistingname}{\begin{center}\textsc{Table des Codes}\end{center}}
-\renewcommand{\refname}{\begin{center}\textsc{Références}\end{center}}
-
-
-	% set up des captions figures (extrêmement BG)
-	
-\usepackage{subcaption}
-\usepackage{floatrow}
-\captionsetup{justification=centering}
-\DeclareCaptionLabelSeparator{custom}{\, ---\, }
-
-% pour les figures
-\DeclareCaptionLabelFormat{customfig}{\textit{fig. #2}}
-\DeclareCaptionFormat{customfig}{#1#2#3}
-%\DeclareCaptionFont{customfig}{\itshape}
-
-% pour les codes
-\DeclareCaptionLabelFormat{customcode}{\textit{code \arabic{section}.#2}}
-\DeclareCaptionFormat{customcode}{#1#2#3}
-%\renewcommand{\thelstlisting}{\arabic{section}.\arabic{lstlisting}}
-
-% applications des styles
-\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
-\captionsetup[figure]{labelformat=customfig, labelsep=custom}
-\captionsetup[lstlisting]{labelformat=customcode, labelsep=custom}
-
-
-	% set up bas/haut de page
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}                       
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\cfoot{\thepage}
-%réjane shits
-%\usepackage{eso-pic}
-%\renewcommand\headrulewidth{1pt}
-%\fancyhead[L]{\includegraphics[width=3cm]{logo_lr.png}}
-%\fancyhead[R]{\includegraphics[width=1cm]{logo_sdis17.png}}
-%\setlength{\headsep}{45pt}
-
-
-
-%%%% PROG N PLOT %%%%
-
-
-% preset prog  
-\definecolor{codeblack}{gray}{0.2}
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{gray}{0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.98,0.98,0.95}
-\lstdefinestyle{mystyle}{
-	backgroundcolor=\color{backcolour},   
-	commentstyle=\color{codegray},
-	keywordstyle=\color{orange},
-	numberstyle=\tiny\color{codegray},
-	stringstyle=\color{codegreen},
-	basicstyle=\color{codeblack}\ttfamily\footnotesize,
-	breakatwhitespace=false,         
-	breaklines=true,                 
-	captionpos=b,
-	abovecaptionskip=12,
-	belowcaptionskip=18,
-	keepspaces=true,                 
-	numbers=left,                    
-	numbersep=5pt,                  
-	showspaces=false,                
-	showstringspaces=false,
-	showtabs=false,                  
-	tabsize=2,
-	frame=single,
-	rulecolor=\color{lightgray}}
-\lstset{style=mystyle}
-
-% preset plot
-\tikzstyle{every node}=[font=\scriptsize]
-\pgfplotsset{standard/.style={width=8cm,
-		height=3cm,
-		compat=1.18,
-		trig format=rad,
-		enlargelimits,
-		axis x line=middle,
-		axis y line=middle,
-		enlarge x limits=0.15,
-		enlarge y limits=0.15,
-		every axis x label/.style={footnotesize, at={(current axis.right of origin)},anchor=north west},
-		every axis y label/.style={footnotesize, at={(current axis.above origin)},anchor=south east},
-		scale only axis=true}}
-
-
+\input{package&preset}
 
 
 \begin{document}
@@ -416,20 +51,22 @@
 \addcontentsline{toc}{section}{Introduction}
 \section*{Introduction}
 
-Quote : The geometric phase is also one of the most beautiful examples of what Wigner once called "the unreasonable effectiveness of mathematics in the natural sciences." \cite[p. 4]{bohm_geometric_2003}
+Quote : The geometric phase is also one of the most beautiful examples of what Wigner once called ``the unreasonable effectiveness of mathematics in the natural sciences.'' \cite[p.\,4]{bohm_geometric_2003}
 
 \begin{itemize}
-	\item Pourquoi on va dans les complexes ?
 	
-	\item Pourquoi Schrödinger ?
+	\item Pourquoi on va dans les complexes ? Réponse \cref{sec:temp-freq}
+	
+	\item Pourquoi Schrödinger ? Peut-être que Mukunda \cite{mukunda_quantum_1993} à la réponse
 	
 	\item En quoi la phase géométrique est une phase ? lien avec Fourier ?
 	
-	\item Lien entre phase et polarisation : différences, intérêts ?
+	\item Lien entre phase et polarisation : différences, intérêts ? C'est une phase dans la polar IMO
 	
-	\item La param $(a,\chi,\theta,\varphi)$ elle dit quoi vraiment ? (sûrement simple à généraliser btw) + $(\chi,\theta)$ est pas en bijection avec la sphère !
+	\item La param $(a,\chi,\theta,\varphi)$ elle dit quoi vraiment ? (sûrement simple à généraliser btw) + $(\chi,\theta)$ est pas en bijection avec la sphère (surement osef par contre)
 	
-	\item Multivaluation dans les variétés \cite[p. 8]{bohm_geometric_2003}
+	\item Multivaluation dans les variétés \cite[p. 8]{bohm_geometric_2003} ???
+	
 \end{itemize}
 
 
@@ -467,7 +104,7 @@ On a aussi l'écriture (quand-même moins clair) :
 	&= \sum_j \big\langle X^j,Y^j\big\rangle - i\sum_j \det(X^j, Y^j)
 	%&= \sum_j \|X^j\|\|Y^j\| \cos \widehat{X^j,X^j} + i\sin \widehat{X^j,Y^j}
 \end{align*}
-Cette formule dit que les parties reélles et imaginaires du produit $\langle x,y \rangle$ encodent respectivement ``l'orthogonalité moyenne'' et la ``linéarité moyenne ''entre les familles de vecteurs $X^j\in\R^2$ et $Y^j\in\R^2$. L'orthogonalité d'une part parce que le produit scalaire s'annule en cas d'orthogonalité (no shit), la linéarité d'autre part car le déterminant s'annule en cas de colinéarité et moyenne car se sont des sommes sur $j$. \textbf{$\bf{\langle x,y \rangle=0}$ ne dit pas que les le vecteurs sont à la fois colinéaire et orthogonaux parce que ce sont des valeurs moyennes (\textit{e.i.} annuler une somme ne veut pas dire que chacun des termes sont nuls).}
+Cette formule dit que les parties reélles et imaginaires du produit $\langle x,y \rangle$ encodent respectivement ``l'orthogonalité moyenne'' et la ``linéarité moyenne ''entre les familles de vecteurs $X^j\in\R^2$ et $Y^j\in\R^2$. L'orthogonalité d'une part parce que le produit scalaire s'annule en cas d'orthogonalité (no shit), la linéarité d'autre part car le déterminant s'annule en cas de colinéarité et moyenne car se sont des sommes sur $j$. \textbf{$\bf{\langle x,y \rangle=0}$ ne dit pas que les le vecteurs sont à la fois colinéaire et orthogonaux parce que ce sont des valeurs moyennes (\ie annuler une somme ne veut pas dire que chacun des termes sont nuls).}
 \\
 
 Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
@@ -503,21 +140,97 @@ On appelle \textit{connexion de Berry} le champ de forme linéaire :
 
 
 
+\newpage
 
-\subsection{Signal analytique, transformé de Hilberts}\label{subsec:SA_Hilb}
+%\section{Signal analytique, transformé de Hilberts, Analyse en temps-fréquence}
+\section{Sur l'intérêt de transformé les signaux réels en complexes}\label{sec:temp-freq}
 
 Un signal $x\in L^2(\R)$ peut s'écrire sous la forme :
 \begin{align*}
 	x(t) &= a(t) \cos\phi(t)  &  	\text{avec }\quad a \in L^2(\R^+)\quad &\text{et}\quad \phi \in L^2(\R) \
 \end{align*}
 \\
-De façon générale, y'a pas du tout unicité de cette décomposition et pour qu'elle soit proprement définit on ajout la contrainte que $z_x=ae^{i\phi}$ soit un \textit{signal analytique}, \textit{e.i.} :
-\[\hat{z}_x(\nu) = 2\mathbbm{1}_{\R^+}(\nu)\hat{x}(\nu)\]
+De façon générale, y'a pas du tout unicité de cette décomposition et pour qu'elle soit proprement définit on ajout la contrainte que $z_x=ae^{i\phi}$ soit un \textit{signal analytique}, \ie :
+\[\widehat{\mathcal{A}x}(\nu) = 2\mathbbm{1}_{\R^+}(\nu)\hat{x}(\nu)\]
 \\
 De cette façon la paire $(a,\phi)$ est unique et on a :
 \[x = \Re e (z) \]
 \\
-blabla y'a plein d'autres propriétés qu'il faudrait aller voir \cite{picinbono_instantaneous_1997} et Cohen
+blabla y'a plein d'autres propriétés qu'il faudrait aller voir \cite{picinbono_instantaneous_1997,cohen_time_1995} mais sur \cite{cohen_time_1995}.
+
+
+
+\subsection{dans l'ordre}
+
+\begin{enumerate}
+	
+	\item Fourier donne une information globale sur les fréquences, mais si on veut savoir localement ce qui se passe, alors on a envie d'introduire la notion de \textit{fréquence instantané}. Formellement, on veut écrire le signal $x$ sous la forme :
+	\begin{equation}
+		x(t) = a(t) \cos\phi(t)
+	\end{equation}
+	\begin{itemize}
+		\item Problème : on est loin d'avoir unicité de la pair $(a,\phi)$. Question : comment on s'en sort ? 
+		
+		\item Réponse, il nous faut des contraintes sur $a$ et $\phi$. alors on va digue un peu\end{itemize}
+	
+	\item Pour cela, on peut commencer par remarquer que si $x$ était à valeur complexe, alors la décomposition serait sous la forme :
+	\[x(t) = a(t) e^{i\cos\phi(t)}\]
+	\begin{itemize}
+		\item Décomposition qui est bien définie et de façon unique (sauf pour les $x(t)=0$ mais fck eux)
+		
+		\item L'idée est alors de voir $x$ comme partie réel d'un complexe :
+		\[z(t) = a(t)e^{i\phi(t)}\quad \Lr\quad x = \Re e\, z(t)\]
+		
+		\item c'est super mais on a rien résolue parce qu'on connait pas plus $z$. Plus précisément, il nous faudrait une application $\mathcal{A} : x\ \longmapsto\ z$	\end{itemize}
+		
+	\item La contrainte elle va venir d'une autre propriété de $x$. Comme $x$ est à valeur réel, son spectre est à symétrie hermitienne. \ie :
+	\[\forall t\in\R,\ x(t)\in\R\ \Lr\ \forall \nu\in\R,\ \hat{x}(-\nu) = \overline{\hat{x}(\nu)}\]
+	
+	Autrement dit, y'a énormément de redondance dans les informations de $\hat{x}$. De plus, cette symétrie peut poser problème. Par exemple, si on veut la fréquance moyenne associé à $x$ (\ie~$\Esp[\hat{x}]{\nu}$), alors nécessairement elle sera nulle :
+	\begin{align*}
+		\Esp[\hat{x}]{\nu} = \int^{+\infty}_{-\infty} \nu \hat{x}(\nu)d\nu &= \int^{+\infty}_0 \nu \hat{x}(\nu)d\nu + \int^{+\infty}_0 -\nu \hat{x}(-\nu)d\nu \\
+		& = \int^{+\infty}_0 \nu \Big( \hat{x}(\nu) - \overline{\hat{x}(\nu)} \Big) d\nu \\
+		& = 2i\int^{+\infty}_0 \nu \Im m \hat{x}(\nu) d\nu
+	\end{align*}
+	
+	
+\end{enumerate}
+
+\subsection{Motivation}
+
+\subsubsection{Un peu de vocabulaire... (sûrement pas utile pour la suite)}
+
+
+Carré de la largeur de bande du signal $x(t)=A(t)e^{i\phi(t)}$ $\big(\hat{x} = B(t)e^{i\psi(t)}\big)$ :
+\begin{equation*}\label{eq:bandwidth_cohen}
+	\begin{aligned}
+		B^2  = \Var\Big[\, \big|\hat{x}\big|^2\, \Big] &= \int \left( \frac{A'(t)}{A(t)}\right)^2 A^2(t) dt + \int \Big(\phi'(t) - \Esp[|\hat{x}|^2]{\nu} A^2(t) dt \\
+		&= \qquad\quad {B_{AM}}^2 \qquad\quad\, + \qquad\quad\, {B_{FM}}^2
+	\end{aligned} \qquad\qquad\text{ eq. (1.96) \cite{cohen_time_1995}}
+\end{equation*}
+
+
+\subsection{Problème de signaux réel}
+
+\begin{itemize}
+	\item La covariance de signaux réel est nulle (pas informatif + on aimerait que ca le soit). Formule de la covariance :
+	\[\text{Cov}(tw) = \int t \phi'(t) \big|x(t)\big|^2 dt - \int t \big|x(t)\big|^2\int \nu \big|\hat{x}(\nu)\big|^2 d\nu\]
+\end{itemize}
+
+\subsection{Signal Analytique}
+
+\begin{itemize}
+	\item les contraintes : 
+	\begin{equation}
+		\Re e\ \big(\mathcal{A}x\big)(t) = x(t)  \qquad\qquad\text{ et } \qquad\qquad  \widehat{\mathcal{A}x}(\nu) = 2\one_{\R^+}(\nu)\hat{x}(\nu)
+	\end{equation} 
+	parce que y'a de la redondances anyway sur $|\hat{x}|$.
+	
+	\item amène à la transfo de Hilberts (\href{https://les-mathematiques.net/vanilla/discussion/859485/transformee-de-fourier-de-heaviside}{\color{blue}\underline{fourier de Heavyside propre}})
+	
+	\item un mot sur la fréquence instantané.
+\end{itemize}
+
 
 
 
@@ -544,7 +257,7 @@ Pour avoir la désinscription de $\bf{x}$ en terme d’ellipse, il suffit donc d
 \[z_x(t) = z(t)\quad \Llr\quad \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^ {i\phi_y(t)}\end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}\]
 \\
 Ensuite, on pose :
-\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \begin{pmatrix}a_+ e^{i\phi_+} \\ a_- e^{i\phi_-}\end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}x_+ + iy_+ \\ x_+ - iy_+\end{pmatrix} = \begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\]
+\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \begin{pmatrix}a_+ e^{i\phi_+} \\ a_- e^{i\phi_-}\end{pmatrix} = \frac{1}{2}\begin{pmatrix}x_+ + iy_+ \\ x_+ - iy_+\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\]
 \\
 Et on a :
 \begin{align*}
@@ -559,23 +272,24 @@ Ce qui donne \textit{in fine} :
 \[\begin{pmatrix}x_+ \\ y_+\end{pmatrix} = e^{i\frac{\phi_+ + \phi_-}{2}} R_{\frac{\phi_+ - \phi_-}{2}} \begin{pmatrix}a_+ + a_- \\ -i(a_+ - a_-)\end{pmatrix}\]
 \\
 
-L'\cref{eq:exp_elliptik} ce généralise  très bien, il suffit d'augmenter la taille de $R_\theta\in\SO_n(\R)$ et de lui donner le vecteur étendu :
+L'\cref{eq:exp_elliptik} ce généralise  très bien, il suffit d'augmenter la taille de $R_\theta\in\SO_n(\R)$ et de lui donner le vecteur étendu :\footnote{\textit{Sachant que le vecteur contenant $a$ et $b$ est principalement nul, on peut réécrire le produit ne considérant que les deux premières colonnes de $R_\theta$.}}
 \[z_x(t) = \begin{pmatrix}x_{1+}(t) \\ \vdots \\ 
 	x_{n+}(t)\end{pmatrix} = e^{i\phi} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix}\]
 \\
-Sachant que le vecteur contenant $a$ et $b$ est principalement nul, on peut réécrire le produit ne considérant que les deux premières colonnes de $R_\theta$.
-\\
 
 Maintenant, la question est de savoir comment généraliser la transformation en $(z_+, z_-)$ pour obtenir les paramètres $(A, \phi, R_\theta, \chi)$ dans ce cas...
-
-
-
-\subsection{Mon blabla}
-
-On s'intéresse au signaux multivariés. Dans cette \namecref{sec:bases}, on va ....
 \\
+Pour généraliser le procédé, on peut noter que :
+\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix} = \frac{1}{\sqrt{2}}U \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\qquad\qquad \text{avec }\ U=\frac{1}{\sqrt{2}}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix}\in\U(2)\]
+\\ 
+Ce qui ramène à se demander comment généraliser $U$ à $\SU(n)$. Le problème est que $U$ est indépendant de tout les paramètres $(A, \phi, R_\theta, \chi)$ et sa généralisation est vraiment pas évidente sachant qu'on que le formule avec $n=2$... et pour $n=3$ ca devient déjà chaud (pour rappelle $\dim \SO_n(\R)=\frac{n(n-1)}{2}$ et donc $\theta\in\R^n$, ce qui rend le problème de pire en pire à mesure qu'on augmente $n$).
 
-\begin{definition}[Signal multivarié] 
+
+
+\subsection{Mon blabla}\label{subsec:blabla}
+
+
+\begin{definition}[Signal multivarié] \label{def:signal_multivar}
 Un \textit{signal multivarié}, ou \textit{$n-$varié}, signal à valeur dans $\C^n$. Formellement, c'est une fonction de carré intégrale à valeur de $\R$ dans $\C^n$, et l'ensemble de tel signaux seront noté $L^2\big(\R,\C^n\big)$.
 \\
 Dans le cas $n=2$, on parle de signal \textit{bivarié}.
@@ -627,7 +341,7 @@ Partant de là, on aurait toujours $a$, $\chi$ et $\phi$ pour la décrire et seu
 \end{align*}
 \end{proposition}
 
-On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps ca parait plus contraignant comme modèle. Pour comparer les deux, il faudrait voir comment les deux se décomposant dans le cas d'un signal qui ne varierait sur une ellipsoïde fixe. \textit{e.i.} dans un cas où $\theta,\chi$ de la \cref{prop:gene_param_signal_v1} varie pas alors que ceux de la \cref{prop:gene_param_signal_v2} si.
+On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps ca parait plus contraignant comme modèle. Pour comparer les deux, il faudrait voir comment les deux se décomposant dans le cas d'un signal qui ne varierait sur une ellipsoïde fixe. \ie dans un cas où $\theta,\chi$ de la \cref{prop:gene_param_signal_v1} varie pas alors que ceux de la \cref{prop:gene_param_signal_v2} si.
 
 
 
@@ -639,7 +353,7 @@ On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps
 
 La phase géométrique est invariante par action du groupe $\mathbb{U}(1)$, c'est à dire invariante par changement de la phase instantanée. Elle ne regarde donc que les paramètres $a, \theta$ et $\chi$. En outre, elle ne regarde que la matrice semi-définie positive (potentiellement sans même regarder l'amplitude $a$ a.k.a. la norme de la matrice).
 
-Avec cette formulation il devient plus clair que $\phi$ peut être vu comme un fibré vectoriel (particulier parce que c'est bien un élément du produit $\R\times\C^n$ pas d'un espace qui s'en rapproche localement) et cette et que le groupe $\mathbb{U}(1)$ agit comme un jauge. En plus, Wikipédia dit que pour les fibrés vectoriels, il faut que l'action soit les changement de base (orthonormée ?), ce qui correspond bien à une changement de phase suivant les formules de la prop. \ref{prop:gene_param_signal}.
+Avec cette formulation il devient plus clair que $\phi$ peut être vu comme un fibré vectoriel (particulier parce que c'est bien un élément du produit $\R\times\C^n$ pas d'un espace qui s'en rapproche localement) et cette et que le groupe $\mathbb{U}(1)$ agit comme un jauge. En plus, Wikipédia dit que pour les fibrés vectoriels, il faut que l'action soit les changement de base (orthonormée ?), ce qui correspond bien à une changement de phase suivant les formules de la \cref{prop:gene_param_signal_v1}.
 
 La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\varphi)$ parce que encore une fois, y'a vraiment pas unicité de la décomposition et c'est loin d'être clair comment choisir la plus pertinente (et comment la calculer aussi !)
 
@@ -672,7 +386,10 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 	\end{equation}
 	
 	\item Moment angulaire (viteuf) $\forall z\in\C$ :
-	\[M(t) = \Re e \big(iz\overline{z}'\big) = -\Im m z\overline{z}'\]
+	\begin{equation}\label{eq:mom_angu}
+		M(t) = \Re e \big(iz\overline{z}'\big) = -\Im m z\overline{z}'  \qquad\qquad \text{thoughts ?}
+	\end{equation}
+	
 \end{itemize}
 
 
@@ -720,7 +437,9 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 
 
 
+
 \newpage
+
 \listoffigures
 \vfill
 \lstlistoflistings
@@ -729,6 +448,6 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 
 \newpage
 
-\bibliography{refs.bib}{}
+\bibliography{ref.bib}{}
 \bibliographystyle{siam}
 \end{document}
