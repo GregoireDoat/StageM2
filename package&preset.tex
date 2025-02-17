@@ -85,6 +85,7 @@
 \newcommand{\Argch}{\text{Argch}}       
 \newcommand{\Argsh}{\text{Argsh}}
 
+\newcommand{\congu}[1]{\overline{#1}}
 \newcommand{\argmin}[1]{\underset{#1}{\text{argmin}}}
 \newcommand{\argmax}[1]{\underset{#1}{\text{argmax}}}
 
@@ -121,8 +122,9 @@
 \newcommand{\GA}{\text{GA}}
 
 % spé proba
-\newcommand{\Esp}[2][]{\mathbb{E}_{#1}\left[\, #2\, \right]}
-\newcommand{\Var}{\mathbb{V}}%\text{ar}}
+\newcommand{\esp}[2][]{\mathbb{E}_{#1}\left[\, #2\, \right]}
+\newcommand{\var}[2][]{\mathbb{V}_{#1}\left[\, #2\, \right]}
+%\newcommand{\Var}{\mathbb{V}}%\text{ar}}
 
 % plus jolie
 \renewcommand{\O}{\varnothing}
@@ -134,16 +136,19 @@
 \renewcommand{\liminf}{\varliminf}
 
 % autre
+\newcommand{\defeq}{:=}
 \renewcommand{\bf}[1]{\boldsymbol{#1}}
 \renewcommand{\AC}{\sim}
 \newcommand{\para}{\sslash}
 
 
 % latin
-\newcommand{\etal}{\textit{et al}}
-\newcommand{\etc}{\textit{etc}}
+\newcommand{\etal}{\textit{et al.}}
+\newcommand{\etc}{\textit{etc.}}
 \newcommand{\apriori}{\textit{a priori}}
 \newcommand{\afortiori}{\textit{a fortiori}}
+\newcommand{\acontrario}{\textit{a contrario}}
+\newcommand{\infine}{\textit{in fine}}
 \newcommand{\ie}{\textit{i.e.}}
 \newcommand{\eg}{\textit{e.g.}}
 
@@ -337,81 +342,85 @@ rulecolor=\color{lightgray}}
 	
 	% génération des sections
 	
-	\usepackage[loadonly, toctitles, clearempty]{titlesec}
-	
-	% liste des sections
-	\titleclass{\part}[-1]{top}
-	\titleclass{\section}{straight}[\part]
-	\titleclass{\subsection}{straight}[\section]
-	\titleclass{\subsubsection}{straight}[\subsection]
-	
-	% génère les numérotations avec format
-	%\newcounter{part}
-	\renewcommand{\thepart}{\Roman{part}}
-	%\newcounter{section}
-	\renewcommand{\thesection}{\Roman{section}}
-	%\newcounter{subsection}
-	\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
-	%\newcounter{subsubsection}
-	\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
-	
-	% formatage
-	\titleformat{\part}[display]{\bfseries\scshape\Large}{\centering \rule{3.5cm}{0.4pt}\qquad Chapitre\quad \thepart \qquad \rule{3.5cm}{0.4pt}}{15pt}{\centering}
-	\titlespacing{\part}{0pt}{50pt}{80pt}
-	\newcommand{\partbreak}{\clearpage}
-	
-	\titleformat{\section}{\bfseries\Large}{\thesection\quad ---}{15pt}{}
-	\titlespacing{\section}{10pt}{15pt}{10pt}
-	%\newcommand{\sectionbreak}{\clearpage}
-	
-	\titleformat{\subsection}{\bfseries\large}{\thesubsection}{15pt}{}
-	\titlespacing{\subsection}{20pt}{15pt}{10pt}
-	
-	\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{15pt}{}
-	\titlespacing{\subsubsection}{30pt}{15pt}{10pt}
-	
-	% pour cref aux enoncés
-	\crefname{part}{partie}{Partie}
-	\crefname{section}{section}{Section}
-	\crefname{subsection}{sous-section}{Sous-section}
-	
-	% set up d'un environnement pour les annexes
-	
-	\newenvironment{annexe}{%
-\newpage
+\usepackage[loadonly, toctitles, clearempty, newparttoc]{titlesec}
 
-% changement title sec
-\titleformat{\section}[display]{\bfseries\scshape\Large}{\centering}{15pt}{\centering}
-\titlespacing{\section}{0pt}{30pt}{40pt}
+% liste des sections
+\titleclass{\part}[0]{top} % 0 = niveau de section
+\titleclass{\section}{straight}[\part]
+\titleclass{\subsection}{straight}[\section]
+\titleclass{\subsubsection}{straight}[\subsection]
 
-\titleformat{\subsection}{\bfseries\large}{Annexe \thesubsection\quad ---\quad}{0pt}{}
+% génère les numérotations avec format
+%\newcounter{part}
+\renewcommand{\thepart}{\Roman{part}}
+%\newcounter{section}
+\renewcommand{\thesection}{\Roman{section}}
+%\newcounter{subsection}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+%\newcounter{subsubsection}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+% formatage
+\titleformat{\part}[display]{\bfseries\scshape\Large}{\centering \rule{3.5cm}{0.4pt}\qquad Chapitre\quad \thepart \qquad \rule{3.5cm}{0.4pt}}{15pt}{\centering}[\vspace{0.2cm}\rule{8cm}{0.4pt}]
+\titlespacing{\part}{0pt}{50pt}{70pt}
+\newcommand{\partbreak}{\clearpage}
+
+\titleformat{\section}{\bfseries\Large}{\thesection\quad ---}{15pt}{}
+\titlespacing{\section}{10pt}{20pt}{15pt}
+%\newcommand{\sectionbreak}{\clearpage}
+
+\titleformat{\subsection}{\bfseries\large}{\thesubsection}{15pt}{}
+\titlespacing{\subsection}{20pt}{15pt}{15pt}
 
 \titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{15pt}{}
+\titlespacing{\subsubsection}{30pt}{15pt}{15pt}
 
-% changement title toc
-\titlecontents{section}[0.25em]{\addvspace{0.5em}\bfseries}{}{\hspace*{-1.5em}}{\titlerule*[0.75pc]{.}\contentspage}
-
-\titlecontents{subsection}[1.5em]{\normalfont Annexe\hspace*{2.5em}}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
-
-\titlecontents{subsubsection}[6em]{\normalfont}{\contentslabel{2.75em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
-
-% changment de la numéritations
-\renewcommand{\thesubsection}{\Alph{subsection}}
-\renewcommand{\thesubsubsection}{\Alph{subsection}.\arabic{subsubsection}.}
-% mise à zéro des compters
-%\setcounter{section}{0}
-}{}
+% pour cref aux enoncés
+\crefname{part}{partie}{Partie}
+\crefname{section}{section}{Section}
+\crefname{subsection}{sous-section}{Sous-section}
 
 
-% le TOC en lé-gende
+	% le TOC en lé-gende
 
 \usepackage{titletoc}
 %\contentsmargin{2em}
 
-\titlecontents{part}[]{\rule{\textwidth}{0.5}\\* \bfseries\large\scshape Partie }{\contentslabel{15em}}{}{\hfill\contentspage}[\rule{\textwidth}{0.5}\quad]
+\titlecontents{part}[2em]{\bfseries\large\scshape 
+	\hspace*{-1.5em}\rule{\textwidth}{0.5pt}\vspace{0.1cm}\\*
+	 }{Chaptire\quad \contentslabel{-0.05em}\quad\ ---\quad}{\contentslabel{-1.5em} ---\quad }{\hfill\contentspage}[\hspace*{-0.5em}
+\rule{\textwidth}{0.5pt}]
 
-\titlecontents{section}[1.5em]{\addvspace{0.1em}\addvspace{0.5em}\bfseries}{\contentslabel{1.25em} ---\quad}{\hspace*{-1.75em}}{\titlerule*[0.75pc]{.}\contentspage}[\addvspace{0.2em}]
+\titlecontents{section}[1.5em]{\addvspace{1em}\bfseries}{\contentslabel{1.25em} ---\quad}{\hspace*{-1.75em}}{\titlerule*[0.75pc]{.}\contentspage}[\addvspace{0.25em}]
 
 \titlecontents{subsection}[3.8em]{\addvspace{0.15em}\normalfont}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
 
 \titlecontents{subsubsection}[6.8em]{\normalfont}{\contentslabel{2.75em}}{\hspace*{-2.5em}}{\titlerule*[0.75pc]{.}\contentspage}
+
+
+% set up d'un environnement pour les annexes
+
+\newenvironment{annexe}{%
+	\newpage
+	
+	% changement title sec
+	\titleformat{\section}[display]{\bfseries\scshape\Large}{\centering}{15pt}{\centering}
+	\titlespacing{\section}{0pt}{30pt}{40pt}
+	
+	\titleformat{\subsection}{\bfseries\large}{Annexe \thesubsection\quad ---\quad}{0pt}{}
+	
+	\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{15pt}{}
+	
+	% changement title toc
+	\titlecontents{section}[0.25em]{\addvspace{0.5em}\bfseries}{}{\hspace*{-1.5em}}{\titlerule*[0.75pc]{.}\contentspage}
+	
+	\titlecontents{subsection}[1.5em]{\normalfont Annexe\hspace*{2.5em}}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
+	
+	\titlecontents{subsubsection}[6em]{\normalfont}{\contentslabel{2.75em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
+	
+	% changment de la numéritations
+	\renewcommand{\thesubsection}{\Alph{subsection}}
+	\renewcommand{\thesubsubsection}{\Alph{subsection}.\arabic{subsubsection}.}
+	% mise à zéro des compters
+	%\setcounter{section}{0}
+}{}

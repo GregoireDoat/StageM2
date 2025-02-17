@@ -71,148 +71,176 @@ Quote : The geometric phase is also one of the most beautiful examples of what W
 
 
 
-\section{Préliminaire}
-
-
-\subsection{Réflexion autour du produit hermitien}
-
-Soit $x,y\in\C^n$ des vecteurs complexes et $X,Y\in\R^{2\times n}$ leur versions réelles. On note $x^j$ sa $j^{eme}$ composante complèxe et $x_1$ (resp. $x_2$) le vecteur composé de ses parties réelles (resp. imaginaires) :
-\[x = \big(x^j\big)_j =  x_1 + ix_2 =  \big(x^j_1\big)_j +i \big(x^j_2\big)_j\]
-\\
-On a deux façon d'écrire le produit hermitien (canonique) de $X$ avec $Y$ :
-\begin{align*}
-\langle x,y \rangle = \langle x_1 + ix_2, y_1 + iy_2\rangle &= \langle x_1, y_1\rangle - i \langle x_1,y_2\rangle +i\langle x_2, y_1\rangle + \langle x_2, y_2\rangle  \\
-	&= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
-		+ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
-	&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2
-		+ i\left(\sum_j x^j_2 y^j_1 -  x^j_1y^j_2\right) \\
-	&= \left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle
-		+ i\left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} -y_2 \\ y_1 \end{pmatrix}\right\rangle \\
-		&= \Big\langle X,Y\Big\rangle 
-		+ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle\\
-	&= \Big\langle X,Y\Big\rangle 
-		+ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}Y\right\rangle
-\end{align*}
-\\
-Cette formule peut s’interpréter en disant que le produit hermitien encode le produit scalaire entre $X$ et $Y$ et le produit scalaire de $X$ avec les vecteurs $y^j=(y^j_1, y^j_2)$  auquel on aurait applique une rotation de $90^\circ$ (rotation qui, par ailleurs, correspond à la multiplication par $i$ dans le plan complexe). Moralement, $\langle x,y \rangle =0$ demande une orthogonalité de $X$ à un plan, ce qui fait sens puisque cela tient compte du fait que les $x^j, y^j$ sont complexes (donc de dimension 2 en tant que $\R-$e.v.).
-\\
-On a aussi l'écriture (quand-même moins clair) :
-\begin{align*}
-\langle x,y \rangle &= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
-+ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
-	&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2+ i\sum_j \big( x^j_2 y^j_1 - x^j_1y^j_2 \big) \\
-	&= \sum_j \big\langle X^j,Y^j\big\rangle - i\sum_j \det(X^j, Y^j)
-	%&= \sum_j \|X^j\|\|Y^j\| \cos \widehat{X^j,X^j} + i\sin \widehat{X^j,Y^j}
-\end{align*}
-Cette formule dit que les parties reélles et imaginaires du produit $\langle x,y \rangle$ encodent respectivement ``l'orthogonalité moyenne'' et la ``linéarité moyenne ''entre les familles de vecteurs $X^j\in\R^2$ et $Y^j\in\R^2$. L'orthogonalité d'une part parce que le produit scalaire s'annule en cas d'orthogonalité (no shit), la linéarité d'autre part car le déterminant s'annule en cas de colinéarité et moyenne car se sont des sommes sur $j$. \textbf{$\bf{\langle x,y \rangle=0}$ ne dit pas que les le vecteurs sont à la fois colinéaire et orthogonaux parce que ce sont des valeurs moyennes (\ie annuler une somme ne veut pas dire que chacun des termes sont nuls).}
-\\
-
-Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
-\begin{align*}
-\langle x+h, x+h \rangle = \langle x, x \rangle + \langle x, h \rangle + \langle h, x \rangle + \langle h, h \rangle 
-	&= \langle x, x \rangle + \langle x, h \rangle  + \overline{\langle x, h \rangle }+ \langle h, h \rangle \\
-	&= \langle x, x \rangle + 2\Re e \langle x, h \rangle + \langle h, h \rangle
-\end{align*}
-Donc si $x\in\C^n$ est fonction d'un paramètre $t$, dans le cas complexe, on plus l'égalité $\ \langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle\ $ du cas réel mais :
-\[\langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle + i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
-\\
-En particulier, quand bien-même $x$ serait de norme constante, on aurait toujours un degré de liberté pour $\ \langle x, \dot{x} \rangle$ :
-\[\|x\|=c\quad \Lr\quad \langle x, \dot{x} \rangle = i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
-\\
-
-\begin{definition}\label{def:phase_dyn}
-	Ainsi, il reste tout un degré de liberté au produit $\ \langle x, \dot{x} \rangle\ $ même si $x\in\S^{2n}$. En intégrant ce degré de liberté supplémentaire, c'est-à-dire en tenant compte de son évolution sur la période $[t_0,t]$, l'on obtient ce qui est appeller le \textit{phase dynamique} :
-	\[\phased = \int_{t_0}^t \Im m \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds\]
-	Elle dynamique en cela qu'elle est propre au variation de $\psi$ et qu'elle considère tout l'évolution de $\psi$ : ça dynamique.
-	
-	\textbf{... et pourquoi c'est une PHASE du coup ?}
-\end{definition}
-
-
-\begin{definition}[Connexion de Berry]\label{def:berry_connx}
-On appelle \textit{connexion de Berry} le champ de forme linéaire :
-\begin{equation}\label{eq:berry_connx}
-	\forall \psi\in\mathpzc{M},\quad A_\psi :\ \begin{aligned} T_\psi\mathpzc{M}\ &\lr\qquad\ \R \\ \phi\quad &\longmapsto\ \Im m \big\langle \psi(s) \, |\, \phi(s) \big\rangle
-	\end{aligned}
-\end{equation}
-\textbf{Elle a rien d'une connexion par contre :/}
-\end{definition}
+\part{Préliminaire}
 
 
 
-\newpage
+
 
 %\section{Signal analytique, transformé de Hilberts, Analyse en temps-fréquence}
 \section{Sur l'intérêt de transformé les signaux réels en complexes}\label{sec:temp-freq}
 
-Un signal $x\in L^2(\R)$ peut s'écrire sous la forme :
+
+\begin{enonce}[Intro de la \nameCref{sec:temp-freq}]
+	\textit{Malgré ce que l'énoncé de la problématique laisse entendre, dans toute la suite nous travaillerons avec des signaux à valeur de $\R$ dans $\C^n$ plutôt que dans $\R^n$.
+		Outre le plaisir coupable des mathématiciens à vouloir généraliser les choses, il y a de très bonne raison à la transformation des signaux réels en complexes et c'est sera l'objet de cette première  \namecref{sec:temp-freq}.}
+\end{enonce}
+
+\textit{Cette partie reprends, dans les grandes lignes, les propos de \textsc{Cohen} dans son livre \emph{Time frequency analysis} \cite{cohen_time_1995}}
+Dans l'étude de signaux, la transformée de Fourier est un outil standard puisqu'il donne accès à tout l'information fréquentielle de ce dernier. Ce gain d'information n'est pas gratuit pour autant puisqu'on perd avec tout notion de temporalité. Pourtant dans bien des cas, une information instantanée, dépendante en temps, est plus pertinente.
+\\
+C'est par exemple le cas dans l'étude de la langue oral (bon terme ?). Le sens d'une phrase ne vient pas du signal, \ie~la voix, tout entier mais plutôt de ses valeurs locales. Lorsque l'on prononce le mot ``\textit{fleur}'', c'est l’enchaînement des sons associés au ``\textit{f}'', ``\textit{l}'', ``\textit{eu}'', \etc~qui est important et non la structure global du signal.  
+\\
+On pourrait également cité l'effet Döppler qui permet, entre autre, de savoir si un émetteur s'éloigne ou se rapproche. Dans ce cadre, le passage d'un signal de hautes à basses fréquences (typiquement d'un son aigu à un son grave) indique que la source, qui se rapprochait, s'est mise à s'éloigner : c'est la variation de fréquence en cours du temps qui est porteuse d'information.
+\\
+
+Pour avoir une notion de fréquence instantanée, il serait utile de pouvoir écrire tout signal réel $x$ sous la forme :
+\begin{equation}\label{eq:amp-phase_instant}
+	x(t) = a(t) \cos\phi(t)
+\end{equation}
+\\
+où $a$ correspondrait à l'\textit{amplitude instantanée} du signal et $\phi$ sa \textit{phase instantanée}. Le problème d'une telle décomposition est que, si elle existe bel et bien, elle n'est en revanche pas unique. L'exemple le plus simple étant le cas $\ x(t) = \sin(t)\ $ qui se représente, entre autre, par les pairs :
 \begin{align*}
-	x(t) &= a(t) \cos\phi(t)  &  	\text{avec }\quad a \in L^2(\R^+)\quad &\text{et}\quad \phi \in L^2(\R) \
+	\big(a(t),\phi(t)\big) &= \big(1, t+\nicefrac{\pi}{2}\big)  &  
+	\big(a(t),\phi(t)\big) &= \big(\sin(t), 0\big)  &  
+	\big(a(t),\phi(t)\big) &= \big(2\sin(\nicefrac{t}{2}), \nicefrac{t}{2}\big)
+\end{align*}
+{\color{white}l}
+
+Pour avoir unicité de cette décomposition, il nous faut donc une contrainte sur $(a,\phi)$. Une approche serait de voir $x$ comme la partie réelle du signal complexe :
+\[\forall t\in\R,\ z_x(t) = a(t)e^{i\phi(t)}\quad \Lr\quad x(t) = \Re e\, z_x(t) = a(t) \cos \phi(t)\]
+\\
+Dans ce cas on aurait bien unicité de $a$ et $\phi$ par rapport à $z_x$ (son amplitude et sa phase) mais cela ne fait que déplacer le problème puisque $z_x$ n'est pas mieux défini : Il y a une liberté totale quant au choix sa partie imaginaire. Pour motiver la définition de $z_x$, sont rappeler quelques outils d'analyse temps-fréquence.
+
+
+
+\subsection{Distribution de l'énergie en temps et fréquence}\label{subsec:distrib_temp-freq}
+
+Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complexe et on notera $\hat{x}$ ou $\mathcal{F}(x)$ sa transformée de Fourier (dont on supposera quelle existe, typiquement $x\in L^1(\R, \C)$) :
+\begin{align*}
+	x\ &:\quad \begin{aligned}\R\ &\lr\quad \C \\ x\ &\longmapsto\ x(t)
+	\end{aligned}  &  \mathcal{F}(x)=\hat{x}\ &:\quad \begin{aligned}\R\ &\lr\qquad\quad \C \\ \nu\ &\longmapsto\ \int_\R x(t)e^{2\pi i \nu t}dt
+	\end{aligned}
 \end{align*}
 \\
-De façon générale, y'a pas du tout unicité de cette décomposition et pour qu'elle soit proprement définit on ajout la contrainte que $z_x=ae^{i\phi}$ soit un \textit{signal analytique}, \ie :
-\[\widehat{\mathcal{A}x}(\nu) = 2\mathbbm{1}_{\R^+}(\nu)\hat{x}(\nu)\]
-\\
-De cette façon la paire $(a,\phi)$ est unique et on a :
-\[x = \Re e (z) \]
-\\
-blabla y'a plein d'autres propriétés qu'il faudrait aller voir \cite{picinbono_instantaneous_1997,cohen_time_1995} mais sur \cite{cohen_time_1995}.
 
-
-
-\subsection{dans l'ordre}
-
-\begin{enumerate}
-	
-	\item Fourier donne une information globale sur les fréquences, mais si on veut savoir localement ce qui se passe, alors on a envie d'introduire la notion de \textit{fréquence instantané}. Formellement, on veut écrire le signal $x$ sous la forme :
-	\begin{equation}
-		x(t) = a(t) \cos\phi(t)
-	\end{equation}
-	\begin{itemize}
-		\item Problème : on est loin d'avoir unicité de la pair $(a,\phi)$. Question : comment on s'en sort ? 
-		
-		\item Réponse, il nous faut des contraintes sur $a$ et $\phi$. alors on va digue un peu\end{itemize}
-	
-	\item Pour cela, on peut commencer par remarquer que si $x$ était à valeur complexe, alors la décomposition serait sous la forme :
-	\[x(t) = a(t) e^{i\cos\phi(t)}\]
-	\begin{itemize}
-		\item Décomposition qui est bien définie et de façon unique (sauf pour les $x(t)=0$ mais fck eux)
-		
-		\item L'idée est alors de voir $x$ comme partie réel d'un complexe :
-		\[z(t) = a(t)e^{i\phi(t)}\quad \Lr\quad x = \Re e\, z(t)\]
-		
-		\item c'est super mais on a rien résolue parce qu'on connait pas plus $z$. Plus précisément, il nous faudrait une application $\mathcal{A} : x\ \longmapsto\ z$	\end{itemize}
-		
-	\item La contrainte elle va venir d'une autre propriété de $x$. Comme $x$ est à valeur réel, son spectre est à symétrie hermitienne. \ie :
-	\[\forall t\in\R,\ x(t)\in\R\ \Lr\ \forall \nu\in\R,\ \hat{x}(-\nu) = \overline{\hat{x}(\nu)}\]
-	
-	Autrement dit, y'a énormément de redondance dans les informations de $\hat{x}$. De plus, cette symétrie peut poser problème. Par exemple, si on veut la fréquance moyenne associé à $x$ (\ie~$\Esp[\hat{x}]{\nu}$), alors nécessairement elle sera nulle :
+\begin{definition}[Densités d'énergie]\label{def:densite_dE}
+	Étant donnée un signal complexe $x$, la \emph{densité d'énergie} $\rho$ de $x$ est donnée par le carré de son module. De même on définit $\varrho$ la \emph{densité d'énergie spectrale} :
 	\begin{align*}
-		\Esp[\hat{x}]{\nu} = \int^{+\infty}_{-\infty} \nu \hat{x}(\nu)d\nu &= \int^{+\infty}_0 \nu \hat{x}(\nu)d\nu + \int^{+\infty}_0 -\nu \hat{x}(-\nu)d\nu \\
-		& = \int^{+\infty}_0 \nu \Big( \hat{x}(\nu) - \overline{\hat{x}(\nu)} \Big) d\nu \\
-		& = 2i\int^{+\infty}_0 \nu \Im m \hat{x}(\nu) d\nu
+		\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  &
+		\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\hat{x}(t)\big|^2 \end{aligned}
 	\end{align*}
+	\\
+	La valeur $\rho(t)$ correspond à la puissance déployée pour émettre le signal à l'instant $t$ et $\varrho(\nu)$ à l'énergie associée à la fréquence $\nu$ sur tout le signal. 
+\end{definition}
+
+Par exemple, si $\ x(t)=e^{2\pi i\nu_0 t}$, alors $\ \hat{x}(t) = \delta(x-\nu_0)$. Dans ce cas, on a les densités :
+\begin{align*}
+	\rho(t) &= 1  &  \varrho(\nu) = \delta(\nu-\nu_0)
+\end{align*}
+Du point de vu temporel, le signal est émis avec une puissance régulière, mais le fait que $\varrho$ soit un dirac indique que toute l'énergie du signal est concentré dans une unique fréquence.
+\\ \\
+
+\begin{propriete}[\'Egalité de Parceval]\label{propri:parceval}
+	La transformée étant une isométrie de l'espace $L^2(\R,\C)$, si $x\in L^2(\R,\C)$, alors l'énergie totale du signal est indépendante de la représentation de ce dernier (temporelle ou spectrale) :
+	\begin{equation}
+		E(x) \defeq {\|x\|_2}^2 = \int_\R \rho(t) dt = \int_\R \varrho(\nu) d\nu = {\|\hat{x}\|_2}^2
+	\end{equation}	
+\end{propriete}
+
+\begin{definition}[Durée et largeur de bande]\label{def:band-width}
+	L'espérance et la variance de ces densités sont notées (pour peu qu'elles existent) :
+	\begin{align*}
+		\esp[\rho]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \var[\rho]{t} &\defeq \esp[\rho]{\big(t-\esp[\rho]{t}\big)^2} = \esp[\rho]{t^2} - \esp[\rho]{t}^2  \\
+		\esp[\varrho]{\nu} &\defeq \int_\R \nu \big|\hat{x}(\nu)\big|^2 d\nu  &  \var[\varrho]{\nu} &\defeq \esp[\varrho]{\big(\nu - \esp[\varrho]{\nu}\big)^2} = \esp[\varrho]{\nu^2} - \esp[\varrho]{\nu}^2
+	\end{align*}
+	\\
+	Si un signal est très localisé temporellement, alors la première espérance donne une idée de l'instant d'émission du signal. Si \acontrario, le signal est localisé en fréquence, la seconde espérance peut s'interpréter comme la fréquance moyenne ou fréquence ''dominante'' dans le signal. \\
+	Hors mis ces cas, $\esp[\rho]{t}$ et $\esp[\varrho]{\nu}$ ne sont difficilement interprétables. En particulier, et ce sera important pour la suite, dans le cas des signaux réels, l'espérance de $\varrho$ est toujours nulles.
 	
+	Les écart-types, en revanche, sont plus facilement interprétable : Le premier est appelé \emph{durée d'émission} du signal puisqu'il renseigne l'étalement temporelle du signal. Le second, est appelé \emph{largeur de bande} puisque, lui, renseigne l'étalement fréquentielle du signal. 
+	\\
+	\`A noter que si le support du signal $x$ n'est pas connexe, alors la durée d'émission donnera plutôt le différentiel entre la première période d'émission et la dernière.
+\end{definition}
+
+\begin{proposition}[Integration trick, 1.4 de \cite{cohen_time_1995}] \label{prop:integ_trick}
+	Si le signal est $n$ fois dérivable et que la densité d’énergie associée $\varrho$ admet un moment d'ordre $n$, alors il est donnée par la formule :
+	\begin{equation}\label{eq:moment_f}
+		\forall n\in\N,\qquad \esp[\varrho]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \overline{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
+	\end{equation}
+\\
+Avec les hypotèses analogues, les moments $\rho$ s'écrivent :
+\begin{equation}\label{eq:moment_t}
+	\forall n\in\N,\qquad \esp[\rho]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \hat{x}(\nu) \frac{d^n}{dt^n} \overline{\hat{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \hat{x}, \frac{d^n}{d\nu^n}\hat{x}\right\rangle
+\end{equation}
+
+\begin{demo}
+	\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
+	\begin{align*}
+	\esp[\varrho]{\nu^n} = \int_\R \nu^n\varrho(\nu) d\nu &= \int_\R \nu^n \hat{x}(\nu)\overline{\hat{x}(\nu)} d\nu \\
+		&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \overline{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
+		&= \int_\R \int_\R x(t) \overline{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
+	\end{align*}
+	Ici, on remarque que :
+	\begin{align*}
+	\nu^n e^{-2i \pi \nu (t-t')} &= \nu^{n-1}\frac{1}{-2i \pi}\frac{d}{dt}e^{-2i \pi \nu(t-t')} \\
+		&= \nu^{n-2}\frac{1}{(-2i \pi)^2}\frac{d^2}{dt^2}e^{-2i \pi \nu(t-t')} \\
+		 &\ \vdots \\
+		&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
+	\end{align*}
+	Ce qui permet, en jouant sur les ordres d'intégrations, d'obtenir :
+	\begin{align*}
+	\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \overline{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
+		&= \int_\R \int_\R x(t) \overline{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \overline{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \overline{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big(1\big)(t-t') dt\, dt' \\
+		&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \overline{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
+		&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \overline{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
+		&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \overline{x(t)} dt
+	\end{align*}
+\end{demo}
+\end{proposition}
+
+\begin{enonce}[Fréquence Instantanée]
+	On écrit le signal et sa transformée sous forme exponentielle, de sorte que :
+	\begin{align*}
+		x(t) &= a(t)e^{i\phi(t)}  &  \hat{x}(\nu) &= \alpha(t)e^{i\psi(t)}
+	\end{align*}
+
+\begin{itemize}
 	
-\end{enumerate}
-
-\subsection{Motivation}
-
-\subsubsection{Un peu de vocabulaire... (sûrement pas utile pour la suite)}
-
-
-Carré de la largeur de bande du signal $x(t)=A(t)e^{i\phi(t)}$ $\big(\hat{x} = B(t)e^{i\psi(t)}\big)$ :
-\begin{equation*}\label{eq:bandwidth_cohen}
-	\begin{aligned}
-		B^2  = \Var\Big[\, \big|\hat{x}\big|^2\, \Big] &= \int \left( \frac{A'(t)}{A(t)}\right)^2 A^2(t) dt + \int \Big(\phi'(t) - \Esp[|\hat{x}|^2]{\nu} A^2(t) dt \\
-		&= \qquad\quad {B_{AM}}^2 \qquad\quad\, + \qquad\quad\, {B_{FM}}^2
-	\end{aligned} \qquad\qquad\text{ eq. (1.96) \cite{cohen_time_1995}}
-\end{equation*}
+	\item Déjà, pour un signal classique, $\cos(\nu t+\phi)$, on considère $\phi$ la phase et $\nu$ la fréquence. En version complexe, pour le signal $e^{i(\nu t + \phi)}$, c'est tout $\nu t+\phi$ la phase et la fréquence est donnée par la dérivée de la phase :
+	\[\nu = \frac{d}{dt}(\nu t+\phi)\]
+	
+	\item On peut voir la dérivée de la phase comme la fréquence instantanée parce que intégré du le temps, la donne la fréquence moyenne :
+	\[\esp[\varrho]{\nu} = \int_\R \phi'(t)\rho(t)dt\]
+	
+	\item Le carré de la largeur de bande de $x$ s'écrit :
+	\begin{equation*}\label{eq:bandwidth_cohen}
+		\begin{aligned}
+			B^2  = \var[\varrho]{\nu} &= \int \left( \frac{a'(t)}{a(t)}\right)^2 a^2(t) dt + \int \Big(\phi'(t) - \esp[\varrho]{\nu}\Big) a^2(t) dt \\
+			&= \qquad \esp[\rho]{\left( \frac{a'}{a}\right)^2} \qquad\ \, + \qquad\ \, \esp[\rho]{\phi' - \esp[\varrho]{\nu}} \\
+			&= \qquad\quad {B_{AM}}^2 \qquad\ \ + \qquad\qquad\ {B_{FM}}^2
+		\end{aligned} \qquad\qquad\text{ eq. (1.96) \cite{cohen_time_1995}}
+	\end{equation*}
+	On a séparation nette entre la phase (la fréquence vraiment) et l'amplitude dans la largeur de bande !\\
+	+ ca renforce l'idée que $\phi'$ correspond la fréquence instantanée \\
+	+ pythagore, qu'est-ce qu'il fout là
+\end{itemize}
+\end{enonce}
 
 
 \subsection{Problème de signaux réel}
 
+
 \begin{itemize}
+	\item Le signal $x$ étant réel, son spectre est à symétrie hermitienne. En notant $\hat{x}$ la transformé de Fourier de $x$, on a :
+	\[\forall t\in\R,\ x(t)\in\R \quad \Lr \quad \forall \nu\in\R,\ \hat{x}(-\nu) = \congu{\hat{x}(\nu)}\]
+	
+	\item Redondance d'info + pas physiquement intéressant les fréquences négatives
+	
+	\item Si on veut la fréquence moyenne associé à $x$ (\ie~$\esp[\varrho]{\nu}$), alors nécessairement elle sera nulle (intégrale impair) : pas intéressant + la largeur de bande dit plus rien non plus du coup :/
+	
 	\item La covariance de signaux réel est nulle (pas informatif + on aimerait que ca le soit). Formule de la covariance :
 	\[\text{Cov}(tw) = \int t \phi'(t) \big|x(t)\big|^2 dt - \int t \big|x(t)\big|^2\int \nu \big|\hat{x}(\nu)\big|^2 d\nu\]
 \end{itemize}
@@ -227,16 +255,95 @@ Carré de la largeur de bande du signal $x(t)=A(t)e^{i\phi(t)}$ $\big(\hat{x} = 
 	parce que y'a de la redondances anyway sur $|\hat{x}|$.
 	
 	\item amène à la transfo de Hilberts (\href{https://les-mathematiques.net/vanilla/discussion/859485/transformee-de-fourier-de-heaviside}{\color{blue}\underline{fourier de Heavyside propre}})
-	
+
+	\item ATTENTION : si on pose $x(t)=\alpha(t)\cos\varphi(t)$, rien n'indique qu'on aura $(\alpha,\varphi) = (a,\phi)$ ! si c'est pas le cas, c'est le décomposition n'était "pas la bonne". C'est bizarre, mais c'est comme ca !
+		
 	\item un mot sur la fréquence instantané.
+	
+	\item (lien avec la transformée en ondelette et pourquoi on fait pas de ça ?)
+
 \end{itemize}
 
+\subsection{Cas dans signaux AM-FM}
+
+
+\section{Réflexion autour du produit hermitien}
+
+
+Soit $x,y\in\C^n$ des vecteurs complexes et $X,Y\in\R^{2\times n}$ leur versions réelles. On note $x^j$ sa $j^{eme}$ composante complèxe et $x_1$ (resp. $x_2$) le vecteur composé de ses parties réelles (resp. imaginaires) :
+\[x = \big(x^j\big)_j =  x_1 + ix_2 =  \big(x^j_1\big)_j +i \big(x^j_2\big)_j\]
+\\
+On a deux façon d'écrire le produit hermitien (canonique) de $X$ avec $Y$ :
+\begin{align*}
+	\langle x,y \rangle = \langle x_1 + ix_2, y_1 + iy_2\rangle &= \langle x_1, y_1\rangle - i \langle x_1,y_2\rangle +i\langle x_2, y_1\rangle + \langle x_2, y_2\rangle  \\
+	&= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
+	+ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
+	&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2
+	+ i\left(\sum_j x^j_2 y^j_1 -  x^j_1y^j_2\right) \\
+	&= \left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle
+	+ i\left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} -y_2 \\ y_1 \end{pmatrix}\right\rangle \\
+	&= \Big\langle X,Y\Big\rangle 
+	+ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle\\
+	&= \Big\langle X,Y\Big\rangle 
+	+ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}Y\right\rangle
+\end{align*}
+\\
+Cette formule peut s’interpréter en disant que le produit hermitien encode le produit scalaire entre $X$ et $Y$ et le produit scalaire de $X$ avec les vecteurs $y^j=(y^j_1, y^j_2)$  auquel on aurait applique une rotation de $90^\circ$ (rotation qui, par ailleurs, correspond à la multiplication par $i$ dans le plan complexe). Moralement, $\langle x,y \rangle =0$ demande une orthogonalité de $X$ à un plan, ce qui fait sens puisque cela tient compte du fait que les $x^j, y^j$ sont complexes (donc de dimension 2 en tant que $\R-$e.v.).
+\\
+On a aussi l'écriture (quand-même moins clair) :
+\begin{align*}
+	\langle x,y \rangle &= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
+	+ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
+	&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2+ i\sum_j \big( x^j_2 y^j_1 - x^j_1y^j_2 \big) \\
+	&= \sum_j \big\langle X^j,Y^j\big\rangle - i\sum_j \det(X^j, Y^j)
+	%&= \sum_j \|X^j\|\|Y^j\| \cos \widehat{X^j,X^j} + i\sin \widehat{X^j,Y^j}
+\end{align*}
+Cette formule dit que les parties reélles et imaginaires du produit $\langle x,y \rangle$ encodent respectivement ``l'orthogonalité moyenne'' et la ``linéarité moyenne ''entre les familles de vecteurs $X^j\in\R^2$ et $Y^j\in\R^2$. L'orthogonalité d'une part parce que le produit scalaire s'annule en cas d'orthogonalité (no shit), la linéarité d'autre part car le déterminant s'annule en cas de colinéarité et moyenne car se sont des sommes sur $j$. \textbf{$\bf{\langle x,y \rangle=0}$ ne dit pas que les le vecteurs sont à la fois colinéaire et orthogonaux parce que ce sont des valeurs moyennes (\ie annuler une somme ne veut pas dire que chacun des termes sont nuls).}
+\\
+
+Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
+\begin{align*}
+	\langle x+h, x+h \rangle = \langle x, x \rangle + \langle x, h \rangle + \langle h, x \rangle + \langle h, h \rangle 
+	&= \langle x, x \rangle + \langle x, h \rangle  + \overline{\langle x, h \rangle }+ \langle h, h \rangle \\
+	&= \langle x, x \rangle + 2\Re e \langle x, h \rangle + \langle h, h \rangle
+\end{align*}
+Donc si $x\in\C^n$ est fonction d'un paramètre $t$, l'égalité $\ \langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle\ $ du cas réel devient :
+\[\langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle + i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
+\\
+En particulier, quand bien-même $x$ serait de norme constante, on aurait toujours un degré de liberté pour $\ \langle x, \dot{x} \rangle$ :
+\[\|x\|=c\quad \Lr\quad \langle x, \dot{x} \rangle = i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
+\\
+
+\begin{definition}\label{def:phase_dyn}
+	Ainsi, il reste tout un degré de liberté au produit $\ \langle x, \dot{x} \rangle\ $ même si $x\in\S^{2n}$. En intégrant ce degré de liberté supplémentaire, c'est-à-dire en tenant compte de son évolution sur la période $[t_0,t]$, l'on obtient ce qui est appeller le \emph{phase dynamique} :
+	\[\phased \defeq \phased(t_0,t) = \int_{t_0}^t \Im m \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds\]
+	Elle dynamique en cela qu'elle est propre au variation de $\psi$ et qu'elle considère tout l'évolution de $\psi$ : ça dynamique.
+	\textit{Rq} : Avec les notations de la \cref{sec:temp-freq} et si le signal est d'amplitude constante, alors on a :
+	 \[\phased(-\infty, +\infty) = \int_\R \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds = -2\pi\int_\R \nu\big|\hat{\psi}(\nu)\big|^2 d\nu = - 2\pi \esp[|\hat{\psi}|^2]{\nu}\]
+	
+	\textbf{... et pourquoi c'est une PHASE du coup ?}
+\end{definition}
+
+
+\begin{definition}[Connexion de Berry]\label{def:berry_connx}
+	On appelle \emph{connexion de Berry} le champ de forme linéaire :
+	\begin{equation}\label{eq:berry_connx}
+		\forall \psi\in\mathpzc{M},\quad A_\psi :\ \begin{aligned} T_\psi\mathpzc{M}\ &\lr\qquad\ \R \\ \phi\quad &\longmapsto\ \Im m \big\langle \psi(s) \, |\, \phi(s) \big\rangle
+		\end{aligned}
+	\end{equation}
+	\textbf{Elle a rien d'une connexion par contre :/}
+\end{definition}
 
 
 
 
+
+\setcounter{section}{0}
 \setcounter{figure}{0}
 \setcounter{lstlisting}{0}
+
+\part{Phase Géométrique}
+
 \section{Description des signaux multivariés}\label{sec:bases}
 
 \subsection{Version Lilly \cite{lilly_bivariate_2010, lilly_analysis_2012}}
@@ -253,7 +360,7 @@ Qui sous forme vectoriel se réécrit :
 \end{equation}
 \\
 
-Pour avoir la désinscription de $\bf{x}$ en terme d’ellipse, il suffit donc de poser :
+Pour avoir la désinscription de $\bf{x}$ en terme d’ellipse, il suffit donc de poser :\footnote{C'est la version analytique du la version vectorielle de l'ellipse !}
 \[z_x(t) = z(t)\quad \Llr\quad \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^ {i\phi_y(t)}\end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}\]
 \\
 Ensuite, on pose :
@@ -268,7 +375,7 @@ et on en déduit :
 \begin{align*}
 	A &= \sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}  &  \begin{aligned} \cos\chi &= \frac{a_+ + a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}  \\  \sin\chi &= \frac{a_+ - a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}	\end{aligned}
 \end{align*}
-Ce qui donne \textit{in fine} :
+Ce qui donne \infine :
 \[\begin{pmatrix}x_+ \\ y_+\end{pmatrix} = e^{i\frac{\phi_+ + \phi_-}{2}} R_{\frac{\phi_+ - \phi_-}{2}} \begin{pmatrix}a_+ + a_- \\ -i(a_+ - a_-)\end{pmatrix}\]
 \\
 
@@ -290,9 +397,9 @@ Ce qui ramène à se demander comment généraliser $U$ à $\SU(n)$. Le problèm
 
 
 \begin{definition}[Signal multivarié] \label{def:signal_multivar}
-Un \textit{signal multivarié}, ou \textit{$n-$varié}, signal à valeur dans $\C^n$. Formellement, c'est une fonction de carré intégrale à valeur de $\R$ dans $\C^n$, et l'ensemble de tel signaux seront noté $L^2\big(\R,\C^n\big)$.
+Un \emph{signal multivarié}, ou \emph{$n-$varié}, signal à valeur dans $\C^n$. Formellement, c'est une fonction de carré intégrale à valeur de $\R$ dans $\C^n$, et l'ensemble de tel signaux seront noté $L^2\big(\R,\C^n\big)$.
 \\
-Dans le cas $n=2$, on parle de signal \textit{bivarié}.
+Dans le cas $n=2$, on parle de signal \emph{bivarié}.
 \end{definition}
 
 \begin{proposition}\label{prop:quatern}
@@ -422,13 +529,13 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 \begin{itemize}
 	\item Ecriture en terme de fibré (principale ? vectoriel ?)
 	
-	\item Choix de l'action de groupe pour la jauge : $U(1)$ \textit{a priori}
+	\item Choix de l'action de groupe pour la jauge : $U(1)$ \apriori
 \end{itemize}
 
 \[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
 
 \begin{itemize}
-	\item Lien avec Siegel : assez clair avec la visualisation des ellipses, beaucoup moins avec les Hilberts même si $| \psi\rangle \langle \psi |\in$ Siegel \textit{a priori}
+	\item Lien avec Siegel : assez clair avec la visualisation des ellipses, beaucoup moins avec les Hilberts même si $| \psi\rangle \langle \psi |\in$ Siegel \apriori
 	
 	\item ``\textit{Symplectique}'' (meaning + intérêt ?)
 	
