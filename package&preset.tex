@@ -32,7 +32,7 @@
 %\namecref{sec:label}
 
 %pour les figures
-\usepackage{graphicx} \usepackage{wrapfig, floatrow}
+\usepackage{graphicx, caption} \usepackage{wrapfig, floatrow}
 %\usepackage{subcaption} % surement useless, parsk floatrow-like 
 
 % pour les beaux tableaux
@@ -140,6 +140,8 @@
 \renewcommand{\bf}[1]{\boldsymbol{#1}}
 \renewcommand{\AC}{\sim}
 \newcommand{\para}{\sslash}
+
+
 
 
 % latin
@@ -283,31 +285,33 @@ rulecolor=\color{lightgray}}
 	every axis x label/.style={footnotesize, at={(current axis.right of origin)},anchor=north west},
 	every axis y label/.style={footnotesize, at={(current axis.above origin)},anchor=south east},
 	scale only axis=true}}
-	
-	
-	
-	%%%%    CAPTIONS 2 FIGURES    %%%%
-	
-	
-	% set up des captions figures (extrêmement BG)
-	
-	% pos et séparateur générale
-	\captionsetup{justification=centering}
-	\DeclareCaptionLabelSeparator{custom}{\, ---\, }
-	
-	% spécial figure
-	\DeclareCaptionLabelFormat{customfig}{\textit{fig. #2}}
-	\DeclareCaptionFormat{customfig}{#1#2#3}
-	%\DeclareCaptionFont{customfig}{\itshape} %marche pas jsppk
-	\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
-	\captionsetup[figure]{labelformat=customfig, labelsep=custom}
-	
-	% spécial code (listings)
-	\DeclareCaptionLabelFormat{customcode}{\textit{code \arabic{section}.#2}}
-	\DeclareCaptionFormat{customcode}{#1#2#3}
-	%\renewcommand{\thelstlisting}{\arabic{section}.\arabic{lstlisting}}
-	\captionsetup[lstlisting]{labelformat=customcode, labelsep=custom}
-	
+
+
+
+%%%%    CAPTIONS 2 FIGURES    %%%%
+
+
+% set up des captions figures (extrêmement BG)
+
+% pos et séparateur générale
+\captionsetup{justification=centering}
+\DeclareCaptionLabelSeparator{custom}{\, ---\, }
+
+% spécial figure
+\DeclareCaptionLabelFormat{customfig}{fig. #2}
+\DeclareCaptionFormat{customfig}{#1#2#3}
+%\DeclareCaptionFont{customfig}{\itshape} %marche pas jsppk
+\renewcommand{\thefigure}{\itshape\arabic{section}.\arabic{figure}}
+\captionsetup[figure]{font=it, labelformat=customfig, labelsep=custom}
+
+% spécial code (listings)
+\DeclareCaptionLabelFormat{customcode}{\textit{code \arabic{section}.#2}}
+\DeclareCaptionFormat{customcode}{#1#2#3}
+%\renewcommand{\thelstlisting}{\arabic{section}.\arabic{lstlisting}}
+\captionsetup[lstlisting]{labelformat=customcode, labelsep=custom}
+
+% pour cref
+\crefname{figure}{\itshape fig.}{figure}
 	
 	
 	%%%%    TABLES/REF  &  HAUT/BAS DE PAGES    %%%%
@@ -424,3 +428,7 @@ rulecolor=\color{lightgray}}
 	% mise à zéro des compters
 	%\setcounter{section}{0}
 }{}
+
+
+%POUR NTHEOREM (A FAIRE ET A FIX)
+% vertical bar pour les énonces : https://tex.stackexchange.com/questions/499011/ntheorem-framing-environment-with-vertical-lines-on-both-the-left-and-right-sid

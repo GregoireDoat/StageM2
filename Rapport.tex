@@ -3,6 +3,7 @@
 
 \begin{document}
 
+
 \begin{titlepage}
 	%\AddToShipoutPictureBG*{\put(80,655){\includegraphics[width=2.9cm]{Logo MIX.png}}}
 	%\AddToShipoutPictureBG*{\put(70,738){\includegraphics[width=5cm]{logo_lr.png}}}
@@ -47,12 +48,17 @@
 \newpage
 \setcounter{page}{1}
 
+
+
+\newpage
+
 \phantomsection
 \addcontentsline{toc}{section}{Introduction}
 \section*{Introduction}
 
 Quote : The geometric phase is also one of the most beautiful examples of what Wigner once called ``the unreasonable effectiveness of mathematics in the natural sciences.'' \cite[p.\,4]{bohm_geometric_2003}
 
+Des questions :
 \begin{itemize}
 	
 	\item Pourquoi on va dans les complexes ? Réponse \cref{sec:temp-freq}
@@ -69,11 +75,24 @@ Quote : The geometric phase is also one of the most beautiful examples of what W
 	
 \end{itemize}
 
+\[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
+
+Note de rédac :
+\begin{itemize}
+	\item Index ? rappel $\delta$ de Dirac
+\end{itemize}
 
 
-\part{Préliminaire}
+\part{Transformation en Signal Analytique}
 
 
+
+
+\begin{enonce}[Intro de la \cref{sec:temp-freq}]
+	\textit{Malgré ce que l'énoncé de la problématique laisse entendre, dans toute la suite nous travaillerons avec des signaux à valeur de $\R$ dans $\C^n$ plutôt que $\R^n$. Il y a de très bonne raison à la transformation des signaux réels en complexes et c'est sera l'objet de cette première  \namecref{sec:temp-freq}.}\\
+	
+	Et pourquoi on veut faire du temps fréquence aussi ? (t'explique pourquoi c'est bien mais pourquoi ca NOUS intéresse ?)
+\end{enonce}
 
 
 
@@ -81,12 +100,8 @@ Quote : The geometric phase is also one of the most beautiful examples of what W
 \section{Sur l'intérêt de transformé les signaux réels en complexes}\label{sec:temp-freq}
 
 
-\begin{enonce}[Intro de la \nameCref{sec:temp-freq}]
-	\textit{Malgré ce que l'énoncé de la problématique laisse entendre, dans toute la suite nous travaillerons avec des signaux à valeur de $\R$ dans $\C^n$ plutôt que dans $\R^n$.
-		Outre le plaisir coupable des mathématiciens à vouloir généraliser les choses, il y a de très bonne raison à la transformation des signaux réels en complexes et c'est sera l'objet de cette première  \namecref{sec:temp-freq}.}
-\end{enonce}
-
 \textit{Cette partie reprends, dans les grandes lignes, les propos de \textsc{Cohen} dans son livre \emph{Time frequency analysis} \cite{cohen_time_1995}}
+\\
 Dans l'étude de signaux, la transformée de Fourier est un outil standard puisqu'il donne accès à tout l'information fréquentielle de ce dernier. Ce gain d'information n'est pas gratuit pour autant puisqu'on perd avec tout notion de temporalité. Pourtant dans bien des cas, une information instantanée, dépendante en temps, est plus pertinente.
 \\
 C'est par exemple le cas dans l'étude de la langue oral (bon terme ?). Le sens d'une phrase ne vient pas du signal, \ie~la voix, tout entier mais plutôt de ses valeurs locales. Lorsque l'on prononce le mot ``\textit{fleur}'', c'est l’enchaînement des sons associés au ``\textit{f}'', ``\textit{l}'', ``\textit{eu}'', \etc~qui est important et non la structure global du signal.  
@@ -108,7 +123,7 @@ où $a$ correspondrait à l'\textit{amplitude instantanée} du signal et $\phi$ 
 {\color{white}l}
 
 Pour avoir unicité de cette décomposition, il nous faut donc une contrainte sur $(a,\phi)$. Une approche serait de voir $x$ comme la partie réelle du signal complexe :
-\[\forall t\in\R,\ z_x(t) = a(t)e^{i\phi(t)}\quad \Lr\quad x(t) = \Re e\, z_x(t) = a(t) \cos \phi(t)\]
+\[\forall t\in\R,\quad z_x(t) = a(t)e^{i\phi(t)}\ \ \Lr\ \ x(t) = \Re e\, z_x(t)\]
 \\
 Dans ce cas on aurait bien unicité de $a$ et $\phi$ par rapport à $z_x$ (son amplitude et sa phase) mais cela ne fait que déplacer le problème puisque $z_x$ n'est pas mieux défini : Il y a une liberté totale quant au choix sa partie imaginaire. Pour motiver la définition de $z_x$, sont rappeler quelques outils d'analyse temps-fréquence.
 
@@ -116,10 +131,10 @@ Dans ce cas on aurait bien unicité de $a$ et $\phi$ par rapport à $z_x$ (son a
 
 \subsection{Distribution de l'énergie en temps et fréquence}\label{subsec:distrib_temp-freq}
 
-Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complexe et on notera $\hat{x}$ ou $\mathcal{F}(x)$ sa transformée de Fourier (dont on supposera quelle existe, typiquement $x\in L^1(\R, \C)$) :
+Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complexe et on notera $\hat{x}$ ou $\mathcal{F}(x)$ sa transformée de Fourier (dont on supposera quelle existe, ici on supposera au moins $x\in L^2(\R, \C)$) :
 \begin{align*}
 	x\ &:\quad \begin{aligned}\R\ &\lr\quad \C \\ x\ &\longmapsto\ x(t)
-	\end{aligned}  &  \mathcal{F}(x)=\hat{x}\ &:\quad \begin{aligned}\R\ &\lr\qquad\quad \C \\ \nu\ &\longmapsto\ \int_\R x(t)e^{2\pi i \nu t}dt
+	\end{aligned}  &  \mathcal{F}(x)=\hat{x}\ &:\quad \begin{aligned}\R\ &\lr\qquad\quad \C \\ \nu\ &\longmapsto\ \int_\R x(t)e^{-2\pi i \nu t}dt
 	\end{aligned}
 \end{align*}
 \\
@@ -132,131 +147,203 @@ Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complex
 	\end{align*}
 	\\
 	La valeur $\rho(t)$ correspond à la puissance déployée pour émettre le signal à l'instant $t$ et $\varrho(\nu)$ à l'énergie associée à la fréquence $\nu$ sur tout le signal. 
+	\\
+	La transformée étant une isométrie de l'espace $L^2(\R,\C)$, si $x\in L^2(\R,\C)$, alors l'\emph{énergie totale} du signal est indépendante de la représentation de ce dernier (temporelle ou spectrale) :
+	\begin{equation}\label{eq:parceval}
+		E(x) \defeq {\|x\|_2}^2 = \int_\R \rho(t) dt = \int_\R \varrho(\nu) d\nu = {\|\hat{x}\|_2}^2
+	\end{equation}
 \end{definition}
 
 Par exemple, si $\ x(t)=e^{2\pi i\nu_0 t}$, alors $\ \hat{x}(t) = \delta(x-\nu_0)$. Dans ce cas, on a les densités :
 \begin{align*}
 	\rho(t) &= 1  &  \varrho(\nu) = \delta(\nu-\nu_0)
 \end{align*}
-Du point de vu temporel, le signal est émis avec une puissance régulière, mais le fait que $\varrho$ soit un dirac indique que toute l'énergie du signal est concentré dans une unique fréquence.
+Du point de vu temporel, le signal est émis avec une puissance régulière, mais le fait que $\varrho$ soit un dirac indique que toute l'énergie du signal est concentré en une unique fréquence $\nu_0$.
 \\ \\
 
-\begin{propriete}[\'Egalité de Parceval]\label{propri:parceval}
-	La transformée étant une isométrie de l'espace $L^2(\R,\C)$, si $x\in L^2(\R,\C)$, alors l'énergie totale du signal est indépendante de la représentation de ce dernier (temporelle ou spectrale) :
-	\begin{equation}
-		E(x) \defeq {\|x\|_2}^2 = \int_\R \rho(t) dt = \int_\R \varrho(\nu) d\nu = {\|\hat{x}\|_2}^2
-	\end{equation}	
-\end{propriete}
-
 \begin{definition}[Durée et largeur de bande]\label{def:band-width}
-	L'espérance et la variance de ces densités sont notées (pour peu qu'elles existent) :
+	L'espérance ces densités sont notées, pour peu qu'elles existent :
 	\begin{align*}
-		\esp[\rho]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \var[\rho]{t} &\defeq \esp[\rho]{\big(t-\esp[\rho]{t}\big)^2} = \esp[\rho]{t^2} - \esp[\rho]{t}^2  \\
-		\esp[\varrho]{\nu} &\defeq \int_\R \nu \big|\hat{x}(\nu)\big|^2 d\nu  &  \var[\varrho]{\nu} &\defeq \esp[\varrho]{\big(\nu - \esp[\varrho]{\nu}\big)^2} = \esp[\varrho]{\nu^2} - \esp[\varrho]{\nu}^2
+		\esp[\rho]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \esp[\varrho]{\nu} &\defeq \int_\R \nu \big|\hat{x}(\nu)\big|^2 d\nu
 	\end{align*}
 	\\
-	Si un signal est très localisé temporellement, alors la première espérance donne une idée de l'instant d'émission du signal. Si \acontrario, le signal est localisé en fréquence, la seconde espérance peut s'interpréter comme la fréquance moyenne ou fréquence ''dominante'' dans le signal. \\
-	Hors mis ces cas, $\esp[\rho]{t}$ et $\esp[\varrho]{\nu}$ ne sont difficilement interprétables. En particulier, et ce sera important pour la suite, dans le cas des signaux réels, l'espérance de $\varrho$ est toujours nulles.
-	
-	Les écart-types, en revanche, sont plus facilement interprétable : Le premier est appelé \emph{durée d'émission} du signal puisqu'il renseigne l'étalement temporelle du signal. Le second, est appelé \emph{largeur de bande} puisque, lui, renseigne l'étalement fréquentielle du signal. 
+	Si un signal est localisé temporellement, alors la première espérance/moyenne donne une idée de l'instant d'émission du signal. Si \acontrario, le signal est localisé en fréquence, la seconde espérance peut s'interpréter comme la fréquence ''dominante'' du le signal, ou plus généralement comme sa \emph{fréquence moyenne}. \\
+	En particulier, et ce sera important pour la suite, dans le cas des signaux réels, l'espérance de $\varrho$ est toujours nulles.
 	\\
-	\`A noter que si le support du signal $x$ n'est pas connexe, alors la durée d'émission donnera plutôt le différentiel entre la première période d'émission et la dernière.
+	On note de même les variances (toujours à condition d'existence) :
+	\begin{align*}
+		\var[\rho]{t} &\defeq \esp[\rho]{\big(t-\esp[\rho]{t}\big)^2}  &  \var[\varrho]{\nu} &\defeq \esp[\varrho]{\big(\nu - \esp[\varrho]{\nu}\big)^2}\\
+		& = \esp[\rho]{t^2} - \esp[\rho]{t}^2  &  &= \esp[\varrho]{\nu^2} - \esp[\varrho]{\nu}^2
+	\end{align*}
+	Les écart-types associés sont plus facilement interprétable. Le premier est appelé \emph{durée d'émission} du signal, puisqu'il renseigne l'étalement temporelle du signal ; et le second \emph{largeur de bande (fréquentielle)} puisque, lui, renseigne l'étalement fréquentielle. 
 \end{definition}
 
-\begin{proposition}[Integration trick, 1.4 de \cite{cohen_time_1995}] \label{prop:integ_trick}
+
+
+\subsection{Fréquence instantanée et covariance}
+
+Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} suivantes seront nécessaire :
+\\
+
+\begin{proposition}[Calculation trick de \cite{cohen_time_1995}] \label{prop:integ_trick}
 	Si le signal est $n$ fois dérivable et que la densité d’énergie associée $\varrho$ admet un moment d'ordre $n$, alors il est donnée par la formule :
 	\begin{equation}\label{eq:moment_f}
-		\forall n\in\N,\qquad \esp[\varrho]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \overline{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
+		\forall n\in\N,\qquad \esp[\varrho]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \congu{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
 	\end{equation}
-\\
-Avec les hypotèses analogues, les moments $\rho$ s'écrivent :
-\begin{equation}\label{eq:moment_t}
-	\forall n\in\N,\qquad \esp[\rho]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \hat{x}(\nu) \frac{d^n}{dt^n} \overline{\hat{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \hat{x}, \frac{d^n}{d\nu^n}\hat{x}\right\rangle
-\end{equation}
+	\\
+	Avec les hypothèses analogues, les moments de $\rho$ s'écrivent :
+	\begin{equation}\label{eq:moment_t}
+		\forall n\in\N,\qquad \esp[\rho]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \hat{x}(\nu) \frac{d^n}{dt^n} \congu{\hat{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \hat{x}, \frac{d^n}{d\nu^n}\hat{x}\right\rangle
+	\end{equation}
+	
+	\begin{demo}
+		\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
+		\begin{align*}
+			\esp[\varrho]{\nu^n} = \int_\R \nu^n\varrho(\nu) d\nu &= \int_\R \nu^n \hat{x}(\nu)\congu{\hat{x}(\nu)} d\nu \\
+			&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \congu{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
+			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
+		\end{align*}
+		Ici, on remarque que :
+		\begin{align*}
+			\nu^n e^{-2i \pi \nu (t-t')} &= \nu^{n-1}\frac{1}{-2i \pi}\frac{d}{dt}e^{-2i \pi \nu(t-t')} \\
+			&= \nu^{n-2}\frac{1}{(-2i \pi)^2}\frac{d^2}{dt^2}e^{-2i \pi \nu(t-t')} \\
+			&\ \vdots \\
+			&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
+		\end{align*}
+		
+		Ce qui permet, en jouant sur les ordres d'intégrations, d'obtenir :
+		\begin{align*}
+			\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
+			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+			&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+			&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big(1\big)(t-t') dt\, dt' \\
+			&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
+			&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
+			&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
+		\end{align*}
+	\end{demo}
+\end{proposition}
 
-\begin{demo}
-	\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
+On notera dans toute la suite, sauf précision, l'amplitude et phase de $x$ (resp. $\hat{x}$) :
+\begin{align*}
+	x(t) &= a(t) e^{i\phi(t)}  &  \text{resp. }\quad \hat{x}(\nu) &= \alpha(\nu) e^{i\psi(\nu)}
+\end{align*}
+Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularités de $x$ (resp. $\hat{x}$) et on a :
+\begin{align*}
+	\rho &= |x|^2 = a^2  &  \varrho &= |\hat{x}|^2 = \alpha^2
+\end{align*}
+\\
+
+\begin{proposition}\label{prop.esp_freq}
+	Si $\varrho$ admet une espérance et que $x$ est dérivable, alors on a l'égalité :
+	\begin{equation}\label{eq:esp_freq}
+		\esp[\varrho]{\nu} = \frac{1}{2\pi}\int_\R \phi'(t)\rho(t)dt = \frac{1}{2\pi} \esp[\rho]{\phi'}
+	\end{equation}
+	
+\begin{demo} 
+	Avec le hypothèses de la \cref{prop:integ_trick} précédente, on a :
 	\begin{align*}
-	\esp[\varrho]{\nu^n} = \int_\R \nu^n\varrho(\nu) d\nu &= \int_\R \nu^n \hat{x}(\nu)\overline{\hat{x}(\nu)} d\nu \\
-		&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \overline{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
-		&= \int_\R \int_\R x(t) \overline{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
+		\esp[\varrho]{\nu} = \frac{i}{2\pi} \rho(t)dt\int_\R x(t) \congu{x'(t)} dt &= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\congu{\big( a'(t)e^{i\phi(t)}+ ia(t)\phi'(t)e^{i\phi(t)} \big)} dt \\
+		&= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\big( a'(t)e^{-i\phi(t)} -ia(t)\phi'(t)e^{-i\phi(t)} \big) dt \\
+		&= \frac{i}{2\pi}\int_\R a(t)\big( a'(t)- ia(t)\phi'(t)\big) dt \\
+		&= \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt \\
 	\end{align*}
-	Ici, on remarque que :
-	\begin{align*}
-	\nu^n e^{-2i \pi \nu (t-t')} &= \nu^{n-1}\frac{1}{-2i \pi}\frac{d}{dt}e^{-2i \pi \nu(t-t')} \\
-		&= \nu^{n-2}\frac{1}{(-2i \pi)^2}\frac{d^2}{dt^2}e^{-2i \pi \nu(t-t')} \\
-		 &\ \vdots \\
-		&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
-	\end{align*}
-	Ce qui permet, en jouant sur les ordres d'intégrations, d'obtenir :
-	\begin{align*}
-	\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \overline{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
-		&= \int_\R \int_\R x(t) \overline{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-		&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \overline{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-		&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \overline{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big(1\big)(t-t') dt\, dt' \\
-		&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \overline{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
-		&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \overline{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
-		&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \overline{x(t)} dt
-	\end{align*}
+	On peut se convaincre que le premier terme doit être nul car l'espérance doit être réelle. On peut s'en assurer par le calcul en notant que c'est l’inégale d'une dérivée :
+	\[\int_\R a'(t)a(t) dt = \frac{1}{2} \int_\R \big(a^2\big)'(t) dt = \frac{1}{2}\rho(t)\Big|_{-\infty}^{+\infty} = 0\]
+	Ce qui donne bien :
+	\[\esp[\varrho]{\nu} = \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt = \frac{1}{2\pi}\int_\R \phi'(t)\rho(t) dt\]
 \end{demo}
 \end{proposition}
 
-\begin{enonce}[Fréquence Instantanée]
-	On écrit le signal et sa transformée sous forme exponentielle, de sorte que :
-	\begin{align*}
-		x(t) &= a(t)e^{i\phi(t)}  &  \hat{x}(\nu) &= \alpha(t)e^{i\psi(t)}
-	\end{align*}
+\begin{definition}
+	La dérivée $\phi'$ est appelé \emph{fréquence instantanée} du signal $x$. Le terme est justifié par l'\cref{eq:esp_freq} précédente : C'est la fonction dont la moyenne en temps correspond à la fréquence moyenne de $x$.
+\end{definition}
+
+Pour mieux de convaincre du bien fondé de cette interprétation, deux choses.
+\\
+D'une part, pour un signal classique de la forme $\cos(2\pi\nu t+\varphi)$ ou $e^{i(2\pi\nu t + \varphi)}$, la fréquence est clairement identifié par $\nu$, que l'on peut voir comme dérivée de la phase
+	\footnote{\itshape 
+			Le facteur $2\pi$ s'assure que l'on parle bien de fréquence, question d'unité. Sans, $\nu$ correspondait à une pulsation et en définissant la transformée de Fourier en terme de pulsation (\ie sans le facteur $2\pi$ dans l'exponentielle), alors la formule \eqref{eq:esp_freq} n'aurait pas de facteur $2\pi$ non plus. En clair, c'est une question de cohérence.} :
+\[\nu = \frac{1}{2\pi}\frac{d}{dt}(2\pi\nu t+\varphi)\]
+\\
+D'autre part, on peut fait le même jeu avec la largeur de bande qu'avec la fréquence moyenne. Cela donne :
+	\footnote{\itshape 
+		L'on a même (mais je sais pas quoi en faire) : 
+		\begin{center}
+			$\var[\varrho]{\nu} =  \nicefrac{1}{4\pi^2}\var[\rho]{\ln(a)'} + \nicefrac{1}{4\pi^2} \var[\rho]{\phi'}$
+		\end{center}}
+\begin{equation}\label{eq:bandwidth_cohen}
+	\begin{aligned}
+		\var[\varrho]{\nu} &= \frac{1}{4\pi^2} \int a'(t) dt + \frac{1}{4\pi^2}\left(\int \phi'(t)^2 \rho(t) dt - \left(\int \phi'(t) \rho(t) dt \right)^2 \right) \\
+		&= \frac{1}{4\pi^2}\var[\rho]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\rho]{\phi'}
+	\end{aligned}
+\end{equation}
+\\
+On constate deux composantes (qui par ailleurs sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il n'est donc pas surprenant que le terme restant (là où apparaît $\phi'$ !) porte l'information fréquentielle du signal.
+\\
+
+Afin de clairement expliciter le problème des signaux réels pour l'analyse temps-fréquence, est introduit une dernier outils :
+\\
+
+\begin{definition}[Covariance]\label{def:cova_signal}
+	Étant données deux variables aléatoire $X$ et $Y$, leur covariance, qui mesure une forme de corrélation entre $X$ et $Y$, est donnée par la différence :
+	\[\esp{XY}-\esp{X}\esp{Y}\]
+	Outil qui à tout à fait sa place dans le cadre de l'analyse temps-fréquence. Seulement, les distributions associées au temps et à la fréquence ne sont pas les mêmes et la terme $\esp{XY}$ n'est donc pas défini.
+	Pour y remédier on se repose sur l'interprétation de $\phi'$ : puisque qu'il correspond à une déscrition temporelle de la fréquence, elle est associé à $\rho$. On définie alors la \emph{covariance du signal} $x$ comme le différence :
+	\begin{equation}\label{eq:cov_signal}
+		\text{Cov}(x) \defeq \esp[\rho]{t\phi'(t)} - \esp[\rho]{t} \esp[\varrho]{\nu} = \esp[\rho]{t\phi'(t)} - \esp[\rho]{t} \esp[\rho]{\phi'(t)}
+	\end{equation}
+\end{definition}
+
+
+
+\section{Transformée en signal analytique}
+
+\subsection{Le problème de signaux réels et comment le résoudre}
+
+
+Les outils de mesures ayant la fâcheuses tendance à fournir des données réel, ce sont les signaux réels les plus présent en physique.
+Pourtant, cette propriété rend les outils d'analyse temps-fréquence développés plus haut, si non obsolète, au moins compliqué à interpréter.
+\\
+Pour rappelle, si $x$ est réel alors son spectre est à symétrie hermitienne et sa densité spectrale $\varrho$ symétrique :
+\begin{align*}
+\forall t\in\R,\ x(t)\in\R \quad &\Lr \quad \forall \nu\in\R,\ \hat{x}(-\nu) = \congu{\hat{x}(\nu)} \\
+	&\Lr \quad \forall \nu\in\R,\ \varrho(-\nu) = \varrho(\nu)
+\end{align*}
+\\
+
+Comme dit plutôt, cette symétrie implique que la fréquence moyenne de tout signal réel est nulle (intégrale d'une fonction impaire). Ce qui, en plus de ne pas être très instructif, n'est pas cohérent avec l'interprétation physique qu'on voudrait en faire. Par exemple, si $\varrho$ prend la forme ci-dessous (\cref{fig:densi_spec_sym}), alors il serait plus naturelle de demander à ce que la fréquence moyenne se trouve autour de 1.4. De même, la largeur de bande spectrale ne correspond plus à l'étalement de chaque gaussienne, mais plutôt à l'espace entre les gaussiennes.
+\begin{figure}[h]\centering
+	\includegraphics[width=0.8\textwidth]{fig/densi_spec_sym}
+	\caption{Exemple de densité spectrale d'un signal réel}
+	\label{fig:densi_spec_sym}
+\end{figure}
+
+Même problème avec la covariance du signal : la covariance, qui est sensée mesurer le niveau de corrélation en la fréquence instantanée et le temps, est toujours nulle pour les signaux réels. On ne peut évidemment pas en conclure que la fréquence instantanée de n'importe quel signal réel est complètement décorrélée du temps.
+\\
+
+Ce exemple, pourtant simple, montre bien les problèmes que posent les signaux réels. 
 
 \begin{itemize}
 	
-	\item Déjà, pour un signal classique, $\cos(\nu t+\phi)$, on considère $\phi$ la phase et $\nu$ la fréquence. En version complexe, pour le signal $e^{i(\nu t + \phi)}$, c'est tout $\nu t+\phi$ la phase et la fréquence est donnée par la dérivée de la phase :
-	\[\nu = \frac{d}{dt}(\nu t+\phi)\]
-	
-	\item On peut voir la dérivée de la phase comme la fréquence instantanée parce que intégré du le temps, la donne la fréquence moyenne :
-	\[\esp[\varrho]{\nu} = \int_\R \phi'(t)\rho(t)dt\]
-	
-	\item Le carré de la largeur de bande de $x$ s'écrit :
-	\begin{equation*}\label{eq:bandwidth_cohen}
-		\begin{aligned}
-			B^2  = \var[\varrho]{\nu} &= \int \left( \frac{a'(t)}{a(t)}\right)^2 a^2(t) dt + \int \Big(\phi'(t) - \esp[\varrho]{\nu}\Big) a^2(t) dt \\
-			&= \qquad \esp[\rho]{\left( \frac{a'}{a}\right)^2} \qquad\ \, + \qquad\ \, \esp[\rho]{\phi' - \esp[\varrho]{\nu}} \\
-			&= \qquad\quad {B_{AM}}^2 \qquad\ \ + \qquad\qquad\ {B_{FM}}^2
-		\end{aligned} \qquad\qquad\text{ eq. (1.96) \cite{cohen_time_1995}}
-	\end{equation*}
-	On a séparation nette entre la phase (la fréquence vraiment) et l'amplitude dans la largeur de bande !\\
-	+ ca renforce l'idée que $\phi'$ correspond la fréquence instantanée \\
-	+ pythagore, qu'est-ce qu'il fout là
-\end{itemize}
-\end{enonce}
-
-
-\subsection{Problème de signaux réel}
-
-
-\begin{itemize}
-	\item Le signal $x$ étant réel, son spectre est à symétrie hermitienne. En notant $\hat{x}$ la transformé de Fourier de $x$, on a :
-	\[\forall t\in\R,\ x(t)\in\R \quad \Lr \quad \forall \nu\in\R,\ \hat{x}(-\nu) = \congu{\hat{x}(\nu)}\]
-	
-	\item Redondance d'info + pas physiquement intéressant les fréquences négatives
-	
-	\item Si on veut la fréquence moyenne associé à $x$ (\ie~$\esp[\varrho]{\nu}$), alors nécessairement elle sera nulle (intégrale impair) : pas intéressant + la largeur de bande dit plus rien non plus du coup :/
-	
-	\item La covariance de signaux réel est nulle (pas informatif + on aimerait que ca le soit). Formule de la covariance :
-	\[\text{Cov}(tw) = \int t \phi'(t) \big|x(t)\big|^2 dt - \int t \big|x(t)\big|^2\int \nu \big|\hat{x}(\nu)\big|^2 d\nu\]
-\end{itemize}
-
-\subsection{Signal Analytique}
-
-\begin{itemize}
 	\item les contraintes : 
 	\begin{equation}
 		\Re e\ \big(\mathcal{A}x\big)(t) = x(t)  \qquad\qquad\text{ et } \qquad\qquad  \widehat{\mathcal{A}x}(\nu) = 2\one_{\R^+}(\nu)\hat{x}(\nu)
 	\end{equation} 
-	parce que y'a de la redondances anyway sur $|\hat{x}|$.
+	parce que y'a de la redondances anyway sur $|\hat{x}|$ + pas physiquement intéressant les fréquences négatives
 	
 	\item amène à la transfo de Hilberts (\href{https://les-mathematiques.net/vanilla/discussion/859485/transformee-de-fourier-de-heaviside}{\color{blue}\underline{fourier de Heavyside propre}})
-
+	
+	\item L'amplitude et phase du signal sont pas définies comme les signaux réels, dont ca serait bien que 
+	
 	\item ATTENTION : si on pose $x(t)=\alpha(t)\cos\varphi(t)$, rien n'indique qu'on aura $(\alpha,\varphi) = (a,\phi)$ ! si c'est pas le cas, c'est le décomposition n'était "pas la bonne". C'est bizarre, mais c'est comme ca !
+\end{itemize}
+
+
+
+\subsection{Propriété et interprétation des signaux analytiques}
+
+\begin{itemize}
 		
 	\item un mot sur la fréquence instantané.
 	
@@ -264,7 +351,7 @@ Avec les hypotèses analogues, les moments $\rho$ s'écrivent :
 
 \end{itemize}
 
-\subsection{Cas dans signaux AM-FM}
+
 
 
 \section{Réflexion autour du produit hermitien}
@@ -304,7 +391,7 @@ Cette formule dit que les parties reélles et imaginaires du produit $\langle x,
 Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
 \begin{align*}
 	\langle x+h, x+h \rangle = \langle x, x \rangle + \langle x, h \rangle + \langle h, x \rangle + \langle h, h \rangle 
-	&= \langle x, x \rangle + \langle x, h \rangle  + \overline{\langle x, h \rangle }+ \langle h, h \rangle \\
+	&= \langle x, x \rangle + \langle x, h \rangle  + \congu{\langle x, h \rangle }+ \langle h, h \rangle \\
 	&= \langle x, x \rangle + 2\Re e \langle x, h \rangle + \langle h, h \rangle
 \end{align*}
 Donc si $x\in\C^n$ est fonction d'un paramètre $t$, l'égalité $\ \langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle\ $ du cas réel devient :
@@ -494,7 +581,7 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 	
 	\item Moment angulaire (viteuf) $\forall z\in\C$ :
 	\begin{equation}\label{eq:mom_angu}
-		M(t) = \Re e \big(iz\overline{z}'\big) = -\Im m z\overline{z}'  \qquad\qquad \text{thoughts ?}
+		M(t) = \Re e \big(iz\congu{z}'\big) = -\Im m z\congu{z}'  \qquad\qquad \text{thoughts ?}
 	\end{equation}
 	
 \end{itemize}
