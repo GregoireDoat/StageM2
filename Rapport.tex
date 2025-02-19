@@ -139,12 +139,14 @@ Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complex
 \end{align*}
 \\
 
-\begin{definition}[Densités d'énergie]\label{def:densite_dE}
+\begin{definition}[Densités d'énergie]\label{def:densi_dE}
 	Étant donnée un signal complexe $x$, la \emph{densité d'énergie} $\rho$ de $x$ est donnée par le carré de son module. De même on définit $\varrho$ la \emph{densité d'énergie spectrale} :
-	\begin{align*}
-		\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  &
-		\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\hat{x}(t)\big|^2 \end{aligned}
-	\end{align*}
+	\begin{equation}\label{eq:densi_dE}
+		\begin{aligned}
+			\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  &
+			\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\hat{x}(t)\big|^2 \end{aligned}
+		\end{aligned}
+	\end{equation}
 	\\
 	La valeur $\rho(t)$ correspond à la puissance déployée pour émettre le signal à l'instant $t$ et $\varrho(\nu)$ à l'énergie associée à la fréquence $\nu$ sur tout le signal. 
 	\\
@@ -185,7 +187,7 @@ Du point de vu temporel, le signal est émis avec une puissance régulière, mai
 Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} suivantes seront nécessaire :
 \\
 
-\begin{proposition}[Calculation trick de \cite{cohen_time_1995}] \label{prop:integ_trick}
+\begin{proposition}[``Calculation tricks'' de \cite{cohen_time_1995}] \label{prop:integ_trick}
 	Si le signal est $n$ fois dérivable et que la densité d’énergie associée $\varrho$ admet un moment d'ordre $n$, alors il est donnée par la formule :
 	\begin{equation}\label{eq:moment_f}
 		\forall n\in\N,\qquad \esp[\varrho]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \congu{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
@@ -211,7 +213,7 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 			&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
 		\end{align*}
 		
-		Ce qui permet, en jouant sur les ordres d'intégrations, d'obtenir :
+		Ce qui permet, en jouant sur les ordres d'intégrations et les propriétés du Dirac, d'obtenir :
 		\begin{align*}
 			\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
 			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
@@ -220,6 +222,18 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 			&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
 			&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
 			&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
+		\end{align*}
+		... a moins que :
+		\begin{align*}
+			\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
+			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+			&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+			&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big(1\big)(t-t') dt\, dt' \\
+			&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
+			&= \frac{1}{(-2 i\pi)^n} \int_\R \congu{x(t')} \int_\R x(t) \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
+			&= \frac{1}{(2 i\pi)^n} \int_\R \congu{x(t')}(-1)^n\int_\R \frac{d^n}{dt^n}x(t) \delta(t-t') dt\, dt' \\
+			&= \left(\frac{-1}{-2i \pi}\right)^n \int_\R \frac{d^n}{dt'^n}x(t') \congu{x(t')}  dt' \\
+			&= \frac{1}{(2 i\pi)^n}  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
 		\end{align*}
 	\end{demo}
 \end{proposition}
@@ -288,13 +302,14 @@ Afin de clairement expliciter le problème des signaux réels pour l'analyse tem
 \begin{definition}[Covariance]\label{def:cova_signal}
 	Étant données deux variables aléatoire $X$ et $Y$, leur covariance, qui mesure une forme de corrélation entre $X$ et $Y$, est donnée par la différence :
 	\[\esp{XY}-\esp{X}\esp{Y}\]
-	Outil qui à tout à fait sa place dans le cadre de l'analyse temps-fréquence. Seulement, les distributions associées au temps et à la fréquence ne sont pas les mêmes et la terme $\esp{XY}$ n'est donc pas défini.
-	Pour y remédier on se repose sur l'interprétation de $\phi'$ : puisque qu'il correspond à une déscrition temporelle de la fréquence, elle est associé à $\rho$. On définie alors la \emph{covariance du signal} $x$ comme le différence :
+	Outil qui à tout a fait sa place dans le cadre de l'analyse temps-fréquence. Seulement, les distributions associées au temps et à la fréquence ne sont pas les mêmes et le terme $\esp{XY}$ n'est donc pas défini.
+	Pour y remédier on se repose sur l'interprétation de $\phi'$ : puisque qu'il correspond à une déscrition temporelle de la fréquence, elle est associée à $\rho$. On définie alors la \emph{covariance du signal} $x$ comme le différence :
 	\begin{equation}\label{eq:cov_signal}
 		\text{Cov}(x) \defeq \esp[\rho]{t\phi'(t)} - \esp[\rho]{t} \esp[\varrho]{\nu} = \esp[\rho]{t\phi'(t)} - \esp[\rho]{t} \esp[\rho]{\phi'(t)}
 	\end{equation}
 \end{definition}
 
+Les concepts de base de l'analyse temps-fréquence étant posé, voyons à présent les problèmes que posent les signaux réels.
 
 
 \section{Transformée en signal analytique}
@@ -302,52 +317,126 @@ Afin de clairement expliciter le problème des signaux réels pour l'analyse tem
 \subsection{Le problème de signaux réels et comment le résoudre}
 
 
-Les outils de mesures ayant la fâcheuses tendance à fournir des données réel, ce sont les signaux réels les plus présent en physique.
+Les outils de mesures ayant la fâcheuses tendance à fournir des données réelles, ce sont les signaux réels les plus présent en physique.
 Pourtant, cette propriété rend les outils d'analyse temps-fréquence développés plus haut, si non obsolète, au moins compliqué à interpréter.
 \\
-Pour rappelle, si $x$ est réel alors son spectre est à symétrie hermitienne et sa densité spectrale $\varrho$ symétrique :
+Tout vient du fait que si $x$ est réel alors son spectre est à symétrie hermitienne et sa densité spectrale $\varrho$ symétrique :
 \begin{align*}
 \forall t\in\R,\ x(t)\in\R \quad &\Lr \quad \forall \nu\in\R,\ \hat{x}(-\nu) = \congu{\hat{x}(\nu)} \\
 	&\Lr \quad \forall \nu\in\R,\ \varrho(-\nu) = \varrho(\nu)
 \end{align*}
 \\
 
-Comme dit plutôt, cette symétrie implique que la fréquence moyenne de tout signal réel est nulle (intégrale d'une fonction impaire). Ce qui, en plus de ne pas être très instructif, n'est pas cohérent avec l'interprétation physique qu'on voudrait en faire. Par exemple, si $\varrho$ prend la forme ci-dessous (\cref{fig:densi_spec_sym}), alors il serait plus naturelle de demander à ce que la fréquence moyenne se trouve autour de 1.4. De même, la largeur de bande spectrale ne correspond plus à l'étalement de chaque gaussienne, mais plutôt à l'espace entre les gaussiennes.
+Comme dit plus tôt, cela implique que la fréquence moyenne de tout signal réel est nulle (intégrale d'une fonction impaire). Ce qui, en plus de ne pas être très instructif, n'est pas cohérent avec l'interprétation physique qu'on voudrait faire cette moyenne. Par exemple, si $\varrho$ prend la forme ci-dessous (\cref{fig:densi_spec_sym}), alors il serait plus naturelle de demander à ce que la fréquence moyenne se trouve autour de 1,4. De même, la largeur de bande spectrale ne correspond plus à l'étalement de chaque gaussienne, mais plutôt à leur espacement.
+\\
 \begin{figure}[h]\centering
-	\includegraphics[width=0.8\textwidth]{fig/densi_spec_sym}
-	\caption{Exemple de densité spectrale d'un signal réel}
+	\includegraphics[width=0.9\textwidth]{fig/densi_spec_sym}
+	\caption{Exemple de densité spectrale d'un signal réel ESP A 1,4}
 	\label{fig:densi_spec_sym}
 \end{figure}
-
-Même problème avec la covariance du signal : la covariance, qui est sensée mesurer le niveau de corrélation en la fréquence instantanée et le temps, est toujours nulle pour les signaux réels. On ne peut évidemment pas en conclure que la fréquence instantanée de n'importe quel signal réel est complètement décorrélée du temps.
+\\
+Même problème avec la covariance qui sera toujours nulle pour les signaux réels. De là en conclure que la fréquence instantanée de n'importe quel signal réel est toujours décorrélée du temps serait, pour le moins, insatisfaisant.
 \\
 
-Ce exemple, pourtant simple, montre bien les problèmes que posent les signaux réels. 
+Pour résoudre les problèmes lié à la fréquence moyenne et la largeur de bande, il suffirait de ne conserver que la partie positive du signal. On s'intéresserait alors au signal transformée $\mathcal{A}[x]$ tel que :
+\[\mathcal{F}\big(\mathcal{A}[x]\big) = 2\one_{\R^+}\hat{x}\]
+où $\one_E$ est la fonction indicatrice de l'ensemble $E$ et où le facteur 2 permet de conserver l'énergie du signal.
+Avec la transformée de Fourier inverse, ce nouveau signal s'écrit alors :
+\[\mathcal{A}[x] = \mathcal{F}^{-1}\big( 2\one_{\R^+}\hat{x} \big) = 2 \mathcal{F}^{-1}\big(\one_{\R^+}\big) * x\]
+Cette indicatrice (qui n'est autre que la fonction de Heavyside) n'est pas définie au sens classique, mais l'est au sens des distributions. Pour l'écrire, on introduit la distribution suivante :
+\\
 
-\begin{itemize}
-	
-	\item les contraintes : 
+\begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
+	On appelle \emph{valeur principale de Cauchy} la distribution notée vp$\frac{1}{x}$ et définie par le crochet de dualité :
 	\begin{equation}
-		\Re e\ \big(\mathcal{A}x\big)(t) = x(t)  \qquad\qquad\text{ et } \qquad\qquad  \widehat{\mathcal{A}x}(\nu) = 2\one_{\R^+}(\nu)\hat{x}(\nu)
-	\end{equation} 
-	parce que y'a de la redondances anyway sur $|\hat{x}|$ + pas physiquement intéressant les fréquences négatives
+		\forall \varphi\in\mathcal{S}(\R),\ \left\langle \text{vp}\frac{1}{x}, \varphi \right\rangle = \fint_0^t \frac{\varphi(t)}{t}dt := \lim_{\varepsilon\lr0^+} \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t}dt + \int_{+\varepsilon}^{+\infty} \frac{\varphi(t)}{t}dt
+	\end{equation}
+	Ici $\mathcal{S}(\R)$ est l’espace de Schwartz des fonctions $C^\infty$ à décroissance rapide et la limite en $\varepsilon$ assure que l'intégrale (impropre) converge bien. Sa valeur est également appelée \emph{valeur principale} de l'intégrale. 
+\end{definition}
+
+La distribution vp$\frac{1}{x}$ est appelé valeur principale dans le sens où elle conserve les propriété de la fonction inverse , dans le sens où sont produit avec l'identité donne 1 $\big(\left\langle id_\R \times \text{vp}\frac{1}{x}, \varphi \right\rangle = \left\langle \text{vp}\frac{1}{x}, id_\R \times\varphi \right\rangle=1\big)$ mais avec des propriétés d'intégration supplémentaires. Entre autre :
+\\
+
+\begin{propriete}\label{prop:fou2vp}
+	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, s'écrit avec la fonction signe :
+	\begin{equation}
+		\mathcal{F} \left(\text{vp} \frac{1}{x} \right)= -i \pi\, \sign{} 
+	\end{equation}
+	On en déduit la transformée de Fourier inverse :
+	\begin{equation}
+	\mathcal{F}^{-1}\big( 2\one_{\R^+} \big) = \mathcal{F}^{-1}\big( 1 + \sign \big) = \delta + \frac{i}{\pi} \text{vp}\frac{1}{x}
+	\end{equation}
 	
-	\item amène à la transfo de Hilberts (\href{https://les-mathematiques.net/vanilla/discussion/859485/transformee-de-fourier-de-heaviside}{\color{blue}\underline{fourier de Heavyside propre}})
-	
-	\item L'amplitude et phase du signal sont pas définies comme les signaux réels, dont ca serait bien que 
-	
-	\item ATTENTION : si on pose $x(t)=\alpha(t)\cos\varphi(t)$, rien n'indique qu'on aura $(\alpha,\varphi) = (a,\phi)$ ! si c'est pas le cas, c'est le décomposition n'était "pas la bonne". C'est bizarre, mais c'est comme ca !
-\end{itemize}
+	\begin{demo}
+		juste pour le plaisir. Par définition, la transformée de Fourier de la valeur principale est telle que,\\ $\forall \varphi\in\mathcal{S}(\R)$ :
+		\begin{align*}
+		\left\langle \mathcal{F} \left(\text{vp} \frac{1}{x} \right), \varphi \right\rangle = \left\langle \text{vp} \frac{1}{x}, \hat{\varphi} \right\rangle 
+		&= \fint_\R \frac{\hat{\varphi}(\nu)}{\nu} d\nu \\
+			&= \int_0^{+\infty} \frac{\hat{\varphi}(\nu) - \hat{\varphi}(-\nu)}{\nu} d\nu \\
+			&= \int_0^{+\infty} \frac{1}{\nu} \left( \int_\R\varphi(t)e^{-2i\pi \nu t}dt - \int_\R\varphi(t)e^{2i\pi \nu t}dt \right)d\nu \\
+			&= \int_0^{+\infty} \frac{1}{\nu}\int_\R\varphi(t)\big(e^{-2i\pi \nu t} - e^{2i\pi \nu t}\big)dt\, d\nu \\
+			&= \int_0^{+\infty} \frac{1}{\nu}\int_\R-2i\varphi(t)\sin(2\pi \nu t)dt\, d\nu \\
+			&= -2i\int_\R\varphi(t)\int_0^{+\infty} \frac{\sin(2\pi \nu t)}{\nu}d\nu\, dt
+		\end{align*}
+		En posant $u=2\pi\nu t\sign(t)$ (le signe de $t$ assure que l'on ait le même signe dans et hors du sin), on obtient :
+		\begin{align*}
+		\left\langle \mathcal{F} \left(\text{vp} \frac{1}{x} \right), \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
+		&= -2i\int_\R\varphi(t)\frac{\pi}{2}\sign(t), dt \\
+		&= \big\langle -i\pi\sign, \varphi \big\rangle
+		\end{align*}
+	\end{demo}
+\end{propriete}
+
+\begin{definition}[transformée en SA et de Hilbet]
+	On définie alors la \emph{transformée en signal analytique} (SA) du tout signal $x$ par l'application :
+	\begin{equation}\label{eq:transfo_SA}
+		\mathcal{A}[x] \defeq 2 x*\mathcal{F}^{-1}\big(\one_{\R^+}\big) :\ \begin{aligned} 
+			\R \quad &\lr\qquad\quad \C \\	
+			t\quad &\longmapsto\ x(t) + \frac{i}{\pi}\fint_\R \frac{x(s)}{t-s}ds
+		\end{aligned}
+	\end{equation}
+	Par construction, on a bien $\mathcal{F}\big(\mathcal{A}[x]\big) = 2\one_{\R^+}\hat{x}$, est on dit plus généralement de tout signal vérifiant cette propriété que c'est un \emph{signal analytique}.
+	\\
+	L'intégral à droite est appelle \emph{transformée de Hilbert} du signal. Elle est notée :
+	\begin{equation}\label{eq:transfo_Hilb}
+		\mathcal{H}[x] :\ \begin{aligned} 
+			\R \quad &\lr\qquad\quad \C \\	
+			t\quad &\longmapsto\ \frac{1}{\pi}\fint_\R \frac{x(s)}{t-s}ds =  \frac{1}{\pi}\left(\text{vp}\frac{1}{x}\right)*x
+		\end{aligned}
+	\end{equation}
+\end{definition}
+
+Par souci de commodité, plutôt que redéfinir tout le vocabulaire développé plus haut (fréquence/temps moyen, \etc) pour les signaux réel via la transformation $\mathcal{A}$, dans la suite du mémoire on travaillera directement avec $\mathcal{A}[x]$ (et on verra que c'est essentiel).
+
 
 
 
 \subsection{Propriété et interprétation des signaux analytiques}
 
+
+Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $\R$. Aussi, la transformée $\mathcal{A}[x]$ à pour partie réelle $x$ et pour partie imaginaire $\mathcal{H}[x]$. Sous forme exponentielle, on a encore :
+\[\mathcal{A}[x](t) = a(t)e^{i\phi(t)}\quad \Lr\quad \left\{\begin{aligned}x(t) &= a(t) \cos\phi(t) \\\mathcal{H}[x](t) &= a(t) \sin\phi(t)
+\end{aligned}\right.\]
+\\
+
+\begin{definition}[Amplitude et phase]\label{def:ampli&phase_cano}
+	On obtient alors on décomposition de $x$ en une paire $(a,\phi)$ telle que discuté plus haut. On définie ainsi l'\emph{amplitude} et la \emph{phase}  dite \emph{canonique} --- bien que le terme ne soit pas complètement approprié --- du signal $x$ comme étant respectivement l'amplitude et la phase de $\mathcal{A}[x]$ :
+	\begin{align}\label{eq:ampli&phase_cano}
+		a_x &= \big|\mathcal{A}[x]\big|   &   \phi_x &= \arg\big(\mathcal{A}[x]\big)
+	\end{align}
+\end{definition}
+
+
+
 \begin{itemize}
-		
-	\item un mot sur la fréquence instantané.
 	
-	\item (lien avec la transformée en ondelette et pourquoi on fait pas de ça ?)
+	\item Il est important de noter que si un signal s'écrit sous la forme  $x=a\cos\phi$, rien n'implique $(a,\phi)=(a_x,\phi_x)$. Si ce n'est pas le cas, c'est que la première décomposition n'est ``pas la bonne''
+	
+	\item Exemple pour dire que les hautes fréquences partes dans la phase
+	
+	\item théorème de Bedrosian \cite{venouziou_characterizing_2008}
+	
+	\item cas AM-FM
 
 \end{itemize}
 
@@ -433,8 +522,24 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 
 \section{Description des signaux multivariés}\label{sec:bases}
 
+
+
+
 \subsection{Version Lilly \cite{lilly_bivariate_2010, lilly_analysis_2012}}
 
+\begin{itemize}
+	\item On veut écrire $\bf{x}$ sous la forme :
+	\[x(t) = e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\phi_1(t)} \\ a_2(t)e^{i\phi_2(t)} \\ \vdots \\ a_n(t)e^{i\phi_n(t)}
+	\end{pmatrix}\]
+	
+	\item Lilly explique comment obtenir $\phi$ dans le cas général (faut revoir ça parce que meh quand-même)
+	
+	\item Sauf que ce $\phi$ c'est lié à la phase dynamique est pas du tout à polarisation du signal. Pourtant c'est dans la polar qu'on a la phase géo.
+	
+	\item Quoi qu'il en soit, les cas dim 2 et 3 c'est fait \cite{lilly_wavelet_2006, lilly_bivariate_2010, lefevre_polarization_nodate}
+\end{itemize}
+
+\subsection{Cas bivarié et trivarié}
 On a un signal bivarié $\bf{x}(t) = \big(x(t),y(t)\big)$ qu'on transforme (voir \cref{subsec:SA_Hilb}) soit la forme :
 \[z_x(t) = \begin{pmatrix}x_+(t) \\ y_+(t)\end{pmatrix} = \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^{i\phi_y(t)}\end{pmatrix}\in\C^2\]
 \\

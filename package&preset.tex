@@ -14,7 +14,9 @@
 % mathsymbole
 \usepackage{amsmath, amssymb,stmaryrd}
 \usepackage{wasysym}[mathcal] % a quoi sert le [mathcal] ?
+\usepackage[nointlimits]{esint} % pour \fint, rien d'autre
 \usepackage{nicefrac, units} % fraction pour text mode / unité
+%\usepackage{cancel} % pour les simplifications de calcul (trop nice)
 
 % TBD
 \usepackage{mathcomp}
@@ -124,7 +126,6 @@
 % spé proba
 \newcommand{\esp}[2][]{\mathbb{E}_{#1}\left[\, #2\, \right]}
 \newcommand{\var}[2][]{\mathbb{V}_{#1}\left[\, #2\, \right]}
-%\newcommand{\Var}{\mathbb{V}}%\text{ar}}
 
 % plus jolie
 \renewcommand{\O}{\varnothing}
@@ -140,6 +141,7 @@
 \renewcommand{\bf}[1]{\boldsymbol{#1}}
 \renewcommand{\AC}{\sim}
 \newcommand{\para}{\sslash}
+\newcommand{\barint}[2][]{\text{\sout{\ensuremath{\displaystyle \int_{#2}}}}^{#1}}
 
 
 
