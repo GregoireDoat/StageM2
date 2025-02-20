@@ -270,7 +270,7 @@ Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularit�
 \end{proposition}
 
 \begin{definition}
-	La dérivée $\phi'$ est appelé \emph{fréquence instantanée} du signal $x$. Le terme est justifié par l'\cref{eq:esp_freq} précédente : C'est la fonction dont la moyenne en temps correspond à la fréquence moyenne de $x$.
+	La dérivée $\phi'$ est appelé \emph{fréquence instantanée} du signal $x$. Le terme est justifié par l'\cref{eq:esp_freq} précédente : C'est une fonction dont la moyenne en temps correspond à la fréquence moyenne de $x$.
 \end{definition}
 
 Pour mieux de convaincre du bien fondé de cette interprétation, deux choses.
@@ -286,12 +286,10 @@ D'autre part, on peut fait le même jeu avec la largeur de bande qu'avec la fré
 		\begin{center}
 			$\var[\varrho]{\nu} =  \nicefrac{1}{4\pi^2}\var[\rho]{\ln(a)'} + \nicefrac{1}{4\pi^2} \var[\rho]{\phi'}$
 		\end{center}}
-\begin{equation}\label{eq:bandwidth_cohen}
-	\begin{aligned}
-		\var[\varrho]{\nu} &= \frac{1}{4\pi^2} \int a'(t) dt + \frac{1}{4\pi^2}\left(\int \phi'(t)^2 \rho(t) dt - \left(\int \phi'(t) \rho(t) dt \right)^2 \right) \\
-		&= \frac{1}{4\pi^2}\var[\rho]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\rho]{\phi'}
-	\end{aligned}
-\end{equation}
+\begin{align*}
+	\var[\varrho]{\nu} &= \frac{1}{4\pi^2} \int a'(t) dt + \frac{1}{4\pi^2}\left(\int \phi'(t)^2 \rho(t) dt - \left(\int \phi'(t) \rho(t) dt \right)^2 \right) \\
+	&= \frac{1}{4\pi^2}\var[\rho]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\rho]{\phi'}
+\end{align*}
 \\
 On constate deux composantes (qui par ailleurs sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il n'est donc pas surprenant que le terme restant (là où apparaît $\phi'$ !) porte l'information fréquentielle du signal.
 \\
@@ -358,7 +356,7 @@ La distribution vp$\frac{1}{x}$ est appelé valeur principale dans le sens où e
 \\
 
 \begin{propriete}\label{prop:fou2vp}
-	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, s'écrit avec la fonction signe :
+	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, par l'égalité :
 	\begin{equation}
 		\mathcal{F} \left(\text{vp} \frac{1}{x} \right)= -i \pi\, \sign{} 
 	\end{equation}
@@ -395,9 +393,9 @@ La distribution vp$\frac{1}{x}$ est appelé valeur principale dans le sens où e
 			t\quad &\longmapsto\ x(t) + \frac{i}{\pi}\fint_\R \frac{x(s)}{t-s}ds
 		\end{aligned}
 	\end{equation}
-	Par construction, on a bien $\mathcal{F}\big(\mathcal{A}[x]\big) = 2\one_{\R^+}\hat{x}$, est on dit plus généralement de tout signal vérifiant cette propriété que c'est un \emph{signal analytique}.
+	Par construction, on a bien $\mathcal{F}\big(\mathcal{A}[x]\big) = 2\one_{\R^+}\hat{x}$, est on dit plus généralement de tout signal dont le spectre est réel positif que c'est un \emph{signal analytique}.
 	\\
-	L'intégral à droite est appelle \emph{transformée de Hilbert} du signal. Elle est notée :
+	L'intégral à droite de \eqref{eq:transfo_SA} est appelle \emph{transformée de Hilbert} du signal. Elle est notée :
 	\begin{equation}\label{eq:transfo_Hilb}
 		\mathcal{H}[x] :\ \begin{aligned} 
 			\R \quad &\lr\qquad\quad \C \\	
@@ -414,13 +412,13 @@ Par souci de commodité, plutôt que redéfinir tout le vocabulaire développé 
 \subsection{Propriété et interprétation des signaux analytiques}
 
 
-Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $\R$. Aussi, la transformée $\mathcal{A}[x]$ à pour partie réelle $x$ et pour partie imaginaire $\mathcal{H}[x]$. Sous forme exponentielle, on a encore :
+Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $\R$. Aussi, la transformée $\mathcal{A}[x]$ à pour partie réelle $x$ et pour partie imaginaire $\mathcal{H}[x]$. Sous forme exponentielle, cela donne :
 \[\mathcal{A}[x](t) = a(t)e^{i\phi(t)}\quad \Lr\quad \left\{\begin{aligned}x(t) &= a(t) \cos\phi(t) \\\mathcal{H}[x](t) &= a(t) \sin\phi(t)
 \end{aligned}\right.\]
 \\
 
 \begin{definition}[Amplitude et phase]\label{def:ampli&phase_cano}
-	On obtient alors on décomposition de $x$ en une paire $(a,\phi)$ telle que discuté plus haut. On définie ainsi l'\emph{amplitude} et la \emph{phase}  dite \emph{canonique} --- bien que le terme ne soit pas complètement approprié --- du signal $x$ comme étant respectivement l'amplitude et la phase de $\mathcal{A}[x]$ :
+	On obtient alors on décomposition de $x$ en une paire $(a,\phi)$ telle que discuté plus haut. On définie ainsi l'\emph{amplitude} $a_x$ et la \emph{phase} $\phi_x$ dite \emph{canonique} --- bien que le terme ne soit vraiment approprié --- du signal $x$ comme étant respectivement l'amplitude et la phase de $\mathcal{A}[x]$ :
 	\begin{align}\label{eq:ampli&phase_cano}
 		a_x &= \big|\mathcal{A}[x]\big|   &   \phi_x &= \arg\big(\mathcal{A}[x]\big)
 	\end{align}
@@ -461,11 +459,16 @@ On a deux façon d'écrire le produit hermitien (canonique) de $X$ avec $Y$ :
 	&= \Big\langle X,Y\Big\rangle 
 	+ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle\\
 	&= \Big\langle X,Y\Big\rangle 
-	+ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}Y\right\rangle
+	- i\left\langle X,\begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix}Y\right\rangle
 \end{align*}
 \\
 Cette formule peut s’interpréter en disant que le produit hermitien encode le produit scalaire entre $X$ et $Y$ et le produit scalaire de $X$ avec les vecteurs $y^j=(y^j_1, y^j_2)$  auquel on aurait applique une rotation de $90^\circ$ (rotation qui, par ailleurs, correspond à la multiplication par $i$ dans le plan complexe). Moralement, $\langle x,y \rangle =0$ demande une orthogonalité de $X$ à un plan, ce qui fait sens puisque cela tient compte du fait que les $x^j, y^j$ sont complexes (donc de dimension 2 en tant que $\R-$e.v.).
 \\
+Pour les connaisseurs, on retrouve l'égalité ``produit hermitien $=$ produit scalaire $-i$ forme symplectique'' !!
+Voir
+\href{https://fr.wikipedia.org/wiki/Espace_projectif#Espace_projectif_complexe}{plan proj complexe} et \href{https://fr.wikipedia.org/wiki/Vari%C3%A9t%C3%A9_k%C3%A4hl%C3%A9rienne}{variété kählérienne }
+\\
+
 On a aussi l'écriture (quand-même moins clair) :
 \begin{align*}
 	\langle x,y \rangle &= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
@@ -567,7 +570,7 @@ et on en déduit :
 \begin{align*}
 	A &= \sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}  &  \begin{aligned} \cos\chi &= \frac{a_+ + a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}  \\  \sin\chi &= \frac{a_+ - a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}	\end{aligned}
 \end{align*}
-Ce qui donne \infine :
+Ce qui donne \infine (super osef) :
 \[\begin{pmatrix}x_+ \\ y_+\end{pmatrix} = e^{i\frac{\phi_+ + \phi_-}{2}} R_{\frac{\phi_+ - \phi_-}{2}} \begin{pmatrix}a_+ + a_- \\ -i(a_+ - a_-)\end{pmatrix}\]
 \\
 
@@ -595,10 +598,10 @@ Dans le cas $n=2$, on parle de signal \emph{bivarié}.
 \end{definition}
 
 \begin{enonce}[PVD Optimisation]
-	Lilly \cite[p. 602/3]{lilly_analysis_2012} obtient la phase instentanée en minimisant l'erreur d'approximation :
-	\[v^2(t,\omega(t)) = \frac{\|\Tilde{x}(t,\omega(t))\|^2}{\|x(t,\omega(t))\|^2}\]
+	Lilly \cite[p. 602/3]{lilly_analysis_2012} obtient la phase instentanée en minimisant l'erreur d'ordre 1 :
+	\[\min_{\omega}\|\Tilde{x}(t,\omega)\|^2\]
 	Ce qui lui donne :
-	\[\omega(t) = \phi(t)/\tau = \Im m\langle \overline{x}, x'\rangle\]
+	\[\omega_x(t) = \phi(t)/\tau = -\frac{\Im m\langle x, x'\rangle}{\|x\|^2}\]
 	
 	QUESTION : est-ce qu'on peut tout avoir en minimisant la bonne quantité ? (oui, principe de moindre action frr)
 \end{enonce}
