@@ -529,7 +529,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 
 \begin{itemize}
 	\item On veut écrire $\bf{x}$ sous la forme :
-	\[x(t) = e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\phi_1(t)} \\ a_2(t)e^{i\phi_2(t)} \\ \vdots \\ a_n(t)e^{i\phi_n(t)}
+	\[\bf{x}(t) = a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\phi_1(t)} \\ a_2(t)e^{i\phi_2(t)} \\ \vdots \\ a_n(t)e^{i\phi_n(t)}
 	\end{pmatrix}\]
 	
 	\item Lilly explique comment obtenir $\phi$ dans le cas général (faut revoir ça parce que meh quand-même)
@@ -589,10 +589,19 @@ Ce qui ramène à se demander comment généraliser $U$ à $\SU(n)$. Le problèm
 
 
 \begin{definition}[Signal multivarié] \label{def:signal_multivar}
-Un \emph{signal multivarié}, ou \emph{$n-$varié}, signal à valeur dans $\C^n$. Formellement, c'est une fonction de carré intégrale à valeur de $\R$ dans $\C^n$, et l'ensemble de tel signaux seront noté $L^2\big(\R,\C^n\big)$.
+Un \emph{signal multivarié}, ou \emph{$n-$varié}, est un signal à valeur dans $\C^n$. Formellement, c'est une fonction de carré intégrable (or is it ?) à valeur de $\R$ dans $\C^n$, et l'ensemble de tel signaux seront noté $L^2\big(\R,\C^n\big)$.
 \\
 Dans le cas $n=2$, on parle de signal \emph{bivarié}.
 \end{definition}
+
+\begin{enonce}[PVD Optimisation]
+	Lilly \cite[p. 602/3]{lilly_analysis_2012} obtient la phase instentanée en minimisant l'erreur d'approximation :
+	\[v^2(t,\omega(t)) = \frac{\|\Tilde{x}(t,\omega(t))\|^2}{\|x(t,\omega(t))\|^2}\]
+	Ce qui lui donne :
+	\[\omega(t) = \phi(t)/\tau = \Im m\langle \overline{x}, x'\rangle\]
+	
+	QUESTION : est-ce qu'on peut tout avoir en minimisant la bonne quantité ? (oui, principe de moindre action frr)
+\end{enonce}
 
 \begin{proposition}\label{prop:quatern}
 Les signaux bivariés se décrivent très simplement à l'aide des quaternions. En considérant $\{1, \bf{i},\bf{j},\bf{k}\}$ la base canonique des quaternions $\mathbb{H}$, on peut voir $\psi$ comme étant à valeur dans ${\C_{\bf{j}}}^n$ ($\C_{\bf{j}} :=\R\times \bf{j}\R$), de sorte que :
