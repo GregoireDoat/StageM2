@@ -67,7 +67,7 @@ Des questions :
 	
 	\item En quoi la phase géométrique est une phase ? lien avec Fourier ?
 	
-	\item Lien entre phase et polarisation : différences, intérêts ? C'est une phase dans la polar IMO
+	\item Lien entre phase et polarisation : différences, intérêts ? La phase géo c'est une phase dans la polar IMO (oui oui, on y vient)
 	
 	\item La param $(a,\chi,\theta,\varphi)$ elle dit quoi vraiment ? (sûrement simple à généraliser btw) + $(\chi,\theta)$ est pas en bijection avec la sphère (surement osef par contre)
 	
@@ -83,10 +83,7 @@ Note de rédac :
 \end{itemize}
 
 
-\part{Transformation en Signal Analytique}
-
-
-
+\part{Analyse temps-fréquence}
 
 \begin{enonce}[Intro de la \cref{sec:temp-freq}]
 	\textit{Malgré ce que l'énoncé de la problématique laisse entendre, dans toute la suite nous travaillerons avec des signaux à valeur de $\R$ dans $\C^n$ plutôt que $\R^n$. Il y a de très bonne raison à la transformation des signaux réels en complexes et c'est sera l'objet de cette première  \namecref{sec:temp-freq}.}\\
@@ -131,10 +128,10 @@ Dans ce cas on aurait bien unicité de $a$ et $\phi$ par rapport à $z_x$ (son a
 
 \subsection{Distribution de l'énergie en temps et fréquence}\label{subsec:distrib_temp-freq}
 
-Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complexe et on notera $\hat{x}$ ou $\mathcal{F}(x)$ sa transformée de Fourier (dont on supposera quelle existe, ici on supposera au moins $x\in L^2(\R, \C)$) :
+Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complexe et on notera $\hat{x}$ ou $\mathcal{F}[x]$ sa transformée de Fourier (dont on supposera quelle existe, ici on supposera au moins $x\in L^2(\R, \C)$) :
 \begin{align*}
 	x\ &:\quad \begin{aligned}\R\ &\lr\quad \C \\ x\ &\longmapsto\ x(t)
-	\end{aligned}  &  \mathcal{F}(x)=\hat{x}\ &:\quad \begin{aligned}\R\ &\lr\qquad\quad \C \\ \nu\ &\longmapsto\ \int_\R x(t)e^{-2\pi i \nu t}dt
+	\end{aligned}  &  \mathcal{F}[x]=\hat{x}\ &:\quad \begin{aligned}\R\ &\lr\qquad\quad \C \\ \nu\ &\longmapsto\ \int_\R x(t)e^{-2\pi i \nu t}dt
 	\end{aligned}
 \end{align*}
 \\
@@ -218,7 +215,7 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 			\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
 			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
 			&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-			&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big(1\big)(t-t') dt\, dt' \\
+			&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
 			&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
 			&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
 			&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
@@ -228,7 +225,7 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 			\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
 			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
 			&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-			&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big(1\big)(t-t') dt\, dt' \\
+			&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
 			&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
 			&= \frac{1}{(-2 i\pi)^n} \int_\R \congu{x(t')} \int_\R x(t) \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
 			&= \frac{1}{(2 i\pi)^n} \int_\R \congu{x(t')}(-1)^n\int_\R \frac{d^n}{dt^n}x(t) \delta(t-t') dt\, dt' \\
@@ -312,7 +309,7 @@ Les concepts de base de l'analyse temps-fréquence étant posé, voyons à prés
 
 \section{Transformée en signal analytique}
 
-\subsection{Le problème de signaux réels et comment le résoudre}
+\subsection{Le problème de signaux réels et comment le résoudre}\label{subsec:transfo_SA}
 
 
 Les outils de mesures ayant la fâcheuses tendance à fournir des données réelles, ce sont les signaux réels les plus présent en physique.
@@ -337,11 +334,11 @@ Même problème avec la covariance qui sera toujours nulle pour les signaux rée
 \\
 
 Pour résoudre les problèmes lié à la fréquence moyenne et la largeur de bande, il suffirait de ne conserver que la partie positive du signal. On s'intéresserait alors au signal transformée $\mathcal{A}[x]$ tel que :
-\[\mathcal{F}\big(\mathcal{A}[x]\big) = 2\one_{\R^+}\hat{x}\]
+\[\mathcal{F}\big[\mathcal{A}[x]\big] = 2\one_{\R^+}\hat{x}\]
 où $\one_E$ est la fonction indicatrice de l'ensemble $E$ et où le facteur 2 permet de conserver l'énergie du signal.
 Avec la transformée de Fourier inverse, ce nouveau signal s'écrit alors :
-\[\mathcal{A}[x] = \mathcal{F}^{-1}\big( 2\one_{\R^+}\hat{x} \big) = 2 \mathcal{F}^{-1}\big(\one_{\R^+}\big) * x\]
-Cette indicatrice (qui n'est autre que la fonction de Heavyside) n'est pas définie au sens classique, mais l'est au sens des distributions. Pour l'écrire, on introduit la distribution suivante :
+\[\mathcal{A}[x] = \mathcal{F}^{-1}\big[ 2\one_{\R^+}\hat{x} \big] = 2 \mathcal{F}^{-1}\big[\one_{\R^+}\big] * x\]
+La transformée inverse de cette indicatrice (qui n'est autre que la fonction de Heavyside) n'est pas définie au sens classique, mais l'est au sens des distributions. Pour l'écrire, on introduit la distribution suivante :
 \\
 
 \begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
@@ -358,11 +355,11 @@ La distribution vp$\frac{1}{x}$ est appelé valeur principale dans le sens où e
 \begin{propriete}\label{prop:fou2vp}
 	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, par l'égalité :
 	\begin{equation}
-		\mathcal{F} \left(\text{vp} \frac{1}{x} \right)= -i \pi\, \sign{} 
+		\mathcal{F} \left[\text{vp} \frac{1}{x} \right]= -i \pi\, \sign{} 
 	\end{equation}
 	On en déduit la transformée de Fourier inverse :
 	\begin{equation}
-	\mathcal{F}^{-1}\big( 2\one_{\R^+} \big) = \mathcal{F}^{-1}\big( 1 + \sign \big) = \delta + \frac{i}{\pi} \text{vp}\frac{1}{x}
+	\mathcal{F}^{-1}\big[ 2\one_{\R^+} \big] = \mathcal{F}^{-1}\big[ 1 + \sign \big] = \delta + \frac{i}{\pi} \text{vp}\frac{1}{x}
 	\end{equation}
 	
 	\begin{demo}
@@ -378,22 +375,22 @@ La distribution vp$\frac{1}{x}$ est appelé valeur principale dans le sens où e
 		\end{align*}
 		En posant $u=2\pi\nu t\sign(t)$ (le signe de $t$ assure que l'on ait le même signe dans et hors du sin), on obtient :
 		\begin{align*}
-		\left\langle \mathcal{F} \left(\text{vp} \frac{1}{x} \right), \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
+		\left\langle \mathcal{F} \left[\text{vp} \frac{1}{x} \right], \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
 		&= -2i\int_\R\varphi(t)\frac{\pi}{2}\sign(t), dt \\
 		&= \big\langle -i\pi\sign, \varphi \big\rangle
 		\end{align*}
 	\end{demo}
 \end{propriete}
 
-\begin{definition}[transformée en SA et de Hilbet]
+\begin{definition}[transformée en SA et de Hilbet]\label{def:transfo_sa&hilbert}
 	On définie alors la \emph{transformée en signal analytique} (SA) du tout signal $x$ par l'application :
 	\begin{equation}\label{eq:transfo_SA}
-		\mathcal{A}[x] \defeq 2 x*\mathcal{F}^{-1}\big(\one_{\R^+}\big) :\ \begin{aligned} 
+		\mathcal{A}[x] \defeq 2 x*\mathcal{F}^{-1}\big[\one_{\R^+}\big] :\ \begin{aligned} 
 			\R \quad &\lr\qquad\quad \C \\	
 			t\quad &\longmapsto\ x(t) + \frac{i}{\pi}\fint_\R \frac{x(s)}{t-s}ds
 		\end{aligned}
 	\end{equation}
-	Par construction, on a bien $\mathcal{F}\big(\mathcal{A}[x]\big) = 2\one_{\R^+}\hat{x}$, est on dit plus généralement de tout signal dont le spectre est réel positif que c'est un \emph{signal analytique}.
+	Par construction, on a bien $\mathcal{F}\big[\mathcal{A}[x]\big] = 2\one_{\R^+}\hat{x}$, est on dit plus généralement de tout signal dont le spectre est réel positif que c'est un \emph{signal analytique}.
 	\\
 	L'intégral à droite de \eqref{eq:transfo_SA} est appelle \emph{transformée de Hilbert} du signal. Elle est notée :
 	\begin{equation}\label{eq:transfo_Hilb}
@@ -425,20 +422,74 @@ Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $
 \end{definition}
 
 
-
-\begin{itemize}
+\begin{enonce}[TO DO]{\color{white}l}
 	
-	\item Il est important de noter que si un signal s'écrit sous la forme  $x=a\cos\phi$, rien n'implique $(a,\phi)=(a_x,\phi_x)$. Si ce n'est pas le cas, c'est que la première décomposition n'est ``pas la bonne''
-	
-	\item Exemple pour dire que les hautes fréquences partes dans la phase
-	
-	\item théorème de Bedrosian \cite{venouziou_characterizing_2008}
-	
-	\item cas AM-FM
+	\begin{itemize}
+		
+		\item Il est important de noter que si un signal s'écrit sous la forme  $x=a\cos\phi$, rien n'implique $(a,\phi)=(a_x,\phi_x)$. Si ce n'est pas le cas, c'est que la première décomposition n'est ``pas la bonne''
+		
+		\item Exemple pour dire que les hautes fréquences partes dans la phase
+		
+		\item théorème de Bedrosian \cite{venouziou_characterizing_2008}
+		
+		\item cas AM-FM
 
-\end{itemize}
+	\end{itemize}
+\end{enonce}
 
 
+\section{Généralisation au signaux multivariés}\label{sec:sign_multivar}
+
+Dans la suite, ce qui va nous intéresser, ce sont les signaux multivariés :
+\\
+
+\begin{definition}[Signal multivarié]\label{def:signal_multivar}
+	Un \emph{signal multivarié}, ou \emph{$n-$varié}, est un vecteur composé de $n\in\N^*$ signaux $x_i$. Si $n=2$, alors on parle de signal \emph{bivarié}.
+	\\
+	Dans la continuité de ce qui à été dit dans la \cref{subsec:transfo_SA}, dans le cas des signaux réels, on s'intéressera au vecteur composé des transformées en SA (eq. \ref{eq:transfo_SA}, déf. \ref{def:transfo_sa&hilbert}) des $x_i$.
+	\textbf{Au moins dans toute cette \namecref{sec:sign_multivar}}, un tel signal sera noté :
+	\[\psi(t)\ :\quad \begin{aligned} 
+		\R\quad &\lr\qquad \C^n \\t\quad &\longmapsto\ \begin{pmatrix} \mathcal{A}[x_1] \\ 
+		\mathcal{A}[x_2] \\ \vdots \\ \mathcal{A}[x_n] \end{pmatrix}
+	\end{aligned} \]
+	On supposera que chaque composante $\psi_i$ de $\psi$ aura autant de régularité et de condition d'intégrabilité que nécessaire \textbf{(il vaudra préciser lesquelles à un moment)}.
+\end{definition}
+
+\textbf{Faudra parler des propriétés du trucs un peu, genre la différence pour fourier des images et des multivarées ($\R^n\lr\R$ vs $\R\lr\R^n$)}
+\\
+\textbf{+ quelque propriété pour les cas SA, y'a moyen que ca soit pas inintéressant}
+\\
+
+Toujours dans l'optique d'une analyse temps-fréquence de ces signaux, on voudrait pouvoir écrire tout signal $\psi$ sous la forme :
+\[\psi(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
+\end{pmatrix}\]
+\\
+La phase ainsi isolée correspond à la phase instantanée du signal et sa dérivée, (à $2\pi$ près) à la fréquence instantanée. Là encore, cette phase existe mais sans unicité puisqu'il suffit de poser, pour tout $\varphi\in\R$ :
+\[\forall i\in\llbracket, 1,n\rrbracket,\quad \varphi_i = \arg(\psi_i)-\varphi\]
+\\
+Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle ne pourra pas simplement venir du spectre puisque, d'une part il a déjà été exploité par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte que des liens implicites qui existe entre chacune des composantes du signal.
+
+
+\[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
+
+\[\textbf{VRAC}\] \\
+
+\begin{definition}[Fourier de signal multivarié]
+	La transformée ``faible'' d'un signal multivarié est définie comme la transformée composantes par composantes du signal :
+	\[\mathcal{F}[\psi] = \Big(\mathcal{F}[\psi_i]\Big)_{1\leq i\leq n}\]
+\end{definition}
+
+
+\begin{remarque}
+	En posant (suivant les notations ci-dessus) $a = \big\|(a_i))_{1\leq i\leq n}\big\|^2$, $\psi$ s'écrit :
+	\[\psi(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
+	\end{pmatrix} = a(t)e^{i\varphi(t)}\begin{pmatrix} \alpha_1(t)e^{i\varphi_1(t)} \\ \alpha_2(t)e^{i\varphi_2(t)} \\ \vdots \\ \alpha_n(t)e^{i\varphi_n(t)} \end{pmatrix}\]
+	avec $\alpha = (\alpha_i)_{1\leq i\leq n}$ un vecteur normé de $\R^n$. $\alpha$ est donc définie à une rotation près et en notant cette rotation $R_\Theta$, $\psi$ s'écrit encore :
+	\begin{align*}
+	\psi(t) &= a(t)e^{i\varphi(t)}\begin{pmatrix} e^{i\varphi_1(t)} \\ & e^{i\varphi_2(t)} \\  & & \ddots \\ & & & e^{i\varphi_n(t)}\end{pmatrix} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}   &  \text{où }\qquad R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = \alpha\\
+		&= a(t)e^{i\varphi(t)}e^{iDiag(\varphi_i(t))} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+	\end{align*}
+\end{remarque}
 
 
 \section{Réflexion autour du produit hermitien}
@@ -447,7 +498,9 @@ Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $
 Soit $x,y\in\C^n$ des vecteurs complexes et $X,Y\in\R^{2\times n}$ leur versions réelles. On note $x^j$ sa $j^{eme}$ composante complèxe et $x_1$ (resp. $x_2$) le vecteur composé de ses parties réelles (resp. imaginaires) :
 \[x = \big(x^j\big)_j =  x_1 + ix_2 =  \big(x^j_1\big)_j +i \big(x^j_2\big)_j\]
 \\
-On a deux façon d'écrire le produit hermitien (canonique) de $X$ avec $Y$ :
+On a deux façon d'écrire le produit hermitien (canonique) de $x$ avec $y$.
+\\
+La première :
 \begin{align*}
 	\langle x,y \rangle = \langle x_1 + ix_2, y_1 + iy_2\rangle &= \langle x_1, y_1\rangle - i \langle x_1,y_2\rangle +i\langle x_2, y_1\rangle + \langle x_2, y_2\rangle  \\
 	&= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
@@ -477,7 +530,7 @@ On a aussi l'écriture (quand-même moins clair) :
 	&= \sum_j \big\langle X^j,Y^j\big\rangle - i\sum_j \det(X^j, Y^j)
 	%&= \sum_j \|X^j\|\|Y^j\| \cos \widehat{X^j,X^j} + i\sin \widehat{X^j,Y^j}
 \end{align*}
-Cette formule dit que les parties reélles et imaginaires du produit $\langle x,y \rangle$ encodent respectivement ``l'orthogonalité moyenne'' et la ``linéarité moyenne ''entre les familles de vecteurs $X^j\in\R^2$ et $Y^j\in\R^2$. L'orthogonalité d'une part parce que le produit scalaire s'annule en cas d'orthogonalité (no shit), la linéarité d'autre part car le déterminant s'annule en cas de colinéarité et moyenne car se sont des sommes sur $j$. \textbf{$\bf{\langle x,y \rangle=0}$ ne dit pas que les le vecteurs sont à la fois colinéaire et orthogonaux parce que ce sont des valeurs moyennes (\ie annuler une somme ne veut pas dire que chacun des termes sont nuls).}
+Cette formule dit que les parties reélles et imaginaires du produit $\langle x,y \rangle$ encodent respectivement ``l'orthogonalité moyenne'' et la ``linéarité moyenne ''entre les familles de vecteurs $X^j\in\R^2$ et $Y^j\in\R^2$. L'orthogonalité d'une part parce que le produit scalaire s'annule en cas d'orthogonalité (no shit), la linéarité d'autre part car le déterminant s'annule en cas de colinéarité et moyenne car se sont des sommes sur $j$. \textbf{$\bf{\langle x,y \rangle=0}$ ne dit pas que les le vecteurs sont à la fois colinéaire et orthogonaux parce que ce sont des valeurs moyennes (\ie~annuler une somme ne veut pas dire que chacun des termes sont nuls).}
 \\
 
 Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
@@ -487,37 +540,68 @@ Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
 	&= \langle x, x \rangle + 2\Re e \langle x, h \rangle + \langle h, h \rangle
 \end{align*}
 Donc si $x\in\C^n$ est fonction d'un paramètre $t$, l'égalité $\ \langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle\ $ du cas réel devient :
-\[\langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle + i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
+\begin{equation}\label{eq:x_scal_dotx}
+	\langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle + i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle
+\end{equation}
 \\
 En particulier, quand bien-même $x$ serait de norme constante, on aurait toujours un degré de liberté pour $\ \langle x, \dot{x} \rangle$ :
 \[\|x\|=c\quad \Lr\quad \langle x, \dot{x} \rangle = i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
-\\
 
-\begin{definition}\label{def:phase_dyn}
-	Ainsi, il reste tout un degré de liberté au produit $\ \langle x, \dot{x} \rangle\ $ même si $x\in\S^{2n}$. En intégrant ce degré de liberté supplémentaire, c'est-à-dire en tenant compte de son évolution sur la période $[t_0,t]$, l'on obtient ce qui est appeller le \emph{phase dynamique} :
-	\[\phased \defeq \phased(t_0,t) = \int_{t_0}^t \Im m \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds\]
-	Elle dynamique en cela qu'elle est propre au variation de $\psi$ et qu'elle considère tout l'évolution de $\psi$ : ça dynamique.
-	\textit{Rq} : Avec les notations de la \cref{sec:temp-freq} et si le signal est d'amplitude constante, alors on a :
-	 \[\phased(-\infty, +\infty) = \int_\R \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds = -2\pi\int_\R \nu\big|\hat{\psi}(\nu)\big|^2 d\nu = - 2\pi \esp[|\hat{\psi}|^2]{\nu}\]
+
+
+
+\section{Comprendre la phase dynamique}
+
+\begin{itemize}
 	
-	\textbf{... et pourquoi c'est une PHASE du coup ?}
-\end{definition}
-
-
-\begin{definition}[Connexion de Berry]\label{def:berry_connx}
-	On appelle \emph{connexion de Berry} le champ de forme linéaire :
-	\begin{equation}\label{eq:berry_connx}
-		\forall \psi\in\mathpzc{M},\quad A_\psi :\ \begin{aligned} T_\psi\mathpzc{M}\ &\lr\qquad\ \R \\ \phi\quad &\longmapsto\ \Im m \big\langle \psi(s) \, |\, \phi(s) \big\rangle
-		\end{aligned}
+	\item Tout le monde introduit la phase dynamique par la formule :
+	\begin{equation}\label{eq:phase_dyn}
+		\phased(\psi,t_0,t) \defeq -\Im m \int_{t_0}^t\frac{\big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle}{\big\|\psi(s)\big\|^2} ds
 	\end{equation}
-	\textbf{Elle a rien d'une connexion par contre :/}
-\end{definition}
+	
+	\item Première chose, avec \eqref{eq:x_scal_dotx}, on a encore :
+	\[\phased(\psi,t_0,t) = \int_{t_0}^t\frac{\big\langle \psi(s), \omega\dot{\psi}(s) \big\rangle}{\big\|\psi(s)\big\|^2} ds\]
+	
+	\item En terme de fréquence, si $\psi$ est de norme 1, alors (mais c'est vraiment pas dit que l'intégrale converge dans ce cas) :
+	\[\big\|\psi(t)\big\|=1\quad \Lr\quad \phased(\psi, -\infty, +\infty) = i\int_\R \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds = \pm 2\pi\int_\R \nu\big|\hat{\psi}(\nu)\big|^2 d\nu = \pm 2\pi \esp[|\hat{\psi}|^2]{\nu}\]
+	
+	\item Lilly \cite{lilly_analysis_2012} propose de d'écrire $\psi$ avec une phase isolé $\varphi$ de sorte que :
+	\[\psi(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
+	\end{pmatrix}\]
+	\\
+	Et avec un peu de travail (qui sera développé), on obtient que le mieux c'est de poser :
+	\[\varphi'(t) = \frac{\Im m\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle}{\|\psi(t)\|^2}\]
+	\\
+	On voit donc que, dans le cas des signaux normée, la phase dynamique est donnée par le cumule des fréquence instantanée, ou comme le différentiel de phase de $\psi$ :
+	\[\phased(\psi,t_0,t) = -\Im m\int_{t_0}^t \frac{\big\langle \psi(s) \,|\, \dot{\psi}(s) \big\rangle}{\|\psi(s)\|^2} ds = \int_{t_0}^t \varphi'(s)ds = \big(\varphi(t_0)-\varphi(t)\big)\]
+	
+	\item Dans la même idée, on a :
+	\begin{align*}
+	\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle &= \Big\langle \Big(a_i(t)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \,|\, \Big(\big(a_i'(t)+i\varphi'(t)a_i(t) + i\varphi_i'(t)a_i(t)\big)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \Big\rangle \\
+		&= \sum_i a_i(t) \Big(a_i'(t)-i\big(\varphi'(t) + \varphi_i'(t)\big)a_i(t)\Big) \\
+		&= \sum_i a_i(t)a_i'(t)-i\sum_i \big(\varphi'(t) + \varphi_i'(t)\big)a_i(t)^2 \\
+		&= \sum_i a_i(t)a_i'(t)-i \varphi'(t)\sum_ia_i(t)^2  - i\sum_i \varphi_i'(t)a_i(t)^2 \\
+		&= \sum_i a_i(t)a_i'(t)-i \varphi'(t)\big\|a(t)\big\|^2  - i\sum_i \varphi_i'(t)a_i(t)^2
+	\end{align*}
+	\\
+	Avec $a =\, ^t(a_1,\cdots, a_n)= |\psi|$ et $\|a\|=\|\psi\|$. On a donc :
+	\begin{align*}
+	\phased(\psi,t_0,t) &= \int_{t_0}^t \frac{\varphi'(s)\big\|a(s)\big\|^2}{\big\|a(s)\big\|^2} ds  + \sum_i\int_{t_0}^t \frac{\varphi_i'(s)a_i(s)^2}{\big\|a(s)\big\|^2} ds \\
+		&=\phased(\psi,t_0,t)  + \sum_i \esp[\nicefrac{|\psi_i|^2}{\|\psi\|^2}]{\varphi_i'}    &  &\textbf{???}\\
+	\end{align*}
+	a.k.a. la fréquence moyenne sur l'intervalle + la moyenne ``des fréquences moyenne de polarisation \textbf{???}''. Je sais pas, c'est un peu bizarre parce que les distrib utilisé pour la deuxième espérance est très composante-wise
+	\\
+	Lilly \cite{lilly_analysis_2012} dit que (which make it worst) :
+	\[\phased(\psi,t_0,t)  = \sum_i \esp[\nicefrac{|\psi_i|^2}{\|\psi\|^2}]{\varphi_i'}\]
+\end{itemize}
+
+Bon et la phase totale alors ?
 
 
 
 
 
-\setcounter{section}{0}
+%\setcounter{section}{0}
 \setcounter{figure}{0}
 \setcounter{lstlisting}{0}
 
@@ -529,6 +613,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 
 
 \subsection{Version Lilly \cite{lilly_bivariate_2010, lilly_analysis_2012}}
+
 
 \begin{itemize}
 	\item On veut écrire $\bf{x}$ sous la forme :
@@ -591,14 +676,8 @@ Ce qui ramène à se demander comment généraliser $U$ à $\SU(n)$. Le problèm
 \subsection{Mon blabla}\label{subsec:blabla}
 
 
-\begin{definition}[Signal multivarié] \label{def:signal_multivar}
-Un \emph{signal multivarié}, ou \emph{$n-$varié}, est un signal à valeur dans $\C^n$. Formellement, c'est une fonction de carré intégrable (or is it ?) à valeur de $\R$ dans $\C^n$, et l'ensemble de tel signaux seront noté $L^2\big(\R,\C^n\big)$.
-\\
-Dans le cas $n=2$, on parle de signal \emph{bivarié}.
-\end{definition}
-
 \begin{enonce}[PVD Optimisation]
-	Lilly \cite[p. 602/3]{lilly_analysis_2012} obtient la phase instentanée en minimisant l'erreur d'ordre 1 :
+	Lilly \cite[p. 602/3]{lilly_analysis_2012} obtient la phase instantanée en minimisant l'erreur d'ordre 1 :
 	\[\min_{\omega}\|\Tilde{x}(t,\omega)\|^2\]
 	Ce qui lui donne :
 	\[\omega_x(t) = \phi(t)/\tau = -\frac{\Im m\langle x, x'\rangle}{\|x\|^2}\]
@@ -672,20 +751,38 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 
 \section{Trucs à voir}
 
+
+\subsection{random  stuff ready pour rédac (+labeled)}
+\begin{definition}\label{def:phase_dyn}
+	Ainsi, il reste tout un degré de liberté au produit $\ \langle x, \dot{x} \rangle\ $ même si $x\in\S^{2n}$. En intégrant ce degré de liberté supplémentaire, c'est-à-dire en tenant compte de son évolution sur la période $[t_0,t]$, l'on obtient ce qui est appeller le \emph{phase dynamique} :
+	\[\phased \defeq \phased(t_0,t) = \int_{t_0}^t \Im m \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds\]
+	Elle dynamique en cela qu'elle est propre au variation de $\psi$ et qu'elle considère tout l'évolution de $\psi$ : ça dynamique.
+\end{definition}
+
+
+\begin{definition}[Connexion de Berry]\label{def:berry_connx}
+	On appelle \emph{connexion de Berry} le champ de forme linéaire :
+	\begin{equation}\label{eq:berry_connx}
+		\forall \psi\in\mathpzc{M},\quad A_\psi :\ \begin{aligned} T_\psi\mathpzc{M}\ &\lr\qquad\ \R \\ \phi\quad &\longmapsto\ \Im m \big\langle \psi(s) \, |\, \phi(s) \big\rangle
+		\end{aligned}
+	\end{equation}
+	\textbf{Elle a rien d'une connexion par contre :/}
+\end{definition}
+
 \subsection{Bilan des formules}
 
 \begin{itemize}
 	\item Les phases de $\psi$ entre les instants $t_0$ et $t$ :
 	\begin{equation}\label{eq:phase_tot}
-		\phaset(\psi, t_0, t) \equiv \arg(\psi(t_0), \psi(t))
+		\phaset(\psi, t_0, t) \defeq \arg\big\langle\psi(t_0) \,|\, \psi(t)\big\rangle = \arctan \left( -\frac{\big\langle\psi(t_0), \omega\psi(t)\big\rangle}{\big\langle\psi(t_0), \psi(t)\big\rangle} \right)
 	\end{equation}
 	
 	\begin{equation}\label{eq:phase_dyn}
-		\phased(\psi,t_0,t) \equiv \Im m \int_{t_0}^t\big\langle \psi(s) \,|\, \dot{\psi}(s) \big\rangle ds
+		\phased(\psi,t_0,t) \defeq \Im m \int_{t_0}^t\big\langle \psi(s) \,|\, \dot{\psi}(s) \big\rangle ds
 	\end{equation}
 	
 	\begin{equation}\label{eq:phase_geo}
-		\phaseg(\psi, t_0, t) \equiv  \phaset(\psi, t_0, t) - \phased(\psi,t_0,t)
+		\phaseg(\psi, t_0, t) \defeq \phaset(\psi, t_0, t) - \phased(\psi,t_0,t)
 	\end{equation}
 	
 	\item (conservative) Équation Schrödinger et de Liouville-von Neumann ($h(R)$ : Hamiltonien des paramètres $R$, $W$ : opérateurs statistique ) \cite[p.6]{bohm_geometric_2003} :
@@ -709,8 +806,6 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 \begin{itemize}
 	\item D'où sort l'interprétation géométrique + son lien avec quaternions (prop. \ref{prop:quatern})
 	\item Lien avec l'eq de Schrödinger (l'intérêt de $H$ et $K$ + d'où ils sortent)
-	\item J'ai rien compris au ``problème'' des formalisations vecteur et/vs complexe
-	\item Comment comprendre $\big\langle \psi\, |\, \dot{\psi} \big\rangle$ ?
 	
 	\item La ``Berry connection'' c'est une vraie connexion ? elle est où la covariance alors ?
 \end{itemize}
@@ -718,11 +813,14 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 \[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
 
 \begin{itemize}
-	\item ``horizontal lift'' : pourquoi horizontal ? en quel sens ?
+	\item ``horizontal lift'' : pourquoi horizontal ? en quel sens ? (parce que fibré)
+	
 	\item Fréquence de Rubi
+	
 	\item Matrice/base de Pauli et généralisation, groupe $SU(n)$ (un peu de quantique ?)
-	\item Produit hermitien : intuition géométrique
+	
 	\item Monopole de Dirac + lien avec la phase géo (un peu d'électro-magnétisme ?)
+	
 	\item Invariant de Bargmann + série de Dyson
 \end{itemize}
 
@@ -741,7 +839,7 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 \begin{itemize}
 	\item Lien avec Siegel : assez clair avec la visualisation des ellipses, beaucoup moins avec les Hilberts même si $| \psi\rangle \langle \psi |\in$ Siegel \apriori
 	
-	\item ``\textit{Symplectique}'' (meaning + intérêt ?)
+	\item ``\textit{Symplectique}'' (meaning + intérêt ?) si tu savais...	
 	
 	\item 
 \end{itemize}

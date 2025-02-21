@@ -160,6 +160,7 @@
 \newcommand{\phaset}{\Phi_{\text{tot}}}
 \newcommand{\phased}{\Phi_{\text{dyn}}}
 \newcommand{\phaseg}{\Phi_{\text{geo}}}
+\renewcommand{\i}{i}
 
 
 
@@ -229,7 +230,7 @@
 
 %\usepackage{fancyvrb} % pour le lore, mais useless AF
 \usepackage{listings} 
-\usepackage{pythontex}	% surement une dingz, à approfondire
+%\usepackage{pythontex}	% surement une dingz, à approfondire
 
 % preset
 \definecolor{codeblack}{gray}{0.2}
@@ -348,10 +349,10 @@ rulecolor=\color{lightgray}}
 	
 	% génération des sections
 	
-\usepackage[loadonly, toctitles, clearempty, newparttoc]{titlesec}
+\usepackage[loadonly, clearempty, newparttoc, toctitles]{titlesec}
 
 % liste des sections
-\titleclass{\part}[0]{top} % 0 = niveau de section
+\titleclass{\part}[-2]{top} % 0 = niveau de section
 \titleclass{\section}{straight}[\part]
 \titleclass{\subsection}{straight}[\section]
 \titleclass{\subsubsection}{straight}[\subsection]
