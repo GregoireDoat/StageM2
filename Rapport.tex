@@ -87,8 +87,6 @@ Note de rédac :
 
 \begin{enonce}[Intro de la \cref{sec:temp-freq}]
 	\textit{Malgré ce que l'énoncé de la problématique laisse entendre, dans toute la suite nous travaillerons avec des signaux à valeur de $\R$ dans $\C^n$ plutôt que $\R^n$. Il y a de très bonne raison à la transformation des signaux réels en complexes et c'est sera l'objet de cette première  \namecref{sec:temp-freq}.}\\
-	
-	Et pourquoi on veut faire du temps fréquence aussi ? (t'explique pourquoi c'est bien mais pourquoi ca NOUS intéresse ?)
 \end{enonce}
 
 
@@ -134,7 +132,6 @@ Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complex
 	\end{aligned}  &  \mathcal{F}[x]=\hat{x}\ &:\quad \begin{aligned}\R\ &\lr\qquad\quad \C \\ \nu\ &\longmapsto\ \int_\R x(t)e^{-2\pi i \nu t}dt
 	\end{aligned}
 \end{align*}
-\\
 
 \begin{definition}[Densités d'énergie]\label{def:densi_dE}
 	Étant donnée un signal complexe $x$, la \emph{densité d'énergie} $\rho$ de $x$ est donnée par le carré de son module. De même on définit $\varrho$ la \emph{densité d'énergie spectrale} :
@@ -158,7 +155,7 @@ Par exemple, si $\ x(t)=e^{2\pi i\nu_0 t}$, alors $\ \hat{x}(t) = \delta(x-\nu_0
 	\rho(t) &= 1  &  \varrho(\nu) = \delta(\nu-\nu_0)
 \end{align*}
 Du point de vu temporel, le signal est émis avec une puissance régulière, mais le fait que $\varrho$ soit un dirac indique que toute l'énergie du signal est concentré en une unique fréquence $\nu_0$.
-\\ \\
+
 
 \begin{definition}[Durée et largeur de bande]\label{def:band-width}
 	L'espérance ces densités sont notées, pour peu qu'elles existent :
@@ -182,7 +179,6 @@ Du point de vu temporel, le signal est émis avec une puissance régulière, mai
 \subsection{Fréquence instantanée et covariance}
 
 Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} suivantes seront nécessaire :
-\\
 
 \begin{proposition}[``Calculation tricks'' de \cite{cohen_time_1995}] \label{prop:integ_trick}
 	Si le signal est $n$ fois dérivable et que la densité d’énergie associée $\varrho$ admet un moment d'ordre $n$, alors il est donnée par la formule :
@@ -194,46 +190,48 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 	\begin{equation}\label{eq:moment_t}
 		\forall n\in\N,\qquad \esp[\rho]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \hat{x}(\nu) \frac{d^n}{dt^n} \congu{\hat{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \hat{x}, \frac{d^n}{d\nu^n}\hat{x}\right\rangle
 	\end{equation}
-	
-	\begin{demo}
-		\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
-		\begin{align*}
-			\esp[\varrho]{\nu^n} = \int_\R \nu^n\varrho(\nu) d\nu &= \int_\R \nu^n \hat{x}(\nu)\congu{\hat{x}(\nu)} d\nu \\
-			&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \congu{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
-			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
-		\end{align*}
-		Ici, on remarque que :
-		\begin{align*}
-			\nu^n e^{-2i \pi \nu (t-t')} &= \nu^{n-1}\frac{1}{-2i \pi}\frac{d}{dt}e^{-2i \pi \nu(t-t')} \\
-			&= \nu^{n-2}\frac{1}{(-2i \pi)^2}\frac{d^2}{dt^2}e^{-2i \pi \nu(t-t')} \\
-			&\ \vdots \\
-			&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
-		\end{align*}
-		
-		Ce qui permet, en jouant sur les ordres d'intégrations et les propriétés du Dirac, d'obtenir :
-		\begin{align*}
-			\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
-			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-			&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-			&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
-			&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
-			&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
-			&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
-		\end{align*}
-		... a moins que :
-		\begin{align*}
-			\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
-			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-			&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-			&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
-			&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
-			&= \frac{1}{(-2 i\pi)^n} \int_\R \congu{x(t')} \int_\R x(t) \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
-			&= \frac{1}{(-2 i\pi)^n} \int_\R \congu{x(t')}(-1)^n\int_\R \frac{d^n}{dt^n}x(t) \delta(t-t') dt\, dt' \\
-			&= \left(\frac{-1}{-2i \pi}\right)^n \int_\R \frac{d^n}{dt'^n}x(t') \congu{x(t')}  dt' \\
-			&= \frac{1}{(2 i\pi)^n}  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
-		\end{align*}
-	\end{demo}
 \end{proposition}
+
+
+\begin{demo}
+	\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
+	\begin{align*}
+		\esp[\varrho]{\nu^n} = \int_\R \nu^n\varrho(\nu) d\nu &= \int_\R \nu^n \hat{x}(\nu)\congu{\hat{x}(\nu)} d\nu \\
+		&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \congu{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
+		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
+	\end{align*}
+	Ici, on remarque que :
+	\begin{align*}
+		\nu^n e^{-2i \pi \nu (t-t')} &= \nu^{n-1}\frac{1}{-2i \pi}\frac{d}{dt}e^{-2i \pi \nu(t-t')} \\
+		&= \nu^{n-2}\frac{1}{(-2i \pi)^2}\frac{d^2}{dt^2}e^{-2i \pi \nu(t-t')} \\
+		&\ \vdots \\
+		&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
+	\end{align*}
+	\\
+	
+	Ce qui permet, en jouant sur les ordres d'intégrations et les propriétés du Dirac, d'obtenir :
+	\begin{align*}
+		\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
+		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
+		&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
+		&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
+		&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
+	\end{align*}
+	... a moins que :
+	\begin{align*}
+		\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
+		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
+		&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
+		&= \frac{1}{(-2 i\pi)^n} \int_\R \congu{x(t')} \int_\R x(t) \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
+		&= \frac{1}{(-2 i\pi)^n} \int_\R \congu{x(t')}(-1)^n\int_\R \frac{d^n}{dt^n}x(t) \delta(t-t') dt\, dt' \\
+		&= \left(\frac{-1}{-2i \pi}\right)^n \int_\R \frac{d^n}{dt'^n}x(t') \congu{x(t')}  dt' \\
+		&= \frac{1}{(2 i\pi)^n}  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
+	\end{align*}
+\end{demo}
 
 On notera dans toute la suite, sauf précision, l'amplitude et phase de $x$ (resp. $\hat{x}$) :
 \begin{align*}
@@ -250,6 +248,8 @@ Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularit�
 	\begin{equation}\label{eq:esp_freq}
 		\esp[\varrho]{\nu} = \frac{1}{2\pi}\int_\R \phi'(t)\rho(t)dt = \frac{1}{2\pi} \esp[\rho]{\phi'}
 	\end{equation}
+\end{proposition}
+
 	
 \begin{demo} 
 	Avec le hypothèses de la \cref{prop:integ_trick} précédente, on a :
@@ -264,7 +264,8 @@ Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularit�
 	Ce qui donne bien :
 	\[\esp[\varrho]{\nu} = \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt = \frac{1}{2\pi}\int_\R \phi'(t)\rho(t) dt\]
 \end{demo}
-\end{proposition}
+
+
 
 \begin{definition}
 	La dérivée $\phi'$ est appelé \emph{fréquence instantanée} du signal $x$. Le terme est justifié par l'\cref{eq:esp_freq} précédente : C'est une fonction dont la moyenne en temps correspond à la fréquence moyenne de $x$.
@@ -367,26 +368,27 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 	\begin{equation}
 	\mathcal{F}^{-1}\big[ 2\one_{\R^+} \big] = \mathcal{F}^{-1}\big[ 1 + \sign \big] = \delta + \frac{i}{\pi} \text{vp}\frac{1}{x}
 	\end{equation}
+\end{propriete}
+
 	
-	\begin{demo}
-		juste pour le plaisir. Par définition, la transformée de Fourier de la valeur principale est telle que,\\ $\forall \varphi\in\mathcal{S}(\R)$ :
-		\begin{align*}
+\begin{demo}
+	juste pour le plaisir. Par définition, la transformée de Fourier de la valeur principale est telle que,\\ $\forall \varphi\in\mathcal{S}(\R)$ :
+	\begin{align*}
 		\left\langle \mathcal{F} \left(\text{vp} \frac{1}{x} \right), \varphi \right\rangle = \left\langle \text{vp} \frac{1}{x}, \hat{\varphi} \right\rangle 
 		&= \fint_\R \frac{\hat{\varphi}(\nu)}{\nu} d\nu \\
-			&= \int_0^{+\infty} \frac{\hat{\varphi}(\nu) - \hat{\varphi}(-\nu)}{\nu} d\nu \\
-			&= \int_0^{+\infty} \frac{1}{\nu} \left( \int_\R\varphi(t)e^{-2i\pi \nu t}dt - \int_\R\varphi(t)e^{2i\pi \nu t}dt \right)d\nu \\
-			&= \int_0^{+\infty} \frac{1}{\nu}\int_\R\varphi(t)\big(e^{-2i\pi \nu t} - e^{2i\pi \nu t}\big)dt\, d\nu \\
-			&= \int_0^{+\infty} \frac{1}{\nu}\int_\R-2i\varphi(t)\sin(2\pi \nu t)dt\, d\nu \\
-			&= -2i\int_\R\varphi(t)\int_0^{+\infty} \frac{\sin(2\pi \nu t)}{\nu}d\nu\, dt
-		\end{align*}
-		En posant $u=2\pi\nu t\sign(t)$ (le signe de $t$ assure que l'on ait le même signe dans et hors du sin), on obtient :
-		\begin{align*}
+		&= \int_0^{+\infty} \frac{\hat{\varphi}(\nu) - \hat{\varphi}(-\nu)}{\nu} d\nu \\
+		&= \int_0^{+\infty} \frac{1}{\nu} \left( \int_\R\varphi(t)e^{-2i\pi \nu t}dt - \int_\R\varphi(t)e^{2i\pi \nu t}dt \right)d\nu \\
+		&= \int_0^{+\infty} \frac{1}{\nu}\int_\R\varphi(t)\big(e^{-2i\pi \nu t} - e^{2i\pi \nu t}\big)dt\, d\nu \\
+		&= \int_0^{+\infty} \frac{1}{\nu}\int_\R-2i\varphi(t)\sin(2\pi \nu t)dt\, d\nu \\
+		&= -2i\int_\R\varphi(t)\int_0^{+\infty} \frac{\sin(2\pi \nu t)}{\nu}d\nu\, dt
+	\end{align*}
+	En posant $u=2\pi\nu t\sign(t)$ (le signe de $t$ assure que l'on ait le même signe dans et hors du sin), on obtient :
+	\begin{align*}
 		\left\langle \mathcal{F} \left[\text{vp} \frac{1}{x} \right], \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
 		&= -2i\int_\R\varphi(t)\frac{\pi}{2}\sign(t), dt \\
 		&= \big\langle -i\pi\sign, \varphi \big\rangle
-		\end{align*}
-	\end{demo}
-\end{propriete}
+	\end{align*}
+\end{demo}
 
 \begin{definition}[transformée en SA et de Hilbet]\label{def:transfo_sa&hilbert}
 	On définie alors la \emph{transformée en signal analytique} (SA) du tout signal $x$ par l'application :

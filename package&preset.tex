@@ -167,39 +167,88 @@
 %%%%    ENONCES (PROP, DEF, RQ)    %%%%
 
 
-\usepackage{amsthm}
+%\usepackage{amsthm}
+\usepackage[hyperref, noconfig]{ntheorem}
+\usepackage[ntheorem, framemethod=tikz]{mdframed}
+
 
 % les styles
-\newtheoremstyle{enonce}{0pt}{25pt}{}{}{\scshape}{\quad ---\quad }{0em}{}
-\newtheoremstyle{special}{0pt}{25pt}{}{}{\scshape}{\quad ---\quad }{0em}{\thmnote{#3}}
-\newtheoremstyle{rqlike}{0pt}{25pt}{\itshape}{}{\scshape}{\quad ---\quad}{0em}{}
-\newtheoremstyle{exo}{0pt}{25pt}{\color{blue}}{}{\scshape\color{blue}}{: \newline}{0em}{}
+\definecolor{colorbar}{HTML}{f2bb43}
+\mdfdefinestyle{barred}{leftmargin=0.1cm, skipabove=15pt, skipbelow=0pt, 	% tailles des marges
+	linewidth=0.1cm, linecolor=colorbar, 	% box' style
+	topline=false, bottomline=false, rightline=false}	% coté de la box
+
+\mdfdefinestyle{demo frame}{leftmargin=0.15cm, rightmargin=0.7cm, 	
+	linewidth=0.4pt, linecolor=black,
+	topline=false, bottomline=true, rightline=false}
+
 
 % énoncés classiques
-\theoremstyle{enonce}
-\newtheorem{definition}{Définition}
-\newtheorem{proposition}{Proposition}
-\newtheorem{propriete}{Propriété}
-\newtheorem{propricarac}[propriete]{Propriété Caractéristique}
-\newtheorem{lemme}{Lemme}
-\newtheorem{theoreme}{Théorème}[section]
-\newtheorem{theodef}[theoreme]{Théorème et Définition}
-\newtheorem{corollaire}{\qquad Corollaire}[theoreme]
+\makeatletter
+	\newtheoremstyle{enonce}{##1 ##2}{##1 ##2 (##3)}
+\makeatother
+\theoremheaderfont{\scshape}
+\theoremseparator{\quad ---\quad}
+\theoremnumbering{arabic}
+\theorembodyfont{\normalfont}
+
+\newmdtheoremenv[style=barred]{definition}{Définition}%[section]
+\newmdtheoremenv[style=barred]{proposition}{Proposition}
+\newmdtheoremenv[style=barred]{propriete}{Propriété}
+\newmdtheoremenv[style=barred]{propricarac}[propriete]{Propriété Caractéristique}
+\newmdtheoremenv[style=barred]{lemme}{Lemme}
+\newmdtheoremenv[style=barred]{theoreme}{Théorème}
+\newmdtheoremenv[style=barred]{theodef}[theoreme]{Théorème et Définition}
+\newmdtheoremenv[style=barred]{corollaire}{\indent Corollaire}[theoreme]
 
 % énoncé type
+\makeatletter
+	\newtheoremstyle{special}{##1 ##2}{{\scshape ##3}\quad ---\quad}
+\makeatother
 \theoremstyle{special}
-\newtheorem{enonce}{}
+\theoremheaderfont{\scshape}
+\theoremseparator{\quad ---\quad}
+\theoremnumbering{arabic}
+\theorembodyfont{\normalfont}
+
+\newmdtheoremenv[style=barred]{enonce}{}
 
 % énoncé numérotation-less
-\theoremstyle{rqlike}
-\newtheorem*{remarque}{\qquad Remarque}
-\newtheorem*{rappel}{\qquad Rappel}
-\newtheorem*{exemple}{\qquad Exemple}
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\normalfont\scshape}
+\theoremseparator{\quad ---\quad}
+\theoremnumbering{arabic}
+\theorembodyfont{\normalfont\itshape}
 
-\theoremstyle{exo}
+\newtheorem{remarque}{\indent Remarque}
+\newtheorem{rappel}{\indent Rappel}
+\newtheorem{exemple}{\indent Exemple}
+
+% exos
+\theoremstyle{break}
+\theoremheaderfont{\bfseries\scshape\color{blue}}
+\theoremseparator{ : }
+\theoremnumbering{arabic}
+\theorembodyfont{\normalfont}
 \newtheorem{exercice}{Exercice}
 
-% pour cref aux enoncés
+% demo
+\theoremstyle{empty}
+\theoremheaderfont{\itshape}
+\theoremseparator{\quad ---\quad}
+\theoremnumbering{arabic}
+\theorembodyfont{\itshape}
+
+\newmdtheoremenv[style=demo frame]{demonstration}{Démonstration}
+
+\newenvironment{demo}{%
+	\vspace{0.5cm} \hspace{-0.55cm}\textbf{\textit{Démonstration}} \qquad \rule{5cm}{0.4pt}
+	\begin{demonstration}%
+	}{\newline \rule{15.3cm}{0.4pt} \end{demonstration}}
+
+
+	% pour cref aux enoncés
+	
 \crefname{definition}{définition}{Définition}
 \crefname{proposition}{proposition}{Proposition}
 \crefname{propriete}{propriété}{Propriété}
@@ -212,14 +261,6 @@
 \crefname{exemple}{exemple}{Exemple}
 
 \crefname{exercice}{exercice}{Exercice}
-
-% espace démo  (pas convaincu)
-\definecolor{mygray}{gray}{0.3}
-\newtheoremstyle{demo}{8pt}{0pt}{\color{mygray}}{}{\itshape\color{mygray}}{\newline\newline}{0em}{}
-
-\theoremstyle{demo}
-\newtheorem*{demo}{\qquad\qquad\qquad\rule{3.5cm}{0.4pt}\qquad\quad Démonstration\qquad\quad \rule{3.5cm}{0.4pt}}
-%\begin{center}\rule{8cm}{0.4pt}\end{center}
 
 
 
@@ -368,7 +409,7 @@ rulecolor=\color{lightgray}}
 \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 
 % formatage
-\titleformat{\part}[display]{\bfseries\scshape\Large}{\centering \rule{3.5cm}{0.4pt}\qquad Chapitre\quad \thepart \qquad \rule{3.5cm}{0.4pt}}{15pt}{\centering}[\vspace{0.2cm}\rule{8cm}{0.4pt}]
+\titleformat{\part}[display]{\bfseries\scshape\Large}{\centering \rule{3.5cm}{0.4pt}\qquad Partie\quad \thepart \qquad \rule{3.5cm}{0.4pt}}{15pt}{\centering}[\vspace{0.2cm}\rule{8cm}{0.4pt}]
 \titlespacing{\part}{0pt}{50pt}{70pt}
 \newcommand{\partbreak}{\clearpage}
 
@@ -395,7 +436,7 @@ rulecolor=\color{lightgray}}
 
 \titlecontents{part}[2em]{\bfseries\large\scshape 
 	\hspace*{-1.5em}\rule{\textwidth}{0.5pt}\vspace{0.1cm}\\*
-	 }{Chaptire\quad \contentslabel{-0.05em}\quad\ ---\quad}{\contentslabel{-1.5em} ---\quad }{\hfill\contentspage}[\hspace*{-0.5em}
+	 }{Partie\quad \contentslabel{-0.05em}\quad\ ---\quad}{\contentslabel{-1.5em} ---\quad }{\hfill\contentspage}[\hspace*{-0.5em}
 \rule{\textwidth}{0.5pt}]
 
 \titlecontents{section}[1.5em]{\addvspace{1em}\bfseries}{\contentslabel{1.25em} ---\quad}{\hspace*{-1.75em}}{\titlerule*[0.75pc]{.}\contentspage}[\addvspace{0.25em}]

@@ -8,7 +8,7 @@
 
 % pour le mise en page
 \usepackage[a4paper, total={6.5in, 10in}]{geometry}
-\usepackage{fontsize} \changefontsize[13]{10}		
+\usepackage{fontsize} \changefontsize[13]{11}		
 \usepackage{xcolor}
 
 % mathsymbole
@@ -173,39 +173,19 @@
 
 
 % les styles
-\definecolor{colorbar}{RGB}{255,215,0}
-\mdfdefinestyle{barred}{leftmargin=-0.5cm, 	% tailles des marges
+\definecolor{colorbar}{HTML}{f2bb43}
+\mdfdefinestyle{barred}{leftmargin=0.1cm, skipabove=15pt, skipbelow=0pt, 	% tailles des marges
 	linewidth=0.1cm, linecolor=colorbar, 	% box' style
 	topline=false, bottomline=false, rightline=false}	% coté de la box
-	
-\mdfdefinestyle{demo style}{leftmargin=0cm, 	% tailles des marges
-	linewidth=0.4pt, linecolor=black, 	% box' style
-	topline=false, bottomline=true, leftline=false, rightline=false,
-	innerbottommargin=0.5cm}	% coté de la box
 
-\mdfdefinestyle{doublebarr}{leftmargin=-0.5cm, 	% tailles des marges
-	linewidth=0.1cm, linecolor=colorbar,
-	doubleline=true, doublesep=0.1cm, 	% box' style
-	topline=false, bottomline=false, rightline=false}	% coté de la box
-	
-	
+\mdfdefinestyle{demo frame}{leftmargin=0.15cm, rightmargin=0.7cm, 	
+	linewidth=0.4pt, linecolor=black,
+	topline=false, bottomline=true, rightline=false}
 
-\newenvironment{theo}[1][]{%
-	\stepcounter{theo}%
-	\mdfsetup{%
-		frametitle={%
-			\tikz[baseline=(current bounding box.east),outer sep=0pt]
-			\node[anchor=east,rectangle,fill=blue!20]
-			{\strut Theorem~\thetheo};}}
-	\mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
-						linewidth=2pt,topline=true,
-						frametitleaboveskip=\dimexpr−\ht\strutbox\relax,}
-	\begin{mdframed}[]\relax%
-	}{\end{mdframed}}
 
 % énoncés classiques
 \makeatletter
-\newtheoremstyle{enonce}{##1 ##2}{##1 ##2 (##3)}
+	\newtheoremstyle{enonce}{##1 ##2}{##1 ##2 (##3)}
 \makeatother
 \theoremheaderfont{\scshape}
 \theoremseparator{\quad ---\quad}
@@ -253,18 +233,19 @@
 \newtheorem{exercice}{Exercice}
 
 % demo
-\makeatletter
-	\newtheoremstyle{demo}{}{}
-\makeatother
 \theoremstyle{empty}
-\theoremprework{\qquad\qquad\qquad\rule{3.5cm}{0.4pt}\qquad\quad \textit{Démonstration}\qquad\quad \rule{3.5cm}{0.4pt}\newline}
+%\theoremprework{\qquad\qquad\qquad\rule{3.5cm}{0.4pt}\qquad\quad \textit{Démonstration}\qquad\quad \rule{3.5cm}{0.4pt}\newline}
 \theoremheaderfont{\itshape}
 \theoremseparator{\quad ---\quad}
 \theoremnumbering{arabic}
 \theorembodyfont{\itshape}
-%\theoremsymbol{\rule{7cm}{0.4pt}}
 
-\newmdtheoremenv[style=demo style]{demo}{Démonstration}
+\newmdtheoremenv[style=demo frame]{demonstration}{Démonstration}
+
+\newenvironment{demo}{%
+	\vspace{0.5cm} \hspace{-0.55cm}\textbf{\textit{Démonstration}} \qquad \rule{5cm}{0.4pt}
+	\begin{demonstration}%
+	}{\newline \rule{15.3cm}{0.4pt} \end{demonstration}}
 
 
 % pour cref aux enoncés
