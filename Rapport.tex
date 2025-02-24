@@ -228,7 +228,7 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 			&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
 			&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
 			&= \frac{1}{(-2 i\pi)^n} \int_\R \congu{x(t')} \int_\R x(t) \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
-			&= \frac{1}{(2 i\pi)^n} \int_\R \congu{x(t')}(-1)^n\int_\R \frac{d^n}{dt^n}x(t) \delta(t-t') dt\, dt' \\
+			&= \frac{1}{(-2 i\pi)^n} \int_\R \congu{x(t')}(-1)^n\int_\R \frac{d^n}{dt^n}x(t) \delta(t-t') dt\, dt' \\
 			&= \left(\frac{-1}{-2i \pi}\right)^n \int_\R \frac{d^n}{dt'^n}x(t') \congu{x(t')}  dt' \\
 			&= \frac{1}{(2 i\pi)^n}  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
 		\end{align*}
@@ -312,7 +312,7 @@ Les concepts de base de l'analyse temps-fréquence étant posé, voyons à prés
 \subsection{Le problème de signaux réels et comment le résoudre}\label{subsec:transfo_SA}
 
 
-Les outils de mesures ayant la fâcheuses tendance à fournir des données réelles, ce sont les signaux réels les plus présent en physique.
+Les outils de mesures ayant la fâcheuses tendance à fournir des données réelles, ce sont les signaux réels les plus étudiés.
 Pourtant, cette propriété rend les outils d'analyse temps-fréquence développés plus haut, si non obsolète, au moins compliqué à interpréter.
 \\
 Tout vient du fait que si $x$ est réel alors son spectre est à symétrie hermitienne et sa densité spectrale $\varrho$ symétrique :
@@ -344,16 +344,22 @@ La transformée inverse de cette indicatrice (qui n'est autre que la fonction de
 \begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
 	On appelle \emph{valeur principale de Cauchy} la distribution notée vp$\frac{1}{x}$ et définie par le crochet de dualité :
 	\begin{equation}
-		\forall \varphi\in\mathcal{S}(\R),\ \left\langle \text{vp}\frac{1}{x}, \varphi \right\rangle = \fint_0^t \frac{\varphi(t)}{t}dt := \lim_{\varepsilon\lr0^+} \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t}dt + \int_{+\varepsilon}^{+\infty} \frac{\varphi(t)}{t}dt
+		\begin{aligned}
+		\forall \varphi\in\mathcal{S}(\R),\qquad 
+			\left\langle \text{vp}\frac{1}{x}, \varphi \right\rangle 
+			= \fint_0^t \frac{\varphi(t)}{t}dt 
+			&\defeq \lim_{\varepsilon\lr0^+} \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t}dt + \int_{+\varepsilon}^{+\infty} \frac{\varphi(t)}{t}dt \\
+			&= \int_{\R^+} \frac{\varphi(t) - \varphi(-t)}{t}dt
+		\end{aligned}
 	\end{equation}
 	Ici $\mathcal{S}(\R)$ est l’espace de Schwartz des fonctions $C^\infty$ à décroissance rapide et la limite en $\varepsilon$ assure que l'intégrale (impropre) converge bien. Sa valeur est également appelée \emph{valeur principale} de l'intégrale. 
 \end{definition}
 
-La distribution vp$\frac{1}{x}$ est appelé valeur principale dans le sens où elle conserve les propriété de la fonction inverse , dans le sens où sont produit avec l'identité donne 1 $\big(\left\langle id_\R \times \text{vp}\frac{1}{x}, \varphi \right\rangle = \left\langle \text{vp}\frac{1}{x}, id_\R \times\varphi \right\rangle=1\big)$ mais avec des propriétés d'intégration supplémentaires. Entre autre :
+La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse dans le sens où son produit avec l'identité donne 1 $\big(\left\langle id_\R \times \text{vp}\frac{1}{x}, \varphi \right\rangle = \left\langle \text{vp}\frac{1}{x}, id_\R \times\varphi \right\rangle=1\big)$ mais avec des propriétés d'intégration supplémentaires. Entre autre :
 \\
 
 \begin{propriete}\label{prop:fou2vp}
-	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, par l'égalité :
+	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, par :
 	\begin{equation}
 		\mathcal{F} \left[\text{vp} \frac{1}{x} \right]= -i \pi\, \sign{} 
 	\end{equation}
@@ -385,12 +391,12 @@ La distribution vp$\frac{1}{x}$ est appelé valeur principale dans le sens où e
 \begin{definition}[transformée en SA et de Hilbet]\label{def:transfo_sa&hilbert}
 	On définie alors la \emph{transformée en signal analytique} (SA) du tout signal $x$ par l'application :
 	\begin{equation}\label{eq:transfo_SA}
-		\mathcal{A}[x] \defeq 2 x*\mathcal{F}^{-1}\big[\one_{\R^+}\big] :\ \begin{aligned} 
+		\mathcal{A}[x] \defeq 2 id_\R*\mathcal{F}^{-1}\big[\one_{\R^+}\big] :\ \begin{aligned} 
 			\R \quad &\lr\qquad\quad \C \\	
 			t\quad &\longmapsto\ x(t) + \frac{i}{\pi}\fint_\R \frac{x(s)}{t-s}ds
 		\end{aligned}
 	\end{equation}
-	Par construction, on a bien $\mathcal{F}\big[\mathcal{A}[x]\big] = 2\one_{\R^+}\hat{x}$, est on dit plus généralement de tout signal dont le spectre est réel positif que c'est un \emph{signal analytique}.
+	Par construction, on a bien $\mathcal{F}\big[\mathcal{A}[x]\big] = 2\one_{\R^+}\hat{x}$, et on dira plus généralement de tout signal dont le spectre est réel positif que c'est un \emph{signal analytique}.
 	\\
 	L'intégral à droite de \eqref{eq:transfo_SA} est appelle \emph{transformée de Hilbert} du signal. Elle est notée :
 	\begin{equation}\label{eq:transfo_Hilb}
@@ -422,18 +428,19 @@ Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $
 \end{definition}
 
 
-\begin{enonce}[TO DO]{\color{white}l}
+\begin{enonce}[To Do]{\color{white}l}
 	
 	\begin{itemize}
 		
-		\item Il est important de noter que si un signal s'écrit sous la forme  $x=a\cos\phi$, rien n'implique $(a,\phi)=(a_x,\phi_x)$. Si ce n'est pas le cas, c'est que la première décomposition n'est ``pas la bonne''
+		\item Il est important de noter que si un signal s'écrit sous la forme  $x=a\cos\phi$, rien n'implique $(a,\phi)=(a_x,\phi_x)$. Si ce n'est pas le cas, c'est que la première décomposition n'était ``pas la bonne''
 		
-		\item Exemple pour dire que les hautes fréquences partes dans la phase
+		\item Exemple pour dire que les hautes fréquences partes dans la phase (produit de cos). C'est super important ça et ça fait sens, si les hautes partaient dans l'amplitude, alors on pourrait avoir des signaux sans phase et uniquement à amplitude variables. Ce qui ne dit rien en somme.
 		
 		\item théorème de Bedrosian \cite{venouziou_characterizing_2008}
 		
 		\item cas AM-FM
 
+		\item 
 	\end{itemize}
 \end{enonce}
 
@@ -457,7 +464,7 @@ Dans la suite, ce qui va nous intéresser, ce sont les signaux multivariés :
 
 \textbf{Faudra parler des propriétés du trucs un peu, genre la différence pour fourier des images et des multivarées ($\R^n\lr\R$ vs $\R\lr\R^n$)}
 \\
-\textbf{+ quelque propriété pour les cas SA, y'a moyen que ca soit pas inintéressant}
+\textbf{+ quelques propriétés pour les cas SA, y'a moyen que ca soit pas inintéressant}
 \\
 
 Toujours dans l'optique d'une analyse temps-fréquence de ces signaux, on voudrait pouvoir écrire tout signal $\psi$ sous la forme :
@@ -465,9 +472,9 @@ Toujours dans l'optique d'une analyse temps-fréquence de ces signaux, on voudra
 \end{pmatrix}\]
 \\
 La phase ainsi isolée correspond à la phase instantanée du signal et sa dérivée, (à $2\pi$ près) à la fréquence instantanée. Là encore, cette phase existe mais sans unicité puisqu'il suffit de poser, pour tout $\varphi\in\R$ :
-\[\forall i\in\llbracket, 1,n\rrbracket,\quad \varphi_i = \arg(\psi_i)-\varphi\]
+\[\forall i\in\llbracket1,n\rrbracket,\quad \varphi_i = \arg(\psi_i)-\varphi\]
 \\
-Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle ne pourra pas simplement venir du spectre puisque, d'une part il a déjà été exploité par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte que des liens implicites qui existe entre chacune des composantes du signal.
+Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle ne pourra pas simplement venir du spectre puisque, d'une part il a déjà été exploité par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte que des liens implicites qui existe entre chacune des composantes du signal. \textbf{Est-ce que ca pourrait venir de l'\cref{eq:sum_esp_null} ?}
 
 
 \[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
@@ -475,7 +482,7 @@ Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle n
 \[\textbf{VRAC}\] \\
 
 \begin{definition}[Fourier de signal multivarié]
-	La transformée ``faible'' d'un signal multivarié est définie comme la transformée composantes par composantes du signal :
+	La transformée de Fourier ``faible'' d'un signal multivarié est définie comme la transformée de Fourier composante par composante du signal :
 	\[\mathcal{F}[\psi] = \Big(\mathcal{F}[\psi_i]\Big)_{1\leq i\leq n}\]
 \end{definition}
 
@@ -484,15 +491,19 @@ Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle n
 	En posant (suivant les notations ci-dessus) $a = \big\|(a_i))_{1\leq i\leq n}\big\|^2$, $\psi$ s'écrit :
 	\[\psi(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
 	\end{pmatrix} = a(t)e^{i\varphi(t)}\begin{pmatrix} \alpha_1(t)e^{i\varphi_1(t)} \\ \alpha_2(t)e^{i\varphi_2(t)} \\ \vdots \\ \alpha_n(t)e^{i\varphi_n(t)} \end{pmatrix}\]
-	avec $\alpha = (\alpha_i)_{1\leq i\leq n}$ un vecteur normé de $\R^n$. $\alpha$ est donc définie à une rotation près et en notant cette rotation $R_\Theta$, $\psi$ s'écrit encore :
+	avec $\alpha = (\alpha_i)_{1\leq i\leq n} \in \S^{n-1}$. $\alpha$ est donc définie à une rotation près et en notant cette rotation $R_\Theta$, $\psi$ s'écrit encore :
 	\begin{align*}
 	\psi(t) &= a(t)e^{i\varphi(t)}\begin{pmatrix} e^{i\varphi_1(t)} \\ & e^{i\varphi_2(t)} \\  & & \ddots \\ & & & e^{i\varphi_n(t)}\end{pmatrix} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}   &  \text{où }\qquad R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = \alpha\\
-		&= a(t)e^{i\varphi(t)}e^{iDiag(\varphi_i(t))} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+		&= a(t)e^{i\varphi(t)}e^{iDiag(\varphi_i(t))} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = a(t)e^{i\varphi(t)}Diag\big(e^{i\varphi_i(t)}\big) R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
 	\end{align*}
 \end{remarque}
 
 
-\section{Réflexion autour du produit hermitien}
+
+
+\section{Comprendre la phase dynamique}
+
+\subsection{Réflexion autour du produit hermitien}
 
 
 Soit $x,y\in\C^n$ des vecteurs complexes et $X,Y\in\R^{2\times n}$ leur versions réelles. On note $x^j$ sa $j^{eme}$ composante complèxe et $x_1$ (resp. $x_2$) le vecteur composé de ses parties réelles (resp. imaginaires) :
@@ -549,8 +560,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 
 
 
-
-\section{Comprendre la phase dynamique}
+\subsection{Écritures et interprétations}
 
 \begin{itemize}
 	
@@ -562,22 +572,25 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 	\item Première chose, avec \eqref{eq:x_scal_dotx}, on a encore :
 	\[\phased(\psi,t_0,t) = \int_{t_0}^t\frac{\big\langle \psi(s), \omega\dot{\psi}(s) \big\rangle}{\big\|\psi(s)\big\|^2} ds\]
 	
+	A.k.a. la phase dynamique porte l'information symplectique (cumulée). Présenté ainsi, est-ce que la phase totale/géométrique porte l'information ``riemannienne'' (géométrique donc WINK WINK) ?
+	
 	\item En terme de fréquence, si $\psi$ est de norme 1, alors (mais c'est vraiment pas dit que l'intégrale converge dans ce cas) :
 	\[\big\|\psi(t)\big\|=1\quad \Lr\quad \phased(\psi, -\infty, +\infty) = i\int_\R \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds = \pm 2\pi\int_\R \nu\big|\hat{\psi}(\nu)\big|^2 d\nu = \pm 2\pi \esp[|\hat{\psi}|^2]{\nu}\]
 	
 	\item Lilly \cite{lilly_analysis_2012} propose de d'écrire $\psi$ avec une phase isolé $\varphi$ de sorte que :
-	\[\psi(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
+	\[\psi(t) = \begin{pmatrix} a_1(t)e^{i\phi_1(t)} \\ a_2(t)e^{i\phi_2(t)} \\ \vdots \\ a_n(t)e^{i\phi_n(t)}
+	\end{pmatrix} = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
 	\end{pmatrix}\]
 	\\
 	Et avec un peu de travail (qui sera développé), on obtient que le mieux c'est de poser :
-	\[\varphi'(t) = \frac{\Im m\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle}{\|\psi(t)\|^2}\]
+	\[\varphi'(t) \defeq -\frac{\Im m\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle}{\|\psi(t)\|^2} = \frac{\sum_i\phi_i'(t)\,a_i(t)}{\sum_ia_i(t)}\]
 	\\
-	On voit donc que, dans le cas des signaux normée, la phase dynamique est donnée par le cumule des fréquence instantanée, ou comme le différentiel de phase de $\psi$ :
-	\[\phased(\psi,t_0,t) = -\Im m\int_{t_0}^t \frac{\big\langle \psi(s) \,|\, \dot{\psi}(s) \big\rangle}{\|\psi(s)\|^2} ds = \int_{t_0}^t \varphi'(s)ds = \big(\varphi(t_0)-\varphi(t)\big)\]
+	On voit donc que la phase dynamique est donnée par le cumule des fréquences instantanées, ou comme le différentiel de phase de $\psi$ :
+	\[\phased(\psi,t_0,t) = -\Im m\int_{t_0}^t \frac{\big\langle \psi(s) \,|\, \dot{\psi}(s) \big\rangle}{\|\psi(s)\|^2} ds = \int_{t_0}^t \varphi'(s)ds = \varphi(t)-\varphi(t_0)\]
 	
-	\item Dans la même idée, on a :
+	\item Avec les mêmes notations, on a :
 	\begin{align*}
-	\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle &= \Big\langle \Big(a_i(t)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \,|\, \Big(\big(a_i'(t)+i\varphi'(t)a_i(t) + i\varphi_i'(t)a_i(t)\big)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \Big\rangle \\
+	\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle &= \Big\langle \Big(a_i(t)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \,\Big|\, \Big(\big(a_i'(t)+i\big( \varphi(t)+\varphi_i(t) \big)a_i(t)\big)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \Big\rangle \\
 		&= \sum_i a_i(t) \Big(a_i'(t)-i\big(\varphi'(t) + \varphi_i'(t)\big)a_i(t)\Big) \\
 		&= \sum_i a_i(t)a_i'(t)-i\sum_i \big(\varphi'(t) + \varphi_i'(t)\big)a_i(t)^2 \\
 		&= \sum_i a_i(t)a_i'(t)-i \varphi'(t)\sum_ia_i(t)^2  - i\sum_i \varphi_i'(t)a_i(t)^2 \\
@@ -587,16 +600,15 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 	Avec $a =\, ^t(a_1,\cdots, a_n)= |\psi|$ et $\|a\|=\|\psi\|$. On a donc :
 	\begin{align*}
 	\phased(\psi,t_0,t) &= \int_{t_0}^t \frac{\varphi'(s)\big\|a(s)\big\|^2}{\big\|a(s)\big\|^2} ds  + \sum_i\int_{t_0}^t \frac{\varphi_i'(s)a_i(s)^2}{\big\|a(s)\big\|^2} ds \\
-		&=\phased(\psi,t_0,t)  + \sum_i \esp[\nicefrac{|\psi_i|^2}{\|\psi\|^2}]{\varphi_i'}    &  &\textbf{???}\\
+		&=\phased(\psi,t_0,t)  + \sum_i \esp[\nicefrac{|\psi_i|^2}{\|\psi\|^2}]{\one_{[t_0,t]}\varphi_i'}
 	\end{align*}
-	a.k.a. la fréquence moyenne sur l'intervalle + la moyenne ``des fréquences moyenne de polarisation \textbf{???}''. Je sais pas, c'est un peu bizarre parce que les distrib utilisé pour la deuxième espérance est très composante-wise
-	\\
-	Lilly \cite{lilly_analysis_2012} dit que (which make it worst) :
-	\[\phased(\psi,t_0,t)  = \sum_i \esp[\nicefrac{|\psi_i|^2}{\|\psi\|^2}]{\varphi_i'}\]
+	Et donc :
+	\begin{equation}\label{eq:sum_esp_null}
+		\sum_i \esp[\frac{|\psi_i|^2}{\|\psi\|^2}]{\one_{[t_0,t]}\varphi_i'} = 0
+	\end{equation}
+	
+	\item Quoi qu'il en soit, de toute ces formules il ressort que la phase dynamique ne regarde que \textit{la} phase/fréquence instantanée de $\psi$ (et un peu son amplitude aussi mais c'est secondaire) et (je crois) donne une contrainte sur \textit{les} phases $\varphi_i$
 \end{itemize}
-
-Bon et la phase totale alors ?
-
 
 
 
@@ -829,9 +841,10 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 \subsection{Point de vue des variétés}\label{subsec:phaseG_variete}
 
 \begin{itemize}
-	\item Ecriture en terme de fibré (principale ? vectoriel ?)
 	
-	\item Choix de l'action de groupe pour la jauge : $U(1)$ \apriori
+	\item Wikipédia dit : `` La théorie des fibrés principaux recouvre la théorie des fibrés vectoriels, de leurs orientations, de leurs structures riemanniennes, de leurs structures symplectiques, etc. ''
+	
+	\item Choix de l'action de groupe pour la jauge (la fibre oui) : $U(1)$ \apriori
 \end{itemize}
 
 \[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
