@@ -56,31 +56,30 @@
 \addcontentsline{toc}{section}{Introduction}
 \section*{Introduction}
 
-Quote : The geometric phase is also one of the most beautiful examples of what Wigner once called ``the unreasonable effectiveness of mathematics in the natural sciences.'' \cite[p.\,4]{bohm_geometric_2003}
 
-Des questions :
-\begin{itemize}
-	
-	\item Pourquoi on va dans les complexes ? Réponse \cref{sec:temp-freq}
-	
-	\item Pourquoi Schrödinger ? Peut-être que Mukunda \cite{mukunda_quantum_1993} à la réponse
-	
-	\item En quoi la phase géométrique est une phase ? lien avec Fourier ?
-	
-	\item Lien entre phase et polarisation : différences, intérêts ? La phase géo c'est une phase dans la polar IMO (oui oui, on y vient)
-	
-	\item La param $(a,\chi,\theta,\varphi)$ elle dit quoi vraiment ? (sûrement simple à généraliser btw) + $(\chi,\theta)$ est pas en bijection avec la sphère (surement osef par contre)
-	
-	\item Multivaluation dans les variétés \cite[p. 8]{bohm_geometric_2003} ???
-	
-\end{itemize}
 
-\[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
 
-Note de rédac :
-\begin{itemize}
-	\item Index ? rappel $\delta$ de Dirac
-\end{itemize}
+
+Index des notations : 
+\begin{table}[h]\centering
+	\begin{tabular}{|| c | c ||} \hline
+		\textsc{Objet/fonctions}  & \textsc{Notations} \\
+		\hline\hline
+		distribution de Dirac   &  $\delta$\\ \hline 
+		indicatrice de $E$   	 &  $\one_E$ \\ \hline 
+		fonction signe   		    &  $\sign(x)$ \\ \hline
+		Fourier   						&  $\fou{x}$ \\ \hline
+		Transfo en SA   		  &  $\SA{x}$, $\sa{x}$ \\ \hline
+		Transfo de Hilbert   	&  $\hilb{x}$ \\ \hline
+		conjugué   					 &  $\congu{x}$ \\ \hline
+		produit hermitien (resp. scalaire)   &  $\langle x \,|\, y\rangle$ (resp. $\langle x,y\rangle$) \\ \hline
+		espérance et variance de $f$ suivant $\rho$   &  $\esp[\rho]{f(t)}$ $\var[\rho]{f(t)}$ \\  \hline
+	\end{tabular}
+	\caption{Table des notations mathématiques}
+	\label{tab:notation}
+\end{table}
+
+
 
 
 \part{Analyse temps-fréquence}
@@ -92,7 +91,7 @@ Note de rédac :
 
 
 %\section{Signal analytique, transformé de Hilberts, Analyse en temps-fréquence}
-\section{Sur l'intérêt de transformé les signaux réels en complexes}\label{sec:temp-freq}
+\section{Les base des l'analyse temps-fréquance}\label{sec:temp-freq}
 
 
 \textit{Cette partie reprends, dans les grandes lignes, les propos de \textsc{Cohen} dans son livre \emph{Time frequency analysis} \cite{cohen_time_1995}}
@@ -158,7 +157,7 @@ Du point de vu temporel, le signal est émis avec une puissance régulière, mai
 
 
 \begin{definition}[Durée et largeur de bande]\label{def:band-width}
-	L'espérance ces densités sont notées, pour peu qu'elles existent :
+	L'espérance ces densités, pour peu qu'elles existent, sont notées :
 	\begin{align*}
 		\esp[\rho]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \esp[\varrho]{\nu} &\defeq \int_\R \nu \big|\hat{x}(\nu)\big|^2 d\nu
 	\end{align*}
@@ -241,7 +240,6 @@ Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularit�
 \begin{align*}
 	\rho &= |x|^2 = a^2  &  \varrho &= |\hat{x}|^2 = \alpha^2
 \end{align*}
-\\
 
 \begin{proposition}\label{prop.esp_freq}
 	Si $\varrho$ admet une espérance et que $x$ est dérivable, alors on a l'égalité :
@@ -289,11 +287,14 @@ D'autre part, on peut fait le même jeu avec la largeur de bande qu'avec la fré
 	&= \frac{1}{4\pi^2}\var[\rho]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\rho]{\phi'}
 \end{align*}
 \\
-On constate deux composantes (qui par ailleurs sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il n'est donc pas surprenant que le terme restant (là où apparaît $\phi'$ !) porte l'information fréquentielle du signal.
+On constate deux composantes (qui, par ailleurs, sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il donc cohérent que le terme restant (là où apparaît $\phi'$ !) porte l'information fréquentielle du signal.
+\\
+
+\`A noter tout de même, que la notion de fréquence instantanée est paradoxale en soit. Comme La fréquence ne peut pas être une information purement local
 \\
 
 Afin de clairement expliciter le problème des signaux réels pour l'analyse temps-fréquence, est introduit une dernier outils :
-\\
+
 
 \begin{definition}[Covariance]\label{def:cova_signal}
 	Étant données deux variables aléatoire $X$ et $Y$, leur covariance, qui mesure une forme de corrélation entre $X$ et $Y$, est donnée par la différence :
@@ -340,14 +341,14 @@ où $\one_E$ est la fonction indicatrice de l'ensemble $E$ et où le facteur 2 p
 Avec la transformée de Fourier inverse, ce nouveau signal s'écrit alors :
 \[\mathcal{A}[x] = \mathcal{F}^{-1}\big[ 2\one_{\R^+}\hat{x} \big] = 2 \mathcal{F}^{-1}\big[\one_{\R^+}\big] * x\]
 La transformée inverse de cette indicatrice (qui n'est autre que la fonction de Heavyside) n'est pas définie au sens classique, mais l'est au sens des distributions. Pour l'écrire, on introduit la distribution suivante :
-\\
+
 
 \begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
 	On appelle \emph{valeur principale de Cauchy} la distribution notée vp$\frac{1}{x}$ et définie par le crochet de dualité :
 	\begin{equation}
 		\begin{aligned}
 		\forall \varphi\in\mathcal{S}(\R),\qquad 
-			\left\langle \text{vp}\frac{1}{x}, \varphi \right\rangle 
+			\left\langle \vpC, \varphi \right\rangle 
 			= \fint_0^t \frac{\varphi(t)}{t}dt 
 			&\defeq \lim_{\varepsilon\lr0^+} \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t}dt + \int_{+\varepsilon}^{+\infty} \frac{\varphi(t)}{t}dt \\
 			&= \int_{\R^+} \frac{\varphi(t) - \varphi(-t)}{t}dt
@@ -356,17 +357,17 @@ La transformée inverse de cette indicatrice (qui n'est autre que la fonction de
 	Ici $\mathcal{S}(\R)$ est l’espace de Schwartz des fonctions $C^\infty$ à décroissance rapide et la limite en $\varepsilon$ assure que l'intégrale (impropre) converge bien. Sa valeur est également appelée \emph{valeur principale} de l'intégrale. 
 \end{definition}
 
-La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse dans le sens où son produit avec l'identité donne 1 $\big(\left\langle id_\R \times \text{vp}\frac{1}{x}, \varphi \right\rangle = \left\langle \text{vp}\frac{1}{x}, id_\R \times\varphi \right\rangle=1\big)$ mais avec des propriétés d'intégration supplémentaires. Entre autre :
-\\
+La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse dans le sens où son produit avec l'identité donne 1 $\big(\left\langle id_\R \times \vpC, \varphi \right\rangle = \left\langle \vpC, id_\R \times\varphi \right\rangle=1\big)$ mais avec des propriétés d'intégration supplémentaires. Entre autre :
+
 
 \begin{propriete}\label{prop:fou2vp}
 	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, par :
 	\begin{equation}
-		\mathcal{F} \left[\text{vp} \frac{1}{x} \right]= -i \pi\, \sign{} 
+		\mathcal{F} \left[\vpC \right]= -i \pi\, \sign{} 
 	\end{equation}
 	On en déduit la transformée de Fourier inverse :
 	\begin{equation}
-	\mathcal{F}^{-1}\big[ 2\one_{\R^+} \big] = \mathcal{F}^{-1}\big[ 1 + \sign \big] = \delta + \frac{i}{\pi} \text{vp}\frac{1}{x}
+	\mathcal{F}^{-1}\big[ 2\one_{\R^+} \big] = \mathcal{F}^{-1}\big[ 1 + \sign \big] = \delta + \frac{i}{\pi} \vpC
 	\end{equation}
 \end{propriete}
 
@@ -374,7 +375,7 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 \begin{demo}
 	juste pour le plaisir. Par définition, la transformée de Fourier de la valeur principale est telle que,\\ $\forall \varphi\in\mathcal{S}(\R)$ :
 	\begin{align*}
-		\left\langle \mathcal{F} \left(\text{vp} \frac{1}{x} \right), \varphi \right\rangle = \left\langle \text{vp} \frac{1}{x}, \hat{\varphi} \right\rangle 
+		\left\langle \mathcal{F} \left(\vpC \right), \varphi \right\rangle = \left\langle \vpC, \hat{\varphi} \right\rangle 
 		&= \fint_\R \frac{\hat{\varphi}(\nu)}{\nu} d\nu \\
 		&= \int_0^{+\infty} \frac{\hat{\varphi}(\nu) - \hat{\varphi}(-\nu)}{\nu} d\nu \\
 		&= \int_0^{+\infty} \frac{1}{\nu} \left( \int_\R\varphi(t)e^{-2i\pi \nu t}dt - \int_\R\varphi(t)e^{2i\pi \nu t}dt \right)d\nu \\
@@ -384,7 +385,7 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 	\end{align*}
 	En posant $u=2\pi\nu t\sign(t)$ (le signe de $t$ assure que l'on ait le même signe dans et hors du sin), on obtient :
 	\begin{align*}
-		\left\langle \mathcal{F} \left[\text{vp} \frac{1}{x} \right], \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
+		\left\langle \mathcal{F} \left[\vpC \right], \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
 		&= -2i\int_\R\varphi(t)\frac{\pi}{2}\sign(t), dt \\
 		&= \big\langle -i\pi\sign, \varphi \big\rangle
 	\end{align*}
@@ -404,7 +405,7 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 	\begin{equation}\label{eq:transfo_Hilb}
 		\mathcal{H}[x] :\ \begin{aligned} 
 			\R \quad &\lr\qquad\quad \C \\	
-			t\quad &\longmapsto\ \frac{1}{\pi}\fint_\R \frac{x(s)}{t-s}ds =  \frac{1}{\pi}\left(\text{vp}\frac{1}{x}\right)*x
+			t\quad &\longmapsto\ \frac{1}{\pi}\fint_\R \frac{x(s)}{t-s}ds =  \frac{1}{\pi}\left(\vpC\right)*x
 		\end{aligned}
 	\end{equation}
 \end{definition}
@@ -414,13 +415,13 @@ Par souci de commodité, plutôt que redéfinir tout le vocabulaire développé 
 
 
 
-\subsection{Propriété et interprétation des signaux analytiques}
+\subsection{Propriétés et interprétations des signaux analytiques}
 
 
 Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $\R$. Aussi, la transformée $\mathcal{A}[x]$ à pour partie réelle $x$ et pour partie imaginaire $\mathcal{H}[x]$. Sous forme exponentielle, cela donne :
 \[\mathcal{A}[x](t) = a(t)e^{i\phi(t)}\quad \Lr\quad \left\{\begin{aligned}x(t) &= a(t) \cos\phi(t) \\\mathcal{H}[x](t) &= a(t) \sin\phi(t)
 \end{aligned}\right.\]
-\\
+
 
 \begin{definition}[Amplitude et phase]\label{def:ampli&phase_cano}
 	On obtient alors on décomposition de $x$ en une paire $(a,\phi)$ telle que discuté plus haut. On définie ainsi l'\emph{amplitude} $a_x$ et la \emph{phase} $\phi_x$ dite \emph{canonique} --- bien que le terme ne soit vraiment approprié --- du signal $x$ comme étant respectivement l'amplitude et la phase de $\mathcal{A}[x]$ :
@@ -450,7 +451,7 @@ Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $
 \section{Généralisation au signaux multivariés}\label{sec:sign_multivar}
 
 Dans la suite, ce qui va nous intéresser, ce sont les signaux multivariés :
-\\
+
 
 \begin{definition}[Signal multivarié]\label{def:signal_multivar}
 	Un \emph{signal multivarié}, ou \emph{$n-$varié}, est un vecteur composé de $n\in\N^*$ signaux $x_i$. Si $n=2$, alors on parle de signal \emph{bivarié}.
@@ -481,7 +482,7 @@ Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle n
 
 \[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
 
-\[\textbf{VRAC}\] \\
+\[\textbf{VRAC}\]
 
 \begin{definition}[Fourier de signal multivarié]
 	La transformée de Fourier ``faible'' d'un signal multivarié est définie comme la transformée de Fourier composante par composante du signal :
@@ -502,6 +503,13 @@ Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle n
 
 
 
+
+
+%\setcounter{section}{0}
+\setcounter{figure}{0}
+\setcounter{lstlisting}{0}
+
+\part{Brouillon}
 
 \section{Comprendre la phase dynamique}
 
@@ -592,7 +600,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 	
 	\item Avec les mêmes notations, on a :
 	\begin{align*}
-	\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle &= \Big\langle \Big(a_i(t)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \,\Big|\, \Big(\big(a_i'(t)+i\big( \varphi(t)+\varphi_i(t) \big)a_i(t)\big)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \Big\rangle \\
+		\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle &= \Big\langle \Big(a_i(t)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \,\Big|\, \Big(\big(a_i'(t)+i\big( \varphi(t)+\varphi_i(t) \big)a_i(t)\big)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \Big\rangle \\
 		&= \sum_i a_i(t) \Big(a_i'(t)-i\big(\varphi'(t) + \varphi_i'(t)\big)a_i(t)\Big) \\
 		&= \sum_i a_i(t)a_i'(t)-i\sum_i \big(\varphi'(t) + \varphi_i'(t)\big)a_i(t)^2 \\
 		&= \sum_i a_i(t)a_i'(t)-i \varphi'(t)\sum_ia_i(t)^2  - i\sum_i \varphi_i'(t)a_i(t)^2 \\
@@ -601,7 +609,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 	\\
 	Avec $a =\, ^t(a_1,\cdots, a_n)= |\psi|$ et $\|a\|=\|\psi\|$. On a donc :
 	\begin{align*}
-	\phased(\psi,t_0,t) &= \int_{t_0}^t \frac{\varphi'(s)\big\|a(s)\big\|^2}{\big\|a(s)\big\|^2} ds  + \sum_i\int_{t_0}^t \frac{\varphi_i'(s)a_i(s)^2}{\big\|a(s)\big\|^2} ds \\
+		\phased(\psi,t_0,t) &= \int_{t_0}^t \frac{\varphi'(s)\big\|a(s)\big\|^2}{\big\|a(s)\big\|^2} ds  + \sum_i\int_{t_0}^t \frac{\varphi_i'(s)a_i(s)^2}{\big\|a(s)\big\|^2} ds \\
 		&=\phased(\psi,t_0,t)  + \sum_i \esp[\nicefrac{|\psi_i|^2}{\|\psi\|^2}]{\one_{[t_0,t]}\varphi_i'}
 	\end{align*}
 	Et donc :
@@ -613,13 +621,6 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 \end{itemize}
 
 
-
-
-%\setcounter{section}{0}
-\setcounter{figure}{0}
-\setcounter{lstlisting}{0}
-
-\part{Phase Géométrique}
 
 \section{Description des signaux multivariés}\label{sec:bases}
 
@@ -714,7 +715,7 @@ Dit autrement, à tout instant $t$, $\psi(t)$ est vu comme une point d'une ellip
 Il est évident que cette représentation est présent bien plus de paramètre que nécessaire, puisse que deux devrait suffire. Pour autant, elle permet de mieux \textbf{je sais quoi mais c'est sur qu'il y'a une raison}.
 \\
 Si cette représentation se généralise mal parce qu'elle demanderait d'avoir une extension de $\mathbb{H}$, sont interprétations graphique, elle, se généralise très bien. Par exemple, en dimension 3, alors l'ellipse devient une ellipsoïde. L'amplitude reste de dimension 1 parce qu'elle ne fait que contrôler la taille de cet ellipsoïde, mais les autres paramètres eux doivent être de dimension 2. L'ellipsoïde à besoin de deux angles pour être orienté, possède deux degrés d'ellipticité et ces points sont déteminés par deux angles.
-\\
+
 
 \begin{proposition}\label{prop:gene_param_signal_v1}
 Plus généralement, tout signal multivarié $\psi$ est (\textit{devrait être}) caractérisé par quatre paramètres (donc $1+(n-1)(\frac{n}{2}-2)$ scalaires) :
@@ -734,7 +735,7 @@ Ou alors c'est le jeu de jauge qui fait qu'on tue $\varphi$ ? auquel cas tout le
 \textit{BTW, les quaternions c'est fait pour décrire les rotations et c'est (quasiment) ce qu'on fait avec, donc aller chercher dans un espace de matrices pour généraliser le principe c'est pas déconnant.}
 \\
 \textit{D'ailleurs, vu que c'est pas exactement ce qu'on fait avec, dans quelle mesure c'est pas le cas et est-ce qu'on exploite vraiment la structure des quaternions ?}
-\\ 
+
 
 \begin{proposition}\label{prop:gene_param_signal_v2}
 Autre approche : un signal multivarié étant moralement un chemin de $\R^n$, son graphe est une variété (plongée) de dimenion 1. Sachant cela, si en chaque instant on veut définir l'ellipsoïde sur laquelle elle repose à un insant $t$, il est morale que cette ellipsoïde soit en fait une ellipse puisque c'est elle-même une variété de dimension 1.
@@ -767,6 +768,7 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 
 
 \subsection{random  stuff ready pour rédac (+labeled)}
+
 \begin{definition}\label{def:phase_dyn}
 	Ainsi, il reste tout un degré de liberté au produit $\ \langle x, \dot{x} \rangle\ $ même si $x\in\S^{2n}$. En intégrant ce degré de liberté supplémentaire, c'est-à-dire en tenant compte de son évolution sur la période $[t_0,t]$, l'on obtient ce qui est appeller le \emph{phase dynamique} :
 	\[\phased \defeq \phased(t_0,t) = \int_{t_0}^t \Im m \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds\]
