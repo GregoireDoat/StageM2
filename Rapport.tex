@@ -68,7 +68,7 @@ Index des notations :
 		distribution de Dirac   &  $\delta$\\ \hline 
 		indicatrice de $E$   	 &  $\one_E$ \\ \hline 
 		fonction signe   		    &  $\sign(x)$ \\ \hline
-		Fourier   						&  $\fou{x}$ \\ \hline
+		Fourier   						&  $\Fou{x}$, $\fou{x}$ \\ \hline
 		Transfo en SA   		  &  $\SA{x}$, $\sa{x}$ \\ \hline
 		Transfo de Hilbert   	&  $\hilb{x}$ \\ \hline
 		conjugué   					 &  $\congu{x}$ \\ \hline
@@ -82,7 +82,9 @@ Index des notations :
 
 
 
-\part{Analyse temps-fréquence}
+\part{Décomposition des Signaux Multivariée}
+
+\section{Analyse temps-fréquence}
 
 \begin{enonce}[Intro de la \cref{sec:temp-freq}]
 	\textit{Malgré ce que l'énoncé de la problématique laisse entendre, dans toute la suite nous travaillerons avec des signaux à valeur de $\R$ dans $\C^n$ plutôt que $\R^n$. Il y a de très bonne raison à la transformation des signaux réels en complexes et c'est sera l'objet de cette première  \namecref{sec:temp-freq}.}\\
@@ -91,7 +93,7 @@ Index des notations :
 
 
 %\section{Signal analytique, transformé de Hilberts, Analyse en temps-fréquence}
-\section{Les base des l'analyse temps-fréquance}\label{sec:temp-freq}
+\subsection{Les base des l'analyse temps-fréquance}\label{sec:temp-freq}
 
 
 \textit{Cette partie reprends, dans les grandes lignes, les propos de \textsc{Cohen} dans son livre \emph{Time frequency analysis} \cite{cohen_time_1995}}
@@ -123,12 +125,12 @@ Dans ce cas on aurait bien unicité de $a$ et $\phi$ par rapport à $z_x$ (son a
 
 
 
-\subsection{Distribution de l'énergie en temps et fréquence}\label{subsec:distrib_temp-freq}
+\subsubsection{Distribution de l'énergie en temps et fréquence}\label{subsec:distrib_temp-freq}
 
-Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complexe et on notera $\hat{x}$ ou $\mathcal{F}[x]$ sa transformée de Fourier (dont on supposera quelle existe, ici on supposera au moins $x\in L^2(\R, \C)$) :
+Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complexe et on notera $\fou{x}$ ou $\Fou{x}$ sa transformée de Fourier (dont on supposera quelle existe, ici on supposera au moins $x\in L^2(\R, \C)$) :
 \begin{align*}
 	x\ &:\quad \begin{aligned}\R\ &\lr\quad \C \\ x\ &\longmapsto\ x(t)
-	\end{aligned}  &  \mathcal{F}[x]=\hat{x}\ &:\quad \begin{aligned}\R\ &\lr\qquad\quad \C \\ \nu\ &\longmapsto\ \int_\R x(t)e^{-2\pi i \nu t}dt
+	\end{aligned}  &  \Fou{x}=\fou{x}\ &:\quad \begin{aligned}\R\ &\lr\qquad\quad \C \\ \nu\ &\longmapsto\ \int_\R x(t)e^{-2\pi i \nu t}dt
 	\end{aligned}
 \end{align*}
 
@@ -137,7 +139,7 @@ Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complex
 	\begin{equation}\label{eq:densi_dE}
 		\begin{aligned}
 			\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  &
-			\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\hat{x}(t)\big|^2 \end{aligned}
+			\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(t)\big|^2 \end{aligned}
 		\end{aligned}
 	\end{equation}
 	\\
@@ -145,11 +147,11 @@ Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complex
 	\\
 	La transformée étant une isométrie de l'espace $L^2(\R,\C)$, si $x\in L^2(\R,\C)$, alors l'\emph{énergie totale} du signal est indépendante de la représentation de ce dernier (temporelle ou spectrale) :
 	\begin{equation}\label{eq:parceval}
-		E(x) \defeq {\|x\|_2}^2 = \int_\R \rho(t) dt = \int_\R \varrho(\nu) d\nu = {\|\hat{x}\|_2}^2
+		E(x) \defeq {\|x\|_2}^2 = \int_\R \rho(t) dt = \int_\R \varrho(\nu) d\nu = {\|\fou{x}\|_2}^2
 	\end{equation}
 \end{definition}
 
-Par exemple, si $\ x(t)=e^{2\pi i\nu_0 t}$, alors $\ \hat{x}(t) = \delta(x-\nu_0)$. Dans ce cas, on a les densités :
+Par exemple, si $\ x(t)=e^{2\pi i\nu_0 t}$, alors $\ \fou{x}(t) = \delta(x-\nu_0)$. Dans ce cas, on a les densités :
 \begin{align*}
 	\rho(t) &= 1  &  \varrho(\nu) = \delta(\nu-\nu_0)
 \end{align*}
@@ -159,7 +161,7 @@ Du point de vu temporel, le signal est émis avec une puissance régulière, mai
 \begin{definition}[Durée et largeur de bande]\label{def:band-width}
 	L'espérance ces densités, pour peu qu'elles existent, sont notées :
 	\begin{align*}
-		\esp[\rho]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \esp[\varrho]{\nu} &\defeq \int_\R \nu \big|\hat{x}(\nu)\big|^2 d\nu
+		\esp[\rho]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \esp[\varrho]{\nu} &\defeq \int_\R \nu \big|\fou{x}(\nu)\big|^2 d\nu
 	\end{align*}
 	\\
 	Si un signal est localisé temporellement, alors la première espérance/moyenne donne une idée de l'instant d'émission du signal. Si \acontrario, le signal est localisé en fréquence, la seconde espérance peut s'interpréter comme la fréquence ''dominante'' du le signal, ou plus généralement comme sa \emph{fréquence moyenne}. \\
@@ -175,7 +177,7 @@ Du point de vu temporel, le signal est émis avec une puissance régulière, mai
 
 
 
-\subsection{Fréquence instantanée et covariance}
+\subsubsection{Fréquence instantanée et covariance}
 
 Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} suivantes seront nécessaire :
 
@@ -187,7 +189,7 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 	\\
 	Avec les hypothèses analogues, les moments de $\rho$ s'écrivent :
 	\begin{equation}\label{eq:moment_t}
-		\forall n\in\N,\qquad \esp[\rho]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \hat{x}(\nu) \frac{d^n}{dt^n} \congu{\hat{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \hat{x}, \frac{d^n}{d\nu^n}\hat{x}\right\rangle
+		\forall n\in\N,\qquad \esp[\rho]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \fou{x}(\nu) \frac{d^n}{dt^n} \congu{\fou{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \fou{x}, \frac{d^n}{d\nu^n}\fou{x}\right\rangle
 	\end{equation}
 \end{proposition}
 
@@ -195,7 +197,7 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 \begin{demo}
 	\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
 	\begin{align*}
-		\esp[\varrho]{\nu^n} = \int_\R \nu^n\varrho(\nu) d\nu &= \int_\R \nu^n \hat{x}(\nu)\congu{\hat{x}(\nu)} d\nu \\
+		\esp[\varrho]{\nu^n} = \int_\R \nu^n\varrho(\nu) d\nu &= \int_\R \nu^n \fou{x}(\nu)\congu{\fou{x}(\nu)} d\nu \\
 		&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \congu{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
 		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
 	\end{align*}
@@ -232,13 +234,13 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 	\end{align*}
 \end{demo}
 
-On notera dans toute la suite, sauf précision, l'amplitude et phase de $x$ (resp. $\hat{x}$) :
+On notera dans toute la suite, sauf précision, l'amplitude et phase de $x$ (resp. $\fou{x}$) :
 \begin{align*}
-	x(t) &= a(t) e^{i\phi(t)}  &  \text{resp. }\quad \hat{x}(\nu) &= \alpha(\nu) e^{i\psi(\nu)}
+	x(t) &= a(t) e^{i\phi(t)}  &  \text{resp. }\quad \fou{x}(\nu) &= \alpha(\nu) e^{i\psi(\nu)}
 \end{align*}
-Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularités de $x$ (resp. $\hat{x}$) et on a :
+Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularités de $x$ (resp. $\fou{x}$) et on a :
 \begin{align*}
-	\rho &= |x|^2 = a^2  &  \varrho &= |\hat{x}|^2 = \alpha^2
+	\rho &= |x|^2 = a^2  &  \varrho &= |\fou{x}|^2 = \alpha^2
 \end{align*}
 
 \begin{proposition}\label{prop.esp_freq}
@@ -273,7 +275,7 @@ Pour mieux de convaincre du bien fondé de cette interprétation, deux choses.
 \\
 D'une part, pour un signal classique de la forme $\cos(2\pi\nu t+\varphi)$ ou $e^{i(2\pi\nu t + \varphi)}$, la fréquence est clairement identifié par $\nu$, que l'on peut voir comme dérivée de la phase
 	\footnote{\itshape 
-			Le facteur $2\pi$ s'assure que l'on parle bien de fréquence, question d'unité. Sans, $\nu$ correspondait à une pulsation et en définissant la transformée de Fourier en terme de pulsation (\ie sans le facteur $2\pi$ dans l'exponentielle), alors la formule \eqref{eq:esp_freq} n'aurait pas de facteur $2\pi$ non plus. En clair, c'est une question de cohérence.} :
+			Le facteur $2\pi$ s'assure que l'on parle bien de fréquence, question d'unité. Sans, $\nu$ correspondait à une pulsation et en définissant la transformée de Fourier en terme de pulsation (\ie~sans le facteur $2\pi$ dans l'exponentielle), alors la formule \eqref{eq:esp_freq} n'aurait pas de facteur $2\pi$ non plus. En clair, c'est une question de cohérence.} :
 \[\nu = \frac{1}{2\pi}\frac{d}{dt}(2\pi\nu t+\varphi)\]
 \\
 D'autre part, on peut fait le même jeu avec la largeur de bande qu'avec la fréquence moyenne. Cela donne :
@@ -309,9 +311,9 @@ Afin de clairement expliciter le problème des signaux réels pour l'analyse tem
 Les concepts de base de l'analyse temps-fréquence étant posé, voyons à présent les problèmes que posent les signaux réels.
 
 
-\section{Transformée en signal analytique}
+\subsection{Transformée en signal analytique}
 
-\subsection{Le problème de signaux réels et comment le résoudre}\label{subsec:transfo_SA}
+\subsubsection{Le problème de signaux réels et comment le résoudre}\label{subsec:transfo_SA}
 
 
 Les outils de mesures ayant la fâcheuses tendance à fournir des données réelles, ce sont les signaux réels les plus étudiés.
@@ -319,7 +321,7 @@ Pourtant, cette propriété rend les outils d'analyse temps-fréquence développ
 \\
 Tout vient du fait que si $x$ est réel alors son spectre est à symétrie hermitienne et sa densité spectrale $\varrho$ symétrique :
 \begin{align*}
-\forall t\in\R,\ x(t)\in\R \quad &\Lr \quad \forall \nu\in\R,\ \hat{x}(-\nu) = \congu{\hat{x}(\nu)} \\
+\forall t\in\R,\ x(t)\in\R \quad &\Lr \quad \forall \nu\in\R,\ \fou{x}(-\nu) = \congu{\fou{x}(\nu)} \\
 	&\Lr \quad \forall \nu\in\R,\ \varrho(-\nu) = \varrho(\nu)
 \end{align*}
 \\
@@ -335,11 +337,11 @@ Comme dit plus tôt, cela implique que la fréquence moyenne de tout signal rée
 Même problème avec la covariance qui sera toujours nulle pour les signaux réels. De là en conclure que la fréquence instantanée de n'importe quel signal réel est toujours décorrélée du temps serait, pour le moins, insatisfaisant.
 \\
 
-Pour résoudre les problèmes lié à la fréquence moyenne et la largeur de bande, il suffirait de ne conserver que la partie positive du signal. On s'intéresserait alors au signal transformée $\mathcal{A}[x]$ tel que :
-\[\mathcal{F}\big[\mathcal{A}[x]\big] = 2\one_{\R^+}\hat{x}\]
+Pour résoudre les problèmes lié à la fréquence moyenne et la largeur de bande, il suffirait de ne conserver que la partie positive du signal. On s'intéresserait alors au signal transformée $\SA{x}$ tel que :
+\[\mathcal{F}\big[\SA{x}\big] = 2\one_{\R^+}\fou{x}\]
 où $\one_E$ est la fonction indicatrice de l'ensemble $E$ et où le facteur 2 permet de conserver l'énergie du signal.
 Avec la transformée de Fourier inverse, ce nouveau signal s'écrit alors :
-\[\mathcal{A}[x] = \mathcal{F}^{-1}\big[ 2\one_{\R^+}\hat{x} \big] = 2 \mathcal{F}^{-1}\big[\one_{\R^+}\big] * x\]
+\[\SA{x} = \mathcal{F}^{-1}\big[ 2\one_{\R^+}\fou{x} \big] = 2 \mathcal{F}^{-1}\big[\one_{\R^+}\big] * x\]
 La transformée inverse de cette indicatrice (qui n'est autre que la fonction de Heavyside) n'est pas définie au sens classique, mais l'est au sens des distributions. Pour l'écrire, on introduit la distribution suivante :
 
 
@@ -391,15 +393,15 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 	\end{align*}
 \end{demo}
 
-\begin{definition}[transformée en SA et de Hilbet]\label{def:transfo_sa&hilbert}
+\begin{definition}[transformée en SA et de Hilbert]\label{def:transfo_sa&hilbert}
 	On définie alors la \emph{transformée en signal analytique} (SA) du tout signal $x$ par l'application :
 	\begin{equation}\label{eq:transfo_SA}
-		\mathcal{A}[x] \defeq 2 id_\R*\mathcal{F}^{-1}\big[\one_{\R^+}\big] :\ \begin{aligned} 
+		\SA{x} \defeq 2 x*\mathcal{F}^{-1}\big[\one_{\R^+}\big] :\ \begin{aligned} 
 			\R \quad &\lr\qquad\quad \C \\	
 			t\quad &\longmapsto\ x(t) + \frac{i}{\pi}\fint_\R \frac{x(s)}{t-s}ds
 		\end{aligned}
 	\end{equation}
-	Par construction, on a bien $\mathcal{F}\big[\mathcal{A}[x]\big] = 2\one_{\R^+}\hat{x}$, et on dira plus généralement de tout signal dont le spectre est réel positif que c'est un \emph{signal analytique}.
+	Par construction, on a bien $\mathcal{F}\big[\SA{x}\big] = 2\one_{\R^+}\fou{x}$, et on dira plus généralement de tout signal dont le spectre est réel positif que c'est un \emph{signal analytique}.
 	\\
 	L'intégral à droite de \eqref{eq:transfo_SA} est appelle \emph{transformée de Hilbert} du signal. Elle est notée :
 	\begin{equation}\label{eq:transfo_Hilb}
@@ -410,74 +412,78 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 	\end{equation}
 \end{definition}
 
-Par souci de commodité, plutôt que redéfinir tout le vocabulaire développé plus haut (fréquence/temps moyen, \etc) pour les signaux réel via la transformation $\mathcal{A}$, dans la suite du mémoire on travaillera directement avec $\mathcal{A}[x]$ (et on verra que c'est essentiel).
+Par souci de commodité, plutôt que redéfinir tout le vocabulaire développé plus haut (fréquence moyenne, temps moyen, \etc) pour les signaux réel via la transformation $\mathcal{A}$, dans la suite du mémoire on travaillera directement avec $\SA{x}$. %^(et on verra que c'est essentiel).
 
 
 
 
-\subsection{Propriétés et interprétations des signaux analytiques}
+\subsubsection{Propriétés et interprétations des signaux analytiques}
 
 
-Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $\R$. Aussi, la transformée $\mathcal{A}[x]$ à pour partie réelle $x$ et pour partie imaginaire $\mathcal{H}[x]$. Sous forme exponentielle, cela donne :
-\[\mathcal{A}[x](t) = a(t)e^{i\phi(t)}\quad \Lr\quad \left\{\begin{aligned}x(t) &= a(t) \cos\phi(t) \\\mathcal{H}[x](t) &= a(t) \sin\phi(t)
+Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $\R$. Aussi, la transformée $\SA{x}$ à pour partie réelle $x$ et pour partie imaginaire $\mathcal{H}[x]$. Sous forme exponentielle, cela donne :
+\[\SA{x}(t) = a(t)e^{i\phi(t)}\quad \Lr\quad \left\{\begin{aligned}x(t) &= a(t) \cos\phi(t) \\\mathcal{H}[x](t) &= a(t) \sin\phi(t)
 \end{aligned}\right.\]
+On obtient alors on décomposition de $x$ en une paire $(a,\phi)$ telle que discuté plus haut.
 
-
-\begin{definition}[Amplitude et phase]\label{def:ampli&phase_cano}
-	On obtient alors on décomposition de $x$ en une paire $(a,\phi)$ telle que discuté plus haut. On définie ainsi l'\emph{amplitude} $a_x$ et la \emph{phase} $\phi_x$ dite \emph{canonique} --- bien que le terme ne soit vraiment approprié --- du signal $x$ comme étant respectivement l'amplitude et la phase de $\mathcal{A}[x]$ :
+\begin{definition}[Amplitude et phase instantanée]\label{def:ampli&phase_cano}
+	On définie ainsi l'\emph{amplitude instantanée} $a_x$ et la \emph{phase instantanée} $\phi_x$  de tout signal $x$ comme étant respectivement l'amplitude et la phase de $\SA{x}$ :
 	\begin{align}\label{eq:ampli&phase_cano}
-		a_x &= \big|\mathcal{A}[x]\big|   &   \phi_x &= \arg\big(\mathcal{A}[x]\big)
+		a_x &= \big|\SA{x}\big|   &   \phi_x &= \arg\big(\SA{x}\big)
 	\end{align}
 \end{definition}
 
+Il est important de noter que si un signal est présenté sous la forme  $\ x=a\cos\phi$, rien n'implique que $a$ et $\phi$ corresponde à l'amplitude et la phase instantanée du signal. Si ce n'est pas le cas, c'est que cette décomposition n'était ``pas la bonne'' en cela qu'elles ne s’interprètent pas comme l'on aimerait.
+\\
 
-\begin{enonce}[To Do]{\color{white}l}
+Pour comprendre comment cette transformation ``sélectionne'' la fréquence instantanée, détaillons le cas où $x$ s'écrit comme somme de deux signaux pures (\cref{fig:exemple_tSA}) :
+\[x(t) = \cos 2\pi\nu_1t + \cos 2\pi\nu_2t\]
+
+\begin{figure}[h]\centering
+	\includegraphics[width=0.48\textwidth]{fig/somme_signal-decompo.png}\hfill
+	\includegraphics[width=0.48\textwidth]{fig/somme_signal-a_phi.png}
+	\caption{Représentation graphique du signal $x$ (bleu). Sur l'image de gauche, avec signaux de fréquences pures (rouge et vert). Sur l'image de droite, avec son amplitude (orange) et sa phase instantanée (violet)}
+	\label{fig:exemple_tSA}
+\end{figure}
+\noindent
+On montre sans mal\footnote{\itshape
+	$\fou{x}$ est donné par 4 Diracs, en ne gardant que ce qui sont non nul sur $\R^+$ on obtient le spectre de $\SA{x}$ et il reste plus qu'à inverser la transformée de Fourier.}
+ que si $\nu_1\geq\nu_2$, alors la transformée en SA de $x$ s'écrit :
+\[\SA{x} = \cos \left(2\pi\frac{\nu_1-\nu_2}{2}t\right) e^{2\pi\frac{\nu_1+\nu_2}{2}t}\]
+\\
+C'est donc la plus haute fréquence $\nu_1+\nu_2$ qui correspond à la fréquence instantanée du signal. Un résultats qui est rassurant puisque, moralement, cela assure qu'aucune fréquence ne s'est perdue dans l'amplitude.
+\textsc{To Do} :
+\begin{itemize}
 	
-	\begin{itemize}
-		
-		\item Il est important de noter que si un signal s'écrit sous la forme  $x=a\cos\phi$, rien n'implique $(a,\phi)=(a_x,\phi_x)$. Si ce n'est pas le cas, c'est que la première décomposition n'était ``pas la bonne''
-		
-		\item Exemple pour dire que les hautes fréquences partes dans la phase (produit de cos). C'est super important ça et ça fait sens, si les hautes partaient dans l'amplitude, alors on pourrait avoir des signaux sans phase et uniquement à amplitude variables. Ce qui ne dit rien en somme.
-		
-		\item théorème de Bedrosian \cite{venouziou_characterizing_2008}
-		
-		\item cas AM-FM
-
-		\item 
-	\end{itemize}
-\end{enonce}
+	\item 
+	
+	\item Exemple pour dire que les hautes fréquences partes dans la phase (produit de cos). C'est super important ça et ça fait sens, si les hautes partaient dans l'amplitude, alors on pourrait avoir des signaux sans phase et uniquement à amplitude variables. Ce qui ne dit rien en somme.
+	
+	\item théorème de Bedrosian \cite{venouziou_characterizing_2008}
+	
+	\item cas AM-FM
+\end{itemize}
 
 
 \section{Généralisation au signaux multivariés}\label{sec:sign_multivar}
 
+\subsection{Phase et fréquence instantanée de signal multivaré}
+
 Dans la suite, ce qui va nous intéresser, ce sont les signaux multivariés :
 
-
-\begin{definition}[Signal multivarié]\label{def:signal_multivar}
-	Un \emph{signal multivarié}, ou \emph{$n-$varié}, est un vecteur composé de $n\in\N^*$ signaux $x_i$. Si $n=2$, alors on parle de signal \emph{bivarié}.
-	\\
-	Dans la continuité de ce qui à été dit dans la \cref{subsec:transfo_SA}, dans le cas des signaux réels, on s'intéressera au vecteur composé des transformées en SA (eq. \ref{eq:transfo_SA}, déf. \ref{def:transfo_sa&hilbert}) des $x_i$.
-	\textbf{Au moins dans toute cette \namecref{sec:sign_multivar}}, un tel signal sera noté :
-	\[\psi(t)\ :\quad \begin{aligned} 
-		\R\quad &\lr\qquad \C^n \\t\quad &\longmapsto\ \begin{pmatrix} \mathcal{A}[x_1] \\ 
-		\mathcal{A}[x_2] \\ \vdots \\ \mathcal{A}[x_n] \end{pmatrix}
-	\end{aligned} \]
-	On supposera que chaque composante $\psi_i$ de $\psi$ aura autant de régularité et de condition d'intégrabilité que nécessaire \textbf{(il vaudra préciser lesquelles à un moment)}.
-\end{definition}
 
 \textbf{Faudra parler des propriétés du trucs un peu, genre la différence pour fourier des images et des multivarées ($\R^n\lr\R$ vs $\R\lr\R^n$)}
 \\
 \textbf{+ quelques propriétés pour les cas SA, y'a moyen que ca soit pas inintéressant}
 \\
 
-Toujours dans l'optique d'une analyse temps-fréquence de ces signaux, on voudrait pouvoir écrire tout signal $\psi$ sous la forme :
-\[\psi(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
+Toujours dans l'optique d'une analyse temps-fréquence de ces signaux, on voudrait pouvoir écrire tout signal $\bf{x}$ sous la forme :
+\[\bf{x}(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
 \end{pmatrix}\]
 \\
 La phase ainsi isolée correspond à la phase instantanée du signal et sa dérivée, (à $2\pi$ près) à la fréquence instantanée. Là encore, cette phase existe mais sans unicité puisqu'il suffit de poser, pour tout $\varphi\in\R$ :
-\[\forall i\in\llbracket1,n\rrbracket,\quad \varphi_i = \arg(\psi_i)-\varphi\]
+\[\forall i\in\llbracket1,n\rrbracket,\quad \varphi_i = \arg(x_i)-\varphi\]
 \\
-Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle ne pourra pas simplement venir du spectre puisque, d'une part il a déjà été exploité par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte que des liens implicites qui existe entre chacune des composantes du signal. \textbf{Est-ce que ca pourrait venir de l'\cref{eq:sum_esp_null} ?}
+Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle ne pourra pas simplement venir des spectres $\fou{x}_i$ puisque, d'une part ils ont déjà été exploités par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte des liens implicites qui existe entre chacune des composantes du signal. \textbf{Est-ce que ca pourrait venir de l'\cref{eq:sum_esp_null} ?}
 
 
 \[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
@@ -486,26 +492,68 @@ Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle n
 
 \begin{definition}[Fourier de signal multivarié]
 	La transformée de Fourier ``faible'' d'un signal multivarié est définie comme la transformée de Fourier composante par composante du signal :
-	\[\mathcal{F}[\psi] = \Big(\mathcal{F}[\psi_i]\Big)_{1\leq i\leq n}\]
+	\[\mathcal{F}[\bf{x}] = \Big(\mathcal{F}[x_i]\Big)_{1\leq i\leq n}\]
 \end{definition}
 
 
 \begin{remarque}
-	En posant (suivant les notations ci-dessus) $a = \big\|(a_i))_{1\leq i\leq n}\big\|^2$, $\psi$ s'écrit :
-	\[\psi(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
+	En posant (suivant les notations ci-dessus) $a = \big\|(a_i))_{1\leq i\leq n}\big\|^2$, $\bf{x}$ s'écrit :
+	\[\bf{x}(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
 	\end{pmatrix} = a(t)e^{i\varphi(t)}\begin{pmatrix} \alpha_1(t)e^{i\varphi_1(t)} \\ \alpha_2(t)e^{i\varphi_2(t)} \\ \vdots \\ \alpha_n(t)e^{i\varphi_n(t)} \end{pmatrix}\]
 	avec $\alpha = (\alpha_i)_{1\leq i\leq n} \in \S^{n-1}$. $\alpha$ est donc définie à une rotation près et en notant cette rotation $R_\Theta$, $\psi$ s'écrit encore :
 	\begin{align*}
-	\psi(t) &= a(t)e^{i\varphi(t)}\begin{pmatrix} e^{i\varphi_1(t)} \\ & e^{i\varphi_2(t)} \\  & & \ddots \\ & & & e^{i\varphi_n(t)}\end{pmatrix} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}   &  \text{où }\qquad R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = \alpha\\
+	\bf{x}(t) &= a(t)e^{i\varphi(t)}\begin{pmatrix} e^{i\varphi_1(t)} \\ & e^{i\varphi_2(t)} \\  & & \ddots \\ & & & e^{i\varphi_n(t)}\end{pmatrix} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}   &  \text{où }\qquad R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = \alpha\\
 		&= a(t)e^{i\varphi(t)}e^{iDiag(\varphi_i(t))} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = a(t)e^{i\varphi(t)}Diag\big(e^{i\varphi_i(t)}\big) R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
 	\end{align*}
 \end{remarque}
 
+\subsection{Cas bivarié et trivarié}
+On a un signal bivarié $\bf{x}(t) = \big(x(t),y(t)\big)$ qu'on transforme (voir \cref{subsec:SA_Hilb}) soit la forme :
+\[\sa{x}(t) = \begin{pmatrix}x_+(t) \\ y_+(t)\end{pmatrix} = \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^{i\phi_y(t)}\end{pmatrix}\in\C^2\]
+\\
+
+\`A côté de ça, on a les ellipses modulées :
+\[z(t) = e^{i\theta}\big(a(t)\cos\phi(t) + ib(t) \sin\phi(t)\big) = A(t) e^{i\theta} \big( \sin\chi(t) \cos\phi(t) + i\sin\chi(t) \sin\phi(t) \big) \in\C\]
+Qui sous forme vectoriel se réécrit :
+\begin{equation}\label{eq:exp_elliptik}
+	z(t) = e^{i\phi} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} \in\C^2,\qquad R_\theta\in\SO_2(\R) \
+\end{equation}
+\\
+
+Pour avoir la désinscription de $\bf{x}$ en terme d’ellipse, il suffit donc de poser :\footnote{C'est la version analytique du la version vectorielle de l'ellipse !}
+\[z_x(t) = z(t)\quad \Llr\quad \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^ {i\phi_y(t)}\end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}\]
+\\
+Ensuite, on pose :
+\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \begin{pmatrix}a_+ e^{i\phi_+} \\ a_- e^{i\phi_-}\end{pmatrix} = \frac{1}{2}\begin{pmatrix}x_+ + iy_+ \\ x_+ - iy_+\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\]
+\\
+Et on a :
+\begin{align*}
+	2\phi &= \phi_+ + \phi_-  &  a &= A\cos\chi = a_+ + a_- \\
+	2\theta &= \phi_+ - \phi_-  &  b &= A\sin\chi = a_+ - a_- 
+\end{align*}
+et on en déduit :
+\begin{align*}
+	A &= \sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}  &  \begin{aligned} \cos\chi &= \frac{a_+ + a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}  \\  \sin\chi &= \frac{a_+ - a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}	\end{aligned}
+\end{align*}
+Ce qui donne \infine (super osef) :
+\[\begin{pmatrix}x_+ \\ y_+\end{pmatrix} = e^{i\frac{\phi_+ + \phi_-}{2}} R_{\frac{\phi_+ - \phi_-}{2}} \begin{pmatrix}a_+ + a_- \\ -i(a_+ - a_-)\end{pmatrix}\]
+\\
+
+L'\cref{eq:exp_elliptik} ce généralise  très bien, il suffit d'augmenter la taille de $R_\theta\in\SO_n(\R)$ et de lui donner le vecteur étendu :\footnote{\textit{Sachant que le vecteur contenant $a$ et $b$ est principalement nul, on peut réécrire le produit ne considérant que les deux premières colonnes de $R_\theta$.}}
+\[z_x(t) = \begin{pmatrix}x_{1+}(t) \\ \vdots \\ 
+	x_{n+}(t)\end{pmatrix} = e^{i\phi} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix}\]
+\\
+
+Maintenant, la question est de savoir comment généraliser la transformation en $(z_+, z_-)$ pour obtenir les paramètres $(A, \phi, R_\theta, \chi)$ dans ce cas...
+\\
+Pour généraliser le procédé, on peut noter que :
+\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix} = \frac{1}{\sqrt{2}}U \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\qquad\qquad \text{avec }\ U=\frac{1}{\sqrt{2}}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix}\in\U(2)\]
+\\ 
+Ce qui ramène à se demander comment généraliser $U$ à $\SU(n)$. Le problème est que $U$ est indépendant de tout les paramètres $(A, \phi, R_\theta, \chi)$ et sa généralisation est vraiment pas évidente sachant qu'on que le formule avec $n=2$... et pour $n=3$ ca devient déjà chaud (pour rappelle $\dim \SO_n(\R)=\frac{n(n-1)}{2}$ et donc $\theta\in\R^n$, ce qui rend le problème de pire en pire à mesure qu'on augmente $n$).
 
 
 
 
-%\setcounter{section}{0}
 \setcounter{figure}{0}
 \setcounter{lstlisting}{0}
 
@@ -622,6 +670,8 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 
 
 
+
+
 \section{Description des signaux multivariés}\label{sec:bases}
 
 
@@ -641,50 +691,6 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 	
 	\item Quoi qu'il en soit, les cas dim 2 et 3 c'est fait \cite{lilly_wavelet_2006, lilly_bivariate_2010, lefevre_polarization_nodate}
 \end{itemize}
-
-\subsection{Cas bivarié et trivarié}
-On a un signal bivarié $\bf{x}(t) = \big(x(t),y(t)\big)$ qu'on transforme (voir \cref{subsec:SA_Hilb}) soit la forme :
-\[z_x(t) = \begin{pmatrix}x_+(t) \\ y_+(t)\end{pmatrix} = \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^{i\phi_y(t)}\end{pmatrix}\in\C^2\]
-\\
-
-\`A côté de ça, on a les ellipses modulées :
-\[z(t) = e^{i\theta}\big(a(t)\cos\phi(t) + ib(t) \sin\phi(t)\big) = A(t) e^{i\theta} \big( \sin\chi(t) \cos\phi(t) + i\sin\chi(t) \sin\phi(t) \big) \in\C\]
-Qui sous forme vectoriel se réécrit :
-\begin{equation}\label{eq:exp_elliptik}
-	z(t) = e^{i\phi} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} \in\C^2,\qquad R_\theta\in\SO_2(\R) \
-\end{equation}
-\\
-
-Pour avoir la désinscription de $\bf{x}$ en terme d’ellipse, il suffit donc de poser :\footnote{C'est la version analytique du la version vectorielle de l'ellipse !}
-\[z_x(t) = z(t)\quad \Llr\quad \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^ {i\phi_y(t)}\end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}\]
-\\
-Ensuite, on pose :
-\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \begin{pmatrix}a_+ e^{i\phi_+} \\ a_- e^{i\phi_-}\end{pmatrix} = \frac{1}{2}\begin{pmatrix}x_+ + iy_+ \\ x_+ - iy_+\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\]
-\\
-Et on a :
-\begin{align*}
-	2\phi &= \phi_+ + \phi_-  &  a &= A\cos\chi = a_+ + a_- \\
-	2\theta &= \phi_+ - \phi_-  &  b &= A\sin\chi = a_+ - a_- 
-\end{align*}
-et on en déduit :
-\begin{align*}
-	A &= \sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}  &  \begin{aligned} \cos\chi &= \frac{a_+ + a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}  \\  \sin\chi &= \frac{a_+ - a_- }{\sqrt{(a_+ + a_-)^2 + (a_+ - a_-)^2}}	\end{aligned}
-\end{align*}
-Ce qui donne \infine (super osef) :
-\[\begin{pmatrix}x_+ \\ y_+\end{pmatrix} = e^{i\frac{\phi_+ + \phi_-}{2}} R_{\frac{\phi_+ - \phi_-}{2}} \begin{pmatrix}a_+ + a_- \\ -i(a_+ - a_-)\end{pmatrix}\]
-\\
-
-L'\cref{eq:exp_elliptik} ce généralise  très bien, il suffit d'augmenter la taille de $R_\theta\in\SO_n(\R)$ et de lui donner le vecteur étendu :\footnote{\textit{Sachant que le vecteur contenant $a$ et $b$ est principalement nul, on peut réécrire le produit ne considérant que les deux premières colonnes de $R_\theta$.}}
-\[z_x(t) = \begin{pmatrix}x_{1+}(t) \\ \vdots \\ 
-	x_{n+}(t)\end{pmatrix} = e^{i\phi} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix}\]
-\\
-
-Maintenant, la question est de savoir comment généraliser la transformation en $(z_+, z_-)$ pour obtenir les paramètres $(A, \phi, R_\theta, \chi)$ dans ce cas...
-\\
-Pour généraliser le procédé, on peut noter que :
-\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix} = \frac{1}{\sqrt{2}}U \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\qquad\qquad \text{avec }\ U=\frac{1}{\sqrt{2}}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix}\in\U(2)\]
-\\ 
-Ce qui ramène à se demander comment généraliser $U$ à $\SU(n)$. Le problème est que $U$ est indépendant de tout les paramètres $(A, \phi, R_\theta, \chi)$ et sa généralisation est vraiment pas évidente sachant qu'on que le formule avec $n=2$... et pour $n=3$ ca devient déjà chaud (pour rappelle $\dim \SO_n(\R)=\frac{n(n-1)}{2}$ et donc $\theta\in\R^n$, ce qui rend le problème de pire en pire à mesure qu'on augmente $n$).
 
 
 
@@ -750,24 +756,21 @@ On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps
 
 
 
+\section{Vrac}
 
-\setcounter{figure}{0}
-\setcounter{lstlisting}{0}
+\subsection{Random  stuff ready pour rédac (+labeled)}
 
-\section{Phase géométrique d'un signal}\label{sec:phasegeo}
-
-La phase géométrique est invariante par action du groupe $\mathbb{U}(1)$, c'est à dire invariante par changement de la phase instantanée. Elle ne regarde donc que les paramètres $a, \theta$ et $\chi$. En outre, elle ne regarde que la matrice semi-définie positive (potentiellement sans même regarder l'amplitude $a$ a.k.a. la norme de la matrice).
-
-Avec cette formulation il devient plus clair que $\phi$ peut être vu comme un fibré vectoriel (particulier parce que c'est bien un élément du produit $\R\times\C^n$ pas d'un espace qui s'en rapproche localement) et cette et que le groupe $\mathbb{U}(1)$ agit comme un jauge. En plus, Wikipédia dit que pour les fibrés vectoriels, il faut que l'action soit les changement de base (orthonormée ?), ce qui correspond bien à une changement de phase suivant les formules de la \cref{prop:gene_param_signal_v1}.
-
-La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\varphi)$ parce que encore une fois, y'a vraiment pas unicité de la décomposition et c'est loin d'être clair comment choisir la plus pertinente (et comment la calculer aussi !)
-
-
-
-\section{Trucs à voir}
-
-
-\subsection{random  stuff ready pour rédac (+labeled)}
+\begin{definition}[Signal multivarié]\label{def:signal_multivar}
+	Un \emph{signal multivarié}, ou \emph{$n-$varié}, est un vecteur composé de $n\in\N^*$ signaux $x_i$. Si $n=2$, alors on parle de signal \emph{bivarié}.
+	\\
+	Dans la continuité de ce qui à été dit dans la \cref{subsec:transfo_SA}, dans le cas des signaux réels, on s'intéressera au vecteur composé des transformées en SA (eq. \ref{eq:transfo_SA}, déf. \ref{def:transfo_sa&hilbert}) des $x_i$.
+	\textbf{Au moins dans toute cette \namecref{sec:sign_multivar}}, un tel signal sera noté :
+	\[\sa{x}(t)\ :\quad \begin{aligned} 
+		\R\quad &\lr\qquad \C^n \\t\quad &\longmapsto\ \begin{pmatrix} \mathcal{A}[x_1] \\ 
+			\mathcal{A}[x_2] \\ \vdots \\ \mathcal{A}[x_n] \end{pmatrix}
+	\end{aligned} \]
+	On supposera que chaque composante $x_i$ de $\bf{x}$ aura autant de régularité et de condition d'intégrabilité que nécessaire \textbf{(il vaudra préciser lesquelles à un moment)}.
+\end{definition}
 
 \begin{definition}\label{def:phase_dyn}
 	Ainsi, il reste tout un degré de liberté au produit $\ \langle x, \dot{x} \rangle\ $ même si $x\in\S^{2n}$. En intégrant ce degré de liberté supplémentaire, c'est-à-dire en tenant compte de son évolution sur la période $[t_0,t]$, l'on obtient ce qui est appeller le \emph{phase dynamique} :
@@ -784,6 +787,8 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 	\end{equation}
 	\textbf{Elle a rien d'une connexion par contre :/}
 \end{definition}
+
+
 
 \subsection{Bilan des formules}
 
@@ -817,7 +822,7 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 \end{itemize}
 
 
-\subsection{Général}
+\subsection{Thoughts}
 
 \begin{itemize}
 	\item D'où sort l'interprétation géométrique + son lien avec quaternions (prop. \ref{prop:quatern})
@@ -842,7 +847,7 @@ La question reste encore de savoir comment on détermine les $(a,\theta,\chi,\va
 
 
 
-\subsection{Point de vue des variétés}\label{subsec:phaseG_variete}
+\subsection{Point de vue des variétés ?}\label{subsec:phaseG_variete}
 
 \begin{itemize}
 	

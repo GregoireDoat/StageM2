@@ -108,7 +108,8 @@
 \newcommand{\Co}{\text{\normalfont com}}
 \newcommand{\codim}{\text{\normalfont codim}}
 
-\newcommand{\fou}[1]{\mathcal{F}\left[#1\right]}
+\newcommand{\Fou}[1]{\mathcal{F}\left[#1\right]}
+\newcommand{\fou}[1]{\hat{#1}}
 
 %espaces
 %\renewcommand{\Vec}{\text{Vec}}
@@ -400,7 +401,7 @@ rulecolor=\color{lightgray}}
 \usepackage[loadonly, clearempty, newparttoc, toctitles]{titlesec}
 
 % liste des sections
-\titleclass{\part}[1]{top} % 0 = niveau de section
+\titleclass{\part}[0]{top} % 0 = niveau de section
 \titleclass{\section}{straight}[\part]
 \titleclass{\subsection}{straight}[\section]
 \titleclass{\subsubsection}{straight}[\subsection]
@@ -438,6 +439,7 @@ rulecolor=\color{lightgray}}
 \crefname{part}{partie}{Partie}
 \crefname{section}{section}{Section}
 \crefname{subsection}{sous-section}{Sous-section}
+\crefname{subsubsection}{sous-section}{Sous-section}
 
 
 	% le TOC en lé-gende
