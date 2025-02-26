@@ -13,13 +13,13 @@
 	
 	\centering
 	\vspace{1.5cm}
-	{\huge\textbf{Rapport de Stage de M2}}\par
+	{\huge\textbf{Mémoire de Stage de M2}}\par
 	
 	\vspace{2cm}
-	{\huge\textbf{\textsc{Des trucs sûrement très cools}}}\par 
+	{\huge\textbf{\textsc{Phase Géométrique de Signal Multivarié}}}\par 
 	\vspace{0.5cm}
 	
-	{\huge\textbf{\textsc{vraiment très très cool}}}\par
+	{\huge\textbf{\textsc{et puis c'est déjà pas mal}}}\par
 	\vspace{2.0cm}
 	
 	{\large Grégoire \textsc{Doat}}\par
@@ -175,14 +175,10 @@ Du point de vu temporel, le signal est émis avec une puissance régulière, mai
 	Les écart-types associés sont plus facilement interprétable. Le premier est appelé \emph{durée d'émission} du signal, puisqu'il renseigne l'étalement temporelle du signal ; et le second \emph{largeur de bande (fréquentielle)} puisque, lui, renseigne l'étalement fréquentielle. 
 \end{definition}
 
-
-
-\subsubsection{Fréquence instantanée et covariance}
-
-Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} suivantes seront nécessaire :
+Ces espérances, et plus généralement les moments de $\rho$ (resp. $\varrho$), s'écrivent en fonction des dérivées $\fou{x}$ (resp. $x$) via ce que Cohen appelle le ``calculation trick'' \cite{cohen_time_1995} :
 
 \begin{proposition}[``Calculation tricks'' de \cite{cohen_time_1995}] \label{prop:integ_trick}
-	Si le signal est $n$ fois dérivable et que la densité d’énergie associée $\varrho$ admet un moment d'ordre $n$, alors il est donnée par la formule :
+	Si le signal est $n$ fois dérivable et que la densité d’énergie spectrale associée $\varrho$ admet un moment d'ordre $n$, alors ce moment est donnée par la formule :
 	\begin{equation}\label{eq:moment_f}
 		\forall n\in\N,\qquad \esp[\varrho]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \congu{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
 	\end{equation}
@@ -233,6 +229,10 @@ Pour ce qui va suivre, les formules \eqref{eq:moment_f} et \eqref{eq:moment_t} s
 		&= \frac{1}{(2 i\pi)^n}  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
 	\end{align*}
 \end{demo}
+
+
+
+\subsubsection{Fréquence instantanée et covariance}
 
 On notera dans toute la suite, sauf précision, l'amplitude et phase de $x$ (resp. $\fou{x}$) :
 \begin{align*}
@@ -292,7 +292,7 @@ D'autre part, on peut fait le même jeu avec la largeur de bande qu'avec la fré
 On constate deux composantes (qui, par ailleurs, sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il donc cohérent que le terme restant (là où apparaît $\phi'$ !) porte l'information fréquentielle du signal.
 \\
 
-\`A noter tout de même, que la notion de fréquence instantanée est paradoxale en soit. Comme La fréquence ne peut pas être une information purement local
+\`A noter tout de même, que \textbf{REMARQUE SUR LE PRINCIPE D'INCERTITUDE !!!!}
 \\
 
 Afin de clairement expliciter le problème des signaux réels pour l'analyse temps-fréquence, est introduit une dernier outils :
@@ -308,7 +308,8 @@ Afin de clairement expliciter le problème des signaux réels pour l'analyse tem
 	\end{equation}
 \end{definition}
 
-Les concepts de base de l'analyse temps-fréquence étant posé, voyons à présent les problèmes que posent les signaux réels.
+Les concepts de base de l'analyse temps-fréquence étant posés, voyons à présent les problèmes que posent les signaux réels.
+
 
 
 \subsection{Transformée en signal analytique}
@@ -346,14 +347,14 @@ La transformée inverse de cette indicatrice (qui n'est autre que la fonction de
 
 
 \begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
-	On appelle \emph{valeur principale de Cauchy} la distribution notée vp$\frac{1}{x}$ et définie par le crochet de dualité :
+	On appelle \emph{valeur principale de Cauchy} la distribution, notée vp$\frac{1}{x}$, telle que :
 	\begin{equation}
 		\begin{aligned}
 		\forall \varphi\in\mathcal{S}(\R),\qquad 
 			\left\langle \vpC, \varphi \right\rangle 
 			= \fint_0^t \frac{\varphi(t)}{t}dt 
 			&\defeq \lim_{\varepsilon\lr0^+} \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t}dt + \int_{+\varepsilon}^{+\infty} \frac{\varphi(t)}{t}dt \\
-			&= \int_{\R^+} \frac{\varphi(t) - \varphi(-t)}{t}dt
+			&= \int_0^{+\infty} \frac{\varphi(t) - \varphi(-t)}{t}dt
 		\end{aligned}
 	\end{equation}
 	Ici $\mathcal{S}(\R)$ est l’espace de Schwartz des fonctions $C^\infty$ à décroissance rapide et la limite en $\varepsilon$ assure que l'intégrale (impropre) converge bien. Sa valeur est également appelée \emph{valeur principale} de l'intégrale. 
@@ -393,7 +394,7 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 	\end{align*}
 \end{demo}
 
-\begin{definition}[transformée en SA et de Hilbert]\label{def:transfo_sa&hilbert}
+\begin{definition}[Transformée en SA et de Hilbert]\label{def:transfo_sa&hilbert}
 	On définie alors la \emph{transformée en signal analytique} (SA) du tout signal $x$ par l'application :
 	\begin{equation}\label{eq:transfo_SA}
 		\SA{x} \defeq 2 x*\mathcal{F}^{-1}\big[\one_{\R^+}\big] :\ \begin{aligned} 
@@ -432,31 +433,71 @@ On obtient alors on décomposition de $x$ en une paire $(a,\phi)$ telle que disc
 	\end{align}
 \end{definition}
 
-Il est important de noter que si un signal est présenté sous la forme  $\ x=a\cos\phi$, rien n'implique que $a$ et $\phi$ corresponde à l'amplitude et la phase instantanée du signal. Si ce n'est pas le cas, c'est que cette décomposition n'était ``pas la bonne'' en cela qu'elles ne s’interprètent pas comme l'on aimerait.
+\textit{Il est important de noter que si un signal est présenté sous la forme  $\ x=a\cos\phi$, rien n'implique que $a$ et $\phi$ corresponde à l'amplitude et la phase instantanée du signal. Si ce n'est pas le cas, c'est que cette décomposition n'était ``pas la bonne'' en cela qu'elles ne s’interprètent pas comme l'on aimerait.}
 \\
 
-Pour comprendre comment cette transformation ``sélectionne'' la fréquence instantanée, détaillons le cas où $x$ s'écrit comme somme de deux signaux pures (\cref{fig:exemple_tSA}) :
-\[x(t) = \cos 2\pi\nu_1t + \cos 2\pi\nu_2t\]
+Pour comprendre comment cette transformation ``sélectionne'' la fréquence instantanée, détaillons le cas où $x$ s'écrit comme produit de deux signaux pures (\cref{fig:exemple_tSA_1/2}) :
+\[x(t) = \cos (2\pi\nu_1t)\cos (2\pi\nu_2t)\]
+\\
+On montre sans mal\footnote{\itshape
+	$\fou{x}$ est donné par 4 Diracs, en ne gardant que ce non nul sur $\R^+$ on obtient le spectre de $\SA{x}$ et il reste plus qu'à inverser la transformée de Fourier.}
+que si $\nu_1\geq\nu_2$, alors la transformée en SA de $x$ s'écrit :
+\[\SA{x} = \cos \left(2\pi\nu_1 t\right) e^{2\i\pi\nu_2 t}\]
 
 \begin{figure}[h]\centering
-	\includegraphics[width=0.48\textwidth]{fig/somme_signal-decompo.png}\hfill
-	\includegraphics[width=0.48\textwidth]{fig/somme_signal-a_phi.png}
-	\caption{Représentation graphique du signal $x$ (bleu). Sur l'image de gauche, avec signaux de fréquences pures (rouge et vert). Sur l'image de droite, avec son amplitude (orange) et sa phase instantanée (violet)}
-	\label{fig:exemple_tSA}
+	\includegraphics[width=0.48\textwidth]{fig/ex SA - 11.png}\hfill
+	\includegraphics[width=0.48\textwidth]{fig/ex SA - 12.png}
+	\caption{Représentation graphique du signal $x$ (rouge) avec $\nu_1=3$ et $\nu_2=0.1$. Sur l'image de gauche, avec signaux de fréquences pures (bleu et vert). Sur l'image de droite, avec son amplitude (bleu) et sa phase instantanée (vert). Les discontinuités de la phase sont dû à l'arrondi à $2\pi$  près de l'argument de $\SA{x}$ et à la façon dont il est calculé lorsque le signal s'annule (mise à 0). Voir \href{https://www.desmos.com/calculator/gcedcdfkhr}{ici} pour un graphique dynamique.}
+	\label{fig:exemple_tSA_1/2}
 \end{figure}
 \noindent
-On montre sans mal\footnote{\itshape
-	$\fou{x}$ est donné par 4 Diracs, en ne gardant que ce qui sont non nul sur $\R^+$ on obtient le spectre de $\SA{x}$ et il reste plus qu'à inverser la transformée de Fourier.}
- que si $\nu_1\geq\nu_2$, alors la transformée en SA de $x$ s'écrit :
-\[\SA{x} = \cos \left(2\pi\frac{\nu_1-\nu_2}{2}t\right) e^{2\pi\frac{\nu_1+\nu_2}{2}t}\]
+Le signal $\SA{x}$ n'est ici pas sous forme exponentielle à proprement parler puisque le cosinus peut être négatif (pour s'y ramener, il suffit de passer le cos en valeur absolue et d'ajouter $\pm\pi$ à l'argument) mais l’avantage de cette forme est qu'elle fait clairement apparaître les fréquences $\nu_{1,2}$. En particulier, la fréquence instantanée du signal est la plus grandes des deux fréquences $\nu_1$ et $\nu_2$. La plus petite, elle, se retrouve dans l'amplitude. 
 \\
-C'est donc la plus haute fréquence $\nu_1+\nu_2$ qui correspond à la fréquence instantanée du signal. Un résultats qui est rassurant puisque, moralement, cela assure qu'aucune fréquence ne s'est perdue dans l'amplitude.
-\textsc{To Do} :
+Ce résultat est rassurant en cela qu'il est plus naturel de voir le cosinus de basse fréquence comme modulant celui de haute fréquence que l'inverse comme on le voit sur la première image de la figure \ref{fig:exemple_tSA_1/2}. 
+\\
+Aussi, en mettant les hautes fréquences du signal dans la fréquence instantanée, on s'assure de limiter les variations de l'amplitude. Cela apporte bien plus de contrainte en terme de décomposition $(a_x,\phi_x)$, en cela qui si l'inverse étant vrai, alors toute les fréquences pourrait être envoyé dans l'amplitude, ce qui laisserait la phase invariante.
+\\
+
+Cela étant dit, lorsque l'on fait varier $\nu_1$ et $\nu_2$, le résultat n'est pas toujours si intuitif. C'est notamment le cas lorsque les deux deviennent de plus en plus proche :
+
+\begin{figure}[h]\centering
+	\includegraphics[width=0.48\textwidth]{fig/ex SA - 21.png}\hfill
+	\includegraphics[width=0.48\textwidth]{fig/ex SA - 22.png}
+	\caption{Idem que pour la figure \ref{fig:exemple_tSA_1/2} précédente, avec cette fois $\nu_1=1.5$ et $\nu_2=1.3$.}
+	\label{fig:exemple_tSA_2/2}
+\end{figure}
+
+\textbf{C'est vraiment bizarre parce que c'est vraiment pas ce à quoi on s'attendrait, ce serait beaucoup mieux d'avoir d'avoir un truc du genre :}
+\[a_x(t)=\frac{\left| \cos 2\pi (\nu_1-\nu_2)t \right| +1}{2} \]
+\textbf{:((( }
+\\ \\ \\
+
+
+
+\begin{theoreme}[de Bedrosian]\label{theo:theo2Bedrosian}
+	Dans sa forme la plus générale, le théorème de Bedrosian énonce que donnée si deux fonctions $f,g\in L^2(\R)$ sont telles l'une des trois assertions est vraie :
+	\begin{itemize}
+		\item 
+		\item $\exists \lambda\in\R^+\ |\ \supp \fou{f} \subset [-\lambda, +\infty[,\ \supp \fou{g} \subset [\lambda, +\infty[$
+		
+		\item $\exists \lambda\in\R^+\ |\ \supp \fou{f} \subset ]-\infty, \lambda],\ \supp \fou{g} \subset ]-\infty,-\lambda]$
+		
+		\item $\exists \lambda_{1,2}\in\R^+\cup\{+\infty\}\ |\ \supp \fou{f} \subset [-\lambda_1, \lambda_2],\ \supp \fou{g} \subset \R\setminus[-\lambda_2,\lambda_1]$
+	\end{itemize}
+	alors la transformée de Hilbert de leur produit est donnée par la formule :
+	\begin{equation}\label{eq:theo2Bedrosian}
+		\supp \fou{f} \subset [-\lambda_1, \lambda_2],\ \supp \fou{g} \subset \R\setminus[-\lambda_2,\lambda_1]\quad \Lr\quad \hilb{fg} = f\hilb{g}
+ 	\end{equation}
+\end{theoreme}
+\begin{corollaire}
+	En particulier, le signal $x$ d'amplitude (resp. phase) instantanée $a_x$ (resp. $\phi_x$) est tel que $a_x\in L^2(\R)$ et $\cos\phi_x\in L^2(\R)$, sous les mêmes conditions pour le \cref{theo:theo2Bedrosian}, on a :
+	\begin{align*}
+		\hilb{x} &= a_x\hilb{\cos(\phi_x)}  &  &\text{et}  &  \hilb{\cos(\phi_x)} = \sin(\phi_x)
+	\end{align*}	
+\end{corollaire}
+
+
 \begin{itemize}
-	
-	\item 
-	
-	\item Exemple pour dire que les hautes fréquences partes dans la phase (produit de cos). C'est super important ça et ça fait sens, si les hautes partaient dans l'amplitude, alors on pourrait avoir des signaux sans phase et uniquement à amplitude variables. Ce qui ne dit rien en somme.
 	
 	\item théorème de Bedrosian \cite{venouziou_characterizing_2008}
 	

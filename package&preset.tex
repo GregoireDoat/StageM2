@@ -2,7 +2,7 @@
 %%%%    IMPORTS 2 BASE    %%%%
 
 
-\documentclass[hidelinks, french, oneside]{article}
+\documentclass[french, oneside]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
@@ -30,8 +30,16 @@
 \usepackage{bbm}	 % mathbb étendu
 
 % pour les hyprlien / cross-ref
-\usepackage{hyperref, cleveref}
-%\namecref{sec:label}
+\usepackage[pdftitle=Phase~géométrique~de~signal~multivarié,
+					   pdfauthor=Grégoire~Doat,
+					   linktoc=all,	%page du TOC clickable
+ 					   breaklinks=true,	% liens peuvent s'étendre sur plusieurs lignes
+ 					   colorlinks=true, %colore le 'anchor' text
+ 					   linkcolor=black,
+ 					   citecolor=green,	
+ 					   urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+
 
 %pour les figures
 \usepackage{graphicx, caption} \usepackage{wrapfig, floatrow}
@@ -89,8 +97,10 @@
 \newcommand{\Argsh}{\text{\normalfont Argsh}}
 
 \newcommand{\congu}[1]{\overline{#1}}
+
 \newcommand{\argmin}[1]{\underset{#1}{\text{\normalfont argmin}}}
 \newcommand{\argmax}[1]{\underset{#1}{\text{\normalfont argmax}}}
+\newcommand{\supp}{\text{\normalfont supp}\,}
 
 \newcommand{\pgcd}{\text{\normalfont pgcd}}
 \newcommand{\PGCD}{\text{\normalfont PGCD}}
@@ -156,6 +166,7 @@
 \newcommand{\infine}{\textit{in fine}}
 \newcommand{\ie}{\textit{i.e.}}
 \newcommand{\eg}{\textit{e.g.}}
+\newcommand{\cf}{\textit{cf. }}
 
 % tmp
 \newcommand{\phaset}{\Phi_{\text{\normalfont tot}}}
@@ -186,22 +197,26 @@
 	linewidth=0.4pt, linecolor=black,
 	topline=false, bottomline=true, rightline=false}
 
+% théorèmes (pour pouvoir les nommer)
+\makeatletter
+	\newtheoremstyle{theo}{\scshape ##1 ##2\quad ---\quad}{{\scshape##1 ##3 \quad ---\quad}}
+\makeatother
+\theoremstyle{theo}
+\newmdtheoremenv[style=barred]{theoreme}{Théorème}
 
 % énoncés classiques
-\makeatletter
-	\newtheoremstyle{enonce}{##1 ##2}{##1 ##2 (##3)}
-\makeatother
+\theoremstyle{plain}
 \theoremheaderfont{\scshape}
 \theoremseparator{\quad ---\quad}
 \theoremnumbering{arabic}
 \theorembodyfont{\normalfont}
+
 
 \newmdtheoremenv[style=barred]{definition}{Définition}%[section]
 \newmdtheoremenv[style=barred]{proposition}{Proposition}
 \newmdtheoremenv[style=barred]{propriete}{Propriété}
 \newmdtheoremenv[style=barred]{propricarac}[propriete]{Propriété Caractéristique}
 \newmdtheoremenv[style=barred]{lemme}{Lemme}
-\newmdtheoremenv[style=barred]{theoreme}{Théorème}
 \newmdtheoremenv[style=barred]{theodef}[theoreme]{Théorème et Définition}
 \newmdtheoremenv[style=barred]{corollaire}{\indent Corollaire}[theoreme]
 
