@@ -56,26 +56,38 @@
 \addcontentsline{toc}{section}{Introduction}
 \section*{Introduction}
 
+\begin{itemize}
+	
+	\item Les signaux multivarié c'et super, ondes gravitationnelles, tout ça tout ça
+	
+	\item La phase géo s'est largement étudié dans le cadre de la méca Q / de l'optique
+	
+	\item Nous on voudrait généraliser sont études / calculs à des signaux quelconque (en particulier, par d'EDP pour porter le signal)
+	
+	\item Ca a déjà étant fait en dimension 2 et un petit peu regarder en dimension 3
+	
+	\item Les outils employés se généralise très mal donc il en faut de nouveaux
+	
+\end{itemize}
 
 
-
-
-Index des notations : 
-\begin{table}[h]\centering
+\begin{table}[b]\centering
 	\begin{tabular}{|| c | c ||} \hline
 		\textsc{Objet/fonctions}  & \textsc{Notations} \\
 		\hline\hline
-		distribution de Dirac   &  $\delta$\\ \hline 
-		indicatrice de $E$   	 &  $\one_E$ \\ \hline 
-		fonction signe   		    &  $\sign(x)$ \\ \hline
-		Fourier   						&  $\Fou{x}$, $\fou{x}$ \\ \hline
-		Transfo en SA   		  &  $\SA{x}$, $\sa{x}$ \\ \hline
-		Transfo de Hilbert   	&  $\hilb{x}$ \\ \hline
-		conjugué   					 &  $\congu{x}$ \\ \hline
-		produit hermitien (resp. scalaire)   &  $\langle x \,|\, y\rangle$ (resp. $\langle x,y\rangle$) \\ \hline
-		espérance et variance de $f$ suivant $\rho$   &  $\esp[\rho]{f(t)}$ $\var[\rho]{f(t)}$ \\  \hline
+	 	Distribution de Dirac   &  $\delta$\\ \hline 
+		Indicatrice de $E$   	 &  $\one_E$ \\ \hline 
+		Fonction signe   		    &  $\sign(x)$ \\ \hline
+		Transformée de Fourier   						&  $\Fou{x}$, $\fou{x}$ \\ \hline
+		Transformée en SA   		  &  $\SA{x}$, $\sa{x}$ \\ \hline
+		Transformée de Hilbert   	&  $\hilb{x}$ \\ \hline
+		Conjugué complexe  					 &  $\congu{x}$ \\ \hline
+		Produit hermitien (resp. scalaire)   &  $\langle x \,|\, y\rangle$ (resp. $\langle x,y\rangle$) \\ \hline
+		Espérance et variance de $f$ suivant $\rho$   &  $\esp[\rho]{f(t)}$ $\var[\rho]{f(t)}$ \\  \hline
+		Espace des fonctions p.p. de puissance $p^{eme}$ intégrable à valeur de $E$ dans $F$  &  $L^p(E, F)$ \\  \hline		
+		Support d'une fonction $f$   &  $\supp f =\{x\in\R\ |\ f(x)\neq0\}$ \\  \hline
 	\end{tabular}
-	\caption{Table des notations mathématiques}
+	\caption{Indexe des notations}
 	\label{tab:notation}
 \end{table}
 
@@ -83,13 +95,29 @@ Index des notations :
 
 
 \part{Décomposition des Signaux Multivariée}
+%Malgré ce que l'énoncé de la problématique laisse entendre, dans toute la suite nous travaillerons avec des signaux à valeur de $\R$ dans $\C^n$ plutôt que $\R^n$. Il y a de très bonne raison à la transformation des signaux réels en complexes et c'est sera l'objet de cette première  \namecref{sec:temp-freq}.
+
+\textsc{ToDo de  la partie (sinon elle est finie) :}
+\begin{itemize}	
+	
+	\item rectifier la démo de la \cref{prop:integ_trick} (et mettre à jour la formule la où elle est utilisée)
+	
+	\item Principe d'incertitude à éclaircir (comprendre + expliquer) \cref{subsec:freq_instant}
+	
+	\item Expliquer le second exemple (bizarre) \cref{fig:exemple_tSA_2/2}
+	
+	\item \`A quoi sert Bedrosian au juste ? \Cref{theo:2Bedrosian}
+	
+	\item \'Eventuellement ajouter que'qu'part: ``On parle éventuellement de signal AM-FM (amplitude modulated - frequancy modulated)'' \cref{coro:AM-FM}
+	
+	\item Refaire les graphs en Tikz ( \cref{fig:densi_spec_sym,,fig:exemple_tSA_1/2,fig:exemple_tSA_2/2})
+	
+	\item footnote 2 à régler
+	
+\end{itemize}
+
 
 \section{Analyse temps-fréquence}
-
-\begin{enonce}[Intro de la \cref{sec:temp-freq}]
-	\textit{Malgré ce que l'énoncé de la problématique laisse entendre, dans toute la suite nous travaillerons avec des signaux à valeur de $\R$ dans $\C^n$ plutôt que $\R^n$. Il y a de très bonne raison à la transformation des signaux réels en complexes et c'est sera l'objet de cette première  \namecref{sec:temp-freq}.}\\
-\end{enonce}
-
 
 
 %\section{Signal analytique, transformé de Hilberts, Analyse en temps-fréquence}
@@ -100,7 +128,7 @@ Index des notations :
 \\
 Dans l'étude de signaux, la transformée de Fourier est un outil standard puisqu'il donne accès à tout l'information fréquentielle de ce dernier. Ce gain d'information n'est pas gratuit pour autant puisqu'on perd avec tout notion de temporalité. Pourtant dans bien des cas, une information instantanée, dépendante en temps, est plus pertinente.
 \\
-C'est par exemple le cas dans l'étude de la langue oral (bon terme ?). Le sens d'une phrase ne vient pas du signal, \ie~la voix, tout entier mais plutôt de ses valeurs locales. Lorsque l'on prononce le mot ``\textit{fleur}'', c'est l’enchaînement des sons associés au ``\textit{f}'', ``\textit{l}'', ``\textit{eu}'', \etc~qui est important et non la structure global du signal.  
+C'est par exemple le cas dans l'étude de la langue oral. Le sens d'une phrase ne vient pas du signal, \ie~la voix, tout entier mais plutôt de ses valeurs locales. Lorsque l'on prononce le mot ``\textit{fleur}'', c'est l’enchaînement des sons associés au ``\textit{f}'', ``\textit{l}'', ``\textit{eu}'', \etc~qui est important et non la structure global du signal.  
 \\
 On pourrait également cité l'effet Döppler qui permet, entre autre, de savoir si un émetteur s'éloigne ou se rapproche. Dans ce cadre, le passage d'un signal de hautes à basses fréquences (typiquement d'un son aigu à un son grave) indique que la source, qui se rapprochait, s'est mise à s'éloigner : c'est la variation de fréquence en cours du temps qui est porteuse d'information.
 \\
@@ -232,7 +260,7 @@ Ces espérances, et plus généralement les moments de $\rho$ (resp. $\varrho$),
 
 
 
-\subsubsection{Fréquence instantanée et covariance}
+\subsubsection{Fréquence instantanée et covariance}\label{subsec:freq_instant}
 
 On notera dans toute la suite, sauf précision, l'amplitude et phase de $x$ (resp. $\fou{x}$) :
 \begin{align*}
@@ -397,7 +425,7 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 \begin{definition}[Transformée en SA et de Hilbert]\label{def:transfo_sa&hilbert}
 	On définie alors la \emph{transformée en signal analytique} (SA) du tout signal $x$ par l'application :
 	\begin{equation}\label{eq:transfo_SA}
-		\SA{x} \defeq 2 x*\mathcal{F}^{-1}\big[\one_{\R^+}\big] :\ \begin{aligned} 
+		\SA{x} = \sa{x} \defeq 2 x*\mathcal{F}^{-1}\big[\one_{\R^+}\big] :\ \begin{aligned} 
 			\R \quad &\lr\qquad\quad \C \\	
 			t\quad &\longmapsto\ x(t) + \frac{i}{\pi}\fint_\R \frac{x(s)}{t-s}ds
 		\end{aligned}
@@ -426,15 +454,16 @@ Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $
 \end{aligned}\right.\]
 On obtient alors on décomposition de $x$ en une paire $(a,\phi)$ telle que discuté plus haut.
 
-\begin{definition}[Amplitude et phase instantanée]\label{def:ampli&phase_cano}
+\begin{definition}[Amplitude et phase instantanée]\label{def:ampli&phase_instant}
 	On définie ainsi l'\emph{amplitude instantanée} $a_x$ et la \emph{phase instantanée} $\phi_x$  de tout signal $x$ comme étant respectivement l'amplitude et la phase de $\SA{x}$ :
 	\begin{align}\label{eq:ampli&phase_cano}
 		a_x &= \big|\SA{x}\big|   &   \phi_x &= \arg\big(\SA{x}\big)
 	\end{align}
 \end{definition}
 
-\textit{Il est important de noter que si un signal est présenté sous la forme  $\ x=a\cos\phi$, rien n'implique que $a$ et $\phi$ corresponde à l'amplitude et la phase instantanée du signal. Si ce n'est pas le cas, c'est que cette décomposition n'était ``pas la bonne'' en cela qu'elles ne s’interprètent pas comme l'on aimerait.}
-\\
+\begin{remarque}
+	Il est important de noter que si un signal est présenté sous la forme  $\ x=a\cos\phi$, rien n'implique que $a$ et $\phi$ corresponde à l'amplitude et la phase instantanée du signal. Si ce n'est pas le cas, c'est que cette décomposition n'était ``pas la bonne'' en cela qu'elles ne s’interprètent pas comme l'on aimerait.
+\end{remarque}
 
 Pour comprendre comment cette transformation ``sélectionne'' la fréquence instantanée, détaillons le cas où $x$ s'écrit comme produit de deux signaux pures (\cref{fig:exemple_tSA_1/2}) :
 \[x(t) = \cos (2\pi\nu_1t)\cos (2\pi\nu_2t)\]
@@ -442,7 +471,7 @@ Pour comprendre comment cette transformation ``sélectionne'' la fréquence inst
 On montre sans mal\footnote{\itshape
 	$\fou{x}$ est donné par 4 Diracs, en ne gardant que ce non nul sur $\R^+$ on obtient le spectre de $\SA{x}$ et il reste plus qu'à inverser la transformée de Fourier.}
 que si $\nu_1\geq\nu_2$, alors la transformée en SA de $x$ s'écrit :
-\[\SA{x} = \cos \left(2\pi\nu_1 t\right) e^{2\i\pi\nu_2 t}\]
+\[\SA{x} = \cos \left(2\pi\nu_2 t\right) e^{2\i\pi\nu_1 t}\]
 
 \begin{figure}[h]\centering
 	\includegraphics[width=0.48\textwidth]{fig/ex SA - 11.png}\hfill
@@ -467,89 +496,86 @@ Cela étant dit, lorsque l'on fait varier $\nu_1$ et $\nu_2$, le résultat n'est
 	\label{fig:exemple_tSA_2/2}
 \end{figure}
 
-\textbf{C'est vraiment bizarre parce que c'est vraiment pas ce à quoi on s'attendrait, ce serait beaucoup mieux d'avoir d'avoir un truc du genre :}
-\[a_x(t)=\frac{\left| \cos 2\pi (\nu_1-\nu_2)t \right| +1}{2} \]
-\textbf{:((( }
-\\ \\ \\
+Pour comprendre pourquoi l'amplitude ne fait pas ce qu'on attendrait d'elle, on introduit le théorème de Bedrosian :
 
-
-
-\begin{theoreme}[de Bedrosian]\label{theo:theo2Bedrosian}
-	Dans sa forme la plus générale, le théorème de Bedrosian énonce que donnée si deux fonctions $f,g\in L^2(\R)$ sont telles l'une des trois assertions est vraie :
+\begin{theoreme}[de Bedrosian]\label{theo:2Bedrosian}
+	Dans sa formulation la plus générale, le théorème de Bedrosian énonce que donnée si deux fonctions $f,g\in L^2(\R)$ sont telles l'une des trois assertions suivantes est vraie :
 	\begin{itemize}
 		\item 
 		\item $\exists \lambda\in\R^+\ |\ \supp \fou{f} \subset [-\lambda, +\infty[,\ \supp \fou{g} \subset [\lambda, +\infty[$
 		
 		\item $\exists \lambda\in\R^+\ |\ \supp \fou{f} \subset ]-\infty, \lambda],\ \supp \fou{g} \subset ]-\infty,-\lambda]$
 		
-		\item $\exists \lambda_{1,2}\in\R^+\cup\{+\infty\}\ |\ \supp \fou{f} \subset [-\lambda_1, \lambda_2],\ \supp \fou{g} \subset \R\setminus[-\lambda_2,\lambda_1]$
+		\item $\exists (\lambda_1,\lambda_2)\in \R^+\times\R^+ \setminus\{(0,0)\}\ |\ \supp \fou{f} \subset [-\lambda_1, \lambda_2],\ \supp \fou{g} \subset \R\setminus[-\lambda_2,\lambda_1]$
 	\end{itemize}
-	alors la transformée de Hilbert de leur produit est donnée par la formule :
-	\begin{equation}\label{eq:theo2Bedrosian}
+	alors la transformée de Hilbert de leur produit est donnée par la formule (voir \cite{wang_simple_2009} pour une démonstration) :
+	\begin{equation}\label{eq:2Bedrosian}
 		\supp \fou{f} \subset [-\lambda_1, \lambda_2],\ \supp \fou{g} \subset \R\setminus[-\lambda_2,\lambda_1]\quad \Lr\quad \hilb{fg} = f\hilb{g}
  	\end{equation}
 \end{theoreme}
-\begin{corollaire}
-	En particulier, le signal $x$ d'amplitude (resp. phase) instantanée $a_x$ (resp. $\phi_x$) est tel que $a_x\in L^2(\R)$ et $\cos\phi_x\in L^2(\R)$, sous les mêmes conditions pour le \cref{theo:theo2Bedrosian}, on a :
+\begin{corollaire}\label{coro:AM-FM}
+	Dans le cas d'un signal réel, suivant la \cref{def:ampli&phase_instant} on peut écrire \newline $x=a_x\cos\circ\phi_x$.
+	Comme $a_x$ et $\phi_x$ sont réels, seule la troisième condition du théorème de Bedrosian peut être satisfaite pour peu que $\lambda_1=\lambda_2$.
+	\\
+	Ainsi, à condition que $a_x\in L^2(\R)$, $\cos\phi_x\in L^2(\R)$ et qu'il existe $\lambda\in\R^{+_*}$ tel que :
+	\[\supp \Fou{a_x} \subset [-\lambda, \lambda],\quad \supp \Fou{\cos\phi_x} \subset \R\setminus[-\lambda,\lambda]\]
+	 Alors on a :
 	\begin{align*}
 		\hilb{x} &= a_x\hilb{\cos(\phi_x)}  &  &\text{et}  &  \hilb{\cos(\phi_x)} = \sin(\phi_x)
-	\end{align*}	
+	\end{align*}
 \end{corollaire}
 
 
-\begin{itemize}
-	
-	\item théorème de Bedrosian \cite{venouziou_characterizing_2008}
-	
-	\item cas AM-FM
-\end{itemize}
 
+\section{Généralisation aux signaux multivariés}\label{sec:sign_multivar}
 
-\section{Généralisation au signaux multivariés}\label{sec:sign_multivar}
+\subsection{Phase et fréquence instantanée de signal multivarié}
 
-\subsection{Phase et fréquence instantanée de signal multivaré}
-
-Dans la suite, ce qui va nous intéresser, ce sont les signaux multivariés :
-
-
-\textbf{Faudra parler des propriétés du trucs un peu, genre la différence pour fourier des images et des multivarées ($\R^n\lr\R$ vs $\R\lr\R^n$)}
+Dans le cas multivariés, comme le cas monovarié, on aimerait pouvoir isoler une phase instantanée de tout signal. C'est-à-dire, étant donnée un signal $\bf{x}=(x_i)_{1\leq i\leq n}$ à valeur de $\R$ dans $\C^n$, pouvoir écrire $\bf{x}$ sous la forme :
+\[\forall t\in\R,\qquad \bf{x}(t) = a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
+\end{pmatrix} \qquad\text{ avec }\qquad \big\|(a_i)_{1\leq i\leq n}\big\|=1,\quad a\geq 0\]
 \\
-\textbf{+ quelques propriétés pour les cas SA, y'a moyen que ca soit pas inintéressant}
+Cette écriture permettrait d'isoler la phase et l'amplitude du signal. Le vecteur restant contiendrait alors l'information relative à la polarisation. Là encore, cette phase $\phi$ existe mais sans unicité puisqu'il suffit de poser, pour tout $\phi\in\R$ :
+\[\forall i\in\llbracket1,n\rrbracket,\quad \varphi_i = \arg(x_i)-\phi\]
+\\
+Il faut donc une contrainte supplémentaire sur $\phi$. Cette fois-ci, elle ne pourra pas simplement venir des spectres $\fou{x}_i$ puisque, d'une part ils ont déjà été exploités par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte des liens implicites qui existe entre chacune des composantes du signal. \textbf{Est-ce que ca pourrait venir de l'\cref{eq:sum_esp_null} ?}
+\\
+Lilly et Olhede ont proposé dans \cite{lilly_analysis_2012} une procédure pour obtenir $\phi$. Elle ne sera pas présenté telle qu'elle ici mais voici un raisonnement similaire :
 \\
 
-Toujours dans l'optique d'une analyse temps-fréquence de ces signaux, on voudrait pouvoir écrire tout signal $\bf{x}$ sous la forme :
-\[\bf{x}(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
-\end{pmatrix}\]
+Dans un premier temps, on force la phase $\phi$ --- pour l'instant inconnue --- à apparaitre en écrivant $\bf{x}$ soit la forme :
+\[\forall t\in\R,\qquad \bf{x}(t) = e^{i\phi(t)} e^{-i\phi(t)} \bf{x}(t) = e^{i\phi(t)} \Tilde{\bf{x}}(t)\]
 \\
-La phase ainsi isolée correspond à la phase instantanée du signal et sa dérivée, (à $2\pi$ près) à la fréquence instantanée. Là encore, cette phase existe mais sans unicité puisqu'il suffit de poser, pour tout $\varphi\in\R$ :
-\[\forall i\in\llbracket1,n\rrbracket,\quad \varphi_i = \arg(x_i)-\varphi\]
+Si $\phi$ est bien choisie, alors $\Tilde{\bf{x}}$ contient les informations associées à l'amplitude et la polarisation de $\bf{x}$. Or, il a été vu dans \namecref{sec:temp-freq} précédente qui la phase doit contenir les hautes fréquences du signal. 
 \\
-Il faut donc une contrainte supplémentaire sur $\varphi$. Cette fois-ci, elle ne pourra pas simplement venir des spectres $\fou{x}_i$ puisque, d'une part ils ont déjà été exploités par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte des liens implicites qui existe entre chacune des composantes du signal. \textbf{Est-ce que ca pourrait venir de l'\cref{eq:sum_esp_null} ?}
+Pour s'assurer, à l'inverse, que les basses fréquences du signal sont données par $\Tilde{\bf{x}}$, l'on va chercher à minimiser les variations du dit $\Tilde{\bf{x}}$ ; et puisque le seul paramètre sur lequel nous avons la main est $\phi$, c'est pas rapport à lui que cette minimisation va se faire. En somme, on cherche :
+\[\forall t\in\R,\qquad \varphi(t) = \argmin{\phi(t)}{\|\Tilde{\bf{x}}'(t)\|_2}^2 = \argmin{\phi(t)}{\|e^{-i\phi}\big(\bf{x}' - i\phi'\bf{x}\big)\|_2}^2\]
+\\
+La contrainte ne dépendant que de $\phi'$, on a de façon équivalente :
+\[\min_{\phi(t)}{\|\Tilde{\bf{x}}'(t)\|_2}^2 = \min_{\phi'(t)}{\Big\|e^{-i\phi(t)}\big(\bf{x}'(t) - i\phi'(t) \bf{x}(t)\big) \Big\|_2}^2 = \min_{\phi'(t)}{\big\| \bf{x}'(t) - i\phi'(t) \bf{x}(t) \big\|_2}^2\]
+\\
+En rappelant que, dans le cas complexe, $\frac{d}{dx}{\big\|f(x)\big\|_2}^2 = 2\Re e\big\langle f(x)\,|\, f'(x)\big\rangle$, il vient que ce minimum est atteint par $\varphi(t)$ à condition que :
+\begin{align*}
+	0 = \frac{d}{d\varphi'}{\big\| \bf{x}' - i\varphi' \bf{x}\big\|_2}^2 
+		&= 2\Re e\left\langle  \bf{x}' - i\varphi' \bf{x} \,\Big|\,  \frac{d}{d\varphi'}\big(\bf{x}' - i\varphi' \bf{x}\big)\right\rangle \\
+		&= 2\Re e\big\langle  \bf{x}' - i\varphi' \bf{x} \,|\,  - i \bf{x}\big\rangle \\
+		&= 2\Re e\Big(i\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle\Big) + 2\varphi'\Re e\big\langle   \bf{x} \,|\,  \bf{x}\big\rangle\\
+		&= -2\Im m\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle + 2\varphi'{\| \bf{x}\|_2}^2
+\end{align*}
+Ce qui mène à poser :
+\begin{equation}
+	\varphi' = \frac{i\Im m\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle}{{\| \bf{x}\|_2}^2} = \frac{-i\Im m\big\langle  \bf{x} \,|\,  \bf{x}'\big\rangle}{{\| \bf{x}\|_2}^2}
+\end{equation}
+Ce qui donne $\varphi$ (à une constante près) :
+\begin{equation}
+	\forall t\in\R,\qquad \varphi(t) = -\Im m\int_{t_0}^t \frac{\big\langle \bf{x}(s) \,|\, \bf{x}'(s) \big\rangle}{\|\bf{x}(s)\|^2} ds
+\end{equation}
 
 
-\[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
-
-\[\textbf{VRAC}\]
-
-\begin{definition}[Fourier de signal multivarié]
-	La transformée de Fourier ``faible'' d'un signal multivarié est définie comme la transformée de Fourier composante par composante du signal :
-	\[\mathcal{F}[\bf{x}] = \Big(\mathcal{F}[x_i]\Big)_{1\leq i\leq n}\]
-\end{definition}
-
-
-\begin{remarque}
-	En posant (suivant les notations ci-dessus) $a = \big\|(a_i))_{1\leq i\leq n}\big\|^2$, $\bf{x}$ s'écrit :
-	\[\bf{x}(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
-	\end{pmatrix} = a(t)e^{i\varphi(t)}\begin{pmatrix} \alpha_1(t)e^{i\varphi_1(t)} \\ \alpha_2(t)e^{i\varphi_2(t)} \\ \vdots \\ \alpha_n(t)e^{i\varphi_n(t)} \end{pmatrix}\]
-	avec $\alpha = (\alpha_i)_{1\leq i\leq n} \in \S^{n-1}$. $\alpha$ est donc définie à une rotation près et en notant cette rotation $R_\Theta$, $\psi$ s'écrit encore :
-	\begin{align*}
-	\bf{x}(t) &= a(t)e^{i\varphi(t)}\begin{pmatrix} e^{i\varphi_1(t)} \\ & e^{i\varphi_2(t)} \\  & & \ddots \\ & & & e^{i\varphi_n(t)}\end{pmatrix} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}   &  \text{où }\qquad R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = \alpha\\
-		&= a(t)e^{i\varphi(t)}e^{iDiag(\varphi_i(t))} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = a(t)e^{i\varphi(t)}Diag\big(e^{i\varphi_i(t)}\big) R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
-	\end{align*}
-\end{remarque}
 
 \subsection{Cas bivarié et trivarié}
-On a un signal bivarié $\bf{x}(t) = \big(x(t),y(t)\big)$ qu'on transforme (voir \cref{subsec:SA_Hilb}) soit la forme :
+
+On a un signal bivarié $\bf{x}(t) = \big(x(t),y(t)\big)$ qu'on transforme (voir \cref{subsec:transfo_SA}) soit la forme :
 \[\sa{x}(t) = \begin{pmatrix}x_+(t) \\ y_+(t)\end{pmatrix} = \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^{i\phi_y(t)}\end{pmatrix}\in\C^2\]
 \\
 
@@ -591,6 +617,33 @@ Pour généraliser le procédé, on peut noter que :
 \[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix} = \frac{1}{\sqrt{2}}U \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\qquad\qquad \text{avec }\ U=\frac{1}{\sqrt{2}}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix}\in\U(2)\]
 \\ 
 Ce qui ramène à se demander comment généraliser $U$ à $\SU(n)$. Le problème est que $U$ est indépendant de tout les paramètres $(A, \phi, R_\theta, \chi)$ et sa généralisation est vraiment pas évidente sachant qu'on que le formule avec $n=2$... et pour $n=3$ ca devient déjà chaud (pour rappelle $\dim \SO_n(\R)=\frac{n(n-1)}{2}$ et donc $\theta\in\R^n$, ce qui rend le problème de pire en pire à mesure qu'on augmente $n$).
+
+
+\subsection{VRAC}
+
+\begin{definition}[Fourier de signal multivarié]
+	La transformée de Fourier ``faible'' d'un signal multivarié est définie comme la transformée de Fourier composante par composante du signal :
+	\[\mathcal{F}[\bf{x}] = \Big(\mathcal{F}[x_i]\Big)_{1\leq i\leq n}\]
+\end{definition}
+
+
+\begin{remarque}
+	En posant (suivant les notations ci-dessus) $a = \big\|(a_i))_{1\leq i\leq n}\big\|^2$, $\bf{x}$ s'écrit :
+	\[\bf{x}(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
+	\end{pmatrix} = a(t)e^{i\varphi(t)}\begin{pmatrix} \alpha_1(t)e^{i\varphi_1(t)} \\ \alpha_2(t)e^{i\varphi_2(t)} \\ \vdots \\ \alpha_n(t)e^{i\varphi_n(t)} \end{pmatrix}\]
+	avec $\alpha = (\alpha_i)_{1\leq i\leq n} \in \S^{n-1}$. $\alpha$ est donc définie à une rotation près et en notant cette rotation $R_\Theta$, $\psi$ s'écrit encore :
+	\begin{align*}
+		\bf{x}(t) &= a(t)e^{i\varphi(t)}\begin{pmatrix} e^{i\varphi_1(t)} \\ & e^{i\varphi_2(t)} \\  & & \ddots \\ & & & e^{i\varphi_n(t)}\end{pmatrix} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}   &  \text{où }\qquad R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = \alpha\\
+		&= a(t)e^{i\varphi(t)}e^{iDiag(\varphi_i(t))} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = a(t)e^{i\varphi(t)}Diag\big(e^{i\varphi_i(t)}\big) R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+	\end{align*}
+\end{remarque}
+
+\begin{itemize}
+	
+	\item Faudra parler des propriétés des signaux multiva un peu, genre la différence pour fourier des images et des multivarées ($\R^n\lr\R$ vs $\R\lr\R^n$)
+	
+	\item + quelques propriétés pour les cas SA, y'a moyen que ca soit pas inintéressant
+\end{itemize}
 
 
 
@@ -651,7 +704,7 @@ Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
 \end{align*}
 Donc si $x\in\C^n$ est fonction d'un paramètre $t$, l'égalité $\ \langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle\ $ du cas réel devient :
 \begin{equation}\label{eq:x_scal_dotx}
-	\langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle + i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle
+	\langle x\,|\, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x\,|\, x \rangle + i\left\langle X\,´\Big|\,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle
 \end{equation}
 \\
 En particulier, quand bien-même $x$ serait de norme constante, on aurait toujours un degré de liberté pour $\ \langle x, \dot{x} \rangle$ :
@@ -730,7 +783,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 	
 	\item Sauf que ce $\phi$ c'est lié à la phase dynamique est pas du tout à polarisation du signal. Pourtant c'est dans la polar qu'on a la phase géo.
 	
-	\item Quoi qu'il en soit, les cas dim 2 et 3 c'est fait \cite{lilly_wavelet_2006, lilly_bivariate_2010, lefevre_polarization_nodate}
+	\item Quoi qu'il en soit, les cas dim 2 et 3 c'est fait \cite{lilly_wavelet_2006, lilly_bivariate_2010, lefevre_polarization_2021}
 \end{itemize}
 
 

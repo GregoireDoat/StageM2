@@ -1,5 +1,11 @@
+% 		TO DO des presets :
+% fix cref pour les pluriels
+% fix les couleurs python de lstlistings
+% better mdframed pour les enoncés
+
 
 %%%%    IMPORTS 2 BASE    %%%%
+
 
 
 \documentclass[french, oneside]{article}
@@ -174,7 +180,7 @@
 \newcommand{\phaseg}{\Phi_{\text{\normalfont geo}}}
 \renewcommand{\i}{i}
 \newcommand{\SA}[1]{\mathcal{A}\left[#1\right]}
-\newcommand{\sa}[1]{\bf{#1}_+}
+\newcommand{\sa}[1]{#1_+}
 \newcommand{\hilb}[1]{\mathcal{H}\left[#1\right]}
 \newcommand{\vpC}{\text{\normalfont vp} \frac{1}{x}}
 
@@ -193,15 +199,19 @@
 	linewidth=0.1cm, linecolor=colorbar, 	% box' style
 	topline=false, bottomline=false, rightline=false}	% coté de la box
 
+\mdfdefinestyle{ramark}{leftmargin=0.4cm, rightmargin=0.4cm, 
+	topline=false, bottomline=false, rightline=false, leftline=false}
+	
 \mdfdefinestyle{demo frame}{leftmargin=0.15cm, rightmargin=0.7cm, 	
 	linewidth=0.4pt, linecolor=black,
 	topline=false, bottomline=true, rightline=false}
 
 % théorèmes (pour pouvoir les nommer)
 \makeatletter
-	\newtheoremstyle{theo}{\scshape ##1 ##2\quad ---\quad}{{\scshape##1 ##3 \quad ---\quad}}
+	\newtheoremstyle{theo}{\scshape ##1 ##2\quad ---\quad}{{\scshape##1 ##3 (##2)\quad ---\quad}}
 \makeatother
 \theoremstyle{theo}
+\theorembodyfont{\normalfont}
 \newmdtheoremenv[style=barred]{theoreme}{Théorème}
 
 % énoncés classiques
@@ -235,11 +245,11 @@
 % énoncé numérotation-less
 \theoremstyle{nonumberplain}
 \theoremheaderfont{\normalfont\scshape}
-\theoremseparator{\quad ---\quad}
+\theoremseparator{}
 \theoremnumbering{arabic}
 \theorembodyfont{\normalfont\itshape}
 
-\newtheorem{remarque}{\indent Remarque}
+\newmdtheoremenv[style=ramark]{remarque}{\indent}
 \newtheorem{rappel}{\indent Rappel}
 \newtheorem{exemple}{\indent Exemple}
 
@@ -268,18 +278,32 @@
 
 	% pour cref aux enoncés
 	
-\crefname{definition}{définition}{Définition}
-\crefname{proposition}{proposition}{Proposition}
-\crefname{propriete}{propriété}{Propriété}
-\crefname{lemme}{lemme}{Lemme}
-\crefname{theoreme}{théorème}{Théorème}
-\crefname{corollaire}{corollaire}{Corollaire} 
+%no cap
+\crefname{definition}{définition}{définitions}
+\crefname{proposition}{proposition}{propositions}
+\crefname{propriete}{propriété}{propriétés}
+\crefname{lemme}{lemme}{lemmes}
+\crefname{theoreme}{théorème}{théorèmes}
+\crefname{corollaire}{corollaire}{corollaires} 
 
-\crefname{remarque}{remarque}{Remarque}
-\crefname{rappel}{rappel}{Rappel}
-\crefname{exemple}{exemple}{Exemple}
+\crefname{remarque}{remarque}{remarques}
+\crefname{rappel}{rappel}{rappels}
+\crefname{exemple}{exemple}{exemples}
 
-\crefname{exercice}{exercice}{Exercice}
+\crefname{exercice}{exercice}{exercices}
+%cap
+\Crefname{definition}{Définition}{Définitions}
+\Crefname{proposition}{Proposition}{Propositions}
+\Crefname{propriete}{Propriété}{Propriétés}
+\Crefname{lemme}{Lemme}{Lemmes}
+\Crefname{theoreme}{Théorème}{Théorèmes}
+\Crefname{corollaire}{Corollaire}{Corollaires} 
+
+\Crefname{remarque}{Remarque}{Remarques}
+\Crefname{rappel}{Rappel}{Rappels}
+\Crefname{exemple}{Exemple}{Exemples}
+
+\Crefname{exercice}{Exercice}{Exercices}
 
 
 
@@ -377,8 +401,11 @@ rulecolor=\color{lightgray}}
 \captionsetup[lstlisting]{labelformat=customcode, labelsep=custom}
 
 % pour cref
-\crefname{figure}{\itshape fig.}{Figure}
-\crefname{table}{\itshape tab.}{Table}
+\crefname{figure}{\itshape fig.}{\itshape fig.}
+\crefname{table}{\itshape tab.}{\itshape tab.}
+
+\Crefname{figure}{Figure}{Figures}
+\Crefname{table}{Tableau}{Tableaux}
 	
 	
 	%%%%    TABLES/REF  &  HAUT/BAS DE PAGES    %%%%
