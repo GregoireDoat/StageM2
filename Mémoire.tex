@@ -358,7 +358,7 @@ Tout vient du fait que si $x$ est réel alors son spectre est à symétrie hermi
 Comme dit plus tôt, cela implique que la fréquence moyenne de tout signal réel est nulle (intégrale d'une fonction impaire). Ce qui, en plus de ne pas être très instructif, n'est pas cohérent avec l'interprétation physique qu'on voudrait faire cette moyenne. Par exemple, si $\varrho$ prend la forme ci-dessous (\cref{fig:densi_spec_sym}), alors il serait plus naturelle de demander à ce que la fréquence moyenne se trouve autour de 1,4. De même, la largeur de bande spectrale ne correspond plus à l'étalement de chaque gaussienne, mais plutôt à leur espacement.
 \\
 \begin{figure}[h]\centering
-	\includegraphics[width=0.9\textwidth]{fig/densi_spec_sym}
+	%\includegraphics[width=0.9\textwidth]{fig/densi_spec_sym}
 	\caption{Exemple de densité spectrale d'un signal réel ESP A 1,4}
 	\label{fig:densi_spec_sym}
 \end{figure}
@@ -474,8 +474,8 @@ que si $\nu_1\geq\nu_2$, alors la transformée en SA de $x$ s'écrit :
 \[\SA{x} = \cos \left(2\pi\nu_2 t\right) e^{2\i\pi\nu_1 t}\]
 
 \begin{figure}[h]\centering
-	\includegraphics[width=0.48\textwidth]{fig/ex SA - 11.png}\hfill
-	\includegraphics[width=0.48\textwidth]{fig/ex SA - 12.png}
+	%\includegraphics[width=0.48\textwidth]{fig/ex SA - 11.png}\hfill
+	%\includegraphics[width=0.48\textwidth]{fig/ex SA - 12.png}
 	\caption{Représentation graphique du signal $x$ (rouge) avec $\nu_1=3$ et $\nu_2=0.1$. Sur l'image de gauche, avec signaux de fréquences pures (bleu et vert). Sur l'image de droite, avec son amplitude (bleu) et sa phase instantanée (vert). Les discontinuités de la phase sont dû à l'arrondi à $2\pi$  près de l'argument de $\SA{x}$ et à la façon dont il est calculé lorsque le signal s'annule (mise à 0). Voir \href{https://www.desmos.com/calculator/gcedcdfkhr}{ici} pour un graphique dynamique.}
 	\label{fig:exemple_tSA_1/2}
 \end{figure}
@@ -490,8 +490,8 @@ Aussi, en mettant les hautes fréquences du signal dans la fréquence instantan�
 Cela étant dit, lorsque l'on fait varier $\nu_1$ et $\nu_2$, le résultat n'est pas toujours si intuitif. C'est notamment le cas lorsque les deux deviennent de plus en plus proche :
 
 \begin{figure}[h]\centering
-	\includegraphics[width=0.48\textwidth]{fig/ex SA - 21.png}\hfill
-	\includegraphics[width=0.48\textwidth]{fig/ex SA - 22.png}
+	%\includegraphics[width=0.48\textwidth]{fig/ex SA - 21.png}\hfill
+	%\includegraphics[width=0.48\textwidth]{fig/ex SA - 22.png}
 	\caption{Idem que pour la figure \ref{fig:exemple_tSA_1/2} précédente, avec cette fois $\nu_1=1.5$ et $\nu_2=1.3$.}
 	\label{fig:exemple_tSA_2/2}
 \end{figure}
@@ -529,7 +529,7 @@ Pour comprendre pourquoi l'amplitude ne fait pas ce qu'on attendrait d'elle, on 
 
 \section{Généralisation aux signaux multivariés}\label{sec:sign_multivar}
 
-\subsection{Phase et fréquence instantanée de signal multivarié}
+\subsection{Phase et fréquence instantanée de signal multivarié}\label{subsec:param_instant_mvar}
 
 Dans le cas multivariés, comme le cas monovarié, on aimerait pouvoir isoler une phase instantanée de tout signal. C'est-à-dire, étant donnée un signal $\bf{x}=(x_i)_{1\leq i\leq n}$ à valeur de $\R$ dans $\C^n$, pouvoir écrire $\bf{x}$ sous la forme :
 \[\forall t\in\R,\qquad \bf{x}(t) = a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
@@ -543,52 +543,86 @@ Il faut donc une contrainte supplémentaire sur $\phi$. Cette fois-ci, elle ne p
 Lilly et Olhede ont proposé dans \cite{lilly_analysis_2012} une procédure pour obtenir $\phi$. Elle ne sera pas présenté telle qu'elle ici mais voici un raisonnement similaire :
 \\
 
-Dans un premier temps, on force la phase $\phi$ --- pour l'instant inconnue --- à apparaitre en écrivant $\bf{x}$ soit la forme :
+Dans un premier temps, on force la phase $\phi$ --- pour l'instant inconnue --- à apparaître en écrivant $\bf{x}$ sous la forme :
 \[\forall t\in\R,\qquad \bf{x}(t) = e^{i\phi(t)} e^{-i\phi(t)} \bf{x}(t) = e^{i\phi(t)} \Tilde{\bf{x}}(t)\]
 \\
-Si $\phi$ est bien choisie, alors $\Tilde{\bf{x}}$ contient les informations associées à l'amplitude et la polarisation de $\bf{x}$. Or, il a été vu dans \namecref{sec:temp-freq} précédente qui la phase doit contenir les hautes fréquences du signal. 
+Si $\phi$ est bien choisie, alors $\Tilde{\bf{x}}$ contient les informations associées à l'amplitude et la polarisation de $\bf{x}$. Or, il a été vu dans \cref{sec:temp-freq} précédente qui la phase doit contenir les hautes fréquences du signal. 
 \\
 Pour s'assurer, à l'inverse, que les basses fréquences du signal sont données par $\Tilde{\bf{x}}$, l'on va chercher à minimiser les variations du dit $\Tilde{\bf{x}}$ ; et puisque le seul paramètre sur lequel nous avons la main est $\phi$, c'est pas rapport à lui que cette minimisation va se faire. En somme, on cherche :
-\[\forall t\in\R,\qquad \varphi(t) = \argmin{\phi(t)}{\|\Tilde{\bf{x}}'(t)\|_2}^2 = \argmin{\phi(t)}{\|e^{-i\phi}\big(\bf{x}' - i\phi'\bf{x}\big)\|_2}^2\]
+\[\forall t\in\R,\qquad \phi(t) = \argmin{\varphi(t)}{\big\|\Tilde{\bf{x}}'(t)\big\|_2}^2 = \argmin{\varphi(t)}{\Big\|e^{-i\phi}\big(\bf{x}' - i\varphi'\bf{x}\big)\Big\|_2}^2 = \argmin{\varphi(t)}{\big\|\bf{x}' - i\varphi'\bf{x}\big\|_2}^2\]
 \\
-La contrainte ne dépendant que de $\phi'$, on a de façon équivalente :
-\[\min_{\phi(t)}{\|\Tilde{\bf{x}}'(t)\|_2}^2 = \min_{\phi'(t)}{\Big\|e^{-i\phi(t)}\big(\bf{x}'(t) - i\phi'(t) \bf{x}(t)\big) \Big\|_2}^2 = \min_{\phi'(t)}{\big\| \bf{x}'(t) - i\phi'(t) \bf{x}(t) \big\|_2}^2\]
+La contrainte ne dépendant que de $\varphi'$, on a de façon équivalente :
+\[\min_{\varphi(t)}{\|\Tilde{\bf{x}}'(t)\|_2}^2 = \min_{\varphi'(t)}{\big\|\bf{x}'(t) - i\varphi'(t) \bf{x}(t)\big\|_2}^2\]
 \\
-En rappelant que, dans le cas complexe, $\frac{d}{dx}{\big\|f(x)\big\|_2}^2 = 2\Re e\big\langle f(x)\,|\, f'(x)\big\rangle$, il vient que ce minimum est atteint par $\varphi(t)$ à condition que :
+En rappelant que $\frac{d}{dx}{\big\|f(x)\big\|_2}^2 = 2\Re e\big\langle f(x)\,|\, f'(x)\big\rangle$, il vient que ce minimum est atteint par $\phi'(t)$ à condition que :
 \begin{align*}
-	0 = \frac{d}{d\varphi'}{\big\| \bf{x}' - i\varphi' \bf{x}\big\|_2}^2 
-		&= 2\Re e\left\langle  \bf{x}' - i\varphi' \bf{x} \,\Big|\,  \frac{d}{d\varphi'}\big(\bf{x}' - i\varphi' \bf{x}\big)\right\rangle \\
-		&= 2\Re e\big\langle  \bf{x}' - i\varphi' \bf{x} \,|\,  - i \bf{x}\big\rangle \\
-		&= 2\Re e\Big(i\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle\Big) + 2\varphi'\Re e\big\langle   \bf{x} \,|\,  \bf{x}\big\rangle\\
-		&= -2\Im m\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle + 2\varphi'{\| \bf{x}\|_2}^2
+	0 = \frac{d}{d\phi'}{\big\| \bf{x}' - i\phi' \bf{x}\big\|_2}^2 
+		&= 2\Re e\left\langle  \bf{x}' - i\phi' \bf{x} \,\Big|\,  \frac{d}{d\phi'}\big(\bf{x}' - i\phi' \bf{x}\big)\right\rangle \\
+		&= 2\Re e\big\langle  \bf{x}' - i\phi' \bf{x} \,|\,  - i \bf{x}\big\rangle \\
+		&= 2\Re e\Big(i\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle\Big) + 2\phi'\Re e\big\langle   \bf{x} \,|\,  \bf{x}\big\rangle\\
+		&= -2\Im m\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle + 2\phi'{\| \bf{x}\|_2}^2
 \end{align*}
 Ce qui mène à poser :
-\begin{equation}
-	\varphi' = \frac{i\Im m\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle}{{\| \bf{x}\|_2}^2} = \frac{-i\Im m\big\langle  \bf{x} \,|\,  \bf{x}'\big\rangle}{{\| \bf{x}\|_2}^2}
-\end{equation}
-Ce qui donne $\varphi$ (à une constante près) :
-\begin{equation}
-	\forall t\in\R,\qquad \varphi(t) = -\Im m\int_{t_0}^t \frac{\big\langle \bf{x}(s) \,|\, \bf{x}'(s) \big\rangle}{\|\bf{x}(s)\|^2} ds
-\end{equation}
-
+\begin{align}
+	\phi' &= \frac{\Im m\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle}{{\| \bf{x}\|_2}^2} = \frac{-\Im m\big\langle  \bf{x} \,|\,  \bf{x}'\big\rangle}{{\| \bf{x}\|_2}^2}  &  &\text{et}  &  \phi &= -\Im m\int \frac{\big\langle \bf{x}(s) \,|\, \bf{x}'(s) \big\rangle}{\|\bf{x}(s)\|^2} ds
+\end{align}
+\\ \\
 
 
 \subsection{Cas bivarié et trivarié}
 
+\subsubsection{Bivarié}
+
+\begin{itemize}
+	
+	\item En dimension 2, c'est facile, on peut écrire $\sa{\bf{x}}$ comme (Lilly \cite{lilly_bivariate_2010,lilly_wavelet_2006}) :
+	\begin{align}\label{eq:exp_elliptik}
+		\sa{\bf{x}}(t) &= e^{i\phi(t)} \Tilde{\bf{x}}  &  \Tilde{\bf{x}} &= R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \end{pmatrix} = a(t) R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}
+	\end{align}
+	
+	\item Avec la transformation :
+	\[\bf{x} \leadsto \big(e^{i\phi}, \bf{x}\bf{x}^\dagger\big)\in\U(1)\times \PC{1}-ish\]
+	On a :
+	\begin{align*}
+		\bf{x}\bf{x}^\dagger &= \frac{1}{2}\sum_{n=1}^3 S_i(t)\sigma_i  &  \left\{\begin{aligned}
+			S_0(t) &=\, ^t\bf{x}\congu{\bf{x}} = \|\bf{x}\|^2 \\
+			S_1(t) &= S_0(t) \cos 2\chi(t)\cos 2\theta(t)\\
+			S_2(t) &= S_0(t) \cos 2\chi(t)\sin 2\theta(t)\\
+			S_3(t) &= S_0(t) \sin 2\chi(t)
+		\end{aligned} \right.
+	\end{align*}
+	
+	\item En version quaternion ($\bf{j}$ fait office de $i$) \cite{lefevre_polarization_2021} :
+	\begin{equation}
+		\sa{\bf{x}} = a(t)e^{\bf{i}\theta} e^{-\bf{k}\chi} e^{\bf{j}\phi}
+	\end{equation}
+	Et les Stokes parameters sont donnée par :
+	\[\sa{\bf{x}} \bf{j} \congu{\sa{\bf{x}}} = S_0  +\bf{i}S_3 + \bf{j}S_1 + \bf{k}S_2\]
+	Et la lien avec les $\sigma_i$ se fait via (mais du coup les notations colles par :/) :
+	\[(\sigma_0, \sigma_1, \sigma_2, \sigma_3) \leadsto (1, \bf{i}, \bf{j}, \bf{k})\]
+	
+	\item Et en version matrice de Pauli :
+	\begin{equation}
+		\sa{\bf{x}} = a(t)e^{i\phi} e^{i\theta \sigma_2} e^{-i\chi \sigma_1} \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+	\end{equation}
+\end{itemize}
+\noindent
+Plus de détail : \\ 
+
 On a un signal bivarié $\bf{x}(t) = \big(x(t),y(t)\big)$ qu'on transforme (voir \cref{subsec:transfo_SA}) soit la forme :
-\[\sa{x}(t) = \begin{pmatrix}x_+(t) \\ y_+(t)\end{pmatrix} = \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^{i\phi_y(t)}\end{pmatrix}\in\C^2\]
+\[\sa{\bf{x}}(t) = \begin{pmatrix}x_+(t) \\ y_+(t)\end{pmatrix} = \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^{i\phi_y(t)}\end{pmatrix}\in\C^2\]
 \\
 
 \`A côté de ça, on a les ellipses modulées :
-\[z(t) = e^{i\theta}\big(a(t)\cos\phi(t) + ib(t) \sin\phi(t)\big) = A(t) e^{i\theta} \big( \sin\chi(t) \cos\phi(t) + i\sin\chi(t) \sin\phi(t) \big) \in\C\]
-Qui sous forme vectoriel se réécrit :
+\[z(t) = e^{i\theta}\big(a(t)\cos\phi(t) + ib(t) \sin\phi(t)\big) = a(t) e^{i\theta} \big( \sin\chi(t) \cos\phi(t) + i\sin\chi(t) \sin\phi(t) \big) \in\C\]
+Qui sous forme vectoriel se réécrit \textbf{(pourquoi ???)} :
 \begin{equation}\label{eq:exp_elliptik}
-	z(t) = e^{i\phi} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} \in\C^2,\qquad R_\theta\in\SO_2(\R) \
+	z(t) = e^{i\phi(t)} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \end{pmatrix} = a(t)e^{i\phi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} \in\C^2,\qquad R_\theta\in\SO_2(\R) \
 \end{equation}
 \\
 
 Pour avoir la désinscription de $\bf{x}$ en terme d’ellipse, il suffit donc de poser :\footnote{C'est la version analytique du la version vectorielle de l'ellipse !}
-\[z_x(t) = z(t)\quad \Llr\quad \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^ {i\phi_y(t)}\end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}\]
+\[\sa{\bf{x}}(t) = z(t)\quad \Llr\quad \begin{pmatrix}a_x(t) e^{i\phi_x(t)} \\ a_y(t) e^ {i\phi_y(t)}\end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}\]
 \\
 Ensuite, on pose :
 \[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \begin{pmatrix}a_+ e^{i\phi_+} \\ a_- e^{i\phi_-}\end{pmatrix} = \frac{1}{2}\begin{pmatrix}x_+ + iy_+ \\ x_+ - iy_+\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\]
@@ -616,34 +650,68 @@ Maintenant, la question est de savoir comment généraliser la transformation en
 Pour généraliser le procédé, on peut noter que :
 \[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix} = \frac{1}{\sqrt{2}}U \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\qquad\qquad \text{avec }\ U=\frac{1}{\sqrt{2}}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix}\in\U(2)\]
 \\ 
-Ce qui ramène à se demander comment généraliser $U$ à $\SU(n)$. Le problème est que $U$ est indépendant de tout les paramètres $(A, \phi, R_\theta, \chi)$ et sa généralisation est vraiment pas évidente sachant qu'on que le formule avec $n=2$... et pour $n=3$ ca devient déjà chaud (pour rappelle $\dim \SO_n(\R)=\frac{n(n-1)}{2}$ et donc $\theta\in\R^n$, ce qui rend le problème de pire en pire à mesure qu'on augmente $n$).
+Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème est que $U$ est indépendant de tout les paramètres $(A, \phi, R_\theta, \chi)$ et sa généralisation est vraiment pas évidente sachant qu'on que le formule avec $n=2$... et pour $n=3$ ca devient déjà chaud (pour rappelle $\dim \SO_n(\R)=\frac{n(n-1)}{2}$ et donc $\theta\in\R^n$, ce qui rend le problème de pire en pire à mesure qu'on augmente $n$).
 
 
-\subsection{VRAC}
 
-\begin{definition}[Fourier de signal multivarié]
-	La transformée de Fourier ``faible'' d'un signal multivarié est définie comme la transformée de Fourier composante par composante du signal :
-	\[\mathcal{F}[\bf{x}] = \Big(\mathcal{F}[x_i]\Big)_{1\leq i\leq n}\]
-\end{definition}
-
-
-\begin{remarque}
-	En posant (suivant les notations ci-dessus) $a = \big\|(a_i))_{1\leq i\leq n}\big\|^2$, $\bf{x}$ s'écrit :
-	\[\bf{x}(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
-	\end{pmatrix} = a(t)e^{i\varphi(t)}\begin{pmatrix} \alpha_1(t)e^{i\varphi_1(t)} \\ \alpha_2(t)e^{i\varphi_2(t)} \\ \vdots \\ \alpha_n(t)e^{i\varphi_n(t)} \end{pmatrix}\]
-	avec $\alpha = (\alpha_i)_{1\leq i\leq n} \in \S^{n-1}$. $\alpha$ est donc définie à une rotation près et en notant cette rotation $R_\Theta$, $\psi$ s'écrit encore :
-	\begin{align*}
-		\bf{x}(t) &= a(t)e^{i\varphi(t)}\begin{pmatrix} e^{i\varphi_1(t)} \\ & e^{i\varphi_2(t)} \\  & & \ddots \\ & & & e^{i\varphi_n(t)}\end{pmatrix} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}   &  \text{où }\qquad R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = \alpha\\
-		&= a(t)e^{i\varphi(t)}e^{iDiag(\varphi_i(t))} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = a(t)e^{i\varphi(t)}Diag\big(e^{i\varphi_i(t)}\big) R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
-	\end{align*}
-\end{remarque}
+\subsubsection{Trivarié}
 
 \begin{itemize}
+	\item Version de Lilly \cite{lilly_modulated_2011}
+	\begin{equation}
+		\begin{aligned}
+			\sa{\bf{x}}(t) &= e^{i\phi(t)} R_1\big(\alpha(t)\big)\ R_3\big(\beta(t)\big)\ R_1\big(\theta(t)\big)\begin{pmatrix}
+				a(t) \\ -ib(t) \\ 0
+			\end{pmatrix} \\
+			&= a(t)e^{i\phi(t)} R_1\big(\alpha(t)\big)\ R_3\big(\beta(t)\big)\ R_1\big(\theta(t)\big)\begin{pmatrix}
+				\cos\chi(t) \\ -i\sin\chi(t) \\ 0
+			\end{pmatrix}
+		\end{aligned}
+	\end{equation}
 	
-	\item Faudra parler des propriétés des signaux multiva un peu, genre la différence pour fourier des images et des multivarées ($\R^n\lr\R$ vs $\R\lr\R^n$)
+	\begin{align*}
+		&\text{avec : }  &  
+		R_1(\theta) &= \begin{pmatrix}
+			1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta
+		\end{pmatrix}  &  
+		R_3(\theta) &= \begin{pmatrix}
+			\cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 
+		\end{pmatrix}
+	\end{align*}
 	
-	\item + quelques propriétés pour les cas SA, y'a moyen que ca soit pas inintéressant
+	Donc une amplitude / phase instantanée $A$ / $\phi$ et une polarisation instantanée d'ellipse paramétrée par $\chi$ et orientée par la rotation $R_1R_3R_1$.
+	
+	\item On note d'abord que (Lefevre \cite{lefevre_polarization_2021}) :
+	\[\begin{pmatrix}
+		\cos\chi(t) \\ -i\sin\chi(t) \\ 0
+	\end{pmatrix} = \begin{pmatrix}
+		\cos\chi(t) & i\sin\chi(t) & 0 \\ -i\sin\chi(t) & \cos\chi(t) & 0 \\ 0 & 0 & 1
+	\end{pmatrix}\begin{pmatrix}
+	1 \\ 0 \\ 0
+	\end{pmatrix}\]
+	Ce qui, en terme de matrice de Gall-man $(\lambda_i)$ (généralisation de la base de Pauli à $\U(3)$), devient :
+	\begin{align*}
+		\sa{\bf{x}}(t) &= a(t)e^{i\phi(t)} R_1\big(\alpha(t)\big)\ R_3\big(\beta(t)\big)\ R_1\big(\theta(t)\big)\begin{pmatrix}
+			\cos\chi(t) \\ -i\sin\chi(t) \\ 0
+		\end{pmatrix} \\
+		&= a(t)e^{i\phi(t)} e^{i\alpha \lambda_7} e^{i\beta \lambda_3} e^{i\theta \lambda_7} e^{-i\chi \lambda_1}\begin{pmatrix}
+			1 \\ 0 \\ 0
+		\end{pmatrix}
+	\end{align*}
 \end{itemize}
+
+\subsection{Généralisation de ces formules au cas $\bf{n-}$varié}
+
+\begin{itemize}
+	\item Les quaternions ça ce généralise trop mal (au dessus c'est les octinions, c'est un calvaire et ca va pas plus loin)
+	
+	\item Ca peut s'écrire en terme d'algèbre de Cliffor (Lefevre \cite{lefevre_polarization_2021})... pas dingue non plus (pb de dimension principalement)
+	
+	\item Les bases de $\U(n)$ parait être le meilleur choix mais on a pas de ``bonne base'' pour de plus haute dimension.
+	
+	\item question : est-ce qu'on en a besoin pour la phase géométrique ? (transi vers une formulation géo diff-like ?)
+\end{itemize}
+
 
 
 
@@ -724,7 +792,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 	\item Première chose, avec \eqref{eq:x_scal_dotx}, on a encore :
 	\[\phased(\psi,t_0,t) = \int_{t_0}^t\frac{\big\langle \psi(s), \omega\dot{\psi}(s) \big\rangle}{\big\|\psi(s)\big\|^2} ds\]
 	
-	A.k.a. la phase dynamique porte l'information symplectique (cumulée). Présenté ainsi, est-ce que la phase totale/géométrique porte l'information ``riemannienne'' (géométrique donc WINK WINK) ?
+	A.k.a. la phase dynamique porte l'information symplectique (cumulée).
 	
 	\item En terme de fréquence, si $\psi$ est de norme 1, alors (mais c'est vraiment pas dit que l'intégrale converge dans ce cas) :
 	\[\big\|\psi(t)\big\|=1\quad \Lr\quad \phased(\psi, -\infty, +\infty) = i\int_\R \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds = \pm 2\pi\int_\R \nu\big|\hat{\psi}(\nu)\big|^2 d\nu = \pm 2\pi \esp[|\hat{\psi}|^2]{\nu}\]
@@ -734,7 +802,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 	\end{pmatrix} = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
 	\end{pmatrix}\]
 	\\
-	Et avec un peu de travail (qui sera développé), on obtient que le mieux c'est de poser :
+	Et avec un peu de travail (\cref{subsec:param_instant_mvar}), on obtient que le mieux c'est de poser :
 	\[\varphi'(t) \defeq -\frac{\Im m\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle}{\|\psi(t)\|^2} = \frac{\sum_i\phi_i'(t)\,a_i(t)}{\sum_ia_i(t)}\]
 	\\
 	On voit donc que la phase dynamique est donnée par le cumule des fréquences instantanées, ou comme le différentiel de phase de $\psi$ :
@@ -766,39 +834,79 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 
 
 
+
 \section{Description des signaux multivariés}\label{sec:bases}
 
 
 
-
-\subsection{Version Lilly \cite{lilly_bivariate_2010, lilly_analysis_2012}}
-
+\subsection{Point de vue des variétés}\label{subsec:phaseG_variete}
 
 \begin{itemize}
-	\item On veut écrire $\bf{x}$ sous la forme :
-	\[\bf{x}(t) = a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\phi_1(t)} \\ a_2(t)e^{i\phi_2(t)} \\ \vdots \\ a_n(t)e^{i\phi_n(t)}
-	\end{pmatrix}\]
 	
-	\item Lilly explique comment obtenir $\phi$ dans le cas général (faut revoir ça parce que meh quand-même)
+	\item Quel esapce ? Pour la jauge invariance, c'est du $\U(1)\times X$ mais qui est $X$ ? 
+	\begin{itemize}
+		\item les $\bf{x}\bf{x}^\dagger$ sont plus calculable mais isomorphe à l'\href{https://en.wikipedia.org/wiki/Complex_projective_space#Differential_geometry}{esapce projectif complexe} $\PC{n}$
+		
+		\item Y'a aussi les \href{https://fr.wikipedia.org/wiki/Grassmannienne}{Grassmanniennes} $G_{n,k}(\K)$, mais $G_{n, 1}(\C)\cong \PC{n}$
+		
+		\item En somme, sûrement que $X=\PC{n}$ (à voir comment faire les changements d'espaces)
 	
-	\item Sauf que ce $\phi$ c'est lié à la phase dynamique est pas du tout à polarisation du signal. Pourtant c'est dans la polar qu'on a la phase géo.
+	\end{itemize}
 	
-	\item Quoi qu'il en soit, les cas dim 2 et 3 c'est fait \cite{lilly_wavelet_2006, lilly_bivariate_2010, lefevre_polarization_2021}
+	\item Ensuite, comme on a un produit(-ish), on veut un côté fibré (sûrement \href{https://fr.wikipedia.org/wiki/Fibr%C3%A9_principal}{principale}) \\
+	A ce sujet, Wikipédia dit : `` La théorie des fibrés principaux recouvre la théorie des fibrés vectoriels, de leurs orientations, de leurs structures riemanniennes, de leurs structures symplectiques, etc. '' (sounds reaaaally good)
+	
+	\item Puis une métrique pour l'espace :
+	\begin{itemize}
+		
+		\item vu que c'est complexe j'y connais R
+		
+		\item mettre la bonne connexion (surement Levi-Civita)
+		
+		\item Phase géo $\cong$ transport parallèle ?
+	\end{itemize} 
+	
+	\item Improbable mais on sait jamais :
+	\begin{itemize}
+		\item Spin-strucure ? (c'est que $\PC{n}$ + pas sur que ca ait de l'intérêt parce que ca existe qu'en dimension impair)
+		
+		\item Espace de Siegel ? (ellipse vs ellipsoïde tout ca tout ca)
+	\end{itemize}
+\end{itemize}
+
+
+
+
+\subsection{VRAC}
+
+\begin{definition}[Fourier de signal multivarié]
+	La transformée de Fourier ``faible'' d'un signal multivarié est définie comme la transformée de Fourier composante par composante du signal :
+	\[\mathcal{F}[\bf{x}] = \Big(\mathcal{F}[x_i]\Big)_{1\leq i\leq n}\]
+\end{definition}
+
+
+\begin{remarque}
+	En posant (suivant les notations ci-dessus) $a = \big\|(a_i)_{1\leq i\leq n}\big\|_2$, $\bf{x}$ s'écrit :
+	\[\bf{x}(t) = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
+	\end{pmatrix} = a(t)e^{i\varphi(t)}\begin{pmatrix} \alpha_1(t)e^{i\varphi_1(t)} \\ \alpha_2(t)e^{i\varphi_2(t)} \\ \vdots \\ \alpha_n(t)e^{i\varphi_n(t)} \end{pmatrix}\]
+	avec $\alpha = (\alpha_i)_{1\leq i\leq n} \in \S^{n-1}$. $\alpha$ est donc définie à une rotation près et en notant cette rotation $R_\Theta$, $\psi$ s'écrit encore :
+	\begin{align*}
+		\bf{x}(t) &= a(t)e^{i\varphi(t)}\begin{pmatrix} e^{i\varphi_1(t)} \\ & e^{i\varphi_2(t)} \\  & & \ddots \\ & & & e^{i\varphi_n(t)}\end{pmatrix} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}   &  \text{où }\qquad R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = \alpha\\
+		&= a(t)e^{i\varphi(t)}e^{iDiag(\varphi_i(t))} R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} = a(t)e^{i\varphi(t)}Diag\big(e^{i\varphi_i(t)}\big) R_\Theta\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+	\end{align*}
+\end{remarque}
+
+\begin{itemize}
+	
+	\item Faudra parler des propriétés des signaux multiva un peu, genre la différence pour fourier des images et des multivarées ($\R^n\lr\R$ vs $\R\lr\R^n$)
+	
+	\item + quelques propriétés pour les cas SA, y'a moyen que ca soit pas inintéressant
 \end{itemize}
 
 
 
 \subsection{Mon blabla}\label{subsec:blabla}
 
-
-\begin{enonce}[PVD Optimisation]
-	Lilly \cite[p. 602/3]{lilly_analysis_2012} obtient la phase instantanée en minimisant l'erreur d'ordre 1 :
-	\[\min_{\omega}\|\Tilde{x}(t,\omega)\|^2\]
-	Ce qui lui donne :
-	\[\omega_x(t) = \phi(t)/\tau = -\frac{\Im m\langle x, x'\rangle}{\|x\|^2}\]
-	
-	QUESTION : est-ce qu'on peut tout avoir en minimisant la bonne quantité ? (oui, principe de moindre action frr)
-\end{enonce}
 
 \begin{proposition}\label{prop:quatern}
 Les signaux bivariés se décrivent très simplement à l'aide des quaternions. En considérant $\{1, \bf{i},\bf{j},\bf{k}\}$ la base canonique des quaternions $\mathbb{H}$, on peut voir $\psi$ comme étant à valeur dans ${\C_{\bf{j}}}^n$ ($\C_{\bf{j}} :=\R\times \bf{j}\R$), de sorte que :
@@ -919,8 +1027,7 @@ On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps
 \subsection{Thoughts}
 
 \begin{itemize}
-	\item D'où sort l'interprétation géométrique + son lien avec quaternions (prop. \ref{prop:quatern})
-	\item Lien avec l'eq de Schrödinger (l'intérêt de $H$ et $K$ + d'où ils sortent)
+	\item Si la phase géo est la phase dyn - phase tot et est invariante as jauge t, est-ce que la phase tot correspond à la phase (dyn) entre $t_0$ et $t$ suivant la géodesique ?
 	
 	\item La ``Berry connection'' c'est une vraie connexion ? elle est où la covariance alors ?
 \end{itemize}
