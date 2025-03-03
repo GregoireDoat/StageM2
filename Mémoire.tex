@@ -121,7 +121,7 @@
 
 
 %\section{Signal analytique, transformé de Hilberts, Analyse en temps-fréquence}
-\subsection{Les base des l'analyse temps-fréquance}\label{sec:temp-freq}
+\subsection{Les base de l'analyse temps-fréquence}\label{sec:temp-freq}
 
 
 \textit{Cette partie reprends, dans les grandes lignes, les propos de \textsc{Cohen} dans son livre \emph{Time frequency analysis} \cite{cohen_time_1995}}
@@ -723,63 +723,6 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 
 \section{Comprendre la phase dynamique}
 
-\subsection{Réflexion autour du produit hermitien}
-
-
-Soit $x,y\in\C^n$ des vecteurs complexes et $X,Y\in\R^{2\times n}$ leur versions réelles. On note $x^j$ sa $j^{eme}$ composante complèxe et $x_1$ (resp. $x_2$) le vecteur composé de ses parties réelles (resp. imaginaires) :
-\[x = \big(x^j\big)_j =  x_1 + ix_2 =  \big(x^j_1\big)_j +i \big(x^j_2\big)_j\]
-\\
-On a deux façon d'écrire le produit hermitien (canonique) de $x$ avec $y$.
-\\
-La première :
-\begin{align*}
-	\langle x,y \rangle = \langle x_1 + ix_2, y_1 + iy_2\rangle &= \langle x_1, y_1\rangle - i \langle x_1,y_2\rangle +i\langle x_2, y_1\rangle + \langle x_2, y_2\rangle  \\
-	&= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
-	+ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
-	&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2
-	+ i\left(\sum_j x^j_2 y^j_1 -  x^j_1y^j_2\right) \\
-	&= \left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle
-	+ i\left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} -y_2 \\ y_1 \end{pmatrix}\right\rangle \\
-	&= \Big\langle X,Y\Big\rangle 
-	+ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle\\
-	&= \Big\langle X,Y\Big\rangle 
-	- i\left\langle X,\begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix}Y\right\rangle
-\end{align*}
-\\
-Cette formule peut s’interpréter en disant que le produit hermitien encode le produit scalaire entre $X$ et $Y$ et le produit scalaire de $X$ avec les vecteurs $y^j=(y^j_1, y^j_2)$  auquel on aurait applique une rotation de $90^\circ$ (rotation qui, par ailleurs, correspond à la multiplication par $i$ dans le plan complexe). Moralement, $\langle x,y \rangle =0$ demande une orthogonalité de $X$ à un plan, ce qui fait sens puisque cela tient compte du fait que les $x^j, y^j$ sont complexes (donc de dimension 2 en tant que $\R-$e.v.).
-\\
-Pour les connaisseurs, on retrouve l'égalité ``produit hermitien $=$ produit scalaire $-i$ forme symplectique'' !!
-Voir
-\href{https://fr.wikipedia.org/wiki/Espace_projectif#Espace_projectif_complexe}{plan proj complexe} et \href{https://fr.wikipedia.org/wiki/Vari%C3%A9t%C3%A9_k%C3%A4hl%C3%A9rienne}{variété kählérienne }
-\\
-
-On a aussi l'écriture (quand-même moins clair) :
-\begin{align*}
-	\langle x,y \rangle &= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
-	+ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
-	&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2+ i\sum_j \big( x^j_2 y^j_1 - x^j_1y^j_2 \big) \\
-	&= \sum_j \big\langle X^j,Y^j\big\rangle - i\sum_j \det(X^j, Y^j)
-	%&= \sum_j \|X^j\|\|Y^j\| \cos \widehat{X^j,X^j} + i\sin \widehat{X^j,Y^j}
-\end{align*}
-Cette formule dit que les parties reélles et imaginaires du produit $\langle x,y \rangle$ encodent respectivement ``l'orthogonalité moyenne'' et la ``linéarité moyenne ''entre les familles de vecteurs $X^j\in\R^2$ et $Y^j\in\R^2$. L'orthogonalité d'une part parce que le produit scalaire s'annule en cas d'orthogonalité (no shit), la linéarité d'autre part car le déterminant s'annule en cas de colinéarité et moyenne car se sont des sommes sur $j$. \textbf{$\bf{\langle x,y \rangle=0}$ ne dit pas que les le vecteurs sont à la fois colinéaire et orthogonaux parce que ce sont des valeurs moyennes (\ie~annuler une somme ne veut pas dire que chacun des termes sont nuls).}
-\\
-
-Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
-\begin{align*}
-	\langle x+h, x+h \rangle = \langle x, x \rangle + \langle x, h \rangle + \langle h, x \rangle + \langle h, h \rangle 
-	&= \langle x, x \rangle + \langle x, h \rangle  + \congu{\langle x, h \rangle }+ \langle h, h \rangle \\
-	&= \langle x, x \rangle + 2\Re e \langle x, h \rangle + \langle h, h \rangle
-\end{align*}
-Donc si $x\in\C^n$ est fonction d'un paramètre $t$, l'égalité $\ \langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle\ $ du cas réel devient :
-\begin{equation}\label{eq:x_scal_dotx}
-	\langle x\,|\, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x\,|\, x \rangle + i\left\langle X\,´\Big|\,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle
-\end{equation}
-\\
-En particulier, quand bien-même $x$ serait de norme constante, on aurait toujours un degré de liberté pour $\ \langle x, \dot{x} \rangle$ :
-\[\|x\|=c\quad \Lr\quad \langle x, \dot{x} \rangle = i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
-
-
-
 \subsection{Écritures et interprétations}
 
 \begin{itemize}
@@ -828,9 +771,60 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 	\end{equation}
 	
 	\item Quoi qu'il en soit, de toute ces formules il ressort que la phase dynamique ne regarde que \textit{la} phase/fréquence instantanée de $\psi$ (et un peu son amplitude aussi mais c'est secondaire) et (je crois) donne une contrainte sur \textit{les} phases $\varphi_i$
-\end{itemize}
+\end{itemize}\subsection{Réflexion autour du produit hermitien}
 
 
+Soit $x,y\in\C^n$ des vecteurs complexes et $X,Y\in\R^{2\times n}$ leur versions réelles. On note $x^j$ sa $j^{eme}$ composante complèxe et $x_1$ (resp. $x_2$) le vecteur composé de ses parties réelles (resp. imaginaires) :
+\[x = \big(x^j\big)_j =  x_1 + ix_2 =  \big(x^j_1\big)_j +i \big(x^j_2\big)_j\]
+\\
+On a deux façon d'écrire le produit hermitien (canonique) de $x$ avec $y$.
+\\
+La première :
+\begin{align*}
+\langle x,y \rangle = \langle x_1 + ix_2, y_1 + iy_2\rangle &= \langle x_1, y_1\rangle - i \langle x_1,y_2\rangle +i\langle x_2, y_1\rangle + \langle x_2, y_2\rangle  \\
+&= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
++ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
+&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2
++ i\left(\sum_j x^j_2 y^j_1 -  x^j_1y^j_2\right) \\
+&= \left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle
++ i\left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix},\begin{pmatrix} -y_2 \\ y_1 \end{pmatrix}\right\rangle \\
+&= \Big\langle X,Y\Big\rangle 
++ i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}\right\rangle\\
+&= \Big\langle X,Y\Big\rangle 
+- i\left\langle X,\begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix}Y\right\rangle
+\end{align*}
+\\
+Cette formule peut s’interpréter en disant que le produit hermitien encode le produit scalaire entre $X$ et $Y$ et le produit scalaire de $X$ avec les vecteurs $y^j=(y^j_1, y^j_2)$  auquel on aurait applique une rotation de $90^\circ$ (rotation qui, par ailleurs, correspond à la multiplication par $i$ dans le plan complexe). Moralement, $\langle x,y \rangle =0$ demande une orthogonalité de $X$ à un plan, ce qui fait sens puisque cela tient compte du fait que les $x^j, y^j$ sont complexes (donc de dimension 2 en tant que $\R-$e.v.).
+\\
+Pour les connaisseurs, on retrouve l'égalité ``produit hermitien $=$ produit scalaire $-i$ forme symplectique'' !!
+Voir
+\href{https://fr.wikipedia.org/wiki/Espace_projectif#Espace_projectif_complexe}{plan proj complexe} et \href{https://fr.wikipedia.org/wiki/Vari%C3%A9t%C3%A9_k%C3%A4hl%C3%A9rienne}{variété kählérienne }
+\\
+
+On a aussi l'écriture (quand-même moins clair) :
+\begin{align*}
+\langle x,y \rangle &= \langle x_1, y_1\rangle + \langle x_2, y_2\rangle 
++ i\big(\langle x_2, y_1\rangle - \langle x_1,y_2\rangle\big) \\
+&= \sum_j x^j_1 y^j_1+ x^j_2 y^j_2+ i\sum_j \big( x^j_2 y^j_1 - x^j_1y^j_2 \big) \\
+&= \sum_j \big\langle X^j,Y^j\big\rangle - i\sum_j \det(X^j, Y^j)
+%&= \sum_j \|X^j\|\|Y^j\| \cos \widehat{X^j,X^j} + i\sin \widehat{X^j,Y^j}
+\end{align*}
+Cette formule dit que les parties reélles et imaginaires du produit $\langle x,y \rangle$ encodent respectivement ``l'orthogonalité moyenne'' et la ``linéarité moyenne ''entre les familles de vecteurs $X^j\in\R^2$ et $Y^j\in\R^2$. L'orthogonalité d'une part parce que le produit scalaire s'annule en cas d'orthogonalité (no shit), la linéarité d'autre part car le déterminant s'annule en cas de colinéarité et moyenne car se sont des sommes sur $j$. \textbf{$\bf{\langle x,y \rangle=0}$ ne dit pas que les le vecteurs sont à la fois colinéaire et orthogonaux parce que ce sont des valeurs moyennes (\ie~annuler une somme ne veut pas dire que chacun des termes sont nuls).}
+\\
+
+Si maintenant on s'intéresse au cas $y=x$, on a $\forall h\in\C^n$ :
+\begin{align*}
+\langle x+h, x+h \rangle = \langle x, x \rangle + \langle x, h \rangle + \langle h, x \rangle + \langle h, h \rangle 
+&= \langle x, x \rangle + \langle x, h \rangle  + \congu{\langle x, h \rangle }+ \langle h, h \rangle \\
+&= \langle x, x \rangle + 2\Re e \langle x, h \rangle + \langle h, h \rangle
+\end{align*}
+Donc si $x\in\C^n$ est fonction d'un paramètre $t$, l'égalité $\ \langle x, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x, x \rangle\ $ du cas réel devient :
+\begin{equation}\label{eq:x_scal_dotx}
+\langle x\,|\, \dot{x} \rangle = \frac{1}{2}\partial_t\langle x\,|\, x \rangle + i\left\langle X\,´\Big|\,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle
+\end{equation}
+\\
+En particulier, quand bien-même $x$ serait de norme constante, on aurait toujours un degré de liberté pour $\ \langle x, \dot{x} \rangle$ :
+\[\|x\|=c\quad \Lr\quad \langle x, \dot{x} \rangle = i\left\langle X,\begin{pmatrix} 0 & -I_n \\ I_n & 0 \end{pmatrix}\dot{X}\right\rangle\]
 
 
 
@@ -1047,26 +1041,9 @@ On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps
 \end{itemize}
 
 
+Différence entre phase instant par nous et par moment (34, syrile)
 
-\subsection{Point de vue des variétés ?}\label{subsec:phaseG_variete}
-
-\begin{itemize}
-	
-	\item Wikipédia dit : `` La théorie des fibrés principaux recouvre la théorie des fibrés vectoriels, de leurs orientations, de leurs structures riemanniennes, de leurs structures symplectiques, etc. ''
-	
-	\item Choix de l'action de groupe pour la jauge (la fibre oui) : $U(1)$ \apriori
-\end{itemize}
-
-\[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]{\color{white}relbinrei}
-
-\begin{itemize}
-	\item Lien avec Siegel : assez clair avec la visualisation des ellipses, beaucoup moins avec les Hilberts même si $| \psi\rangle \langle \psi |\in$ Siegel \apriori
-	
-	\item ``\textit{Symplectique}'' (meaning + intérêt ?) si tu savais...	
-	
-	\item 
-\end{itemize}
-
+Refaire les calculs de la phase tot
 
 
 

@@ -23,6 +23,9 @@
 \usepackage[nointlimits]{esint} % pour \fint, rien d'autre
 \usepackage{nicefrac, units} % fraction pour text mode / unité
 %\usepackage{cancel} % pour les simplifications de calcul (trop nice)
+% numéritation/pos équations
+\numberwithin{equation}{part}
+\renewcommand{\theequation}{\arabic{part}.\arabic{equation}}
 
 % TBD
 \usepackage{mathcomp}
@@ -530,7 +533,3 @@ rulecolor=\color{lightgray}}
 	% mise à zéro des compters
 	%\setcounter{section}{0}
 }{}
-
-
-%POUR NTHEOREM (A FAIRE ET A FIX)
-% vertical bar pour les énonces : https://tex.stackexchange.com/questions/499011/ntheorem-framing-environment-with-vertical-lines-on-both-the-left-and-right-sid
