@@ -164,12 +164,11 @@ Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complex
 
 \begin{definition}[Densités d'énergie]\label{def:densi_dE}
 	Étant donnée un signal complexe $x$, la \emph{densité d'énergie} $\rho$ de $x$ est donnée par le carré de son module. De même on définit $\varrho$ la \emph{densité d'énergie spectrale} :
-	\begin{equation}\label{eq:densi_dE}
-		\begin{aligned}
-			\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  &
-			\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(t)\big|^2 \end{aligned}
-		\end{aligned}
-	\end{equation}
+		\begin{align}\label{eq:densi_dE}
+			\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  
+			&
+			\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(\nu)\big|^2 \end{aligned}
+		\end{align}
 	\\
 	La valeur $\rho(t)$ correspond à la puissance déployée pour émettre le signal à l'instant $t$ et $\varrho(\nu)$ à l'énergie associée à la fréquence $\nu$ sur tout le signal. 
 	\\
@@ -538,8 +537,41 @@ Dans le cas multivariés, comme le cas monovarié, on aimerait pouvoir isoler un
 Cette écriture permettrait d'isoler la phase et l'amplitude du signal. Le vecteur restant contiendrait alors l'information relative à la polarisation. Là encore, cette phase $\phi$ existe mais sans unicité puisqu'il suffit de poser, pour tout $\phi\in\R$ :
 \[\forall i\in\llbracket1,n\rrbracket,\quad \varphi_i = \arg(x_i)-\phi\]
 \\
-Il faut donc une contrainte supplémentaire sur $\phi$. Cette fois-ci, elle ne pourra pas simplement venir des spectres $\fou{x}_i$ puisque, d'une part ils ont déjà été exploités par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte des liens implicites qui existe entre chacune des composantes du signal. \textbf{Est-ce que ca pourrait venir de l'\cref{eq:sum_esp_null} ?}
+Il faut donc une contrainte supplémentaire sur $\phi$. Cette fois-ci, elle ne pourra pas simplement venir des spectres $\fou{x}_i$ puisque, d'une part ils ont déjà été exploités par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte des liens implicites qui existe entre chacune des composantes du signal.
 \\
+\'Etant donnée les discussion de la \cref{subsec:freq_instant}, la fréquence instantanée doit être une fonction du temps dont l'intégrale correspond à l’énergie total du signal (voir \eqref{esp_freq}). Une première approche serait alors de trouver une telle fonction et d'en déduire la phase instantanée en l'intégrant (à $2\pi$ près).
+\\
+Pour cela on introduit les notations utiles au cas multivarié :
+\begin{definition}[Densité d’Énergie]\label{def:densi_dE-mv}
+	Étant donné un signal multivarié $\bf{x}=(x_i)_{1\leq i\leq n}$, les densités d'énergie de chaque composante $x_i$ du signal $\bf{x}$ sont notées :
+	\begin{align}\label{eq:densi_dEi}
+		\rho_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x_i(t)\big|^2 \end{aligned}  
+		&
+		\varrho_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}_i(\nu)\big|^2 \end{aligned}
+	\end{align}
+	Et les densités d'énergies associées au signal $\bf{x}$ complet :
+	\begin{align}\label{eq:densi_dE-mv}
+		\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big\|\bf{x}(t)\big\|^2 \end{aligned}  
+		&
+		\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big\|\fou{\bf{x}}(\nu)\big\|^2 \end{aligned}	
+	\end{align}
+\end{definition}
+
+En reprenant le ``calculation trick'' \eqref{eq:moment_f}, on a cette fois :
+\begin{align*}
+	\esp[\varrho]{\nu} &= \int_\R \nu\varrho(\nu)d\nu \\
+		 &= \int_\R \nu\sum_{i=1}^n \varrho_i(\nu) d\nu \\
+		 &= \sum_{i=1}^n\esp[\varrho_i]{\nu} \\
+		 &= \sum_{i=1}^n\frac{1}{2\pi}\int_\R \phi_i'(t)\rho_i(t)dt \\
+		 &= \frac{1}{2\pi}\int_\R \sum_{i=1}^n\phi_i'(t)\rho_i(t)dt \\
+		 &= \frac{1}{2\pi} \esp[\rho]{\frac{\sum_{i=1}^n \phi_i'\rho_i}{\rho}}
+\end{align*}
+
+
+
+
+
+\newpage
 Lilly et Olhede ont proposé dans \cite{lilly_analysis_2012} une procédure pour obtenir $\phi$. Elle ne sera pas présenté telle qu'elle ici mais voici un raisonnement similaire :
 \\
 
@@ -549,7 +581,7 @@ Dans un premier temps, on force la phase $\phi$ --- pour l'instant inconnue --- 
 Si $\phi$ est bien choisie, alors $\Tilde{\bf{x}}$ contient les informations associées à l'amplitude et la polarisation de $\bf{x}$. Or, il a été vu dans \cref{sec:temp-freq} précédente qui la phase doit contenir les hautes fréquences du signal. 
 \\
 Pour s'assurer, à l'inverse, que les basses fréquences du signal sont données par $\Tilde{\bf{x}}$, l'on va chercher à minimiser les variations du dit $\Tilde{\bf{x}}$ ; et puisque le seul paramètre sur lequel nous avons la main est $\phi$, c'est pas rapport à lui que cette minimisation va se faire. En somme, on cherche :
-\[\forall t\in\R,\qquad \phi(t) = \argmin{\varphi(t)}{\big\|\Tilde{\bf{x}}'(t)\big\|_2}^2 = \argmin{\varphi(t)}{\Big\|e^{-i\phi}\big(\bf{x}' - i\varphi'\bf{x}\big)\Big\|_2}^2 = \argmin{\varphi(t)}{\big\|\bf{x}' - i\varphi'\bf{x}\big\|_2}^2\]
+\[\forall t\in\R,\qquad \phi(t) = \argmin{\varphi(t)}{\big\|\Tilde{\bf{x}}'(t)\big\|_2}^2 = \argmin{\varphi(t)}{\Big\|e^{-i\varphi}\big(\bf{x}' - i\varphi'\bf{x}\big)\Big\|_2}^2 = \argmin{\varphi(t)}{\big\|\bf{x}' - i\varphi'\bf{x}\big\|_2}^2\]
 \\
 La contrainte ne dépendant que de $\varphi'$, on a de façon équivalente :
 \[\min_{\varphi(t)}{\|\Tilde{\bf{x}}'(t)\|_2}^2 = \min_{\varphi'(t)}{\big\|\bf{x}'(t) - i\varphi'(t) \bf{x}(t)\big\|_2}^2\]
@@ -721,9 +753,9 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 
 \part{Brouillon}
 
-\section{Comprendre la phase dynamique}
+\section{Intuition sur les fondamentaux}
 
-\subsection{Écritures et interprétations}
+\subsection{Écritures et interprétations de la phase dynamique}
 
 \begin{itemize}
 	
@@ -746,7 +778,7 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 	\end{pmatrix}\]
 	\\
 	Et avec un peu de travail (\cref{subsec:param_instant_mvar}), on obtient que le mieux c'est de poser :
-	\[\varphi'(t) \defeq -\frac{\Im m\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle}{\|\psi(t)\|^2} = \frac{\sum_i\phi_i'(t)\,a_i(t)}{\sum_ia_i(t)}\]
+	\[\varphi'(t) \defeq -\frac{\Im m\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle}{\|\psi(t)\|^2} = \frac{\sum_i\phi_i'(t)\,{a_i}^2(t)}{\sum_i{a_i}^2(t)}\]
 	\\
 	On voit donc que la phase dynamique est donnée par le cumule des fréquences instantanées, ou comme le différentiel de phase de $\psi$ :
 	\[\phased(\psi,t_0,t) = -\Im m\int_{t_0}^t \frac{\big\langle \psi(s) \,|\, \dot{\psi}(s) \big\rangle}{\|\psi(s)\|^2} ds = \int_{t_0}^t \varphi'(s)ds = \varphi(t)-\varphi(t_0)\]
@@ -769,6 +801,7 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 	\begin{equation}\label{eq:sum_esp_null}
 		\sum_i \esp[\frac{|\psi_i|^2}{\|\psi\|^2}]{\one_{[t_0,t]}\varphi_i'} = 0
 	\end{equation}
+	Moralement, ca revient juste à dire qu'en définissant $\varphi$ suivant Lilly, on a otté au $\phi_i$ la phase moyenne ponérée et donc, tout naturellement, les nouvelles phase indivituelles $\varphi_i$ sont centrés (à la même pondération près).
 	
 	\item Quoi qu'il en soit, de toute ces formules il ressort que la phase dynamique ne regarde que \textit{la} phase/fréquence instantanée de $\psi$ (et un peu son amplitude aussi mais c'est secondaire) et (je crois) donne une contrainte sur \textit{les} phases $\varphi_i$
 \end{itemize}\subsection{Réflexion autour du produit hermitien}
