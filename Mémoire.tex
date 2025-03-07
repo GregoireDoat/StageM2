@@ -445,7 +445,7 @@ Par souci de commodité, plutôt que redéfinir tout le vocabulaire développé 
 
 
 
-\subsubsection{Propriétés et interprétations des signaux analytiques}
+\subsubsection{Propriétés et interprétations des signaux analytiques}\label{subsec:Bedrisan&AM-FM}
 
 
 Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $\R$. Aussi, la transformée $\SA{x}$ à pour partie réelle $x$ et pour partie imaginaire $\mathcal{H}[x]$. Sous forme exponentielle, cela donne :
@@ -509,7 +509,7 @@ Pour comprendre pourquoi l'amplitude ne fait pas ce qu'on attendrait d'elle, on 
 	\end{itemize}
 	alors la transformée de Hilbert de leur produit est donnée par la formule (voir \cite{wang_simple_2009} pour une démonstration) :
 	\begin{equation}\label{eq:2Bedrosian}
-		\supp \fou{f} \subset [-\lambda_1, \lambda_2],\ \supp \fou{g} \subset \R\setminus[-\lambda_2,\lambda_1]\quad \Lr\quad \hilb{fg} = f\hilb{g}
+		\hilb{fg} = f\hilb{g}
  	\end{equation}
 \end{theoreme}
 \begin{corollaire}\label{coro:AM-FM}
@@ -528,76 +528,107 @@ Pour comprendre pourquoi l'amplitude ne fait pas ce qu'on attendrait d'elle, on 
 
 \section{Généralisation aux signaux multivariés}\label{sec:sign_multivar}
 
-\subsection{Phase et fréquence instantanée de signal multivarié}\label{subsec:param_instant_mvar}
-
-Dans le cas multivariés, comme le cas monovarié, on aimerait pouvoir isoler une phase instantanée de tout signal. C'est-à-dire, étant donnée un signal $\bf{x}=(x_i)_{1\leq i\leq n}$ à valeur de $\R$ dans $\C^n$, pouvoir écrire $\bf{x}$ sous la forme :
-\[\forall t\in\R,\qquad \bf{x}(t) = a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
-\end{pmatrix} \qquad\text{ avec }\qquad \big\|(a_i)_{1\leq i\leq n}\big\|=1,\quad a\geq 0\]
-\\
-Cette écriture permettrait d'isoler la phase et l'amplitude du signal. Le vecteur restant contiendrait alors l'information relative à la polarisation. Là encore, cette phase $\phi$ existe mais sans unicité puisqu'il suffit de poser, pour tout $\phi\in\R$ :
-\[\forall i\in\llbracket1,n\rrbracket,\quad \varphi_i = \arg(x_i)-\phi\]
-\\
-Il faut donc une contrainte supplémentaire sur $\phi$. Cette fois-ci, elle ne pourra pas simplement venir des spectres $\fou{x}_i$ puisque, d'une part ils ont déjà été exploités par $\mathcal{A}$. Mais aussi et surtout parce qu'elle doit tenir compte des liens implicites qui existe entre chacune des composantes du signal.
-\\
-\'Etant donnée les discussion de la \cref{subsec:freq_instant}, la fréquence instantanée doit être une fonction du temps dont l'intégrale correspond à l’énergie total du signal (voir \eqref{esp_freq}). Une première approche serait alors de trouver une telle fonction et d'en déduire la phase instantanée en l'intégrant (à $2\pi$ près).
-\\
-Pour cela on introduit les notations utiles au cas multivarié :
-\begin{definition}[Densité d’Énergie]\label{def:densi_dE-mv}
-	Étant donné un signal multivarié $\bf{x}=(x_i)_{1\leq i\leq n}$, les densités d'énergie de chaque composante $x_i$ du signal $\bf{x}$ sont notées :
-	\begin{align}\label{eq:densi_dEi}
-		\rho_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x_i(t)\big|^2 \end{aligned}  
-		&
-		\varrho_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}_i(\nu)\big|^2 \end{aligned}
-	\end{align}
-	Et les densités d'énergies associées au signal $\bf{x}$ complet :
-	\begin{align}\label{eq:densi_dE-mv}
-		\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big\|\bf{x}(t)\big\|^2 \end{aligned}  
-		&
-		\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big\|\fou{\bf{x}}(\nu)\big\|^2 \end{aligned}	
-	\end{align}
+\begin{definition}[Signal multivarié]\label{def:signal_multivar}
+	Un \emph{signal multivarié}, ou \emph{$n-$varié}, est un vecteur composé de $n\in\N^*$ signaux $x_i$. Si $n=2$, alors on parle de signal \emph{bivarié}.
+	\\
+	Dans la continuité de ce qui à été dit dans la \cref{subsec:transfo_SA}, dans le cas des signaux réels, on s'intéressera au vecteur composé des transformées en SA (eq. \ref{eq:transfo_SA}, déf. \ref{def:transfo_sa&hilbert}) des $x_i$.
+	\textbf{Au moins dans toute cette \namecref{sec:sign_multivar}}, un tel signal sera noté :
+	\[\sa{x}(t)\ :\quad \begin{aligned} 
+		\R\quad &\lr\qquad \C^n \\t\quad &\longmapsto\ \begin{pmatrix} \mathcal{A}[x_1] \\ 
+			\mathcal{A}[x_2] \\ \vdots \\ \mathcal{A}[x_n] \end{pmatrix}
+	\end{aligned} \]
+	On supposera que chaque composante $x_i$ de $\bf{x}$ aura autant de régularité et de condition d'intégrabilité que nécessaire \textbf{(il vaudra préciser lesquelles à un moment)}.
 \end{definition}
 
-En reprenant le ``calculation trick'' \eqref{eq:moment_f}, on a cette fois :
+Le fait que $\bf{x}$ soit à valeur dans $\C^n$ impose un choix narutelle de d'amplitude instantanée : sa norme. L'on notera alors dans tout la suite (sauf précision) :
+\[\forall t\in\R,\qquad 
+	\bf{x}(t) = a(t)\begin{pmatrix} a_1(t)e^{i\phi_1(t)} \\ a_2(t)e^{i\phi_2(t)} \\ \vdots \\ a_n(t)e^{i\phi_n(t)}
+\end{pmatrix} \qquad\text{ avec }\qquad \big\|(a_i)_{1\leq i\leq n}\big\|=1,\quad a\geq 0
+%a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\psi_1(t)} \\ a_2(t)e^{i\psi_2(t)} \\ \vdots \\ a_n(t)e^{i\psi_n(t)}\end{pmatrix}
+\]
+\\
+Le choix de la phase instantanée, en revanche, n'est pas plus commode. Si l'on cherche à écrire $\bf{x}$ sous la forme :
+\[a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\psi_1(t)} \\ a_2(t)e^{i\psi_2(t)} \\ \vdots \\ a_n(t)e^{i\psi_n(t)}
+\end{pmatrix}\]
+alors n'importe quel choix de $\phi$ est valable, il suffit que $\ \psi_i = \phi_i-\phi$.
+
+
+
+\subsection{Phase et fréquence instantanée de signal multivarié }\label{subsec:param_instant_mvar}
+
+Afin de contraindre ce choix, on s'inspire propriétés de la phase instantanée vu plus tôt pour en déduire deux approches :
+\begin{itemize}
+	\item D'une part, l'espérance de la fréquence instantanée (ici vu comme dérivée à $2\pi$ près de la phase\footnote{\itshape
+		La pertinance de cette définition dans le cas multivarié sera discuté plus loin})
+	doit donnée la fréquence moyenne au sens de Fourier, eq. \eqref{eq:esp_freq}.
+	
+	\item D'autre part, les conditions d'interprétation de la décomposition $(a_x,\phi_x)$, \cref{theo:2Bedrosian}, exige que les hautes fréquences du signal se retrouve dans la phase.
+\end{itemize}
+
+Pour cela on introduit les notations utiles au cas multivarié :
+\begin{definition}[densité d’énergie]\label{def:densi_dE-mv}
+Étant donné un signal multivarié $\bf{x}=(x_i)_{1\leq i\leq n}$, les densités d'énergie de chaque composante $x_i$  sont notées :
+\begin{align}\label{eq:densi_dEi}
+	\rho_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x_i(t)\big|^2 = a(t)^2 a_i(t)^2 \end{aligned}  
+	&
+	\varrho_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}_i(\nu)\big|^2 \end{aligned}
+\end{align}
+Et les densités d'énergies associées au signal $\bf{x}$ complet :
+\begin{align}\label{eq:densi_dE-mv}
+	\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big\|\bf{x}(t)\big\|^2 = \sum_{i=1}^n \rho_i(t) \end{aligned}  
+	&
+	\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big\|\fou{\bf{x}}(\nu)\big\|^2 = \sum_{i=1}^n \varrho_i(t) \end{aligned}	
+\end{align}
+\end{definition}
+
+La première approche, inspiré de \cite{cano_mathematical_2022} consiste donc de reprendre le ``calculation trick'' \eqref{eq:moment_f}, pour en déduire la fréquence moyenne
 \begin{align*}
-	\esp[\varrho]{\nu} &= \int_\R \nu\varrho(\nu)d\nu \\
-		 &= \int_\R \nu\sum_{i=1}^n \varrho_i(\nu) d\nu \\
+	\esp[\varrho]{\nu} = \int_\R \nu\varrho(\nu)d\nu &= \int_\R \nu\sum_{i=1}^n \varrho_i(\nu) d\nu \\
 		 &= \sum_{i=1}^n\esp[\varrho_i]{\nu} \\
 		 &= \sum_{i=1}^n\frac{1}{2\pi}\int_\R \phi_i'(t)\rho_i(t)dt \\
-		 &= \frac{1}{2\pi}\int_\R \sum_{i=1}^n\phi_i'(t)\rho_i(t)dt \\
-		 &= \frac{1}{2\pi} \esp[\rho]{\frac{\sum_{i=1}^n \phi_i'\rho_i}{\rho}}
+		 &= \frac{1}{2\pi}\int_\R a(t)^2\sum_{i=1}^n\phi_i'(t)a_i(t)^2 dt 
+		 \\ &= \frac{1}{2\pi} \esp[\rho]{\sum_{i=1}^n \phi_i'{a_i}^2}
 \end{align*}
-
-
-
-
-
-\newpage
-Lilly et Olhede ont proposé dans \cite{lilly_analysis_2012} une procédure pour obtenir $\phi$. Elle ne sera pas présenté telle qu'elle ici mais voici un raisonnement similaire :
+\\
+Ce qui mène à une première définition de la phase instantanée :
+\begin{equation}\label{eq:phas_inst_v1}
+	\phi = \int \sum_{i=1}^n \phi_i'(s){a_i}(s)^2ds 
+	= \sum_{i=1}^n \int \phi_i'(s){a_i}(s)^2ds 
+	%= \sum_{i=1}^n \esp[\nicefrac{\rho_i}{\rho}]{\phi_i'}
+\end{equation}
 \\
 
-Dans un premier temps, on force la phase $\phi$ --- pour l'instant inconnue --- à apparaître en écrivant $\bf{x}$ sous la forme :
-\[\forall t\in\R,\qquad \bf{x}(t) = e^{i\phi(t)} e^{-i\phi(t)} \bf{x}(t) = e^{i\phi(t)} \Tilde{\bf{x}}(t)\]
+La seconde approche, fortement inspirée par les travaux de Lilly et Olhede  \cite{lilly_analysis_2012}, se base sur la discussion autour du théorème Bedrisan sur la séparation haute-basse fréquence du signal $\bf{x}$ (\cref{subsec:Bedrisan&AM-FM}). Pour cela, l'on commence par faire apparaître la phase $\phi$ --- pour l'instant inconnue --- en écrivant $\bf{x}$ sous la forme :
+\[\forall t\in\R,\qquad \bf{x}(t) = e^{i\phi(t)} e^{-i\phi(t)} \bf{x}(t) \defeq e^{i\phi(t)} \Tilde{\bf{x}}(t)\]
 \\
-Si $\phi$ est bien choisie, alors $\Tilde{\bf{x}}$ contient les informations associées à l'amplitude et la polarisation de $\bf{x}$. Or, il a été vu dans \cref{sec:temp-freq} précédente qui la phase doit contenir les hautes fréquences du signal. 
+Si $\phi$ est bien choisie, alors $\Tilde{\bf{x}}$ contient les informations associées à l'amplitude et la polarisation de $\bf{x}$. Or, la phase doit contenir les hautes fréquences du signal. 
+Pour s'en assurer on demande, à l'inverse, que les basses fréquences du signal soit données par $\Tilde{\bf{x}}$ en limitant ces variations. En clair, $\phi$ doit être choisi de sorte à minimiser la dérivée $\Tilde{\bf{x}}'$ :
+\[\forall t\in\R,\qquad \phi(t) = \argmin{\alpha(t)}{\big\|\Tilde{\bf{x}}'(t)\big\|_2}^2 = \argmin{\alpha(t)}{\Big\|e^{-i\alpha}\big(\bf{x}' - i\alpha'\bf{x}\big)\Big\|_2}^2 = \argmin{\alpha(t)}{\big\|\bf{x}' - i\alpha'\bf{x}\big\|_2}^2\]
 \\
-Pour s'assurer, à l'inverse, que les basses fréquences du signal sont données par $\Tilde{\bf{x}}$, l'on va chercher à minimiser les variations du dit $\Tilde{\bf{x}}$ ; et puisque le seul paramètre sur lequel nous avons la main est $\phi$, c'est pas rapport à lui que cette minimisation va se faire. En somme, on cherche :
-\[\forall t\in\R,\qquad \phi(t) = \argmin{\varphi(t)}{\big\|\Tilde{\bf{x}}'(t)\big\|_2}^2 = \argmin{\varphi(t)}{\Big\|e^{-i\varphi}\big(\bf{x}' - i\varphi'\bf{x}\big)\Big\|_2}^2 = \argmin{\varphi(t)}{\big\|\bf{x}' - i\varphi'\bf{x}\big\|_2}^2\]
+La contrainte ne dépendant que de la dérivée $\alpha'$, on se ramène à :
+\[\min_{\alpha(t)}{\|\Tilde{\bf{x}}'(t)\|_2}^2 = \min_{\alpha'(t)}{\big\|\bf{x}'(t) - \alpha'(t) \bf{x}(t)\big\|_2}^2\]
 \\
-La contrainte ne dépendant que de $\varphi'$, on a de façon équivalente :
-\[\min_{\varphi(t)}{\|\Tilde{\bf{x}}'(t)\|_2}^2 = \min_{\varphi'(t)}{\big\|\bf{x}'(t) - i\varphi'(t) \bf{x}(t)\big\|_2}^2\]
-\\
-En rappelant que $\frac{d}{dx}{\big\|f(x)\big\|_2}^2 = 2\Re e\big\langle f(x)\,|\, f'(x)\big\rangle$, il vient que ce minimum est atteint par $\phi'(t)$ à condition que :
+En rappelant que $\frac{d}{dx}{\big\|f(x)\big\|_2}^2 = 2\Re e\big\langle f(x), f'(x)\big\rangle$, il vient que ce minimum est atteint par $\phi'(t)$ à condition que :
 \begin{align*}
-	0 = \frac{d}{d\phi'}{\big\| \bf{x}' - i\phi' \bf{x}\big\|_2}^2 
-		&= 2\Re e\left\langle  \bf{x}' - i\phi' \bf{x} \,\Big|\,  \frac{d}{d\phi'}\big(\bf{x}' - i\phi' \bf{x}\big)\right\rangle \\
-		&= 2\Re e\big\langle  \bf{x}' - i\phi' \bf{x} \,|\,  - i \bf{x}\big\rangle \\
-		&= 2\Re e\Big(i\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle\Big) + 2\phi'\Re e\big\langle   \bf{x} \,|\,  \bf{x}\big\rangle\\
-		&= -2\Im m\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle + 2\phi'{\| \bf{x}\|_2}^2
+	\frac{d}{d\phi'}{\big\| \bf{x}' - i\phi' \bf{x}\big\|_2}^2 = 0 \quad \Llr\quad
+		0 &= 2\Re e\left\langle  \bf{x}' - i\phi' \bf{x} ,  \frac{d}{d\phi'}\big(\bf{x}' - i\phi' \bf{x}\big)\right\rangle \\
+		&= 2\Re e\big\langle  \bf{x}' - i\phi' \bf{x} ,  - i \bf{x}\big\rangle \\
+		&= 2\Re e\Big(i\big\langle  \bf{x}' ,  \bf{x}\big\rangle\Big) + 2\phi'\Re e\big\langle   \bf{x} ,  \bf{x}\big\rangle\\
+		&= -2\Im m\big\langle  \bf{x}' ,  \bf{x}\big\rangle + 2\phi'{\| \bf{x}\|_2}^2
 \end{align*}
-Ce qui mène à poser :
-\begin{align}
-	\phi' &= \frac{\Im m\big\langle  \bf{x}' \,|\,  \bf{x}\big\rangle}{{\| \bf{x}\|_2}^2} = \frac{-\Im m\big\langle  \bf{x} \,|\,  \bf{x}'\big\rangle}{{\| \bf{x}\|_2}^2}  &  &\text{et}  &  \phi &= -\Im m\int \frac{\big\langle \bf{x}(s) \,|\, \bf{x}'(s) \big\rangle}{\|\bf{x}(s)\|^2} ds
+Ainsi :
+\begin{align}\label{eq:phas_inst_v2}
+	\phi' &= \frac{\Im m\big\langle  \bf{x}' ,  \bf{x}\big\rangle}{{\| \bf{x}\|_2}^2} = \frac{-\Im m\big\langle  \bf{x},  \bf{x}'\big\rangle}{{\| \bf{x}\|_2}^2}  &  &\text{et}  &  \phi &= -\Im m\int \frac{\big\langle \bf{x}(s) , \bf{x}'(s) \big\rangle}{\|\bf{x}(s)\|^2} ds
 \end{align}
+\\
+Ce qui, sous forme exponentiel, se réécrit :
+\begin{align*}
+	-\Im m\frac{\big\langle \bf{x}(t) , \bf{x}'(t) \big\rangle}{\|\bf{x}(t)\|^2} &= -\Im m\frac{1}{a(t)^2} \sum_{i=1}^n a(t)a_i(t)e^{i\phi_i(t)}\congu{\Big( \big(aa_i\big)'(t) +a(t)a_i(t)i\phi_i'(t)\Big)e^{i\phi_i(t)}} \\
+	&= -\Im m\frac{1}{a(t)^2} \sum_{i=1}^n a(t)a_i(t)\big(aa_i\big)'(t) -ia(t)^2a_i(t)^2\phi_i'(t) \\
+	&= -\frac{1}{a(t)^2} \sum_{i=1}^n -a(t)^2a_i(t)^2 \phi_i'(t) \\
+	&= \sum_{i=1}^n a_i(t)^2 \phi_i'(t)
+\end{align*}
+Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier raisonnement.
 \\ \\
 
 
@@ -605,6 +636,80 @@ Ce qui mène à poser :
 
 \subsubsection{Bivarié}
 
+\begin{proposition}[phase dynamique]\label{prop:phased_biva}
+	Si on se donne un signal bivarié de la forme (AM--FM--PM) :
+	\begin{equation}\label{eq:exp_elliptik}
+		\bf{x} = ae^{i\varphi} R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix} 
+			= a(t)e^{i\varphi} \begin{pmatrix} \cos\theta \cos\chi + i\sin\theta \sin\chi \\ \sin\theta \cos\chi - i\cos\theta \sin\chi \end{pmatrix}
+	\end{equation}
+	\\
+	alors, la phase dynamique de $\bf{x}$ est donnée par :
+	\[\phased(\bf{x}, t_0,t) = \int_{t_0}^t \dot{\varphi}(s) + \dot{\theta}(s) \sin2\chi(s) ds = \varphi(t) -\varphi(t_0) + \int_{t_0}^t\dot{\theta}(s) \sin2\chi(s) ds\]
+	\\
+	Soit une différence de phase $\varphi$ mais avec un terme en plus. Donc $\varphi$ ne doit (\textbf{doit?}) pas être interpréter comme la phase instantanée du signal, où du moins pas au sens donnée dans la \cref{subsec:param_instant_mvar}
+\end{proposition}
+\begin{demo}%[\cref{prop:phased_biva}]
+	Par souci de lisibilité, on note $\mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ de sorte que la dérivée de $\bf{x}$ s'écrive :
+	\begin{align*}
+		\dot{\bf{x}} 
+			&= \dot{a}e^{i\varphi}\mathcal{U} + ia\dot{\varphi}e^{i\varphi} \mathcal{U} + ae^{i\varphi}\dot{\theta}\begin{pmatrix} -\sin\theta \cos\chi + i\cos\theta \sin\chi \\ \cos\theta \cos\chi + i\sin\theta \sin\chi \end{pmatrix} + ae^{i\varphi}\dot{\chi}\begin{pmatrix} -\cos\theta \sin\chi + i\sin\theta \cos\chi \\ -\sin\theta \sin\chi - i\cos\theta \cos\chi \end{pmatrix} \\
+			&= \dot{a}e^{i\varphi}\mathcal{U} + ia\dot{\varphi}e^{i\varphi} \mathcal{U} + ae^{i\varphi}\dot{\theta}\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + ae^{i\varphi}\dot{\chi}\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}
+	\end{align*}
+	\\
+	Le produit hermitien $\langle \bf{x}, \dot{\bf{x}}\rangle$ s'écrit alors :
+	\begin{align*}
+		\langle \bf{x}, \dot{\bf{x}}\rangle 
+			&= \left\langle ae^{i\varphi}\mathcal{U}, \dot{a}e^{i\varphi}\mathcal{U} + ia\dot{\varphi}e^{i\varphi} \mathcal{U} + ae^{i\varphi}\dot{\theta}\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + ae^{i\varphi}\dot{\chi}\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}\right\rangle \\
+			&= \left\langle a\mathcal{U}, \dot{a}\mathcal{U} + ia\dot{\varphi} \mathcal{U} + a\dot{\theta}\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + a\dot{\chi}\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}\right\rangle \\
+			&= a\dot{a} \big\langle \mathcal{U}, \mathcal{U}\big\rangle  - ia^2\dot{\varphi} \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + a^2\dot{\theta}\left\langle \mathcal{U}, \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U}\right\rangle + ia^2\dot{\chi}\left\langle \mathcal{U}, \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\congu{\mathcal{U}}\right\rangle
+	\end{align*}
+	où les deux derniers produits hermitiens donnent :
+	\begin{align*}
+		\left\langle \mathcal{U}, \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U}\right\rangle &= -\mathcal{U}_1\congu{\mathcal{U}_2} + \mathcal{U}_2\congu{\mathcal{U}_1} \\
+		&= 2i\Im m\big(\congu{\mathcal{U}_1} \mathcal{U}_2\big) \\
+		&= 2i\Im m\big(\cos\theta \cos\chi - i \sin\theta \sin\chi \big) \big( \sin\theta \cos\chi - i \cos\theta \sin\chi \big) \\
+		&= 2i\big(-\cos^2\theta \cos\chi \sin\chi - \sin^2\theta \sin\chi \cos\chi \big) \\
+		&= -2i\big( \cos\chi \sin\chi + \sin\chi \cos\chi \big) \\
+		&= -i\sin2\chi 
+		\\ \\
+	\left\langle \mathcal{U}, \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\congu{\mathcal{U}}\right\rangle &= -\mathcal{U}_1\mathcal{U}_2 + \mathcal{U}_2\mathcal{U}_1 = 0
+	\end{align*}
+	\\
+	
+	D'où, sachant que $\ \|\bf{x}\|^2=a^2\ $ et $\ \|\mathcal{U}\|=1$, la formule :
+	\begin{align*}
+		-\frac{\Im m\big\langle \bf{x},\dot{\bf{x}}\big\rangle}{\|\bf{x}\|^2} &= -\frac{1}{a^2}\Im m\Big(a\dot{a} \big\langle \mathcal{U}, \mathcal{U}\big\rangle  - ia^2\dot{\varphi} \big\langle \mathcal{U}, \mathcal{U}\big\rangle - ia^2\dot{\theta} \sin2\chi \Big) \\
+		&= \frac{1}{a^2} \Big( a^2\dot{\varphi} \|\mathcal{U}\|^2 + a^2\dot{\theta} \sin2\chi \Big) \\
+		&= \dot{\varphi} + \dot{\theta} \sin2\chi
+	\end{align*}
+	%\begin{pmatrix} \cos\theta \cos\chi + i\sin\theta \sin\chi \\ \sin\theta \cos\chi - i\cos\theta \sin\chi \end{pmatrix}
+\end{demo}
+
+\begin{proposition}[phase totale]\label{prop:phaset_biva}
+	La phase totale d'un signal AM--FM--PM est donnée par :
+	\begin{equation}
+		\phaset(\bf{x},t_0,t) = \arg\big\langle \bf{x}(t_0), \bf{x}(t)\big\rangle = \varphi(t_0)-\varphi(t) + \arg\big(\cos\Delta\theta \cos\Delta\chi - i\sin\Delta\theta \sin(\chi_1+\chi_2)\big)
+	\end{equation}
+\end{proposition}
+\begin{demo}%[\cref{prop:phaset_biva}]
+	On note cette fois $\mathcal{V} = \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ et sachant la forme des signaux AM--FM--PM, on a :
+	\begin{align*}
+		\big\langle \bf{x}(t_0), \bf{x}(t)\big\rangle &= \Big\langle a(t_0)e^{i\varphi(t_0)}R_{\theta(t_0)}\mathcal{V}(t_0), a(t)e^{i\varphi(t)}R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
+		&= a(t_0)e^{i\varphi(t_0)}a(t)e^{-i\varphi(t)}\Big\langle R_{\theta(t_0)}\mathcal{V}(t_0), R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
+		%&= a(t_0)a(t)e^{i(\varphi(t_0)-\varphi(t))}\Big\langle \mathcal{V}(t_0), R_{\theta(t_0)}^{-1}R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
+		&= a(t_0)a(t)e^{i(\varphi(t_0)-\varphi(t))}\Big\langle \mathcal{V}(t_0), R_{\theta(t)- \theta(t_0)}\mathcal{V}(t) \Big\rangle
+	\end{align*}
+	Pour alléger les notations, on note $\ \Delta y =y(t)-y(t_0)\ $ et $\ y_1=y(t_0), y_2=(t)\ $ pour $\ y=\varphi,\theta,\chi$. Le produit hermitien à droite s'écrit alors :
+	\begin{align*}
+		\Big\langle \mathcal{V}(t_0), R_{\Delta\theta}\mathcal{V}(t) \Big\rangle &= \begin{pmatrix} \cos\chi_1 & -i\sin\chi_1 \end{pmatrix}  \begin{pmatrix} \cos\Delta\theta \cos\chi_2 - i\sin\Delta\theta \sin\chi_2 \\ \sin\Delta\theta \cos\chi_2 + i\cos\Delta\theta \sin\chi_2 \end{pmatrix} \\
+		&= \cos\chi_1\Big(\cos\Delta\theta \cos\chi_2 - i\sin\Delta\theta \sin\chi_2\Big) - i\sin\chi_1\Big(\sin\Delta\theta \cos\chi_2 + i\cos\Delta\theta \sin\chi_2\Big) \\
+		&= \cos\Delta\theta \Big(\cos\chi_1 \cos\chi_2 + \sin\chi_1 \sin\chi_2\Big) - i\sin\Delta\theta \Big( \cos\chi_1 \sin\chi_2 + \sin\chi_1\cos\chi_2\Big) \\
+		&= \cos\Delta\theta \cos\Delta\chi - i\sin\Delta\theta \sin(\chi_1+\chi_2)
+	\end{align*}
+\end{demo}
+
+
+Plein d'écriture :
 \begin{itemize}
 	
 	\item En dimension 2, c'est facile, on peut écrire $\sa{\bf{x}}$ comme (Lilly \cite{lilly_bivariate_2010,lilly_wavelet_2006}) :
@@ -630,7 +735,7 @@ Ce qui mène à poser :
 	\end{equation}
 	Et les Stokes parameters sont donnée par :
 	\[\sa{\bf{x}} \bf{j} \congu{\sa{\bf{x}}} = S_0  +\bf{i}S_3 + \bf{j}S_1 + \bf{k}S_2\]
-	Et la lien avec les $\sigma_i$ se fait via (mais du coup les notations colles par :/) :
+	Et le lien avec les $\sigma_i$ se fait via (mais du coup les notations colles par :/) :
 	\[(\sigma_0, \sigma_1, \sigma_2, \sigma_3) \leadsto (1, \bf{i}, \bf{j}, \bf{k})\]
 	
 	\item Et en version matrice de Pauli :
@@ -648,7 +753,7 @@ On a un signal bivarié $\bf{x}(t) = \big(x(t),y(t)\big)$ qu'on transforme (voir
 \`A côté de ça, on a les ellipses modulées :
 \[z(t) = e^{i\theta}\big(a(t)\cos\phi(t) + ib(t) \sin\phi(t)\big) = a(t) e^{i\theta} \big( \sin\chi(t) \cos\phi(t) + i\sin\chi(t) \sin\phi(t) \big) \in\C\]
 Qui sous forme vectoriel se réécrit \textbf{(pourquoi ???)} :
-\begin{equation}\label{eq:exp_elliptik}
+\begin{equation}%\label{eq:exp_elliptik}
 	z(t) = e^{i\phi(t)} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \end{pmatrix} = a(t)e^{i\phi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} \in\C^2,\qquad R_\theta\in\SO_2(\R) \
 \end{equation}
 \\
