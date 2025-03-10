@@ -83,9 +83,10 @@
 		Transformée de Hilbert   	&  $\hilb{x}$ \\ \hline
 		Conjugué complexe  					 &  $\congu{x}$ \\ \hline
 		Produit hermitien (resp. scalaire)   &  $\langle x \,|\, y\rangle$ (resp. $\langle x,y\rangle$) \\ \hline
-		Espérance et variance de $f$ suivant $\rho$   &  $\esp[\rho]{f(t)}$ $\var[\rho]{f(t)}$ \\  \hline
+		Espérance et variance de $f$ suivant $\densit$   &  $\esp[\densit]{f(t)}$, $\var[\densit]{f(t)}$ \\  \hline
 		Espace des fonctions p.p. de puissance $p^{eme}$ intégrable à valeur de $E$ dans $F$  &  $L^p(E, F)$ \\  \hline		
 		Support d'une fonction $f$   &  $\supp f =\{x\in\R\ |\ f(x)\neq0\}$ \\  \hline
+		Matrice de rotation d'angle $\theta$  &  $R_\theta$  \\  \hline
 	\end{tabular}
 	\caption{Indexe des notations}
 	\label{tab:notation}
@@ -163,56 +164,56 @@ Dans toute cette \namecref{sec:temp-freq}, on considèrera $x$ un signal complex
 \end{align*}
 
 \begin{definition}[Densités d'énergie]\label{def:densi_dE}
-	Étant donnée un signal complexe $x$, la \emph{densité d'énergie} $\rho$ de $x$ est donnée par le carré de son module. De même on définit $\varrho$ la \emph{densité d'énergie spectrale} :
+	Étant donnée un signal complexe $x$, la \emph{densité d'énergie} $\densit$ de $x$ est donnée par le carré de son module. De même on définit $\densis$ la \emph{densité d'énergie spectrale} :
 		\begin{align}\label{eq:densi_dE}
-			\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  
+			\densit\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  
 			&
-			\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(\nu)\big|^2 \end{aligned}
+			\densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(\nu)\big|^2 \end{aligned}
 		\end{align}
 	\\
-	La valeur $\rho(t)$ correspond à la puissance déployée pour émettre le signal à l'instant $t$ et $\varrho(\nu)$ à l'énergie associée à la fréquence $\nu$ sur tout le signal. 
+	La valeur $\densit(t)$ correspond à la puissance déployée pour émettre le signal à l'instant $t$ et $\densis(\nu)$ à l'énergie associée à la fréquence $\nu$ sur tout le signal. 
 	\\
 	La transformée étant une isométrie de l'espace $L^2(\R,\C)$, si $x\in L^2(\R,\C)$, alors l'\emph{énergie totale} du signal est indépendante de la représentation de ce dernier (temporelle ou spectrale) :
 	\begin{equation}\label{eq:parceval}
-		E(x) \defeq {\|x\|_2}^2 = \int_\R \rho(t) dt = \int_\R \varrho(\nu) d\nu = {\|\fou{x}\|_2}^2
+		E(x) \defeq {\|x\|_2}^2 = \int_\R \densit(t) dt = \int_\R \densis(\nu) d\nu = {\|\fou{x}\|_2}^2
 	\end{equation}
 \end{definition}
 
 Par exemple, si $\ x(t)=e^{2\pi i\nu_0 t}$, alors $\ \fou{x}(t) = \delta(x-\nu_0)$. Dans ce cas, on a les densités :
 \begin{align*}
-	\rho(t) &= 1  &  \varrho(\nu) = \delta(\nu-\nu_0)
+	\densit(t) &= 1  &  \densis(\nu) = \delta(\nu-\nu_0)
 \end{align*}
-Du point de vu temporel, le signal est émis avec une puissance régulière, mais le fait que $\varrho$ soit un dirac indique que toute l'énergie du signal est concentré en une unique fréquence $\nu_0$.
+Du point de vu temporel, le signal est émis avec une puissance régulière, mais le fait que $\densis$ soit un dirac indique que toute l'énergie du signal est concentré en une unique fréquence $\nu_0$.
 
 
 \begin{definition}[Durée et largeur de bande]\label{def:band-width}
 	L'espérance ces densités, pour peu qu'elles existent, sont notées :
 	\begin{align*}
-		\esp[\rho]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \esp[\varrho]{\nu} &\defeq \int_\R \nu \big|\fou{x}(\nu)\big|^2 d\nu
+		\esp[\densit]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \esp[\densis]{\nu} &\defeq \int_\R \nu \big|\fou{x}(\nu)\big|^2 d\nu
 	\end{align*}
 	\\
 	Si un signal est localisé temporellement, alors la première espérance/moyenne donne une idée de l'instant d'émission du signal. Si \acontrario, le signal est localisé en fréquence, la seconde espérance peut s'interpréter comme la fréquence ''dominante'' du le signal, ou plus généralement comme sa \emph{fréquence moyenne}. \\
-	En particulier, et ce sera important pour la suite, dans le cas des signaux réels, l'espérance de $\varrho$ est toujours nulles.
+	En particulier, et ce sera important pour la suite, dans le cas des signaux réels, l'espérance de $\densis$ est toujours nulles.
 	\\
 	On note de même les variances (toujours à condition d'existence) :
 	\begin{align*}
-		\var[\rho]{t} &\defeq \esp[\rho]{\big(t-\esp[\rho]{t}\big)^2}  &  \var[\varrho]{\nu} &\defeq \esp[\varrho]{\big(\nu - \esp[\varrho]{\nu}\big)^2}\\
-		& = \esp[\rho]{t^2} - \esp[\rho]{t}^2  &  &= \esp[\varrho]{\nu^2} - \esp[\varrho]{\nu}^2
+		\var[\densit]{t} &\defeq \esp[\densit]{\big(t-\esp[\densit]{t}\big)^2}  &  \var[\densis]{\nu} &\defeq \esp[\densis]{\big(\nu - \esp[\densis]{\nu}\big)^2}\\
+		& = \esp[\densit]{t^2} - \esp[\densit]{t}^2  &  &= \esp[\densis]{\nu^2} - \esp[\densis]{\nu}^2
 	\end{align*}
 	Les écart-types associés sont plus facilement interprétable. Le premier est appelé \emph{durée d'émission} du signal, puisqu'il renseigne l'étalement temporelle du signal ; et le second \emph{largeur de bande (fréquentielle)} puisque, lui, renseigne l'étalement fréquentielle. 
 \end{definition}
 
-Ces espérances, et plus généralement les moments de $\rho$ (resp. $\varrho$), s'écrivent en fonction des dérivées $\fou{x}$ (resp. $x$) via ce que Cohen appelle le ``calculation trick'' \cite{cohen_time_1995} :
+Ces espérances, et plus généralement les moments de $\densit$ (resp. $\densis$), s'écrivent en fonction des dérivées $\fou{x}$ (resp. $x$) via ce que Cohen appelle le ``calculation trick'' \cite{cohen_time_1995} :
 
 \begin{proposition}[``Calculation tricks'' de \cite{cohen_time_1995}] \label{prop:integ_trick}
-	Si le signal est $n$ fois dérivable et que la densité d’énergie spectrale associée $\varrho$ admet un moment d'ordre $n$, alors ce moment est donnée par la formule :
+	Si le signal est $n$ fois dérivable et que la densité d’énergie spectrale associée $\densis$ admet un moment d'ordre $n$, alors ce moment est donnée par la formule :
 	\begin{equation}\label{eq:moment_f}
-		\forall n\in\N,\qquad \esp[\varrho]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \congu{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
+		\forall n\in\N,\qquad \esp[\densis]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \congu{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
 	\end{equation}
 	\\
-	Avec les hypothèses analogues, les moments de $\rho$ s'écrivent :
+	Avec les hypothèses analogues, les moments de $\densit$ s'écrivent :
 	\begin{equation}\label{eq:moment_t}
-		\forall n\in\N,\qquad \esp[\rho]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \fou{x}(\nu) \frac{d^n}{dt^n} \congu{\fou{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \fou{x}, \frac{d^n}{d\nu^n}\fou{x}\right\rangle
+		\forall n\in\N,\qquad \esp[\densit]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \fou{x}(\nu) \frac{d^n}{dt^n} \congu{\fou{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \fou{x}, \frac{d^n}{d\nu^n}\fou{x}\right\rangle
 	\end{equation}
 \end{proposition}
 
@@ -220,7 +221,7 @@ Ces espérances, et plus généralement les moments de $\rho$ (resp. $\varrho$),
 \begin{demo}
 	\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
 	\begin{align*}
-		\esp[\varrho]{\nu^n} = \int_\R \nu^n\varrho(\nu) d\nu &= \int_\R \nu^n \fou{x}(\nu)\congu{\fou{x}(\nu)} d\nu \\
+		\esp[\densis]{\nu^n} = \int_\R \nu^n\densis(\nu) d\nu &= \int_\R \nu^n \fou{x}(\nu)\congu{\fou{x}(\nu)} d\nu \\
 		&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \congu{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
 		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
 	\end{align*}
@@ -235,7 +236,7 @@ Ces espérances, et plus généralement les moments de $\rho$ (resp. $\varrho$),
 	
 	Ce qui permet, en jouant sur les ordres d'intégrations et les propriétés du Dirac, d'obtenir :
 	\begin{align*}
-		\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
+		\esp[\densis]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
 		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
 		&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
 		&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
@@ -245,7 +246,7 @@ Ces espérances, et plus généralement les moments de $\rho$ (resp. $\varrho$),
 	\end{align*}
 	... a moins que :
 	\begin{align*}
-		\esp[\varrho]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
+		\esp[\densis]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
 		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
 		&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
 		&= \frac{1}{(-2 i\pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
@@ -267,13 +268,13 @@ On notera dans toute la suite, sauf précision, l'amplitude et phase de $x$ (res
 \end{align*}
 Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularités de $x$ (resp. $\fou{x}$) et on a :
 \begin{align*}
-	\rho &= |x|^2 = a^2  &  \varrho &= |\fou{x}|^2 = \alpha^2
+	\densit &= |x|^2 = a^2  &  \densis &= |\fou{x}|^2 = \alpha^2
 \end{align*}
 
 \begin{proposition}\label{prop.esp_freq}
-	Si $\varrho$ admet une espérance et que $x$ est dérivable, alors on a l'égalité :
+	Si $\densis$ admet une espérance et que $x$ est dérivable, alors on a l'égalité :
 	\begin{equation}\label{eq:esp_freq}
-		\esp[\varrho]{\nu} = \frac{1}{2\pi}\int_\R \phi'(t)\rho(t)dt = \frac{1}{2\pi} \esp[\rho]{\phi'}
+		\esp[\densis]{\nu} = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t)dt = \frac{1}{2\pi} \esp[\densit]{\phi'}
 	\end{equation}
 \end{proposition}
 
@@ -281,15 +282,15 @@ Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularit�
 \begin{demo} 
 	Avec le hypothèses de la \cref{prop:integ_trick} précédente, on a :
 	\begin{align*}
-		\esp[\varrho]{\nu} = \frac{i}{2\pi} \rho(t)dt\int_\R x(t) \congu{x'(t)} dt &= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\congu{\big( a'(t)e^{i\phi(t)}+ ia(t)\phi'(t)e^{i\phi(t)} \big)} dt \\
+		\esp[\densis]{\nu} = \frac{i}{2\pi} \densit(t)dt\int_\R x(t) \congu{x'(t)} dt &= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\congu{\big( a'(t)e^{i\phi(t)}+ ia(t)\phi'(t)e^{i\phi(t)} \big)} dt \\
 		&= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\big( a'(t)e^{-i\phi(t)} -ia(t)\phi'(t)e^{-i\phi(t)} \big) dt \\
 		&= \frac{i}{2\pi}\int_\R a(t)\big( a'(t)- ia(t)\phi'(t)\big) dt \\
 		&= \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt \\
 	\end{align*}
 	On peut se convaincre que le premier terme doit être nul car l'espérance doit être réelle. On peut s'en assurer par le calcul en notant que c'est l’inégale d'une dérivée :
-	\[\int_\R a'(t)a(t) dt = \frac{1}{2} \int_\R \big(a^2\big)'(t) dt = \frac{1}{2}\rho(t)\Big|_{-\infty}^{+\infty} = 0\]
+	\[\int_\R a'(t)a(t) dt = \frac{1}{2} \int_\R \big(a^2\big)'(t) dt = \frac{1}{2}\densit(t)\Big|_{-\infty}^{+\infty} = 0\]
 	Ce qui donne bien :
-	\[\esp[\varrho]{\nu} = \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt = \frac{1}{2\pi}\int_\R \phi'(t)\rho(t) dt\]
+	\[\esp[\densis]{\nu} = \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t) dt\]
 \end{demo}
 
 
@@ -309,11 +310,11 @@ D'autre part, on peut fait le même jeu avec la largeur de bande qu'avec la fré
 	\footnote{\itshape 
 		L'on a même (mais je sais pas quoi en faire) : 
 		\begin{center}
-			$\var[\varrho]{\nu} =  \nicefrac{1}{4\pi^2}\var[\rho]{\ln(a)'} + \nicefrac{1}{4\pi^2} \var[\rho]{\phi'}$
+			$\var[\densis]{\nu} =  \nicefrac{1}{4\pi^2}\var[\densit]{\ln(a)'} + \nicefrac{1}{4\pi^2} \var[\densit]{\phi'}$
 		\end{center}}
 \begin{align*}
-	\var[\varrho]{\nu} &= \frac{1}{4\pi^2} \int a'(t) dt + \frac{1}{4\pi^2}\left(\int \phi'(t)^2 \rho(t) dt - \left(\int \phi'(t) \rho(t) dt \right)^2 \right) \\
-	&= \frac{1}{4\pi^2}\var[\rho]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\rho]{\phi'}
+	\var[\densis]{\nu} &= \frac{1}{4\pi^2} \int a'(t) dt + \frac{1}{4\pi^2}\left(\int \phi'(t)^2 \densit(t) dt - \left(\int \phi'(t) \densit(t) dt \right)^2 \right) \\
+	&= \frac{1}{4\pi^2}\var[\densit]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\densit]{\phi'}
 \end{align*}
 \\
 On constate deux composantes (qui, par ailleurs, sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il donc cohérent que le terme restant (là où apparaît $\phi'$ !) porte l'information fréquentielle du signal.
@@ -329,9 +330,9 @@ Afin de clairement expliciter le problème des signaux réels pour l'analyse tem
 	Étant données deux variables aléatoire $X$ et $Y$, leur covariance, qui mesure une forme de corrélation entre $X$ et $Y$, est donnée par la différence :
 	\[\esp{XY}-\esp{X}\esp{Y}\]
 	Outil qui à tout a fait sa place dans le cadre de l'analyse temps-fréquence. Seulement, les distributions associées au temps et à la fréquence ne sont pas les mêmes et le terme $\esp{XY}$ n'est donc pas défini.
-	Pour y remédier on se repose sur l'interprétation de $\phi'$ : puisque qu'il correspond à une déscrition temporelle de la fréquence, elle est associée à $\rho$. On définie alors la \emph{covariance du signal} $x$ comme le différence :
+	Pour y remédier on se repose sur l'interprétation de $\phi'$ : puisque qu'il correspond à une déscrition temporelle de la fréquence, elle est associée à $\densit$. On définie alors la \emph{covariance du signal} $x$ comme le différence :
 	\begin{equation}\label{eq:cov_signal}
-		\text{Cov}(x) \defeq \esp[\rho]{t\phi'(t)} - \esp[\rho]{t} \esp[\varrho]{\nu} = \esp[\rho]{t\phi'(t)} - \esp[\rho]{t} \esp[\rho]{\phi'(t)}
+		\text{Cov}(x) \defeq \esp[\densit]{t\phi'(t)} - \esp[\densit]{t} \esp[\densis]{\nu} = \esp[\densit]{t\phi'(t)} - \esp[\densit]{t} \esp[\densit]{\phi'(t)}
 	\end{equation}
 \end{definition}
 
@@ -347,14 +348,14 @@ Les concepts de base de l'analyse temps-fréquence étant posés, voyons à pré
 Les outils de mesures ayant la fâcheuses tendance à fournir des données réelles, ce sont les signaux réels les plus étudiés.
 Pourtant, cette propriété rend les outils d'analyse temps-fréquence développés plus haut, si non obsolète, au moins compliqué à interpréter.
 \\
-Tout vient du fait que si $x$ est réel alors son spectre est à symétrie hermitienne et sa densité spectrale $\varrho$ symétrique :
+Tout vient du fait que si $x$ est réel alors son spectre est à symétrie hermitienne et sa densité spectrale $\densis$ symétrique :
 \begin{align*}
 \forall t\in\R,\ x(t)\in\R \quad &\Lr \quad \forall \nu\in\R,\ \fou{x}(-\nu) = \congu{\fou{x}(\nu)} \\
-	&\Lr \quad \forall \nu\in\R,\ \varrho(-\nu) = \varrho(\nu)
+	&\Lr \quad \forall \nu\in\R,\ \densis(-\nu) = \densis(\nu)
 \end{align*}
 \\
 
-Comme dit plus tôt, cela implique que la fréquence moyenne de tout signal réel est nulle (intégrale d'une fonction impaire). Ce qui, en plus de ne pas être très instructif, n'est pas cohérent avec l'interprétation physique qu'on voudrait faire cette moyenne. Par exemple, si $\varrho$ prend la forme ci-dessous (\cref{fig:densi_spec_sym}), alors il serait plus naturelle de demander à ce que la fréquence moyenne se trouve autour de 1,4. De même, la largeur de bande spectrale ne correspond plus à l'étalement de chaque gaussienne, mais plutôt à leur espacement.
+Comme dit plus tôt, cela implique que la fréquence moyenne de tout signal réel est nulle (intégrale d'une fonction impaire). Ce qui, en plus de ne pas être très instructif, n'est pas cohérent avec l'interprétation physique qu'on voudrait faire cette moyenne. Par exemple, si $\densis$ prend la forme ci-dessous (\cref{fig:densi_spec_sym}), alors il serait plus naturelle de demander à ce que la fréquence moyenne se trouve autour de 1,4. De même, la largeur de bande spectrale ne correspond plus à l'étalement de chaque gaussienne, mais plutôt à leur espacement.
 \\
 \begin{figure}[h]\centering
 	%\includegraphics[width=0.9\textwidth]{fig/densi_spec_sym}
@@ -554,7 +555,7 @@ alors n'importe quel choix de $\phi$ est valable, il suffit que $\ \psi_i = \phi
 
 
 
-\subsection{Phase et fréquence instantanée de signal multivarié }\label{subsec:param_instant_mvar}
+\subsection{Phase et fréquence instantanée de signal multivarié }\label{subsec:param_instant_nvar}
 
 Afin de contraindre ce choix, on s'inspire propriétés de la phase instantanée vu plus tôt pour en déduire deux approches :
 \begin{itemize}
@@ -569,32 +570,32 @@ Pour cela on introduit les notations utiles au cas multivarié :
 \begin{definition}[densité d’énergie]\label{def:densi_dE-mv}
 Étant donné un signal multivarié $\bf{x}=(x_i)_{1\leq i\leq n}$, les densités d'énergie de chaque composante $x_i$  sont notées :
 \begin{align}\label{eq:densi_dEi}
-	\rho_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x_i(t)\big|^2 = a(t)^2 a_i(t)^2 \end{aligned}  
+	\densit_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x_i(t)\big|^2 = a(t)^2 a_i(t)^2 \end{aligned}  
 	&
-	\varrho_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}_i(\nu)\big|^2 \end{aligned}
+	\densis_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}_i(\nu)\big|^2 \end{aligned}
 \end{align}
 Et les densités d'énergies associées au signal $\bf{x}$ complet :
 \begin{align}\label{eq:densi_dE-mv}
-	\rho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big\|\bf{x}(t)\big\|^2 = \sum_{i=1}^n \rho_i(t) \end{aligned}  
+	\densit\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big\|\bf{x}(t)\big\|^2 = \sum_{i=1}^n \densit_i(t) \end{aligned}  
 	&
-	\varrho\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big\|\fou{\bf{x}}(\nu)\big\|^2 = \sum_{i=1}^n \varrho_i(t) \end{aligned}	
+	\densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big\|\fou{\bf{x}}(\nu)\big\|^2 = \sum_{i=1}^n \densis_i(t) \end{aligned}	
 \end{align}
 \end{definition}
 
 La première approche, inspiré de \cite{cano_mathematical_2022} consiste donc de reprendre le ``calculation trick'' \eqref{eq:moment_f}, pour en déduire la fréquence moyenne
 \begin{align*}
-	\esp[\varrho]{\nu} = \int_\R \nu\varrho(\nu)d\nu &= \int_\R \nu\sum_{i=1}^n \varrho_i(\nu) d\nu \\
-		 &= \sum_{i=1}^n\esp[\varrho_i]{\nu} \\
-		 &= \sum_{i=1}^n\frac{1}{2\pi}\int_\R \phi_i'(t)\rho_i(t)dt \\
+	\esp[\densis]{\nu} = \int_\R \nu\densis(\nu)d\nu &= \int_\R \nu\sum_{i=1}^n \densis_i(\nu) d\nu \\
+		 &= \sum_{i=1}^n\esp[\densis_i]{\nu} \\
+		 &= \sum_{i=1}^n\frac{1}{2\pi}\int_\R \phi_i'(t)\densit_i(t)dt \\
 		 &= \frac{1}{2\pi}\int_\R a(t)^2\sum_{i=1}^n\phi_i'(t)a_i(t)^2 dt 
-		 \\ &= \frac{1}{2\pi} \esp[\rho]{\sum_{i=1}^n \phi_i'{a_i}^2}
+		 \\ &= \frac{1}{2\pi} \esp[\densit]{\sum_{i=1}^n \phi_i'{a_i}^2}
 \end{align*}
 \\
 Ce qui mène à une première définition de la phase instantanée :
 \begin{equation}\label{eq:phas_inst_v1}
 	\phi = \int \sum_{i=1}^n \phi_i'(s){a_i}(s)^2ds 
 	= \sum_{i=1}^n \int \phi_i'(s){a_i}(s)^2ds 
-	%= \sum_{i=1}^n \esp[\nicefrac{\rho_i}{\rho}]{\phi_i'}
+	%= \sum_{i=1}^n \esp[\nicefrac{\densit_i}{\densit}]{\phi_i'}
 \end{equation}
 \\
 
@@ -636,19 +637,30 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 
 \subsubsection{Bivarié}
 
-\begin{proposition}[phase dynamique]\label{prop:phased_biva}
-	Si on se donne un signal bivarié de la forme (AM--FM--PM) :
-	\begin{equation}\label{eq:exp_elliptik}
+\begin{proposition}[phases de signal AM--FM--PM]\label{prop:phased/t_2var}
+	\'Etant donné un signal bivarié AM--FM--PM $\bf{x}$, \ie~de la forme :
+	\begin{equation}\label{eq:exp_elliptik_2var}
 		\bf{x} = ae^{i\varphi} R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix} 
 			= a(t)e^{i\varphi} \begin{pmatrix} \cos\theta \cos\chi + i\sin\theta \sin\chi \\ \sin\theta \cos\chi - i\cos\theta \sin\chi \end{pmatrix}
 	\end{equation}
 	\\
-	alors, la phase dynamique de $\bf{x}$ est donnée par :
-	\[\phased(\bf{x}, t_0,t) = \int_{t_0}^t \dot{\varphi}(s) + \dot{\theta}(s) \sin2\chi(s) ds = \varphi(t) -\varphi(t_0) + \int_{t_0}^t\dot{\theta}(s) \sin2\chi(s) ds\]
+	la phase dynamique de $\bf{x}$ est donnée par :
+	\begin{equation}\label{eq:phased_2var}
+		\phased(\bf{x}, t_0,t) = \int_{t_0}^t \dot{\varphi}(s) + \dot{\theta}(s) \sin2\chi(s) ds = \varphi(t) -\varphi(t_0) + \int_{t_0}^t\dot{\theta}(s) \sin2\chi(s) ds
+	\end{equation}
 	\\
-	Soit une différence de phase $\varphi$ mais avec un terme en plus. Donc $\varphi$ ne doit (\textbf{doit?}) pas être interpréter comme la phase instantanée du signal, où du moins pas au sens donnée dans la \cref{subsec:param_instant_mvar}
+	Soit une différence de phase $\varphi$ mais avec un terme en plus. Donc $\varphi$ ne doit (\textbf{doit?}) pas être interpréter comme la phase instantanée du signal, où du moins pas au sens donnée dans la \cref{subsec:param_instant_nvar}.
+	\\
+	La phase totale, elle, s'écrit :
+	\begin{equation}\label{eq:phaset_2var}
+		\begin{aligned}
+			\phaset(\bf{x},t_0,t) = \arg\big\langle \bf{x}(t_0), \bf{x}(t)\big\rangle &= \varphi(t_0)-\varphi(t) + \arg\Big(\cos\Delta\theta \cos\Delta\chi - i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big) \\
+			&= \varphi(t_0)-\varphi(t) + \arctan\left(\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right)
+		\end{aligned}
+	\end{equation}
+	ou $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y=\varphi,\theta,\chi$.
 \end{proposition}
-\begin{demo}%[\cref{prop:phased_biva}]
+\begin{demo}%[\cref{prop:phased_2var}]
 	Par souci de lisibilité, on note $\mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ de sorte que la dérivée de $\bf{x}$ s'écrive :
 	\begin{align*}
 		\dot{\bf{x}} 
@@ -675,7 +687,6 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 	\left\langle \mathcal{U}, \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\congu{\mathcal{U}}\right\rangle &= -\mathcal{U}_1\mathcal{U}_2 + \mathcal{U}_2\mathcal{U}_1 = 0
 	\end{align*}
 	\\
-	
 	D'où, sachant que $\ \|\bf{x}\|^2=a^2\ $ et $\ \|\mathcal{U}\|=1$, la formule :
 	\begin{align*}
 		-\frac{\Im m\big\langle \bf{x},\dot{\bf{x}}\big\rangle}{\|\bf{x}\|^2} &= -\frac{1}{a^2}\Im m\Big(a\dot{a} \big\langle \mathcal{U}, \mathcal{U}\big\rangle  - ia^2\dot{\varphi} \big\langle \mathcal{U}, \mathcal{U}\big\rangle - ia^2\dot{\theta} \sin2\chi \Big) \\
@@ -683,23 +694,16 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 		&= \dot{\varphi} + \dot{\theta} \sin2\chi
 	\end{align*}
 	%\begin{pmatrix} \cos\theta \cos\chi + i\sin\theta \sin\chi \\ \sin\theta \cos\chi - i\cos\theta \sin\chi \end{pmatrix}
-\end{demo}
-
-\begin{proposition}[phase totale]\label{prop:phaset_biva}
-	La phase totale d'un signal AM--FM--PM est donnée par :
-	\begin{equation}
-		\phaset(\bf{x},t_0,t) = \arg\big\langle \bf{x}(t_0), \bf{x}(t)\big\rangle = \varphi(t_0)-\varphi(t) + \arg\big(\cos\Delta\theta \cos\Delta\chi - i\sin\Delta\theta \sin(\chi_1+\chi_2)\big)
-	\end{equation}
-\end{proposition}
-\begin{demo}%[\cref{prop:phaset_biva}]
-	On note cette fois $\mathcal{V} = \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ et sachant la forme des signaux AM--FM--PM, on a :
+	\\
+	
+	Pour la phase totale, on note cette fois $\mathcal{V} = \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ et on a :
 	\begin{align*}
 		\big\langle \bf{x}(t_0), \bf{x}(t)\big\rangle &= \Big\langle a(t_0)e^{i\varphi(t_0)}R_{\theta(t_0)}\mathcal{V}(t_0), a(t)e^{i\varphi(t)}R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
 		&= a(t_0)e^{i\varphi(t_0)}a(t)e^{-i\varphi(t)}\Big\langle R_{\theta(t_0)}\mathcal{V}(t_0), R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
 		%&= a(t_0)a(t)e^{i(\varphi(t_0)-\varphi(t))}\Big\langle \mathcal{V}(t_0), R_{\theta(t_0)}^{-1}R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
 		&= a(t_0)a(t)e^{i(\varphi(t_0)-\varphi(t))}\Big\langle \mathcal{V}(t_0), R_{\theta(t)- \theta(t_0)}\mathcal{V}(t) \Big\rangle
 	\end{align*}
-	Pour alléger les notations, on note $\ \Delta y =y(t)-y(t_0)\ $ et $\ y_1=y(t_0), y_2=(t)\ $ pour $\ y=\varphi,\theta,\chi$. Le produit hermitien à droite s'écrit alors :
+	Pour alléger les notations, on note $\ \Delta y =y(t)-y(t_0)$, $\ y_1=y(t_0)\ $ et $\ y_2=(t)\ $ pour $\ y=\varphi,\theta,\chi$. Le produit hermitien à droite s'écrit alors :
 	\begin{align*}
 		\Big\langle \mathcal{V}(t_0), R_{\Delta\theta}\mathcal{V}(t) \Big\rangle &= \begin{pmatrix} \cos\chi_1 & -i\sin\chi_1 \end{pmatrix}  \begin{pmatrix} \cos\Delta\theta \cos\chi_2 - i\sin\Delta\theta \sin\chi_2 \\ \sin\Delta\theta \cos\chi_2 + i\cos\Delta\theta \sin\chi_2 \end{pmatrix} \\
 		&= \cos\chi_1\Big(\cos\Delta\theta \cos\chi_2 - i\sin\Delta\theta \sin\chi_2\Big) - i\sin\chi_1\Big(\sin\Delta\theta \cos\chi_2 + i\cos\Delta\theta \sin\chi_2\Big) \\
@@ -777,7 +781,7 @@ Ce qui donne \infine (super osef) :
 \[\begin{pmatrix}x_+ \\ y_+\end{pmatrix} = e^{i\frac{\phi_+ + \phi_-}{2}} R_{\frac{\phi_+ - \phi_-}{2}} \begin{pmatrix}a_+ + a_- \\ -i(a_+ - a_-)\end{pmatrix}\]
 \\
 
-L'\cref{eq:exp_elliptik} ce généralise  très bien, il suffit d'augmenter la taille de $R_\theta\in\SO_n(\R)$ et de lui donner le vecteur étendu :\footnote{\textit{Sachant que le vecteur contenant $a$ et $b$ est principalement nul, on peut réécrire le produit ne considérant que les deux premières colonnes de $R_\theta$.}}
+L'\cref{eq:exp_elliptik_2var} ce généralise  très bien, il suffit d'augmenter la taille de $R_\theta\in\SO_n(\R)$ et de lui donner le vecteur étendu :\footnote{\textit{Sachant que le vecteur contenant $a$ et $b$ est principalement nul, on peut réécrire le produit ne considérant que les deux premières colonnes de $R_\theta$.}}
 \[z_x(t) = \begin{pmatrix}x_{1+}(t) \\ \vdots \\ 
 	x_{n+}(t)\end{pmatrix} = e^{i\phi} R_{\theta(t)}\begin{pmatrix} a(t) \\ -ib(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix} = A(t)e^{i\phi} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix}\]
 \\
@@ -839,6 +843,24 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 
 \subsection{Généralisation de ces formules au cas $\bf{n-}$varié}
 
+\begin{proposition}[phase de signal AM--FM--PM]\label{prop:phased_nvar}
+	La formule \ref{eq:phased_2var} de la \cref{prop:phased/t_2var} ce généralise très bien à plus haute dimension. En écrivant $\bf{x}$ sous la forme :
+	\begin{align}\label{eq:exp_elliptik_nvar}
+		\bf{x}(t) &= a(t)e^{i\varphi} R_{\Theta(t)} \mathcal{V}(t)  &  \text{où }\ R_{\Theta(t)} &\in\SO_n(\R)  &  &\text{et } &  \mathcal{V}(t) &= \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+	\end{align}
+	\\
+	la phase dynamique de $\bf{x}$ est donnée par :
+	\begin{equation}\label{eq:phased_bivar}
+		\begin{aligned}
+			\phased(\bf{x}, t_0,t) &= \int_{t_0}^t \dot{\varphi}(s) + \dot{\Theta}(s) \frac{1}{2} \frac{d}{d\Theta}\big\|R_{\Theta(s)}\mathcal{V}(s)\big\|^2 ds \\
+			&= \varphi(t) -\varphi(t_0) + \frac{1}{2}\int_{t_0}^t\dot{\Theta}(s) \frac{d}{d\Theta}\big\|R_{\Theta(s)}\mathcal{V}(s)\big\|^2 ds
+		\end{aligned}
+	\end{equation}
+	En particulier, on remarque que pour $n=2$ :
+	\[\frac{d}{d\Theta}\big\|R_{\Theta(s)}\mathcal{V}(s)\big\|^2 = \sin 2\chi \]
+\end{proposition}
+
+
 \begin{itemize}
 	\item Les quaternions ça ce généralise trop mal (au dessus c'est les octinions, c'est un calvaire et ca va pas plus loin)
 	
@@ -849,8 +871,38 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 	\item question : est-ce qu'on en a besoin pour la phase géométrique ? (transi vers une formulation géo diff-like ?)
 \end{itemize}
 
-
-
+\begin{demo}
+	On note $\ \bf{x} = ae^{i\varphi}\prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1$, et on a :
+	\begin{align*}
+		\dot{\bf{x}} &= \dot{a}e^{i\varphi}\prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 + ia\dot{\varphi} e^{i\varphi}\prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 + ae^{i\varphi}\sum_{j=1}^n \prod_{k<j} e^{i\theta_k\sigma_k} i\dot{\theta}_j\sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \\
+		&= \big(\dot{a} + ia\dot{\varphi}\big) e^{i\varphi} \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 + iae^{i\varphi}\sum_{j=1}^n \dot{\theta}_j \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1
+	\end{align*}
+	Injecté dans le produit scalaire, cela donne :
+	\begin{align*}
+		\big\langle \bf{x}, \dot{\bf{x}}\big\rangle &= \left\langle ae^{i\varphi}\prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \big(\dot{a} + ia\dot{\varphi}\big) e^{i\varphi} \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 + iae^{i\varphi}\sum_{j=1}^n \dot{\theta}_j \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \right\rangle \\
+			&= ae^{i\varphi}\big(\dot{a} - ia\dot{\varphi}\big) e^{-i\varphi} \left\langle \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 \right\rangle -
+			ae^{i\varphi}iae^{-i\varphi}\sum_{j=1}^n \dot{\theta}_j \left\langle \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \right\rangle \\
+			&= \big(a\dot{a} - ia^2\dot{\varphi}\big) \left\| \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 \right\|^2 -  ia^2\sum_{j=1}^n \dot{\theta}_j \left\langle \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \right\rangle
+	\end{align*}
+	Si maintenant regarde la fréquence instantanée, ne reste que :
+	\[-\frac{\Im m\big\langle \bf{x}, \dot{\bf{x}}\big\rangle}{\|\bf{x}\|^2} = \dot{\varphi} + \sum_{j=1}^n \dot{\theta}_j \Re e\left\langle \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \right\rangle\]
+	Maintenant, comme les matrices $i\sigma_k$ sont symétriques anti-hermitiennes (de trace nulle), on a :
+	\begin{align*}
+		^t\big(e^{i\theta_k\sigma_k}\big) &= e^{i\theta_k\sigma_k}  &  \big(e^{i\theta_k\sigma_k}\big)^{-1} &= e^{-i\theta_k\sigma_k}  &  \congu{e^{i\theta_k\sigma_k}} &=\, ^t\big(e^{i\theta_k\sigma_k}\big)^\dagger = e^{-i\theta_k\sigma_k}
+	\end{align*}
+	Et donc que :
+	\begin{align*}
+		^t\left( \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 \right) \congu{\left(\prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k} \right)} 
+			&= \delta^1 \coprod_{k=1}^n e^{i\theta_k\sigma_k} \prod_{k<j} e^{-i\theta_k\sigma_k} \congu{\sigma_j} \prod_{k\geq j} e^{-i\theta_k\sigma_k}\delta_1 \\
+		&= \delta^1 \coprod_{k\geq j} e^{i\theta_k\sigma_k} \congu{\sigma_j} \prod_{k\geq j} e^{-i\theta_k\sigma_k}\delta_1
+	\end{align*}
+	\\
+	Par inférence (par d'argument) avec les cas 2/3D, on suppose que :
+	\begin{align*}
+		\forall k<n&,\ e^{i\theta_k\sigma_k}\in\R^{n\times n},\ \sigma_k\in i\R^{n\times n}  &  &\text{et}  &  \sigma_n\in\R^{n\times n}
+	\end{align*}
+	Ce qui mène à .......
+\end{demo}
 
 
 \setcounter{figure}{0}
@@ -882,7 +934,7 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 	\end{pmatrix} = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
 	\end{pmatrix}\]
 	\\
-	Et avec un peu de travail (\cref{subsec:param_instant_mvar}), on obtient que le mieux c'est de poser :
+	Et avec un peu de travail (\cref{subsec:param_instant_nvar}), on obtient que le mieux c'est de poser :
 	\[\varphi'(t) \defeq -\frac{\Im m\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle}{\|\psi(t)\|^2} = \frac{\sum_i\phi_i'(t)\,{a_i}^2(t)}{\sum_i{a_i}^2(t)}\]
 	\\
 	On voit donc que la phase dynamique est donnée par le cumule des fréquences instantanées, ou comme le différentiel de phase de $\psi$ :
@@ -1004,6 +1056,8 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 		
 		\item Espace de Siegel ? (ellipse vs ellipsoïde tout ca tout ca)
 	\end{itemize}
+	
+	\item Autour de $\U(n)$ : \href{https://en.wikipedia.org/wiki/Classifying_space_for_U(n)}{Classif de $\U(n)$}
 \end{itemize}
 
 
