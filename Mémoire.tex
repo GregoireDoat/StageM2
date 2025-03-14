@@ -113,7 +113,7 @@
 	
 	\item \'Eventuellement ajouter que'qu'part: ``On parle éventuellement de signal AM-FM (amplitude modulated - frequancy modulated)'' \cref{coro:AM-FM}
 	
-	\item Refaire les graphs en Tikz ( \cref{fig:densi_spec_sym,,fig:exemple_tSA_1/2,fig:exemple_tSA_2/2})
+	\item Refaire les graphs en Tikz (\cref{fig:densi_spec_sym,,fig:exemple_tSA_1/2,fig:exemple_tSA_2/2})
 	
 	\item footnote 2 à régler
 	
@@ -634,7 +634,31 @@ Ce qui, sous forme exponentiel, se réécrit :
 	&= \sum_{i=1}^n a_i(t)^2 \phi_i'(t)
 \end{align*}
 Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier raisonnement.
-\\ \\
+\\
+\begin{remarque}[Notation à reprendre ($aa_i$)]
+	Toujours avec les mêmes notations, une conséquence de l'\cref{eq:phas_inst_v2} est que les fréquences $\psi_i$ restantes sont de moyenne nulle dans le sens où :
+	\begin{equation}\label{eq:sum_esp_null}
+		\sum_{i=1}^n \int \psi_i'(s){a_i}(s)^2ds =0
+	\end{equation}
+	Moralement, ca revient juste à dire qu'en définissant $\phi$ suivant Lilly, on a ôté au $\psi_i$ la phase moyenne pondérée et donc, tout naturellement, les nouvelles phase individuelles $\psi_i$ sont centrés (à la même pondération près). Cela revient peut ou prou à la première \cref{eq:phas_inst_v1}.
+	\\
+	Pour le montrer, il suffit de refaire le calcul de la phase instantanée :
+	\begin{align*}
+		\big\langle \bf{x}(t) \,|\, \dot{\bf{x}}(t) \big\rangle &= \Big\langle \Big(a_i(t)e^{i(\phi(t)+\psi_i(t))}\Big)_i \,\Big|\, \Big(\big(a_i'(t)+i\big( \phi(t)+\psi_i(t) \big)a_i(t)\big)e^{i(\phi(t)+\psi_i(t))}\Big)_i \Big\rangle \\
+		&= \sum_i a_i(t) \Big(a_i'(t)-i\big(\phi'(t) + \psi_i'(t)\big)a_i(t)\Big) \\
+		&= \sum_i a_i(t)a_i'(t)-i\sum_i \big(\phi'(t) + \psi_i'(t)\big)a_i(t)^2 \\
+		&= \sum_i a_i(t)a_i'(t)-i \phi'(t)\sum_ia_i(t)^2  - i\sum_i \psi_i'(t)a_i(t)^2 \\
+		&= \sum_i a_i(t)a_i'(t)-i \phi'(t)\big\|a(t)\big\|^2  - i\sum_i \psi_i'(t)a_i(t)^2
+	\end{align*}
+	\\
+	Ce qui mène à :
+	\begin{align*}
+		\phased(\bf{x},t_0,t) &= \int_{t_0}^t \frac{\varphi'(s)\big\|a(s)\big\|^2}{\big\|a(s)\big\|^2} ds  + \sum_i\int_{t_0}^t \frac{\varphi_i'(s)a_i(s)^2}{\big\|a(s)\big\|^2} ds \\
+		&=\phased(\bf{x},t_0,t)  + = \sum_{i=1}^n \int \psi_i'(s){a_i}(s)^2ds 
+	\end{align*}
+\end{remarque}
+
+
 
 
 \subsection{Cas bivarié et trivarié}
@@ -728,7 +752,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 			\sa{\bf{x}}(t) &= e^{i\phi(t)} R_1\big(\alpha(t)\big)\ R_3\big(\beta(t)\big)\ R_1\big(\theta(t)\big)\begin{pmatrix}
 				a(t) \\ -ib(t) \\ 0
 			\end{pmatrix} \\
-			&= A(t)e^{i\phi(t)} R_1\big(\alpha(t)\big)\ R_3\big(\beta(t)\big)\ R_1\big(\theta(t)\big)\begin{pmatrix}
+			&= a(t)e^{i\phi(t)} R_1\big(\alpha(t)\big)\ R_3\big(\beta(t)\big)\ R_1\big(\theta(t)\big)\begin{pmatrix}
 				\cos\chi(t) \\ -i\sin\chi(t) \\ 0
 			\end{pmatrix}
 		\end{aligned}
@@ -783,7 +807,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 	où $e_j=\delta^i_j\in\R^n$ et $\Tilde{R}_{\Theta(t)}$ est la matrice anti-symétrique :
 	\[\Tilde{R}_{\Theta(t)} =\, ^tR_{\Theta(t)} \dot{R}_{\Theta(t)}\in\mathcal{A}_n(\R)\]
 	\\
-	En récrivant $R_\Theta$ comme composition d'une rotation $R_\Lambda$ et d'une rotation de l'ellipse $R_\theta$, \ie~:
+	En récrivant $R_\Theta$ comme composition d'une rotation $R_\Lambda$ et d'une rotation $R_\theta$ de l'ellipse dans son plan, \ie~:
 	\[R_\Theta = R_\Lambda R_\theta = R_\Lambda \begin{pmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \\ & & \mathbb{O}_{n-2}
 	\end{pmatrix}\]
 	alors la phase dynamique ce réécrit encore :
@@ -791,7 +815,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 		\phased(\bf{x}, t_0,t) = \varphi(t) -\varphi(t_0) + \int_{t_0}^t \dot{\theta}(s) \sin2\chi(s) ds + \int_{t_0}^t \sin2\chi(s) \big\langle \Tilde{R}_{\Lambda(s)} \Tilde{e}_1(s),  \Tilde{e}_2(s)\big\rangle ds
 		%= \varphi(t) -\varphi(t_0) + \int_{t_0}^t  \Big(\dot{\theta}(s) + \big\langle \dot{R}_{\Lambda(s)} \Tilde{e}_1, R_{\Lambda(s)} \Tilde{e}_2\big\rangle \Big) \sin2\chi(s) ds
 	\end{equation}
-	où cette fois $\Tilde{e}_1$ (resp. $\Tilde{e}_1$) et le demi-grand (resp. -petit) axe de l'ellipse paramétrée par $\chi$ :
+	où cette fois $\Tilde{e}_1$ (resp. $\Tilde{e}_1$) donne la direction du demi-grand (resp. -petit) axe de l'ellipse paramétrée par $\chi$ :
 	\begin{align*}
 		 \Tilde{e}_1 &= R_\theta e_1  &   \Tilde{e}_2 &= R_\theta e_2
 	\end{align*}
@@ -854,38 +878,28 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 	\item question : est-ce qu'on en a besoin pour la phase géométrique ? (transi vers une formulation géo diff-like ?)
 \end{itemize}
 
-\begin{demo}
-	On note $\ \bf{x} = ae^{i\varphi}\prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1$, et on a :
-	\begin{align*}
-		\dot{\bf{x}} &= \dot{a}e^{i\varphi}\prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 + ia\dot{\varphi} e^{i\varphi}\prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 + ae^{i\varphi}\sum_{j=1}^n \prod_{k<j} e^{i\theta_k\sigma_k} i\dot{\theta}_j\sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \\
-		&= \big(\dot{a} + ia\dot{\varphi}\big) e^{i\varphi} \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 + iae^{i\varphi}\sum_{j=1}^n \dot{\theta}_j \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1
-	\end{align*}
-	Injecté dans le produit scalaire, cela donne :
-	\begin{align*}
-		\big\langle \bf{x}, \dot{\bf{x}}\big\rangle &= \left\langle ae^{i\varphi}\prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \big(\dot{a} + ia\dot{\varphi}\big) e^{i\varphi} \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 + iae^{i\varphi}\sum_{j=1}^n \dot{\theta}_j \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \right\rangle \\
-			&= ae^{i\varphi}\big(\dot{a} - ia\dot{\varphi}\big) e^{-i\varphi} \left\langle \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 \right\rangle -
-			ae^{i\varphi}iae^{-i\varphi}\sum_{j=1}^n \dot{\theta}_j \left\langle \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \right\rangle \\
-			&= \big(a\dot{a} - ia^2\dot{\varphi}\big) \left\| \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 \right\|^2 -  ia^2\sum_{j=1}^n \dot{\theta}_j \left\langle \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \right\rangle
-	\end{align*}
-	Si maintenant regarde la fréquence instantanée, ne reste que :
-	\[-\frac{\Im m\big\langle \bf{x}, \dot{\bf{x}}\big\rangle}{\|\bf{x}\|^2} = \dot{\varphi} + \sum_{j=1}^n \dot{\theta}_j \Re e\left\langle \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1, \prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k}\delta_1 \right\rangle\]
-	Maintenant, comme les matrices $i\sigma_k$ sont symétriques anti-hermitiennes (de trace nulle), on a :
-	\begin{align*}
-		^t\big(e^{i\theta_k\sigma_k}\big) &= e^{i\theta_k\sigma_k}  &  \big(e^{i\theta_k\sigma_k}\big)^{-1} &= e^{-i\theta_k\sigma_k}  &  \congu{e^{i\theta_k\sigma_k}} &=\, ^t\big(e^{i\theta_k\sigma_k}\big)^\dagger = e^{-i\theta_k\sigma_k}
-	\end{align*}
-	Et donc que :
-	\begin{align*}
-		^t\left( \prod_{k=1}^n e^{i\theta_k\sigma_k}\delta_1 \right) \congu{\left(\prod_{k<j} e^{i\theta_k\sigma_k} \sigma_j \prod_{k\geq j} e^{i\theta_k\sigma_k} \right)} 
-			&= \delta^1 \coprod_{k=1}^n e^{i\theta_k\sigma_k} \prod_{k<j} e^{-i\theta_k\sigma_k} \congu{\sigma_j} \prod_{k\geq j} e^{-i\theta_k\sigma_k}\delta_1 \\
-		&= \delta^1 \coprod_{k\geq j} e^{i\theta_k\sigma_k} \congu{\sigma_j} \prod_{k\geq j} e^{-i\theta_k\sigma_k}\delta_1
-	\end{align*}
-	\\
-	Par inférence (par d'argument) avec les cas 2/3D, on suppose que :
-	\begin{align*}
-		\forall k<n&,\ e^{i\theta_k\sigma_k}\in\R^{n\times n},\ \sigma_k\in i\R^{n\times n}  &  &\text{et}  &  \sigma_n\in\R^{n\times n}
-	\end{align*}
-	Ce qui mène à .......
-\end{demo}
+
+
+\section{La vision de Bohm \cite[fig. 4.3]{bohm_geometric_2003}}
+\label{sec:lift_approch}
+
+Dans cette \cref{sec:lift_approch}, $\psi$ sera toujours supposée pseudo-cyclique :
+\begin{definition}
+	Un signal $\psi$ sera dit \emph{cyclique} si à l'instant $t$, $\psi$ reprend les même valeurs qu'en $t_0$ :
+	\[\psi(t)=\psi(t_0)\]
+	Et $\psi$ sera dit \emph{pseudo-cyclique} s'il est cylique à une transformation de jauge près :
+	\[\exists \theta:\ \R\lr\R\ |\ \psi(t) = e^{i\theta(t)}\psi(t_0)\text{ et } \theta(t_0)=0\]
+\end{definition}
+
+On note $\mathcal{C}$ le trajet effectué par $\psi$ et $\mathfrak{C}$ le projeté de se trajet sur la base $\PC{n}$. On note également $\Tilde{\mathcal{C}}$ (resp. $\mathcal{C}_c$) le lift horizontal (resp. un lift cylique) de $\mathfrak{C}$, et on lui associe la paramétrisation $\Tilde{\psi}$ (resp. $\phi$). En clair :
+\begin{align*}
+	\mathcal{C} &= \big\{ \psi(t)\in\C^n\ |\  t\in\R \big\} \\
+	\mathfrak{C} &= \big\{ \psi(t) \psi(t)^\dagger \in\PC{n}\ |\  t\in\R \big\} \\
+	\Tilde{\mathcal{C}} &= \big\{ \Tilde{\psi}(t)\in\C^n\ |\  t\in\R \big\}  &  \Tilde{\psi} \text{horizontal lift}\\
+	\mathcal{C}_c &= \big\{ \phi(t)\in\C^n\ |\  t\in\R \big\}  &  \phi(t) = \phi(t_0)
+\end{align*}
+Quand on dit que $\Tilde{\psi}$ est l'hoizontal lift, on sous entend que :
+
 
 
 \setcounter{figure}{0}
@@ -895,57 +909,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 
 \section{Intuition sur les fondamentaux}
 
-\subsection{Écritures et interprétations de la phase dynamique}
-
-\begin{itemize}
-	
-	\item Tout le monde introduit la phase dynamique par la formule :
-	\begin{equation}\label{eq:phase_dyn}
-		\phased(\psi,t_0,t) \defeq -\Im m \int_{t_0}^t\frac{\big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle}{\big\|\psi(s)\big\|^2} ds
-	\end{equation}
-	
-	\item Première chose, avec \eqref{eq:x_scal_dotx}, on a encore :
-	\[\phased(\psi,t_0,t) = \int_{t_0}^t\frac{\big\langle \psi(s), \omega\dot{\psi}(s) \big\rangle}{\big\|\psi(s)\big\|^2} ds\]
-	
-	A.k.a. la phase dynamique porte l'information symplectique (cumulée).
-	
-	\item En terme de fréquence, si $\psi$ est de norme 1, alors (mais c'est vraiment pas dit que l'intégrale converge dans ce cas) :
-	\[\big\|\psi(t)\big\|=1\quad \Lr\quad \phased(\psi, -\infty, +\infty) = i\int_\R \big\langle \psi(s) \, |\, \dot{\psi}(s) \big\rangle ds = \pm 2\pi\int_\R \nu\big|\hat{\psi}(\nu)\big|^2 d\nu = \pm 2\pi \esp[|\hat{\psi}|^2]{\nu}\]
-	
-	\item Lilly \cite{lilly_analysis_2012} propose de d'écrire $\psi$ avec une phase isolé $\varphi$ de sorte que :
-	\[\psi(t) = \begin{pmatrix} a_1(t)e^{i\phi_1(t)} \\ a_2(t)e^{i\phi_2(t)} \\ \vdots \\ a_n(t)e^{i\phi_n(t)}
-	\end{pmatrix} = e^{i\varphi(t)}\begin{pmatrix} a_1(t)e^{i\varphi_1(t)} \\ a_2(t)e^{i\varphi_2(t)} \\ \vdots \\ a_n(t)e^{i\varphi_n(t)}
-	\end{pmatrix}\]
-	\\
-	Et avec un peu de travail (\cref{subsec:param_instant_nvar}), on obtient que le mieux c'est de poser :
-	\[\varphi'(t) \defeq -\frac{\Im m\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle}{\|\psi(t)\|^2} = \frac{\sum_i\phi_i'(t)\,{a_i}^2(t)}{\sum_i{a_i}^2(t)}\]
-	\\
-	On voit donc que la phase dynamique est donnée par le cumule des fréquences instantanées, ou comme le différentiel de phase de $\psi$ :
-	\[\phased(\psi,t_0,t) = -\Im m\int_{t_0}^t \frac{\big\langle \psi(s) \,|\, \dot{\psi}(s) \big\rangle}{\|\psi(s)\|^2} ds = \int_{t_0}^t \varphi'(s)ds = \varphi(t)-\varphi(t_0)\]
-	
-	\item Avec les mêmes notations, on a :
-	\begin{align*}
-		\big\langle \psi(t) \,|\, \dot{\psi}(t) \big\rangle &= \Big\langle \Big(a_i(t)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \,\Big|\, \Big(\big(a_i'(t)+i\big( \varphi(t)+\varphi_i(t) \big)a_i(t)\big)e^{i(\varphi(t)+\varphi_i(t))}\Big)_i \Big\rangle \\
-		&= \sum_i a_i(t) \Big(a_i'(t)-i\big(\varphi'(t) + \varphi_i'(t)\big)a_i(t)\Big) \\
-		&= \sum_i a_i(t)a_i'(t)-i\sum_i \big(\varphi'(t) + \varphi_i'(t)\big)a_i(t)^2 \\
-		&= \sum_i a_i(t)a_i'(t)-i \varphi'(t)\sum_ia_i(t)^2  - i\sum_i \varphi_i'(t)a_i(t)^2 \\
-		&= \sum_i a_i(t)a_i'(t)-i \varphi'(t)\big\|a(t)\big\|^2  - i\sum_i \varphi_i'(t)a_i(t)^2
-	\end{align*}
-	\\
-	Avec $a =\, ^t(a_1,\cdots, a_n)= |\psi|$ et $\|a\|=\|\psi\|$. On a donc :
-	\begin{align*}
-		\phased(\psi,t_0,t) &= \int_{t_0}^t \frac{\varphi'(s)\big\|a(s)\big\|^2}{\big\|a(s)\big\|^2} ds  + \sum_i\int_{t_0}^t \frac{\varphi_i'(s)a_i(s)^2}{\big\|a(s)\big\|^2} ds \\
-		&=\phased(\psi,t_0,t)  + \sum_i \esp[\nicefrac{|\psi_i|^2}{\|\psi\|^2}]{\one_{[t_0,t]}\varphi_i'}
-	\end{align*}
-	Et donc :
-	\begin{equation}\label{eq:sum_esp_null}
-		\sum_i \esp[\frac{|\psi_i|^2}{\|\psi\|^2}]{\one_{[t_0,t]}\varphi_i'} = 0
-	\end{equation}
-	Moralement, ca revient juste à dire qu'en définissant $\varphi$ suivant Lilly, on a otté au $\phi_i$ la phase moyenne ponérée et donc, tout naturellement, les nouvelles phase indivituelles $\varphi_i$ sont centrés (à la même pondération près).
-	
-	\item Quoi qu'il en soit, de toute ces formules il ressort que la phase dynamique ne regarde que \textit{la} phase/fréquence instantanée de $\psi$ (et un peu son amplitude aussi mais c'est secondaire) et (je crois) donne une contrainte sur \textit{les} phases $\varphi_i$
-\end{itemize}\subsection{Réflexion autour du produit hermitien}
-
+\subsection{Réflexion autour du produit hermitien}
 
 Soit $x,y\in\C^n$ des vecteurs complexes et $X,Y\in\R^{2\times n}$ leur versions réelles. On note $x^j$ sa $j^{eme}$ composante complèxe et $x_1$ (resp. $x_2$) le vecteur composé de ses parties réelles (resp. imaginaires) :
 \[x = \big(x^j\big)_j =  x_1 + ix_2 =  \big(x^j_1\big)_j +i \big(x^j_2\big)_j\]
@@ -1155,9 +1119,12 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 		
 		\item vu que c'est complexe j'y connais R
 		
-		\item mettre la bonne connexion (surement Levi-Civita)
+		\item mettre la bonne connexion (surement \href{https://en.wikipedia.org/wiki/Fubini%E2%80%93Study_metric}{Fubini-Study})
 		
 		\item Phase géo $\cong$ transport parallèle ?
+		
+		\item Réponse :
+		 \href{https://fr.wikipedia.org/wiki/Holonomie}{holonomie}
 	\end{itemize} 
 	
 	\item Improbable mais on sait jamais :
