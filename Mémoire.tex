@@ -682,12 +682,46 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 	La phase totale, elle, s'écrit :
 	\begin{equation}\label{eq:phaset_2var}
 		\begin{aligned}
-			\phaset(\bf{x},t_0,t) = \arg\big\langle \bf{x}(t_0), \bf{x}(t)\big\rangle &= \varphi(t_0)-\varphi(t) + \arg\Big(\cos\Delta\theta \cos\Delta\chi - i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big) \\
-			&= \varphi(t_0)-\varphi(t) + \arctan\left(-\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right)
+			\phaset(\bf{x},t_0,t) = \arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle &= \varphi(t)-\varphi(t_0) + \arg\Big(\cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big) \\
+			&= \varphi(t)-\varphi(t_0) + \arctan\left(\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right)
 		\end{aligned}
 	\end{equation}
-	ou $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y=\varphi,\theta,\chi$.
+	ou $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y=\varphi,\theta,\chi$. \textbf{(adapte signe démo)}
 \end{proposition}
+
+\begin{itemize}
+	
+	\item Petit changement d'ordre sur $\phaset$ pour que ca colle mieux :
+	\[\phaset(\bf{x}) = \arg\big\langle \bf{x}(t_0), \bf{x}(t)\big\rangle\ \leadsto\  \big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle\]
+	
+	\item Si $\bf{x}$ est pseudo-cyclique, alors on a :
+	\begin{align*}
+		\phaset(\bf{x}) &= \varphi(t)-\varphi(t_0)  &  \phaseg(\bf{x}) &= \oint_\gamma \dot{\theta} \sin2\chi
+	\end{align*}
+	Dans ce cas, $\varphi$ semble bien être la phase totale, le ``bon choix''
+	
+	\item On s'attend donc à ce que le surplus dans la formule \eqref{eq:phaset_2var} soit lié au géodésique. Comparaison entre les deux :
+	\begin{align*}
+		&\arctan\left(\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right)  &
+		d &= \arcsin\left(\sqrt{\sin^2\Delta\chi + \cos2\chi(t_0) \cos2\chi(t) \sin^2\Delta\theta}\right)
+	\end{align*}
+	\begin{align*}
+		\arctan\left( \frac{x}{\sqrt{1-x^2}}\right) &= \arcsin(x) & \arcsin\left( \frac{x}{\sqrt{1+x^2}}\right) &= \arctan(x)
+	\end{align*}
+	
+	\item Réflexions sur les écritures :
+	\begin{itemize}
+		\item La phase dynamique dans \eqref{eq:phased_2var} s'écrit comme différence des deux phases, alors que c'est sensé être ``l'absolue'' du pdv fibré p.
+		
+		\item bizarre que ca soit la phase dynamique qui apparaisse en phase instantanée (\cref{eq:phas_inst_v1,eq:phas_inst_v2}) si elle est pas la totale. Est-ce que c'est naturel sachant qu'elle est associée à l'horizontal lift ?
+	\end{itemize}
+	
+	\item D'où sortent les histoires d'aires ?
+	
+	\item Voir \cref{sec:lift_approch} pour la version géométrique et ``intuitive''
+\end{itemize}
+
+
 \begin{demo}%[\cref{prop:phased_2var}]
 	Par souci de lisibilité, on note $\mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ de sorte que la dérivée de $\bf{x}$ s'écrive :
 	\begin{align*}
@@ -787,7 +821,13 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 			1 \\ 0 \\ 0
 		\end{pmatrix}
 	\end{align*}
+	
+	
 \end{itemize}
+
+
+
+
 
 \subsection{Généralisation de ces formules au cas $\bf{n-}$varié}
 
@@ -883,7 +923,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 \section{La vision de Bohm \cite[fig. 4.3]{bohm_geometric_2003}}
 \label{sec:lift_approch}
 
-Dans cette \cref{sec:lift_approch}, $\psi$ sera toujours supposée pseudo-cyclique :
+Dans cette \namecref{sec:lift_approch}, $\psi$ sera toujours supposée pseudo-cyclique :
 \begin{definition}
 	Un signal $\psi$ sera dit \emph{cyclique} si à l'instant $t$, $\psi$ reprend les même valeurs qu'en $t_0$ :
 	\[\psi(t)=\psi(t_0)\]
@@ -895,10 +935,27 @@ On note $\mathcal{C}$ le trajet effectué par $\psi$ et $\mathfrak{C}$ le projet
 \begin{align*}
 	\mathcal{C} &= \big\{ \psi(t)\in\C^n\ |\  t\in\R \big\} \\
 	\mathfrak{C} &= \big\{ \psi(t) \psi(t)^\dagger \in\PC{n}\ |\  t\in\R \big\} \\
-	\Tilde{\mathcal{C}} &= \big\{ \Tilde{\psi}(t)\in\C^n\ |\  t\in\R \big\}  &  \Tilde{\psi} \text{horizontal lift}\\
-	\mathcal{C}_c &= \big\{ \phi(t)\in\C^n\ |\  t\in\R \big\}  &  \phi(t) = \phi(t_0)
+	\Tilde{\mathcal{C}} &= \big\{ \Tilde{\psi}(t)\in\C^n\ |\  t\in\R \big\}  &  &\Tilde{\psi}\ \text{ horizontal lift}\\
+	\mathcal{C}_c &= \big\{ \phi(t)\in\C^n\ |\  t\in\R \big\}  &  &\phi\ \text{ cyclique}
 \end{align*}
-Quand on dit que $\Tilde{\psi}$ est l'hoizontal lift, on sous entend que :
+\\
+
+Quand on dit que $\Tilde{\psi}$ est l'\textit{horizontal lift}, on sous entend que le fibré est munie d'une connexion. Suivant l'approche quantique, elle est de la forme :
+\[\forall \eta\in\Gamma(\mathcal{M}),\quad  \mathcal{A} \defeq \int_\gamma \big\langle \eta, h(\eta) \big\rangle\]
+où $h$ est l'Hamiltonien de l'équation de Schrödinger (dont $\psi$ est supposé solution) :
+\begin{equation}\label{eq:schrodinger}
+	i\frac{d}{dt} \psi(t) = h\big(\psi(t)\big)
+\end{equation}
+Mais on a le choix de $h$. En particulier, si on veut pas de contrainte, on peut toujours poser :
+\[h = i\frac{d}{dt}\]
+Est-ce qu'on a le droit ? (je vois pas pourquoi on pourrait pas) Et si on le fait, qu'est-ce que ca dit du point de vue mécha Hamiltonienne ? (\apriori~rien vue l'EDP)
+\\
+Aussi, du pvd calculatoire / de la phase g, qu'est-ce qu'il se passe ? Typiquement, est-ce que y'a $\Tilde{\psi}$ devient un $\phi$ ?
+\\
+
+Aussi, chose remarquable, le fait que la phase géométrique soit invariante par jauge transfo réapprait dans le fait que $\phi$ ne soit pas définie à jauge tranfo près (sauf au bord)
+
+
 
 
 
@@ -1101,7 +1158,7 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 
 \begin{itemize}
 	
-	\item Quel esapce ? Pour la jauge invariance, c'est du $\U(1)\times X$ mais qui est $X$ ? 
+	\item Quel espace ? Pour la jauge invariance, c'est du $\U(1)\times X$ mais qui est $X$ ? 
 	\begin{itemize}
 		\item les $\bf{x}\bf{x}^\dagger$ sont plus calculable mais isomorphe à l'\href{https://en.wikipedia.org/wiki/Complex_projective_space#Differential_geometry}{esapce projectif complexe} $\PC{n}$
 		
@@ -1126,6 +1183,21 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 		\item Réponse :
 		 \href{https://fr.wikipedia.org/wiki/Holonomie}{holonomie}
 	\end{itemize} 
+	
+	\item refs de GPT pour la connexion sur fibré :
+	\begin{itemize}
+		\item Kobayashi \& Nomizu - Foundations of Differential Geometry (vol. 1 \& 2)
+		\\
+		\textit{C'est la bible sur les connexions et fibrés principaux ! Chapitres sur les connexions dans les fibrés principaux et leur relation avec les connexions dans les fibrés vectoriels associés.}
+		
+		\item J. M. Lee - Introduction to Smooth Manifolds (Chapitre sur les connexions et les fibrés principaux).
+		\\
+		\textit{Accessible et bien expliqué, en particulier sur le lien entre les connexions dans les fibrés vectoriels et les fibrés principaux.}
+		
+		\item S. Helgason - Differential Geometry, Lie Groups, and Symmetric Spaces
+		\\
+		\textit{Approche plus avancée et lie bien la géométrie différentielle à la théorie des groupes de Lie.}
+	\end{itemize}
 	
 	\item Improbable mais on sait jamais :
 	\begin{itemize}
@@ -1272,7 +1344,7 @@ On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps
 	\end{equation}
 	
 	\item (conservative) Équation Schrödinger et de Liouville-von Neumann ($h(R)$ : Hamiltonien des paramètres $R$, $W$ : opérateurs statistique ) \cite[p.6]{bohm_geometric_2003} :
-	\begin{equation}\label{eq:schrodinger}
+	\begin{equation}%\label{eq:schrodinger}
 		i\frac{d \psi(t)}{dt} = h(R)\psi(t)
 	\end{equation}
 	\begin{equation}\label{eq:liouville-neumann}
@@ -1283,10 +1355,6 @@ On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps
 	\begin{equation}\label{eq:mom_angu}
 		M(t) = \Re e \big(iz\congu{z}'\big) = -\Im m z\congu{z}'  \qquad\qquad \text{thoughts ?}
 	\end{equation}
-	
-	\item Directement :
-	\[\arctan\left( \frac{x}{\sqrt{1-x^2}}\right) = \arcsin(x)\]
-	\[d = \arcsin\left(\sqrt{\sin^2\Delta\chi + \cos2\chi_1 \cos2\chi_2 \sin^2\Delta\theta}\right)\]
 	
 \end{itemize}
 
@@ -1312,12 +1380,6 @@ On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps
 	
 	\item Invariant de Bargmann + série de Dyson
 \end{itemize}
-
-
-Différence entre phase instant par nous et par moment (34, syrile)
-
-Refaire les calculs de la phase tot
-
 
 
 \newpage
