@@ -1,4 +1,17 @@
 # TO DO
 
-- Distance sur la sphère est écriture phase géo
-- paramétrisation de la l'éllipse en dim n (plus malin que c'que t'as fait)
+- Vérifier les calculs 2-var
+    - comparaison numérique
+    - comparaison avec l'écriture quaternionique
+    
+- Une EDP pour le signaux ? (pour lié avec la méca-Q) 2 ouvertures :
+    - Le passage dans C (et mieux le justifier)
+    - Formes des sinaux AM-FM-PM
+
+
+- PDV géo diff 
+    - Un peu d'algèbre de Lie
+    - Formalisme des fibrés principaux
+    - Lien des 2 définitions de connexions
+    - Bonnet-Gauss
+    - Application au AM-FM-PM
