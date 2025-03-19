@@ -939,6 +939,20 @@ TODO:
 
 \section{Approche géométrique}
 
+\subsection{Final (?)}
+
+\begin{itemize}
+	\item On a parlé de la phase instantanée et il en est ressortie une formule. Une super formule même. Pourtant si on y regarde de plus près, y'a une autre phase qui apparaît au cours du temps, d'abord sur une signal cyclique, alors on se rend compte qu'une nouvelle phase apparait au cours du temps. 
+	\\
+	On entend par là que la comparaison brutale $\phaset$ n'égale pas la phase instantanée.
+	
+	\item Donc une nouvelle phase apparaît... et elle est jauge-inv 
+	
+\end{itemize}
+
+
+
+
 \subsection{Notes sur l'approche à avoir}\label{subsec:phaseG_variete}
 
 \begin{itemize}
@@ -1032,6 +1046,39 @@ Aussi, du pvd calculatoire / de la phase g, qu'est-ce qu'il se passe ? Typiqueme
 \\
 
 Aussi, chose remarquable, le fait que la phase géométrique soit invariante par jauge transfo réapprait dans le fait que $\phi$ ne soit pas définie à jauge tranfo près (sauf au bord)
+
+
+
+\subsection{La vision Mukunda \cite{mukunda_quantum_1993,mukunda_quantum_1993-1}}
+
+\begin{itemize}
+	\item Mukunda \cite[p. 10]{mukunda_quantum_1993} part des matrices de corrélation $\rho = \psi\psi^\dagger$ vérifiant (cas normé, p.50 pour le cas générale) :
+	\begin{align*}
+		\rho &= \rho^\dagger \geq 0  &  \rho^2 &= \rho  &  \tr(\rho) &= 1 (=\|\rho\|^2)
+	\end{align*}
+	et pose l'Hamiltonien  (resp. l'énergie kiné) :
+	\begin{align*}
+		H &= i\big( \dot{\psi} \psi^\dagger - \psi\dot{\psi}^\dagger - \langle \psi, \dot{\psi}\rangle\big)  &  \text{resp. }\ K &= \frac{d}{dt}\big( \psi\psi^\dagger \big) = \dot{\rho}
+	\end{align*}
+	qui donne :
+	\[\frac{d}{dt}\psi = -i H\psi = \big( K + \langle\psi, \dot{\psi}\rangle \big)\]
+	$K$ est "mieux" dans le sens où il est invariant par jauge-t. Aussi, comme c'est une dérivée d'une hermitienne elle est... hermitienne ? (mmmh).
+	
+	Anyway, on peut poser avec la bonne jauge :
+	\[\frac{d}{dt}\Tilde{\psi} = K\Tilde{\psi}\]
+	\\
+	
+	\item Voir page 20 pour passer de $\phaseg$ au Birgmann invar
+	\\
+	
+	\item La phase totale $\phaset(\psi,t_0,t)$ est la phase dyn de la géodésique reliant $\psi(t)$ à $\psi(t_0)$ (ca commute ? genre $\phaset(\psi,t_0,t)=$ phase d de la géodé reliant $\psi(t_0)$ à $\psi(t)$)
+	
+	\item L'invariant de Birgmann à des propriétés sommatoires similaires à un calcul de volume... transition parfaite vers la formule de Stokes !!!
+	
+	\item SUPER IMPORTANT : \cite[(8.6),p.51]{mukunda_quantum_1993} pour l'originie/choix de $\phaseg$ !
+\end{itemize}
+
+
 
 
 
