@@ -23,7 +23,6 @@ t = np.linspace(0, 1, N)
 phi1  =  20*np.pi * t**2 
 theta1 = np.pi/8  * t #np.ones_like(t)
 chi1  =  np.pi/10 * t #np.ones_like(t)
-alpha1 = np.pi/1  * t #np.ones_like(t)
 
 
 # le signal
