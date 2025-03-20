@@ -205,7 +205,7 @@ Du point de vu temporel, le signal est émis avec une puissance régulière, mai
 	Les écart-types associés sont plus facilement interprétable. Le premier est appelé \emph{durée d'émission} du signal, puisqu'il renseigne l'étalement temporelle du signal ; et le second \emph{largeur de bande (fréquentielle)} puisque, lui, renseigne l'étalement fréquentielle. 
 \end{definition}
 
-Ces espérances, et plus généralement les moments de $\densit$ (resp. $\densis$), s'écrivent en fonction des dérivées $\fou{x}$ (resp. $x$) via ce que Cohen appelle le ``calculation trick'' \cite{cohen_time_1995} :
+Ces espérances, et plus généralement les moments de $\densit$ (resp. $\densis$), s'écrivent en fonction des dérivées $\fou{x}$ (resp. $x$) via ce que Cohen appelle les ``calculation tricks'' :
 
 \begin{proposition}[``Calculation tricks'' de \cite{cohen_time_1995}] \label{prop:integ_trick}
 	Si le signal est $n$ fois dérivable et que la densité d’énergie spectrale associée $\densis$ admet un moment d'ordre $n$, alors ce moment est donnée par la formule :
@@ -270,7 +270,7 @@ On notera dans toute la suite, sauf précision, l'amplitude et phase de $x$ (res
 \end{align*}
 Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularités de $x$ (resp. $\fou{x}$) et on a :
 \begin{align*}
-	\densit &= |x|^2 = a^2  &  \densis &= |\fou{x}|^2 = \alpha^2
+	\densit &= |x|^2 = a^2  &  \text{resp. }\quad \densis &= |\fou{x}|^2 = \alpha^2
 \end{align*}
 
 \begin{proposition}\label{prop.esp_freq}
@@ -284,7 +284,7 @@ Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularit�
 \begin{demo} 
 	Avec le hypothèses de la \cref{prop:integ_trick} précédente, on a :
 	\begin{align*}
-		\esp[\densis]{\nu} = \frac{i}{2\pi} \densit(t)dt\int_\R x(t) \congu{x'(t)} dt &= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\congu{\big( a'(t)e^{i\phi(t)}+ ia(t)\phi'(t)e^{i\phi(t)} \big)} dt \\
+		\esp[\densis]{\nu} = \frac{i}{2\pi} \densit(t) \int_\R x(t) \congu{x'(t)} dt &= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\congu{\big( a'(t)e^{i\phi(t)}+ ia(t)\phi'(t)e^{i\phi(t)} \big)} dt \\
 		&= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\big( a'(t)e^{-i\phi(t)} -ia(t)\phi'(t)e^{-i\phi(t)} \big) dt \\
 		&= \frac{i}{2\pi}\int_\R a(t)\big( a'(t)- ia(t)\phi'(t)\big) dt \\
 		&= \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt \\
@@ -377,7 +377,7 @@ La transformée inverse de cette indicatrice (qui n'est autre que la fonction de
 
 
 \begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
-	On appelle \emph{valeur principale de Cauchy} la distribution, notée vp$\frac{1}{x}$, telle que :
+	On appelle \emph{valeur principale de Cauchy} la distribution, notée $\vpC$, telle que :
 	\begin{equation}
 		\begin{aligned}
 		\forall \varphi\in\mathcal{S}(\R),\qquad 
@@ -601,7 +601,7 @@ Ce qui mène à une première définition de la phase instantanée :
 \end{equation}
 \\
 
-La seconde approche, fortement inspirée par les travaux de Lilly et Olhede  \cite{lilly_analysis_2012}, se base sur la discussion autour du théorème Bedrisan sur la séparation haute-basse fréquence du signal $\bf{x}$ (\cref{subsec:Bedrisan&AM-FM}). Pour cela, l'on commence par faire apparaître la phase $\phi$ --- pour l'instant inconnue --- en écrivant $\bf{x}$ sous la forme :
+La seconde approche, fortement inspirée par les travaux de Lilly \& Olhede  \cite{lilly_analysis_2012}, se base sur la discussion autour du théorème Bedrisan sur la séparation haute-basse fréquence du signal $\bf{x}$ (\cref{subsec:Bedrisan&AM-FM}). Pour cela, l'on commence par faire apparaître la phase $\phi$ --- pour l'instant inconnue --- en écrivant $\bf{x}$ sous la forme :
 \[\forall t\in\R,\qquad \bf{x}(t) = e^{i\phi(t)} e^{-i\phi(t)} \bf{x}(t) \defeq e^{i\phi(t)} \Tilde{\bf{x}}(t)\]
 \\
 Si $\phi$ est bien choisie, alors $\Tilde{\bf{x}}$ contient les informations associées à l'amplitude et la polarisation de $\bf{x}$. Or, la phase doit contenir les hautes fréquences du signal. 
@@ -689,56 +689,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 	ou $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y=\varphi,\theta,\chi$. \textbf{(adapte signe démo)}
 \end{proposition}
 
-\begin{itemize}
-	
-	\item Petit changement d'ordre sur $\phaset$ pour que ca colle mieux :
-	\[\phaset(\bf{x}) = \arg\big\langle \bf{x}(t_0), \bf{x}(t)\big\rangle\ \leadsto\  \arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle\]
-	
-	\item Si $\bf{x}$ est cyclique (à jauge près), alors :
-	\begin{align*}
-		\phaset(\bf{x}) &= \varphi(t)-\varphi(t_0)  &  \phaseg(\bf{x}) &= \oint_\gamma \dot{\theta} \sin2\chi
-	\end{align*}
-	auquel cas, $\varphi$ semble bien être le ``bon choix'' de phase totale.
-	
-	\item Lien entre le surplus dans la formule \eqref{eq:phaset_2var} et la distance sur $\S^2$ :
-	\begin{align*}
-		&\arctan\left(\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right)  &
-		d &= \arcsin\left(\sqrt{\sin^2\Delta\chi + \cos2\chi(t_0) \cos2\chi(t) \sin^2\Delta\theta}\right)
-	\end{align*}
-	\begin{align*}
-		\arctan\left( \frac{x}{\sqrt{1-x^2}}\right) &= \arcsin(x) & \arcsin\left( \frac{x}{\sqrt{1+x^2}}\right) &= \arctan(x)
-	\end{align*}
-	
-	\item J'ai refait le calcul le cas multivar (même si on en fera surement rien), c'est la \cref{prop:phased_nvar} :
-	\begin{align*}
-		\phased(\bf{x}, t_0,t) &= \varphi(t) -\varphi(t_0) + \int_{t_0}^t \sin2\chi \big\langle \Tilde{R}_{\Theta(s)} e_1, e_2\big\rangle ds \\
-		&=\varphi(t) -\varphi(t_0) + \int_{t_0}^t \dot{\theta}(s) \sin2\chi(s) ds + \int_{t_0}^t \sin2\chi(s) \big\langle \Tilde{R}_{\Lambda(s)} \Tilde{e}_1(s),  \Tilde{e}_2(s)\big\rangle ds\\
-		\text{où }\qquad \Tilde{R}_{\Theta(t)} &=\, ^tR_{\Theta(t)} \dot{R}_{\Theta(t)}\in\mathcal{A}_n(\R) \quad \text{ et }\quad R_\Theta = R_\Lambda R_\theta = R_\Lambda \begin{pmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \\ & & \mathbb{O}_{n-2}
-		\end{pmatrix}
-	\end{align*}
-	
-	\item Réflexions sur les écritures :
-	\begin{itemize}
-		\item La phase dynamique dans \eqref{eq:phased_2var} s'écrit comme différence des deux phases, alors que c'est sensé être ``l'absolue'' du pdv fibré p.
-		
-		\item bizarre que ca soit la phase dynamique qui apparaisse en phase instantanée (\cref{eq:phas_inst_v1,eq:phas_inst_v2}) si elle est pas la totale. Est-ce que le fait qu'elle soit associée à l'horizontal lift à son importance ?
-	\end{itemize}
-	
-	\item D'où sortent les histoires d'aires ?
-	
-	\item Voir \cref{subsec:lift_approch} pour la version géométrique et ``intuitive''
-\end{itemize}
-
-TODO:
-\begin{itemize}
-	\item check les formules contre la v $\mathbb{H}$
-	
-	\item Formule de Stokes / Gauss-Bonnet pour l'air
-	
-	\item une EDP pour les signaux AM--FM--PM / Meilleur ``complexification'' des signaux ?
-\end{itemize}
-
-\begin{demo}%[\cref{prop:phased_2var}]
+\begin{demo}[de la \cref{prop:phased/t_2var}]
 	Par souci de lisibilité, on note $\mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ de sorte que la dérivée de $\bf{x}$ s'écrive :
 	\begin{align*}
 		\dot{\bf{x}} 
@@ -941,14 +892,12 @@ TODO:
 
 \subsection{Final (?)}
 
-\begin{itemize}
-	\item On a parlé de la phase instantanée et il en est ressortie une formule. Une super formule même. Pourtant si on y regarde de plus près, y'a une autre phase qui apparaît au cours du temps, d'abord sur une signal cyclique, alors on se rend compte qu'une nouvelle phase apparait au cours du temps. 
+On a parlé de la phase instantanée et il en est ressortie une formule. Une super formule même. Pourtant si on y regarde de plus près, y'a une autre phase qui apparaît au cours du temps, d'abord sur une signal cyclique, alors on se rend compte qu'une nouvelle phase apparait au cours du temps. 
 	\\
 	On entend par là que la comparaison brutale $\phaset$ n'égale pas la phase instantanée.
 	
-	\item Donc une nouvelle phase apparaît... et elle est jauge-inv 
-	
-\end{itemize}
+	Donc une nouvelle phase apparaît... et elle est jauge-inv 
+
 
 
 
@@ -996,6 +945,27 @@ TODO:
 		\item S. Helgason - Differential Geometry, Lie Groups, and Symmetric Spaces
 		\\
 		\textit{Approche plus avancée et lie bien la géométrie différentielle à la théorie des groupes de Lie.}
+	\end{itemize}
+
+	Pour la géometrie projectives complexe :
+	\begin{itemize}
+		\item Kobayashi, Differential Geometry of Complex Vector Bundles \\
+		\textit{Introduction aux connexions sur les fibrés vectoriels complexes, crucial pour comprendre les métriques de Fubini-Study et les structures kählériennes.}
+		
+		\item Huybrechts, Complex Geometry: An Introduction \\
+		I\textit{ntroduction aux variétés complexes et kählériennes, avec des applications aux espaces projectifs complexes.}
+		
+		\item Gunning, Introduction to Complex Analysis and Geometry \\
+		\textit{Bon compromis entre analyse complexe et géométrie différentielle.}
+		
+		\item Wells, Differential Analysis on Complex Manifolds \\
+		\textit{Bon livre pour le lien entre la géométrie différentielle et la géométrie projective}
+		
+		\item Ballmann, Introduction to Kähler Geometry \\
+		\textit{Très bon pour comprendre l’aspect kählérien des variétés projectives.}
+		
+		\item Voisin, Hodge Theory and Complex Algebraic Geometry (vol. 1 \& 2) \\
+		\textit{Référence avancée, mais incontournable si tu veux plonger dans la topologie des variétés projectives complexes.}
 	\end{itemize}
 	
 	\item Improbable mais on sait jamais :
