@@ -890,15 +890,87 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 
 \section{Approche géométrique}
 
-\subsection{Final (?)}
+\subsection{Le plan du mémoire (trop long)}
 
-On a parlé de la phase instantanée et il en est ressortie une formule. Une super formule même. Pourtant si on y regarde de plus près, y'a une autre phase qui apparaît au cours du temps, d'abord sur une signal cyclique, alors on se rend compte qu'une nouvelle phase apparait au cours du temps. 
-	\\
-	On entend par là que la comparaison brutale $\phaset$ n'égale pas la phase instantanée.
+\begin{enumerate}[label=\Roman* --- ]
 	
-	Donc une nouvelle phase apparaît... et elle est jauge-inv 
-
-
+	\item Introduction du phénomène 
+	\begin{enumerate}[label=\arabic* --- ]
+		
+		\item ``En phase'' de Pancharatnam
+		
+		\item Dessin de Birgmann
+		\begin{itemize}
+			
+			\item cas cyclique (plus intéressant qu'adiabatique)
+			
+			\item cadre quantique, on a Schrödonger \eqref{eq:schrodinger}
+			
+			\item Explique le dessin de Bohm
+			
+			\item Ils ont un peu de géo diff \cite{mukunda_quantum_1993,bohm_geometric_2003} mais nous on veut écrire ca propre
+		\end{itemize}
+		
+		\item On veut un description géo diff, on a besoin de quoi ?
+		\begin{itemize}
+			
+			\item passage en complexe
+			
+			\item Espace : $\U(1)\times\PC{n}$
+			
+			\item fibré principal 
+			
+			\item connexion
+			
+			 \item holonomie
+		\end{itemize}
+	\end{enumerate}
+		
+	\item Préliminaire
+	\begin{enumerate}[label=\arabic* --- ]
+		
+		\item Transformation en SA
+		
+		\item Un peu de géo diff 
+		\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
+			
+			\item Formes différentielles
+			
+			\item Fibré principaux
+			\begin{itemize}
+				\item C'est super rélou les transports de structure mais nous on évite le problème parce que c'est un produit et la fibre EST le groupe de Lie.
+			\end{itemize}
+			
+			\item Espace $\PC{n}$
+			
+			\item Holonomie ?
+		\end{enumerate}
+	\end{enumerate}
+		
+	\item C\oe ur du sujet
+	\begin{enumerate}[label=\arabic* --- ]
+		
+		\item On pose le cadre (très rapidement)
+	\\ \\
+	$\vdots$
+	\end{enumerate}
+		
+	\begin{enumerate}[start=14, label=\textit{\alph*} --- ]
+		\item Cas des géodésiques 
+		
+		\begin{enumerate}[label=\textit{n}.\arabic* --- ]
+			
+			\item Invariant de Birgmann
+			
+			\item $\phaseg$ comme 2-forme (et rien d'autre)
+			
+			\item formule de l'air (Stokes \& Birgmann)
+		\end{enumerate}
+	\end{enumerate}
+	
+	\item Généralisation à $\U(k)\times \PC{n}$ ?
+	
+\end{enumerate}
 
 
 
@@ -923,9 +995,9 @@ On a parlé de la phase instantanée et il en est ressortie une formule. Une sup
 		
 		\item vu que c'est complexe j'y connais R
 		
-		\item mettre la bonne connexion (sûrement \href{https://en.wikipedia.org/wiki/Fubini%E2%80%93Study_metric}{Fubini-Study})
+		\item mettre la bonne connexion (A-A mais y'a aussi  \href{https://en.wikipedia.org/wiki/Fubini%E2%80%93Study_metric}{Fubini-Study})
 		
-		\item si la connexion du fibré est équivalente à la connexion d'une variété, qu'est-ce qu'il se passe du côté de cette variété ? est-ce qu'on peut en déduire des choses ?
+		\item si la connexion du fibré est équivalente à la connexion d'une variété, qu'est-ce qu'il se passe du côté de cette variété ? est-ce qu'on peut en déduire des choses ? (sûrement que non parce que $\U(1)$ est pas un e.v.)
 	\end{itemize} 
 	
 	\item Phase géo $\cong$ transport parallèle
@@ -1001,6 +1073,11 @@ On note $\mathcal{C}$ le trajet effectué par $\psi$ et $\mathfrak{C}$ le projet
 	\mathcal{C}_c &= \big\{ \phi(t)\in\C^n\ |\  t\in\R \big\}  &  &\phi\ \text{ cyclique}
 \end{align*}
 \\
+\begin{figure}[h]\centering
+	\includegraphics[width=0.7\textwidth]{fig/schéma2Bohm}
+	\caption{Schéma de Bohm \cite{bohm_geometric_2003} sur les trois phases}
+	\label{fig:2lifts}
+\end{figure}
 
 Quand on dit que $\Tilde{\psi}$ est l'\textit{horizontal lift}, on sous entend que le fibré est munie d'une connexion. Suivant l'approche quantique, elle est de la forme :
 \[\forall \eta\in\Gamma(\mathcal{M}),\quad  \mathcal{A} \defeq \int_\gamma \big\langle \eta, h(\eta) \big\rangle\]
@@ -1015,7 +1092,7 @@ Est-ce qu'on a le droit ? (je vois pas pourquoi on pourrait pas) Et si on le fai
 Aussi, du pvd calculatoire / de la phase g, qu'est-ce qu'il se passe ? Typiquement, est-ce que y'a $\Tilde{\psi}$ devient un $\phi$ ?
 \\
 
-Aussi, chose remarquable, le fait que la phase géométrique soit invariante par jauge transfo réapprait dans le fait que $\phi$ ne soit pas définie à jauge tranfo près (sauf au bord)
+Aussi, chose remarquable, le fait que la phase géométrique soit invariante par jauge transfo réapprait dans le fait que $\phi$ ne soit pas définie à jauge tranfo près (sauf au bord). Par contre c'est étrange que 
 
 
 
@@ -1041,7 +1118,9 @@ Aussi, chose remarquable, le fait que la phase géométrique soit invariante par
 	\item Voir page 20 pour passer de $\phaseg$ au Birgmann invar
 	\\
 	
-	\item La phase totale $\phaset(\psi,t_0,t)$ est la phase dyn de la géodésique reliant $\psi(t)$ à $\psi(t_0)$ (ca commute ? genre $\phaset(\psi,t_0,t)=$ phase d de la géodé reliant $\psi(t_0)$ à $\psi(t)$)
+	\item La phase totale $\phaset(\psi,t_0,t)$ est la phase dyn de la géodésique reliant $\psi(t)$ à $\psi(t_0)$ (ca commute ? surement pas)
+	\\
+	En somme, la phase totale est complètement indépendante du chemin $\psi$, ce qui est rassurant puisque c'est ce qu'on attend la phase totale : qu'elle ne compare que les états $\psi(t_0)$ et $\psi(t)$.
 	
 	\item L'invariant de Birgmann à des propriétés sommatoires similaires à un calcul de volume... transition parfaite vers la formule de Stokes !!!
 	
