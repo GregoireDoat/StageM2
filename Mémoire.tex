@@ -502,22 +502,25 @@ Pour comprendre pourquoi l'amplitude ne fait pas ce qu'on attendrait d'elle, on 
 
 \begin{theoreme}[de Bedrosian]\label{theo:2Bedrosian}
 	Dans sa formulation la plus générale, le théorème de Bedrosian énonce que donnée si deux fonctions $f,g\in L^2(\R)$ sont telles l'une des trois assertions suivantes est vraie :
-	\begin{itemize}
-		\item 
-		\item $\exists \lambda\in\R^+\ |\ \supp \fou{f} \subset [-\lambda, +\infty[,\ \supp \fou{g} \subset [\lambda, +\infty[$
+	\newline
+	\begin{enumerate}[label=\textit{\arabic*}. ]
 		
-		\item $\exists \lambda\in\R^+\ |\ \supp \fou{f} \subset ]-\infty, \lambda],\ \supp \fou{g} \subset ]-\infty,-\lambda]$
+		\item $\exists \lambda\in\R^+\ |\ \supp \fou{f} \subset [-\lambda, +\infty[,\ \supp \fou{g} \subset [\lambda, +\infty[$\label{item:1condi_theo2Bedrosian}
+		
+		\item $\exists \lambda\in\R^+\ |\ \supp \fou{f} \subset ]-\infty, \lambda],\ \supp \fou{g} \subset ]-\infty,-\lambda]$ \label{item:2condi_theo2Bedrosian}
 		
 		\item $\exists (\lambda_1,\lambda_2)\in \R^+\times\R^+ \setminus\{(0,0)\}\ |\ \supp \fou{f} \subset [-\lambda_1, \lambda_2],\ \supp \fou{g} \subset \R\setminus[-\lambda_2,\lambda_1]$
-	\end{itemize}
+		
+	\end{enumerate}
 	alors la transformée de Hilbert de leur produit est donnée par la formule (voir \cite{wang_simple_2009} pour une démonstration) :
 	\begin{equation}\label{eq:2Bedrosian}
 		\hilb{fg} = f\hilb{g}
  	\end{equation}
 \end{theoreme}
+
 \begin{corollaire}\label{coro:AM-FM}
 	Dans le cas d'un signal réel, suivant la \cref{def:ampli&phase_instant} on peut écrire \newline $x=a_x\cos\circ\phi_x$.
-	Comme $a_x$ et $\phi_x$ sont réels, seule la troisième condition du théorème de Bedrosian peut être satisfaite pour peu que $\lambda_1=\lambda_2$.
+	Comme $a_x$ et $\phi_x$ sont réels, seule la \ref{item:2condi_theo2Bedrosian} condition du théorème de Bedrosian peut être satisfaite pour peu que $\lambda_1=\lambda_2$.
 	\\
 	Ainsi, à condition que $a_x\in L^2(\R)$, $\cos\phi_x\in L^2(\R)$ et qu'il existe $\lambda\in\R^{+_*}$ tel que :
 	\[\supp \Fou{a_x} \subset [-\lambda, \lambda],\quad \supp \Fou{\cos\phi_x} \subset \R\setminus[-\lambda,\lambda]\]
@@ -899,19 +902,19 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 		
 		\item ``En phase'' de Pancharatnam
 		
-		\item Dessin de Birgmann
+		\item Dessin de Bohm
 		\begin{itemize}
 			
 			\item cas cyclique (plus intéressant qu'adiabatique)
 			
 			\item cadre quantique, on a Schrödonger \eqref{eq:schrodinger}
 			
-			\item Explique le dessin de Bohm
+			\item Explique le dessin de Bohm \cref{fig:2lifts}
 			
-			\item Ils ont un peu de géo diff \cite{mukunda_quantum_1993,bohm_geometric_2003} mais nous on veut écrire ca propre
+			\item Ils font un peu de géo diff \cite{mukunda_quantum_1993,bohm_geometric_2003} mais nous on veut écrire ca propre
 		\end{itemize}
 		
-		\item On veut un description géo diff, on a besoin de quoi ?
+		\item On veut une description géo diff, on a besoin de quoi ?
 		\begin{itemize}
 			
 			\item passage en complexe
@@ -938,10 +941,14 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 			
 			\item Fibré principaux
 			\begin{itemize}
-				\item C'est super rélou les transports de structure mais nous on évite le problème parce que c'est un produit et la fibre EST le groupe de Lie.
+				\item C'est super relou les transports de structure mais nous on peut éviter le problème parce que c'est un produit et la fibre EST le groupe de Lie.
+				
+				\item lien avec les fibré vectoriels (avec un mot sur les deux connexions ?)
+				
+				\item ``universal $\U(1)$ principal bundle''
 			\end{itemize}
 			
-			\item Espace $\PC{n}$
+			\item Espace $\PC{n}$ ? (sûrement pas grand chose à dire ici...)
 			
 			\item Holonomie ?
 		\end{enumerate}
