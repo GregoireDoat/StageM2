@@ -70,6 +70,9 @@
 	
 \end{itemize}
 
+La phase géométrique est généralement introduite via l'étude d'un système quantique (\ie régis pas l'équation de Schrödinger \eqref{eq:schrodinger}) dit adiabatique. Pour le dire rapidement, ce 
+
+
 
 \begin{table}[b]\centering
 	\begin{tabular}{|| c | c ||} \hline
@@ -86,9 +89,8 @@
 		Espérance et variance de $f$ suivant $\densit$   &  $\esp[\densit]{f(t)}$, $\var[\densit]{f(t)}$ \\  \hline
 		Espace des fonctions p.p. de puissance $p^{eme}$ intégrable à valeur de $E$ dans $F$  &  $L^p(E, F)$ \\  \hline		
 		Support d'une fonction $f$   &  $\supp f =\{x\in\R\ |\ f(x)\neq0\}$ \\  \hline
-		Matrice de rotation de paramètre $\Theta$ (angle $\theta$ en dimension 2)  &  $R_\Theta$ ($R_\theta$)  \\  \hline
-		Ensemble des matrices symétrique (resp. anti-symétrique)  &  $\sym{n}$, $\asym{n}$  \\  \hline
-		
+		Matrice de rotation de paramètre $\Theta$ (resp. d'angle $\theta$ en dimension 2)  &  $R_\Theta$ (resp. $R_\theta$)  \\  \hline
+		Ensemble des matrices symétrique (resp. anti-symétrique)  &  $\sym{n}$ (resp. $\asym{n}$) \\  \hline	
 	\end{tabular}
 	\caption{Indexe des notations}
 	\label{tab:notation}
@@ -316,10 +318,11 @@ D'autre part, on peut fait le même jeu avec la largeur de bande qu'avec la fré
 		\end{center}}
 \begin{align*}
 	\var[\densis]{\nu} &= \frac{1}{4\pi^2} \int a'(t) dt + \frac{1}{4\pi^2}\left(\int \phi'(t)^2 \densit(t) dt - \left(\int \phi'(t) \densit(t) dt \right)^2 \right) \\
-	&= \frac{1}{4\pi^2}\var[\densit]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\densit]{\phi'}
+	&= \frac{1}{4\pi^2}\var[\densit]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\densit]{\phi'\big.} \\
+	&= \frac{1}{4\pi^2}\var[\densit]{(\ln a)'\big.} +\frac{1}{4\pi^2} \var[\densit]{\phi'\big.}
 \end{align*}
 \\
-On constate deux composantes (qui, par ailleurs, sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il donc cohérent que le terme restant (là où apparaît $\phi'$ !) porte l'information fréquentielle du signal.
+On constate deux composantes (qui, par ailleurs, sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il donc cohérent que le terme restant (là où apparaît $\phi'$) porte l'information fréquentielle du signal.
 \\
 
 \`A noter tout de même, que \textbf{REMARQUE SUR LE PRINCIPE D'INCERTITUDE !!!!}
@@ -482,7 +485,7 @@ que si $\nu_1\geq\nu_2$, alors la transformée en SA de $x$ s'écrit :
 	\label{fig:exemple_tSA_1/2}
 \end{figure}
 \noindent
-Le signal $\SA{x}$ n'est ici pas sous forme exponentielle à proprement parler puisque le cosinus peut être négatif (pour s'y ramener, il suffit de passer le cos en valeur absolue et d'ajouter $\pm\pi$ à l'argument) mais l’avantage de cette forme est qu'elle fait clairement apparaître les fréquences $\nu_{1,2}$. En particulier, la fréquence instantanée du signal est la plus grandes des deux fréquences $\nu_1$ et $\nu_2$. La plus petite, elle, se retrouve dans l'amplitude. 
+Le signal $\SA{x}$ n'est ici pas sous forme exponentielle à proprement parler puisque le cosinus peut être négatif (pour s'y ramener, il suffit de passer le cos en valeur absolue et d'ajouter $\pi$ à l'argument lorsque nécessaire) mais l’avantage de cette forme est qu'elle fait clairement apparaître les fréquences $\nu_{1,2}$. En particulier, la fréquence instantanée du signal est la plus grandes des deux fréquences $\nu_1$ et $\nu_2$. La plus petite, elle, se retrouve dans l'amplitude. 
 \\
 Ce résultat est rassurant en cela qu'il est plus naturel de voir le cosinus de basse fréquence comme modulant celui de haute fréquence que l'inverse comme on le voit sur la première image de la figure \ref{fig:exemple_tSA_1/2}. 
 \\
@@ -891,7 +894,40 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 
 
 
-\section{Approche géométrique}
+\part{Approche Géométrique}
+
+\section{Prémise mathématiques}
+
+\subsection{Variétés complexes}
+
+\subsubsection{Structure pré(sque)-complexe}
+
+\subsubsection{Complexification et opérateurs de Dolbeault}
+
+\subsubsection{Variété Kählerienne / de Kähler}
+
+\subsection{Espace projectif complexe}
+
+\subsubsection{Construction des $\bf{\PC{n}}$}
+
+\subsubsection{Metric de Fubini-Study et ses dérivées}
+
+\subsubsection{Lien avec la métrique de Fisher/phase géométrique}
+
+\subsection{Fibré principaux}
+
+\subsubsection{Rappel sur les structures de Lie}
+
+\subsubsection{Définition}
+
+\subsubsection{Fibré vectoriel associée}
+
+\subsubsection{Connexion sur un fibré principal}
+
+
+
+
+\section*{Notes}
 
 \subsection{Le plan du mémoire (trop long)}
 
@@ -937,7 +973,11 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 		\item Un peu de géo diff 
 		\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
 			
-			\item Formes différentielles
+			%\item Formes différentielles
+			
+			\item Variété complexe
+			
+			\item Holonomie et Bonnet-Gauss
 			
 			\item Fibré principaux
 			\begin{itemize}
@@ -948,9 +988,16 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 				\item ``universal $\U(1)$ principal bundle''
 			\end{itemize}
 			
-			\item Espace $\PC{n}$ ? (sûrement pas grand chose à dire ici...)
-			
-			\item Holonomie ?
+			\item Espace $\PC{n}$
+			\begin{itemize}
+				\item ``universal $\U(1)$ principal bundle''
+				
+				\item Connexion de Fubini-Study
+				
+				\item Séparation Fisher/phase géo
+				
+				\item $\Hol = \U(n)$
+			\end{itemize}
 		\end{enumerate}
 	\end{enumerate}
 		
@@ -984,7 +1031,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 \subsection{Notes sur l'approche à avoir}\label{subsec:phaseG_variete}
 
 \begin{itemize}
-	\item Quel espace ? Pour la jauge invariance, c'est du $\U(1)\times X$ mais qui est $X$ ? 
+	\item Quel espace ? Pour la gauge invariance, c'est du $\U(1)\times X$ mais qui est $X$ ? 
 	\begin{itemize}
 		\item les $\bf{x}\bf{x}^\dagger$ sont plus calculable mais isomorphe à l'\href{https://en.wikipedia.org/wiki/Complex_projective_space#Differential_geometry}{esapce projectif complexe} $\PC{n}$, lequel des deux choisir ? (voir formalisme)
 		
@@ -1068,7 +1115,7 @@ Dans cette \namecref{subsec:lift_approch}, $\psi$ sera toujours supposée pseudo
 \begin{definition}
 	Un signal $\psi$ sera dit \emph{cyclique} si à l'instant $t$, $\psi$ reprend les même valeurs qu'en $t_0$ :
 	\[\psi(t)=\psi(t_0)\]
-	Et $\psi$ sera dit \emph{pseudo-cyclique} s'il est cylique à une transformation de jauge près :
+	Et $\psi$ sera dit \emph{pseudo-cyclique} s'il est cylique à une transformation de gauge près :
 	\[\exists \theta:\ \R\lr\R\ |\ \psi(t) = e^{i\theta(t)}\psi(t_0)\text{ et } \theta(t_0)=0\]
 \end{definition}
 
@@ -1099,14 +1146,14 @@ Est-ce qu'on a le droit ? (je vois pas pourquoi on pourrait pas) Et si on le fai
 Aussi, du pvd calculatoire / de la phase g, qu'est-ce qu'il se passe ? Typiquement, est-ce que y'a $\Tilde{\psi}$ devient un $\phi$ ?
 \\
 
-Aussi, chose remarquable, le fait que la phase géométrique soit invariante par jauge transfo réapprait dans le fait que $\phi$ ne soit pas définie à jauge tranfo près (sauf au bord). Par contre c'est étrange que 
+Aussi, chose remarquable, le fait que la phase géométrique soit invariante par gauge transfo réapprait dans le fait que $\phi$ ne soit pas définie à gauge tranfo près (sauf au bord). Par contre c'est étrange que 
 
 
 
-\subsection{La vision Mukunda \cite{mukunda_quantum_1993,mukunda_quantum_1993-1}}
+\subsection{La vision Mukunda \& Simon \cite{mukunda_quantum_1993,mukunda_quantum_1993-1}}
 
 \begin{itemize}
-	\item Mukunda \cite[p. 10]{mukunda_quantum_1993} part des matrices de corrélation $\rho = \psi\psi^\dagger$ vérifiant (cas normé, p.50 pour le cas générale) :
+	\item Mukunda \& Simon\cite[p. 10]{mukunda_quantum_1993} partent des matrices de corrélation $\rho = \psi\psi^\dagger$ vérifiant (cas normé, p.50 pour le cas générale) :
 	\begin{align*}
 		\rho &= \rho^\dagger \geq 0  &  \rho^2 &= \rho  &  \tr(\rho) &= 1 (=\|\rho\|^2)
 	\end{align*}
@@ -1116,9 +1163,9 @@ Aussi, chose remarquable, le fait que la phase géométrique soit invariante par
 	\end{align*}
 	qui donne :
 	\[\frac{d}{dt}\psi = -i H\psi = \big( K + \langle\psi, \dot{\psi}\rangle \big)\]
-	$K$ est "mieux" dans le sens où il est invariant par jauge-t. Aussi, comme c'est une dérivée d'une hermitienne elle est... hermitienne ? (mmmh).
+	$K$ est "mieux" dans le sens où il est invariant par gauge-t. Aussi, comme c'est une dérivée d'une hermitienne elle est... hermitienne ? (mmmh).
 	
-	Anyway, on peut poser avec la bonne jauge :
+	Anyway, on peut poser avec la bonne gauge :
 	\[\frac{d}{dt}\Tilde{\psi} = K\Tilde{\psi}\]
 	\\
 	
@@ -1395,7 +1442,7 @@ Plus généralement, tout signal multivarié $\psi$ est (\textit{devrait être})
 Enfin, surement que si parce que y'a un monde pour $\varphi=0_\R^n$ et c'est le reste des paramètres qui fait le travail. Mais clairement c'est pas intéressant comme description. L'idée serait plutôt décrire le signal $\psi$ en minimisant les variations de $(a,\theta,\chi)$.
 Ca appelle clairement à chercher que dans l'espace de Siegel mais pas seulement, parce que c'est pas juste des chemins chez Siegel qui nous intéresse.
 
-Ou alors c'est le jeu de jauge qui fait qu'on tue $\varphi$ ? auquel cas tout les jours Siegel.
+Ou alors c'est le jeu de gauge qui fait qu'on tue $\varphi$ ? auquel cas tout les jours Siegel.
 \\
 
 \textit{BTW, les quaternions c'est fait pour décrire les rotations et c'est (quasiment) ce qu'on fait avec, donc aller chercher dans un espace de matrices pour généraliser le principe c'est pas déconnant.}
@@ -1485,7 +1532,7 @@ On aurait beaucoup moins de paramètre et c'est quand-même bien. En même temps
 \subsection{Thoughts}
 
 \begin{itemize}
-	\item Si la phase géo est la phase dyn - phase tot et est invariante as jauge t, est-ce que la phase tot correspond à la phase (dyn) entre $t_0$ et $t$ suivant la géodesique ?
+	\item Si la phase géo est la phase dyn - phase tot et est invariante as gauge t, est-ce que la phase tot correspond à la phase (dyn) entre $t_0$ et $t$ suivant la géodesique ?
 	
 	\item La ``Berry connection'' c'est une vraie connexion ? elle est où la covariance alors ?
 \end{itemize}
