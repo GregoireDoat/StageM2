@@ -785,7 +785,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 	\end{pmatrix}\begin{pmatrix}
 	1 \\ 0 \\ 0
 	\end{pmatrix}\]
-	Ce qui, en terme de matrice de Gall-man $(\lambda_i)$ (généralisation de la base de Pauli à $\U(3)$), devient :
+	Ce qui, en terme de matrice de Gall-man $(\lambda_i)$ (généralisation de la base de Pauli à $\U{3}$), devient :
 	\begin{align*}
 		\sa{\bf{x}}(t) &= a(t)e^{i\phi(t)} R_1\big(\alpha(t)\big)\ R_3\big(\beta(t)\big)\ R_1\big(\theta(t)\big)\begin{pmatrix}
 			\cos\chi(t) \\ -i\sin\chi(t) \\ 0
@@ -886,7 +886,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 	
 	\item Ca peut s'écrire en terme d'algèbre de Cliffor (Lefevre \cite{lefevre_polarization_2021})... pas dingue non plus (pb de dimension principalement)
 	
-	\item Les bases de $\U(n)$ parait être le meilleur choix mais on a pas de ``bonne base'' pour de plus haute dimension.
+	\item Les bases de $\U{n}$ parait être le meilleur choix mais on a pas de ``bonne base'' pour de plus haute dimension.
 	
 	\item question : est-ce qu'on en a besoin pour la phase géométrique ? (transi vers une formulation géo diff-like ?)
 \end{itemize}
@@ -894,40 +894,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 
 
 
-\part{Approche Géométrique}
-
-\section{Prémise mathématiques}
-
-\subsection{Variétés complexes}
-
-\subsubsection{Structure pré(sque)-complexe}
-
-\subsubsection{Complexification et opérateurs de Dolbeault}
-
-\subsubsection{Variété Kählerienne / de Kähler}
-
-\subsection{Espace projectif complexe}
-
-\subsubsection{Construction des $\bf{\PC{n}}$}
-
-\subsubsection{Metric de Fubini-Study et ses dérivées}
-
-\subsubsection{Lien avec la métrique de Fisher/phase géométrique}
-
-\subsection{Fibré principaux}
-
-\subsubsection{Rappel sur les structures de Lie}
-
-\subsubsection{Définition}
-
-\subsubsection{Fibré vectoriel associée}
-
-\subsubsection{Connexion sur un fibré principal}
-
-
-
-
-\section*{Notes}
+\section{Notes sur l'approche Géométrique}
 
 \subsection{Le plan du mémoire (trop long)}
 
@@ -955,7 +922,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 			
 			\item passage en complexe
 			
-			\item Espace : $\U(1)\times\PC{n}$
+			\item Espace : $\U{1}\times\PC{n}$
 			
 			\item fibré principal 
 			
@@ -985,18 +952,29 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 				
 				\item lien avec les fibré vectoriels (avec un mot sur les deux connexions ?)
 				
-				\item ``universal $\U(1)$ principal bundle''
+				\item ``universal $\U{1}$ principal bundle''
+			\end{itemize}
+			
+			\item Connexion
+			\begin{itemize}
+				\item Connexion sur fibré principal
+				
+				\item Connexion sur variété/fibré tangent (Levi-Civita)
+				
+				\item Lien entre les deux
+				
+				\item Courbure de la connexion ?
 			\end{itemize}
 			
 			\item Espace $\PC{n}$
 			\begin{itemize}
-				\item ``universal $\U(1)$ principal bundle''
+				\item ``universal $\U{1}$ principal bundle''
 				
 				\item Connexion de Fubini-Study
 				
 				\item Séparation Fisher/phase géo
 				
-				\item $\Hol = \U(n)$
+				\item $\Hol = \U{n}$
 			\end{itemize}
 		\end{enumerate}
 	\end{enumerate}
@@ -1024,6 +1002,16 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 	
 	\item Généralisation à $\U(k)\times \PC{n}$ ?
 	
+	
+TO DO
+\begin{itemize}
+	\item Ecrire $\U{1}\times\PC{n-1}$ comme un fibré principale
+	
+	\item Explicité une connexion (A-A)
+	
+	\item 
+\end{itemize}
+	
 \end{enumerate}
 
 
@@ -1031,7 +1019,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 \subsection{Notes sur l'approche à avoir}\label{subsec:phaseG_variete}
 
 \begin{itemize}
-	\item Quel espace ? Pour la gauge invariance, c'est du $\U(1)\times X$ mais qui est $X$ ? 
+	\item Quel espace ? Pour la gauge invariance, c'est du $\U{1}\times X$ mais qui est $X$ ? 
 	\begin{itemize}
 		\item les $\bf{x}\bf{x}^\dagger$ sont plus calculable mais isomorphe à l'\href{https://en.wikipedia.org/wiki/Complex_projective_space#Differential_geometry}{esapce projectif complexe} $\PC{n}$, lequel des deux choisir ? (voir formalisme)
 		
@@ -1051,7 +1039,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 		
 		\item mettre la bonne connexion (A-A mais y'a aussi  \href{https://en.wikipedia.org/wiki/Fubini%E2%80%93Study_metric}{Fubini-Study})
 		
-		\item si la connexion du fibré est équivalente à la connexion d'une variété, qu'est-ce qu'il se passe du côté de cette variété ? est-ce qu'on peut en déduire des choses ? (sûrement que non parce que $\U(1)$ est pas un e.v.)
+		\item si la connexion du fibré est équivalente à la connexion d'une variété, qu'est-ce qu'il se passe du côté de cette variété ? est-ce qu'on peut en déduire des choses ? (sûrement que non parce que $\U{1}$ est pas un e.v.)
 	\end{itemize} 
 	
 	\item Phase géo $\cong$ transport parallèle
@@ -1101,7 +1089,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 		\item Espace de Siegel ? (ellipse vs ellipsoïde tout ca tout ca)
 	\end{itemize}
 	
-	\item Autour de $\U(n)$ : \href{https://en.wikipedia.org/wiki/Classifying_space_for_U(n)}{Classif de $\U(n)$}
+	\item Autour de $\U{n}$ : \href{https://en.wikipedia.org/wiki/Classifying_space_for_U(n)}{Classif de $\U{n}$}
 	
 \end{itemize}
 
@@ -1190,6 +1178,48 @@ Aussi, chose remarquable, le fait que la phase géométrique soit invariante par
 \setcounter{figure}{0}
 \setcounter{lstlisting}{0}
 
+\part{Prérequis mathématique}
+
+\section{Variété fibrée principale}
+
+\begin{definition}[Fibré principaux localement triviaux]
+	Soit $P$ et $B$ deux variétés différentielles et $(G,\times)$ un groupe de Lie. On dit que les trois forment une \emph{variété fibrée principale} (VFP, ou plus simplement \emph{fibré principal}) s'ils vérifie les propriétés suivantes :
+	\begin{itemize}
+		\item Le groupe de Lie $G$ opère différentiellement à droite (ou gauche) sur $P$ via une application noté :
+		\[\phi : \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\longmapsto\ \phi(p,g)\defeq pg
+		\end{aligned}\]
+		
+		\item Il existe une surjection différentiable $\ \pi:P\lr B\ $ telle que :
+		\[\forall p\in P,\quad \pi^{-1}\big(\pi(p)\big)=pG\]
+		
+		\item En tout point $\ x_0\in B\ $ il existe un voisinage $\ U\subset B\ $ de $x_0$ et un difféomorphisme $\ h:G\times U\lr \pi^{-1}(U)\subset P\ $ telle que :
+		\[\forall g,h\in G,\ \forall x\in B,\qquad h(gh,x) = h(g,x)h\qquad \text{et} \qquad \pi\circ h(g,x)=x\]
+		\\
+		On dit alors que $B$ est la \emph{base} de la VFP, que $G$ est son \emph{groupe structural} est $xP/G$ est la \emph{fibre de $P$ en} $x\in B$. Une telle variété est notée $P(\phi, G, \pi, B)$ ou plus simplement $P(G,B)$.
+	\end{itemize}
+\end{definition}
+
+
+On pose $P=\C^n$ et $G=\U{1}$ avec l'action à gauche évidente. On pose ensuite $B$ définie par :
+\[B=\left\{\rho \in \mat[n]{\C}\ \Big|\ \begin{aligned} \rho &= \rho^\dagger\ &\ \rho &\geq 0 \\ \rho^2 &= \rho\, \tr\rho\ &\ \tr\rho &> 0  \end{aligned}\right\}\]
+Avec la surjection :\qquad\qquad\qquad $\displaystyle \pi :\ \begin{aligned}
+	\C^n\setminus\{0\}\ &\lr\ \ B \\ \psi\ \ &\longmapsto\ \psi\psi^\dagger 
+	\qquad \textit{(ou $\congu{\psi}\, ^t\psi$)} \end{aligned}$ \\
+L'application $h$, elle associe un $\psi$ tel que $\rho=\psi\psi^\dagger$ (il n'est pas unique dans $P$ mais dans on est sur de son existence $\pi^{-1}(U)$). Le difficulté ca va être de s'assurer que $h$ est différentiable (\ie~choisir le bon $\psi$ pour qu'elle le soit)
+\begin{remarque}
+	$B$ peut lui-même être munie d'une opération à gauche (librement, transitivement, blabla) via l'application :
+	\[\phi_B : \begin{aligned}B\times \U{n}\ &\lr\quad B \\ (\rho, \eta)\quad\ &\longmapsto\ \eta \rho \eta^\dagger
+	\end{aligned}\]
+	Je ne sais pas à quoi ca peut servir mais dans le doute je note.
+\end{remarque}
+
+ 
+
+
+
+\setcounter{figure}{0}
+\setcounter{lstlisting}{0}
+
 \part{Brouillon}
 
 \section{Intuition sur les fondamentaux}
@@ -1260,7 +1290,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 \begin{itemize}
 	
 	\item Avec la transformation :
-	\[\bf{x} \leadsto \big(e^{i\phi}, \bf{x}\bf{x}^\dagger\big)\in\U(1)\times \PC{1}-ish\]
+	\[\bf{x} \leadsto \big(e^{i\phi}, \bf{x}\bf{x}^\dagger\big)\in\U{1}\times \PC{1}-ish\]
 	On a :
 	\begin{align*}
 		\bf{x}\bf{x}^\dagger &= \frac{1}{2}\sum_{n=1}^3 S_i(t)\sigma_i  &  \left\{\begin{aligned}
@@ -1327,9 +1357,9 @@ L'\cref{eq:exp_elliptik_2var} ce généralise  très bien, il suffit d'augmenter
 Maintenant, la question est de savoir comment généraliser la transformation en $(z_+, z_-)$ pour obtenir les paramètres $(A, \phi, R_\theta, \chi)$ dans ce cas...
 \\
 Pour généraliser le procédé, on peut noter que :
-\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix} = \frac{1}{\sqrt{2}}U \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\qquad\qquad \text{avec }\ U=\frac{1}{\sqrt{2}}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix}\in\U(2)\]
+\[\begin{pmatrix}z_+ \\ z_-\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix} \begin{pmatrix}x_+ \\ y_+\end{pmatrix} = \frac{1}{\sqrt{2}}U \begin{pmatrix}x_+ \\ y_+\end{pmatrix}\qquad\qquad \text{avec }\ U=\frac{1}{\sqrt{2}}\begin{pmatrix}1 & i \\ 1 & -i\end{pmatrix}\in\U{2}\]
 \\ 
-Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème est que $U$ est indépendant de tout les paramètres $(A, \phi, R_\theta, \chi)$ et sa généralisation est vraiment pas évidente sachant qu'on que le formule avec $n=2$... et pour $n=3$ ca devient déjà chaud (pour rappelle $\dim \SO_n(\R)=\frac{n(n-1)}{2}$ et donc $\theta\in\R^n$, ce qui rend le problème de pire en pire à mesure qu'on augmente $n$).
+Ce qui ramène à se demander comment généraliser $U$ à $\U{n}$. Le problème est que $U$ est indépendant de tout les paramètres $(A, \phi, R_\theta, \chi)$ et sa généralisation est vraiment pas évidente sachant qu'on que le formule avec $n=2$... et pour $n=3$ ca devient déjà chaud (pour rappelle $\dim \SO_n(\R)=\frac{n(n-1)}{2}$ et donc $\theta\in\R^n$, ce qui rend le problème de pire en pire à mesure qu'on augmente $n$).
 
 
 
@@ -1368,7 +1398,7 @@ Ce qui ramène à se demander comment généraliser $U$ à $\U(n)$. Le problème
 	\end{pmatrix}\begin{pmatrix}
 		1 \\ 0 \\ 0
 	\end{pmatrix}\]
-	Ce qui, en terme de matrice de Gall-man $(\lambda_i)$ (généralisation de la base de Pauli à $\U(3)$), devient :
+	Ce qui, en terme de matrice de Gall-man $(\lambda_i)$ (généralisation de la base de Pauli à $\U{3}$), devient :
 	\begin{align*}
 		\sa{\bf{x}}(t) &= a(t)e^{i\phi(t)} R_1\big(\alpha(t)\big)\ R_3\big(\beta(t)\big)\ R_1\big(\theta(t)\big)\begin{pmatrix}
 			\cos\chi(t) \\ -i\sin\chi(t) \\ 0
