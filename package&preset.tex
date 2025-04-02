@@ -220,12 +220,13 @@
 \definecolor{colorbar}{rgb}{1.0, 0.55, 0.0}%{255,223,0}
 %\definecolor{colorbar}{HTML}{ffd700}
 \mdfdefinestyle{barred}{leftmargin=0.15cm, rightmargin=-0.2cm,
-	skipabove=15pt, skipbelow=0pt, 		% tailles des marges
+	skipabove=15pt, skipbelow=150pt, 		% tailles des marges
 	linewidth=0.03cm, linecolor=black, 	% box' style
 	topline=false, bottomline=false,
 	rightline=false, leftline=true}		% coté de la box
 
 \mdfdefinestyle{ramark}{leftmargin=0.4cm, rightmargin=0.4cm, 
+	skipabove=5pt, skipbelow=5pt,
 	topline=false, bottomline=false, rightline=false, leftline=false}
 	
 \mdfdefinestyle{demo frame}{leftmargin=0.15cm, rightmargin=0.7cm, 
@@ -543,9 +544,9 @@ rulecolor=\color{lightgray}}
 	\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{15pt}{}
 	
 	% changement title toc
-	\titlecontents{section}[0.25em]{\addvspace{0.5em}\bfseries}{}{\hspace*{-1.5em}}{\titlerule*[0.75pc]{.}\contentspage}
+	\titlecontents{section}[0.25em]{\addvspace{0.5em}\bfseries Annexe }{\quad ---\quad}{\hspace*{-1.5em}}{\titlerule*[0.75pc]{.}\contentspage}
 	
-	\titlecontents{subsection}[1.5em]{\normalfont Annexe\hspace*{2.5em}}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
+	\titlecontents{subsection}[1.5em]{\normalfont Annexe \hspace*{2.5em}}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
 	
 	\titlecontents{subsubsection}[6em]{\normalfont}{\contentslabel{2.75em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
 	
@@ -554,4 +555,9 @@ rulecolor=\color{lightgray}}
 	\renewcommand{\thesubsubsection}{\Alph{subsection}.\arabic{subsubsection}.}
 	% mise à zéro des compters
 	%\setcounter{section}{0}
-}{}
+}{
+\titlecontents{section}[1.5em]{\addvspace{1em}\bfseries}{\contentslabel{1.25em} ---\quad}{\hspace*{-1.75em}}{\titlerule*[0.75pc]{.}\contentspage}[\addvspace{0.25em}]
+
+\titlecontents{subsection}[3.8em]{\addvspace{0.15em}\normalfont}{\contentslabel{2em}}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
+
+\titlecontents{subsubsection}[6.8em]{\normalfont}{\contentslabel{2.75em}}{\hspace*{-2.5em}}{\titlerule*[0.75pc]{.}\contentspage}}

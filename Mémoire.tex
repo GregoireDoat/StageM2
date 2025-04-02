@@ -58,33 +58,73 @@
 
 \begin{itemize}
 	
-	\item Les signaux multivarié c'et super, ondes gravitationnelles, tout ça tout ça
+	\item Les signaux multivarié c'est super, ondes gravitationnelles, tout ça tout ça
 	
-	\item La phase géo s'est largement étudié dans le cadre de la méca Q / de l'optique
+	\item La phase géo s'est largement étudié dans le cadre de la méca Q / de l'optique mais nada en théorie du signal
 	
-	\item Nous on voudrait généraliser sont études / calculs à des signaux quelconque (en particulier, par d'EDP pour porter le signal)
+	\item Nous on voudrait généraliser son étude / calcul à des signaux quelconque (en particulier, par d'EDP pour porter le signal)
 	
-	\item Ca a déjà étant fait en dimension 2 et un petit peu regarder en dimension 3
+	\item Ca a déjà étant fait en dimension 2 et un petit peu regarder en dimension 3 \cite{bihan_geometric_2024,bihan_modephysiques_nodate}
 	
 	\item Les outils employés se généralise très mal donc il en faut de nouveaux
 	
+	\item nécessité de faire du temps fréquence
+	
 \end{itemize}
 
-La phase géométrique est généralement introduite via l'étude d'un système quantique (\ie régis pas l'équation de Schrödinger \eqref{eq:schrodinger}) dit adiabatique. Pour le dire rapidement, ce 
+Pour introduire le phénomène qu'est la phase géométrique, on commence par se donner un signal complexe que l'on écrit sous la forme :
+\[\psi(t) = a(t)e^{i\varphi(t)}\] 
+En supposant que ce signal est retourne à sa valeur initial $\psi(t_0)$, au temps $t$ à une phase près, \ie~$\psi(t) = e^{i\theta}\psi(t_0)$, cette phase se calcul via la formule :
+\begin{equation}\label{eq:premiere_phase}
+	\theta = \arg \big\langle \psi(t_0), \psi(t) \big\rangle
+\end{equation}
+\\
+On montre sans mal que cette phase peut également s'écrire par une intégrale :
+\[\theta = \arg \big\langle \psi(t_0), \psi(t) \big\rangle = -\Im m\int_{t_0}^t \frac{\big\langle \psi(s), \dot{\psi}(s)\big\rangle}{{\|\psi(s)\|_2}^2} ds\]
+\\
 
+Si cela est vrai dans le cas univarié, \ie~lorsque $\psi$ est à valeur dans $\C$, ce n'est plus le cas pour le signaux multivarié, \ie~$\psi(t)\in\C^n$. L'\cref{eq:premiere_phase}, elle, est toujours vraie ce qui suggère que la seconde écriture est incomplète.
+
+
+\vfill
+
+La phase géométrique fait partie de ces concepts qui apprissent un peu partout en physique, dont l'étude est très instructive mais qui demande énormément de prérequis pour être expliqué proprement.
+Aussi, la phase géométrique à toujours été décrite dans le cadre de système dynamique régis par une EDP (généralement Schrödinger).
+\\
+
+L'objectif de ce rapport sera donc de décrire ce phénomène dans un cadre plus général, à savoir celui signal quelconque. Comme son nom l'indique, cette phase est intrinsèquement liée à la géométrie des l'espace dans lequel évolue le signal étudié et sera donc dans le cadre des variétés différentielles qu'elle sera décrite.
+Cela demandera de faire appelle, entre autre, à des outils de variété différentielle complexe et fibrée principale. Comme il serait inapproprié de considérer que le lecteur a toutes les bases nécessaire sur le sujet, des \textbf{nombreuses} annexes seront dédié aux mathématiques utile à notre propos.
+\\
+
+Pour introduire le phénomène qu'est la phase géométique, toute la première section sera dédié à la notion de phase/fréquence instantanée d'un signal. C'est-à-dire au choix d'une phase $\phi_{\bf{x}}$ telle que le signal complexe $\bf{x}(t)\in\C^n$ s'écrive :
+\[\bf{x} = e^{i\phi_{\bf{x}}}\Tilde{\bf{x}}\]
+et telle que cette phase est une interprétation physique. Comme dans la majorité des cas, les signaux sont réels, il nous faudra d'abord expliquer comment transformé un signal réel en complexe de façon à conserver ces propriétés. Tout cela est intimement lié à l'analyse temps-fréquence et il nous faudra commencé par là.
+En somme, dans la \cref{sec:temp-freq} seront présenté dans l'ordre : comment définir la fréquence instantanée d'un signal réel (\cref{subsec:freq_instant}), comment transformé ce signal réel en complexe et (\cref{subsec:transfo_SA}), enfin, comment la notion de fréquence instantanée se généralise au signaux multivarié, \ie à valeur dans $\R^n$/$\C^n$ (\cref{subsec:phase_instant}).
+\\
+
+Il résultera de cette première partie que la phase instantanée à l'instant $t$ d'un signal $\bf{x}$ commençant à l'instant s'écrit $t_0$ s'écrit :
+\[\phased(\bf{x}, t, t_0) = -\Im m\int_{t_0}^t \frac{\big\langle \bf{x}(s) , \bf{x}'(s) \big\rangle}{\|\bf{x}(s)\|^2} ds\]
+\\
+Pourtant, en se plaçant de la cas où $\bf{x}$ est un signal
+
+
+
+
+\newpage
 
 
 \begin{table}[b]\centering
 	\begin{tabular}{|| c | c ||} \hline
 		\textsc{Objet/fonctions}  & \textsc{Notations} \\
 		\hline\hline
+		Conjugué complexe  					 &  $\congu{x}$ \\ \hline
+		Transposée (resp. adjoint) de la matrice $A$ & $^tA$ (resp. $A^\dagger)$ \\ \hline
 	 	Distribution de Dirac   &  $\delta$\\ \hline 
 		Indicatrice de $E$   	 &  $\one_E$ \\ \hline 
 		Fonction signe   		    &  $\sign(x)$ \\ \hline
 		Transformée de Fourier   						&  $\Fou{x}$, $\fou{x}$ \\ \hline
 		Transformée en SA   		  &  $\SA{x}$, $\sa{x}$ \\ \hline
 		Transformée de Hilbert   	&  $\hilb{x}$ \\ \hline
-		Conjugué complexe  					 &  $\congu{x}$ \\ \hline
 		Produit hermitien (resp. scalaire)   &  $\langle x \,|\, y\rangle$ (resp. $\langle x,y\rangle$) \\ \hline
 		Espérance et variance de $f$ suivant $\densit$   &  $\esp[\densit]{f(t)}$, $\var[\densit]{f(t)}$ \\  \hline
 		Espace des fonctions p.p. de puissance $p^{eme}$ intégrable à valeur de $E$ dans $F$  &  $L^p(E, F)$ \\  \hline		
@@ -311,21 +351,13 @@ D'une part, pour un signal classique de la forme $\cos(2\pi\nu t+\varphi)$ ou $e
 \[\nu = \frac{1}{2\pi}\frac{d}{dt}(2\pi\nu t+\varphi)\]
 \\
 D'autre part, on peut fait le même jeu avec la largeur de bande qu'avec la fréquence moyenne. Cela donne :
-	\footnote{\itshape 
-		L'on a même (mais je sais pas quoi en faire) : 
-		\begin{center}
-			$\var[\densis]{\nu} =  \nicefrac{1}{4\pi^2}\var[\densit]{\ln(a)'} + \nicefrac{1}{4\pi^2} \var[\densit]{\phi'}$
-		\end{center}}
 \begin{align*}
-	\var[\densis]{\nu} &= \frac{1}{4\pi^2} \int a'(t) dt + \frac{1}{4\pi^2}\left(\int \phi'(t)^2 \densit(t) dt - \left(\int \phi'(t) \densit(t) dt \right)^2 \right) \\
+	\var[\densis]{\nu} &= \frac{1}{4\pi^2} \int a'(t)^2 dt + \frac{1}{4\pi^2}\left(\int \phi'(t)^2 \densit(t) dt - \left(\int \phi'(t) \densit(t) dt \right)^2 \right) \\
 	&= \frac{1}{4\pi^2}\var[\densit]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\densit]{\phi'\big.} \\
 	&= \frac{1}{4\pi^2}\var[\densit]{(\ln a)'\big.} +\frac{1}{4\pi^2} \var[\densit]{\phi'\big.}
 \end{align*}
 \\
 On constate deux composantes (qui, par ailleurs, sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il donc cohérent que le terme restant (là où apparaît $\phi'$) porte l'information fréquentielle du signal.
-\\
-
-\`A noter tout de même, que \textbf{REMARQUE SUR LE PRINCIPE D'INCERTITUDE !!!!}
 \\
 
 Afin de clairement expliciter le problème des signaux réels pour l'analyse temps-fréquence, est introduit une dernier outils :
@@ -351,7 +383,7 @@ Les concepts de base de l'analyse temps-fréquence étant posés, voyons à pré
 
 
 Les outils de mesures ayant la fâcheuses tendance à fournir des données réelles, ce sont les signaux réels les plus étudiés.
-Pourtant, cette propriété rend les outils d'analyse temps-fréquence développés plus haut, si non obsolète, au moins compliqué à interpréter.
+Pourtant, cette propriété rend les outils d'analyse temps-fréquence développés plus haut, sinon obsolète, au moins compliqué à interpréter.
 \\
 Tout vient du fait que si $x$ est réel alors son spectre est à symétrie hermitienne et sa densité spectrale $\densis$ symétrique :
 \begin{align*}
@@ -371,9 +403,9 @@ Comme dit plus tôt, cela implique que la fréquence moyenne de tout signal rée
 Même problème avec la covariance qui sera toujours nulle pour les signaux réels. De là en conclure que la fréquence instantanée de n'importe quel signal réel est toujours décorrélée du temps serait, pour le moins, insatisfaisant.
 \\
 
-Pour résoudre les problèmes lié à la fréquence moyenne et la largeur de bande, il suffirait de ne conserver que la partie positive du signal. On s'intéresserait alors au signal transformée $\SA{x}$ tel que :
+Pour résoudre ces problèmes, il suffirait de ne conserver que la partie positive du spectre du signal. On s'intéresserait alors au signal transformée $\SA{x}$ tel que :
 \[\mathcal{F}\big[\SA{x}\big] = 2\one_{\R^+}\fou{x}\]
-où $\one_E$ est la fonction indicatrice de l'ensemble $E$ et où le facteur 2 permet de conserver l'énergie du signal.
+où $\one_E$ est la fonction indicatrice sur l'ensemble $E$ et où le facteur 2 permet de conserver l'énergie du signal.
 Avec la transformée de Fourier inverse, ce nouveau signal s'écrit alors :
 \[\SA{x} = \mathcal{F}^{-1}\big[ 2\one_{\R^+}\fou{x} \big] = 2 \mathcal{F}^{-1}\big[\one_{\R^+}\big] * x\]
 La transformée inverse de cette indicatrice (qui n'est autre que la fonction de Heavyside) n'est pas définie au sens classique, mais l'est au sens des distributions. Pour l'écrire, on introduit la distribution suivante :
@@ -428,7 +460,7 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 \end{demo}
 
 \begin{definition}[Transformée en SA et de Hilbert]\label{def:transfo_sa&hilbert}
-	On définie alors la \emph{transformée en signal analytique} (SA) du tout signal $x$ par l'application :
+	On définie alors la \emph{transformée en signal analytique} (SA) de tout signal $x$ par l'application :
 	\begin{equation}\label{eq:transfo_SA}
 		\SA{x} = \sa{x} \defeq 2 x*\mathcal{F}^{-1}\big[\one_{\R^+}\big] :\ \begin{aligned} 
 			\R \quad &\lr\qquad\quad \C \\	
@@ -451,7 +483,7 @@ Par souci de commodité, plutôt que redéfinir tout le vocabulaire développé 
 
 
 
-\subsubsection{Propriétés et interprétations des signaux analytiques}\label{subsec:Bedrisan&AM-FM}
+\subsubsection{Interprétabilité des signaux analytiques}\label{subsec:Bedrisan&AM-FM}
 
 
 Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $\R$. Aussi, la transformée $\SA{x}$ à pour partie réelle $x$ et pour partie imaginaire $\mathcal{H}[x]$. Sous forme exponentielle, cela donne :
@@ -506,7 +538,7 @@ Pour comprendre pourquoi l'amplitude ne fait pas ce qu'on attendrait d'elle, on 
 \begin{theoreme}[de Bedrosian]\label{theo:2Bedrosian}
 	Dans sa formulation la plus générale, le théorème de Bedrosian énonce que donnée si deux fonctions $f,g\in L^2(\R)$ sont telles l'une des trois assertions suivantes est vraie :
 	\newline
-	\begin{enumerate}[label=\textit{\arabic*}. ]
+	\begin{itemize}%[label=\textit{\arabic*}. ]
 		
 		\item $\exists \lambda\in\R^+\ |\ \supp \fou{f} \subset [-\lambda, +\infty[,\ \supp \fou{g} \subset [\lambda, +\infty[$\label{item:1condi_theo2Bedrosian}
 		
@@ -514,24 +546,26 @@ Pour comprendre pourquoi l'amplitude ne fait pas ce qu'on attendrait d'elle, on 
 		
 		\item $\exists (\lambda_1,\lambda_2)\in \R^+\times\R^+ \setminus\{(0,0)\}\ |\ \supp \fou{f} \subset [-\lambda_1, \lambda_2],\ \supp \fou{g} \subset \R\setminus[-\lambda_2,\lambda_1]$
 		
-	\end{enumerate}
+	\end{itemize}
 	alors la transformée de Hilbert de leur produit est donnée par la formule (voir \cite{wang_simple_2009} pour une démonstration) :
 	\begin{equation}\label{eq:2Bedrosian}
 		\hilb{fg} = f\hilb{g}
  	\end{equation}
 \end{theoreme}
 
+Dans le cas d'un signal réel, suivant la \cref{def:ampli&phase_instant} on peut écrire $\ x=a_x\cos\circ\phi_x$.
+Comme $a_x$ et $\phi_x$ sont réelles, seule la deuxième condition du théorème de Bedrosian peut être satisfaite pour peu que $\lambda_1=\lambda_2$. Ainsi :
+
 \begin{corollaire}\label{coro:AM-FM}
-	Dans le cas d'un signal réel, suivant la \cref{def:ampli&phase_instant} on peut écrire \newline $x=a_x\cos\circ\phi_x$.
-	Comme $a_x$ et $\phi_x$ sont réels, seule la \ref{item:2condi_theo2Bedrosian} condition du théorème de Bedrosian peut être satisfaite pour peu que $\lambda_1=\lambda_2$.
-	\\
-	Ainsi, à condition que $a_x\in L^2(\R)$, $\cos\phi_x\in L^2(\R)$ et qu'il existe $\lambda\in\R^{+_*}$ tel que :
+	Toujours avec les même notations, si $a_x\in L^2(\R)$, $\cos\phi_x\in L^2(\R)$ et qu'il existe $\lambda\in\R^{+_*}$ tel que :
 	\[\supp \Fou{a_x} \subset [-\lambda, \lambda],\quad \supp \Fou{\cos\phi_x} \subset \R\setminus[-\lambda,\lambda]\]
 	 Alors on a :
 	\begin{align*}
-		\hilb{x} &= a_x\hilb{\cos(\phi_x)}  &  &\text{et}  &  \hilb{\cos(\phi_x)} = \sin(\phi_x)
+		\hilb{x} &= a_x\hilb{\cos \phi_x}  &  \qquad\qquad&\text{et si }a_x(t)\neq 0,  &  \hilb{\cos \phi_x}(t) = \sin\phi_x(t)
 	\end{align*}
 \end{corollaire}
+
+Dans ce cas, 
 
 
 
@@ -802,7 +836,7 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 
 
 
-\subsection{Généralisation de ces formules au cas $\bf{n-}$varié}
+\subsection{Généralisation de ces formules au cas $\bf{n-}$varié}\label{subsec:phase_instant}
 
 \begin{proposition}[phase de signal AM--FM--PM $n$-varié]\label{prop:phased_nvar}
 	La formule \ref{eq:phased_2var} de la \cref{prop:phased/t_2var} ce généralise très bien à plus haute dimension. En écrivant $\bf{x}$ sous la forme :
@@ -1175,12 +1209,12 @@ Aussi, chose remarquable, le fait que la phase géométrique soit invariante par
 
 
 
-\setcounter{figure}{0}
-\setcounter{lstlisting}{0}
 
-\part{Prérequis mathématique}
+\begin{annexe}
 
-\section{Variété fibrée principale}
+\section[labida]{Prérequis mathématique}
+
+\subsection{Variété fibrée principale}
 
 \begin{definition}[Fibré principaux localement triviaux]
 	Soit $P$ et $B$ deux variétés différentielles et $(G,\times)$ un groupe de Lie. On dit que les trois forment une \emph{variété fibrée principale} (VFP, ou plus simplement \emph{fibré principal}) s'ils vérifie les propriétés suivantes :
@@ -1212,6 +1246,31 @@ L'application $h$, elle associe un $\psi$ tel que $\rho=\psi\psi^\dagger$ (il n'
 	\end{aligned}\]
 	Je ne sais pas à quoi ca peut servir mais dans le doute je note.
 \end{remarque}
+
+
+
+
+\subsection{Espaces projectifs complexes}
+
+Les espaces projectifs complexes se construisent ainsi. On se place dans $\C^*$ avec la relation d'équivalence, $\forall x,y\in{\C^n}^*$ :
+\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
+\\
+L'espace projectif complexe de dimension $n-1$, noté $\PC{n-1}$ est l'espace quotient :
+\[\PC{n-1} = {\C^n}^*/\C^* = {\C^n}^*/\sim\]
+\\
+En notant $[z]$ la classe de $\PC{n-1}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^n}^*$, on définit les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
+\begin{align}
+	U_i &= \Big\{[z]\in\PC{n-1}\ \big|\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
+		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i-1}\cong \C^n \\ [z]\ \ &\longmapsto\ \frac{1}{z^i}\big(z_0,\cdots, 1,\cdots, z_n\big)
+	\end{aligned}
+\end{align}
+\\
+L'ensemble d'arrivé $\phi_i(U_i)$ est de dimension $n-1$ et s'assimile à $\C^{n-1}$ mais, par souci de comodité, l'on reste dans $\C^n$. Cela permet  d'écrire plus simplement les formules de changement de carte en évitant de devoir rajouter et enlever des coefficients :
+\[\qquad\qquad\qquad\qquad\qquad\qquad \forall [z]\in U_i\cap U_j,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\qquad\qquad\qquad\qquad\qquad (z^{i,j}\neq 0) \qquad\]
+
+Les $(U_i,\phi_i)$ forme un atlas holomorphique sur l'espace projectif complexe, faisant de $\PC{n}$ une variété complexe de dimension $n$.
+
+\end{annexe}
 
  
 
