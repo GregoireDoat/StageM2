@@ -162,214 +162,112 @@ Pourtant, en se plaçant de la cas où $\bf{x}$ est un signal
 \end{itemize}
 
 
-\section{Analyse temps-fréquence} \label{sec:temp-freq}
+\section{Notion de phase et fréquence instantanée} \label{sec:freq_instant}
 
-Dans toute cette \namecref{sec:temp-freq}, on considérera $x$ un signal complexe et on notera $\fou{x}$ ou $\Fou{x}$ sa transformée de Fourier (dont on supposera quelle existe, ici on supposera au moins $x\in L^2(\R, \C)$) :
+\textit{Cette \namecref{sec:freq_instant} est fortement inspirée des propos de \textsc{Cohen} dans son livre \emph{Time frequency analysis} \cite{cohen_time_1995}, chapitre 1 \& 2 }.
+\\
+
+
+\subsection{Analyse temps-fréquence}\label{subsec:temp-freq}
+
+\subsubsection{Quelques définitions}\label{subsec:preli_temp-freq}
+
+Soit $x$ un signal complexe dont $\fou{x}$ ou $\Fou{x}$ est la transformée de Fourier (dont on supposera quelle existe, ici au moins $x\in L^2(\R, \C)$) :
 \begin{align*}
 	x\ &:\quad \begin{aligned}\R\ &\lr\quad \C \\ x\ &\longmapsto\ x(t)
 	\end{aligned}  &  \Fou{x}=\fou{x}\ &:\quad \begin{aligned}\R\ &\lr\qquad\quad \C \\ \nu\ &\longmapsto\ \int_\R x(t)e^{-2\pi i \nu t}dt
 	\end{aligned}
 \end{align*}
 \\
-On note $\densit$ (resp. $\densis$) la \emph{densité d'énergie} (resp. \emph{spectrale}) du signal $x$, définit par :
-\begin{align}\label{eq:densi_dE}
-	\densit\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  
-	&
-	\text{resp. }\ \densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(\nu)\big|^2 \end{aligned}
-\end{align}
+Avant de parlé de fréquences instantanée, il nous faut introduire quelle que définition afin de pouvoir proprement argumenter sa définition.
+Tout d'abord, à $x$ sont associées deux densités d'énergie :
 
-Pour plus de détail sur l'interprétation de ses densités et les outils d'analyse temps-fréquence utile au propos du mémoire, voir l'annexe \ref{ann:temps-freq}.
+\begin{definition}[Densités d'énergie]\label{def:densi_dE}
+	La \emph{densité d'énergie} (resp. \emph{spectrale}) du signal $x$, noté $\densit$ (resp. $\densis$), est définie comme :
+	\begin{align}\label{eq:densi_dE}
+		\densit\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  
+		&
+		\densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(\nu)\big|^2 \end{aligned}
+	\end{align}
+	\\
+	La transformée de Fourier étant une isométrie de l'espace $L^2(\R,\C)$, l'\emph{énergie totale} $E(x)={\|x\|_{L^2}}^2$ du signal est indépendante de la représentation de ce dernier (temporelle ou spectrale) :
+	\begin{equation}\label{eq:parceval}
+		E(x) \defeq  \int_\R \densit(t) dt = \int_\R \densis(\nu) d\nu
+	\end{equation}
+\end{definition}
+\skipl
 
-%\section{Signal analytique, transformé de Hilberts, Analyse en temps-fréquence}
-\subsection{Amplitude, phase et fréquence instantanée }\label{sec:temp-freq}
+La première densité, $\densit(t)$, correspond à la puissance (énergie par unité de temps) déployée pour émettre le signal à l'instant $t$ et la seconde, $\densis(\nu)$, à l'énergie associée à la fréquence $\nu$ sur tout le signal. 
+\\
+Par exemple, si $\ x(t)=e^{2\pi i\nu_0 t}$, alors $\ \fou{x}(t) = \delta(x-\nu_0)$ et on a les densités :
+\begin{align*}
+	\densit(t) &= 1  &  \densis(\nu) = \delta(\nu-\nu_0)
+\end{align*}
+On comprend alors que, du point de vu temporel, le signal a été émis avec une puissance régulière, mais le fait que $\densis$ soit un dirac indique que toute l'énergie du signal est concentré en une unique fréquence $\nu_0$.
+\\
+
+Les espérances et écart-type on également une interprétation physique :
+
+\begin{definition}[Durée et largeur de bande]\label{def:band-width}
+	L'espérance ces densités, pour peu qu'elles existent, sont notées :
+	\begin{align*}
+		\esp[\densit]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \esp[\densis]{\nu} &\defeq \int_\R \nu \big|\fou{x}(\nu)\big|^2 d\nu
+	\end{align*}
+	\\
+	Si un signal est localisé temporellement, alors la première espérance/moyenne donne une idée de l'instant d'émission du signal. Si \acontrario, le signal est localisé en fréquence, la seconde espérance peut s'interpréter comme la fréquence ''dominante'' du le signal, ou plus généralement comme sa \emph{fréquence moyenne}. \\
+	En particulier, et ce sera important pour la suite, dans le cas des signaux réels, l'espérance de $\densis$ est toujours nulles.
+	\\
+	On note de même les variances (toujours à condition d'existence) :
+	\begin{align*}
+		\var[\densit]{t} &\defeq \esp[\densit]{\big(t-\esp[\densit]{t}\big)^2}  &  \var[\densis]{\nu} &\defeq \esp[\densis]{\big(\nu - \esp[\densis]{\nu}\big)^2}\\
+		& = \esp[\densit]{t^2} - \esp[\densit]{t}^2  &  &= \esp[\densis]{\nu^2} - \esp[\densis]{\nu}^2
+	\end{align*}
+	Les écart-types associés sont plus facilement interprétable. Le premier est appelé \emph{durée d'émission} du signal, puisqu'il renseigne l'étalement temporelle du signal ; et le second \emph{largeur de bande (fréquentielle)} puisque, lui, renseigne l'étalement fréquentielle. 
+\end{definition}
+
+Ces interprétations reste limité à des cas particulier. Par exemple, nous y reviendrons, si le support de $\fou{x}$ n'est pas connexe, alors la fréquence moyenne devient beaucoup moins pertinente, idem pour la largeur de bande. De même si $x$ n'est pas connexe, la durée d'émission va plutôt se rapprocher du delta entre la première et dernière période d'émission du signal. 
+\\
 
 
-%\textit{Cette partie reprends, dans les grandes lignes, les propos de \textsc{Cohen} dans son livre \emph{Time frequency analysis} \cite{cohen_time_1995}} \\
-\'Etant donné un signal complexe $\ x:t\longmapsto x(t)\in\C $, son module et sa phase à l'instant $t$ peuvent être interpréter comme l'\emph{amplitude} et la \emph{phase instantanée} de $x$.
+ 
+\subsubsection{Amplitude, phase et fréquence instantanée}\label{subsec:freq_instant}
+
+Dans le cas des signaux purement complexe, sont très naturellement définit les notions d'\emph{amplitude} et de \emph{phase instantanée} puisqu'elles correspondent respectivement au module et à l'argument de $x$ à l'instant $t$.
 \\
 Dans le cas le plus simple, où $\ x(t)=e^{2\pi i\nu t + \varphi}$, la fréquence $\nu$ du signal peut s'écrire comme la dérivée :
 \[\nu = \frac{1}{2\pi} \frac{d}{dt} (2\pi \nu t + \varphi) = \frac{1}{2\pi} \frac{d}{dt} \arg x(t)\]
 \\
 
-Cela invite à définir $\phi'$ (resp.$\nicefrac{1}{2\pi}\phi'$) comme la l'\emph{impulsion} (resp. \emph{fréquence}) \emph{instantanée} du signal $x$. Définition qui est d'autant plus justifiée par la \namecref{prop.esp_freq} suivante :
+Cela invite poser les définitions suivantes :
+\begin{definition}
+	\'Etant donnée un signal $\ x : t\longmapsto a(t)e^{i\phi(t)}$, on appelle $a$ l'\emph{amplitude instantanée} du signal $x$, $\phi$ sa \emph{phase instantanée} et respectivement $\phi'$ et $\nicefrac{1}{2\pi}\phi'$ son \emph{impulsion} et \emph{fréquence instantanée} à l'instant $t$.
+\end{definition}
+\skipl
 
-\begin{proposition}\label{prop.esp_freq}
-	Si $\densis$ admet une espérance et que $x$ est dérivable et que l'on note :
-	\begin{align*}
-		x(t) &= a(t) e^{i\phi(t)}  &  \text{resp. }\quad \fou{x}(\nu) &= \alpha(\nu) e^{i\psi(\nu)}
-	\end{align*}
-	alors on a l'égalité (cf. \cref{ann:temp-fraq} pour une démonstration) :
-	\begin{align}\label{eq:esp_freq}
-		\int_\R \nu \densis(\nu) d\nu &= \frac{1}{2\pi}\int_\R \phi'(t)\densit(t)dt
-		  & & \text{ou encore}  &  
-		\esp[\densis]{\nu} &= \frac{1}{2\pi} \esp[\densit]{\phi'}
-	\end{align}
-\end{proposition}
-{\color{white}l} \\
-\noindent 
-Autrement dit, la moyenne temporelle de $\nicefrac{1}{2\pi} \phi'$ est égale à la fréquence moyenne du signal, ce qui renforce l'idée que c'est la ``bon choix'' de fréquence instantanée.
+Pour mieux justifier ces choix de définition, considérons la proposition suivante :
 
-
-\begin{annexe}
-
-\section{Annexe} 
-
-\subsection{Complément sur l'analyse temps-fréquence}\label{ann:temp-freq}
-
-\subsubsection{Interprétation des densités et de leurs premiers moments}\label{subann:distrib_temp-freq}
-
-
-Avec les notations introduites dans la \cref{sec:temp-freq}, la valeur $\densit(t)$ correspond à la puissance (énergie par unité de temps) déployée pour émettre le signal à l'instant $t$ et $\densis(\nu)$ à l'énergie associée à la fréquence $\nu$ sur tout le signal. 
-\\
-Par exemple, si $\ x(t)=e^{2\pi i\nu_0 t}$, alors $\ \fou{x}(t) = \delta(x-\nu_0)$. Dans ce cas, on a les densités :
-\begin{align*}
-	\densit(t) &= 1  &  \densis(\nu) = \delta(\nu-\nu_0)
-\end{align*}
-Du point de vu temporel, le signal est émis avec une puissance régulière, mais le fait que $\densis$ soit un dirac indique que toute l'énergie du signal est concentré en une unique fréquence $\nu_0$.
-\\
-
-La transformée étant une isométrie de l'espace $L^2(\R,\C)$, l'\emph{énergie totale} du signal, elle, est indépendante de la représentation de ce dernier (temporelle ou fréquentielle) :
-\begin{equation}\label{eq:parceval}
-	E(x) \defeq {\|x\|_2}^2 = \int_\R \densit(t) dt = \int_\R \densis(\nu) d\nu = {\|\fou{x}\|_2}^2
-\end{equation}
-
-On rappelle que l'espérance des densités $\rho$ et $\varrho$, pour peu qu'elles existent, sont notées :
-\begin{align*}
-	\esp[\densit]{t} &\defeq \int_\R t \big|x(t)\big|^2 dt   &  \esp[\densis]{\nu} &\defeq \int_\R \nu \big|\fou{x}(\nu)\big|^2 d\nu
-\end{align*}
-
-Si un signal est localisé temporellement, alors l'espérance/moyenne $\esp[\densit]{t}$ donne une idée de l'instant d'émission du signal. Si \acontrario, le signal est localisé en fréquence, l'espérance  $\esp[\densis]{\nu}$ peut s'interpréter comme la fréquence ``dominante'' du le signal, ou plus généralement comme sa \emph{fréquence moyenne}. \\
-En particulier, et ce sera important pour la suite, dans le cas des signaux réels, l'espérance de $\densis$ est toujours nulles.
-
-
-
-
-\subsubsection{Formule de la fréquence instantanée}
-
-Pour montrer la formule de la \cref{prop.esp_freq}, s'écrivent en fonction des dérivées $\fou{x}$ (resp. $x$) via ce qui Cohen \cite{cohen_time_1995} appelle les  :
-
-\begin{proposition}[``Calculation tricks''] \label{prop:integ_trick}
-	Si le signal est $n$ fois dérivable et que la densité d’énergie spectrale associée $\densis$ admet un moment d'ordre $n$, alors ce moment est donnée par la formule :
-	\begin{equation}\label{eq:moment_f}
-		\forall n\in\N,\qquad \esp[\densis]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \congu{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
-	\end{equation}
-	\\
-	Avec les hypothèses analogues, les moments de $\densit$ s'écrivent :
-	\begin{equation}\label{eq:moment_t}
-		\forall n\in\N,\qquad \esp[\densit]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \fou{x}(\nu) \frac{d^n}{dt^n} \congu{\fou{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \fou{x}, \frac{d^n}{d\nu^n}\fou{x}\right\rangle
-	\end{equation}
-\end{proposition}
-
-
-\begin{demo}
-	\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
-	\begin{align*}
-		\esp[\densis]{\nu^n} = \int_\R \nu^n\densis(\nu) d\nu &= \int_\R \nu^n \fou{x}(\nu)\congu{\fou{x}(\nu)} d\nu \\
-		&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \congu{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
-		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
-	\end{align*}
-	Ici, on remarque que :
-	\begin{align*}
-		\nu^n e^{-2i \pi \nu (t-t')} &= \nu^{n-1}\frac{1}{-2i \pi}\frac{d}{dt}e^{-2i \pi \nu(t-t')} \\
-		&= \nu^{n-2}\frac{1}{(-2i \pi)^2}\frac{d^2}{dt^2}e^{-2i \pi \nu(t-t')} \\
-		&\ \vdots \\
-		&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
-	\end{align*}
-	\\
-	
-	Ce qui permet, en jouant sur les ordres d'intégrations et les propriétés du Dirac, d'obtenir :
-	\begin{align*}
-		\esp[\densis]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
-		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-		&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-		&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
-		&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
-		&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
-		&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
-	\end{align*}
-	%	... a moins que :
-\end{demo}
-
-Si on note alors :
-
-Les fonctions $a$ et $\phi$ (resp. $\alpha$ et $\psi$) héritent des régularités de $x$ (resp. $\fou{x}$) et on a :
-\begin{align*}
-	\densit &= |x|^2 = a^2  &  \text{resp. }\quad \densis &= |\fou{x}|^2 = \alpha^2
-\end{align*}
-
-\begin{proposition}\label{prop.esp_freq}
-	Si $\densis$ admet une espérance et que $x$ est dérivable et que l'on note :
-	\begin{align*}
-		x(t) &= a(t) e^{i\phi(t)}  &  \text{resp. }\quad \fou{x}(\nu) &= \alpha(\nu) e^{i\psi(\nu)}
-	\end{align*}
-	alors on a l'égalité :
+\begin{proposition}\label{prop:mom_freq}
+	Si $\densis$ admet une espérance, que $x$ est dérivable et que l'on note :
+	alors $a$ et $\phi$ hérite des régularité de $x$ et on a l'égalité (cf. \cref{ann:integ_trick} pour une démonstration) :
 	\begin{equation}\label{eq:esp_freq}
 		\esp[\densis]{\nu} = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t)dt = \frac{1}{2\pi} \esp[\densit]{\phi'}
 	\end{equation}
-\end{proposition}
-
-En ce sens, la moyenne de $\phi'$ en temps est égale (à $2\pi$ près) à la fréquence moyenne de $x$.
-
-
-\subsubsection{Fréquence instantanée et covariance}\label{subsec:freq_instant}
-
-
-
-
-\begin{demo} 
-	Avec le hypothèses de la \cref{prop:integ_trick} précédente, on a :
-	\begin{align*}
-		\esp[\densis]{\nu} = \frac{i}{2\pi} \densit(t) \int_\R x(t) \congu{x'(t)} dt &= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\congu{\big( a'(t)e^{i\phi(t)}+ ia(t)\phi'(t)e^{i\phi(t)} \big)} dt \\
-		&= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\big( a'(t)e^{-i\phi(t)} -ia(t)\phi'(t)e^{-i\phi(t)} \big) dt \\
-		&= \frac{i}{2\pi}\int_\R a(t)\big( a'(t)- ia(t)\phi'(t)\big) dt \\
-		&= \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt \\
-	\end{align*}
-	On peut se convaincre que le premier terme doit être nul car l'espérance doit être réelle. On peut s'en assurer par le calcul en notant que c'est l’inégale d'une dérivée :
-	\[\int_\R a'(t)a(t) dt = \frac{1}{2} \int_\R \big(a^2\big)'(t) dt = \frac{1}{2}\densit(t)\Big|_{-\infty}^{+\infty} = 0\]
-	Ce qui donne bien :
-	\[\esp[\densis]{\nu} = \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t) dt\]
-\end{demo}
-
-
-
-\begin{definition}
-	La dérivée $\phi'$ est appelé \emph{fréquence instantanée} du signal $x$. Le terme est justifié par l'\cref{eq:esp_freq} précédente : C'est une fonction dont la moyenne en temps correspond à la fréquence moyenne de $x$.
-\end{definition}
-
-Pour mieux de convaincre du bien fondé de cette interprétation, deux choses.
-\\
-D'une part, pour un signal classique de la forme $\cos(2\pi\nu t+\varphi)$ ou $e^{i(2\pi\nu t + \varphi)}$, la fréquence est clairement identifié par $\nu$, que l'on peut voir comme dérivée de la phase
-\footnote{\itshape 
-	Le facteur $2\pi$ s'assure que l'on parle bien de fréquence, question d'unité. Sans, $\nu$ correspondait à une pulsation et en définissant la transformée de Fourier en terme de pulsation (\ie~sans le facteur $2\pi$ dans l'exponentielle), alors la formule \eqref{eq:esp_freq} n'aurait pas de facteur $2\pi$ non plus. En clair, c'est une question de cohérence.} :
-\[\nu = \frac{1}{2\pi}\frac{d}{dt}(2\pi\nu t+\varphi)\]
-\\
-D'autre part, on peut fait le même jeu avec la largeur de bande qu'avec la fréquence moyenne. Cela donne :
-\begin{align*}
-	\var[\densis]{\nu} &= \frac{1}{4\pi^2} \int a'(t)^2 dt + \frac{1}{4\pi^2}\left(\int \phi'(t)^2 \densit(t) dt - \left(\int \phi'(t) \densit(t) dt \right)^2 \right) \\
-	&= \frac{1}{4\pi^2}\var[\densit]{\frac{a'}{a}} +\frac{1}{4\pi^2} \var[\densit]{\phi'\big.} \\
-	&= \frac{1}{4\pi^2}\var[\densit]{(\ln a)'\big.} +\frac{1}{4\pi^2} \var[\densit]{\phi'\big.}
-\end{align*}
-\\
-On constate deux composantes (qui, par ailleurs, sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il donc cohérent que le terme restant (là où apparaît $\phi'$) porte l'information fréquentielle du signal.
-\\
-
-Afin de clairement expliciter le problème des signaux réels pour l'analyse temps-fréquence, est introduit une dernier outils :
-
-
-\begin{definition}[Covariance]\label{def:cova_signal}
-	Étant données deux variables aléatoire $X$ et $Y$, leur covariance, qui mesure une forme de corrélation entre $X$ et $Y$, est donnée par la différence :
-	\[\esp{XY}-\esp{X}\esp{Y}\]
-	Outil qui à tout a fait sa place dans le cadre de l'analyse temps-fréquence. Seulement, les distributions associées au temps et à la fréquence ne sont pas les mêmes et le terme $\esp{XY}$ n'est donc pas défini.
-	Pour y remédier on se repose sur l'interprétation de $\phi'$ : puisque qu'il correspond à une déscrition temporelle de la fréquence, elle est associée à $\densit$. On définie alors la \emph{covariance du signal} $x$ comme le différence :
-	\begin{equation}\label{eq:cov_signal}
-		\text{Cov}(x) \defeq \esp[\densit]{t\phi'(t)} - \esp[\densit]{t} \esp[\densis]{\nu} = \esp[\densit]{t\phi'(t)} - \esp[\densit]{t} \esp[\densit]{\phi'(t)}
+	De même pour la variance de $\densis$ :
+	\begin{equation}\label{eq:var_freq}
+		\var[\densis]{\nu} = \frac{1}{4\pi^2}\var[\densit]{(\ln a)'\big.} +\frac{1}{4\pi^2} \var[\densit]{\phi'\big.}
 	\end{equation}
-\end{definition}
+\end{proposition}
+{\color{white}l} \\
+\noindent 
 
-\end{annexe}
+La première égalité \eqref{eq:esp_freq} montre que la moyenne (temporelle) de la fréquence instantanée est égale à la fréquence moyenne (au sens de Fourier). Exprimer ainsi cela parait évident, ce qui est tout à fait rassurant.
+\\
+Pour la seconde \eqref{eq:var_freq}, on constate deux composantes (qui, par ailleurs, sont des variances purement temporelle). La première ne porte que sur l'amplitude du signal, et inversement, l'amplitude n'apparaît que sur la première. Il donc cohérent que le terme restant (là où apparaît $\phi'$) porte l'information fréquentielle du signal.
 
 
-\subsection{Transformée en signal analytique}
+
+
+\subsection{Transformée en signal analytique --- REPRENDRE}
 
 \subsubsection{Le problème de signaux réels et comment le résoudre}\label{subsec:transfo_SA}
 
@@ -402,55 +300,6 @@ Avec la transformée de Fourier inverse, ce nouveau signal s'écrit alors :
 \[\SA{x} = \mathcal{F}^{-1}\big[ 2\one_{\R^+}\fou{x} \big] = 2 \mathcal{F}^{-1}\big[\one_{\R^+}\big] * x\]
 La transformée inverse de cette indicatrice (qui n'est autre que la fonction de Heavyside) n'est pas définie au sens classique, mais l'est au sens des distributions. Pour l'écrire, on introduit la distribution suivante :
 
-
-\begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
-	On appelle \emph{valeur principale de Cauchy} la distribution, notée $\vpC$, telle que :
-	\begin{equation}
-		\begin{aligned}
-			\forall \varphi\in\mathcal{S}(\R),\qquad 
-			\left\langle \vpC, \varphi \right\rangle 
-			= \fint_0^t \frac{\varphi(t)}{t}dt 
-			&\defeq \lim_{\varepsilon\lr0^+} \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t}dt + \int_{+\varepsilon}^{+\infty} \frac{\varphi(t)}{t}dt \\
-			&= \int_0^{+\infty} \frac{\varphi(t) - \varphi(-t)}{t}dt
-		\end{aligned}
-	\end{equation}
-	Ici $\mathcal{S}(\R)$ est l’espace de Schwartz des fonctions $C^\infty$ à décroissance rapide et la limite en $\varepsilon$ assure que l'intégrale (impropre) converge bien. Sa valeur est également appelée \emph{valeur principale} de l'intégrale. 
-\end{definition}
-
-La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse dans le sens où son produit avec l'identité donne 1 $\big(\left\langle id_\R \times \vpC, \varphi \right\rangle = \left\langle \vpC, id_\R \times\varphi \right\rangle=1\big)$ mais avec des propriétés d'intégration supplémentaires. Entre autre :
-
-
-\begin{propriete}\label{prop:fou2vp}
-	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, par :
-	\begin{equation}
-		\mathcal{F} \left[\vpC \right]= -i \pi\, \sign{} 
-	\end{equation}
-	On en déduit la transformée de Fourier inverse :
-	\begin{equation}
-		\mathcal{F}^{-1}\big[ 2\one_{\R^+} \big] = \mathcal{F}^{-1}\big[ 1 + \sign \big] = \delta + \frac{i}{\pi} \vpC
-	\end{equation}
-\end{propriete}
-
-
-\begin{demo}
-	juste pour le plaisir. Par définition, la transformée de Fourier de la valeur principale est telle que,\\ $\forall \varphi\in\mathcal{S}(\R)$ :
-	\begin{align*}
-		\left\langle \mathcal{F} \left(\vpC \right), \varphi \right\rangle = \left\langle \vpC, \hat{\varphi} \right\rangle 
-		&= \fint_\R \frac{\hat{\varphi}(\nu)}{\nu} d\nu \\
-		&= \int_0^{+\infty} \frac{\hat{\varphi}(\nu) - \hat{\varphi}(-\nu)}{\nu} d\nu \\
-		&= \int_0^{+\infty} \frac{1}{\nu} \left( \int_\R\varphi(t)e^{-2i\pi \nu t}dt - \int_\R\varphi(t)e^{2i\pi \nu t}dt \right)d\nu \\
-		&= \int_0^{+\infty} \frac{1}{\nu}\int_\R\varphi(t)\big(e^{-2i\pi \nu t} - e^{2i\pi \nu t}\big)dt\, d\nu \\
-		&= \int_0^{+\infty} \frac{1}{\nu}\int_\R-2i\varphi(t)\sin(2\pi \nu t)dt\, d\nu \\
-		&= -2i\int_\R\varphi(t)\int_0^{+\infty} \frac{\sin(2\pi \nu t)}{\nu}d\nu\, dt
-	\end{align*}
-	En posant $u=2\pi\nu t\sign(t)$ (le signe de $t$ assure que l'on ait le même signe dans et hors du sin), on obtient :
-	\begin{align*}
-		\left\langle \mathcal{F} \left[\vpC \right], \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
-		&= -2i\int_\R\varphi(t)\frac{\pi}{2}\sign(t), dt \\
-		&= \big\langle -i\pi\sign, \varphi \big\rangle
-	\end{align*}
-\end{demo}
-
 \begin{definition}[Transformée en SA et de Hilbert]\label{def:transfo_sa&hilbert}
 	On définie alors la \emph{transformée en signal analytique} (SA) de tout signal $x$ par l'application :
 	\begin{equation}\label{eq:transfo_SA}
@@ -471,12 +320,11 @@ La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse 
 \end{definition}
 
 Par souci de commodité, plutôt que redéfinir tout le vocabulaire développé plus haut (fréquence moyenne, temps moyen, \etc) pour les signaux réel via la transformation $\mathcal{A}$, dans la suite du mémoire on travaillera directement avec $\SA{x}$. %^(et on verra que c'est essentiel).
-
+\\
 
 
 
 \subsubsection{Interprétabilité des signaux analytiques}\label{subsec:Bedrisan&AM-FM}
-
 
 Dans les cas des signaux réels, la transformée de Hilbert est à valeur dans $\R$. Aussi, la transformée $\SA{x}$ à pour partie réelle $x$ et pour partie imaginaire $\mathcal{H}[x]$. Sous forme exponentielle, cela donne :
 \[\SA{x}(t) = a(t)e^{i\phi(t)}\quad \Lr\quad \left\{\begin{aligned}x(t) &= a(t) \cos\phi(t) \\\mathcal{H}[x](t) &= a(t) \sin\phi(t)
@@ -561,7 +409,8 @@ Dans ce cas,
 
 
 
-\section{Généralisation aux signaux multivariés}\label{sec:sign_multivar}
+
+\subsection{Généralisation aux signaux multivariés}\label{sec:sign_multivar}
 
 \begin{definition}[Signal multivarié]\label{def:signal_multivar}
 	Un \emph{signal multivarié}, ou \emph{$n-$varié}, est un vecteur composé de $n\in\N^*$ signaux $x_i$. Si $n=2$, alors on parle de signal \emph{bivarié}.
@@ -589,7 +438,8 @@ alors n'importe quel choix de $\phi$ est valable, il suffit que $\ \psi_i = \phi
 
 
 
-\subsection{Phase et fréquence instantanée de signal multivarié }\label{subsec:param_instant_nvar}
+
+\subsubsection{Phase et fréquence instantanée de signal multivarié }\label{subsec:param_instant_nvar}
 
 Afin de contraindre ce choix, on s'inspire propriétés de la phase instantanée vu plus tôt pour en déduire deux approches :
 \begin{itemize}
@@ -691,6 +541,132 @@ Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier rais
 \end{remarque}
 
 
+
+
+\subsubsection{Apparition de la phase géométrique}\label{subsub:intro_phaseg}
+
+
+
+
+
+\begin{annexe}
+
+\section{Complément sur l'analyse temps-fréquence} 
+
+\subsection{Un bon moment...}\label{ann:integ_trick}
+
+Pour montrer les formules de la \cref{prop:mom_freq}, on commence par montrer ce que Cohen \cite{cohen_time_1995} appelle les  :
+
+\begin{proposition}[``Calculation tricks''] \label{prop:integ_trick}
+	Si le signal est $n$ fois dérivable et que la densité d’énergie spectrale associée $\densis$ admet un moment d'ordre $n$, alors ce moment est donnée par la formule :
+	\begin{equation}\label{eq:moment_f}
+		\forall n\in\N,\qquad \esp[\densis]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \congu{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
+	\end{equation}
+	\\
+	Avec les hypothèses analogues, les moments de $\densit$ s'écrivent :
+	\begin{equation}\label{eq:moment_t}
+		\forall n\in\N,\qquad \esp[\densit]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \fou{x}(\nu) \frac{d^n}{dt^n} \congu{\fou{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \fou{x}, \frac{d^n}{d\nu^n}\fou{x}\right\rangle
+	\end{equation}
+\end{proposition}
+
+
+\begin{demo}[de la \cref{prop:integ_trick}]
+	\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
+	\begin{align*}
+		\esp[\densis]{\nu^n} = \int_\R \nu^n\densis(\nu) d\nu &= \int_\R \nu^n \fou{x}(\nu)\congu{\fou{x}(\nu)} d\nu \\
+		&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \congu{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
+		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
+	\end{align*}
+	Ici, on remarque que :
+	\begin{align*}
+		\nu^n e^{-2i \pi \nu (t-t')} &= \nu^{n-1}\frac{1}{-2i \pi}\frac{d}{dt}e^{-2i \pi \nu(t-t')} \\
+		&= \nu^{n-2}\frac{1}{(-2i \pi)^2}\frac{d^2}{dt^2}e^{-2i \pi \nu(t-t')} \\
+		&\ \vdots \\
+		&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
+	\end{align*}
+	\\
+	
+	Ce qui permet, en jouant sur les ordres d'intégrations et les propriétés du Dirac, d'obtenir :
+	\begin{align*}
+		\esp[\densis]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
+		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
+		&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
+		&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
+		&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
+	\end{align*}
+	%	... a moins que :
+\end{demo}
+
+\begin{demo}[de l'\cref{eq:esp_freq}, \cref{prop:mom_freq}]
+	Avec le hypothèses de la \cref{prop:integ_trick} précédente, on a :
+	\begin{align*}
+		\esp[\densis]{\nu} = \frac{i}{2\pi} \densit(t) \int_\R x(t) \congu{x'(t)} dt &= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\congu{\big( a'(t)e^{i\phi(t)}+ ia(t)\phi'(t)e^{i\phi(t)} \big)} dt \\
+		&= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\big( a'(t)e^{-i\phi(t)} -ia(t)\phi'(t)e^{-i\phi(t)} \big) dt \\
+		&= \frac{i}{2\pi}\int_\R a(t)\big( a'(t)- ia(t)\phi'(t)\big) dt \\
+		&= \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt \\
+	\end{align*}
+	On peut se convaincre que le premier terme doit être nul car l'espérance doit être réelle. On peut s'en assurer par le calcul en notant que c'est l’inégale d'une dérivée :
+	\[\int_\R a'(t)a(t) dt = \frac{1}{2} \int_\R \big(a^2\big)'(t) dt = \frac{1}{2}\densit(t)\Big|_{-\infty}^{+\infty} = 0\]
+	Ce qui donne bien :
+	\[\esp[\densis]{\nu} = \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t) dt\]
+\end{demo}
+
+\begin{demo}[de l'\cref{eq:var_freq}, \cref{prop:mom_freq}]
+	à démo comme PNL
+\end{demo}
+
+	
+\subsection{Transformée inverse de la fonction de Heaviside}
+
+\begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
+	On appelle \emph{valeur principale de Cauchy} la distribution, notée $\vpC$, telle que :
+	\begin{equation}
+		\begin{aligned}
+			\forall \varphi\in\mathcal{S}(\R),\qquad 
+			\left\langle \vpC, \varphi \right\rangle 
+			= \fint_0^t \frac{\varphi(t)}{t}dt 
+			&\defeq \lim_{\varepsilon\lr0^+} \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t}dt + \int_{+\varepsilon}^{+\infty} \frac{\varphi(t)}{t}dt \\
+			&= \int_0^{+\infty} \frac{\varphi(t) - \varphi(-t)}{t}dt
+		\end{aligned}
+	\end{equation}
+	Ici $\mathcal{S}(\R)$ est l’espace de Schwartz des fonctions $C^\infty$ à décroissance rapide et la limite en $\varepsilon$ assure que l'intégrale (impropre) converge bien. Sa valeur est également appelée \emph{valeur principale} de l'intégrale. 
+\end{definition}
+
+La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse dans le sens où son produit avec l'identité donne 1 $\big(\left\langle id_\R \times \vpC, \varphi \right\rangle = \left\langle \vpC, id_\R \times\varphi \right\rangle=1\big)$ mais avec des propriétés d'intégration supplémentaires. Entre autre :
+
+\begin{propriete}\label{prop:fou2vp}
+	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, par :
+	\begin{equation}
+		\mathcal{F} \left[\vpC \right]= -i \pi\, \sign{} 
+	\end{equation}
+	On en déduit la transformée de Fourier inverse :
+	\begin{equation}
+		\mathcal{F}^{-1}\big[ 2\one_{\R^+} \big] = \mathcal{F}^{-1}\big[ 1 + \sign \big] = \delta + \frac{i}{\pi} \vpC
+	\end{equation}
+\end{propriete}
+
+\begin{demo}
+	juste pour le plaisir. Par définition, la transformée de Fourier de la valeur principale est telle que,\\ $\forall \varphi\in\mathcal{S}(\R)$ :
+	\begin{align*}
+		\left\langle \mathcal{F} \left(\vpC \right), \varphi \right\rangle = \left\langle \vpC, \hat{\varphi} \right\rangle 
+		&= \fint_\R \frac{\hat{\varphi}(\nu)}{\nu} d\nu \\
+		&= \int_0^{+\infty} \frac{\hat{\varphi}(\nu) - \hat{\varphi}(-\nu)}{\nu} d\nu \\
+		&= \int_0^{+\infty} \frac{1}{\nu} \left( \int_\R\varphi(t)e^{-2i\pi \nu t}dt - \int_\R\varphi(t)e^{2i\pi \nu t}dt \right)d\nu \\
+		&= \int_0^{+\infty} \frac{1}{\nu}\int_\R\varphi(t)\big(e^{-2i\pi \nu t} - e^{2i\pi \nu t}\big)dt\, d\nu \\
+		&= \int_0^{+\infty} \frac{1}{\nu}\int_\R-2i\varphi(t)\sin(2\pi \nu t)dt\, d\nu \\
+		&= -2i\int_\R\varphi(t)\int_0^{+\infty} \frac{\sin(2\pi \nu t)}{\nu}d\nu\, dt
+	\end{align*}
+	En posant $u=2\pi\nu t\sign(t)$ (le signe de $t$ assure que l'on ait le même signe dans et hors du sin), on obtient :
+	\begin{align*}
+		\left\langle \mathcal{F} \left[\vpC \right], \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
+		&= -2i\int_\R\varphi(t)\frac{\pi}{2}\sign(t), dt \\
+		&= \big\langle -i\pi\sign, \varphi \big\rangle
+	\end{align*}
+\end{demo}
+
+\end{annexe}
 
 
 
