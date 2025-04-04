@@ -88,7 +88,7 @@
 \newcommand{\I}{\mathbb{I}}
 \newcommand{\one}{\mathbbm{1}}
 %\renewcommand{\S}{\mathfrak{S}}
-\renewcommand{\S}{\mathbb{S}}
+\renewcommand{\S}[1]{\mathbb{S}^{#1}}
 
 % arrows
 \newcommand{\lr}{\longrightarrow}
@@ -97,6 +97,7 @@
 \newcommand{\Ll}{\Longleftarrow}
 \newcommand{\llr}{\longleftrightarrowr}
 \newcommand{\Llr}{\Longleftrightarrow}
+\newcommand{\lmt}{\longmapsto}
 
 % espaces
 \newcommand{\matk}{\mathpzc{M}_n(\mathbb{K})}
@@ -184,27 +185,34 @@
 \newcommand{\cf}{\textit{cf. }}
 
 % tmp (notation)
+
+	%phase
 \newcommand{\phaset}{\Phi_{\text{\normalfont tot}}}
 \newcommand{\phased}{\Phi_{\text{\normalfont dyn}}}
 \newcommand{\phaseg}{\Phi_{\text{\normalfont geo}}}
 
+	% analyse temps-fréquence
 \newcommand{\densit}{\rho}
 \newcommand{\densis}{\varrho}
-
-\newcommand{\PC}[1]{\text{\normalfont P}\mathbb{C}^{#1}}
-\newcommand{\barint}[2][]{\text{\sout{\ensuremath{\displaystyle \int_{#2}}}}^{#1}}
-
-\renewcommand{\i}{i}
-
 \newcommand{\Fou}[1]{\mathcal{F}\left[#1\right]}
 \newcommand{\fou}[1]{\hat{#1}}
 \newcommand{\iFou}[1]{\mathcal{F}^{-1}\left[#1\right]}
 \newcommand{\SA}[1]{\mathcal{A}\left[#1\right]}
 \newcommand{\sa}[1]{#1_+}
 \newcommand{\hilb}[1]{\mathcal{H}\left[#1\right]}
-\newcommand{\vpC}{\text{\normalfont vp} \frac{1}{x}}
 
+\newcommand{\vpC}{\text{\normalfont vp} \frac{1}{x}}
+\newcommand{\barint}[2][]{\text{\sout{\ensuremath{\displaystyle \int_{#2}}}}^{#1}}
+
+
+	%variétoche
+\newcommand{\manu}[1][]{\mathpzc{M}^{#1}}
 \newcommand{\tg}[2][]{\text{\normalfont T}_{#1}#2}
+
+\renewcommand{\dim}[1][]{\text{\normalfont dim}_{#1}}
+%\newcommand{\dimC}[]{\text{\normalfont dim}_{\C}}
+
+\newcommand{\PC}[1]{\text{\normalfont P}\mathbb{C}^{#1}}
 \newcommand{\Hol}{\text{\normalfont Hol}}
 
 %ultre-cursed (fix asap)
