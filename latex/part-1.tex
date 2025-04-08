@@ -320,7 +320,7 @@ alors n'importe quel choix de $\phi$ est valable, il suffit que $\ \alpha_i = \p
 Afin de contraindre ce choix, on s'inspire propriétés de la phase instantanée vu plus tôt pour en déduire deux approches :
 \begin{itemize}
 	\item D'une part, l'espérance de la fréquence instantanée (ici vu comme dérivée à $2\pi$ près de la phase\footnote{\itshape
-		La pertinance de cette définition dans le cas multivarié sera discuté plus loin... \textbf{or is it ?}})
+		La pertinence de cette définition dans le cas multivarié sera discuté plus loin... \textbf{or is it ? (si oui, dis cref où)}})
 	doit donnée la fréquence moyenne au sens de Fourier, eq. \eqref{eq:esp_freq}.
 	
 	\item D'autre part, les conditions d'interprétation \eqref{eq:condi_AM-FM} de la décomposition $(a_x,\phi_x)$, \cref{coro:AM-FM}, exige que les hautes fréquences du signal se retrouve dans la phase.
@@ -341,6 +341,7 @@ Pour cela on introduit les notations utiles au cas multivarié :
 		\densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big\|\fou{\bf{x}}(\nu)\big\|^2 = \sum_{i=1}^n \densis_i(t) \end{aligned}	
 	\end{align}
 \end{definition}
+\skipl
 
 La première approche, inspiré de \cite{cano_mathematical_2022} consiste donc de reprendre le ``calculation trick'' \eqref{eq:moment_f}, pour en déduire la fréquence moyenne
 \begin{align*}
@@ -359,58 +360,85 @@ Ce qui mène à une première (potentielle) définition de la phase instantanée
 \end{equation}
 \\
 
-La seconde approche, fortement inspirée par les travaux de Lilly \& Olhede  \cite{lilly_analysis_2012}, se base sur l'idée de séparation haute-basse fréquence du signal $\bf{x}$. Pour cela, l'on commence par faire apparaître la phase $\phi$ --- pour l'instant inconnue --- en écrivant $\bf{x}$ sous la forme :
-\[\forall t\in\R,\qquad \bf{x}(t) = e^{i\phi(t)} e^{-i\phi(t)} \bf{x}(t) \defeq e^{i\phi(t)} \Tilde{\bf{x}}(t)\]
+La seconde approche, fortement inspirée par les travaux de Lilly \& Olhede  \cite{lilly_analysis_2012}, se base sur l'idée de séparation haute/basse fréquences du signal $\bf{x}$. Pour cela, l'on commence par faire apparaître la phase $\phi$ --- pour l'instant inconnue --- en écrivant $\bf{x}$ sous la forme :
+\[\forall t\in\R,\qquad \bf{x}(t) = e^{i\phi(t)} e^{-i\phi(t)} \bf{x}(t) \defeq e^{i\phi(t)} \bf{y}(t)\]
 \\
-Si $\phi$ est bien choisie, alors $\Tilde{\bf{x}}$ contient les informations associées à l'amplitude et la polarisation de $\bf{x}$. Or, la phase doit contenir les hautes fréquences du signal. 
-Pour s'en assurer on demande, à l'inverse, que les basses fréquences du signal soient données par $\Tilde{\bf{x}}$ en limitant ces variations. Concrètement, $\phi$ doit être choisie de sorte à minimiser la dérivée $\Tilde{\bf{x}}'$ :
-\[\forall t\in\R,\qquad \phi(t) = \argmin{\theta(t)}{\big\|\Tilde{\bf{x}}'(t)\big\|_2}^2 = \argmin{\theta(t)}{\Big\|e^{-i\theta(t)}\big(\bf{x}'(t) - i\theta(t)'\bf{x}(t)\big)\Big\|_2}^2 = \argmin{\theta(t)}{\big\|\bf{x}'(t) - i\theta'(t)\bf{x}(t)\big\|_2}^2\]
+Si $\phi$ est bien choisie, alors $\bf{y}$ ne devrait contenir que les informations associées à l'amplitude et la polarisation de $\bf{x}$. Or, la phase doit contenir les hautes fréquences du signal. 
+Pour s'en assurer on demande, à l'inverse, que les basses fréquences du signal soient données par $\bf{y}$ en limitant ces variations. Concrètement, $\phi$ doit être choisie de sorte à minimiser la dérivée $\dot{\bf{y}}'$ :
+\[\forall t\in\R,\qquad \phi(t) = \argmin{\theta(t)}{\big\|\dot{\bf{y}}(t)\big\|_2}^2 = \argmin{\theta(t)}{\Big\|e^{-i\theta(t)}\big(\dot{\bf{x}}(t) - i\theta(t)'\bf{x}(t)\big)\Big\|_2}^2 = \argmin{\theta(t)}{\big\|\dot{\bf{x}}(t) - i\theta'(t)\bf{x}(t)\big\|_2}^2\]
 \\
 La contrainte ne dépendant que de la dérivée $\theta'$, on se ramène à :
-\[\min_{\theta(t)}{\|\Tilde{\bf{x}}'(t)\|_2}^2 = \min_{\theta'(t)}{\big\|\bf{x}'(t) - \theta'(t) \bf{x}(t)\big\|_2}^2\]
+\[\min_{\theta(t)}{\|\dot{\bf{y}}(t)\|_2}^2 = \min_{\theta'(t)}{\big\|\dot{\bf{x}}(t) - \theta'(t) \bf{x}(t)\big\|_2}^2\]
 \\
 En rappelant que $\frac{d}{dx}{\big\|f(x)\big\|_2}^2 = 2\Re e\big\langle f(x), f'(x)\big\rangle$, il vient que ce minimum\footnote{\itshape
 	L'extremum obtenu est l'unique minimum globale puisque $t\longmapsto \|at + b\|^2$ est strictement convexe pour $a\neq0$.}
 est atteint par $\phi'(t)$ à condition que :
 \begin{align*}
-	\frac{d}{d\phi'}{\big\| \bf{x}' - i\phi' \bf{x}\big\|_2}^2 = 0 \quad \Llr\quad
-	0 &= 2\Re e\left\langle  \bf{x}' - i\phi' \bf{x} ,  \frac{d}{d\phi'}\big(\bf{x}' - i\phi' \bf{x}\big)\right\rangle \\
-	&= 2\Re e\big\langle  \bf{x}' - i\phi' \bf{x} ,  - i \bf{x}\big\rangle \\
-	&= 2\Re e\Big(i\big\langle  \bf{x}' ,  \bf{x}\big\rangle\Big) + 2\phi'\Re e\big\langle   \bf{x} ,  \bf{x}\big\rangle\\
-	&= -2\Im m\big\langle  \bf{x}' ,  \bf{x}\big\rangle + 2\phi'{\| \bf{x}\|_2}^2
+	\frac{d}{d\phi'}{\big\| \dot{\bf{x}} - i\phi' \bf{x}\big\|_2}^2 = 0 \quad \Llr\quad
+	0 &= 2\Re e\left\langle  \dot{\bf{x}} - i\phi' \bf{x} ,  \frac{d}{d\phi'}\big(\dot{\bf{x}} - i\phi' \bf{x}\big)\right\rangle \\
+	&= 2\Re e\big\langle  \dot{\bf{x}} - i\phi' \bf{x} ,  - i \bf{x}\big\rangle \\
+	&= 2\Re e\Big(i\big\langle  \dot{\bf{x}} ,  \bf{x}\big\rangle\Big) + 2\phi'\Re e\big\langle   \bf{x} ,  \bf{x}\big\rangle\\
+	&= -2\Im m\big\langle  \dot{\bf{x}} ,  \bf{x}\big\rangle + 2\phi'{\| \bf{x}\|_2}^2
 \end{align*}
 Ainsi :
 \begin{align}\label{eq:phas_inst_v2}
-	\phi' &= \frac{\Im m\big\langle  \bf{x}' ,  \bf{x}\big\rangle}{{\| \bf{x}\|_2}^2} = \frac{-\Im m\big\langle  \bf{x},  \bf{x}'\big\rangle}{{\| \bf{x}\|_2}^2}  &  &\text{et}  &  \phi &= -\Im m\int \frac{\big\langle \bf{x}(s) , \bf{x}'(s) \big\rangle}{\|\bf{x}(s)\|^2} ds
+	\phi' &= \frac{\Im m\big\langle  \dot{\bf{x}} ,  \bf{x}\big\rangle}{{\| \bf{x}\|_2}^2} = \frac{-\Im m\big\langle  \bf{x},  \dot{\bf{x}}\big\rangle}{{\| \bf{x}\|_2}^2}  &  &\text{et}  &  \phi &= -\Im m\int \frac{\big\langle \bf{x}(s) , \dot{\bf{x}}(s) \big\rangle}{\|\bf{x}(s)\|^2} ds
 \end{align}
 \\
 Ce qui, sous forme exponentiel, se réécrit :
 \begin{align*}
-	-\Im m\frac{\big\langle \bf{x}(t) , \bf{x}'(t) \big\rangle}{\|\bf{x}(t)\|^2} &= -\Im m\frac{1}{a(t)^2} \sum_{i=1}^n a(t)a_i(t)e^{i\phi_i(t)}\congu{\Big( \big(aa_i\big)'(t) +a(t)a_i(t)i\phi_i'(t)\Big)e^{i\phi_i(t)}} \\
+	-\Im m\frac{\big\langle \bf{x}(t) , \dot{\bf{x}}(t) \big\rangle}{\|\bf{x}(t)\|^2} &= -\Im m\frac{1}{a(t)^2} \sum_{i=1}^n a(t)a_i(t)e^{i\phi_i(t)}\congu{\Big( \big(aa_i\big)'(t) +a(t)a_i(t)i\phi_i'(t)\Big)e^{i\phi_i(t)}} \\
 	&= -\Im m\frac{1}{a(t)^2} \sum_{i=1}^n a(t)a_i(t)\big(aa_i\big)'(t) -ia(t)^2a_i(t)^2\phi_i'(t) \\
 	&= -\frac{1}{a(t)^2} \sum_{i=1}^n -a(t)^2a_i(t)^2 \phi_i'(t) \\
 	&= \sum_{i=1}^n a_i(t)^2 \phi_i'(t)
 \end{align*}
 Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier raisonnement :
-\[-\Im m\int \frac{\big\langle \bf{x}(s) , \bf{x}'(s) \big\rangle}{\|\bf{x}(s)\|^2} ds = \int \sum_{i=1}^n a_i(s)^2 \phi_i'(s) = \sum_{i=1}^n \int a_i(s)^2 \phi_i'(s)ds\]
-Il semblerait alors que $ \frac{\Im m\langle  \bf{x}' ,  \bf{x}\rangle}{{\| \bf{x}\|_2}^2}$ soit un bon choix de phase instantanée. \`A noter que cette phase n'est définie qu'à une constante d'intégration près, autrement dit, à un choix de phase initiale près.
+\[-\Im m\int \frac{\big\langle \bf{x}(s) , \dot{\bf{x}}(s) \big\rangle}{\|\bf{x}(s)\|^2} ds = \int \sum_{i=1}^n a_i(s)^2 \phi_i'(s) = \sum_{i=1}^n \int a_i(s)^2 \phi_i'(s)ds\]
+\\
+Cela entraîne la définition :
+
+\begin{definition}[Phase dynalique/instantanée] \label{def:phase_d}
+	\'Etant donné un signal $\bf{x}\in \conti{\R}{\C^n}$ quelconque, on appelle \emph{phase instantanée} ou \emph{dynamique} à l'instant $t$ partant du $t_0$, le réel :
+	\begin{equation} \label{eq:phase_d}
+		\forall t_0, t\in\R, \quad \phased(\bf{x}, t_0,t) \defeq -\int_{t_0}^t \frac{\Im m \big\langle \bf{x}(s) , \dot{\bf{x}}(s) \big\rangle}{\|\bf{x}(s)\|^2} ds =\sum_{i=1}^n \int_{t_0}^t a_i(s)^2 \phi_i'(s)ds
+	\end{equation}
+	On s'autorisera à omettre les paramètres de $\phased$ lorsque cela ne prête pas à confusion.
+\end{definition}
+\skipl
+
+Le terme ``dynamique'' viens, entre autre, du fait que dans son cadre d'étude habituelle, la dérivée $\dot{\bf{x}}$ se voit remplacé par un hamiltonien $h\bf{x}$, voir par exemple \cite[sec. 2]{bohm_geometric_2003}, \cite[p.~215]{mukunda_quantum_1993}. En particulier, en mécanique quantique, cet hamiltionien régie l'équation de Schödinger :
+\begin{equation}\label{eq:schrodinger}
+	i\frac{d \psi(t)}{dt} = h\psi(t)
+\end{equation}
+
+Sachant que $\bf{x}$ n'a aucune raison de suivre une telle équation dans notre cas, poser $h = i\frac{d}{dt}$ enlève toute contrainte. On retrouve ainsi, modulo un jeu de convention sur le produit hermitien, la formule \eqref{eq:phase_d} ci-dessus.
+\\ Notons enfin qu'une fois la phase dynamique ``extraite'' de \bf{x}, le vecteur restant $\bf{y}$ n'a évidement pas de phase dynamique, ce qui se traduit par la formule :
 \\
 
 
 
 \subsection{Apparition de la phase géométrique --- MEH}\label{subsub:intro_phaseg}
 
-Pour rentre compte de la pertinence de cette expression, détaillons un cas particulier. Supposons que le signal $\bf{x}$ soit cyclique à une phase près. C'est-à-dire qu'entre les deux instant $t_0$ et $t$ l'on ait la relation :
-\[\exists \theta\in\R\ |\ \bf{x}(t) = e^{i\theta} \bf{x}(t_0)\]
+Pour rentre compte de la pertinence de cette expression, commençons par noter qu'il exsite une autre façon standard de définir calculer la phase d'un signal via la \emph{phase totale} :
+\begin{equation}\label{eq:phase_t}
+	\phaset(\bf{x}, t_0, t) \defeq \arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle
+\end{equation}
+Il n'est pas clair, dans un cadre générale comment pourquoi cela s'interprète bien comme une phase et c'est encore pire lorsque l'on explicite ca valeur :
+\[\phaset(\bf{x},t_0, t) = \arg \sum{i=1}^n a_i(t)a_i(t_0)e^{i\phi(t)-\phi(t_0)}\]
+
+
+et on reviendra dans la \namecref{part:phase_geo} suivante sur 
+détaillons un cas particulier. Supposons que le signal $\bf{x}$ soit cyclique à une phase près. C'est-à-dire qu'entre les deux instant $t_0$ et $t$ donnés, l'on ait la relation :
+\[\exists \theta\in\R\ |\quad \bf{x}(t) = e^{i\theta} \bf{x}(t_0)\]
 \\
 Dès lors, la phase instantanée à l'instant $t$ devrait être correspondre à $\theta$ et on peut l'écrire en fonction de $\bf{x}$ :
 \[\arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle = \arg\big\langle e^{i\theta} \bf{x}(t_0), \bf{x}(t_0)\big\rangle = \theta\]
 \\
 On pourrait alors s'attendre à avoir l'égalité :
-\[\arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle = \theta = -\Im m\int_{t_0}^t \frac{\big\langle \bf{x}(s) , \bf{x}'(s) \big\rangle}{\|\bf{x}(s)\|^2} ds\]
+\[\arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle = \theta = -\Im m\int_{t_0}^t \frac{\big\langle \bf{x}(s) , \dot{\bf{x}}(s) \big\rangle}{\|\bf{x}(s)\|^2} ds\]
 \skipl
 
-Or, si c'est vrai dans le cas univarié, dès que $n\geq 2$, ce n'est plus le cas. Cette erreur, cette nouvelle phase ne peut pas être 
+Or, si c'est vrai dans le cas univarié (\ie~$n=1$), dès que $n\geq 2$, ce n'est plus le cas. Cette erreur, cette nouvelle phase ne peut pas être 
 
 
 

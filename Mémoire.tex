@@ -1,7 +1,13 @@
+
+%%%% PREAMBULES %%%%
+
 \input{latex/preamb}
 
 
-\begin{document}
+
+\begin{document}	
+	
+%%%% PAGE DE GARDE %%%%
 
 
 \begin{titlepage}
@@ -39,37 +45,48 @@
 	{\large 2024 - 2025}
 \end{titlepage}
 
+
+
 \newpage
+
 \tableofcontents
 \thispagestyle{empty}
-{\color{white}l}
+
+
 
 
 \newpage
+
 \setcounter{page}{1}
 
 
 
-\newpage
+
+
+
+%%%% INTRO DU MEMOIRE %%%%
 
 \phantomsection
 \addcontentsline{toc}{section}{Introduction}
-\section*{Introduction}
+\section*{\begin{center}\scshape Introduction \end{center}}
 
-La phase géométrique fait partie de ces concepts qui apparaissent un peu partout en physique, dont l'étude est très instructive mais qui demande énormément de prérequis pour être expliqué proprement.
-Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'in signal $\bf{\psi}$ est donné par :
+La phase géométrique fait partie de ces concepts qui apparaissent régulièrement en physique, mais qui demande énormément de prérequis pour être expliqué proprement.
+Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'un signal complexe $\bf{\psi}$ est donné par :
 \[\phaseg(\psi, t_0, t) = \arg\big\langle \psi(t), \psi(t_0)\big\rangle + \Im m\int_{t_0}^t \frac{\big\langle \psi(s) , \dot{\psi}(s) \big\rangle}{\|\psi(s)\|^2} ds\]
-Ce qui rend cette phase si intéressante c'est qu'elle est invariante par transformation de gauge, c'est-à-dire invariante par toute transformation du type :
+Ce qui rend cette phase si intéressante c'est qu'elle est invariante par transformation de jauge, c'est-à-dire invariante par toute transformation du type :
 \[\psi(t)\ \leadsto\ \psi'(t) = e^{i\alpha(t)}\psi(t) \]
 \\
-Cette propriété rend la phase $\phaseg$ intrinsèquement liée à la géométrie des l'espace dans lequel évolue $\psi$, d'où son nom.
+Cette propriété rend la phase $\phaseg$ intrinsèquement liée à la trajectoire que prend la projection $[\psi]\in\PC{n-1}$ de $\psi$ dans l'espace complexe. En d'autre terme à la géométrie de l’espace projectif $\PC{n}$, d'où son nom.
 \\
 
-Cela étant dit, la phase géométrique à toujours été décrite dans le cadre de système dynamique régis par une EDP (généralement Schrödinger).
-L'objectif de ce mémoire sera donc de décrire ce phénomènepour un  signal quelconque et ceux avec une approche géométrique.
+Cela étant dit, ces résultats ont toujours été décrit, à notre connaissant, dans le cadre de système dynamique régis par une EDP (généralement Schrödinger).
+L'objectif de ce mémoire sera donc de décrire ce phénomène pour un signal quelconque et ceux avec une approche géométrique.
 \\
-Cela demandera de faire appelle, entre autre, à des outils de variété différentielle complexe et fibrée principale. 
-Et comme il serait inapproprié de considérer que le lecteur a toutes les bases nécessaire sur le sujet, des \textbf{nombreuses} annexes seront dédiées aux mathématiques utile à cette fin.
+Cela demandera de faire appelle, entre autre, à des outils de variété différentielle complexe et fibrée principale ;
+et comme il serait inapproprié de considérer que le lecteur a toutes les bases nécessaire sur le sujet, des \textbf{nombreuses} annexes seront dédiées aux mathématiques utile à cette fin.
+\\
+
+\textbf{\textit{... sûrement plus de blabla pour détailler le plan du mémoire...}}
 
 
 
@@ -79,7 +96,7 @@ Et comme il serait inapproprié de considérer que le lecteur a toutes les bases
 
 \phantomsection
 \addcontentsline{toc}{section}{Indexe des notations}
-\section*{Indexe des notations}\label{sec:index_nota}
+\section*{\begin{center}\scshape Indexe des notations \end{center}}\label{sec:index_nota}
 
 \begin{tabular}{|| l | l ||} \hline
 	\textsc{Objet/fonctions}  & \textsc{Notations} \\
@@ -101,160 +118,45 @@ Et comme il serait inapproprié de considérer que le lecteur a toutes les bases
 \end{tabular}
 \\ \\
 
-\textsc{ToDo de  la \cref{part:param_instant} :}
-\begin{itemize}	
+%\textsc{ToDo de  la \cref{part:param_instant} :}
+%\begin{itemize}	
 	
-	\item rectifier la démo de la \cref{prop:integ_trick} (et mettre à jour la formule la où elle est utilisée)
+	%\item rectifier la démo de la \cref{prop:integ_trick} (et mettre à jour la formule la où elle est utilisée)
 	
 	%\item Principe d'incertitude à éclaircir (comprendre + expliquer) \cref{sec:freq_instant}
 	
-	\item \`A quoi sert Bedrosian au juste ? \Cref{theo:2Bedrosian}
+	%\item \`A quoi sert Bedrosian au juste ? \Cref{theo:2Bedrosian}
 	
-	\item \'Eventuellement ajouter que'qu'part: ``On parle éventuellement de signal AM-FM (amplitude modulated - frequancy modulated)'' \cref{coro:AM-FM}
+	%\item \'Eventuellement ajouter que'qu'part: ``On parle éventuellement de signal AM-FM (amplitude modulated - frequancy modulated)'' \cref{coro:AM-FM}
 	
-	\item Refaire les graphs en Tikz (\cref{fig:densi_spec_sym,,fig:exemple_tSA_1/2,fig:exemple_tSA_2/2})
+	%\item Refaire les graphs en Tikz (\cref{fig:densi_spec_sym,,fig:exemple_tSA_1/2,fig:exemple_tSA_2/2})
 	
-\end{itemize}
+%\end{itemize}
 
 
 
 
-%\part{Phase et Fréquence instantanée d'un Signal}\label{part:param_instant}
-
-%\input{latex/part-1}
+%%%% COEUR DU MEMOIRE %%%%
 
 
+\part{Phase et Fréquence instantanée d'un Signal}\label{part:param_instant}
+
+	\input{latex/part-1}
 
 
-\part{Description de la phase géométrique}\label{part:phase_geo?}
+%\part{Description de la phase géométrique}\label{part:phase_geo}
 	
-\section{Prérequis mathématique}
-
-\subsection{Variété différentielle complexe}
+	%\input{latex/part-2}
 
 
 
-Pour mémoire, une variété différentielle de classe $C^k$ ($k\in\N\cup\{\infty\}$) de dimension $n$ est un espace topologique\footnote{\itshape
-	La topologie de $\manu$ doit vérifier des propriétés type séparable, dénombrable à l'infinie, \etc, qui seront toutes admises dans la suite, voir par exemple }
- $\manu$ (ou $\manu[n]$) munie d'un \emph{atlas} $(\phi_i, U_i)_{i\in I}$, c'est-à-dire un ensemble finie de pair d'ouvert $U_i\subset \manu$ et d'application $\phi_i :U_i\ \lr\ \R^n$ telle que :
-\begin{itemize}
+%\part{Notes 'n' thoughts}
+
+	\input{latex/garb}
 	
-	\item les $U_i$ forme un recouvrement de la variété :\qquad $\bigcup_{i\in I} \phi_i(U_i) = \manu$
 	
-	\item les $\phi_i$ sont des homéomorphismes sur leur image $\phi_i(U_i)\subset\R^4$.
 	
-	\item si l'intersection $U_i \cap U_j$ est non vide, alors ${\phi_j \circ {\phi_i}^{-1}}_{| {\phi_i}^{-1}(U_i\cap U_j)}$ est un $C^k$ difféomorphisme sur son image.
-\end{itemize}
-
-$\manu$ sera une \emph{variété différentielle complexe} si elle satisfait les propriétés ci-dessus où $\R^n$ est remplacé par $\C^n$ et où la condition de difféomorphisme est remplacé par la condition d'holomorphisme. 
-\\
-Une application $f : \C^n\lr \C^n$ étant holomorphe si chacune de ses composantes vérifie l'équation de Cauchy-Riemann :
-\[\forall x,y\in\R^n,\qquad \frac{\partial f }{\partial y^\nu}(x+iy) = i \frac{\partial f }{\partial x^\nu}(x+iy)\]
-\\
-Les fonctions holomorphes étant automatiquement $C^\infty$, les variétés différentielles complexes sont toujours lisse, c'est-à-dire $C^\infty$. Aussi, $\manu$ est dite de dimension complexe $n$ et dimension (réel) 2n, notés :
-\begin{align}
-	\dim[\C](\manu) &\defeq n  &  \dim[\R] (\manu) \defeq \dim (\manu) = 2n
-\end{align}
-\\
-
-
-
-\subsection{Variété fibrée principale}
-
-\begin{definition}[Variété fibrée localement trivial]
-	\'Etant donnée deux variétés différentielles $P$ et $B$ de même classe, une \emph{fibration de base $B$ et d'espace total $P$} et une application $\pi : P\lr B$ telle qu'en tout point $x\in B$ de la base, il existe un voisinage $U_x\subset B$ et une variété différentielle $F_x$ telle que $U_x\times F_x$ soit difféomorphe à $\pi^{-1}(U_x)$.
 	
-	On dit de $P$ que c'est une \emph{variété fibrée}, un \emph{espace fibré} ou tout simplement un \emph{fibré} et $P_x \defeq \pi^{-1}(U_x)$ est appelé \emph{fibre de $P$ au} (ou \emph{au dessus du}) \emph{point} $x$.
-	Si de plus $B$ est connexe, alors les fibres $P_x$ sont toutes difféomorphes à un même $F$ et on parle de \emph{fibre type} de $P$.
-	\\
-	
-	L'idée derrière cette définition est de formaliser l'idée des espaces, comme le ruban de Modiüs, qui ressemble à un produit $F\times B$ (d'où la notation $P$) sans vraiment en être un (voir \cref{fig:fibration}).
-\end{definition}
-
-\begin{figure}[h]\centering
-	%\includegraphics{fig/...}
-	\caption{représentation schématique d'une fibration du ruban de Mobiüs.}
-	\label{fig:fibration}
-\end{figure}
-
-
-\begin{definition}[Fibré principaux]
-	Un fibré est dit \emph{principal}
-	Soit $P$ et $B$ deux variétés différentielles et $(G,\times)$ un groupe de Lie. On dit que les trois forment une \emph{variété fibrée principale} (VFP, ou plus simplement \emph{fibré principal}) s'ils vérifient les propriétés suivantes :
-	\begin{itemize}
-		\item Le groupe de Lie $G$ opère différentiellement à droite (ou à gauche) sur $P$ via une application noté :
-		\[\phi : \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\lmt\ \phi(p,g)\defeq pg
-		\end{aligned}\]
-		
-		\item Il existe une surjection différentiable $\ \pi:P\lr B\ $ telle que :
-		\[\forall p\in P,\quad \pi^{-1}\big(\pi(p)\big)=pG\]
-		
-		\item En tout point $\ x_0\in B\ $ il existe un voisinage $\ U\subset B\ $ de $x_0$ et un difféomorphisme $\ h:G\times U\lr \pi^{-1}(U)\subset P\ $ telle que :
-		\[\forall g,h\in G,\ \forall x\in B,\qquad h(gh,x) = h(g,x)h\qquad \text{et} \qquad \pi\circ h(g,x)=x\]
-	\end{itemize}
-	On dit alors que $B$ est la \emph{base} de la VFP, que $G$ est son \emph{groupe structural} est $xP/G$ est la \emph{fibre de $P$ en} $x\in B$. Une telle variété est notée $P(\phi, G, \pi, B)$ ou plus simplement $P(G,B)$.
-\end{definition}
-
-\begin{proposition}
-	La $2n+1$--sphère $\S{2n+1}$ est un espace fibré de base $\PC{n}$ est de fibre type $\S{1}$, ou $U(1)$. La fibration étant la projection canonique :
-	\[\iota\ :\ \begin{aligned}\S{2n+1}\ &\lr\ \PC{n} \\ x\quad\ &\lmt\ \ [x]\end{aligned}\]
-\end{proposition}
-
-
-
-On pose $P=\C^n$ et $G=\U{1}$ avec l'action à gauche évidente. On pose ensuite $B$ définie par :
-\[B=\left\{\rho \in \mat[n]{\C}\ \Big|\ \begin{aligned} \rho &= \rho^\dagger\ &\ \rho &\geq 0 \\ \rho^2 &= \rho\, \tr\rho\ &\ \tr\rho &> 0  \end{aligned}\right\}\]
-Avec la surjection :\qquad\qquad\qquad $\displaystyle \pi :\ \begin{aligned}
-	\C^n\setminus\{0\}\ &\lr\ \ B \\ \psi\ \ &\lmt\ \psi\psi^\dagger 
-	\qquad \textit{(ou $\congu{\psi}\, ^t\psi$)} \end{aligned}$ \\
-L'application $h$, elle associe un $\psi$ tel que $\rho=\psi\psi^\dagger$ (il n'est pas unique dans $P$ mais dans on est sur de son existence $\pi^{-1}(U)$). Le difficulté ca va être de s'assurer que $h$ est différentiable (\ie~choisir le bon $\psi$ pour qu'elle le soit)
-\begin{remarque}
-	$B$ peut lui-même être munie d'une opération à gauche (librement, transitivement, blabla) via l'application :
-	\[\phi_B : \begin{aligned}B\times \U{n}\ &\lr\quad B \\ (\rho, \eta)\quad\ &\lmt\ \eta \rho \eta^\dagger
-	\end{aligned}\]
-	Je ne sais pas à quoi ca peut servir mais dans le doute je note.
-\end{remarque}
-
-
-
-
-\subsection{Espaces projectifs complexes}
-
-Les espaces projectifs complexes se construisent ainsi. On se place dans ${\C^{n+1}}^*=\C^{n+1}\setminus\{0_{\C^{n+1}}\}$ avec la relation d'équivalence, $\forall x,y\in{\C^{n+1}}^*$ :
-\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
-\\
-L'espace projectif complexe, noté $\PC{n}$ est l'espace quotient :
-\[\PC{n-1} = {\C^{n+1}}^*/\C^* = {\C^{n+1}}^*/\sim\]
-\\
-En notant $[z]$ la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$, on définit les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
-\begin{align}
-	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
-		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}\big(z_0,\cdots, 1,\cdots, z_n\big)
-	\end{aligned}
-\end{align}
-\\
-L'ensemble d'arrivé $\phi_i(U_i)$ est de dimension $n$ et s'assimile à $\C^{n}$ mais, par souci de comodité, on restera dans $\C^{n+1}$. Cela permet  d'écrire plus simplement les formules de changement de carte en évitant de devoir enlever et rajouter des coefficients :
-\[\qquad\qquad\qquad\qquad\qquad\qquad \forall [z]\in U_i\cap U_j,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\qquad\qquad\qquad\qquad\qquad (z^{i,j}\neq 0) \qquad\]
-
-Les $(U_i,\phi_i)$ forme un atlas holomorphe sur l'espace projectif complexe, faisant de $\PC{n}$ une variété complexe de dimension $\dim[\C] = n$ (voir annexe \ref{ann:variet_complexe} pour plus de détail).
-
-
-
-
-
-
-
-
-
-\part{Notes 'n' thoughts}
-
- \input{latex/garb}
-
-
-
-
-
-
 %%%% FIN DU MEMOIRE %%%%
 
 \newpage

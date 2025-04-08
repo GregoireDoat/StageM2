@@ -1,0 +1,166 @@
+Pour étudier la phase géométrique d'un signal $\psi$, il nous faut projeter $\psi$ sur $\PC{n}$, et ceux, tout en gardant une trace de sa phase puisque c'est le lien entre les deux qui nous intéresse. Il nous faut donc envoyer $\psi$ dans le produit :
+\[U(1)\times \PC{n}\qquad\qquad (\text{ou }\ \C^{n-1*}/\C^*)\]
+\\
+Garder le lien entre cet espace et celui d'origine mène à se placer dans le cadre avec d'un \emph{variété fibrée} (ou simplement fibré). Plus précisément, comme $U(1)$ est un groupe de lie, ce sera un \emph{fibré principal} noté $\S{2n-1}\big(U(1),\PC{n}\big)$.
+\\
+
+Comme son nom l'indique, $\S{2n-1}\big(U(1),\PC{n}\big)$ à une structure de variété différentielle et le lien entre les $U(1)$ et $\PC{n}$ va se faire par le biais d'une connexion. L'on verra alors que cette connexion est intrinsèquement lié à la phase dynamique du signal, et il sera discuté de la signification de ce résultat.
+\\
+La phase géométrique, quand à elle, sera liée avec la métrique hermitienne associée aux l'espaces projectifs complexes.
+\\
+Tout cela va demander quelques prérequis qui seront détaillés dans les annexes. 
+
+
+
+\section{Prérequis mathématique}
+
+\subsection{Variété différentielle complexe, tiré de \cite{nakahara_geometry_2003}}
+
+
+
+Pour mémoire, une variété différentielle de classe $C^k$ ($k\in\N\cup\{\infty\}$) de dimension $n$ est un espace topologique\footnote{\itshape
+	La topologie de $\manu$ doit vérifier des propriétés type séparable, dénombrable à l'infinie, \etc, qui seront toutes admises dans la suite, voir par exemple }
+$\manu$ (ou $\manu^n$) munie d'un \emph{atlas} $(\phi_i, U_i)_{i\in I}$, c'est-à-dire un ensemble finie de pair d'ouvert $U_i\subset \manu$ et d'application $\phi_i :U_i\ \lr\ \R^n$ telle que :
+\begin{itemize}
+	
+	\item les $U_i$ forme un recouvrement de la variété :\qquad $\bigcup_{i\in I} \phi_i(U_i) = \manu$
+	
+	\item les $\phi_i$ sont des homéomorphismes sur leur image $\phi_i(U_i)\subset\R^4$.
+	
+	\item si l'intersection $U_i \cap U_j$ est non vide, alors ${\phi_j \circ {\phi_i}^{-1}}_{| {\phi_i}^{-1}(U_i\cap U_j)}$ est un $C^k$ difféomorphisme sur son image.
+\end{itemize}
+
+$\manu$ sera une \emph{variété différentielle complexe} si elle satisfait les propriétés ci-dessus où $\R^n$ est remplacé par $\C^n$ et où la condition de difféomorphisme est remplacé par la condition d'holomorphisme. 
+\\
+Une application $f : \C^n\lr \C^n$ étant holomorphe si chacune de ses composantes vérifie l'équation de Cauchy-Riemann :
+\[\forall x,y\in\R^n,\ \forall \mu,\qquad \frac{\partial f }{\partial y^\mu}(x+iy) = i \frac{\partial f }{\partial x^\mu}(x+iy)\]
+\\
+Les fonctions holomorphes étant automatiquement $C^\infty$, les variétés différentielles complexes sont toujours lisse, c'est-à-dire $C^\infty$. Aussi, $\manu$ est dite de dimension complexe $n$ et dimension (réel) $2n$, notés :
+\begin{align}\label{eq:manuC-base_cano}
+	\dim[\C](\manu) &\defeq n  &  \dim[\R] (\manu) \defeq \dim (\manu) = 2n
+\end{align}
+\\
+
+Ensuite, pour le dire rapidement, la structure complexe de $\manu$ permet de séparer les espaces tangents en deux sous espaces. Pour ce faire, on commence par noter qu'en tout point $p\in\manu$ de coordonnée $z^\nu=x^\nu+iy^\nu$, l'espace tangent $\tg[p]{\manu}$, vu comme variété réelle, admet une base :
+\begin{equation}
+	\tg[p]{\manu} = \vec \left\{ \frac{\partial}{\partial x^1}, \cdots, \frac{\partial}{\partial x^n}, \frac{\partial}{\partial y^1}, \cdots,  \frac{\partial}{\partial y^n} \right\}
+\end{equation}
+\\
+Plus tôt que de se basé sur les $x^\mu$ et $y^\mu$ pour séparer les $\tg[p]{\manu}$, on définit sur ces derniers un tenseur $J_p$ de type (1,1) tel que :
+\begin{align}
+	J_p \frac{\partial}{\partial x^\mu} &= \frac{\partial}{\partial y^\mu}  &  J_p \frac{\partial}{\partial y^\mu} &= -\frac{\partial}{\partial x^\mu}
+\end{align}
+\\
+Ce tenseur est l'équivalent de la multiplication par $\pm i$ et le fait que $\manu$ soit complexe assure qu'il soit défini globalement, \ie~sur $\tg{\manu}$. Il est diagonaliseable dans la base :
+\begin{align}\label{eq:manuC-base_holo}
+	\partial_\mu = \frac{\partial}{\partial z^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} - i\frac{\partial}{\partial y^\mu} \right)  
+	&  
+	\partial_{\bar{\mu}} = \frac{\partial}{\partial \overline{z}^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} + i\frac{\partial}{\partial y^\mu} \right)
+\end{align}
+\\
+Ainsi en fonction de la base (\eqref{eq:manuC-base_cano} ou \eqref{eq:manuC-base_holo}), $J_p$ va s'écrire :
+\begin{align}
+	J_p &= \begin{pmatrix}
+		\text{\large\ 0\ }\Big. & I_n \\ -I_n & \text{\large\ 0\ }\Big.
+	\end{pmatrix}  &
+	J_p &= \begin{pmatrix}
+		iI_n & \text{\large\ 0\ }\Big. \\ \text{\large\ 0\ }\Big. & -iI_n
+	\end{pmatrix} 
+\end{align}
+\\
+Finalement, $\tg{\manu}$ peut être séparé en deux sous-espaces engendré respectivement par les $\partial_\mu$ et $\partial_{\bar{\nu}}$. On parle de vecteur holomorphe et anti-holomorphe et on note :
+\begin{align}
+	\tg[p]{\manu}^+ &= \Vec\big\{ \partial_\mu\ |\ 1\leq \mu\leq n \big\}  &  \tg[p]{\manu}^- &= \Vec\big\{ \partial_{\bar{\mu}}\ |\ 1\leq \mu\leq n \big\}
+\end{align}
+
+
+
+
+\subsection{Variété fibrée principale}
+
+\begin{definition}[Variété fibrée]
+	\'Etant donnée deux variétés différentielles $P$ et $B$ de même classe, une \emph{fibration de base $B$ et d'espace total $P$} et une application $\pi : P\lr B$ telle qu'en tout point $x\in B$ de la base, il existe un voisinage $U_x\subset B$ et une variété différentielle $F_x$ telle que $U_x\times F_x$ soit difféomorphe à $\pi^{-1}(U_x)$.
+	
+	On dit de $P$ que c'est une \emph{variété fibrée}, un \emph{espace fibré} ou tout simplement un \emph{fibré} et $P_x \defeq \pi^{-1}(U_x)$ est appelé \emph{fibre de $P$ au} (ou \emph{au dessus du}) \emph{point} $x$.
+	Si de plus $B$ est connexe, alors les fibres $P_x$ sont toutes difféomorphes à un même $F$ et on parle de \emph{fibre type} de $P$.
+	\\
+	
+	L'idée derrière cette définition est de formaliser l'idée des espaces qui, comme le ruban de Modiüs, ressemble à un produit $F\times B$ (d'où la notation $P$) sans vraiment en être un (voir \cref{fig:fibration}).
+\end{definition}
+
+\begin{figure}[h]\centering
+	%\includegraphics{fig/...}
+	\caption{représentation schématique d'une fibration du ruban de Mobiüs.}
+	\label{fig:fibration}
+\end{figure}
+
+
+\begin{definition}[Fibré principaux]
+	Un fibré $P$ sera de plus dit \emph{principal} si sa fibre type est un groupe de Lie $G$ agissant sur $P$. Plus précisément, une variété fibré principale $P$ (VFP, ou fibré principal) doit vérifier les propriétés suivantes :
+	\begin{itemize}
+		\item Le groupe de Lie $G$ opère différentiellement à droite (ou à gauche) sur $P$ via une application notée :
+		\[\phi\ :\ \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\lmt\ \phi(p,g)\defeq pg
+		\end{aligned}\]
+		
+		\item Il existe une surjection différentiable $\ \pi:P\lr B\ $ telle que :
+		\[\forall p\in P,\quad \pi^{-1}\big(\pi(p)\big)=pG\]
+		
+		\item En tout point $\ x\in B\ $ il existe un voisinage $\ U_x\subset B\ $ de $x$ et un difféomorphisme $\ h_x:G\times U_x\lr \pi^{-1}(U_x)\subset P\ $ telle que :
+		\[\forall g,f\in G,\ \forall y\in B,\qquad h(gf,y) = h(g,y)f\qquad \text{et} \qquad \pi\circ h(g,y)=y\]
+	\end{itemize}
+	On dit alors que $B$ est la \emph{base} de la VFP, que $G$ est son \emph{groupe structural} est $xP/G$ est la \emph{fibre de $P$ en} $x\in B$. Une telle variété est notée $P(\phi, G, \pi, B)$ ou plus simplement $P(G,B)$.
+\end{definition}
+
+\begin{figure}[h]\centering 
+	%\hfill
+	\begin{tikzcd}[column sep=large]
+		& G\times B \arrow[ld, "\pr{2}" above left] \arrow[rd, "\pr{2}"]  \\
+		G \arrow[r,"\phi" below]  & P \arrow[r,"\pi" above left] \arrow[d,"\pr{} " left]   &  B \\
+		& P/G \arrow[ru,"\overline{\pi}" below right]
+	\end{tikzcd}
+	\hspace{3cm}
+	\begin{tikzcd}[column sep=tiny]
+		& U_i \\
+		G\times U_i \arrow[ru, "\pr{2}" above left] \arrow[rd, "\pr{1}" below left] \arrow[rrrrrr, "h" above]  & & & & & & \pi^{-1}(U_i) \subset P \arrow[lllllu, "\pi" above right] \arrow[llllld, "\rho" below right] \\
+		& G 
+	\end{tikzcd}
+	%\hfill
+\end{figure}
+
+
+
+
+
+
+
+\subsection{Espaces projectifs complexes}
+
+Les espaces projectifs complexes se construisent ainsi. On se place dans ${\C^{n+1}}^*=\C^{n+1}\setminus\{0_{\C^{n+1}}\}$ avec la relation d'équivalence, $\forall x,y\in{\C^{n+1}}^*$ :
+\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
+\\
+L'espace projectif complexe, noté $\PC{n}$ est l'espace quotient :
+\[\PC{n-1} = {\C^{n+1}}^*/\C^* = {\C^{n+1}}^*/\sim\]
+\\
+En notant $[z]$ la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$, on définit les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
+\begin{align}
+	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
+		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}\big(z_0,\cdots, 1,\cdots, z_n\big)
+	\end{aligned}
+\end{align}
+\\
+L'ensemble d'arrivé $\phi_i(U_i)$ est de dimension $n$ et s'assimile à $\C^{n}$ mais, par souci de comodité, on restera dans $\C^{n+1}$. Cela permet  d'écrire plus simplement les formules de changement de carte en évitant de devoir enlever et rajouter des coefficients :
+\[\qquad\qquad\qquad\qquad\qquad\qquad \forall [z]\in U_i\cap U_j,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\qquad\qquad\qquad\qquad\qquad (z^{i,j}\neq 0) \qquad\]
+
+Les $(U_i,\phi_i)$ forme un atlas holomorphe sur l'espace projectif complexe, faisant de $\PC{n}$ une variété complexe de dimension $\dim[\C] = n$ (voir annexe \ref{ann:variet_complexe} pour plus de détail).
+
+\begin{proposition}
+	La $2n+1$--sphère $\S{2n+1}$ est un espace fibré de base $\PC{n}$ est de fibre type $\S{1}$, ou $U(1)$. La fibration étant la projection canonique :
+	\[\pi\ :\ \begin{aligned}\S{2n+1}\ &\lr\ \PC{n} \\ x\quad\ &\lmt\ \ [x]\end{aligned}\]
+	Voir \cite{lafontaine_introduction_2015} pour la démo
+\end{proposition}
+
+
+\begin{proposition}
+	$\PC{n}$ admet une métrique hermitienne induite par la métrique de $\S{2n+1}$, elle même induite du produit scalaire sur $\R^{2n+1}$. Elle est appelé \emph{métrique de Fubini-Study} et est donnée par le formule :
+	\[\]
+\end{proposition}

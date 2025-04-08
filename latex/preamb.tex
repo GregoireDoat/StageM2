@@ -44,8 +44,8 @@
 					   %linktoc=all,	%page du TOC clickable
  					   breaklinks=true,	% liens peuvent s'étendre sur plusieurs lignes
  					   colorlinks=true, %colore le 'anchor' text
- 					   linkcolor=violet,
- 					   citecolor=blue,	
+ 					   linkcolor=blue,
+ 					   citecolor=violet,	
  					   urlcolor=blue]{hyperref}
 \usepackage{cleveref}
 
@@ -130,7 +130,6 @@
 \newcommand{\sgn}{\text{\normalfont sgn}}
 %\newcommand{\deg}{\text{deg}}
 \newcommand{\ord}{\text{\normalfont ord}}
-%\newcommand{\rot}{\text{\normalfont rot}}
 
 %\renewcommand{\det}{\text{det}}
 \newcommand{\tr}{\text{\normalfont tr}}
@@ -138,8 +137,11 @@
 \newcommand{\Co}{\text{\normalfont com}}
 \newcommand{\codim}{\text{\normalfont codim}}
 
+%\renewcommand{\div}{\text{div}}
+%\newcommand{\rot}{\text{\normalfont rot}}
+
 %espaces
-%\renewcommand{\Vec}{\text{Vec}}
+\renewcommand{\vec}{\text{Vec}}
 \newcommand{\im}{\text{\normalfont Im}}
 \newcommand{\Ker}{\text{\normalfont Ker}}
 \newcommand{\Ann}{\text{\normalfont Ann}}
@@ -148,11 +150,12 @@
 \newcommand{\SL}{\text{\normalfont SL}}
 \newcommand{\SO}{\text{\normalfont SO}}
 \newcommand{\SU}{\text{\normalfont SU}}
-%\renewcommand{\div}{\text{div}}
 
 \newcommand{\Aff}{\text{\normalfont Aff}}
 \newcommand{\HT}{\text{\normalfont HT}}
 \newcommand{\GA}{\text{\normalfont GA}}
+
+\newcommand{\conti}[2]{\mathscr{C}\left(#1,#2\right)}
 
 % spé proba
 \newcommand{\esp}[2][]{\mathbb{E}_{#1}\left[\, #2\, \right]}
@@ -206,7 +209,7 @@
 
 
 	%variétoche
-\newcommand{\manu}[1][]{\mathpzc{M}^{#1}}
+\newcommand{\manu}{\mathpzc{M}}
 \newcommand{\tg}[2][]{\text{\normalfont T}_{#1}#2}
 
 \renewcommand{\dim}[1][]{\text{\normalfont dim}_{#1}}
@@ -214,6 +217,8 @@
 
 \newcommand{\PC}[1]{\text{\normalfont P}\mathbb{C}^{#1}}
 \newcommand{\Hol}{\text{\normalfont Hol}}
+
+\newcommand{\pr}[1]{\text{\normalfont pr}_{#1}}
 
 %ultre-cursed (fix asap)
 \newcommand{\skipl}{{\color{white}l}}
