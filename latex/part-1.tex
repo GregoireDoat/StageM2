@@ -113,11 +113,11 @@ D'abord, du point de vue de l'analyse temps-fréquence, les signaux réels sont 
 	&\Lr \quad \forall \nu\in\R,\ \densis(-\nu) = \densis(\nu)
 \end{align*}
 \skipl \\
-Comme mentionné plus haut, cela implique que la fréquence moyenne de tout signal réel est nulle (intégrale d'une fonction impaire). Ce qui, en plus de ne pas être très instructif, n'est pas cohérent avec l'interprétation physique qu'on voudrait faire cette moyenne. Par exemple, si $\densis$ prend la forme ci-dessous (\cref{fig:densi_spec_sym}), alors il serait plus naturelle de demander à ce que la fréquence moyenne se trouve autour de 1,4. De même, la largeur de bande spectrale ne correspond plus à l'étalement de chaque gaussienne, mais plutôt à leur espacement.
+Comme mentionné plus haut, cela implique que la fréquence moyenne de tout signal réel est nulle (intégrale d'une fonction impaire). Ce qui, en plus de ne pas être très instructif, n'est pas cohérent avec l'interprétation physique qu'on voudrait faire cette moyenne. Par exemple, si $\densis$ prend la forme ci-dessous (\cref{fig:densi_spec_sym}), alors il serait plus naturelle de demander à ce que la fréquence moyenne se trouve autour de \textbf{1,4}. De même, la largeur de bande spectrale ne correspond plus à l'étalement de chaque gaussienne, mais plutôt à leur espacement.
 \\
 \begin{figure}[h]\centering
 	\includegraphics[width=0.9\textwidth]{fig/densi_spec_sym}
-	\caption{Exemple de densité spectrale d'un signal réel ESP A 1,4}
+	\caption{Exemple de densité spectrale d'un signal réel \textbf{ESP A 1,4}}
 	\label{fig:densi_spec_sym}
 \end{figure}
 \\
@@ -292,12 +292,13 @@ Maintenant que les paramètres instantanée sont proprement définie pour les ca
 	Un \emph{signal multivarié}, ou \emph{$n-$varié}, est un vecteur composé de $n\in\N^*$ signaux $x_i$. Pour $n=2$ (resp.$=3$), on parle de signal \emph{bivarié} (resp. \emph{trivarié}).
 	\\
 	Dans la continuité de ce qui à été dit dans lplus tôt, dans le cas des signaux réels, on s'intéressera au vecteur composé des transformées en SA (eq. \eqref{eq:transfo_SA}, déf. \ref{def:transfo_sa&hilbert}) des $x_i$.
-	\textbf{Au moins dans toute cette \namecref{sec:sign_multivar}}, un tel signal sera noté :
-	\[\sa{x}(t)\ :\quad \begin{aligned} 
-		\R\quad &\lr\qquad \C^n \\t\quad &\longmapsto\ \begin{pmatrix} \mathcal{A}[x_1] \\ 
-			\mathcal{A}[x_2] \\ \vdots \\ \mathcal{A}[x_n] \end{pmatrix}
-	\end{aligned} \]
-	On supposera que chaque composante $x_i$ de $\bf{x}$ aura autant de régularité et de condition d'intégrabilité que nécessaire \textbf{(il vaudra préciser lesquelles à un moment)}.
+	%\textbf{Au moins dans toute cette \namecref{sec:sign_multivar}}, un tel signal sera noté :
+	%\[\sa{x}(t)\ :\quad \begin{aligned} 
+	%	\R\quad &\lr\qquad \C^n \\t\quad &\longmapsto\ \begin{pmatrix} \mathcal{A}[x_1] \\ 
+	%		\mathcal{A}[x_2] \\ \vdots \\ \mathcal{A}[x_n] \end{pmatrix}
+	%\end{aligned} \]
+	\\
+	On supposera que chaque composante $x_i$ de $\bf{x}$ aura autant de régularité et de condition d'intégrabilité que nécessaire \textbf{(il vaudra préciser lesquelles éventuellement)}.
 \end{definition}
 
 Le fait que $\bf{x}$ soit à valeur dans $\C^n$ impose un choix naturel de d'amplitude instantanée : sa norme. L'on notera alors dans tout la suite (sauf précision) :
@@ -343,7 +344,7 @@ Pour cela on introduit les notations utiles au cas multivarié :
 \end{definition}
 \skipl
 
-La première approche, inspiré de \cite{cano_mathematical_2022} consiste donc de reprendre le ``calculation trick'' \eqref{eq:moment_f}, pour en déduire la fréquence moyenne
+La première approche, inspiré de \cite{cano_mathematical_2022} consiste donc de reprendre le ``calculation trick'' \eqref{eq:moment_f}, pour en déduire la fréquence moyenne :
 \begin{align*}
 	\esp[\densis]{\nu} = \int_\R \nu\densis(\nu)d\nu &= \int_\R \nu\sum_{i=1}^n \densis_i(\nu) d\nu \\
 	&= \sum_{i=1}^n\esp[\densis_i]{\nu} \\
@@ -395,7 +396,7 @@ Ce qui, sous forme exponentiel, se réécrit :
 Soit la même expression que \eqref{eq:phas_inst_v1} obtenue par le premier raisonnement :
 \[-\Im m\int \frac{\big\langle \bf{x}(s) , \dot{\bf{x}}(s) \big\rangle}{\|\bf{x}(s)\|^2} ds = \int \sum_{i=1}^n a_i(s)^2 \phi_i'(s) = \sum_{i=1}^n \int a_i(s)^2 \phi_i'(s)ds\]
 \\
-Cela entraîne la définition :
+Cela justifie la définition :
 
 \begin{definition}[Phase dynalique/instantanée] \label{def:phase_d}
 	\'Etant donné un signal $\bf{x}\in \conti{\R}{\C^n}$ quelconque, on appelle \emph{phase instantanée} ou \emph{dynamique} à l'instant $t$ partant du $t_0$, le réel :
@@ -412,34 +413,39 @@ Le terme ``dynamique'' viens, entre autre, du fait que dans son cadre d'étude h
 \end{equation}
 
 Sachant que $\bf{x}$ n'a aucune raison de suivre une telle équation dans notre cas, poser $h = i\frac{d}{dt}$ enlève toute contrainte. On retrouve ainsi, modulo un jeu de convention sur le produit hermitien, la formule \eqref{eq:phase_d} ci-dessus.
-\\ Notons enfin qu'une fois la phase dynamique ``extraite'' de \bf{x}, le vecteur restant $\bf{y}$ n'a évidement pas de phase dynamique, ce qui se traduit par la formule :
+\\ Notons enfin qu'une fois la phase dynamique ``extraite'' de $\bf{x}$, le vecteur restant $\bf{y}$ n'a évidement pas de phase dynamique, ce qui se traduit par la formule :
 \\
 
 
 
-\subsection{Apparition de la phase géométrique --- MEH}\label{subsub:intro_phaseg}
+\subsection{Apparition de la phase géométrique}\label{subsub:intro_phaseg}
 
-Pour rentre compte de la pertinence de cette expression, commençons par noter qu'il exsite une autre façon standard de définir calculer la phase d'un signal via la \emph{phase totale} :
+Pour rentre compte de la pertinence de cette expression, commençons par noter qu'il existe une autre façon standard de définir la phase d'un signal, la \emph{phase totale} :
 \begin{equation}\label{eq:phase_t}
 	\phaset(\bf{x}, t_0, t) \defeq \arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle
 \end{equation}
-Il n'est pas clair, dans un cadre générale comment pourquoi cela s'interprète bien comme une phase et c'est encore pire lorsque l'on explicite ca valeur :
-\[\phaset(\bf{x},t_0, t) = \arg \sum{i=1}^n a_i(t)a_i(t_0)e^{i\phi(t)-\phi(t_0)}\]
-
-
-et on reviendra dans la \namecref{part:phase_geo} suivante sur 
-détaillons un cas particulier. Supposons que le signal $\bf{x}$ soit cyclique à une phase près. C'est-à-dire qu'entre les deux instant $t_0$ et $t$ donnés, l'on ait la relation :
-\[\exists \theta\in\R\ |\quad \bf{x}(t) = e^{i\theta} \bf{x}(t_0)\]
+Il n'est pas clair, dans un cadre générale, comment et pourquoi cela s'interprète bien comme une phase et c'est encore pire lorsque l'on explicite sa valeur :
+\begin{align*}
+	\phaset(\bf{x},t_0, t) &= \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\phi_i(t)-\phi_i(t_0))} \right) \\
+		&= \phased + \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\alpha_i(t)-\alpha_i(t_0))} \right)  &  &\text{où } \phi_i = \phased + \alpha_i  \\
+		&= \phased + \arctan \left( \sum_{i=1}^n \tan\big( \alpha_i(t)-\alpha_i(t_0) \big) \right)
+\end{align*}
 \\
-Dès lors, la phase instantanée à l'instant $t$ devrait être correspondre à $\theta$ et on peut l'écrire en fonction de $\bf{x}$ :
+
+Cela étant dit, si $\bf{x}$ est cyclique à une phase près, cette formule fait plus sens. C'est-à-dire lorsque, entre deux instant $t_0$ et $t$ donnés, $\bf{x}$ vérifie :
+\[\exists \theta\in\R\ |\quad \bf{x}(t) = e^{i\theta} \bf{x}(t_0)\]
+Dès lors, la phase totale donne bien :
 \[\arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle = \arg\big\langle e^{i\theta} \bf{x}(t_0), \bf{x}(t_0)\big\rangle = \theta\]
 \\
-On pourrait alors s'attendre à avoir l'égalité :
-\[\arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle = \theta = -\Im m\int_{t_0}^t \frac{\big\langle \bf{x}(s) , \dot{\bf{x}}(s) \big\rangle}{\|\bf{x}(s)\|^2} ds\]
-\skipl
+Dans le cas univarié, la phase instantanée vaut également $\theta$, ce qui n'est pas plus le cas dès que $n\geq 2$ (voir \cref{fig:calc_diff_phases}, ci-dessous). Apparaît alors une nouvelle phase qui est dû au caractère multivarié du signal : la phase géométrique introduite au début du mémoire.
+\\
+\begin{figure}[h]
+	\includegraphics[width=0.6\textwidth]{fig/placeholder}
+	\caption{Sur le graphe de gauche, le signal $\bf{x}$ à valeur dans $\R^2$ et dans celui de droite la calcul de la phase dynamique, totale et de leur différence. Résultat tiré des simulation de Le Bihan \etal \cite{le_bihan_modephysiques_2023}}
+	\label{fig:calc_diff_phases}
+\end{figure}
 
-Or, si c'est vrai dans le cas univarié (\ie~$n=1$), dès que $n\geq 2$, ce n'est plus le cas. Cette erreur, cette nouvelle phase ne peut pas être 
-
+\textbf{... un peu plus de blabla pour faire transition sur la suite ...}
 
 
 
@@ -447,128 +453,165 @@ Or, si c'est vrai dans le cas univarié (\ie~$n=1$), dès que $n\geq 2$, ce n'es
 
 \begin{annexe}
 	
-	\section{Complément sur l'analyse temps-fréquence} 
-	
-	\subsection{Un bon moment...}\label{ann:integ_trick}
-	
-	Pour montrer les formules de la \cref{prop:mom_freq}, on commence par montrer ce que Cohen \cite{cohen_time_1995} appelle les  :
-	
-	\begin{proposition}[``Calculation tricks''] \label{prop:integ_trick}
-		Si le signal est $n$ fois dérivable et que la densité d’énergie spectrale associée $\densis$ admet un moment d'ordre $n$, alors ce moment est donnée par la formule :
-		\begin{equation}\label{eq:moment_f}
-			\forall n\in\N,\qquad \esp[\densis]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \congu{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
-		\end{equation}
-		\\
-		Avec les hypothèses analogues, les moments de $\densit$ s'écrivent :
-		\begin{equation}\label{eq:moment_t}
-			\forall n\in\N,\qquad \esp[\densit]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \fou{x}(\nu) \frac{d^n}{dt^n} \congu{\fou{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \fou{x}, \frac{d^n}{d\nu^n}\fou{x}\right\rangle
-		\end{equation}
-	\end{proposition}
-	
-	
-	\begin{demo}[de la \cref{prop:integ_trick}]
-		\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
-		\begin{align*}
-			\esp[\densis]{\nu^n} = \int_\R \nu^n\densis(\nu) d\nu &= \int_\R \nu^n \fou{x}(\nu)\congu{\fou{x}(\nu)} d\nu \\
-			&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \congu{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
-			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
-		\end{align*}
-		Ici, on remarque que :
-		\begin{align*}
-			\nu^n e^{-2i \pi \nu (t-t')} &= \nu^{n-1}\frac{1}{-2i \pi}\frac{d}{dt}e^{-2i \pi \nu(t-t')} \\
-			&= \nu^{n-2}\frac{1}{(-2i \pi)^2}\frac{d^2}{dt^2}e^{-2i \pi \nu(t-t')} \\
-			&\ \vdots \\
-			&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
-		\end{align*}
-		\\
-		
-		Ce qui permet, en jouant sur les ordres d'intégrations et les propriétés du Dirac, d'obtenir :
-		\begin{align*}
-			\esp[\densis]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu\, dt\, dt' \\
-			&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-			&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
-			&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
-			&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
-			&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
-			&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
-		\end{align*}
-		%	... a moins que :
-	\end{demo}
-	
-	\begin{demo}[de la \cref{prop:mom_freq}]
-		Avec le hypothèses de la \cref{prop:integ_trick} précédente, on a :
-		\begin{align*}
-			\esp[\densis]{\nu} = \frac{i}{2\pi} \densit(t) \int_\R x(t) \congu{x'(t)} dt &= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\congu{\big( a'(t)e^{i\phi(t)}+ ia(t)\phi'(t)e^{i\phi(t)} \big)} dt \\
-			&= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\big( a'(t)e^{-i\phi(t)} -ia(t)\phi'(t)e^{-i\phi(t)} \big) dt \\
-			&= \frac{i}{2\pi}\int_\R a(t)\big( a'(t)- ia(t)\phi'(t)\big) dt \\
-			&= \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt \\
-		\end{align*}
-		On peut se convaincre que le premier terme doit être nul car l'espérance doit être réelle. On peut s'en assurer par le calcul en notant que c'est l’inégale d'une dérivée :
-		\[\int_\R a'(t)a(t) dt = \frac{1}{2} \int_\R \big(a^2\big)'(t) dt = \frac{1}{2}\densit(t)\Big|_{-\infty}^{+\infty} = 0\]
-		Ce qui donne bien :
-		\[\esp[\densis]{\nu} = \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t) dt\]
-		\skipl
-		
-		La seconde \cref{eq:var_freq} ce montre de la même façon.
-	\end{demo}
-	\skipl
-	
-	\subsection{Transformée inverse de la fonction de Heaviside}\label{ann:transfo_SA}
-	
-	Définissons d'abord proprement la valeur principale de Cauchy :
-	
-	\begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
-		La \emph{valeur principale de Cauchy} est la distribution, notée $\vpC$, définie par dualité :
-		\begin{equation}
-			\begin{aligned}
-				\forall \varphi\in\mathcal{S}(\R),\qquad 
-				\left\langle \vpC, \varphi \right\rangle 
-				= \fint_0^t \frac{\varphi(t)}{t}dt 
-				&\defeq \lim_{\varepsilon\lr0^+} \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t}dt + \int_{+\varepsilon}^{+\infty} \frac{\varphi(t)}{t}dt \\
-				&= \int_0^{+\infty} \frac{\varphi(t) - \varphi(-t)}{t}dt
-			\end{aligned}
-		\end{equation}
-		Ici $\mathcal{S}(\R)$ est l’espace de Schwartz des fonctions $C^\infty$ à décroissance rapide et la limite en $\varepsilon$ assure que l'intégrale (impropre) converge bien. La valeur de cette intégrale est également appelée sa \emph{valeur principale}. 
-	\end{definition}
-	
-	La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse dans le sens où son produit avec l'identité donne 1 $\big(\left\langle id_\R \times \vpC, \varphi \right\rangle = \left\langle \vpC, id_\R \times\varphi \right\rangle=1\big)$ mais avec des propriétés d'intégration supplémentaires. Entre autre :
-	
-	\begin{propriete}\label{prop:fou2vp}
-		La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, par :
-		\begin{equation}
-			\mathcal{F} \left[\vpC \right]= -i \pi\, \sign{} 
-		\end{equation}
-		On en déduit la transformée de Fourier inverse :
-		\begin{equation}
-			\mathcal{F}^{-1}\big[ 2\one_{\R^+} \big] = \mathcal{F}^{-1}\big[ 1 + \sign \big] = \delta + \frac{i}{\pi} \vpC
-		\end{equation}
-	\end{propriete}
-	
-	\begin{demo}
-		Par définition, la transformée de Fourier de la valeur principale est telle que,\\ $\forall \varphi\in\mathcal{S}(\R)$ :
-		\begin{align*}
-			\left\langle \mathcal{F} \left[\vpC \right], \varphi \right\rangle = \left\langle \vpC, \hat{\varphi} \right\rangle 
-			&= \fint_\R \frac{\hat{\varphi}(\nu)}{\nu} d\nu \\
-			&= \int_0^{+\infty} \frac{\hat{\varphi}(\nu) - \hat{\varphi}(-\nu)}{\nu} d\nu \\
-			&= \int_0^{+\infty} \frac{1}{\nu} \left( \int_\R\varphi(t)e^{-2i\pi \nu t}dt - \int_\R\varphi(t)e^{2i\pi \nu t}dt \right)d\nu \\
-			&= \int_0^{+\infty} \frac{1}{\nu}\int_\R\varphi(t)\big(e^{-2i\pi \nu t} - e^{2i\pi \nu t}\big)dt\, d\nu \\
-			&= \int_0^{+\infty} \frac{1}{\nu}\int_\R-2i\varphi(t)\sin(2\pi \nu t)dt\, d\nu \\
-			&= -2i\int_\R\varphi(t)\int_0^{+\infty} \frac{\sin(2\pi \nu t)}{\nu}d\nu\, dt
-		\end{align*}
-		En posant $u=2\pi\nu t\sign(t)$ (le signe de $t$ assure que l'on ait le même signe dans et hors du sin), on obtient :
-		\begin{align*}
-			\left\langle \mathcal{F} \left[\vpC \right], \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
-			&= -2i\int_\R\varphi(t)\frac{\pi}{2}\sign(t), dt \\
-			&= \big\langle -i\pi\sign, \varphi \big\rangle
-		\end{align*}
-	\end{demo}
-	
-	Finalement, la condition sur $\SA{x}$ se traduit bien par :
+\section{Complément sur l'analyse temps-fréquence} 
+
+\subsection{Un bon moment...}\label{ann:integ_trick}
+
+Pour montrer les formules de la \cref{prop:mom_freq}, on commence par montrer ce que Cohen \cite{cohen_time_1995} appelle les  :
+
+\begin{lemme}[``Calculation tricks''] \label{prop:integ_trick}
+	Si le signal est $n$ fois dérivable et que la densité d’énergie spectrale associée $\densis$ admet un moment d'ordre $n$, alors ce moment est donnée par la formule :
+	\begin{equation}\label{eq:moment_f}
+		\forall n\in\N,\qquad \esp[\densis]{\nu^n} = \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n} \congu{x(t)} dt = \left(\frac{i}{2 \pi}\right)^n  \left\langle x, \frac{d^n}{dt^n}x\right\rangle
+	\end{equation}
+	\\
+	Avec les hypothèses analogues, les moments de $\densit$ s'écrivent :
+	\begin{equation}\label{eq:moment_t}
+		\forall n\in\N,\qquad \esp[\densit]{t^n} = \left(\frac{1}{2i \pi}\right)^n  \int_\R \fou{x}(\nu) \frac{d^n}{dt^n} \congu{\fou{x}(\nu)} dt = \left(\frac{1}{2i \pi}\right)^n  \left\langle \fou{x}, \frac{d^n}{d\nu^n}\fou{x}\right\rangle
+	\end{equation}
+\end{lemme}
+
+
+\begin{demo}[du \cref{prop:integ_trick}]
+	\`A supposer que les intégrales existes et que le théorème de Fubini s'applique, on a $\forall n\in\N$ :
 	\begin{align*}
-		\Fou{\SA{x}\big.} = 2\one_{\R^+}\fou{x} \ \Llr\ \SA{x} &= \iFou{\one_{\R^+}\fou{x}} \\
-		&= \iFou{\one_{\R^+}} * \Fou{\fou{x}} \\
-		&= \left( \delta + \frac{i}{\pi} \vpC \right) * x \\
-		&= x + \frac{i}{\pi} \vpC  * x
+		\esp[\densis]{\nu^n} = \int_\R \nu^n\densis(\nu) d\nu &= \int_\R \nu^n \fou{x}(\nu)\congu{\fou{x}(\nu)} d\nu \\
+		&= \int_\R \nu^n \int_\R x(t)e^{-2i \pi \nu t} dt \int_\R \congu{x(t')}e^{2i \pi \nu t'} dt' d\nu \\
+		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt' 
 	\end{align*}
+	Ici, on remarque que :
+	\begin{align*}
+		\nu^n e^{-2i \pi \nu (t-t')} &= \nu^{n-1}\frac{1}{-2i \pi}\frac{d}{dt}e^{-2i \pi \nu(t-t')} \\
+		&= \nu^{n-2}\frac{1}{(-2i \pi)^2}\frac{d^2}{dt^2}e^{-2i \pi \nu(t-t')} \\
+		&\ \vdots \\
+		&= \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')}
+	\end{align*}
+	\\
+	
+	En jouant sur les ordres d'intégrations, on obtient :
+	\begin{align*}
+		\esp[\densis]{\nu^n} &= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \nu^n e^{-2i \pi \nu (t-t')} d\nu dt dt'  \\
+		&= \int_\R \int_\R x(t) \congu{x(t')} \int_\R \frac{1}{(-2i \pi)^n}\frac{d^n}{dt^n}e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \frac{1}{(-2i \pi)^n} \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\int_\R e^{-2i \pi \nu(t-t')} d\nu\, dt\, dt' \\
+		&= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt'
+	\end{align*}
+	La transformée de Fourier de 1 est un dirac, il vient, modulo quelques jeux d'ordre d'intégration :
+	\begin{align*}
+		\esp[\densis]{\nu^n} &= \left(\frac{1}{-2i \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\mathcal{F}\big[1\big](t-t') dt\, dt' \\
+		&= \left(\frac{i}{2 \pi}\right)^n \int_\R \int_\R x(t) \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt\, dt' \\
+		&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \int_\R \congu{x(t')} \frac{d^n}{dt^n}\delta(t-t') dt' dt \\
+		&= \left(\frac{i}{2 \pi}\right)^n \int_\R x(t) \frac{d^n}{dt^n} \int_\R \congu{x(t')} \delta(t-t') dt' dt \\
+		&= \left(\frac{i}{2 \pi}\right)^n  \int_\R x(t) \frac{d^n}{dt^n}  \congu{x(t)} dt
+	\end{align*}
+	%	... a moins que :
+\end{demo}
+	
+\begin{demo}[de la \cref{prop:mom_freq}, \cref{eq:esp_freq}]
+	Avec le hypothèses de la \cref{prop:integ_trick} précédente, on a :
+	\begin{align*}
+		\esp[\densis]{\nu} = \frac{i}{2\pi} \densit(t) \int_\R x(t) \congu{x'(t)} dt &= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\congu{\big( a'(t)e^{i\phi(t)}+ ia(t)\phi'(t)e^{i\phi(t)} \big)} dt \\
+		&= \frac{i}{2\pi}\int_\R a(t)e^{i\phi(t)}\big( a'(t)e^{-i\phi(t)} -ia(t)\phi'(t)e^{-i\phi(t)} \big) dt \\
+		&= \frac{i}{2\pi}\int_\R a(t)\big( a'(t)- ia(t)\phi'(t)\big) dt \\
+		&= \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt \\
+	\end{align*}
+	On peut se convaincre que le premier terme doit être nul car l'espérance doit être réelle. On peut s'en assurer par le calcul en notant que c'est l’inégale d'une dérivée :
+	\[\int_\R a'(t)a(t) dt = \frac{1}{2} \int_\R \big(a^2\big)'(t) dt = \frac{1}{2}\densit(t)\Big|_{-\infty}^{+\infty} = 0\]
+	Ce qui donne bien :
+	\[\esp[\densis]{\nu} = \frac{i}{2\pi}\int_\R a'(t)a(t) dt + \int_\R  \frac{1}{2\pi}\phi'(t)a(t)^2 dt = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t) dt\]
+\end{demo}
+
+
+\begin{demo}[de la \cref{prop:mom_freq}, \cref{eq:var_freq}]
+	La démonstration est similaire, d'abord, la dérivée seconde de $x$ s'écrit :
+	\begin{align*}
+		x''(t) &= \frac{d}{dt} \big( a'(t) e^{i\phi(t)} + ia(t)\phi'(t) e^{i\phi(t)} \big) \\
+		&= \Big( a''(t) + ia'(t) \phi'(t) + i\big( a'(t)\phi'(t) + a(t)\phi''(t) + ia(t)\phi'(t)\phi'(t) \big) \Big) e^{i\phi(t)} \\
+		&= \Big( a''(t) - a(t)\phi'(t)^2 + i\big( 2a'(t)\phi'(t) + a(t)\phi''(t)\big) \Big) e^{i\phi(t)}
+	\end{align*}
+	de sorte que :
+	\begin{align*}
+		x(t) \congu{x''(t)} &= a(t) \Big( a''(t) - a(t)\phi'(t)^2 - i\big( 2a'(t)\phi'(t) + a(t)\phi''(t)\big)\Big) \\
+		&= a(t)a''(t) - a(t)^2\phi'(t)^2 - i\big( 2a(t)a'(t)\phi'(t) + a(t)^2\phi''(t)\big) \\
+		&= a(t)a''(t) - a(t)^2\phi'(t)^2 - i \big( a^2\phi' \big)'(t)
+	\end{align*}
+	\\
+	Ce dont on déduit :
+	\begin{align*}
+		\esp[\densis]{\nu^2} &= -\frac{1}{4\pi^2} \int_\R x(t) \congu{x''(t)} dt \\
+		&= -\frac{1}{4\pi^2} \int_\R a(t)a''(t) - a(t)^2\phi'(t)^2 - i \big( a^2\phi' \big)'(t) dt \\
+		&= \frac{1}{4\pi^2} \left( \int_\R a'(t)^2dt + \int_\R a(t)^2\phi'(t)^2 dt - i  a^2(t)\phi'(t)\Big|_{-\infty}^{+\infty} \right)  
+			&  &\text{IPP sur le premier membre} \\
+		&= \frac{1}{4\pi^2} \left( \int_\R \left(\frac{a'(t)}{a(t)}\right)^2 a(t)^2dt + \int_\R a(t)^2\phi'(t)^2 dt\right) \\
+		&= \frac{1}{4\pi^2} \left( \esp[\densit]{\big((\ln a)'\big)^2}  + \esp[\densit]{(\phi')^2\Big.}\right)   &  &\text{car }\ (\ln a)' = \frac{a'}{a}
+	\end{align*}
+	\\
+	Sachant que $\esp[\densit]{(\ln a)'}=0$ (\cf démonstration précédente), il vient :
+	\begin{align*}
+		\var[\densis]{\nu} &= \esp[\densis]{\nu^2} - \esp[\densis]{\nu}^2 \\
+		&= \frac{1}{4\pi^2} \left( \esp[\densit]{\big((\ln a)'\big)^2}  + \esp[\densit]{(\phi')^2\Big.}\right)  - \frac{1}{4\pi^2} \esp[\densit]{\phi'}^2 \\
+		&= \frac{1}{4\pi^2} \esp[\densit]{\big((\ln a)'\big)^2} + \frac{1}{4\pi^2}\esp[\densit]{(\ln a)'}^2 + \frac{1}{4\pi^2} \var[\densit]{\phi'\big.} \\
+		&= \frac{1}{4\pi^2}\var[\densit]{(\ln a)'\big.} +\frac{1}{4\pi^2} \var[\densit]{\phi'\big.}
+	\end{align*}
+\end{demo}
+\skipl
+
+\subsection{Transformée inverse de la fonction de Heaviside}\label{ann:transfo_SA}
+
+Définissons d'abord proprement la valeur principale de Cauchy :
+
+\begin{definition}[valeur principale de Cauchy]\label{def:vp&Hilb}
+	La \emph{valeur principale de Cauchy} est la distribution, notée $\vpC$, définie par dualité :
+	\begin{equation}
+		\begin{aligned}
+			\forall \varphi\in\mathcal{S}(\R),\qquad 
+			\left\langle \vpC, \varphi \right\rangle 
+			= \fint_0^t \frac{\varphi(t)}{t}dt 
+			&\defeq \lim_{\varepsilon\lr0^+} \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t}dt + \int_{+\varepsilon}^{+\infty} \frac{\varphi(t)}{t}dt \\
+			&= \int_0^{+\infty} \frac{\varphi(t) - \varphi(-t)}{t}dt
+		\end{aligned}
+	\end{equation}
+	Ici $\mathcal{S}(\R)$ est l’espace de Schwartz des fonctions $C^\infty$ à décroissance rapide et la limite en $\varepsilon$ assure que l'intégrale (impropre) converge bien.
+\end{definition}
+\skipl
+
+La distribution vp$\frac{1}{x}$ est la valeur principale de la fonction inverse dans le sens où son produit avec l'identité donne 1 $\big(\left\langle id_\R \times \vpC, \varphi \right\rangle = \left\langle \vpC, id_\R \times\varphi \right\rangle=1\big)$ mais avec des propriétés d'intégration supplémentaires. Entre autre :
+
+\begin{propriete}\label{prop:fou2vp}
+	La transformée de Fourier de la valeur principale de Cauchy est donnée, au sens des distributions, par :
+	\begin{equation}
+		\mathcal{F} \left[\vpC \right]= -i \pi\, \sign{} 
+	\end{equation}
+	Il en découle la transformée de Fourier inverse :
+	\begin{equation}
+		\mathcal{F}^{-1}\big[ 2\one_{\R^+} \big] = \mathcal{F}^{-1}\big[ 1 + \sign \big] = \delta + \frac{i}{\pi} \vpC
+	\end{equation}
+\end{propriete}
+
+\begin{demo}
+	Par définition, la transformée de Fourier de la valeur principale est telle que,\\ $\forall \varphi\in\mathcal{S}(\R)$ :
+	\begin{align*}
+		\left\langle \mathcal{F} \left[\vpC \right], \varphi \right\rangle = \left\langle \vpC, \hat{\varphi} \right\rangle 
+		&= \fint_\R \frac{\hat{\varphi}(\nu)}{\nu} d\nu \\
+		&= \int_0^{+\infty} \frac{\hat{\varphi}(\nu) - \hat{\varphi}(-\nu)}{\nu} d\nu \\
+		&= \int_0^{+\infty} \frac{1}{\nu} \left( \int_\R\varphi(t)e^{-2i\pi \nu t}dt - \int_\R\varphi(t)e^{2i\pi \nu t}dt \right)d\nu \\
+		&= \int_0^{+\infty} \frac{1}{\nu}\int_\R\varphi(t)\big(e^{-2i\pi \nu t} - e^{2i\pi \nu t}\big)dt\, d\nu \\
+		&= \int_0^{+\infty} \frac{1}{\nu}\int_\R-2i\varphi(t)\sin(2\pi \nu t)dt\, d\nu \\
+		&= -2i\int_\R\varphi(t)\int_0^{+\infty} \frac{\sin(2\pi \nu t)}{\nu}d\nu\, dt
+	\end{align*}
+	En posant $u=2\pi\nu t\sign(t)$ (le signe de $t$ assure que l'on ait le même signe dans et hors du sin), on obtient :
+	\begin{align*}
+		\left\langle \mathcal{F} \left[\vpC \right], \varphi \right\rangle &= -2i\int_\R\varphi(t)\int_0^{+\infty} \sign(t)\frac{\sin(u)}{u}du\, dt \\
+		&= -2i\int_\R\varphi(t)\frac{\pi}{2}\sign(t), dt \\
+		&= \big\langle -i\pi\sign, \varphi \big\rangle
+	\end{align*}
+\end{demo}
+
+Finalement, la condition sur le spectre de $\SA{x}$ se traduit bien par :
+\begin{align*}
+	\Fou{\SA{x}\big.} = 2\one_{\R^+}\fou{x}\quad \Llr\quad \SA{x} &= \iFou{\one_{\R^+}\fou{x}} \\
+	&= \iFou{\one_{\R^+}} * \Fou{\fou{x}} \\
+	&= \left( \delta + \frac{i}{\pi} \vpC \right) * x \\
+	&= x + \frac{i}{\pi} \vpC  * x
+\end{align*}
 	
 \end{annexe}
