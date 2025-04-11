@@ -428,7 +428,7 @@ Il n'est pas clair, dans un cadre générale, comment et pourquoi cela s'interpr
 \begin{align*}
 	\phaset(\bf{x},t_0, t) &= \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\phi_i(t)-\phi_i(t_0))} \right) \\
 		&= \phased + \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\alpha_i(t)-\alpha_i(t_0))} \right)  &  &\text{où } \phi_i = \phased + \alpha_i  \\
-		&= \phased + \arctan \left( \sum_{i=1}^n \tan\big( \alpha_i(t)-\alpha_i(t_0) \big) \right)
+		&= \phased + \arctan \left( \frac{\sum_i a_i(t)a_i(t_0)\sin\big( \alpha_i(t)-\alpha_i(t_0)\big)}{\sum_i a_i(t)a_i(t_0)\cos\big( \alpha_i(t)-\alpha_i(t_0)\big)}  \right)
 \end{align*}
 \\
 
@@ -437,7 +437,7 @@ Cela étant dit, si $\bf{x}$ est cyclique à une phase près, cette formule fait
 Dès lors, la phase totale donne bien :
 \[\arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle = \arg\big\langle e^{i\theta} \bf{x}(t_0), \bf{x}(t_0)\big\rangle = \theta\]
 \\
-Dans le cas univarié, la phase instantanée vaut également $\theta$, ce qui n'est pas plus le cas dès que $n\geq 2$ (voir \cref{fig:calc_diff_phases}, ci-dessous). Apparaît alors une nouvelle phase qui est dû au caractère multivarié du signal : la phase géométrique introduite au début du mémoire.
+Dans le cas univarié, la phase instantanée vaut également $\theta$, ce qui n'est plus le cas dès que $n\geq 2$ (voir \cref{fig:calc_diff_phases}, ci-dessous). Apparaît alors une nouvelle phase qui est dû au caractère multivarié du signal : la phase géométrique introduite au début du mémoire.
 \\
 \begin{figure}[h]
 	\includegraphics[width=0.6\textwidth]{fig/placeholder}

@@ -21,14 +21,14 @@ Tout cela va demander quelques prérequis qui seront détaillés dans les annexe
 \end{itemize}
 
 
-\section{Prérequis mathématique - send to appendixe}
+\section{Prérequis mathématique --- send to appendixe}
 
 \subsection{Variété différentielle complexe, tiré de \cite{nakahara_geometry_2003}}
 
 
 
 Pour mémoire, une variété différentielle de classe $C^k$ ($k\in\N\cup\{\infty\}$) de dimension $n$ est un espace topologique\footnote{\itshape
-	La topologie de $\manu$ doit vérifier des propriétés type séparable, dénombrable à l'infinie, \etc, qui seront toutes admises dans la suite, voir par exemple }
+	La topologie de $\manu$ doit vérifier des propriétés type séparable, dénombrable à l'infinie, \etc, qui seront toutes admises dans la suite, voir par exemple \cite[chap. 2]{lafontaine_introduction_2015}}
 $\manu$ (ou $\manu^n$) munie d'un \emph{atlas} $(\phi_i, U_i)_{i\in I}$, c'est-à-dire un ensemble finie de pair d'ouvert $U_i\subset \manu$ et d'application $\phi_i :U_i\ \lr\ \R^n$ telle que :
 \begin{itemize}
 	
@@ -90,35 +90,67 @@ Finalement, $\tg{\manu}$ peut être séparé en deux sous-espaces engendré resp
 \begin{definition}[Variété fibrée]
 	\'Etant donnée deux variétés différentielles $P$ et $B$ de même classe, une \emph{fibration de base $B$ et d'espace total $P$} et une application $\pi : P\lr B$ telle qu'en tout point $x\in B$ de la base, il existe un voisinage $U_x\subset B$ et une variété différentielle $F_x$ telle que $U_x\times F_x$ soit difféomorphe à $\pi^{-1}(U_x)$.
 	
-	On dit de $P$ que c'est une \emph{variété fibrée}, un \emph{espace fibré} ou tout simplement un \emph{fibré} et $P_x \defeq \pi^{-1}(U_x)$ est appelé \emph{fibre de $P$ au} (ou \emph{au dessus du}) \emph{point} $x$.
-	Si de plus $B$ est connexe, alors les fibres $P_x$ sont toutes difféomorphes à un même $F$ et on parle de \emph{fibre type} de $P$.
-	\\
-	
-	L'idée derrière cette définition est de formaliser l'idée des espaces qui, comme le ruban de Modiüs, ressemble à un produit $F\times B$ (d'où la notation $P$) sans vraiment en être un (voir \cref{fig:fibration}).
+	On dit de $P$ que c'est une \emph{variété fibrée}, un \emph{espace fibré} ou tout simplement un \emph{fibré} et $P_x \defeq \pi^{-1}(U_x)$ est appelé \emph{fibre de $P$ au} (\emph{dessus du}) \emph{point} $x$.
+	Si de plus $B$ est connexe, alors les fibres $F_x$ sont toutes difféomorphes à un même $F$ et on parle de \emph{fibre type} de $P$.
 \end{definition}
+\skipl
 
-\begin{figure}[h]\centering
-	%\includegraphics{fig/...}
-	\caption{représentation schématique d'une fibration du ruban de Mobiüs.}
-	\label{fig:fibration}
-\end{figure}
+L'idée derrière cette définition est de formaliser l'idée des espaces qui, comme le ruban de Modiüs, ``ressemble'' à un produit $F\times B$ (d'où la notation $P$) sans vraiment en être un : $P$ est localement difféomorphe à une variété produit $U\times_F$ (voir \cref{fig:fibration}, ci-dessous).
 
-
-\begin{definition}[Fibré principaux]
-	Un fibré $P$ sera de plus dit \emph{principal} si sa fibre type est un groupe de Lie $G$ agissant sur $P$. Plus précisément, une variété fibré principale $P$ (VFP, ou fibré principal) doit vérifier les propriétés suivantes :
+\begin{definition}[Variété fibrée principale] \label{def:VFP}
+	Un fibré $P$ sera de plus dit \emph{principal} (VFP) si sa fibre type est un groupe de Lie $G$ agissant sur $P$. Plus précisément, une variété fibré principale $P$ (VFP, ou fibré principal) doit vérifier les propriétés suivantes :
 	\begin{itemize}
-		\item Le groupe de Lie $G$ opère différentiellement à droite (ou à gauche) sur $P$ via une application notée :
-		\[\phi\ :\ \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\lmt\ \phi(p,g)\defeq pg
-		\end{aligned}\]
+		\item Le groupe de Lie $G$ opère différentiellement à droite (ou à gauche) sur $P$ via :
+		\begin{equation} \label{eq:VFP_action}
+			\phi\ :\ \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\lmt\ \phi(p,g)\defeq pg
+			\end{aligned}
+		\end{equation}
 		
 		\item Il existe une surjection différentiable $\ \pi:P\lr B\ $ telle que :
-		\[\forall p\in P,\quad \pi^{-1}\big(\pi(p)\big)=pG\]
+		\begin{equation} \label{eq:VFP_fibres}
+			\forall p\in P,\quad \pi^{-1}\big(\pi(p)\big)=pG
+		\end{equation}
 		
-		\item En tout point $\ x\in B\ $ il existe un voisinage $\ U_x\subset B\ $ de $x$ et un difféomorphisme $\ h_x:G\times U_x\lr \pi^{-1}(U_x)\subset P\ $ telle que :
-		\[\forall g,f\in G,\ \forall y\in B,\qquad h(gf,y) = h(g,y)f\qquad \text{et} \qquad \pi\circ h(g,y)=y\]
+		\item $P$ est munie d'un ensemble de paire $(U_i, h_i)$ tel que les $U_i$ forment un recouvrement de $B$ et que les $h_i$ soient des difféomorphismes à valeur de  $G\times U_i$ dans $\pi^{-1}(U_i)\subset P\ $ vérifiant :
+		\begin{align*} \label{eq:VFP_atlas}
+			\forall a,b\in G,\ \forall x\in B,\qquad h_i(ab,x) = h_i(a,x)b\qquad \text{et} \qquad \pi\circ h_i(a,x)=x
+		\end{align*}
 	\end{itemize}
-	On dit alors que $B$ est la \emph{base} de la VFP, que $G$ est son \emph{groupe structural} est $xP/G$ est la \emph{fibre de $P$ en} $x\in B$. Une telle variété est notée $P(\phi, G, \pi, B)$ ou plus simplement $P(G,B)$.
+	On dit alors que $B$ est la \emph{base} de la VFP, que $G$ est son \emph{groupe structural} et $pG$ est la \emph{fibre de $P$ passant par} $p$ et \emph{au dessus de} $\pi(p)\in B$. Une telle variété est notée $P(\phi, G, \pi, B)$ ou plus simplement $P(G,B)$.
 \end{definition}
+
+L'ensemble $\big\{(U_i, h_i)\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
+
+
+D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur la \Cref{fig:section_local} ci-dessous. Formellement, ce sont des applications $\sigma : U_i\subset B\lr P$ vérifiant :
+\[\pi\circ \sigma = Id_{{\displaystyle U}}\]
+\\
+\begin{figure}[t]
+	\begin{floatrow}
+		\ffigbox{\caption{Fibration du ruban de Mobiüs.}
+			\label{fig:fibration}}{
+		\includegraphics[width=0.45\textwidth]{fig/placeholder}}
+		
+		\ffigbox{\caption{Section local d'un fibré principal}
+			\label{fig:section_local}}{
+		\includegraphics[width=0.45\textwidth]{fig/placeholder}}
+	\end{floatrow}
+\end{figure}
+
+Ensuite, les hypothèses sur $P(G,B)$ sont telles que $G$ agit transitivement et librement (ou sans point fixe) sur $P$. C'est-à-dire que, sur une même fibre, tout point peut être atteint par tout autre via l'action de $G$ (transitivité) :
+\begin{align*}
+	\forall x\in B,\quad \forall p,q\in P_x,\ \exists t(p,q)\in G\ |\ p = q t(p,q) 
+\end{align*}
+et que le seul moyen laisse les points invariants par cette même action est de passer par l'élément neutre $e$ (libre) :
+\begin{align*}
+	\forall (p,g)\in P\times G,\quad p = pg\ \Lr\ g=e
+\end{align*}
+\\
+L'action de $G$ sur $P(G,B)$ est telle que toute section locale $\sigma$ sur $U_i$, peut s'écrire à partir d'une même section local $\sigma_i$ via la formule :
+\[\forall x\in B,\qquad \sigma(x) = \sigma_i(x) t\big(\sigma_i(x), \sigma(x)\big)\]
+Et il existe une choix de section $\sigma_i$ canonique par rapport à la carte $U_i$, elle doit être telle que :
+\[{h_i}(x,e) = \sigma_i(x)\]
+
 
 \begin{figure}[h]\centering 
 	%\hfill
