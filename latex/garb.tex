@@ -1,75 +1,142 @@
 
-\section{Notes sur l'approche Géométrique}
+%\section{Le plan du mémoire}
 
-\subsection{Le plan du mémoire (trop long)}
 
-\begin{enumerate}[label=\Roman* --- ]
+
+\textbf{Objectif du mémoire :}
+\begin{itemize}
+	\item Décrire la phase géométrie pour les signaux
 	
-	\item Introduction du phénomène pour les signaux 
-	\begin{enumerate}[label=\arabic* --- ]
+	\item Généralisation des signaux AM-FM (-PM)
+	
+	\item Interprétation de ses paramètres
+	
+	\item calcul de leur phases
+\end{itemize}
+\skipl
+\skipl
+
+
+\textbf{I --- Je sais pas trop / Introduction}%Introduction du phénomène pour les signaux}
+\begin{enumerate}[label=\arabic* --- ]\bfseries
+	
+	\item Les 3 phases d'un signal
+	\begin{itemize} \normalfont
 		
-		\item Paramètres instantanées d'un signal complexe
-		\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
-			
-			\item 
-		\end{enumerate}
+		\item première explication/interprétation des formules des phases
 		
-		\item Transformée en SA
-		\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
-			
-			\item 
-		\end{enumerate}
+		\item \textit{peut-être un peu de yapping sur le produit hermitien}
 		
-		\item Généralisation aux signaux analytique
-		\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
-			
-			\item 
-		\end{enumerate}
-	\end{enumerate}
+		\item cas univarié
 		
-	\item Description de la phase géométrique
-	\begin{enumerate}[label=\arabic* --- ]
+		\item invariance par jauge de la phase géométrique
+	
+	\end{itemize}
+	
+	\item Signaux particuliers : AM-FM-PM bivariés
+	\begin{itemize} \normalfont
+		\item Les paramètres, leur interprétation et les hypothèses associées
 		
-		\item  Cas des signaux pseudo-cycliques 
-		\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
-			\item $\S{2n+1}$ vu comme VFP
-			
-			\item Interprétations des phases
-			
-			\item peut-être quelques mot sur l'``universal $\U{1}$ principal bundle''
-		\end{enumerate}
+		\item calcul des 3 phases et interprétations
 		
-		\item La phase géom dans l'espace projectif
-		\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
-			\item Construction de $\PC{n}$ et de sa métrique
-			
-			\item Géodésique et lien avec le cas cyclique
-			
-			\item Birgmann, Bonnet-Gauss  \& Stokes
-		\end{enumerate}
 		
-		\item Cas non-commutatif ?
-		\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
+	\end{itemize}
+	
+	\item Généralisation aux signaux multivariés
+	\begin{itemize}\normalfont
+		
+		\item Un mot sur le trivarié et la généralisation par rotation (et est-ce que c'est satisfaisant)
+		
+		\item L'intérêt d'aller faire de la géométrique
+	\end{itemize}
+	
+\end{enumerate}
+\skipl 
+
+\textbf{II --- Dans le langage des variétés diff}
+\begin{enumerate}[label=\arabic* --- ] \bfseries
+	
+	\item Prérequis
+	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
+		
+		\item Vartiétés fibrées principales
+		\begin{itemize} \normalfont
 			
-			\item Motivation
+			\item Définition formelle
 			
-			\item AUCUNE ID2E
-		\end{enumerate}
+			\item Un peu de yapping pour se faire une intuition
+			
+			\item Relèvement et connexion
+			
+			\item \textit{peut-être quelques mot sur l'``universal $\U{1}$ principal bundle''}
+		\end{itemize}
+		
+		\item Espaces projectifs complexes
+		\begin{itemize} \normalfont
+			
+			\item Variété diff complexe rapidement
+			
+			\item Construction de $\PC{n}$
+			
+			\item \textit{un mot sur le lien avec la projection $\bf{xx}^\dagger$}
+			
+			\item Métrique de Fubini-Study
+		\end{itemize}
+		
+		\item \textit{Forme différentielle, intégration et formule d'air}
+		\begin{itemize} \normalfont
+			\item À voir de quoi y'a besoin (si vraiment besoin il y a)
+		\end{itemize}
+		
 	\end{enumerate}
 	
-	\item Cas des signaux AM-FM-PM
-	\begin{enumerate}[label=\arabic* --- ]
+	\item  Interprétation des phases dans ce cadre 
+	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
 		
-		\item Bivarié \& trivarié
+		\item Cas des signaux pseudo-cyclique
+		\begin{itemize} \normalfont
+			
+			\item Le dessin de Bohm :
+			
+			\item phase dyn =  signal - horizontal lift
+			
+			\item phase geo = horizontal lift - cyclique lift (<- indé du signal !)
+			
+			\item phase tot = cumul des deux
+		\end{itemize}
 		
-		\item Potentielle généralisation ?
-		
-		\item Comment calculer les $(\phi, \theta, \chi)$ ?
-
+		\item Généralisation du cas pseudo-cyclique (ou comment s'y ramener)
+		\begin{itemize} \normalfont
+			
+			\item Géodésique et généralisation du cas pseudo-cyclique
+			
+			\item Bargmann 
+			
+			\item \textit{Phase géo comme 2-forme vs phase dyn comme 1-forme}
+			\end{itemize}
+			
+		\item La phase géo dans l'espace projectif
+		\begin{itemize} \normalfont
+			
+				\item Bonnet-Gauss  \& Stokes : phase géo comme calcul d'air
+				
+				\item Comme partie imaginaire de la métrique \textit{(+ lien avec Fisher)}
+			
+		\end{itemize}
 	\end{enumerate}
+	
+	\item \textit{Retour les signaux AM-FM-PM ?}
+	\begin{itemize} \normalfont\itshape
+		\item Reparler des généralisations ?
+		
+		\item Réinterprétations ?
+		
+		\item Sensibilité au bruit ?
+	\end{itemize}
 \end{enumerate}
 
-
+ 
+\section{Notes sur l'approche Géométrique}
 
 \subsection{Notes sur l'approche à avoir}\label{subsec:phaseG_variete}
 
@@ -99,7 +166,7 @@
 		\item si la connexion du fibré est équivalente à la connexion d'une variété, qu'est-ce qu'il se passe du côté de cette variété ? est-ce qu'on peut en déduire des choses ? (sûrement que non parce que $\U{1}$ est pas un e.v.)
 	\end{itemize} 
 	
-	\item Phase géo $\cong$ transport parallèle
+	\item Phase géo $\cong$ transport parallèle ?
 	\\ Réponse :
 	\href{https://fr.wikipedia.org/wiki/Holonomie}{holonomie}
 	
@@ -341,7 +408,7 @@ En particulier, quand bien-même $x$ serait de norme constante, on aurait toujou
 			&= \varphi(t)-\varphi(t_0) + \arctan\left(\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right)
 		\end{aligned}
 	\end{equation}
-	ou $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y=\varphi,\theta,\chi$. \textbf{(adapte signe démo)}
+	où $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y=\varphi,\theta,\chi$. \textbf{(adapte signe démo)}
 \end{proposition}
 
 \begin{demo}[de la \cref{prop:phased/t_2var}]
