@@ -87,6 +87,8 @@ Finalement, $\tg{\manu}$ peut être séparé en deux sous-espaces engendré resp
 
 \subsection{Variété fibrée principale}
 
+\subsubsection{Définition}
+
 \begin{definition}[Variété fibrée]
 	\'Etant donnée deux variétés différentielles $P$ et $B$ de même classe, une \emph{fibration de base $B$ et d'espace total $P$} et une application $\pi : P\lr B$ telle qu'en tout point $x\in B$ de la base, il existe un voisinage $U_x\subset B$ et une variété différentielle $F_x$ telle que $U_x\times F_x$ soit difféomorphe à $\pi^{-1}(U_x)$.
 	
@@ -148,8 +150,18 @@ et que le seul moyen laisse les points invariants par cette même action est de 
 \\
 L'action de $G$ sur $P(G,B)$ est telle que toute section locale $\sigma$ sur $U_i$, peut s'écrire à partir d'une même section local $\sigma_i$ via la formule :
 \[\forall x\in B,\qquad \sigma(x) = \sigma_i(x) t\big(\sigma_i(x), \sigma(x)\big)\]
-Et il existe une choix de section $\sigma_i$ canonique par rapport à la carte $U_i$, elle doit être telle que :
+et grâce à l'action de $G$, il existe un choix canonique de section $\sigma_i$ par rapport à la carte $U_i$. Elle est donnée par :
 \[{h_i}(x,e) = \sigma_i(x)\]
+\\
+\begin{definition}[Cartes locales de VFP]
+	L'intersection de deux cartes  est noté $U_{ij} = U_i\cap U_j$ et le passage d'une section local canonique est donné par :
+	\[\forall x\in U_{ij},\qquad \sigma_j(x) = \sigma_i(x) t\big(\sigma_i(x), \sigma_j(x)\big)\]
+	L'élément de $G$, $t(\sigma_i, \sigma_j)$, est alors appelé \emph{fonction de transition} et est noté $\varphi_{ij}$. Elle fait effectivement la transition entre deux cartes dans le sens où :
+	\[\forall (g,x)\in G\times U_{ij},\qquad {h_i}^{-1} \circ h_j(g,x) = \big( \varphi_{ij}(x)g, x \big)\]
+\end{definition}
+
+\skipl
+En particulier que $x$ est invariant par changement de carte, ce qui est tout à fait normal compte tenu du fait que les $h_i(g, \cdot)$ sont tous définie sur un ensemble commun $B$. Autrement dit $x$ est invariant par changement de carte car il n'y a pas de raison à changer de coordonnée. \textbf{pas vrai, mais y'a un truc quand-même, faudra revenir dessus}
 
 
 \begin{figure}[h]\centering 
@@ -165,9 +177,34 @@ Et il existe une choix de section $\sigma_i$ canonique par rapport à la carte $
 		G\times U_i \arrow[ru, "\pr{2}" above left] \arrow[rd, "\pr{1}" below left] \arrow[rrrrrr, "h" above]  & & & & & & \pi^{-1}(U_i) \subset P \arrow[lllllu, "\pi" above right] \arrow[llllld, "\rho" below right] \\
 		& G 
 	\end{tikzcd}
-	%\hfill
+	\caption{Digrame surement osef des jeux de projections entre $P$ est les cartes locales}
 \end{figure}
 
+Pour interpréter géométriquement les phases géométrique et dynamique, il nous faut munir $P(G,B)$ d'une connexion. Pour cela, commençons par noter que, $B$ étant une variété  \textbf{blbblblbbllbbll}
+
+
+\subsubsection{Espace horizontaux et connexion}
+
+\begin{itemize}
+	\item espace tangent 
+	
+	\item séparation en vertical $\oplus$ horizontal
+	
+	\item pourquoi la découpe est pas canonique
+	
+	\item reformulation en terme de 1-forme
+	
+	\item connexion en coordo local
+	
+	\item toujours pas canonique tho
+	
+	%\item on choisie par rapport à la métrique de l'espace ambiant !
+
+\end{itemize}
+\begin{proposition}
+	Une 1-forme de connexion $\conn $, noté $\conn_i$ en coordonnée local sur la carte $U_i$, doit vérifier le changement de coordonnée :
+	\[\varphi_{ij}\conn_j = \conn_i \varphi_{ij} + \d \varphi_{ij}\]
+\end{proposition}
 
 
 
@@ -205,3 +242,10 @@ Les $(U_i,\phi_i)$ forme un atlas holomorphe sur l'espace projectif complexe, fa
 	$\PC{n}$ admet une métrique hermitienne induite par la métrique de $\S{2n+1}$, elle même induite du produit scalaire sur $\R^{2n+1}$. Elle est appelé \emph{métrique de Fubini-Study} et est donnée par le formule :
 	\[\]
 \end{proposition}
+
+
+\section{Interprétation des trois phases dans ce cadre}
+
+\subsection{Cas pseudo-cyclique}
+
+
