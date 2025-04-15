@@ -1,4 +1,98 @@
-\textit{Les deux premières \namecref{sec:temp-freq} de cette  \namecref{part:param_instant} sont fortement inspirées des propos de \textsc{Cohen} dans son livre \emph{Time frequency analysis} \cite{cohen_time_1995}, chapitre 1 \& 2 }.
+\begin{enumerate}[label=\arabic* --- ]\bfseries
+	
+	\item Signaux AM-FM-PM bivariés
+	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
+		
+		\item Transformée en SA
+		\begin{itemize} \normalfont
+			\item intro : les mesures sont toujours réelles mais nous on veut travailler avec des complexes, on peut pas juster passer de $\R^n$ dans $\C^{n/2}$ parce que cas impair et ca force à lier les composantes par deux
+			
+			\item transformé en SA ! on tue la partie négative du spectre parce que pas importante de toute façon
+			
+			\item (annexe : Hilbert, valeur principale de Cauchy)
+		\end{itemize}
+		
+		\item Signal AM-FM
+		\begin{itemize} \normalfont
+			
+			\item on détail un peu l'exemple $t \longmapsto \cos\nu_1t\cos\nu_2t$ comme déjà fait
+			
+			\item Bedrosian et pourquoi on a besoin de lui
+			
+		\end{itemize}
+		
+		\item Signal AM-FM-PM
+		\begin{itemize} \normalfont
+			
+			\item la formule avec un peu d'explication sur d'où ca vient
+			
+			\item les hypothèses sur la décompositions via Bedrosian
+			
+			\item interprétation géométrique
+			
+			\item projection sur la sphère avec Stokes et tout
+			
+		\end{itemize}
+	\end{enumerate}
+	
+	\item Introduction de la phase géométrique
+	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
+		
+		\item Phase totale
+		\begin{itemize} \normalfont 
+			\item yapping sur le produit hermitien
+			
+			\item interprétation de la phase totale comme angle entre vecteur (dans $\C^1$)
+			
+			\item \textit{jsp}
+		\end{itemize}
+		
+		\item Phases dynamique (via fréquence instantanée)
+		\begin{itemize} \normalfont
+			
+			\item Généralisation de la condition de Bedrosian 
+			
+			\item en plus ca colle la phase instant dans le cas univariée
+			
+			\item (annexes : les arguments pour l'appellation ``phase instantanée'')
+			
+		\end{itemize}
+		
+		\item Phase Géométrique
+		\begin{itemize} \normalfont
+			
+			\item cas univarié : égalité des deux fréquences
+			
+			\item arrivée de la phase géométrique
+			
+			\item invariance par transformation de jauge 
+			
+			\item son calcul pour les AM-FM-PM
+			
+		\end{itemize}
+	\end{enumerate}	
+	
+	\item Généralisation aux signaux multivariés
+	\begin{itemize}\normalfont
+		
+		\item Un mot sur le cas trivarié par Lilly \cite{lilly_modulated_2011}.
+		
+		\item Lefevre à discuter des généralisations \cite[sec. I.3]{lefevre_polarization_2021} avec des expo et algèbre Clifford : trop de contrainte sur les dimensions des signaux.
+		
+		\item Généralisation par rotation du plan de polar : boff parce que pas calculable en générale et mais surtout on manque le plus important, ca savoir.... 
+		
+		\item La phase géo est invariante par transfo de jauge, donc il faut faut faire apparaître $\PC{n-1}$ dans la décomposition.
+		
+		\item Remarque : c'est le cas en bivarié car $\PC{1}\cong \S{2}$ !
+		
+		\item S'il faut vraiment se pencher sur $\PC{n-1}$, allons-y (transition partie suivante)
+				
+	\end{itemize}
+\end{enumerate}
+
+
+
+%\textit{Les deux premières \namecref{sec:temp-freq} de cette  \namecref{part:param_instant} sont fortement inspirées des propos de \textsc{Cohen} dans son livre \emph{Time frequency analysis} \cite{cohen_time_1995}, chapitre 1 \& 2 }.
 
 \section{Paramètre instantanée dans la cas complexe}\label{sec:temp-freq}
 

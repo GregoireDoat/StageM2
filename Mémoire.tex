@@ -72,23 +72,25 @@
 \addcontentsline{toc}{section}{Introduction}
 \section*{\begin{center}\scshape Introduction \end{center}}
 
-La phase géométrique fait partie de ces concepts qui apparaissent régulièrement en physique, mais qui demande énormément de prérequis pour être expliqué proprement.
+La phase géométrique fait partie de ces concepts qui apparaissent régulièrement en physique, mais qui demande énormément de prérequis pour être expliqué.
 Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'un signal complexe $\bf{\psi}$ est donné par :
 \[\phaseg(\psi, t_0, t) = \arg\big\langle \psi(t), \psi(t_0)\big\rangle + \Im m\int_{t_0}^t \frac{\big\langle \psi(s) , \dot{\psi}(s) \big\rangle}{\|\psi(s)\|^2} ds\]
 Ce qui rend cette phase si intéressante c'est qu'elle est invariante par transformation de jauge, c'est-à-dire invariante par toute transformation du type :
 \[\psi(t)\ \leadsto\ \psi'(t) = e^{i\alpha(t)}\psi(t) \]
 \\
-Cette propriété rend la phase $\phaseg$ intrinsèquement liée à la trajectoire que prend la projection $[\psi]\in\PC{n-1}$ de $\psi$ dans l'espace complexe. En d'autre terme à la géométrie de l’espace projectif $\PC{n}$, d'où son nom.
+Cette propriété rend la phase $\phaseg$ intrinsèquement liée à la trajectoire que prend la projection de $\psi$ dans l'espace projectif complexe $\PC{n-1}$ et par conséquence, à la géométrie de ce dernier, d'où son nom.
+\\ \\
+Ceci à largement été étudié dans le carde de système dynamique régis par EDP \cite{faure_introduction_2022,marsden_introduction_1999}, notamment en mécanique quantique avec l'équation Schrödinger \cite{bohm_geometric_2003,mukunda_quantum_1993,nakahara_geometry_2003}. 
+Ce n'est que récemment que Le Bihan, Flamant et Amblard se sont intéresser à son application en traitement du signal dans le cas de signaux bivariés à bande fine \cite{le_bihan_modephysiques_2023, le_bihan_geometric_2024}.
 \\
 
-Cela étant dit, ces résultats ont toujours été décrit, à notre connaissant, dans le cadre de système dynamique régis par une EDP (généralement Schrödinger).
-L'objectif de ce mémoire sera donc de décrire ce phénomène pour un signal quelconque et ceux avec une approche géométrique.
+L'objectif de ce mémoire est alors de résumer les résultats et interprétations de la phase géométrique mais du point de vue du traitement du signal. 
 \\
-Cela demandera de faire appelle, entre autre, à des outils de variété différentielle complexe et fibrée principale ;
-et comme il serait inapproprié de considérer que le lecteur a toutes les bases nécessaire sur le sujet, des \textbf{nombreuses} annexes seront dédiées aux mathématiques utile à cette fin.
+Dans une première partie, les résultats de Le Bihan \etal~seront (rapidement) présentés, ce qui fera office d'exemple pour mieux introduire la phase géométrique. 
 \\
-
-\textbf{\textit{... sûrement plus de blabla pour détailler le plan du mémoire...}}
+Suite à quoi, dans une seconde partie, le phénomène sera décrit d'un point de vue géométrique, ce qui demandera de rappelé, entre autre, des résultats sur les variétés complexes et fibrées principales.
+\\
+Enfin, dans une dernière partie, ...........
 
 
 
@@ -137,35 +139,49 @@ et comme il serait inapproprié de considérer que le lecteur a toutes les bases
 %\end{itemize}
 
 
+\textbf{Objectif du mémoire :}
+\begin{itemize}
+	\item Décrire la phase géométrie pour les signaux
+	
+	\item Généralisation des signaux AM-FM (-PM)
+	
+	\item Interprétation de ses paramètres
+	
+	\item calcul de leur phases
+\end{itemize}
+\skipl
+\skipl
+
+
 
 
 %%%% COEUR DU MEMOIRE %%%%
 
 
 \part{Phase et Fréquence instantanée d'un Signal} \label{part:param_instant}
-	A REFAIRE !
-	%\input{latex/part-1}
+	%A REFAIRE !
+	\input{latex/part-1}
 
 
 
 
 \part{Description de la phase géométrique} \label{part:phase_geo}
-	
+	%qerhqerthse
 	\input{latex/part-2}
 
 
 
 
 \part{Notes 'n' thoughts}
-
-	\input{latex/garb}
+	qrhqerhhqer
+	%\input{latex/garb}
 	
 	
 	
 	
-\part{Legacy}
+%\part{Legacy}
 	
-	\input{latex/part-1(legacy)}
+	%\input{latex/part-1(legacy)}
 	
 
 
