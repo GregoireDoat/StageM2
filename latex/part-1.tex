@@ -1,56 +1,18 @@
 
+
 \begin{enumerate}[label=\arabic* --- ]\bfseries
 	
 	\item Introduction de la phase géométrique
-	\begin{itemize}\normalfont
-		
-		\item En analyse temps-fréquence, il est utile de définir une notion de fréquence instantanée (même si ca peut pas avoir de sens) \cite{cohen_time_1995} et elle est donnée par la dérivée à $2\pi$ près de l'argument. La phase vient alors comme primitive de la fréquence instantanée. Autrement dit, c'est l'argument à un choix de phase initiale près.
-		
-		\item Comme nous on étudie l'évolution d'une phase au cours du temps, c'est l'analyse temps-fréquence est précisément le cadre qu'il nous faut et c'est au regard de cette dernière que nous allons interpréter les phase totale, dynamique et géométrique.
-		
-	\end{itemize}
 	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
 		
-		\item Fréquence instantanée
-		\begin{itemize}
-			
-		\end{itemize}
+		\item Un peu d'analyse temps fréquence
 		
-		\item Phase totale
-		\begin{itemize} \normalfont 
-			\item petit blabla sur le produit hermitien (convention, interprétation par rapport au produit scalaire)
-			
-			\item interprétation de la phase totale comme angle entre vecteur (dans $\C^1$ puis généralisé)
-			
-			\item \textit{jsp}
-		\end{itemize}
-		
-		\item Phases dynamique (via fréquence instantanée)
-		\begin{itemize} \normalfont
-			
-			\item Généralisation de la condition de Bedrosian 
-			
-			\item en plus ca colle la phase instant dans le cas univariée
-			
-			\item (annexes : les arguments pour l'appellation ``phase instantanée'')
-			
-		\end{itemize}
+		\item Les phases totale et dynamique
 		
 		\item Phase Géométrique
-		\begin{itemize} \normalfont
-			
-			\item cas univarié : égalité des deux fréquences
-			
-			\item arrivée de la phase géométrique
-			
-			\item invariance par transformation de jauge 
-			
-			\item son calcul pour les AM-FM-PM
-			
-		\end{itemize}
 	\end{enumerate}	
 	
-	\item Cas particulier de signal
+	\item Décomposition des signaux multivariés
 	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
 		
 		\item Signal AM-FM-PM bivarié
@@ -87,33 +49,251 @@
 	\end{enumerate}
 \end{enumerate}
 
+\begin{enumerate}[label=\Alph* --- ] \bfseries
+	\item Plus de détail sur l'analyse temps-fréquence
+	\begin{enumerate}[label=\Alph{enumi}.\arabic* --- ]
+		
+		\item Calculation trick
+		
+		\item Transfo en SA et Bedrisian
+		
+	\end{enumerate}
+\end{enumerate}
+
 \newpage
 
 
+En traitement du signal, la phase d'un signal est intrinsèquement lié à la notion de fréquence instantanée, qui joue un rôle important en analyse temps-fréquence. 
+C'est donc de point que commencera notre discussion pour introduire la phase géométrique.
+Pour cela, seront rapidement introduit quelques notions et résultats d'analyse temps-fréquence dans le cas univarié (sec. \ref{sec:ana_temp-freq}). Suite à quoi sera définie la phase instantanée pour le cas multivarié (sec. \ref{sec:freq_instant}), qui permettre enfin de mettre en évidence la phase géométrique (sec. \ref{sec:intro_phaseg}).
+\\
+
+Dans une seconde partie, seront introduit les signaux bivarié dit AM-FM-PM, dont la phase géométrique sera calculer explicitement (sec. \ref{sec:AM-FM-PM}). Cela permettre de mettre en évidence certaines de ses propriétés, ce qui permettre ensuite de discuter des généralisations des signaux AM-FM-PM au delà du cas bivarié (sec. \ref{sec:}) et de discuter de la pertinence ces décompositions pour étudier la phase géométrique (sec. \ref{sec:}).
+
+\section{Introduction de la phase géométrique} \label{sec:intro_phaseg}
 
 
 
-\section{Introduction de la phase géométrique} \label{sec:AM-FM-PM}
 
-La formule phase géométrique telle que donné en introduction possède deux composantes appelées phase totale et phase dynamique :
-\begin{equation}\label{eq:phase_t}
-	\phaset = \arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle
-\end{equation}
-\begin{equation}\label{eq:phase_d}
-	\phased = \Im m\int_{t_0}^t \frac{\big\langle \dot{\bf{x}}(s) , \bf{x}(s) \big\rangle}{\|\bf{x}(s)\|^2} ds
-\end{equation}
-De sorte que :
-\begin{equation}\label{eq:phase_g}
-	\phaseg = \phaset - \phased = \arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{\bf{x}}(s) , \bf{x}(s) \big\rangle}{\|\bf{x}(s)\|^2} ds
+\subsection{Cas univarié : signaux AM-FM} \label{sec:ana_temp-freq}
+
+%\subsubsection{Quelque notion d'analyse temps-fréquence}
+
+En traitement du signal, l'analyse fréquentielle par la transformée de Fourier est un incontournable. 
+Seulement, cette transformation fait perdre toute notion temporelle : si l'étude du spectre du signal permet de dire quelles fréquences apparaissent dans le signal, elle ne permet pas de dire à quel moment. 
+C'est en réponse à cela, entre autre, qu'est développé l'analyse temps-fréquence. 
+\\
+A cette fin, sont définies des paramètres associées aux fréquences mais avec une dépendance en temps :\par
+
+\begin{definition}[Paramètres instantanées] \label{def:param_instant}
+	Soit $x$, est un signal complexe écrit sous forme exponentielle :
+	\begin{align}
+		x\ &:\ \begin{aligned}\R\ &\lr\qquad \C \\
+			t\ &\longmapsto\ a(t)e^{i\phi(t)}
+		\end{aligned}  &  \text{où }\quad a(t)\in\R^+\quad &\text{et}\quad \phi(t)\in\R
+	\end{align}
+	$a$ est appelé \emph{amplitude instantanée} du signal, $\nicefrac{1}{2\pi}\phi'$ sa \emph{fréquence instantanée} et sa \emph{phase instantanée} est définie, modulo un choix de phase initiale, par :
+	\begin{equation} \label{eq:phasei}
+		\phasei(x,t_0,t) = \phi(t) - \phi(t_0)
+	\end{equation}
+\end{definition}
+\skipl 
+
+Pour les signaux réels, ces notions sont moins évidentes à définir puisqu'elles demandent d'écrire les signaux sous la forme :
+\[x(t) = a(t) \cos\phi(t)\]
+\\
+Auquel cas, le choix de la pair $(a,\phi)$ n'est pas unique. Il existe tout de même un ``bon'' choix de telle pair dans le cas des signaux dit AM-FM :
+\begin{definition}[Signal AM-FM]
+	Un signal réel de la forme :
+	\begin{align}
+		x\ &:\ \begin{aligned}\R\ &\lr\qquad \R \\
+			t\ &\longmapsto\ a(t) \cos\phi(t)
+		\end{aligned}  &  \text{où }\quad a(t)\in\R^+\quad
+	\end{align}
+	est dit \emph{AM-FM} (\emph{amplitude modulated - frequency modulated}) si $a$ et $\cos\phi$ admettent des transformée de Fourier et si de plus la première a un spectre concentré sur les bases fréquences, la seconde concentré sur les hautes fréquences et que les deux ne se chevauche pas.
+	Formellement, ces conditions demande qu'il existe $\lambda\in\R^+$ telle que :
+	\begin{equation}\label{eq:condi_AM-FM}
+		\supp \Fou{a} \subset [-\lambda, \lambda],\quad \supp \Fou{\cos\phi} \subset \R\setminus[-\lambda,\lambda]
+	\end{equation}
+	Dans ce cas, $a$ et $\phi$ donne lieu au même définition que pour le cas complexe.
+\end{definition}
+\skipl
+Ces conditions sont liées au théorème de Bedrosian, et plus de détail se trouve dans l'annexe \ref{}. Pour le dire rapidement, elles évitent que toutes les fréquences du signal se trouve dans l'amplitude $a$ dans la décomposition $(a,\phi)$, auquel cas, $x$ n'aurait ``pas de fréquence'' au sens où $\phi$ pourrait être choisie constante, voir nulle.
+\\
+Sous ces conditions, $x$ peut être vu comme le signal complexe $\SA{x}$ telle que :
+\[\SA{x}(t) = a(t) e^{i\phi(t)}= a(t)\cos\phi(t) + ia(t)\sin\phi(t) = x  + i\Im m \SA{x}\]
+L'on parle alors de transformée en \emph{signal analytique} et $\SA{x}$ a naturellement les mêmes paramètres instantanée que $x$.
+\\
+
+
+%\subsubsection{Le problème des signaux multivariés}
+
+L'intérêt d'introduire toutes ces notions est que les signaux analytiques souffre du même problème que les signaux réels. 
+En effet, en écrivant un signal $\x$ sous la forme :
+\[\forall t\in\R,\qquad 
+\x(t) = \begin{pmatrix} A_1(t)e^{i\Phi_1(t)} \\ A_2(t)e^{i\Phi_2(t)} \\ \vdots \\ A_n(t)e^{i\Phi_n(t)}
+\end{pmatrix}\]
+\\
+Le fait que $\x$ soit à valeur dans $\C^n$ impose un choix naturel d'amplitude instantanée : sa norme. Pour ce qui est de la phase instantanée, en revanche, n'importe qu'elle choix de $\phi$ convient \apriori~:
+\[\forall t\in\R,\qquad 
+\x(t) = \begin{pmatrix} A_1(t)e^{i\phi_1(t)} \\ A_2(t)e^{i\phi_2(t)} \\ \vdots \\ A_n(t)e^{i\phi_n(t)} \end{pmatrix}
+= a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\psi_1(t)} \\ a_2(t)e^{i\psi_2(t)} \\ \vdots \\ a_n(t)e^{i\psi_n(t)} \end{pmatrix}
+\qquad\text{ avec }\qquad 
+\left\{ \begin{aligned}
+	& a(t) = \| \x(t) \|_2 \\
+	& \big\|(a_i)_{1\leq i\leq n}\big\|_2 = 1 \\
+	& \phi_i = \phi + \psi_i \end{aligned}\right.\]
+\\
+Il suffit que les $\psi_i$ soient ajustés pour assurer que $\ \phi_i = \phi + \psi_i$.
+\\
+\begin{remarque}
+	À noter, que si $a$ et $\phi$ sont correspondent respectivement à une amplitude et une phase, le vecteur restant $\big( a_ie^{\phi_i} \big)_{1\leq i\leq n}$ correspond à un vecteur de polarisation, sur lequel nous reviendrons dans la \cref{sec:AM-FM-PM} suivante.
+\end{remarque}
+
+
+
+\subsection{Phase et fréquence instantanée de signal multivarié }\label{sec:param_instant_nvar}
+
+On se propose ici de définir la phase instantanée comme suit :
+\begin{definition}[Phase dynalique/instantanée] \label{def:phase_d}
+	La \emph{phase instantanée} ou \emph{dynamique} (à l'instant $t$ partant du $t_0$) d'un signal multivarié $\x = a\big(a_ie^{i\phi_i}\big)_{1\leq i\leq n} \in \conti[1]{\R}{\C^n}$ quelconque, est définie par la formule :
+	\begin{equation} \label{eq:phase_d}
+		\forall t_0, t\in\R, \quad \phased(\x, t_0,t) \defeq \int_{t_0}^t \frac{\Im m \big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds =\sum_{i=1}^n \int_{t_0}^t a_i(s)^2 \phi_i'(s)ds
+	\end{equation}
+	On s'autorisera à omettre les paramètres de $\phased$ lorsque cela ne prête pas à confusion.
+\end{definition}
+
+\begin{remarque}
+	Outre l'aspect variationnelle de cette formule, le terme ``dynamique'' viens du fait que, lorsque $\x$ suit une équation de Schrödinger :
+	\begin{equation}\label{eq:schrodinger}
+		i\frac{d \x(t)}{dt} = h\x(t)
+	\end{equation}
+	la dérivée $\dot{\x}$ dans la formule \eqref{eq:phase_d} ci-dessus se voit remplacé par l'hamiltonien $h\x$ {\normalfont \cite[sec. 2]{bohm_geometric_2003}, \cite[p.~215]{mukunda_quantum_1993}}, donnant :
+	\[\phased' = -i \int_{t_0}^t\frac{\big\langle h\x(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds\] 
+	\\
+	Sachant que $\x$ n'a aucune raison de suivre une telle équation dans notre cas, poser $h = i\frac{d}{dt}$ enlève toute contrainte, auquel cas $\phased'=\phased$.
+\end{remarque}
+\skipl
+
+Cela étant, deux arguments sont donnés pour motiver cette définition :
+\\
+
+\subsubsection*{Argument variationnelles}
+
+Le premier, fortement inspirée par les travaux de Lilly \& Olhede  \cite{lilly_analysis_2012}, consiste à généraliser la condition \eqref{eq:condi_AM-FM} de séparation haute/basse fréquences sur les signaux AM-FM.
+Pour cela, l'on commence par faire apparaître une phase $\phi$ --- pour l'instant inconnue --- en écrivant $\x$ sous la forme :
+\[\forall t\in\R,\qquad \x(t) = e^{i\phi(t)} e^{-i\phi(t)} \x(t) \defeq e^{i\phi(t)} \bf{y}(t)\]
+\\
+Si $\phi$ est bien choisie, alors $\bf{y}$ ne devrait contenir que les informations associées à l'amplitude et la polarisation de $\x$. Or, conformément à la condition \eqref{eq:condi_AM-FM}, la phase doit contenir les hautes fréquences du signal et, inversement, les basses fréquences doivent se trouver dans ce qui reste. 
+\\
+La fréquence donnant, pour le dire vite, la vitesse d'ondulation, la contrainte sur $\x$ va être de limite les variations de  $\bf{y}$. Concrètement, $\phi$ doit être choisie de sorte à minimiser la dérivée $\dot{\bf{y}}$ :
+\[\forall t\in\R,\qquad \phi(t) = \argmin{\theta(t)}{\big\|\dot{\bf{y}}(t)\big\|_2}^2 = \argmin{\theta(t)}{\Big\|e^{-i\theta(t)}\big(\dot{\x}(t) - i\theta(t)'\x(t)\big)\Big\|_2}^2 = \argmin{\theta(t)}{\big\|\dot{\x}(t) - i\theta'(t)\x(t)\big\|_2}^2\]
+\\
+La contrainte ne dépendant que de la dérivée $\theta'$, on se ramène à :
+\[\min_{\theta(t)}{\|\dot{\bf{y}}(t)\|_2}^2 = \min_{\theta'(t)}{\big\|\dot{\x}(t) - \theta'(t) \x(t)\big\|_2}^2\]
+\\
+En rappelant que $\frac{d}{dx}{\big\|f(x)\big\|_2}^2 = 2\Re e\big\langle f(x), f'(x)\big\rangle$, il vient que ce minimum\footnote{\itshape
+	L'extremum obtenu est l'unique minimum globale puisque $t\longmapsto \|at + b\|^2$ est strictement convexe pour $a\neq0$.}
+est atteint par $\phi'(t)$ à condition que :
+\begin{align*}
+	\frac{d}{d\phi'}{\big\| \dot{\x} - i\phi' \x\big\|_2}^2 = 0 \quad \Llr\quad
+	0 &= 2\Re e\left\langle  \dot{\x} - i\phi' \x ,  \frac{d}{d\phi'}\big(\dot{\x} - i\phi' \x\big)\right\rangle \\
+	&= 2\Re e\big\langle  \dot{\x} - i\phi' \x ,  - i \x\big\rangle \\
+	&= 2\Re e\Big(i\big\langle  \dot{\x} ,  \x\big\rangle\Big) + 2\phi'\Re e\big\langle   \x ,  \x\big\rangle\\
+	&= -2\Im m\big\langle  \dot{\x} ,  \x\big\rangle + 2\phi'{\| \x\|_2}^2
+\end{align*}
+Ainsi $\displaystyle \ \phi' = \frac{\Im m\big\langle  \dot{\x} ,  \x\big\rangle}{{\| \x\|_2}^2}\ $ et :
+\begin{equation}\label{eq:phas_inst_v1}
+  \phi(t) = \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds = \phased(\x,t_0,t)
 \end{equation}
 \\
-Pour comprendre d'où vient cette formule, dans cette partie seront d'abord expliquées les phases totale (sec. \ref{sec:phase_t}) et dynamique (sec. \ref{sec:phase_d}) avant de revenir sur la phase géométrique (sec. \ref{sec:phase_g}).
+
+\subsubsection*{Arguments des moyennes}
+
+Autre argument, cette fois inspiré de \cite{cano_mathematical_2022}, ce base sur la notion de fréquence moyenne.
+D'abord dans le cas d'un signal complexe univarié, sont définies les fonctions de densités d'énergie (resp. d'énergie spectale) comme :
+\begin{align}\label{eq:densi_dE}
+	\densit\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x(t)\big|^2 \end{aligned}  
+	&
+	\text{resp.}\qquad \densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(\nu)\big|^2 \end{aligned}
+\end{align}
+\\
+À partir de ces dernières est définie la fréquence moyenne de $x$ comme comme l'espérance de $\densis$, $\esp[\densis]{\nu}$. Cette fréquence moyenne est lié à la fréquence instantanée par la formule :\footnote{cette formule de généralise à tout les moments de $\densis$ et existe également pour les moments de $\densit$, voir \cite[sec. 1.4]{cohen_time_1995} pour une démonstration ``à la physicienne''}
+\begin{equation}\label{eq:esp_freq}
+	\esp[\densis]{\nu} = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t)dt = \frac{1}{2\pi} \esp[\densit]{\phi'}
+\end{equation}
+\\
+Dans le cas d'un signal $\x=(x_i)_{1\leq i\leq n}$ multivarié, les densités d'énergies se définissent comme :
+\begin{align*}%\label{eq:densi_dEi}
+	\densit_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big|x_i(t)\big|^2 = a(t)^2 a_i(t)^2 \end{aligned}  
+	&
+	\densis_i\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}_i(\nu)\big|^2 \end{aligned} \\ \\
+	%\label{eq:densi_dE-mv}
+	\densit\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ t\ &\longmapsto\ \big\|\x(t)\big\|^2 = \sum_{i=1}^n \densit_i(t) \end{aligned}  
+	&
+	\densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big\|\fou{\x}(\nu)\big\|^2 = \sum_{i=1}^n \densis_i(t) \end{aligned}	
+\end{align*}
+Le second argument consiste alors à dire que l'égalité des moments $\eqref{eq:esp_freq}$ doit resté vrai dans le cas multivarié. Cela assure au moins que la fréquence instantanée de $\x$, $\nicefrac{1}{2\pi}\phi'$, à pour moyenne la fréquence moyenne en sens de Fourier.
+\\
+
+En appliquant la formule \eqref{eq:esp_freq} au $\densis_i$, et en notant toujours $\x = a\big(a_ie^{i\phi_i}\big)_{1\leq i\leq n}$, on obtient :
+\begin{align*}
+	\esp[\densis]{\nu} = \int_\R \nu\densis(\nu)d\nu &= \int_\R \nu\sum_{i=1}^n \densis_i(\nu) d\nu \\
+	&= \sum_{i=1}^n\esp[\densis_i]{\nu} \\
+	&= \sum_{i=1}^n\frac{1}{2\pi}\int_\R \phi_i'(t)\densit_i(t)dt \\
+	&= \frac{1}{2\pi}\int_\R a(t)^2\sum_{i=1}^n\phi_i'(t)a_i(t)^2 dt 
+	\\ &= \frac{1}{2\pi} \esp[\densit]{\sum_{i=1}^n \phi_i'{a_i}^2}
+\end{align*}
+\\
+Ce qui mène à poser $\displaystyle \ \sum_{i=1}^n \phi_i'(t){a_i}^2(t)\ $ pour la fréquence instantanée, avec la phase associée :
+\begin{equation}\label{eq:phas_inst_v1}
+	\phi = \int_{t_0}^t \sum_{i=1}^n \phi_i'(s){a_i}(s)^2ds 
+	= \sum_{i=1}^n \int_{t_0}^t \phi_i'(s){a_i}(s)^2ds 
+	%= \sum_{i=1}^n \esp[\nicefrac{\densit_i}{\densit}]{\phi_i'}
+\end{equation}
+\\
+
+Formule qui concorde bien avec celle de la phase dynamique une fois explicité :
+\begin{align*}
+	\Im m\frac{\big\langle \dot{\x}(t) , \x(t) \big\rangle}{\|\x(t)\|^2} &= \Im m\left( \frac{1}{a(t)^2} \sum_{i=1}^n \Big( \big(aa_i\big)'(t) +a(t)a_i(t)i\phi_i'(t)\Big)e^{i\phi_i(t)}\congu{a(t)a_i(t)e^{i\phi_i(t)}} \right) \\
+	&=\frac{1}{a(t)^2}  \Im m\left( \sum_{i=1}^n a(t)a_i(t)\big(aa_i\big)'(t) +ia(t)^2a_i(t)^2\phi_i'(t) \right) \\
+	&= \frac{1}{a(t)^2} \sum_{i=1}^n a(t)^2a_i(t)^2 \phi_i'(t) \\
+	&= \sum_{i=1}^n a_i(t)^2 \phi_i'(t)
+\end{align*}
+D'où
+\[\Im m\int \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds = \int \sum_{i=1}^n a_i(s)^2 \phi_i'(s) = \sum_{i=1}^n \int a_i(s)^2 \phi_i'(s)ds\]
+\\
 
 
 
-\subsection{Phase totale d'un signal} \label{sec:phase_t}
+\subsection{Apparition de la phase géométrique --- A REFAIRE}\label{subsub:intro_phaseg}
 
-En analyse temps-fréquence, la phase instantanée d'un signal complexe $x: \R\lr\C$ par son argument, modulo un choix de phase initial. En clair $x$ s'écrit $x(t) = a(t) e^{i\phi(t)}$, alors :
+Pour rentre compte de la pertinence de cette expression, commençons par noter qu'il existe une autre façon standard de définir la phase d'un signal, la \emph{phase totale} :
+\begin{equation}\label{eq:phase_t}
+	\phaset(\x, t_0, t) \defeq \arg\big\langle \x(t), \x(t_0)\big\rangle
+\end{equation}
+Il n'est pas clair, dans un cadre générale, comment et pourquoi cela s'interprète bien comme une phase et c'est encore pire lorsque l'on explicite sa valeur :
+\begin{align*}
+	\phaset(\x,t_0, t) &= \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\phi_i(t)-\phi_i(t_0))} \right) \\
+	&= \phased + \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\alpha_i(t)-\alpha_i(t_0))} \right)  &  &\text{où } \phi_i = \phased + \alpha_i  \\
+	&= \phased + \arctan \left( \frac{\sum_i a_i(t)a_i(t_0)\sin\big( \alpha_i(t)-\alpha_i(t_0)\big)}{\sum_i a_i(t)a_i(t_0)\cos\big( \alpha_i(t)-\alpha_i(t_0)\big)}  \right)
+\end{align*}
+\\
+
+Cela étant dit, si $\x$ est cyclique à une phase près, cette formule fait plus sens. C'est-à-dire lorsque, entre deux instant $t_0$ et $t$ donnés, $\x$ vérifie :
+\[\exists \theta\in\R\ |\quad \x(t) = e^{i\theta} \x(t_0)\]
+Dès lors, la phase totale donne bien :
+\[\arg\big\langle \x(t), \x(t_0)\big\rangle = \arg\big\langle e^{i\theta} \x(t_0), \x(t_0)\big\rangle = \theta\]
+\\
+Dans le cas univarié, la phase instantanée vaut également $\theta$, ce qui n'est plus le cas dès que $n\geq 2$ (voir \cref{fig:calc_diff_phases}, ci-dessous). Apparaît alors une nouvelle phase qui est dû au caractère multivarié du signal : la phase géométrique introduite au début du mémoire.
+\\
+\begin{figure}[h]
+	\includegraphics[width=0.6\textwidth]{fig/placeholder}
+	\caption{Sur le graphe de gauche, le signal $\x$ à valeur dans $\R^2$ et dans celui de droite la calcul de la phase dynamique, totale et de leur différence. Résultat tiré des simulation de Le Bihan \etal \cite{le_bihan_modephysiques_2023}}
+	\label{fig:calc_diff_phases}
+\end{figure}
+
+En analyse temps-fréquence, la phase instantanée d'un signal complexe $x: \R\lr\C$ par son argument, modulo un choix de phase initial. En clair, si $x$ s'écrit $\ x(t) = a(t) e^{i\phi(t)}$, alors :
 \begin{equation} \label{eq:phasei}
 	\phasei(x,t_0,t) = \phi(t) - \phi(t_0)
 \end{equation}
@@ -124,14 +304,11 @@ Phase qui peut encore s'écrire :
 La phase totale peut-être vu comme une généralisation de cette formule au signaux multivarié, \ie~à valeur dans $\C^n$.
 
 
-
-
-
-
-
-\newpage
-
-
 \begin{equation}\label{eq:AM-FM-PM_2var}
-	\forall t\in\R,\quad \bf{x}(t) = a(t)e^{i\varphi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}
+	\forall t\in\R,\quad \x(t) = a(t)e^{i\varphi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}
 \end{equation}
+
+
+
+
+\section{Décomposition des signaux multivariées} \label{sec:AM-FM-PM}

@@ -301,18 +301,6 @@ Maintenant que les paramètres instantanée sont proprement définie pour les ca
 	On supposera que chaque composante $x_i$ de $\bf{x}$ aura autant de régularité et de condition d'intégrabilité que nécessaire \textbf{(il vaudra préciser lesquelles éventuellement)}.
 \end{definition}
 
-Le fait que $\bf{x}$ soit à valeur dans $\C^n$ impose un choix naturel de d'amplitude instantanée : sa norme. L'on notera alors dans tout la suite (sauf précision) :
-\[\forall t\in\R,\qquad 
-\bf{x}(t) = a(t)\begin{pmatrix} a_1(t)e^{i\phi_1(t)} \\ a_2(t)e^{i\phi_2(t)} \\ \vdots \\ a_n(t)e^{i\phi_n(t)}
-\end{pmatrix} \qquad\text{ avec }\qquad \big\|(a_i)_{1\leq i\leq n}\big\|=1,\quad a\geq 0
-%a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\psi_1(t)} \\ a_2(t)e^{i\psi_2(t)} \\ \vdots \\ a_n(t)e^{i\psi_n(t)}\end{pmatrix}
-\]
-\\
-Le choix de la phase instantanée, en revanche, n'est pas plus commode. Si l'on cherche à écrire $\bf{x}$ sous la forme :
-\[a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\alpha_1(t)} \\ a_2(t)e^{i\alpha_2(t)} \\ \vdots \\ a_n(t)e^{i\alpha_n(t)}
-\end{pmatrix}\]
-alors n'importe quel choix de $\phi$ est valable, il suffit que $\ \alpha_i = \phi_i-\phi$.
-\\
 
 
 
@@ -414,36 +402,6 @@ Le terme ``dynamique'' viens, entre autre, du fait que dans son cadre d'étude h
 
 Sachant que $\bf{x}$ n'a aucune raison de suivre une telle équation dans notre cas, poser $h = i\frac{d}{dt}$ enlève toute contrainte. On retrouve ainsi, modulo un jeu de convention sur le produit hermitien, la formule \eqref{eq:phase_d} ci-dessus.
 \\ Notons enfin qu'une fois la phase dynamique ``extraite'' de $\bf{x}$, le vecteur restant $\bf{y}$ n'a évidement pas de phase dynamique, ce qui se traduit par la formule :
-\\
-
-
-
-\subsection{Apparition de la phase géométrique}\label{subsub:intro_phaseg}
-
-Pour rentre compte de la pertinence de cette expression, commençons par noter qu'il existe une autre façon standard de définir la phase d'un signal, la \emph{phase totale} :
-\begin{equation}\label{eq:phase_t}
-	\phaset(\bf{x}, t_0, t) \defeq \arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle
-\end{equation}
-Il n'est pas clair, dans un cadre générale, comment et pourquoi cela s'interprète bien comme une phase et c'est encore pire lorsque l'on explicite sa valeur :
-\begin{align*}
-	\phaset(\bf{x},t_0, t) &= \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\phi_i(t)-\phi_i(t_0))} \right) \\
-		&= \phased + \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\alpha_i(t)-\alpha_i(t_0))} \right)  &  &\text{où } \phi_i = \phased + \alpha_i  \\
-		&= \phased + \arctan \left( \frac{\sum_i a_i(t)a_i(t_0)\sin\big( \alpha_i(t)-\alpha_i(t_0)\big)}{\sum_i a_i(t)a_i(t_0)\cos\big( \alpha_i(t)-\alpha_i(t_0)\big)}  \right)
-\end{align*}
-\\
-
-Cela étant dit, si $\bf{x}$ est cyclique à une phase près, cette formule fait plus sens. C'est-à-dire lorsque, entre deux instant $t_0$ et $t$ donnés, $\bf{x}$ vérifie :
-\[\exists \theta\in\R\ |\quad \bf{x}(t) = e^{i\theta} \bf{x}(t_0)\]
-Dès lors, la phase totale donne bien :
-\[\arg\big\langle \bf{x}(t), \bf{x}(t_0)\big\rangle = \arg\big\langle e^{i\theta} \bf{x}(t_0), \bf{x}(t_0)\big\rangle = \theta\]
-\\
-Dans le cas univarié, la phase instantanée vaut également $\theta$, ce qui n'est plus le cas dès que $n\geq 2$ (voir \cref{fig:calc_diff_phases}, ci-dessous). Apparaît alors une nouvelle phase qui est dû au caractère multivarié du signal : la phase géométrique introduite au début du mémoire.
-\\
-\begin{figure}[h]
-	\includegraphics[width=0.6\textwidth]{fig/placeholder}
-	\caption{Sur le graphe de gauche, le signal $\bf{x}$ à valeur dans $\R^2$ et dans celui de droite la calcul de la phase dynamique, totale et de leur différence. Résultat tiré des simulation de Le Bihan \etal \cite{le_bihan_modephysiques_2023}}
-	\label{fig:calc_diff_phases}
-\end{figure}
 
 \textbf{... un peu plus de blabla pour faire transition sur la suite ...}
 
