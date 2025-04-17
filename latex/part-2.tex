@@ -1,51 +1,129 @@
-\begin{enumerate}[label=\arabic* --- ]
+\begin{enumerate}[label=\Roman* --- ] \bfseries
 	
-	\item Cas des signaux pseudo-cyclique
-	\begin{itemize} \normalfont
+	\item Prérequis \\
+	{\normalfont\itshape Dans notre cas, tout s'écrit très simplement donc pas besoin de sortir tout l'arsenal de géo diff}
+	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
 		
-		\item Le dessin de Bohm :
+		\item Espace projectif complexe
+		\begin{enumerate}[label=\arabic{enumi}.2.\arabic* --- ]
+			
+			\item Construction de $\PC{n-1}$ 
+			\begin{itemize} \normalfont
+				
+				\item Définition comme espace quotient $\S{2n-1}/\U{1}$
+				
+				\item lien avec la projection $\x \longmapsto \x\x^\dagger$
+				
+				\item $\PC{n}$ vue comme variété différentielle complexe (voir annexe pour détails)
+				
+			\end{itemize}
+			
+			\item Métrique de Fubini-Study 
+			\begin{itemize} \normalfont
+				
+				\item Métrique induite par la projection
+				
+				\item expression de la métrique
+				
+				\item expression en coordonnée local
+				
+			\end{itemize}
+			
+		\end{enumerate}
 		
-		\item phase dyn =  signal - horizontal lift
+		\item Fibré principaux
+		\begin{enumerate}[label=\arabic{enumi}.1.\arabic* --- ]
+			
+			\item Fondamentaux
+			\begin{itemize} \normalfont
+				
+				\item Définitions de base
+				
+				\item Section local (canonique)
+				
+				\item changement de carte
+				
+			\end{itemize}
+			
+			\item Espaces horizontaux et connexion
+			\begin{itemize} \normalfont
+				
+				\item Espace verticaux
+				
+				\item connexion comme ensemble d'espace horizontaux
+				
+				\item 1-forme de connexion
+				
+				\item notre choix de connexion (induite par le produit hermitien)
+			\end{itemize}
+			
+		\end{enumerate}
 		
-		\item phase geo = horizontal lift - cyclique lift (<- indé du signal !)
+	\end{enumerate}
+	
+	\item Interprétation géométrique des trois phases
+	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
 		
-		\item phase tot = cumul des deux
+		\item Cas des signaux ``pseudo-cyclique'' (cyclique à phase près)
+ 		\begin{itemize} \normalfont
+			
+			\item Le dessin de Bohm :
+			
+			\item phase dyn =  signal - horizontal lift
+			
+			\item phase geo = horizontal lift - cyclique lift (<- indé du signal !)
+			
+			\item phase tot = cumul des deux
+		\end{itemize}
+		
+		\item La phase géo dans l'espace projectif
+		\begin{itemize} \normalfont
+			
+			\item Géodésique de $\PC{n}$ et généralisation du cas pseudo-cyclique
+			
+			\item Remarque de Mukunda : phase géo est une 2-forme vs phase dyn est une 1-forme
+		
+			\item Bonnet-Gauss  \& Stokes : phase géo comme calcul d'air
+	
+			
+			\item \thoughts{Comme partie imaginaire de la métrique \textit{(+ lien avec Fisher)}}
+		
+		\end{itemize}
+	\end{enumerate}
+\end{enumerate}
+\skipl
+\\
+\textbf{Annexes}
+\begin{enumerate}[label=\Alph* --- ] \bfseries
+	
+	\item Forme différentielles \textit{(nécessaire ?)}
+	
+	\item Algèbre et groupe de Lie
+	\begin{itemize}\normalfont
+		
+		\item def : groupe de Lie $G$
+		
+		\item def : Algèbre de Lie $\mathfrak{g}$ associée à $G$
+		
+		\item $\mathfrak{g}$ vu comme tangent $\tg[e]{G}$
+		
+		\item Cas particulier : $G=\U{1}$
+		
 	\end{itemize}
 	
-	\item Généralisation du cas pseudo-cyclique (ou comment s'y ramener)
+	\item Variétés différentielles complexe 
 	\begin{itemize} \normalfont
 		
-		\item Géodésique et généralisation du cas pseudo-cyclique
+		\item Complexification de TM
 		
-		\item Bargmann 
+		\item L'intérêt de faire ça : proprement définir $\partial/\partial\bar{z}$
 		
-		\item \textit{Phase géo comme 2-forme vs phase dyn comme 1-forme}
-	\end{itemize}
-	
-	\item La phase géo dans l'espace projectif
-	\begin{itemize} \normalfont
-		
-		\item Bonnet-Gauss  \& Stokes : phase géo comme calcul d'air
-		
-		\item Comme partie imaginaire de la métrique \textit{(+ lien avec Fisher)}
+		\item Exemple : écriture de forme de Kahler de Fubini-Study
 		
 	\end{itemize}
 \end{enumerate}
 
-\begin{enumerate}[label=\Alph* --- ]
-	\item Variétés différentielles complexe :
-	\begin{itemize}
-		
-		\item complexification de TM
-		
-		\item l'intérêt de faire ca : proprement définir d/d\bar{z}
-		
-		\item exemple : ecriture de forme de Kahler -> y'a deux composantes : on en jète une 
-		
-	\end{itemize}
-\end{enumerate}
-
-
+\newpage
 
 
 Pour étudier la phase géométrique d'un signal $\psi$, il nous faut projeter $\psi$ sur $\PC{n}$, et ceux, tout en gardant une trace de sa phase puisque c'est le lien entre les deux qui nous intéresse. Il nous faut donc envoyer $\psi$ dans le produit :
@@ -58,24 +136,183 @@ Comme son nom l'indique, $\S{2n-1}\big(\U{1},\PC{n}\big)$ à une structure de va
 \\
 La phase géométrique, quand à elle, sera liée avec la métrique hermitienne associée aux l'espaces projectifs complexes.
 \\
-Tout cela va demander quelques prérequis qui seront détaillés dans les annexes. 
+Tout cela va demander quelques prérequis que nous allons voir à présent.
 
 
 
-\section{Etude du cas pseudo-cyclique}
+\section{Prérequis mathématique}
 
-\subsection{$\S{n}$ vu comme variété fibrée principale}
+\subsection{Variété fibrée principale}
+
+Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemble localement à des espaces produits. 
+Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $\S{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, le ruban est tout à fait comparable (difféomorphe) à un tel produit (\cf~\cref{fig:fibration2modius}).
+\begin{figure}[h]
+	\begin{floatrow}
+		\ffigbox{\caption{Fibration du ruban de Mobiüs.}
+			\label{fig:fibration2modius}}{
+			\includegraphics[width=0.45\textwidth]{fig/placeholder}
+			}
+		
+		\ffigbox{\caption{Représentation d'un fibré principale}
+			\label{fig:section_local}}{
+			\includegraphics[width=0.45\textwidth]{fig/placeholder}
+			}
+	\end{floatrow}
+\end{figure}
+\\
+
+Il exsite toutes sorte de variétés fibrées dès lors qu'elles sont munies de structure remarquable. Celle qui vont nous intéresser sont les variétés dites principales\footnote{\itshape
+	Bien que ce ne sera pas précisé, il sera toujours sous-entendu que les différentes variétés et cartes doivent avoir les mêmes niveaux de régularités pour que le tout reste cohérent.} :
+\\
+\begin{definition}[Variété fibrée principale] \label{def:VFP}
+	Une \emph{variété fibrée principale}(VFP), ou \emph{fibré principal} est constituée de deux variétés différentielles $P$ et $B$ telles que :
+	\begin{itemize}
+		\item Il existe un groupe de Lie $G$ opérant à droite (ou à gauche) sur $P$ via une application différentiable :
+		\begin{equation} \label{eq:VFP_action}
+			\phi\ :\ \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\lmt\ \phi(p,g)\defeq pg = p\cdot g
+			\end{aligned}
+		\end{equation}
+		
+		\item Il existe une surjection différentiable $\ \pi:P\lr B\ $ telle que :
+		\begin{equation} \label{eq:VFP_fibres}
+			\forall p\in P,\quad \pi^{-1}\big(\pi(p)\big)=pG
+		\end{equation}
+		
+		\item $P$ est munie d'un ensemble de paire $(U_i, h_i)$ tel que les $U_i$ forment un recouvrement de $B$ et tel que les $h_i : G\times U_i\lr \pi^{-1}(U_i)\subset P$ soient des difféomorphismes vérifiant :
+		\begin{align*} \label{eq:VFP_atlas}
+			\forall a,b\in G,\ \forall x\in B,\qquad h_i(ab,x) = h_i(a,x)b\qquad \text{et} \qquad \pi\circ h_i(a,x)=x
+		\end{align*}
+	\end{itemize}
+	On dit alors que $B$ est la \emph{base} de la VFP, que $G$ est son \emph{groupe structural} et $pG$ est la \emph{fibre de $P$ passant par} $p$ et \emph{au dessus de} $\pi(p)\in B$. Le tout est notée $P(\phi, G, \pi, B)$ ou plus simplement $P(G,B)$.
+\end{definition}
+
+L'ensemble $\big\{(U_i, h_i)\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
+\\ 
+\\
+D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur la \Cref{fig:section_local} \thoughts{ci-dessous}. Formellement, une section locale au dessus  de $U_i$ est une application $\sigma : U_i\subset B\lr P$ vérifiant :
+\[\pi\circ \sigma = id_{{\displaystyle |}U_i}\]
+\\
+\begin{figure}[h]
+	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	\input{tikz/part-2/section_locale}
+	\caption{Fibration du ruban de Mobiüs.}
+	\label{fig:fibration2modius}
+\end{figure}
+\noindent
+Ensuite, les hypothèses sur $P(G,B)$ sont telles que $G$ agit transitivement et librement (ou sans point fixe) sur $P$. C'est-à-dire que, sur une même fibre, tout point peut être atteint par tout autre via l'action de $G$ (transitivité) :
+\begin{align*}
+	\forall x\in B,\quad \forall p,q\in P_x,\ \exists t(p,q)\in G\ |\ p = q t(p,q) 
+\end{align*}
+et que le seul moyen laisse les points invariants par cette même action est de passer par l'élément neutre $e$ (libre) :
+\begin{align*}
+	\forall (p,g)\in P\times G,\quad p = pg\ \Lr\ g=e
+\end{align*}
+\\
+De la transitivité de $G$, découle le fait que toutes les sections locales $\sigma$ au dessus de $U_i$ peuvent s'écrire à partir d'une même section $\sigma_i$ via la formule :
+\[\forall x\in B,\qquad \sigma(x) = \sigma_i(x) t\big(\sigma_i(x), \sigma(x)\big)\]
+Son caractère libre, lui assure l'unicité d'un choix canonique de section $\sigma_i$ sur $U_i$. Elle est donnée par :
+\[{h_i}(x,e) = \sigma_i(x)\]
+Cela mène à la définition :
+\begin{definition}[Fonctions de transitions]
+	L'intersection de deux cartes  est noté $U_{ij} = U_i\cap U_j$ et le passage d'une section local canonique est donné par :
+	\[\forall x\in U_{ij},\qquad \sigma_j(x) = \sigma_i(x) t\big(\sigma_i(x), \sigma_j(x)\big)\]
+	L'élément de $G$, $t(\sigma_i, \sigma_j)$, est alors appelé \emph{fonction de transition} et est noté $\varphi_{ij}$. Elle fait effectivement la transition entre deux cartes dans le sens où :
+	\[\forall (g,x)\in G\times U_{ij},\qquad {h_i}^{-1} \circ h_j(g,x) = \big( \varphi_{ij}(x)g, x \big)\]
+\end{definition}
+
+\skipl
+
+
+\begin{figure}[h]\centering 
+	%\hfill
+	\begin{tikzcd}[column sep=large]
+		& G\times B \arrow[ld, "\pr{2}" above left] \arrow[rd, "\pr{2}"]  \\
+		G \arrow[r,"\phi" below]  & P \arrow[r,"\pi" above left] \arrow[d,"\pr{} " left]   &  B \\
+		& P/G \arrow[ru,"\overline{\pi}" below right]
+	\end{tikzcd}
+	\hspace{3cm}
+	\begin{tikzcd}[column sep=tiny]
+		& U_i \\
+		G\times U_i \arrow[ru, "\pr{2}" above left] \arrow[rd, "\pr{1}" below left] \arrow[rrrrrr, "h" above]  & & & & & & \pi^{-1}(U_i) \subset P \arrow[lllllu, "\pi" above right] \arrow[llllld, "\rho" below right] \\
+		& G 
+	\end{tikzcd}
+	\caption{Digrame surement osef des jeux de projections entre $P$ est les cartes locales}
+\end{figure}
 
 \begin{itemize}
-	\item 
+	\item espace tangent 
+	
+	\item séparation en vertical $\oplus$ horizontal
+	
+	\item pourquoi la découpe est pas canonique
+	
+	\item reformulation en terme de 1-forme
+	
+	\item connexion en coordo local
+	
+	\item toujours pas canonique tho
+	
+	%\item on choisie par rapport à la métrique de l'espace ambiant !
+	
 \end{itemize}
+\begin{proposition}
+	Une 1-forme de connexion $\conn $, noté $\conn_i$ en coordonnée local sur la carte $U_i$, doit vérifier le changement de coordonnée :
+	\[\varphi_{ij}\conn_j = \conn_i \varphi_{ij} + \d \varphi_{ij}\]
+\end{proposition}
 
 
-\section{Prérequis mathématique --- send to appendixe}
+
+
+\subsection{Espaces projectifs complexes}
+
+Les espaces projectifs complexes se construisent ainsi. On se place dans ${\C^{n+1}}^*=\C^{n+1}\setminus\{0_{\C^{n+1}}\}$ avec la relation d'équivalence, $\forall x,y\in{\C^{n+1}}^*$ :
+\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
+\\
+L'espace projectif complexe, noté $\PC{n}$ est l'espace quotient :
+\[\PC{n-1} = {\C^{n+1}}^*/\C^* = {\C^{n+1}}^*/\sim\]
+\\
+En notant $[z]$ la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$, on définit les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
+\begin{align}
+	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
+		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}\big(z_0,\cdots, 1,\cdots, z_n\big)
+	\end{aligned}
+\end{align}
+\\
+L'ensemble d'arrivé $\phi_i(U_i)$ est de dimension $n$ et s'assimile à $\C^{n}$ mais, par souci de comodité, on restera dans $\C^{n+1}$. Cela permet  d'écrire plus simplement les formules de changement de carte en évitant de devoir enlever et rajouter des coefficients :
+\[\qquad\qquad\qquad\qquad\qquad\qquad \forall [z]\in U_i\cap U_j,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\qquad\qquad\qquad\qquad\qquad (z^{i,j}\neq 0) \qquad\]
+
+Les $(U_i,\phi_i)$ forme un atlas holomorphe sur l'espace projectif complexe, faisant de $\PC{n}$ une variété complexe de dimension $\dim[\C] = n$ (voir annexe \ref{ann:variet_complexe} pour plus de détail).
+
+\begin{proposition}
+	La $2n+1$--sphère $\S{2n+1}$ est un espace fibré de base $\PC{n}$ est de fibre type $\S{1}$, ou $\U{1}$. La fibration étant la projection canonique :
+	\[\pi\ :\ \begin{aligned}\S{2n+1}\ &\lr\ \PC{n} \\ x\quad\ &\lmt\ \ [x]\end{aligned}\]
+	Voir \cite{lafontaine_introduction_2015} pour la démo
+\end{proposition}
+
+
+\begin{proposition}
+	$\PC{n}$ admet une métrique hermitienne induite par la métrique de $\S{2n+1}$, elle même induite du produit scalaire sur $\R^{2n+1}$. Elle est appelé \emph{métrique de Fubini-Study} et est donnée par le formule :
+	\[\]
+\end{proposition}
+
+
+\section{Interprétation des trois phases dans ce cadre}
+
+\subsection{Cas pseudo-cyclique}
+
+
+
+
+
+%%%% ANNEXES %%%%
+
+
+
+\begin{annexe}
+
+\section{Annexe}
 
 \subsection{Variété différentielle complexe, tiré de \cite{nakahara_geometry_2003}}
-
-
 
 Pour mémoire, une variété différentielle de classe $C^k$ ($k\in\N\cup\{\infty\}$) de dimension $n$ est un espace topologique\footnote{\itshape
 	La topologie de $\manu$ doit vérifier des propriétés type séparable, dénombrable à l'infinie, \etc, qui seront toutes admises dans la suite, voir par exemple \cite[chap. 2]{lafontaine_introduction_2015}}
@@ -132,170 +369,6 @@ Finalement, $\tg{\manu}$ peut être séparé en deux sous-espaces engendré resp
 	\tg[p]{\manu}^+ &= \Vec\big\{ \partial_\mu\ |\ 1\leq \mu\leq n \big\}  &  \tg[p]{\manu}^- &= \Vec\big\{ \partial_{\bar{\mu}}\ |\ 1\leq \mu\leq n \big\}
 \end{align}
 
-
-
-
-\subsection{Variété fibrée principale}
-
-\subsubsection{Définition}
-
-\begin{definition}[Variété fibrée]
-	\'Etant donnée deux variétés différentielles $P$ et $B$ de même classe, une \emph{fibration de base $B$ et d'espace total $P$} et une application $\pi : P\lr B$ telle qu'en tout point $x\in B$ de la base, il existe un voisinage $U_x\subset B$ et une variété différentielle $F_x$ telle que $U_x\times F_x$ soit difféomorphe à $\pi^{-1}(U_x)$.
-	
-	On dit de $P$ que c'est une \emph{variété fibrée}, un \emph{espace fibré} ou tout simplement un \emph{fibré} et $P_x \defeq \pi^{-1}(U_x)$ est appelé \emph{fibre de $P$ au} (\emph{dessus du}) \emph{point} $x$.
-	Si de plus $B$ est connexe, alors les fibres $F_x$ sont toutes difféomorphes à un même $F$ et on parle de \emph{fibre type} de $P$.
-\end{definition}
-\skipl
-
-L'idée derrière cette définition est de formaliser l'idée des espaces qui, comme le ruban de Modiüs, ``ressemble'' à un produit $F\times B$ (d'où la notation $P$) sans vraiment en être un : $P$ est localement difféomorphe à une variété produit $U\times_F$ (voir \cref{fig:fibration}, ci-dessous).
-
-\begin{definition}[Variété fibrée principale] \label{def:VFP}
-	Un fibré $P$ sera de plus dit \emph{principal} (VFP) si sa fibre type est un groupe de Lie $G$ agissant sur $P$. Plus précisément, une variété fibré principale $P$ (VFP, ou fibré principal) doit vérifier les propriétés suivantes :
-	\begin{itemize}
-		\item Le groupe de Lie $G$ opère différentiellement à droite (ou à gauche) sur $P$ via :
-		\begin{equation} \label{eq:VFP_action}
-			\phi\ :\ \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\lmt\ \phi(p,g)\defeq pg
-			\end{aligned}
-		\end{equation}
-		
-		\item Il existe une surjection différentiable $\ \pi:P\lr B\ $ telle que :
-		\begin{equation} \label{eq:VFP_fibres}
-			\forall p\in P,\quad \pi^{-1}\big(\pi(p)\big)=pG
-		\end{equation}
-		
-		\item $P$ est munie d'un ensemble de paire $(U_i, h_i)$ tel que les $U_i$ forment un recouvrement de $B$ et que les $h_i$ soient des difféomorphismes à valeur de  $G\times U_i$ dans $\pi^{-1}(U_i)\subset P\ $ vérifiant :
-		\begin{align*} \label{eq:VFP_atlas}
-			\forall a,b\in G,\ \forall x\in B,\qquad h_i(ab,x) = h_i(a,x)b\qquad \text{et} \qquad \pi\circ h_i(a,x)=x
-		\end{align*}
-	\end{itemize}
-	On dit alors que $B$ est la \emph{base} de la VFP, que $G$ est son \emph{groupe structural} et $pG$ est la \emph{fibre de $P$ passant par} $p$ et \emph{au dessus de} $\pi(p)\in B$. Une telle variété est notée $P(\phi, G, \pi, B)$ ou plus simplement $P(G,B)$.
-\end{definition}
-
-L'ensemble $\big\{(U_i, h_i)\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
-
-
-D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur la \Cref{fig:section_local} ci-dessous. Formellement, ce sont des applications $\sigma : U_i\subset B\lr P$ vérifiant :
-\[\pi\circ \sigma = Id_{{\displaystyle U}}\]
-\\
-\begin{figure}[t]
-	\begin{floatrow}
-		\ffigbox{\caption{Fibration du ruban de Mobiüs.}
-			\label{fig:fibration}}{
-		\includegraphics[width=0.45\textwidth]{fig/placeholder}}
-		
-		\ffigbox{\caption{Section local d'un fibré principal}
-			\label{fig:section_local}}{
-		\includegraphics[width=0.45\textwidth]{fig/placeholder}}
-	\end{floatrow}
-\end{figure}
-
-Ensuite, les hypothèses sur $P(G,B)$ sont telles que $G$ agit transitivement et librement (ou sans point fixe) sur $P$. C'est-à-dire que, sur une même fibre, tout point peut être atteint par tout autre via l'action de $G$ (transitivité) :
-\begin{align*}
-	\forall x\in B,\quad \forall p,q\in P_x,\ \exists t(p,q)\in G\ |\ p = q t(p,q) 
-\end{align*}
-et que le seul moyen laisse les points invariants par cette même action est de passer par l'élément neutre $e$ (libre) :
-\begin{align*}
-	\forall (p,g)\in P\times G,\quad p = pg\ \Lr\ g=e
-\end{align*}
-\\
-L'action de $G$ sur $P(G,B)$ est telle que toute section locale $\sigma$ sur $U_i$, peut s'écrire à partir d'une même section local $\sigma_i$ via la formule :
-\[\forall x\in B,\qquad \sigma(x) = \sigma_i(x) t\big(\sigma_i(x), \sigma(x)\big)\]
-et grâce à l'action de $G$, il existe un choix canonique de section $\sigma_i$ par rapport à la carte $U_i$. Elle est donnée par :
-\[{h_i}(x,e) = \sigma_i(x)\]
-\\
-\begin{definition}[Cartes locales de VFP]
-	L'intersection de deux cartes  est noté $U_{ij} = U_i\cap U_j$ et le passage d'une section local canonique est donné par :
-	\[\forall x\in U_{ij},\qquad \sigma_j(x) = \sigma_i(x) t\big(\sigma_i(x), \sigma_j(x)\big)\]
-	L'élément de $G$, $t(\sigma_i, \sigma_j)$, est alors appelé \emph{fonction de transition} et est noté $\varphi_{ij}$. Elle fait effectivement la transition entre deux cartes dans le sens où :
-	\[\forall (g,x)\in G\times U_{ij},\qquad {h_i}^{-1} \circ h_j(g,x) = \big( \varphi_{ij}(x)g, x \big)\]
-\end{definition}
-
-\skipl
-En particulier que $x$ est invariant par changement de carte, ce qui est tout à fait normal compte tenu du fait que les $h_i(g, \cdot)$ sont tous définie sur un ensemble commun $B$. Autrement dit $x$ est invariant par changement de carte car il n'y a pas de raison à changer de coordonnée. \textbf{pas vrai, mais y'a un truc quand-même, faudra revenir dessus}
-
-
-\begin{figure}[h]\centering 
-	%\hfill
-	\begin{tikzcd}[column sep=large]
-		& G\times B \arrow[ld, "\pr{2}" above left] \arrow[rd, "\pr{2}"]  \\
-		G \arrow[r,"\phi" below]  & P \arrow[r,"\pi" above left] \arrow[d,"\pr{} " left]   &  B \\
-		& P/G \arrow[ru,"\overline{\pi}" below right]
-	\end{tikzcd}
-	\hspace{3cm}
-	\begin{tikzcd}[column sep=tiny]
-		& U_i \\
-		G\times U_i \arrow[ru, "\pr{2}" above left] \arrow[rd, "\pr{1}" below left] \arrow[rrrrrr, "h" above]  & & & & & & \pi^{-1}(U_i) \subset P \arrow[lllllu, "\pi" above right] \arrow[llllld, "\rho" below right] \\
-		& G 
-	\end{tikzcd}
-	\caption{Digrame surement osef des jeux de projections entre $P$ est les cartes locales}
-\end{figure}
-
-Pour interpréter géométriquement les phases géométrique et dynamique, il nous faut munir $P(G,B)$ d'une connexion. Pour cela, commençons par noter que, $B$ étant une variété  \textbf{blbblblbbllbbll}
-
-
-\subsubsection{Espace horizontaux et connexion}
-
-\begin{itemize}
-	\item espace tangent 
-	
-	\item séparation en vertical $\oplus$ horizontal
-	
-	\item pourquoi la découpe est pas canonique
-	
-	\item reformulation en terme de 1-forme
-	
-	\item connexion en coordo local
-	
-	\item toujours pas canonique tho
-	
-	%\item on choisie par rapport à la métrique de l'espace ambiant !
-
-\end{itemize}
-\begin{proposition}
-	Une 1-forme de connexion $\conn $, noté $\conn_i$ en coordonnée local sur la carte $U_i$, doit vérifier le changement de coordonnée :
-	\[\varphi_{ij}\conn_j = \conn_i \varphi_{ij} + \d \varphi_{ij}\]
-\end{proposition}
-
-
-
-
-
-
-\subsection{Espaces projectifs complexes}
-
-Les espaces projectifs complexes se construisent ainsi. On se place dans ${\C^{n+1}}^*=\C^{n+1}\setminus\{0_{\C^{n+1}}\}$ avec la relation d'équivalence, $\forall x,y\in{\C^{n+1}}^*$ :
-\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
-\\
-L'espace projectif complexe, noté $\PC{n}$ est l'espace quotient :
-\[\PC{n-1} = {\C^{n+1}}^*/\C^* = {\C^{n+1}}^*/\sim\]
-\\
-En notant $[z]$ la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$, on définit les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
-\begin{align}
-	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
-		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}\big(z_0,\cdots, 1,\cdots, z_n\big)
-	\end{aligned}
-\end{align}
-\\
-L'ensemble d'arrivé $\phi_i(U_i)$ est de dimension $n$ et s'assimile à $\C^{n}$ mais, par souci de comodité, on restera dans $\C^{n+1}$. Cela permet  d'écrire plus simplement les formules de changement de carte en évitant de devoir enlever et rajouter des coefficients :
-\[\qquad\qquad\qquad\qquad\qquad\qquad \forall [z]\in U_i\cap U_j,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\qquad\qquad\qquad\qquad\qquad (z^{i,j}\neq 0) \qquad\]
-
-Les $(U_i,\phi_i)$ forme un atlas holomorphe sur l'espace projectif complexe, faisant de $\PC{n}$ une variété complexe de dimension $\dim[\C] = n$ (voir annexe \ref{ann:variet_complexe} pour plus de détail).
-
-\begin{proposition}
-	La $2n+1$--sphère $\S{2n+1}$ est un espace fibré de base $\PC{n}$ est de fibre type $\S{1}$, ou $\U{1}$. La fibration étant la projection canonique :
-	\[\pi\ :\ \begin{aligned}\S{2n+1}\ &\lr\ \PC{n} \\ x\quad\ &\lmt\ \ [x]\end{aligned}\]
-	Voir \cite{lafontaine_introduction_2015} pour la démo
-\end{proposition}
-
-
-\begin{proposition}
-	$\PC{n}$ admet une métrique hermitienne induite par la métrique de $\S{2n+1}$, elle même induite du produit scalaire sur $\R^{2n+1}$. Elle est appelé \emph{métrique de Fubini-Study} et est donnée par le formule :
-	\[\]
-\end{proposition}
-
-
-\section{Interprétation des trois phases dans ce cadre}
-
-\subsection{Cas pseudo-cyclique}
+\end{annexe}
 
 

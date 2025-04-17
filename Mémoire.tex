@@ -49,10 +49,10 @@
 
 
 
-\newpage
+%\newpage
 
-\tableofcontents
-\thispagestyle{empty}
+%\tableofcontents
+%\thispagestyle{empty}
 
 
 
@@ -81,10 +81,10 @@ Ce qui rend cette phase si intéressante c'est qu'elle est invariante par transf
 Cette propriété rend la phase $\phaseg$ intrinsèquement liée à la trajectoire que prend la projection de $\psi$ dans l'espace projectif complexe $\PC{n-1}$ et par conséquence, à la géométrie de ce dernier, d'où son nom.
 \\ \\
 Ceci à largement été étudié dans le carde de système dynamique régis par EDP \cite{faure_introduction_2022,marsden_introduction_1999}, notamment en mécanique quantique avec l'équation Schrödinger \cite{bohm_geometric_2003,mukunda_quantum_1993,nakahara_geometry_2003}. 
-Ce n'est que récemment que Le Bihan, Flamant et Amblard se sont intéresser à son application en traitement du signal dans le cas de signaux bivariés à bande fine \cite{le_bihan_modephysiques_2023, le_bihan_geometric_2024}.
+Ce n'est que récemment que Le Bihan, Flamant et Amblard se sont intéressés à son application en traitement du signal dans le cas de signaux bivariés \cite{le_bihan_modephysiques_2023, le_bihan_geometric_2024}.
 \\
 
-L'objectif de ce mémoire est alors de résumer les résultats et interprétations de la phase géométrique mais du point de vue du traitement du signal. 
+$[...]$%L'objectif de ce mémoire est alors de résumer les résultats et interprétations de la phase géométrique mais du point de vue du traitement du signal. 
 
 
 
@@ -93,8 +93,8 @@ L'objectif de ce mémoire est alors de résumer les résultats et interprétatio
 \newpage
 
 \phantomsection
-\addcontentsline{toc}{section}{Indexe des notations}
-\section*{\begin{center}\scshape Indexe des notations \end{center}}\label{sec:index_nota}
+\addcontentsline{toc}{section}{Notations et conventions}
+\section*{\begin{center}\scshape Notations et conventions \end{center}}\label{sec:index_nota}
 
 \begin{tabular}{|| l | l ||} \hline
 	\textsc{Objet/fonction}  & \textsc{Notation} \\
@@ -133,18 +133,41 @@ L'objectif de ce mémoire est alors de résumer les résultats et interprétatio
 %\end{itemize}
 
 
-\textbf{Objectif du mémoire :}
+\textbf{Note générale}
 \begin{itemize}
-	\item Décrire la phase géométrie pour les signaux
 	
-	\item Généralisation des signaux AM-FM (-PM)
+	\item les références sont en fin de mémoire est en .bib sur le \href{https://github.com/GregoireDoat/StageM2}{GitHub}
 	
-	\item Interprétation de ses paramètres
+	\item Idem pour les codes et un mot sur \texttt{pygeomphase}
 	
-	\item calcul de leur phases
+	\item En italique sont les notes un peu plus informelle
+	
+	\item Y'a des annexes pour chaque partie mais ce sera précisé si elles sont nécessaire pour suivre
+	
+	\item On va parler de géo diff et pour éviter de réécrire un livre, on va admettre beaucoup de résultats, on renvoit vers \cite{lafontaine_introduction_2015} (mets en d'autre) pour une introduction extensive à la théorie
+	
+	%\item ne seront numérotées que les équations importants
 \end{itemize}
 \skipl
+
+\textbf{Notations math :}
+\begin{itemize}
+	
+	\item Convention sur le produit hermitien (congué à droite)
+	
+	\item les vecteurs seront le plus souvent en gras, leur dérivée en temps noté par un point (ex. : $\dot{\x}(t)$) et celle des scalaires seront noté par un prime (ex. : $a'(t)$)
+	
+	\item convention de sommation d'Einstein ? (oui mais est-ce qu'on en parle maintenant)
+\end{itemize}
 \skipl
+
+
+
+\newpage
+
+\tableofcontents
+\thispagestyle{empty}
+
 
 
 
@@ -152,30 +175,22 @@ L'objectif de ce mémoire est alors de résumer les résultats et interprétatio
 %%%% COEUR DU MEMOIRE %%%%
 
 
-\part{Phase et Fréquence instantanée d'un Signal} \label{part:param_instant}
-	%A REFAIRE !
-	\input{latex/part-1}
+%\part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
 
 
 
 
-%\part{Description de la phase géométrique} \label{part:phase_geo}
-	%erhqerthse
-	%\input{latex/part-2}
+\part{Aspects Géométriques d'une Phase Éponyme} \label{part:phase_geo} \input{latex/part-2}
 
 
 
 
-%\part{Notes 'n' thoughts}
-	%qrhqerhhqer
-	%\input{latex/garb}
+%\part{Notes 'n' thoughts} \input{latex/garb}
 	
 	
 
-	
-\part{Legacy}
-	
-	\input{latex/part-1(legacy)}
+
+%\part{Legacy}\input{latex/part-1(legacy)}
 	
 
 
@@ -183,7 +198,6 @@ L'objectif de ce mémoire est alors de résumer les résultats et interprétatio
 
 \newpage
 \begin{itemize}
-	\item code notebook
 	\item qui est quelle phase
 	\item mail à berthier pour les contraintes rapport
 \end{itemize}

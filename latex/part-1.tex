@@ -1,81 +1,17 @@
 
-
-\begin{enumerate}[label=\arabic* --- ]\bfseries
-	
-	\item Introduction de la phase géométrique
-	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
-		
-		\item Un peu d'analyse temps fréquence
-		
-		\item Les phases totale et dynamique
-		
-		\item Phase Géométrique
-	\end{enumerate}	
-	
-	\item Décomposition des signaux multivariés
-	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
-		
-		\item Signal AM-FM-PM bivarié
-		\begin{itemize} \normalfont
-			
-			\item la formule avec un peu d'explication sur d'où ca vient
-			
-			\item les hypothèses sur la décompositions via Bedrosian
-			
-			\item interprétation géométrique
-			
-			\item projection sur la sphère avec Stokes et tout
-			
-		\end{itemize}
-		
-		\item Calcul de la phase géom dans ce cas
-		
-		\item Généralisation au plus haute dimension
-		\begin{itemize}\normalfont
-			
-			\item Un mot sur le cas trivarié par Lilly \cite{lilly_modulated_2011}.
-			
-			\item Lefevre à discuter des généralisations \cite[sec. I.3]{lefevre_polarization_2021} avec des expo et algèbre Clifford : trop de contrainte sur les dimensions des signaux.
-			
-			\item Généralisation par rotation du plan de polar : boff parce que pas calculable en générale et mais surtout on manque le plus important, ca savoir.... 
-			
-			\item La phase géo est invariante par transfo de jauge, donc il faut faut faire apparaître $\PC{n-1}$ dans la décomposition.
-			
-			\item Remarque : c'est le cas en bivarié car $\PC{1}\cong \S{2}$ !
-			
-			\item S'il faut vraiment se pencher sur $\PC{n-1}$, allons-y (transition partie suivante)
-			
-		\end{itemize}
-	\end{enumerate}
-\end{enumerate}
-
-\begin{enumerate}[label=\Alph* --- ] \bfseries
-	\item Plus de détail sur l'analyse temps-fréquence
-	\begin{enumerate}[label=\Alph{enumi}.\arabic* --- ]
-		
-		\item Calculation trick
-		
-		\item Transfo en SA et Bedrisian
-		
-	\end{enumerate}
-\end{enumerate}
-
-\newpage
-
-
 En traitement du signal, la phase d'un signal est intrinsèquement lié à la notion de fréquence instantanée, qui joue un rôle important en analyse temps-fréquence. 
 C'est donc de point que commencera notre discussion pour introduire la phase géométrique.
-Pour cela, seront rapidement introduit quelques notions et résultats d'analyse temps-fréquence dans le cas univarié (sec. \ref{sec:ana_temp-freq}). Suite à quoi sera définie la phase instantanée pour le cas multivarié (sec. \ref{sec:freq_instant}), qui permettre enfin de mettre en évidence la phase géométrique (sec. \ref{sec:intro_phaseg}).
+Pour cela, seront rapidement introduit quelques notions et résultats d'analyse temps-fréquence dans le cas univarié (sec. \ref{subsec:ana_temp-freq}). Suite à quoi sera définie la phase instantanée pour le cas multivarié (sec. \ref{subsec:intro_phased}), qui permettre enfin de mettre en évidence la phase géométrique (sec. \ref{subsec:intro_phaseg}).
 \\
 
-Dans une seconde partie, seront introduit les signaux bivarié dit AM-FM-PM, dont la phase géométrique sera calculer explicitement (sec. \ref{sec:AM-FM-PM}). Cela permettre de mettre en évidence certaines de ses propriétés, ce qui permettre ensuite de discuter des généralisations des signaux AM-FM-PM au delà du cas bivarié (sec. \ref{sec:}) et de discuter de la pertinence ces décompositions pour étudier la phase géométrique (sec. \ref{sec:}).
+Dans une seconde partie, seront introduit les signaux bivarié dit AM-FM-PM  (sec. \ref{subsec:AM-FM-PM}), dont la phase géométrique sera calculée explicitement (sec. \ref{subsec:phase_g2AM-FM-PM}), ce qui permettra de mettre en évidence certaines de ses propriétés. Dans une dernière section, seront proposées des généralisations des signaux AM-FM-PM au delà du cas bivarié et seront discutées leur pertinence quant à l'étudie de la phase géométrique (sec. \ref{subsec:gene_AM-FM-PM}). \thoughts{(Pas super convaincu par ce paragraphe)}
 
 \section{Introduction de la phase géométrique} \label{sec:intro_phaseg}
 
 
 
 
-\subsection{Cas univarié : signaux AM-FM} \label{sec:ana_temp-freq}
+\subsection{Cas univarié : signaux AM-FM} \label{subsec:ana_temp-freq}
 
 %\subsubsection{Quelque notion d'analyse temps-fréquence}
 
@@ -83,7 +19,7 @@ En traitement du signal, l'analyse fréquentielle par la transformée de Fourier
 Seulement, cette transformation fait perdre toute notion temporelle : si l'étude du spectre du signal permet de dire quelles fréquences apparaissent dans le signal, elle ne permet pas de dire à quel moment. 
 C'est en réponse à cela, entre autre, qu'est développé l'analyse temps-fréquence. 
 \\
-A cette fin, sont définies des paramètres associées aux fréquences mais avec une dépendance en temps :\par
+À cette fin, sont définies les paramètres instantanées d'un signal :\par
 
 \begin{definition}[Paramètres instantanées] \label{def:param_instant}
 	Soit $x$, est un signal complexe écrit sous forme exponentielle :
@@ -152,7 +88,7 @@ Il suffit que les $\psi_i$ soient ajustés pour assurer que $\ \phi_i = \phi + \
 
 
 
-\subsection{Phase et fréquence instantanée de signal multivarié }\label{sec:param_instant_nvar}
+\subsection{Phase et fréquence instantanée de signal multivarié }\label{subsec:intro_phased}
 
 On se propose ici de définir la phase instantanée comme suit :
 \begin{definition}[Phase dynalique/instantanée] \label{def:phase_d}
@@ -218,7 +154,7 @@ D'abord dans le cas d'un signal complexe univarié, sont définies les fonctions
 	\text{resp.}\qquad \densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(\nu)\big|^2 \end{aligned}
 \end{align}
 \\
-À partir de ces dernières est définie la fréquence moyenne de $x$ comme comme l'espérance de $\densis$, $\esp[\densis]{\nu}$. Cette fréquence moyenne est lié à la fréquence instantanée par la formule :\footnote{cette formule de généralise à tout les moments de $\densis$ et existe également pour les moments de $\densit$, voir \cite[sec. 1.4]{cohen_time_1995} pour une démonstration ``à la physicienne''}
+À partir de ces dernières est définie la fréquence moyenne de $x$ comme comme l'espérance de $\densis$, $\esp[\densis]{\nu}$. Cette fréquence moyenne est lié à la fréquence instantanée par la formule :\footnote{cette formule de généralise à tout les moments de $\densis$ et existe également pour les moments de $\densit$, voir \cite[sec. 1.4]{cohen_time_1995} pour une démonstration ``à la physicienne'' \thoughts{... ou bien en annexe ?}}
 \begin{equation}\label{eq:esp_freq}
 	\esp[\densis]{\nu} = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t)dt = \frac{1}{2\pi} \esp[\densit]{\phi'}
 \end{equation}
@@ -261,54 +197,178 @@ Formule qui concorde bien avec celle de la phase dynamique une fois explicité :
 	&= \sum_{i=1}^n a_i(t)^2 \phi_i'(t)
 \end{align*}
 D'où
-\[\Im m\int \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds = \int \sum_{i=1}^n a_i(s)^2 \phi_i'(s) = \sum_{i=1}^n \int a_i(s)^2 \phi_i'(s)ds\]
+\[\Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds = \int_{t_0}^t \sum_{i=1}^n a_i(s)^2 \phi_i'(s) = \sum_{i=1}^n \int_{t_0}^t a_i(s)^2 \phi_i'(s)ds\]
 \\
 
 
 
-\subsection{Apparition de la phase géométrique --- A REFAIRE}\label{subsub:intro_phaseg}
+\subsection{Apparition de la phase géométrique}\label{subsec:intro_phaseg}
 
-Pour rentre compte de la pertinence de cette expression, commençons par noter qu'il existe une autre façon standard de définir la phase d'un signal, la \emph{phase totale} :
+Cela étant dit, il existe une autre façon, plus simple, d'obtenir la pahse d'un signal. D'abord, dans le cas univarié, la phase instantanée de $x=ae^{i\phi}$ peut être réécrite comme :
+\[\phi(t)-\phi(t_0)  = \arg\left( x(t) \congu{x(t_0)} \right)\]
+\\
+Formule qui se généralise en cas multivarié par ce qui sera appelé la \emph{phase totale} du signal :
 \begin{equation}\label{eq:phase_t}
 	\phaset(\x, t_0, t) \defeq \arg\big\langle \x(t), \x(t_0)\big\rangle
 \end{equation}
-Il n'est pas clair, dans un cadre générale, comment et pourquoi cela s'interprète bien comme une phase et c'est encore pire lorsque l'on explicite sa valeur :
+\\
+D'un point de vu géométrique, il est bien connue que le produit scalaire entre deux vecteurs réels $u,v\in\R^n$ est lié à l'angle $\angle(u,v)$ entre ces derniers par la formule :
+\[\langle u,v\rangle_\R = \|u\|^2 \|v\|^2 \cos \angle(v,u)\]
+\\
+Pour le produit hermitien, cet angle ce retrouve dans l'argument, de sorte que si $u$ et $v$ sont complexes :
+\[\langle u,v\rangle_\C = \|u\|^2 \|v\|^2 e^{i \angle(v,u)}\]
+\\
+En ce sens, la phase totale calcul explicitement l'angle entre $\x(t_0)$ et $\x(t)$. La question est alors de savoir si $\phased$ correspond à cette angle. 
+Un calcul explicite montre que c'est bien le cas en univari : en notant $\x = ae^{i\phi}$, il vient  :
 \begin{align*}
-	\phaset(\x,t_0, t) &= \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\phi_i(t)-\phi_i(t_0))} \right) \\
-	&= \phased + \arg \left( \sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\alpha_i(t)-\alpha_i(t_0))} \right)  &  &\text{où } \phi_i = \phased + \alpha_i  \\
-	&= \phased + \arctan \left( \frac{\sum_i a_i(t)a_i(t_0)\sin\big( \alpha_i(t)-\alpha_i(t_0)\big)}{\sum_i a_i(t)a_i(t_0)\cos\big( \alpha_i(t)-\alpha_i(t_0)\big)}  \right)
+	\phased(\x) = \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds &= \Im m \int_{t_0}^t \frac{\big(a'(s) + ia(s)\phi'(s) \big) e^{i\phi(s)} \congu{a(s) e^{i\phi(s)}}}{a^2(s)} ds \\
+	&= \int_{t_0}^t \frac{a^2(s)\phi'(s))}{a^2(s)} ds \\
+	&= \phi(t) - \phi(t_0)
 \end{align*}
-\\
+\skipl
 
-Cela étant dit, si $\x$ est cyclique à une phase près, cette formule fait plus sens. C'est-à-dire lorsque, entre deux instant $t_0$ et $t$ donnés, $\x$ vérifie :
-\[\exists \theta\in\R\ |\quad \x(t) = e^{i\theta} \x(t_0)\]
-Dès lors, la phase totale donne bien :
-\[\arg\big\langle \x(t), \x(t_0)\big\rangle = \arg\big\langle e^{i\theta} \x(t_0), \x(t_0)\big\rangle = \theta\]
+Dans le cas multivarié, en revanche, c'est une autre histoire. En reprenant les notations $\ \x = ae^{i\phased} \big( a_ie^{\psi_i} \big)_{1\leq i\leq n}$, la phase totale se réécrit :
+\begin{equation}\label{eq:diff_phases_t/d}
+	\begin{aligned}
+		\phaset(\x,t_0, t) &= \arg \left(a(t)a(t_0) e^{i\big(\phased(t) - \phased(t_0)\big)}\sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\psi_i(t)-\psi_i(t_0))} \right) \\
+		&= \phased(t) + \arg \left(\sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\psi_i(t)-\psi_i(t_0))} \right)  \qquad\qquad\qquad\qquad \text{car } \phased(t_0,t_0) = 0
+		%\\ &= \phased + \arctan \left( \frac{\sum_i a_i(t)a_i(t_0)\sin\big( \psi_i(t)-\psi_i(t_0)\big)}{\sum_i a_i(t)a_i(t_0)\cos\big( \psi_i(t)-\psi_i(t_0)\big)}  \right)
+	\end{aligned}
+\end{equation}
 \\
-Dans le cas univarié, la phase instantanée vaut également $\theta$, ce qui n'est plus le cas dès que $n\geq 2$ (voir \cref{fig:calc_diff_phases}, ci-dessous). Apparaît alors une nouvelle phase qui est dû au caractère multivarié du signal : la phase géométrique introduite au début du mémoire.
+Apparaît alors un terme de déviation de la phase dynamique par rapport à la phase totale, qui (surprise) est appelé phase géomatique et sera notée :
+\begin{equation}\label{eq:phase_g}
+	\phaseg(\x,t_0,t) \defeq \phaset(\x, t_0,t) - \phased(\x, t_0,t)
+\end{equation}
+Déviation qui s'observe expérimentalement, comme le montre la \Cref{fig:calc_diff_phases} ci-dessous.
 \\
 \begin{figure}[h]
 	\includegraphics[width=0.6\textwidth]{fig/placeholder}
-	\caption{Sur le graphe de gauche, le signal $\x$ à valeur dans $\R^2$ et dans celui de droite la calcul de la phase dynamique, totale et de leur différence. Résultat tiré des simulation de Le Bihan \etal \cite{le_bihan_modephysiques_2023}}
+	\caption[Déviation de la phase dynamique par rapport à la phase totale]{Sur le graphe de gauche, le signal $\x$ à valeur dans $\R^2$ et dans celui de droite la calcul de la phase dynamique, totale et de leur différence. Résultat tiré des simulation de Le Bihan \etal~\cite{le_bihan_modephysiques_2023}}
 	\label{fig:calc_diff_phases}
 \end{figure}
-
-En analyse temps-fréquence, la phase instantanée d'un signal complexe $x: \R\lr\C$ par son argument, modulo un choix de phase initial. En clair, si $x$ s'écrit $\ x(t) = a(t) e^{i\phi(t)}$, alors :
-\begin{equation} \label{eq:phasei}
-	\phasei(x,t_0,t) = \phi(t) - \phi(t_0)
-\end{equation}
 \\
-Phase qui peut encore s'écrire :
-\[\phasei(x,t_0,t) = \arg x(t)\congu{x(t_0)}\]
+
+Un résultat bien connue en physique quantique est que cette troisième phase est invariante par transformation de jauge. Dans notre contexte, cela signifie que si $\x$ et $\Tilde{\x}$ sont deux signaux multivarié complexe tel que $\ \Tilde{\x} = e^{i\alpha}\x$, avec $\alpha$ une \underline{fonction} continue du temps, alors :
+\begin{align*}
+	\phaseg(\Tilde{\x}) &= \phaset(\Tilde{\x}) - \phased(\Tilde{\x})  = \phaset(\x) - \phased(\x) = \phaseg(\Tilde{\x})\\
+	%&= \arg\big\langle \Tilde{\x}(t), \Tilde{\x}(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{\Tilde{\x}}(s) , \Tilde{\x}(s) \big\rangle}{\|\Tilde{\x}(s)\|^2} ds \\
+	%&= \arg\big\langle e^{i\alpha(t)}\x(t), e^{i\alpha(t_0)}\x(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{e^{i\alpha(s)}\x}(s) , e^{i\alpha(s)}\x(s) \big\rangle}{\|e^{i\alpha(s)}\x(s)\|^2} ds 
+\end{align*}
 \\
-La phase totale peut-être vu comme une généralisation de cette formule au signaux multivarié, \ie~à valeur dans $\C^n$.
+Cela signifie plusieurs choses. 
+D'une part, le fait cette phase soit invariante pas transformation de jauge montre qu'elle est associée / issue de la composante de $\x$ dont à mentionné qu'elle était associée à sa polarisation. 
+Ce point sera discuté dans la \cref{sec:AM-FM-PM} suivante.
+ \\
+D'autre part, cela suggère que la phase géométrique doit avoir une certaine robustesse au bruit. Pour argumenter ce point, rappelons que le bruit d'un signal se trouve généralement dans les hautes fréquences de ce dernier.
+Or, en admettant, comme ça l'a été abordé dans la \cref{subsec:intro_phased} précédent, que la phase dynamique contient les hautes fréquences, il y a d'autant plus de chances que cette phase est un bon comportement par rapport au bruit.
+\\
+Ainsi, s'il est possible de tirer des informations de $\phaseg$, alors ces informations doivent pouvoir être obtenue même pour des signaux particulièrement bruités, comme c'est le cas des mesures d'ondes gravitationnelles \thoughts{(j'aimerais beaucoup étudier ça mais ce sera sûrement pour une thèse, si thèse il y a)}.
+\\
 
+Cela étant dit, avec le calcul \eqref{eq:diff_phases_t/d} précédent, il peut sembler que le travail sur la phase géométrique est terminée en cela qu'une formule explicite est donnée. Deux remarques à ce sujet :
+\\
+D'abord, cette formule demande de connaître les $\psi_i$, qui eux-mêmes sont obtenue en extrayant la phase dynamique. Or, la formule de $\phased$ n'est pas  la plus appropriée au traitement du signal puisque qu'elle fait intervenir intégral et dérivée.
+\\
+Aussi mais surtout, cette formule cache la profondeur dernière l'étude de la phase géométrique, à commencer par l'origine de son nom.
+\\
+\thoughts{À modifier en fonction de la suite :}
+Dans ce mémoire le calcul pratique de la phase géométrique ne sera pas aborder pour, à la place, se pencher sur le second point : l'aspect géométrique d'une phase éponyme.
+\\ \\
 
-\begin{equation}\label{eq:AM-FM-PM_2var}
-	\forall t\in\R,\quad \x(t) = a(t)e^{i\varphi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}
-\end{equation}
-
+\thoughts{Est-ce que je dois parler de l'espace projectif ou est-ce que je le garde pour la grande partie II ?}
+\\
 
 
 
 \section{Décomposition des signaux multivariées} \label{sec:AM-FM-PM}
+
+\subsection{Signal AM-FM-PM bivarié} \label{subsec:AM-FM-PM}
+
+\begin{itemize}
+	
+	\item Définition général en faisant dépendre $\theta / \chi$ du temps
+	
+	\item Paramètre de Polar sur la sphère de Poincaré
+	
+	\item Représentation par expo (matrice et quaternions)
+	
+	\item calcul des 3 phases pour le cas bivarié
+	
+	\item \thoughts{lien avec le calcul d'aire}
+	
+	\item discussion sur l'interprétation de $\varphi$ par rapport aux $\Phi_{\text{tot,dyn,géo}}$ : quelle phase $\varphi$ est sensée représenter, totale ou dynamique ?
+		
+\end{itemize}
+
+
+
+\subsection{Généralisation en plus haute dimension} \label{subsec:gene_AM-FM-PM}
+
+\begin{itemize}
+	
+	\item Différentes écritures du bivarié pour différentes généralisation :
+	
+	\item Les quaterions on passe vites parce que ca se généralise très mal, Lefevre a a parlée, ca mène aux algèbres Clifford : trop de contrainte sur les dimensions des signaux
+	
+	\item En terme d'expo de matrice ? Lefevre \cite[sec. I.3]{lefevre_polarization_2021} l'a fait en trivarié mais au delà, y'a plus vraiment de choix remarquable de base pour $\mathfrak{u}(n)$
+	
+	\item En augmentant la taille de la matrice de rotation ? Lilly \cite{lilly_modulated_2011} l'a fait en trivarié et mais là encore, en terme de généralisation c'est pas si dingue parce que la matrice de rotation est pas calculable.
+	
+\end{itemize}
+	
+
+
+\subsection{Sur la nécessité d'avoir une approche géométrique}
+\begin{itemize}
+	
+	\item Mais surtout, dans tout ça, on ratte le plus important :
+	
+	\item La phase géo est invariante par transfo de jauge, donc il faut faut faire apparaître $\PC{n-1}$ dans la décomposition.
+	
+	\item et en fait, c'est le cas en bivarié car $\PC{1}\cong \S{2}$ !
+	
+	\item $\PC{n-1}$ oui mais il faut pas non plus regarder que la projection parce qu'on perd toute les phases dans ce cas.
+	
+	\item Le bon compromis c'est les variétés fibrées : on est dans $\PC{n-1}$ mais on garde les phases dans les fibres.
+	
+	\item D'autant plus que ça à déjà était fait en physique et c'est vraiment concluant... (transition vers la grande partie suivante.)
+	
+\end{itemize}
+
+
+
+
+
+%%%% ANNEXES %%%%
+
+
+
+\begin{annexe}
+
+\section{Annexes}
+
+\subsection{Complément sur l'analyse temps-fréquence}
+
+\subsubsection{Un mot sur la notion de fréquence instantanée \textit{(nécessaire?)}}
+
+\subsubsection{Formalisme dernière la transformée en SA}
+
+\subsubsection{Lien avec le théorème de Bedrosian}
+
+\subsection{Construction détaillée des signaux AM-FM-PM \textit{(nécessaire?)}}
+
+\begin{itemize}
+	
+	\item Signal polarisé classique ($\theta,\chi$ constants)
+	
+	\item Transformé en SA avec les hypothèse de Bedrosian 
+	
+	\item Définition général en faisant dépendre $\theta / \chi$ du temps
+	
+	\item Paramètre de Polar sur la sphère de Poincaré
+	
+\end{itemize}
+
+
+\end{annexe}

@@ -1,0 +1,26 @@
+\begin{tikzpicture}%[scale=0.8]
+	\draw[black, opacity=0.1] (-4.5,-4.5) grid (4.5,4.5);
+
+
+
+
+%%%% OLD %%%%	
+	
+	\draw[Circle-] (0,-1.05) -- (0,4.6);
+	
+	\coordinate (o) at (0,-1);
+	\coordinate (i) at (4,0);
+	\coordinate (j) at (0,4);
+	
+	\coordinate (u) at (-1.6,0);
+	\coordinate (v) at (2,0.1);
+	
+	% cercles
+	\draw[dashed, thick, blue] (2.55,0.55) arc [start angle=0, end angle =180, radius = 2.55, y radius = 0.7];
+	\draw[thick, blue] (2.55,0.55) arc [start angle=0, end angle =-180, x radius = 2.55, y radius = 0.7];
+	
+	\draw[thick] (0,-1) circle (3);
+	
+	\draw[dashed, thick] (3,-1) arc [start angle=0, end angle =180, radius = 3, y radius = 1];
+	\draw[thick] (3,-1) arc [start angle=0, end angle =-180, x radius = 3, y radius = 1];
+\end{tikzpicture}
