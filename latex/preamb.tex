@@ -50,11 +50,12 @@
 
 %pour les figures
 \usepackage{graphicx, caption} \usepackage{wrapfig, floatrow}
+\usepackage[calc]{adjustbox} %magouille pour wrapfig into ntheorem
 %\usepackage{subcaption} % surement useless, parsk floatrow-like 
 
 % pour les beaux tableaux
 \usepackage{multirow}
-\renewcommand{\arraystretch}{1.8}
+%\renewcommand{\arraystretch}{1.8}
 
 % pour des matrices infernales
 \usepackage{easybmat}
@@ -213,6 +214,8 @@
 \newcommand{\manu}{\mathpzc{M}}
 \newcommand{\atls}{\mathscr{A}}
 \newcommand{\tg}[2][]{\text{\normalfont T}_{#1}#2}
+\newcommand{\vg}[2][]{\text{\normalfont V}_{#1}#2}
+\newcommand{\hg}[2][]{\text{\normalfont H}_{#1}#2}
 \newcommand{\conn}{\mathcal{A}}
 
 \renewcommand{\d}{\text{\normalfont d}}
@@ -322,6 +325,23 @@
 \newenvironment{demo}[1][\unskip]{%
 	\vspace{0.5cm} \hspace{-0.55cm}\textbf{\textit{Démonstration #1}} \qquad %\rule{5cm}{0.4pt}
 	\begin{demonstration}%
+		\begin{itemize}
+			\item Il existe un groupe de Lie $G$ opérant à droite (ou à gauche) sur $P$ via une application différentiable :
+			\begin{equation} \label{eq:VFP_action}
+				\phi\ :\ \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\lmt\ \phi(p,g)\defeq pg = p\cdot g
+				\end{aligned}
+			\end{equation}
+			
+			\item Il existe une surjection différentiable $\ \pi:P\lr B\ $ telle que :
+			\begin{equation} \label{eq:VFP_fibres}
+				\forall p\in P,\quad \pi^{-1}\big(\pi(p)\big)=pG
+			\end{equation}
+			
+			\item $P$ est munie d'un ensemble de paire $(U_i, h_i)$ tel que les $U_i$ forment un recouvrement de $B$ et tel que les $h_i : G\times U_i\lr \pi^{-1}(U_i)\subset P$ soient des difféomorphismes vérifiant :
+			\begin{align*} \label{eq:VFP_atlas}
+				\forall a,b\in G,\ \forall x\in B,\qquad h_i(ab,x) = h_i(a,x) \cdot b\qquad \text{et} \qquad \pi\circ h_i(a,x) = x
+			\end{align*}
+		\end{itemize}
 	}{\begin{flushright} $\blacksquare$ \end{flushright}
 	\end{demonstration}}
 
