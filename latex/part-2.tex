@@ -5,16 +5,16 @@
 	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
 		
 		\item Espace projectif complexe
-		\begin{enumerate}[label=\arabic{enumi}.2.\arabic* --- ]
+		\begin{itemize}%[label=\arabic{enumi}.2.\arabic* --- ]
 			
 			\item Construction de $\PC{n-1}$ 
 			\begin{itemize} \normalfont
 				
 				\item Définition comme espace quotient $\S{2n-1}/\U{1}$
 				
-				\item lien avec la projection $\x \longmapsto \x\x^\dagger$
-				
 				\item $\PC{n}$ vue comme variété différentielle complexe (voir annexe pour détails)
+				
+				\item \thoughts{lien avec la projection $\x \longmapsto \x\x^\dagger$ utilisé en physique}
 				
 			\end{itemize}
 			
@@ -29,10 +29,10 @@
 				
 			\end{itemize}
 			
-		\end{enumerate}
+		\end{itemize}
 		
 		\item Fibré principaux
-		\begin{enumerate}[label=\arabic{enumi}.1.\arabic* --- ]
+		\begin{itemize}%[label=\arabic{enumi}.1.\arabic* --- ]
 			
 			\item Fondamentaux
 			\begin{itemize} \normalfont
@@ -57,7 +57,7 @@
 				\item notre choix de connexion (induite par le produit hermitien)
 			\end{itemize}
 			
-		\end{enumerate}
+		\end{itemize}
 		
 	\end{enumerate}
 	
@@ -96,7 +96,7 @@
 \textbf{Annexes}
 \begin{enumerate}[label=\Alph* --- ] \bfseries
 	
-	\item Forme différentielles \textit{(nécessaire ?)}
+	%\item Forme différentielles \textit{(nécessaire ?)}
 	
 	\item Algèbre et groupe de Lie
 	\begin{itemize}\normalfont
@@ -126,7 +126,7 @@
 \newpage
 
 
-Pour étudier la phase géométrique d'un signal $\psi$, il nous faut projeter $\psi$ sur $\PC{n}$, et ceux, tout en gardant une trace de sa phase puisque c'est le lien entre les deux qui nous intéresse. Il nous faut donc envoyer $\psi$ dans le produit :
+\thoughts{A reprendre, comme toutes les intros} Pour étudier la phase géométrique d'un signal $\psi$, il nous faut projeter $\psi$ sur $\PC{n}$, et ceux, tout en gardant une trace de sa phase puisque c'est le lien entre les deux qui nous intéresse. Il nous faut donc envoyer $\psi$ dans le produit :
 \[\U{1}\times \PC{n}\qquad\qquad (\text{ou }\ \C^{n-1*}/\C^*)\]
 \\
 Garder le lien entre cet espace et celui d'origine mène à se placer dans le cadre avec d'un \emph{variété fibrée} (ou simplement fibré). Plus précisément, comme $\U{1}$ est un groupe de lie, ce sera un \emph{fibré principal} noté $\S{2n-1}\big(\U{1},\PC{n}\big)$.
@@ -137,9 +137,10 @@ Comme son nom l'indique, $\S{2n-1}\big(\U{1},\PC{n}\big)$ à une structure de va
 La phase géométrique, quand à elle, sera liée avec la métrique hermitienne associée aux l'espaces projectifs complexes.
 \\
 Tout cela va demander quelques prérequis que nous allons voir à présent.
+\\
 
 
-\newpage
+
 \section{Prérequis mathématique}
 
 \subsection{Variété fibrée principale}
@@ -208,6 +209,7 @@ D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peu
 		\ffigbox{\caption[Représentation d'une section local]
 			{Représentation d'une section local $\sigma$ au dessus de $U_i$. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
 			\label{fig:section_local}}{
+		%\includegraphics[width=0.45\textwidth]{fig/placeholder}
 		\input{tikz/part-2/section_locale}}
 	
 	\ffigbox{\caption[Représentation de la section canonique]
