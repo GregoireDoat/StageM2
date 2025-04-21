@@ -236,7 +236,7 @@ Cela mène à la définition :
 \begin{definition}[Fonctions de transitions]
 	L'intersection de deux cartes  est noté $U_{ij} = U_i\cap U_j$ et le passage d'une section local canonique est donné par :
 	\[\forall x\in U_{ij},\qquad \sigma_j(x) = \sigma_i(x) t\big(\sigma_i(x), \sigma_j(x)\big)\]
-	L'élément de $G$, $t(\sigma_i, \sigma_j)$, est alors appelé \emph{fonction de transition} et est noté $\varphi_{ij}$. Elle fait effectivement la transition entre deux cartes dans le sens où :
+	L'élément de $G$, $t(\sigma_i, \sigma_j)$, est alors appelé \emph{fonction de transition} et sera noté $\varphi_{ij}$. Elle fait effectivement la transition entre deux cartes dans le sens où :
 	\[\forall (g,x)\in G\times U_{ij},\qquad {h_i}^{-1} \circ h_j(g,x) = \big( \varphi_{ij}(x)g, x \big)\]
 \end{definition}
 \skipl
@@ -246,7 +246,8 @@ Dans la suite, il sera nécessaire d'associer une connexion à $P$ et sa structu
 Comme $P$ ressemble localement à un produit $G\times U_i$, il serait utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe des sous espaces associées respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux} et les second \emph{horizontaux}, sont notés :
 \[\forall p\in P,\qquad \tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}\]
 \\
-Comme les fibres de $P$ sont toutes difféomorphes à $G$, leurs espaces tangents se représente dans l'algèbre de Lie $\mathfrak{g}$ de $G$. \thoughts{(voir annexe \ref{ann:2Lie} pour des rappels sur le sujet)}
+Comme les fibres de $P$ sont toutes difféomorphes à $G$, leurs espaces tangents se représente dans l'algèbre de Lie $\mathfrak{g}$ de $G$. 
+%\thoughts{(voir annexe \ref{ann:2Lie} pour des rappels sur le sujet)}
 
 \begin{itemize}
 	\item espace tangent 
@@ -321,6 +322,11 @@ Les $(U_i,\phi_i)$ forme un atlas holomorphe sur l'espace projectif complexe, fa
 
 \section{Annexe}
 
+\subsection{Algère et groupe de Lie} \label{ann:2Lie}
+
+
+
+
 \subsection{Variété différentielle complexe, tiré de \cite{nakahara_geometry_2003}}
 
 Pour mémoire, une variété différentielle de classe $C^k$ ($k\in\N\cup\{\infty\}$) de dimension $n$ est un espace topologique\footnote{\itshape
@@ -377,9 +383,6 @@ Finalement, $\tg{\manu}$ peut être séparé en deux sous-espaces engendré resp
 \begin{align}
 	\tg[p]{\manu}^+ &= \Vec\big\{ \partial_\mu\ |\ 1\leq \mu\leq n \big\}  &  \tg[p]{\manu}^- &= \Vec\big\{ \partial_{\bar{\mu}}\ |\ 1\leq \mu\leq n \big\}
 \end{align}
-
-
-\subsection{Algère et groupe de Lie} \label{ann:2Lie}
 
 \end{annexe}
 
