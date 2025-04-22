@@ -263,7 +263,7 @@ Cela signifie plusieurs choses.
 D'une part, le fait cette phase soit invariante pas transformation de jauge montre qu'elle est associée à la composante de $\x$ dont il a été mentionné (\textit{sec.} \ref{subsec:ana_temp-freq}) qu'elle était associée à sa polarisation. 
 Ce point sera discuté dans la \cref{sec:AM-FM-PM} suivante.
  \\
-D'autre part, cela suggère que la phase géométrique doit avoir une certaine robustesse au bruit. \thoughts{J'ai un doute la dessus :} Pour argumenter ce point, rappelons que le bruit d'un signal se trouve généralement dans les hautes fréquences de ce dernier.
+D'autre part, cela suggère que la phase géométrique doit avoir une certaine robustesse au bruit. \thoughts{Pas sur de ça :} Pour argumenter ce point, rappelons que le bruit d'un signal se trouve généralement dans les hautes fréquences de ce dernier.
 Or, en admettant, comme ça l'a été abordé dans la \cref{subsec:intro_phased} précédent, que la phase dynamique contient les hautes fréquences, il y a d'autant plus de chances que cette phase est un bon comportement par rapport au bruit.
 \\
 Ainsi, s'il est possible de tirer des informations de $\phaseg$, alors ces informations doivent pouvoir être obtenue même pour des signaux particulièrement bruités, comme c'est le cas des mesures d'ondes gravitationnelles \thoughts{(j'aimerais beaucoup étudier ça mais ce sera sûrement pour une thèse, si thèse il y a)}.
@@ -320,7 +320,7 @@ En autorisant les paramètres de polarisation à varier au cours du temps et apr
 	\end{equation}
 	où $R_{\theta(t)}$ est la matrice de rotation d'angle $\theta(t)$.
 	\\
-	\thoughts{IMPOSSIBLE DE TROUVER UNE SOURCE SUR L'ORIGINE DES HYPOTHESES + QU'EST-CE QU'ON ENTEND PAR ``$\gg$'' ?}
+	\thoughts{impossible de trouver une source sur l'orignie des hypothèses + qu'est-ce qu'on entend par ``$\gg$'' ?}
 \end{definition}
 \skipl
 
@@ -331,19 +331,19 @@ pour étudier la phase géométrique car c'est uniquement dans le cadre de compl
 
 Les trois phases de tels signaux sont alors données par la \cref{prop:phases_2var} suivante :
 \begin{proposition}[phases de signal AM--FM--PM]\label{prop:phases_2var}
-	Les trois phases d'un signal bivarié AM--FM--PM $\bf{x}$ de paramètres $(a,\varphi,\theta,\chi)$ sont données par les formules :
+	Les trois phases d'un signal bivarié AM--FM--PM $\x$ de paramètres $(a,\varphi,\theta,\chi)$ sont données par les formules :
 	\begin{equation}\label{eq:phased_2var}
-		\phased(\bf{x}, t_0,t) = \varphi(t) -\varphi(t_0) + \int_{t_0}^t\theta'(s) \sin2\chi(s) ds
+		\phased(\x, t_0,t) = \varphi(t) -\varphi(t_0) + \int_{t_0}^t\theta'(s) \sin2\chi(s) ds
 	\end{equation}
 	\begin{equation}\label{eq:phaset_2var}
 	\begin{aligned}
-		\phaset(\bf{x},t_0,t) &= \varphi(t)-\varphi(t_0) + \arg\Big(\cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big) \\
+		\phaset(\x,t_0,t) &= \varphi(t)-\varphi(t_0) + \arg\Big(\cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big) \\
 		&= \varphi(t)-\varphi(t_0) + \arctan\left(\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right)
 	\end{aligned}
 	\end{equation}
 	\begin{equation}\label{eq:phaseg_2var}
 	\begin{aligned}
-		\phaseg(\bf{x},t_0,t) &= \phaset(\bf{x},t_0,t) - \phased(\bf{x},t_0,t) \\
+		\phaseg(\x,t_0,t) &= \phaset(\x,t_0,t) - \phased(\x,t_0,t) \\
 			&= \arctan\left(\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right) - \int_{t_0}^t\theta'(s) \sin2\chi(s) ds
 	\end{aligned}
 	\end{equation}
@@ -357,33 +357,51 @@ La première est que la phase géométrique ne dépend que des paramètres de po
 La seconde, nettement plus troublante, est que $\varphi$ ne s'interprète ni comme la phase totale ni comme la phase dynamique. Plus loin, \thoughts{\cref{subsec:aller_plus_loin}}, nous reviendrons sur laquelle des deux ``doit'' représenter $\varphi$.
 \\
 
-La phase géométrique est séparé en deux termes. Le premier, en arctangente, correspond à l'angle former par les vecteurs portant la polarisation instantanée, c'est-à-dire les vecteurs :
+Aussi, la phase géométrique est séparée en deux termes. Le premier, en arctangente, correspond à l'angle formé par les vecteurs portant la polarisation instantanée, c'est-à-dire les vecteurs :
 \begin{align*}
 	R_{\theta(t_0)} \begin{pmatrix} \cos\chi(t_0) \\ -i\sin\chi(t_0) \end{pmatrix}\qquad \text{ et }\qquad R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}
 \end{align*}
+\\
 
-\[\underline{\overline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}\]
-Pour la suite :
-\begin{itemize}
-	
-	\item Le terme en arctan, c'est l'angle entre les deux vecteurs de polarisation $R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}$ et $R_{\theta(t_0)} \begin{pmatrix} \cos\chi(t_0) \\ -i\sin\chi(t_0) \end{pmatrix}$ (évidant depuis la démo de \eqref{eq:phaset_2var})
-	
-	\item Donc la phase géom tien compte de ça mais pas que.
-	
-	\item Le second membre (l'intégrale), pour l'interpréter il faut aller dans la sphère de Poincaré
-	
-	\item et là ça devient l'air entourée par le signal (à facteur près toujours)
-	
-	\item Pour le voir : cas simple (pseudo-cyclique, voir cas de signal en triangle)	
-	
-	%\item Représentation par expo (matrice et quaternions)
-	
-	%\item \thoughts{lien avec le calcul d'aire}
-	
-	%\item discussion sur l'interprétation de $\varphi$ par rapport aux $\Phi_{\text{tot,dyn,géo}}$ : quelle phase $\varphi$ est sensée représenter, totale ou dynamique ?
-	
-\end{itemize}
+Pour interpréter le second membre, c'est beaucoup moins clair. Il faut d'intéresser  la projection  $\ \rho_{\x} = \frac{1}{\|\x \|^2} \congu{\x }\, ^t\x $. Avec des calculs (interminables), on obtient l'écriture :
+\[\rho_{\x} = id + \sin2\theta\cos2\chi \sigma_1 + \sin 2\chi \sigma_3 + \cos2\theta \cos2\chi \sigma_3\]
 
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+	\input{tikz/part-1/sphere2poincare}
+	\caption{Sphère de Poincaré, blablabla}
+	\label{fig:sphere2pointcare}
+\end{wrapfigure}
+
+\par
+où les $\sigma_i$ sont les matrices de Pauli :
+\begin{align*}
+	\sigma_1 &= \begin{pmatrix} 0 & 1 \\ 1 &  0 \end{pmatrix}  &
+	\sigma_2 &= \begin{pmatrix} 0 & -i \\  i &  0 \end{pmatrix}  &
+	\sigma_3 &= \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\end{align*}
+\par
+
+On remarque alors que les coefficients associés aux $\sigma_i$ sont des coordonnées sphériques lorsque les $\sigma_i$ sont associés à la base canonique de $\R^3$, conformément à la \Cref{fig:sphere2pointcare} ci-contre \thoughts{pas à jour}.
+\\
+Posé ainsi, l'intégrale dans la phase dynamique ne s'interprète pas. Vraiment pas, \href{https://en.wikipedia.org/wiki/Spherical_coordinate_system#Integration_and_differentiation_in_spherical_coordinates}{Wikipedia} liste une tonne de formule mais aucune ne colle avec $\theta'\sin2\chi$ parce que les angles choisis ne le permette pas. 
+Notre convention est que $2\chi$ correspond à l'angle formé par $\sigma_2$ et $\rho$, là où sur Wikipedia, il est définie par l'angle entre la projection de $\rho$ sur $\Vec\{\sigma_{1,2}\}$ et $\rho$. Pour le dire rapidement, ce la change tout les $\cos 2\chi$ en $\sin 2\chi$ et inversement (modulo des signes).
+\\
+Pour pouvoir interpréter l'intégrale, il faut choisir les mêmes conventions qu'eux, auquel cas, il faut poser :
+\[\rho = \sin2\theta\sin2\chi \sigma_1 + \cos 2\chi \sigma_3 + \cos2\theta \sin2\chi \sigma_3\]
+\\
+et notre vecteur apparaît comme la dérivée :
+\[\hat{\bf{\chi}} = \frac{\partial}{\partial\chi} \rho = \sin2\theta\cos2\chi \sigma_1 - \sin 2\chi \sigma_3 + \cos2\theta \cos2\chi \sigma_3\]
+\\
+Dans ce cas, $\theta'\sin2\chi$ s'interprète (à un facteur près) comme la norme de la composante horizontale du vecteur vitesse de $\rho$, puisque :
+\[\partial_t\rho = 2 \chi'\hat{\bf{\chi}} + 2 \theta' \sin 2\chi \hat{\bf{\theta}}\]
+\\
+Ainsi, mais c'est vraiment pas beau, l'intégrale de $\phased$ s'interprète comme la longueur du déplacement horizontale-ish de la projection $\rho$ de $\x$.
+\\
+Si on veut le voir en terme d'élément d'air $dS$, alors on a :
+\[dS = \sin2\chi d\theta d\chi\]
+\\
+Mais comme $\theta$ et $\chi$ dépendent d'un paramètre commun $t$, ça serait très impropre de parler de calcul d'air sachant que $\theta'(t)\sin 2\chi(t)$ parcours un chemin vraiment. D'autant plus que là pas d'intégrale sur $\theta$... même si peut-être qu'on pourrait la faire apparaître avec un changement de variable approprié (surement que non en plus parce que le passage de $t$ à $(\theta,\chi)$ à par une différentielle inversible donc au cul le det de la Jacobienne :/ )
 
 
 
@@ -432,7 +450,7 @@ Pour la suite :
 
 \subsection{Compléments sur l'analyse temps-fréquence}\label{ann:complement_t-f}
 
-\subsubsection{Un mot sur la notion de fréquence instantanée \textit{(nécessaire?)}}\label{ann:freq_instant}
+\subsubsection{Un mot sur la notion de fréquence instantanée \thoughts{(nécessaire?)}}\label{ann:freq_instant}
 
 \subsubsection{Formalisme dernière la transformée en SA}\label{ann:transfo_SA}
 
@@ -457,55 +475,66 @@ Pour la suite :
 
 \subsubsection{Démostrations}\label{ann:demo_phases_2var}
 
-\begin{demo}[de la \cref{prop:phases_2var}]
-	Par souci de lisibilité, on note $\mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ de sorte que la dérivée de $\bf{x}$ s'écrive :
+\begin{demo}[de la formule \eqref{eq:phased_2var}, \cref{prop:phases_2var}]
+	Par souci de lisibilité, on note $\mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ de sorte que la dérivée de $\x$ s'écrive :
 	\begin{align*}
-		\dot{\bf{x}} 
+		\dot{\x} 
 		&= a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} -\sin\theta \cos\chi + i\cos\theta \sin\chi \\ \cos\theta \cos\chi + i\sin\theta \sin\chi \end{pmatrix} + ae^{i\varphi}\chi'\begin{pmatrix} -\cos\theta \sin\chi + i\sin\theta \cos\chi \\ -\sin\theta \sin\chi - i\cos\theta \cos\chi \end{pmatrix} \\
 		&= a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + ae^{i\varphi}\chi'\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}
 	\end{align*}
 	\\
-	Le produit hermitien $\langle \bf{x}, \dot{\bf{x}}\rangle$ s'écrit alors :
+	Le produit hermitien $\langle \x, \dot{\x}\rangle$ s'écrit alors :
 	\begin{align*}
-		\langle \bf{x}, \dot{\bf{x}}\rangle 
-		&= \left\langle ae^{i\varphi}\mathcal{U}, a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + ae^{i\varphi}\chi'\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}\right\rangle \\
-		&= \left\langle a\mathcal{U}, a'\mathcal{U} + ia\varphi' \mathcal{U} + a\theta'\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + a\chi'\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}\right\rangle \\
-		&= aa' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  - ia^2\varphi' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + a^2\theta'\left\langle \mathcal{U}, \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U}\right\rangle + ia^2\chi'\left\langle \mathcal{U}, \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\congu{\mathcal{U}}\right\rangle
+		\langle \dot{\x}, \x \rangle 
+		&= \left\langle a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + ae^{i\varphi}\chi'\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}, ae^{i\varphi}\mathcal{U} \right\rangle \\
+		&= \left\langle a'\mathcal{U} + ia\varphi' \mathcal{U} + a\theta'\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + a\chi'\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}, a\mathcal{U} \right\rangle \\
+		&= aa' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + ia^2\varphi' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + a^2\theta'\left\langle \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U}, \mathcal{U} \right\rangle - ia^2\chi'\left\langle \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\congu{\mathcal{U}}, \mathcal{U} \right\rangle
 	\end{align*}
 	où les deux derniers produits hermitiens donnent :
 	\begin{align*}
-		\left\langle \mathcal{U}, \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U}\right\rangle &= -\mathcal{U}_1\congu{\mathcal{U}_2} + \mathcal{U}_2\congu{\mathcal{U}_1} \\
-		&= 2i\Im m\big(\congu{\mathcal{U}_1} \mathcal{U}_2\big) \\
-		&= 2i\Im m\big(\cos\theta \cos\chi - i \sin\theta \sin\chi \big) \big( \sin\theta \cos\chi - i \cos\theta \sin\chi \big) \\
-		&= 2i\big(-\cos^2\theta \cos\chi \sin\chi - \sin^2\theta \sin\chi \cos\chi \big) \\
-		&= -2i\big( \cos\chi \sin\chi + \sin\chi \cos\chi \big) \\
-		&= -i\sin2\chi 
+		\left\langle \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U}, \mathcal{U} \right\rangle &= -\mathcal{U}_2\congu{\mathcal{U}_1} + \mathcal{U}_1\congu{\mathcal{U}_2} \\
+		&= 2i\Im m\big(\mathcal{U}_1 \congu{\mathcal{U}_2}\big) \\
+		&= 2i\Im m\Big(\big( \cos\theta \cos\chi + i \sin\theta \sin\chi \big) \big( \sin\theta \cos\chi + i \cos\theta \sin\chi \big)\Big) \\
+		&= 2i\big(\cos^2\theta \cos\chi \sin\chi + \sin^2\theta \sin\chi \cos\chi \big) \\
+		&= 4i \cos\chi \sin\chi \\
+		&= 2i\sin2\chi 
 		\\ \\
-		\left\langle \mathcal{U}, \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\congu{\mathcal{U}}\right\rangle &= -\mathcal{U}_1\mathcal{U}_2 + \mathcal{U}_2\mathcal{U}_1 = 0
+		\left\langle \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\congu{\mathcal{U}}, \mathcal{U} \right\rangle &= -\congu{\mathcal{U}_2\mathcal{U}_1} + \congu{\mathcal{U}_1\mathcal{U}_2} = 0
 	\end{align*}
 	\\
-	D'où, sachant que $\ \|\bf{x}\|^2=a^2\ $ et $\ \|\mathcal{U}\|=1$, la formule :
+	D'où, sachant que $\ \|\x\|^2=a^2\ $ et $\ \|\mathcal{U}\|=1$, la formule :
 	\begin{align*}
-		-\frac{\Im m\big\langle \bf{x},\dot{\bf{x}}\big\rangle}{\|\bf{x}\|^2} &= -\frac{1}{a^2}\Im m\Big(aa' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  - ia^2\varphi' \big\langle \mathcal{U}, \mathcal{U}\big\rangle - ia^2\theta' \sin2\chi \Big) \\
+		\frac{\Im m\big\langle \dot{\x}, \x\big\rangle}{\|\x\|^2} &= \frac{1}{a^2}\Im m\Big(aa' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + ia^2\varphi' \big\langle \mathcal{U}, \mathcal{U}\big\rangle + ia^2\theta' \sin2\chi \Big) \\
 		&= \frac{1}{a^2} \Big( a^2\varphi' \|\mathcal{U}\|^2 + a^2\theta' \sin2\chi \Big) \\
 		&= \varphi' + \theta' \sin2\chi
 	\end{align*}
-	%\begin{pmatrix} \cos\theta \cos\chi + i\sin\theta \sin\chi \\ \sin\theta \cos\chi - i\cos\theta \sin\chi \end{pmatrix}
-	\\
-	
+\end{demo}
+
+\begin{demo}[de la formule \eqref{eq:phaset_2var}, \cref{prop:phases_2var}]
 	Pour la phase totale, on note cette fois $\mathcal{V} = \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ et on a :
 	\begin{align*}
-		\big\langle \bf{x}(t_0), \bf{x}(t)\big\rangle &= \Big\langle a(t_0)e^{i\varphi(t_0)}R_{\theta(t_0)}\mathcal{V}(t_0), a(t)e^{i\varphi(t)}R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
-		&= a(t_0)e^{i\varphi(t_0)}a(t)e^{-i\varphi(t)}\Big\langle R_{\theta(t_0)}\mathcal{V}(t_0), R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
+		\big\langle \x(t), \x(t_0)\big\rangle &= \Big\langle a(t)e^{i\varphi(t)}R_{\theta(t)}\mathcal{V}(t), a(t_0)e^{i\varphi(t_0)}R_{\theta(t_0)}\mathcal{V}(t_0) \Big\rangle \\
+		&= a(t)e^{i\varphi(t)} a(t_0)e^{-i\varphi(t_0)} \Big\langle R_{\theta(t)}\mathcal{V}(t), R_{\theta(t_0)}\mathcal{V}(t_0) \Big\rangle \\
 		%&= a(t_0)a(t)e^{i(\varphi(t_0)-\varphi(t))}\Big\langle \mathcal{V}(t_0), R_{\theta(t_0)}^{-1}R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
-		&= a(t_0)a(t)e^{i(\varphi(t_0)-\varphi(t))}\Big\langle \mathcal{V}(t_0), R_{\theta(t)- \theta(t_0)}\mathcal{V}(t) \Big\rangle
+		&= a(t_0)a(t)e^{i(\varphi(t)-\varphi(t_0))}\Big\langle R_{\theta(t)- \theta(t_0)}\mathcal{V}(t), \mathcal{V}(t_0) \Big\rangle
 	\end{align*}
 	Pour alléger les notations, on note $\ \Delta y =y(t)-y(t_0)$, $\ y_1=y(t_0)\ $ et $\ y_2=(t)\ $ pour $\ y=\varphi,\theta,\chi$. Le produit hermitien à droite s'écrit alors :
 	\begin{align*}
-		\Big\langle \mathcal{V}(t_0), R_{\Delta\theta}\mathcal{V}(t) \Big\rangle &= \begin{pmatrix} \cos\chi_1 & -i\sin\chi_1 \end{pmatrix}  \begin{pmatrix} \cos\Delta\theta \cos\chi_2 - i\sin\Delta\theta \sin\chi_2 \\ \sin\Delta\theta \cos\chi_2 + i\cos\Delta\theta \sin\chi_2 \end{pmatrix} \\
-		&= \cos\chi_1\Big(\cos\Delta\theta \cos\chi_2 - i\sin\Delta\theta \sin\chi_2\Big) - i\sin\chi_1\Big(\sin\Delta\theta \cos\chi_2 + i\cos\Delta\theta \sin\chi_2\Big) \\
-		&= \cos\Delta\theta \Big(\cos\chi_1 \cos\chi_2 + \sin\chi_1 \sin\chi_2\Big) - i\sin\Delta\theta \Big( \cos\chi_1 \sin\chi_2 + \sin\chi_1\cos\chi_2\Big) \\
-		&= \cos\Delta\theta \cos\Delta\chi - i\sin\Delta\theta \sin(\chi_1+\chi_2)
+		\Big\langle R_{\Delta\theta}\mathcal{V}(t), \mathcal{V}(t_0) \Big\rangle &=   \Big(\cos\Delta\theta \cos\chi_2 + i\sin\Delta\theta \sin\chi_2 \qquad \sin\Delta\theta \cos\chi_2 - i\cos\Delta\theta \sin\chi_2\Big) \begin{pmatrix} \cos\chi_1 \\ i\sin\chi_1 \end{pmatrix} \\
+		&= \cos\chi_1\Big(\cos\Delta\theta \cos\chi_2 + i\sin\Delta\theta \sin\chi_2\Big) + i\sin\chi_1\Big(\sin\Delta\theta \cos\chi_2 - i\cos\Delta\theta \sin\chi_2\Big) \\
+		&= \cos\Delta\theta \Big(\cos\chi_1 \cos\chi_2 + \sin\chi_1 \sin\chi_2\Big) + i\sin\Delta\theta \Big( \cos\chi_1 \sin\chi_2 + \sin\chi_1\cos\chi_2\Big) \\
+		&= \cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin(\chi_1+\chi_2)
+	\end{align*}
+	\\
+	D'où la phase totale :
+	\begin{align*}
+		\phaset(\x) = \arg\big\langle \x(t), \x(t_0)\big\rangle &= \arg\left( a(t_0)a(t)e^{i(\varphi(t) - \varphi(t_0))}\Big( \cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin(\chi_1+\chi_2) \Big) \right) \\
+		&= \varphi(t) - \varphi(t_0) + \arg\Big( \cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin(\chi_1+\chi_2) \Big)
+	\end{align*}
+	et l'argument restant s'écrit comme une arctangente, donnant :
+	\begin{align*}
+		\phaset(\x) &= \varphi(t)-\varphi(t_0) + \arctan\frac{\sin\Delta\theta \sin(\chi_1+\chi_2)}{\cos\Delta\theta \cos\Delta\chi} \\
+		&= \varphi(t)-\varphi(t_0) + \arctan \left( \tan\Delta\theta\frac{\sin(\chi_1+\chi_2)}{\cos\Delta\chi} \right)
 	\end{align*}
 \end{demo}
 
