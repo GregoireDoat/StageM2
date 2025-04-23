@@ -284,14 +284,14 @@ Dans ce mémoire le calcul pratique de la phase géométrique ne sera pas aborde
 
 
 
-\section{Première étude de la phase géométrique} \label{sec:AM-FM-PM}
+\section{Première étude : cas des signaux AM-FM-PM bivariés} \label{sec:AM-FM-PM}
 
 Pour une première étude de la phase géométrique du signal, Le Bihan \etal~se sont penchés sur un cas particulier de signal bivarié \cite{flamant_timefrequency_2019,le_bihan_modephysiques_2023, le_bihan_geometric_2024}. Ces signaux, dit AM-FM-PM, sont présenté dans une première partie et le calcul explicite de leur phases --- totale, dynamique et géométrique --- est présenté. Dans une seconde partie... \thoughts{je sais pas trop}
 \\
 
 
 
-\subsection{Cas des signaux AM-FM-PM bivariés} \label{subsec:AM-FM-PM}
+\subsection{Définitions et calcul des phases} \label{subsec:AM-FM-PM}
 
 Ces signaux AM-FM-PM viennent généraliser les signaux AM-FM univarié en tenant compte de l'état de polarisation permis par le passage au 2D. 
 En quelques mots, dans le cas le plus simple, un signal bivarié à valeurs réelles $s$ va décrire une ellipse en cours du temps. 
@@ -319,8 +319,6 @@ En autorisant les paramètres de polarisation à varier au cours du temps et apr
 		= a(t)e^{i\varphi(t)} \begin{pmatrix} \cos\theta(t) \cos\chi(t) + i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - i\cos\theta(t) \sin\chi(t) \end{pmatrix}
 	\end{equation}
 	où $R_{\theta(t)}$ est la matrice de rotation d'angle $\theta(t)$.
-	\\
-	\thoughts{impossible de trouver une source sur l'orignie des hypothèses + qu'est-ce qu'on entend par ``$\gg$'' ?}
 \end{definition}
 \skipl
 
@@ -402,8 +400,6 @@ Si on veut le voir en terme d'élément d'air $dS$, alors on a :
 \[dS = \sin2\chi d\theta d\chi\]
 \\
 Mais comme $\theta$ et $\chi$ dépendent d'un paramètre commun $t$, ça serait très impropre de parler de calcul d'air sachant que $\theta'(t)\sin 2\chi(t)$ parcours un chemin vraiment. D'autant plus que là pas d'intégrale sur $\theta$... même si peut-être qu'on pourrait la faire apparaître avec un changement de variable approprié (surement que non en plus parce que le passage de $t$ à $(\theta,\chi)$ à par une différentielle inversible donc au cul le det de la Jacobienne :/ )
-
-
 
 \subsection{Généralisation en plus haute dimension} \label{subsec:gene_AM-FM-PM}
 
@@ -534,7 +530,8 @@ Mais comme $\theta$ et $\chi$ dépendent d'un paramètre commun $t$, ça serait 
 	et l'argument restant s'écrit comme une arctangente, donnant :
 	\begin{align*}
 		\phaset(\x) &= \varphi(t)-\varphi(t_0) + \arctan\frac{\sin\Delta\theta \sin(\chi_1+\chi_2)}{\cos\Delta\theta \cos\Delta\chi} \\
-		&= \varphi(t)-\varphi(t_0) + \arctan \left( \tan\Delta\theta\frac{\sin(\chi_1+\chi_2)}{\cos\Delta\chi} \right)
+		&= \varphi(t)-\varphi(t_0) + \arctan \left( \tan\Delta\theta\frac{\sin(\chi_1+\chi_2)}{\cos\Delta\chi} \right) \\
+		&= \cdots
 	\end{align*}
 \end{demo}
 

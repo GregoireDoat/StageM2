@@ -202,12 +202,10 @@ Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de 
 
 
 L'ensemble $\big\{(U_i, h_i)\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
-\\ 
 \\
 D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur la \Cref{fig:section_local} \thoughts{ci-dessous}. Formellement, une section locale au dessus  de $U_i$ est une application $\sigma : U_i\subset B\lr P$ vérifiant :
 \[\pi\circ \sigma = id_{{\displaystyle |}U_i}\]
-\\
-\begin{figure}[h]
+\begin{figure}[H]
 	\begin{floatrow}
 		\ffigbox{\caption[Représentation d'une section local]
 			{Représentation d'une section local $\sigma$ au dessus de $U_i$. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
@@ -226,9 +224,9 @@ Ensuite, les hypothèses sur $P(G,B)$ sont telles que $G$ agit transitivement et
 \begin{align*}
 	\forall x\in B,\quad \forall p,q\in P_x,\ \exists t(p,q)\in G\ |\ p = q\cdot t(p,q) 
 \end{align*}
-et que le seul moyen laisse les points invariants par cette même action est de passer par l'élément neutre $e$ (libre) :
+et que la seule façon de laisse les points invariants par cette même action est de passer par l'élément neutre $e$ (libre) :
 \begin{align*}
-	\forall (p,g)\in P\times G,\quad p = pg\ \Lr\ g=e
+	\forall (p,g)\in P\times G,\quad p = p\cdot g\ \Lr\ g=e
 \end{align*}
 \\
 De la transitivité de $G$, découle le fait que toutes les sections locales $\sigma$ au dessus de $U_i$ peuvent s'écrire à partir d'une même section $\sigma_i$ via la formule :
@@ -244,12 +242,25 @@ Cela mène à la définition :
 \end{definition}
 \skipl
 
-Dans la suite, il sera nécessaire d'associer une connexion à $P$ et sa structure de fibré principal permet de définir ces dernières légèrement différemment que pour les variété classiques. L'idée est la suivante :
+Dans la suite, il sera nécessaire d'associer une connexion à $P$, qui s'introduit comme suit.
 \\
-Comme $P$ ressemble localement à un produit $G\times U_i$, il serait utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe des sous espaces associées respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux} et les second \emph{horizontaux}, sont notés :
+Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les second \emph{horizontaux} et sont notés :
 \[\forall p\in P,\qquad \tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}\]
 \\
-Comme les fibres de $P$ sont toutes difféomorphes à $G$, leurs espaces tangents se représente dans l'algèbre de Lie $\mathfrak{g}$ de $G$. 
+Si $\vg[p]{P}$ est se définit canoniquement de façon unique, ce n'est pas le cas des $\hg[p]{P}$, et c'est ce choix d’espace horizontaux que détermine une connexion sur $P$.\\
+
+D'abord la construction de $\vg[p]{P}$. Pour cela, la \emph{fonction tangente} (ou \emph{dérivée}) \emph{ de $\pi$ au point} $x$ est noté $\tg[p]{\pi}$ avec :
+\[(\tg[p]{\pi})^i_j = \frac{\partial \pi^i}{\partial x^j}(x)\]
+\\
+Ainsi, $\tg[p]{\pi}$ est à valeur de $\tg[p]{P}$ dans $\tg{\phi(p)}{B}$ est l'espace tangent vertical au point $p$ se défini par :
+\[\vg[p]{P} = \Ker (\tg[p]{\pi}) = \big\{ X\in\tg[p]{P}\ |\ \tg[p]{\pi}(X)=0 \big\}\]
+\\
+Une fois les espaces tangent verticaux construit, les espaces horizontaux s’obtiennent en considérant une 1-forme à valeur de $P$ dans $\vg{P}$, noté $\conn$, de sorte que :
+\[\forall p\in P,\quad \hg[p]{P} = \Ker(\mathcal{A}_p)\]
+
+
+Faire de même pour les espaces horizontaux demande un peu plus de travail parce que, \apriori, les fibres sont toutes différentes. Pour les fibrés principaux, toutes les fibres s'assimile à $G$ et l'espace tangent $\tg[e]{G}$ à l'algèbre de Lie $\mathfrak{g}$ de $G$.
+Comme les fibres de $P$ sont toutes difféomorphes à $G$, leurs espaces tangents se représente dans l'algèbre de Lie $\mathfrak{g}$ de $G$.
 %\thoughts{(voir annexe \ref{ann:2Lie} pour des rappels sur le sujet)}
 
 \begin{itemize}
