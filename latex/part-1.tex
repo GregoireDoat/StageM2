@@ -4,12 +4,9 @@ C'est donc de point que commencera notre discussion pour introduire la phase gé
 Pour cela, seront rapidement introduit quelques notions et résultats d'analyse temps-fréquence dans le cas univarié (sec. \ref{subsec:ana_temp-freq}). Suite à quoi sera définie la phase instantanée pour le cas multivarié (sec. \ref{subsec:intro_phased}), qui permettre enfin de mettre en évidence la phase géométrique (sec. \ref{subsec:intro_phaseg}).
 \\
 
-\thoughts{OUTDATED} Dans une seconde partie, seront introduit les signaux bivarié dit AM-FM-PM  (sec. \ref{subsec:AM-FM-PM}), dont la phase géométrique sera calculée explicitement (sec. \ref{subsec:phase_g2AM-FM-PM}), ce qui permettra de mettre en évidence certaines de ses propriétés. Dans une dernière section, seront proposées des généralisations des signaux AM-FM-PM au delà du cas bivarié et seront discutées leur pertinence quant à l'étudie de la phase géométrique (sec. \ref{subsec:gene_AM-FM-PM}). 
+Dans une seconde partie, seront introduit les signaux bivarié dit AM-FM-PM  (sec. \ref{subsec:AM-FM-PM}), dont la phase géométrique sera calculée explicitement (sec. \ref{subsec:phase_g2AM-FM-PM}), ce qui permettra de mettre en évidence certaines de ses propriétés. Dans une dernière section, seront proposées des généralisations des signaux AM-FM-PM au delà du cas bivarié et seront discutées leur pertinence quant à l'étudie de la phase géométrique (sec. \ref{subsec:gene_AM-FM-PM}). 
 
 \section{Introduction de la phase géométrique} \label{sec:intro_phaseg}
-
-
-
 
 \subsection{Cas univarié : signaux AM-FM} \label{subsec:ana_temp-freq}
 
@@ -239,7 +236,7 @@ Dans le cas multivarié, en revanche, c'est une autre histoire. En notant cette 
 	\end{aligned}
 \end{equation}
 \\
-Apparaît alors un terme de déviation de la phase dynamique par rapport à la phase totale, qui (surprise) est appelé phase géomatique et sera notée :
+Apparaît alors un terme de déviation de la phase dynamique par rapport à la phase totale, appelé (surprise) phase géomatique et noté :
 \begin{equation}\label{eq:phase_g}
 	\phaseg(\x,t_0,t) \defeq \phaset(\x, t_0,t) - \phased(\x, t_0,t)
 \end{equation}
@@ -252,41 +249,35 @@ Déviation qui s'observe expérimentalement, comme le montre la \Cref{fig:calc_d
 \end{figure}
 \\
 
-Un résultat bien connue en physique \cite{bohm_geometric_2003,mukunda_quantum_1993,nakahara_geometry_2003} est que cette troisième phase est invariante par transformation de jauge. Dans notre contexte, cela signifie que si $\x$ et $\Tilde{\x}$ sont deux signaux multivarié complexe tel que $\ \Tilde{\x} = e^{i\alpha}\x$, avec $\alpha$ une \underline{fonction} continue du temps, alors :
+Un résultat bien connue en physique \cite{bohm_geometric_2003,mukunda_quantum_1993,nakahara_geometry_2003} est que cette troisième phase est invariante par transformation de jauge et par reparamétrisation. Dans notre contexte, cela signifie d'une part que si $\x$ et $\Tilde{\x}$ sont deux signaux multivarié complexe tel que $\ \Tilde{\x} = e^{i\alpha}\x$, avec $\alpha$ une \underline{fonction} dérivable du temps, alors :
 \begin{align*}
 	\phaseg(\Tilde{\x}) &= \phaset(\Tilde{\x}) - \phased(\Tilde{\x})  = \phaset(\x) - \phased(\x) = \phaseg(\Tilde{\x})\\
 	%&= \arg\big\langle \Tilde{\x}(t), \Tilde{\x}(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{\Tilde{\x}}(s) , \Tilde{\x}(s) \big\rangle}{\|\Tilde{\x}(s)\|^2} ds \\
 	%&= \arg\big\langle e^{i\alpha(t)}\x(t), e^{i\alpha(t_0)}\x(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{e^{i\alpha(s)}\x}(s) , e^{i\alpha(s)}\x(s) \big\rangle}{\|e^{i\alpha(s)}\x(s)\|^2} ds 
 \end{align*}
-\\
-Cela signifie plusieurs choses. 
-D'une part, le fait cette phase soit invariante pas transformation de jauge montre qu'elle est associée à la composante de $\x$ dont il a été mentionné (\textit{sec.} \ref{subsec:ana_temp-freq}) qu'elle était associée à sa polarisation. 
-Ce point sera discuté dans la \cref{sec:AM-FM-PM} suivante.
- \\
-D'autre part, cela suggère que la phase géométrique doit avoir une certaine robustesse au bruit. \thoughts{Pas sur de ça :} Pour argumenter ce point, rappelons que le bruit d'un signal se trouve généralement dans les hautes fréquences de ce dernier.
-Or, en admettant, comme ça l'a été abordé dans la \cref{subsec:intro_phased} précédent, que la phase dynamique contient les hautes fréquences, il y a d'autant plus de chances que cette phase est un bon comportement par rapport au bruit.
-\\
-Ainsi, s'il est possible de tirer des informations de $\phaseg$, alors ces informations doivent pouvoir être obtenue même pour des signaux particulièrement bruités, comme c'est le cas des mesures d'ondes gravitationnelles \thoughts{(j'aimerais beaucoup étudier ça mais ce sera sûrement pour une thèse, si thèse il y a)}.
-\\
+Et d'autre part que, pour $\gamma$ un difféomorphisme de $\R$ telle que :
+\begin{align*}
+	\gamma \big( [s_0,s] \big) &= [t_0,t]  & \x\circ\gamma(s_0)&=s_0  &  \x \circ\gamma(s) = s
+\end{align*}
+alors :
+\[\phaseg(\Tilde{\x}, s_0,s) = \phaseg(\x, t_0,t)\]
+\skipl
 
-Cela étant dit, avec le calcul \eqref{eq:diff_phases_t/d} précédent, il peut sembler que le travail sur la phase géométrique est terminée en cela qu'une formule explicite est donnée. Deux remarques à ce sujet :
-\\
-D'abord, cette formule demande de connaître les $\psi_i$, qui eux-mêmes sont obtenue en extrayant la phase dynamique au signal. Or, la formule de $\phased$ n'est pas la plus appropriée au traitement du signal puisque qu'elle fait intervenir intégral et dérivée.
-\\
-Aussi mais surtout, cette formule cache la profondeur dernière l'étude de la phase géométrique, à commencer par l'origine de son nom.
-\\
-\thoughts{À modifier en fonction de la suite :}
-Dans ce mémoire le calcul pratique de la phase géométrique ne sera pas aborder pour, à la place, se pencher sur le second point : l'aspect géométrique d'une phase éponyme.
-\\ \\
 
-\thoughts{Est-ce que je dois parler de l'espace projectif ou est-ce que je le garde pour la grande partie II ?}
+Le fait cette phase soit invariante pas transformation de jauge montre qu'elle est associée à la polarisation du signal, comme on va le voir dans la \cref{subsec:AM-FM-PM} suivante. 
+\\
+Aussi, avec le calcul \eqref{eq:diff_phases_t/d} précédent, il peut sembler que le travail sur la phase géométrique est terminée en cela qu'une formule explicite est donnée. 
+D'abord, cette formule demande de connaître les $\psi_i$, qui eux-mêmes sont obtenus en extrayant la phase dynamique au signal. 
+Or, la formule de $\phased$ n'est pas la plus appropriée au traitement du signal puisque qu'elle fait intervenir intégral et dérivée. 
+Aussi et surtout, cette formule ne permet pas de faire honneur à tout l'aspect géométrique qui se cache dernière cette phase. 
+Chose qui sera abordée extensivement dans la prochaine partie du mémoire.
 \\
 
 
 
-\section{Première étude : cas des signaux AM-FM-PM bivariés} \label{sec:AM-FM-PM}
+\section{Première étude : cas des signaux AM-FM-PM} \label{sec:AM-FM-PM}
 
-Pour une première étude de la phase géométrique du signal, Le Bihan \etal~se sont penchés sur un cas particulier de signal bivarié \cite{flamant_timefrequency_2019,le_bihan_modephysiques_2023, le_bihan_geometric_2024}. Ces signaux, dit AM-FM-PM, sont présenté dans une première partie et le calcul explicite de leur phases --- totale, dynamique et géométrique --- est présenté. Dans une seconde partie... \thoughts{je sais pas trop}
+Pour une première étude de la phase géométrique du signal, Le Bihan \etal~se sont penchés sur un cas particulier de signal bivarié \cite{flamant_timefrequency_2019,le_bihan_modephysiques_2023, le_bihan_geometric_2024}. Ces signaux, dit AM-FM-PM, sont présentés dans une première partie et le calcul explicite de leur phases --- totale, dynamique et géométrique --- est présenté. Dans une seconde partie... \thoughts{je sais pas trop}
 \\
 
 
@@ -318,16 +309,17 @@ En autorisant les paramètres de polarisation à varier au cours du temps et apr
 		\x(t) = a(t)e^{i\varphi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} 
 		= a(t)e^{i\varphi(t)} \begin{pmatrix} \cos\theta(t) \cos\chi(t) + i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - i\cos\theta(t) \sin\chi(t) \end{pmatrix}
 	\end{equation}
-	où $R_{\theta(t)}$ est la matrice de rotation d'angle $\theta(t)$.
+	où $R_{\theta(t)}$ est la matrice de rotation d'angle $\theta(t)$. Voir \cite[ann. 4.B]{flamant_approche_2018} pour une construction détaillé.
 \end{definition}
 \skipl
 
-La transformée en SA permet de transformer les signaux à valeurs réelles en complexes, ce qui est nécessaire\footnote{\itshape
-	Nous reviendrons sur ce point dans la dernière partie de mémoire \thoughts{... est-ce qu'on le fait vraiment?}}
-pour étudier la phase géométrique car c'est uniquement dans le cadre de complexe qu'elle a été étudiée jusqu'à présent. Et, comme pour les signaux AM-FM, les hypothèses sur $a,\varphi,\theta,\chi$ assure que les paramètres soient interprétables comme sur la \Cref{fig:ellipse2polat} précédente.
+La transformation en signal à valeurs complexes est nécessaire \footnote{
+	\thoughts{Nous reviendrons sur ce point dans la dernière partie du mémoire (.. si je trouve le temps et que je trouve des choses à en dire)}}
+pour étudier la phase géométrique car c'est uniquement dans le cadre de complexe qu'elle a été étudiée jusqu'à présent. 
+Et, comme pour les signaux AM-FM, les hypothèses sur $a,\varphi,\theta,\chi$ assure que les paramètres soient interprétables comme sur la \Cref{fig:ellipse2polat} précédente.
 \\
 
-Les trois phases de tels signaux sont alors données par la \cref{prop:phases_2var} suivante :
+Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} suivante :
 \begin{proposition}[phases de signal AM--FM--PM]\label{prop:phases_2var}
 	Les trois phases d'un signal bivarié AM--FM--PM $\x$ de paramètres $(a,\varphi,\theta,\chi)$ sont données par les formules :
 	\begin{equation}\label{eq:phased_2var}
@@ -351,7 +343,7 @@ Les trois phases de tels signaux sont alors données par la \cref{prop:phases_2v
 \skipl
 
 Deux remarques sur ces formules. 
-La première est que la phase géométrique ne dépend que des paramètres de polarisations $\theta$ et $\chi$, un résultat rassurant sachant qu'elle est invariantes pas transformation de jauge.
+La première est que la phase géométrique ne dépend que des paramètres de polarisations $\theta$ et $\chi$, un résultat rassurant sachant qu'elle est invariante par transformation de jauge.
 La seconde, nettement plus troublante, est que $\varphi$ ne s'interprète ni comme la phase totale ni comme la phase dynamique. Plus loin, \thoughts{\cref{subsec:aller_plus_loin}}, nous reviendrons sur laquelle des deux ``doit'' représenter $\varphi$.
 \\
 
@@ -360,6 +352,9 @@ Aussi, la phase géométrique est séparée en deux termes. Le premier, en arcta
 	R_{\theta(t_0)} \begin{pmatrix} \cos\chi(t_0) \\ -i\sin\chi(t_0) \end{pmatrix}\qquad \text{ et }\qquad R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}
 \end{align*}
 \\
+
+
+\subsection{Interprétation dans la sphère de Poincaré}
 
 Pour interpréter le second membre, c'est beaucoup moins clair. Il faut d'intéresser  la projection  $\ \rho_{\x} = \frac{1}{\|\x \|^2} \congu{\x }\, ^t\x $. Avec des calculs (interminables), on obtient l'écriture :
 \[\rho_{\x} = id + \sin2\theta\cos2\chi \sigma_1 + \sin 2\chi \sigma_3 + \cos2\theta \cos2\chi \sigma_3\]
@@ -401,7 +396,7 @@ Si on veut le voir en terme d'élément d'air $dS$, alors on a :
 \\
 Mais comme $\theta$ et $\chi$ dépendent d'un paramètre commun $t$, ça serait très impropre de parler de calcul d'air sachant que $\theta'(t)\sin 2\chi(t)$ parcours un chemin vraiment. D'autant plus que là pas d'intégrale sur $\theta$... même si peut-être qu'on pourrait la faire apparaître avec un changement de variable approprié (surement que non en plus parce que le passage de $t$ à $(\theta,\chi)$ à par une différentielle inversible donc au cul le det de la Jacobienne :/ )
 
-\subsection{Généralisation en plus haute dimension} \label{subsec:gene_AM-FM-PM}
+\subsection{Généralisation en plus haute dimension} \label{subsec:aller_plus_loin}
 
 \begin{itemize}
 	
@@ -412,13 +407,6 @@ Mais comme $\theta$ et $\chi$ dépendent d'un paramètre commun $t$, ça serait 
 	\item En terme d'expo de matrice ? Lefevre \cite[sec. I.3]{lefevre_polarization_2021} l'a fait en trivarié mais au delà, y'a plus vraiment de choix remarquable de base pour $\mathfrak{u}(n)$
 	
 	\item En augmentant la taille de la matrice de rotation ? Lilly \cite{lilly_modulated_2011} l'a fait en trivarié et mais là encore, en terme de généralisation c'est pas si dingue parce que la matrice de rotation est pas calculable.
-	
-\end{itemize}
-	
-
-
-\subsection{Sur la nécessité d'avoir une approche géométrique}\label{subsec:aller_plus_loin}
-\begin{itemize}
 	
 	\item Dans tout ça, on ratte le plus important : La phase géo est invariante par transfo de jauge, donc il faut faut faire apparaître $\PC{n-1}$ dans la décomposition.
 	
@@ -472,30 +460,32 @@ Mais comme $\theta$ et $\chi$ dépendent d'un paramètre commun $t$, ça serait 
 \subsubsection{Démostrations}\label{ann:demo_phases_2var}
 
 \begin{demo}[de la formule \eqref{eq:phased_2var}, \cref{prop:phases_2var}]
-	Par souci de lisibilité, on note $\mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ de sorte que la dérivée de $\x$ s'écrive :
+	Par souci de lisibilité, on note $\ \mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix} = \begin{pmatrix} \cos\theta(t) \cos\chi(t) + i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - i\cos\theta(t) \sin\chi(t) \end{pmatrix}$, de sorte que la dérivée de $\ \x=ae^{i\varphi}\mathcal{U}\ $ s'écrive :
+	\[\dot{\x} = a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} -\sin\theta \cos\chi + i\cos\theta \sin\chi \\ \cos\theta \cos\chi + i\sin\theta \sin\chi \end{pmatrix} + ae^{i\varphi}\chi'\begin{pmatrix} -\cos\theta \sin\chi + i\sin\theta \cos\chi \\ -\sin\theta \sin\chi - i\cos\theta \cos\chi \end{pmatrix}\]
+	\\
+	Les vecteurs des deux derniers membres s'expriment en fonction des composantes $\ \mathcal{U}_{1,2}\ $ de $\ \mathcal{U}$ :
 	\begin{align*}
-		\dot{\x} 
-		&= a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} -\sin\theta \cos\chi + i\cos\theta \sin\chi \\ \cos\theta \cos\chi + i\sin\theta \sin\chi \end{pmatrix} + ae^{i\varphi}\chi'\begin{pmatrix} -\cos\theta \sin\chi + i\sin\theta \cos\chi \\ -\sin\theta \sin\chi - i\cos\theta \cos\chi \end{pmatrix} \\
-		&= a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + ae^{i\varphi}\chi'\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}
+		\begin{pmatrix} -\sin\theta \cos\chi + i\cos\theta \sin\chi \\ \cos\theta \cos\chi + i\sin\theta \sin\chi \end{pmatrix} &= \begin{pmatrix} -\mathcal{U}_2 \\ \mathcal{U}_1 \end{pmatrix}  &
+		\begin{pmatrix} -\cos\theta \sin\chi + i\sin\theta \cos\chi \\ -\sin\theta \sin\chi - i\cos\theta \cos\chi \end{pmatrix} &= i\begin{pmatrix} \congu{\mathcal{U}}_2 \\ -\congu{\mathcal{U}}_1 \end{pmatrix}
 	\end{align*}
 	\\
-	Le produit hermitien $\langle \x, \dot{\x}\rangle$ s'écrit alors :
+	Le produit hermitien $\langle \dot{\x}, \x \rangle$ s'écrit alors :
 	\begin{align*}
 		\langle \dot{\x}, \x \rangle 
-		&= \left\langle a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + ae^{i\varphi}\chi'\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}, ae^{i\varphi}\mathcal{U} \right\rangle \\
-		&= \left\langle a'\mathcal{U} + ia\varphi' \mathcal{U} + a\theta'\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U} + a\chi'\begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}\congu{\mathcal{U}}, a\mathcal{U} \right\rangle \\
-		&= aa' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + ia^2\varphi' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + a^2\theta'\left\langle \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U}, \mathcal{U} \right\rangle - ia^2\chi'\left\langle \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\congu{\mathcal{U}}, \mathcal{U} \right\rangle
+		&= \left\langle a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} -\mathcal{U}_2 \\ \mathcal{U}_1 \end{pmatrix} + iae^{i\varphi}\chi'\begin{pmatrix} \congu{\mathcal{U}}_2 \\ -\congu{\mathcal{U}}_1 \end{pmatrix}, ae^{i\varphi}\mathcal{U} \right\rangle \\
+		&= \left\langle a'\mathcal{U} + ia\varphi' \mathcal{U} + a\theta'\begin{pmatrix} -\mathcal{U}_2 \\ \mathcal{U}_1 \end{pmatrix} + ia\chi'\begin{pmatrix} \congu{\mathcal{U}}_2 \\ -\congu{\mathcal{U}}_1 \end{pmatrix}, a\mathcal{U} \right\rangle \\
+		&= aa' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + ia^2\varphi' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + a^2\theta'\left\langle \begin{pmatrix} -\mathcal{U}_2 \\ \mathcal{U}_1 \end{pmatrix}, \mathcal{U} \right\rangle + ia^2\chi'\left\langle \begin{pmatrix} \congu{\mathcal{U}}_2 \\ -\congu{\mathcal{U}}_1 \end{pmatrix}, \mathcal{U} \right\rangle
 	\end{align*}
 	où les deux derniers produits hermitiens donnent :
 	\begin{align*}
-		\left\langle \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\mathcal{U}, \mathcal{U} \right\rangle &= -\mathcal{U}_2\congu{\mathcal{U}_1} + \mathcal{U}_1\congu{\mathcal{U}_2} \\
-		&= 2i\Im m\big(\mathcal{U}_1 \congu{\mathcal{U}_2}\big) \\
+		\left\langle \begin{pmatrix} -\mathcal{U}_2 \\ \mathcal{U}_1 \end{pmatrix}, \mathcal{U} \right\rangle &= -\mathcal{U}_2\congu{\mathcal{U}}_1 + \mathcal{U}_1\congu{\mathcal{U}}_2 \\
+		&= 2i\Im m\big(\mathcal{U}_1 \congu{\mathcal{U}}_2\big) \\
 		&= 2i\Im m\Big(\big( \cos\theta \cos\chi + i \sin\theta \sin\chi \big) \big( \sin\theta \cos\chi + i \cos\theta \sin\chi \big)\Big) \\
 		&= 2i\big(\cos^2\theta \cos\chi \sin\chi + \sin^2\theta \sin\chi \cos\chi \big) \\
-		&= 4i \cos\chi \sin\chi \\
-		&= 2i\sin2\chi 
+		&= 2i \cos\chi \sin\chi \\
+		&= i\sin2\chi 
 		\\ \\
-		\left\langle \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\congu{\mathcal{U}}, \mathcal{U} \right\rangle &= -\congu{\mathcal{U}_2\mathcal{U}_1} + \congu{\mathcal{U}_1\mathcal{U}_2} = 0
+		\left\langle \begin{pmatrix} \congu{\mathcal{U}}_2 \\ -\congu{\mathcal{U}}_1 \end{pmatrix}, \mathcal{U} \right\rangle &= \congu{\mathcal{U}_2\mathcal{U}_1} - \congu{\mathcal{U}_1\mathcal{U}_2} = 0
 	\end{align*}
 	\\
 	D'où, sachant que $\ \|\x\|^2=a^2\ $ et $\ \|\mathcal{U}\|=1$, la formule :

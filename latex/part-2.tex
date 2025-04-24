@@ -152,7 +152,7 @@ Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui r
 Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $\S{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, il est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
 \\
 
-Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de structure remarquable. Celle qui vont nous intéresser sont les variétés dites principales\footnote{\itshape
+Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de structure remarquable. Celles qui vont nous intéresser sont les variétés fibrées dites principales\footnote{\itshape
 	Bien que ce ne sera pas précisé, il sera toujours sous-entendu que les différentes variétés et cartes doivent avoir les mêmes niveaux de régularités pour que le tout reste cohérent.} :
 \\
 \begin{definition}[Variété fibrée principale] \label{def:VFP}
@@ -160,7 +160,7 @@ Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de 
 	\begin{itemize}
 		\item Il existe un groupe de Lie $G$ opérant à droite (ou à gauche) sur $P$ via l'application différentiable :
 		\begin{equation} \label{eq:VFP_action}
-			\phi\ :\ \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\lmt\ \phi(p,g)\defeq pg = p\cdot g
+			R\ :\ \begin{aligned}P\times G\ &\lr\quad\ \ P \\ (p,g)\ \ &\lmt\ R_g(p)\defeq p\cdot g = pg
 			\end{aligned}
 		\end{equation}
 		
@@ -175,24 +175,23 @@ Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de 
 		\end{align*}
 	\end{itemize}
 	
-	\begin{adjustbox}{valign=C,raise=1.5cm,minipage={1.1\linewidth}}
+	\begin{adjustbox}{valign=C,raise=1cm, minipage={1.1\linewidth}}
 		\begin{wrapfigure}{r}{0.35\textwidth}
-			\begin{tikzcd}[column sep=tiny, scale=1.2]
-				& U_i \\
-				G\times U_i \arrow[ru, "\pr{2}" above left] \arrow[rd, "\pr{1}" below left] \arrow[rrrrrr, "h" above]  & & & & & & \pi^{-1}(U_i) \subset P \arrow[lllllu, "\pi" above right] \arrow[llllld, "\rho" below right] \\
-				& G 
+			\begin{tikzcd}[column sep=large]
+				G\times U_i \arrow[d, "\pr{2}" left]  \arrow[r, "h" above]  & \pi^{-1}(U_i) \subset P \arrow[ld, "\pi" below right] \\
+				U_i
 			\end{tikzcd}
 			%\caption{Digramme sûrement osef des jeux de projections entre $P$ et les cartes locales}
 			\label{diagram_commu_VFP}
 		\end{wrapfigure} 
 		\vspace*{-0.5cm} % This is a fudge to align the top of the theorem environment with the image
 		\skipl\par 
-		La variété $B$ est appelé la \emph{base} de la VFP, que $G$ son \emph{groupe structural} et $pG$ la \emph{fibre de $P$ passant par} $p$ et \emph{au dessus de} $\pi(p)\in B$. Le tout est notée $P(\phi, G, \pi, B)$ ou plus simplement $P(G,B)$.
+		La variété $B$ est appelé la \emph{base} de la VFP, que $G$ son \emph{groupe structural} et $pG$ la \emph{fibre de $P$ passant par} $p$ et \emph{au dessus de} $\pi(p)\in B$. Le tout est notée $P(R, G, \pi, B)$ ou plus simplement $P(G,B)$.
 		
 		Les fibres $pG$ sont toutes difféomorphes à $G$ et $B$ est difféomorphe à $P/G$. \thoughts{Le diagramme commutatif ci-contre résume la situation.}
 	\end{adjustbox}
 \end{definition}
-
+\skipl 
 \begin{figure}[h]
 	\includegraphics[width=0.45\textwidth]{fig/placeholder}
 	%\input{tikz/part-2/ruban2mobius}
@@ -203,7 +202,7 @@ Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de 
 
 L'ensemble $\big\{(U_i, h_i)\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
 \\
-D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur la \Cref{fig:section_local} \thoughts{ci-dessous}. Formellement, une section locale au dessus  de $U_i$ est une application $\sigma : U_i\subset B\lr P$ vérifiant :
+D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur la \Cref{fig:section_local} \thoughts{ci-dessous}. Formellement, une section locale au dessus  de $U_i \subset B$ est une application $\sigma : U_i \lr P$ vérifiant :
 \[\pi\circ \sigma = id_{{\displaystyle |}U_i}\]
 \begin{figure}[H]
 	\begin{floatrow}
@@ -220,7 +219,7 @@ D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peu
 \end{floatrow}
 \end{figure}
 \noindent
-Ensuite, les hypothèses sur $P(G,B)$ sont telles que $G$ agit transitivement et librement (ou sans point fixe) sur $P$. C'est-à-dire que, sur une même fibre, tout point peut être atteint par tout autre via l'action de $G$ (transitivité) :
+Ensuite, les hypothèses sur $P(G,B)$ sont telles que $G$ agit transitivement et librement (ou sans point fixe) sur $P$. C'est-à-dire que, sur une même fibre, tout point peut être atteint par n'importe quel autre via l'action de $G$ (transitivité) :
 \begin{align*}
 	\forall x\in B,\quad \forall p,q\in P_x,\ \exists t(p,q)\in G\ |\ p = q\cdot t(p,q) 
 \end{align*}
@@ -244,24 +243,45 @@ Cela mène à la définition :
 
 Dans la suite, il sera nécessaire d'associer une connexion à $P$, qui s'introduit comme suit.
 \\
-Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les second \emph{horizontaux} et sont notés :
+Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les seconds \emph{horizontaux} et sont notés :
 \[\forall p\in P,\qquad \tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}\]
 \\
-Si $\vg[p]{P}$ est se définit canoniquement de façon unique, ce n'est pas le cas des $\hg[p]{P}$, et c'est ce choix d’espace horizontaux que détermine une connexion sur $P$.\\
-
-D'abord la construction de $\vg[p]{P}$. Pour cela, la \emph{fonction tangente} (ou \emph{dérivée}) \emph{ de $\pi$ au point} $x$ est noté $\tg[p]{\pi}$ avec :
-\[(\tg[p]{\pi})^i_j = \frac{\partial \pi^i}{\partial x^j}(x)\]
+Les tangents verticaux $\vg[p]{P}$ se définissent canoniquement par rapport à $\pi$. Pour cela, la \emph{fonction tangente} (ou \emph{dérivée}) \emph{de $\pi$ au point} $p$ est noté $\tg[p]{\pi}$ avec :
+\[(\tg[p]{\pi})^i_j = \frac{\partial \pi^i}{\partial x^j}(p) = \partial_j\pi^i(p)\]
 \\
-Ainsi, $\tg[p]{\pi}$ est à valeur de $\tg[p]{P}$ dans $\tg{\phi(p)}{B}$ est l'espace tangent vertical au point $p$ se défini par :
-\[\vg[p]{P} = \Ker (\tg[p]{\pi}) = \big\{ X\in\tg[p]{P}\ |\ \tg[p]{\pi}(X)=0 \big\}\]
-\\
-Une fois les espaces tangent verticaux construit, les espaces horizontaux s’obtiennent en considérant une 1-forme à valeur de $P$ dans $\vg{P}$, noté $\conn$, de sorte que :
+Ainsi, $\tg[p]{\pi}$ est à valeur de $\tg[p]{P}$ dans $\tg[\phi(p)]{B}$ est l'espace tangent vertical au point $p$ se défini comme :
+\[\vg[p]{P} \defeq \Ker (\tg[p]{\pi}) = \big\{ v\in\tg[p]{P}\ |\ \tg[p]{\pi}(v)=0 \big\}\]
+\\ 
+Les espaces horizontaux ne peuvent pas être construit ainsi. Une connexion $P$ est alors la donnée en tout point $p$ de $P$, d'un sous-espace tangent $\hg[p]{P}$ de $\tg[p]{P}$.
+Ces sous-espaces peuvent être caractérisé par une 1-forme sur $P$ à valeur dans $\vg[p]{P}$, auquel cas :
 \[\forall p\in P,\quad \hg[p]{P} = \Ker(\mathcal{A}_p)\]
+\skipl
+
+Dans le cas des VFP, une connexion --- et sa 1-forme --- doit en plus avoir de bonnes propriétés au regarde de l'action sur $P$, aboutissant à la définition :
+\begin{definition}[Connexion sur VFP] \label{def:connexion2VFP}
+	Une \emph{connexion} sur une VFP $P(G,B)$ est la donnée d'un sous-espace tangent, $\hg[p]{P}\subset \tg[p]{P}$, en tout point de $p\in P$ tel que :
+	\begin{itemize}
+		
+		\item $\hg[p]{P}$ est supplémentaire à $\vg[p]{P}$ dans $\tg[p]{P}$ :\qquad $\tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}$
+		
+		\item \begin{equation}
+			\tg[p]{R_g} (\hg[p]{P}) = \big\{\tg[p]{R_g}(v)\ |\ v \in \hg[p]{P} \big\} = \hg[R_g(p)]{P}
+		\end{equation}
+		
+		\item $\hg{P}$ dépend différentiellement de $p$ (le caractère ``dépendre différentiellement'' à un sens précis mais qui ne sera pas utile pour la suite).
+		
+	\end{itemize}
+	
+	Comme les fibres de $P$ sont toutes de la forme $pG$, les espaces $\vg[p]{P}$ s'identifient aux espaces tangents à $G$, qui eux-même s'identifie à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$. Ainsi, la 1-forme différentiable $\omega$ sur $P$ se définit à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\mathcal{A}_p$ est valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), auquel cas on a toujours :
+	\[\forall p\in P,\quad \hg[p]{P} \defeq \Ker(\mathcal{A}_p)\]
+	
+	Sur de la carte $U_{i}$, cette connexion est noté $\mathcal{A}_{i}$ en coordonnée locale et suit le changement de coordonné :
+	\begin{equation}
+		\varphi_{ij}\conn_j = \conn_i \varphi_{ij} + \d \varphi_{ij}
+	\end{equation}
+\end{definition}
 
 
-Faire de même pour les espaces horizontaux demande un peu plus de travail parce que, \apriori, les fibres sont toutes différentes. Pour les fibrés principaux, toutes les fibres s'assimile à $G$ et l'espace tangent $\tg[e]{G}$ à l'algèbre de Lie $\mathfrak{g}$ de $G$.
-Comme les fibres de $P$ sont toutes difféomorphes à $G$, leurs espaces tangents se représente dans l'algèbre de Lie $\mathfrak{g}$ de $G$.
-%\thoughts{(voir annexe \ref{ann:2Lie} pour des rappels sur le sujet)}
 
 \begin{itemize}
 	\item espace tangent 
@@ -279,10 +299,7 @@ Comme les fibres de $P$ sont toutes difféomorphes à $G$, leurs espaces tangent
 	%\item on choisie par rapport à la métrique de l'espace ambiant !
 	
 \end{itemize}
-\begin{proposition}
-	Une 1-forme de connexion $\conn $, noté $\conn_i$ en coordonnée local sur la carte $U_i$, doit vérifier le changement de coordonnée :
-	\[\varphi_{ij}\conn_j = \conn_i \varphi_{ij} + \d \varphi_{ij}\]
-\end{proposition}
+
 
 
 
