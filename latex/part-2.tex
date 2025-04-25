@@ -132,10 +132,10 @@ Plan approximatif de cette partie :
 \thoughts{A reprendre, comme toutes les intros} Pour étudier la phase géométrique d'un signal $\psi$, il nous faut projeter $\psi$ sur $\PC{n}$, et ceux, tout en gardant une trace de sa phase puisque c'est le lien entre les deux qui nous intéresse. Il nous faut donc envoyer $\psi$ dans le produit :
 \[\U{1}\times \PC{n}\qquad\qquad (\text{ou }\ \C^{n-1*}/\C^*)\]
 \\
-Garder le lien entre cet espace et celui d'origine mène à se placer dans le cadre avec d'un \emph{variété fibrée} (ou simplement fibré). Plus précisément, comme $\U{1}$ est un groupe de lie, ce sera un \emph{fibré principal} noté $\S{2n-1}\big(\U{1},\PC{n}\big)$.
+Garder le lien entre cet espace et celui d'origine mène à se placer dans le cadre avec d'un \emph{variété fibrée} (ou simplement fibré). Plus précisément, comme $\U{1}$ est un groupe de lie, ce sera un \emph{fibré principal} noté $\S{2n+1}\big(\U{1},\PC{n}\big)$.
 \\
 
-Comme son nom l'indique, $\S{2n-1}\big(\U{1},\PC{n}\big)$ à une structure de variété différentielle et le lien entre les $\U{1}$ et $\PC{n}$ va se faire par le biais d'une connexion. L'on verra alors que cette connexion est intrinsèquement lié à la phase dynamique du signal, et il sera discuté de la signification de ce résultat.
+Comme son nom l'indique, $\S{2n+1}\big(\U{1},\PC{n}\big)$ à une structure de variété différentielle et le lien entre les $\U{1}$ et $\PC{n}$ va se faire par le biais d'une connexion. L'on verra alors que cette connexion est intrinsèquement lié à la phase dynamique du signal, et il sera discuté de la signification de ce résultat.
 \\
 La phase géométrique, quand à elle, sera liée avec la métrique hermitienne associée aux l'espaces projectifs complexes.
 \\
@@ -146,7 +146,36 @@ Tout cela va demander quelques prérequis que nous allons voir à présent.
 
 \section{Prérequis mathématique}
 
-\subsection{Variété fibrée principale}
+\subsection{Variétés différentielles complexes et les espaces projectifs complexes}\label{subsec:PC^n}
+
+Les espaces projectifs complexes se construisent ainsi. On se place dans ${\C^{n+1}}^*=\C^{n+1}\setminus\{0_{\C^{n+1}}\}$ avec la relation d'équivalence, $\forall x,y\in{\C^{n+1}}^*$ :
+\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
+\\
+L'espace projectif complexe, noté $\PC{n}$, est l'espace quotient :
+\[\PC{n} = {\C^{n+1}}^*/\C^* = {\C^{n+1}}^*/\sim\]
+\\
+En notant $[z]$ la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$, on définit les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
+\begin{align}
+	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
+		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}\big(z^0,\cdots, z^i,\cdots, z^n\big)
+	\end{aligned}
+\end{align}
+\\
+L'ensemble d'arrivé $\phi_i(U_i)$ est de dimension $n$ et s'assimile à $\C^{n}$ mais, par souci de comodité, on restera dans $\C^{n+1}$. Cela permet  d'écrire plus simplement les formules de changement de carte en évitant de devoir enlever et rajouter des coefficients :
+\[ \forall [z]\in U_i\cap U_j\quad (\ie~z^{i,j}\neq 0) ,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\]
+
+Les $(U_i,\phi_i)$ forment ainsi un atlas holomorphe sur l'espace projectif complexe, faisant de $\PC{n}$ une variété complexe de dimension $\dim[\C] = n$ (voir annexe \ref{ann:variet_complexe} pour plus de détail).
+
+
+\begin{proposition}
+	$\PC{n}$ admet une métrique hermitienne induite par la métrique de $\S{2n+1}$, elle même induite du produit scalaire sur $\R^{2n+1}$. Elle est appelé \emph{métrique de Fubini-Study} et est donnée par le formule :
+	\[\]
+\end{proposition}
+\skipl
+
+
+
+\subsection{Variété fibrée principale et connexion} \label{subsec:VFP}
 
 Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemble localement à des espaces produits. 
 Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $\S{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, il est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
@@ -241,104 +270,80 @@ Cela mène à la définition :
 \end{definition}
 \skipl
 
-Dans la suite, il sera nécessaire d'associer une connexion à $P$, qui s'introduit comme suit.
+Dans la suite, il sera nécessaire de munir $P$ d'une connexion, qui s'introduit comme suit.
 \\
-Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les seconds \emph{horizontaux} et sont notés :
+Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les seconds \emph{horizontaux} et l'on note :
 \[\forall p\in P,\qquad \tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}\]
 \\
 Les tangents verticaux $\vg[p]{P}$ se définissent canoniquement par rapport à $\pi$. Pour cela, la \emph{fonction tangente} (ou \emph{dérivée}) \emph{de $\pi$ au point} $p$ est noté $\tg[p]{\pi}$ avec :
 \[(\tg[p]{\pi})^i_j = \frac{\partial \pi^i}{\partial x^j}(p) = \partial_j\pi^i(p)\]
 \\
-Ainsi, $\tg[p]{\pi}$ est à valeur de $\tg[p]{P}$ dans $\tg[\phi(p)]{B}$ est l'espace tangent vertical au point $p$ se défini comme :
+Ainsi, $\tg[p]{\pi}$ est à valeur de $\tg[p]{P}$ dans $\tg[\pi(p)]{B}$ et l'espace tangent vertical au point $p$ se défini comme :
 \[\vg[p]{P} \defeq \Ker (\tg[p]{\pi}) = \big\{ v\in\tg[p]{P}\ |\ \tg[p]{\pi}(v)=0 \big\}\]
 \\ 
-Les espaces horizontaux ne peuvent pas être construit ainsi. Une connexion $P$ est alors la donnée en tout point $p$ de $P$, d'un sous-espace tangent $\hg[p]{P}$ de $\tg[p]{P}$.
-Ces sous-espaces peuvent être caractérisé par une 1-forme sur $P$ à valeur dans $\vg[p]{P}$, auquel cas :
-\[\forall p\in P,\quad \hg[p]{P} = \Ker(\mathcal{A}_p)\]
+Il s'avère que les espaces horizontaux ne peuvent pas être construit de cette façon. Il faut donc faire un choix pour les $\hg[p]{P}$ et c'est ce choix qui est appelé connexion (elle connecte les esapce tangents entre eux).
+Ces sous-espaces peuvent être caractérisé par une 1-forme différentiable $\conn$ sur $P$ à valeur dans $\vg[p]{P}$, auquel cas :
+\[\forall p\in P,\quad \hg[p]{P} = \Ker(\conn_p)\]
 \skipl
 
-Dans le cas des VFP, une connexion --- et sa 1-forme --- doit en plus avoir de bonnes propriétés au regarde de l'action sur $P$, aboutissant à la définition :
+Dans le cas des VFP, une connexion --- et sa 1-forme --- doit en plus avoir de bonnes propriétés au regarde de l'action $R$, aboutissant à la définition :
 \begin{definition}[Connexion sur VFP] \label{def:connexion2VFP}
 	Une \emph{connexion} sur une VFP $P(G,B)$ est la donnée d'un sous-espace tangent, $\hg[p]{P}\subset \tg[p]{P}$, en tout point de $p\in P$ tel que :
 	\begin{itemize}
 		
-		\item $\hg[p]{P}$ est supplémentaire à $\vg[p]{P}$ dans $\tg[p]{P}$ :\qquad $\tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}$
+		\item $\hg{P}$ dépend différentiellement de $p$ (``dépendre différentiellement'' à un sens précis mais qui ne sera pas utile pour la suite).
 		
-		\item \begin{equation}
-			\tg[p]{R_g} (\hg[p]{P}) = \big\{\tg[p]{R_g}(v)\ |\ v \in \hg[p]{P} \big\} = \hg[R_g(p)]{P}
+		\item $\hg[p]{P}$ est supplémentaire à $\vg[p]{P}$ dans $\tg[p]{P}$ :
+		\begin{equation}\label{eq:TP=V+H}
+			\tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}
 		\end{equation}
 		
-		\item $\hg{P}$ dépend différentiellement de $p$ (le caractère ``dépendre différentiellement'' à un sens précis mais qui ne sera pas utile pour la suite).
+		\item l'assignation des $\hg[p]{P}$ est invariantes pas l'action de $G$ au sens où :
+		\begin{equation}\label{eq:conn_G-inv}
+			\forall (p,g)\in P\times G,\quad \tg[p]{R_g} (\hg[p]{P}) = \big\{\tg[p]{R_g}(v)\ |\ v \in \hg[p]{P} \big\} = \hg[R_g(p)]{P}
+		\end{equation}
 		
 	\end{itemize}
 	
-	Comme les fibres de $P$ sont toutes de la forme $pG$, les espaces $\vg[p]{P}$ s'identifient aux espaces tangents à $G$, qui eux-même s'identifie à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$. Ainsi, la 1-forme différentiable $\omega$ sur $P$ se définit à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\mathcal{A}_p$ est valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), auquel cas on a toujours :
-	\[\forall p\in P,\quad \hg[p]{P} \defeq \Ker(\mathcal{A}_p)\]
+	Comme les fibres de $P$ sont toutes de la forme $pG$, les espaces $\vg[p]{P}$ s'identifient aux espaces tangents à $G$, qui eux-même s'identifie à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$. Ainsi, dans le cas des VFP, la \emph{1-forme de connexion} $\conn$ est une 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), auquel cas on a toujours :
+	\begin{equation} \label{eq:1-form2conn}
+		\forall p\in P,\quad \hg[p]{P} \defeq \Ker(\conn_p)
+	\end{equation}
+	\skipl
 	
-	Sur de la carte $U_{i}$, cette connexion est noté $\mathcal{A}_{i}$ en coordonnée locale et suit le changement de coordonné :
-	\begin{equation}
-		\varphi_{ij}\conn_j = \conn_i \varphi_{ij} + \d \varphi_{ij}
+	Enfin, $\conn$ induit une 1-forme sur les cartes $U_i$ via la section canonique $\sigma_i$. Elle est noté $\locconn_{i}$ et pour que les $\locconn_i$ induisent une connexion sur $P$ il faut et il suffit que sur le chevauchement $U_{ij}$, $\locconn$ se transforme suivant :
+	\begin{equation}\label{eq:conn_local}
+		\locconn_j = {\varphi_{ij}}^{-1} \locconn_i \varphi_{ij} + {\varphi_{ij}}^{-1} \d \varphi_{ij}
 	\end{equation}
 \end{definition}
+\skipl
 
 
-
-\begin{itemize}
-	\item espace tangent 
-	
-	\item séparation en vertical $\oplus$ horizontal
-	
-	\item pourquoi la découpe est pas canonique
-	
-	\item reformulation en terme de 1-forme
-	
-	\item connexion en coordo local
-	
-	\item toujours pas canonique tho
-	
-	%\item on choisie par rapport à la métrique de l'espace ambiant !
-	
-\end{itemize}
-
-
-
-
-
-\subsection{Espaces projectifs complexes}
-
-Les espaces projectifs complexes se construisent ainsi. On se place dans ${\C^{n+1}}^*=\C^{n+1}\setminus\{0_{\C^{n+1}}\}$ avec la relation d'équivalence, $\forall x,y\in{\C^{n+1}}^*$ :
-\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
-\\
-L'espace projectif complexe, noté $\PC{n}$ est l'espace quotient :
-\[\PC{n-1} = {\C^{n+1}}^*/\C^* = {\C^{n+1}}^*/\sim\]
-\\
-En notant $[z]$ la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$, on définit les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
-\begin{align}
-	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
-		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}\big(z_0,\cdots, 1,\cdots, z_n\big)
-	\end{aligned}
-\end{align}
-\\
-L'ensemble d'arrivé $\phi_i(U_i)$ est de dimension $n$ et s'assimile à $\C^{n}$ mais, par souci de comodité, on restera dans $\C^{n+1}$. Cela permet  d'écrire plus simplement les formules de changement de carte en évitant de devoir enlever et rajouter des coefficients :
-\[\qquad\qquad\qquad\qquad\qquad\qquad \forall [z]\in U_i\cap U_j,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\qquad\qquad\qquad\qquad\qquad (z^{i,j}\neq 0) \qquad\]
-
-Les $(U_i,\phi_i)$ forme un atlas holomorphe sur l'espace projectif complexe, faisant de $\PC{n}$ une variété complexe de dimension $\dim[\C] = n$ (voir annexe \ref{ann:variet_complexe} pour plus de détail).
-
-\begin{proposition}
-	La $2n+1$--sphère $\S{2n+1}$ est un espace fibré de base $\PC{n}$ est de fibre type $\S{1}$, ou $\U{1}$. La fibration étant la projection canonique :
-	\[\pi\ :\ \begin{aligned}\S{2n+1}\ &\lr\ \PC{n} \\ x\quad\ &\lmt\ \ [x]\end{aligned}\]
-	Voir \cite{lafontaine_introduction_2015} pour la démo
-\end{proposition}
-
-
-\begin{proposition}
-	$\PC{n}$ admet une métrique hermitienne induite par la métrique de $\S{2n+1}$, elle même induite du produit scalaire sur $\R^{2n+1}$. Elle est appelé \emph{métrique de Fubini-Study} et est donnée par le formule :
-	\[\]
-\end{proposition}
 
 
 \section{Interprétation des trois phases dans ce cadre}
 
+\subsection{HHHHH}
+
+blablabla maintenant on peut recoller les morceaux.
+ 
+Comme $\PC{n}$ est une variété quotient, elle induit naturellement une variété principale :
+\begin{proposition}
+	La $2n+1$--sphère $\S{2n+1}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $\S{2n+1}$ étant induite par le produit complexe classique et où :
+	\begin{itemize}
+		\item La fibration $\pi$ est la projection canonique de $\S{2n+1}$ sur $\PC{n}$ :
+		\[\pi\ :\ \begin{aligned}\S{2n+1}\ &\lr\ \PC{n} \\ x\quad\ &\lmt\ \ [x]\end{aligned}\]
+	
+	\item Les cartes locales $h_i$ sont telles que :
+	\[\forall z \in \pi^{-1}(U_i),\  {h_i}^{-1}(z) = \big( z_i/|z_i|, [z] \big)\in \U{1} \times \PC{n}\]
+	
+	\item Tout les représentant $z$ d'un élément de la base $\zeta\in\PC{n}$ sont normé, ainsi, alors tout La section canonique au dessus des $U_i$, $\sigma_i$ elle est définie par :
+	\[\]
+	
+	\end{itemize}
+	
+	Voir \cite[lemme 2.17]{lafontaine_introduction_2015} pour une démonstration de l'aspect fibré.
+\end{proposition}
 \subsection{Cas pseudo-cyclique}
 
 
@@ -353,7 +358,27 @@ Les $(U_i,\phi_i)$ forme un atlas holomorphe sur l'espace projectif complexe, fa
 
 \section{Annexe}
 
-\subsection{Algère et groupe de Lie} \label{ann:2Lie}
+\subsection{Connexion induite par une métrique}
+
+Si $P(G,B)$ une VFP munie d'une métrique riemannienne $g$. La connexion induite par $g$ sur $P$ est définie par :
+\begin{equation}
+	\forall p\in P,\quad \hg[p]{P} = \vg[p]{P}^\perp
+\end{equation}
+\\
+Plus concrètement, $\vg[p]{P}$ est isomorphe à $\mathfrak{g}$ via la transformation :
+\[\forall p\in P,\ \forall a\in\mathfrak{g},\quad a^*(p) = \frac{d}{dt} p\cdot \exp(t a)\big|_{t=0} = \frac{d}{dt} p\cdot \exp(t a)\big|_{t=0}\defeq pa\]
+\\
+Avec, une base $\{\mathfrak{e}_i\}_{1\leq i\leq k}$ de $\mathfrak{g}$ induit un base $\{e_i\}_{1\leq i\leq k} = \{\mathfrak{e}^*_i\}_{1\leq i\leq k}$ sur $\vg[p]{P}$. La métrique $g$ induit alors une connexion de 1-forme :
+\[\conn_g(X) = \sum_i g(X, e_i) \mathfrak{e}_i = \sum_i g_{ij}X^j \mathfrak{e}_i\]
+\\
+et on la projection de $X$ sur $\vg{P}$ est donnée par :
+\begin{align*}
+	\ver X = \conn(X)^*\quad &\Llr\quad  \ver (X^ie_i) = \sum_i g_{ij}X^j e_i \\
+	&\Llr\quad  (\ver X)^i = g_{ij}X^j
+\end{align*}
+
+
+\subsection{Algèbre et groupe de Lie} \label{ann:2Lie}
 
 
 
