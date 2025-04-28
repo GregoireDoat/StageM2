@@ -179,9 +179,15 @@ Les $(U_i,\phi_i)$ forment ainsi un atlas holomorphe sur l'espace projectif comp
 
 Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemble localement à des espaces produits. 
 Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $\S{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, il est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
-\\
+\begin{figure}[h]
+	\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	%\input{tikz/part-2/ruban2mobius}
+	\caption[Ruban de Mobius comme variété fibrée]{Représentation du ruban de Modius en tant que fibré. Les notations sont reprise de la \cref{def:VFP}.}
+	\label{fig:ruban2modius}
+\end{figure}
+\skipl
 
-Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de structure remarquable. Celles qui vont nous intéresser sont les variétés fibrées dites principales\footnote{\itshape
+Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de structure remarquable. Celles qui vont nous intéresser sont celle dites principales\footnote{\itshape
 	Bien que ce ne sera pas précisé, il sera toujours sous-entendu que les différentes variétés et cartes doivent avoir les mêmes niveaux de régularités pour que le tout reste cohérent.} :
 \\
 \begin{definition}[Variété fibrée principale] \label{def:VFP}
@@ -215,37 +221,32 @@ Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de 
 		\end{wrapfigure} 
 		\vspace*{-0.5cm} % This is a fudge to align the top of the theorem environment with the image
 		\skipl\par 
-		La variété $B$ est appelé la \emph{base} de la VFP, que $G$ son \emph{groupe structural} et $pG$ la \emph{fibre de $P$ passant par} $p$ et \emph{au dessus de} $\pi(p)\in B$. Le tout est notée $P(R, G, \pi, B)$ ou plus simplement $P(G,B)$.
+		La variété $B$ est appelé la \emph{base} de la VFP, $G$ son \emph{groupe structural} et $pG$ la \emph{fibre de $P$ passant par} $p$ et \emph{au dessus de} $\pi(p)\in B$. Le tout est notée $P(R, G, \pi, B)$ ou plus simplement $P(G,B)$.
 		
-		Les fibres $pG$ sont toutes difféomorphes à $G$ et $B$ est difféomorphe à $P/G$. \thoughts{Le diagramme commutatif ci-contre résume la situation.}
+		Les fibres $pG$ sont toutes difféomorphes à $G$ et $B$ est difféomorphe à $P/G$. Le diagramme commutatif ci-contre résume la situation ($\text{pr}_i$ est la projection canonique sur la $i-$ème composante).
 	\end{adjustbox}
 \end{definition}
 \skipl 
-\begin{figure}[h]
-	\includegraphics[width=0.45\textwidth]{fig/placeholder}
-	%\input{tikz/part-2/ruban2mobius}
-	\caption[Ruban de Mobius comme variété fibrée]{Représentation du ruban de Modius en tant que fibré. Même s'il n'est pas principale, les notations sont reprise de la \cref{def:VFP}.}
-	\label{fig:ruban2modius}
-\end{figure}
 
 
-L'ensemble $\big\{(U_i, h_i)\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
+L'ensemble $\big\{(U_i\times G, h_i)\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
 \\
 D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur la \Cref{fig:section_local} \thoughts{ci-dessous}. Formellement, une section locale au dessus  de $U_i \subset B$ est une application $\sigma : U_i \lr P$ vérifiant :
 \[\pi\circ \sigma = id_{{\displaystyle |}U_i}\]
 \begin{figure}[H]
 	\begin{floatrow}
 		\ffigbox{\caption[Représentation d'une section local]
-			{Représentation d'une section local $\sigma$ au dessus de $U_i$. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
+			{Représentation d'une section local $\sigma$ au dessus de $U_i\subset\R^2$. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
 			\label{fig:section_local}}{
-		%\includegraphics[width=0.45\textwidth]{fig/placeholder}
-		\input{tikz/part-2/section_locale}}
-	
-	\ffigbox{\caption[Représentation de la section canonique]
-		{Représentation de la section canonique définie par rapport à $G$.}}{
-		\includegraphics[width=0.45\textwidth]{fig/placeholder}
-		\label{fig:section_cano}}
-\end{floatrow}
+			%\includegraphics[width=0.45\textwidth]{fig/placeholder}
+			\input{tikz/part-2/section_locale}}
+		
+		\ffigbox{\caption[Représentation de la section canonique]
+			{Représentation de la section canonique définie par rapport à $G$ avec une seconde section  $\sigma(x) = \sigma_i(x)\cdot g(x)$.% Sont également représentés leur espaces tangents horizontaux respectifs avec la transformation permettant de passer l'un à l'autre.
+		}}{
+			\includegraphics[width=0.45\textwidth]{fig/placeholder}
+			\label{fig:section_cano}}
+	\end{floatrow}
 \end{figure}
 \noindent
 Ensuite, les hypothèses sur $P(G,B)$ sont telles que $G$ agit transitivement et librement (ou sans point fixe) sur $P$. C'est-à-dire que, sur une même fibre, tout point peut être atteint par n'importe quel autre via l'action de $G$ (transitivité) :
@@ -286,7 +287,7 @@ Ces sous-espaces peuvent être caractérisé par une 1-forme différentiable $\c
 \[\forall p\in P,\quad \hg[p]{P} = \Ker(\conn_p)\]
 \skipl
 
-Dans le cas des VFP, une connexion --- et sa 1-forme --- doit en plus avoir de bonnes propriétés au regarde de l'action $R$, aboutissant à la définition :
+Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au regarde de l'action $R$, aboutissant à la définition :
 \begin{definition}[Connexion sur VFP] \label{def:connexion2VFP}
 	Une \emph{connexion} sur une VFP $P(G,B)$ est la donnée d'un sous-espace tangent, $\hg[p]{P}\subset \tg[p]{P}$, en tout point de $p\in P$ tel que :
 	\begin{itemize}
@@ -306,19 +307,19 @@ Dans le cas des VFP, une connexion --- et sa 1-forme --- doit en plus avoir de b
 \end{definition}
 \skipl
 
-Au delà d'assurer une compatibilité avec la connexion, l'équation \eqref{eq:conn_G-inv} permet de n'avoir à définir la connexion qu'en un seul point de chaque fibre, les autres se déduisant par l'action de $G$. Entre autre, pour tout point de la base $x\in B$, il suffit de la définir en $\sigma_i(x) = h_i(e, x)$ et l'espace horizontale en tout autre point $\ p=h_i(x,g) = \sigma_i(x)\cdot g$ au dessus de $x$ est tel que :
+Au delà d'assurer une compatibilité avec la connexion, l'équation \eqref{eq:conn_G-inv} permet de n'avoir à définir la connexion qu'en un seul point de chaque fibre, les autres se déduisant par l'action de $G$. Entre autre, pour tout point de la base $x\in B$, il suffit de la définir en $\sigma_i(x) = h_i(e, x)$ et l'espace horizontale en tout autre point $\ p=h_i(x,g) = \sigma_i(x)\cdot g$ au dessus de $x$ est donné par :
 \[\hg[p]{P} = \tg[\sigma_i(x)]{R_g} (\hg[\sigma_i(x)]{P})\]
 \\
-De même, la 1-forme de connexion n'a besoin d'être définie que sur un point particulier au dessus de chaque fibre. En prenant, là encore, $\ h_i(x,e) = \sigma_i(x)\ $ comme point particulier, $\vg[h_i(x,e)]{P}$ est alors équivalent à $\tg[e]{G}$ et $\omega$ peut-être définie comme étant à valeur dans $\mathfrak{g}\cong \tg[e]{G}$, l'algèbre de Lie de $G$ :
+De même, la 1-forme de connexion n'a besoin d'être définie que sur un point particulier au dessus de chaque fibre. Les espaces verticaux étant tous difféomorphes à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$, c'est sur $\mathfrak{g}$ qu'elle est définie :
 
 \begin{definition}
-	Ainsi, dans le cas des VFP, la \emph{1-forme de connexion} $\conn$ est définie la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que :
+	La \emph{1-forme de connexion} $\conn$ d'une VFP $P(G,B)$ est définie comme la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que :
 	\begin{equation} \label{eq:1-form2conn}
 		\forall p\in P,\quad \hg[p]{P} \defeq \Ker(\conn_p)
 	\end{equation}
 	\skipl
 	
-	En terme de coordonnée local, comme l'information $g$ dans $\ p=h_i(x,g)\ $ n'est pas important pour définir $\conn$, elle n'a pas besoin d'être définit sur $\ U_i\times G$, mais seulement sur $\ U_i \cong U_i \times \{e\}$. Ainsi, $\conn$ induit une 1-forme sur les cartes $U_i$ par l'image réciproque des sections canonique $\sigma_i$. Elles sont notées $\locconn_i \defeq \sigma_i^*\conn$ et pour que les $\locconn_i$ induisent une connexion sur $P$ il faut et il suffit que, sur le chevauchement $U_{ij}$, elles vérifient :
+	En terme de coordonnée local, $\conn$ elle n'a pas besoin d'être définit sur $\ U_i\times G$, mais seulement sur $\ U_i \cong U_i \times \{e\}$. Ainsi, $\conn$ induit une 1-forme sur les cartes $U_i$ par l'image réciproque des sections canonique $\sigma_i$. Elles sont notées $\locconn_i \defeq \sigma_i^*\conn$ et sur le chevauchement $U_{ij}$, elles vérifient :
 	\begin{equation}\label{eq:conn_local}
 		\locconn_j = {\varphi_{ij}}^{-1} \locconn_i \varphi_{ij} + {\varphi_{ij}}^{-1} \d \varphi_{ij}
 	\end{equation}
