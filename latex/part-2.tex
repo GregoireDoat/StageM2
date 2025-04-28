@@ -300,24 +300,33 @@ Dans le cas des VFP, une connexion --- et sa 1-forme --- doit en plus avoir de b
 		
 		\item l'assignation des $\hg[p]{P}$ est invariantes pas l'action de $G$ au sens où :
 		\begin{equation}\label{eq:conn_G-inv}
-			\forall (p,g)\in P\times G,\quad \tg[p]{R_g} (\hg[p]{P}) = \big\{\tg[p]{R_g}(v)\ |\ v \in \hg[p]{P} \big\} = \hg[R_g(p)]{P}
+			\forall (p,g)\in P\times G,\quad \hg[R_g(p)]{P} = \tg[p]{R_g} (\hg[p]{P}) = \big\{\tg[p]{R_g}(v)\ |\ v \in \hg[p]{P} \big\}
 		\end{equation}
-		
 	\end{itemize}
-	
-	Comme les fibres de $P$ sont toutes de la forme $pG$, les espaces $\vg[p]{P}$ s'identifient aux espaces tangents à $G$, qui eux-même s'identifie à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$. Ainsi, dans le cas des VFP, la \emph{1-forme de connexion} $\conn$ est une 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), auquel cas on a toujours :
+\end{definition}
+\skipl
+
+Au delà d'assurer une compatibilité avec la connexion, l'équation \eqref{eq:conn_G-inv} permet de n'avoir à définir la connexion qu'en un seul point de chaque fibre, les autres se déduisant par l'action de $G$. Entre autre, pour tout point de la base $x\in B$, il suffit de la définir en $\sigma_i(x) = h_i(e, x)$ et l'espace horizontale en tout autre point $\ p=h_i(x,g) = \sigma_i(x)\cdot g$ au dessus de $x$ est tel que :
+\[\hg[p]{P} = \tg[\sigma_i(x)]{R_g} (\hg[\sigma_i(x)]{P})\]
+\\
+De même, la 1-forme de connexion n'a besoin d'être définie que sur un point particulier au dessus de chaque fibre. En prenant, là encore, $\ h_i(x,e) = \sigma_i(x)\ $ comme point particulier, $\vg[h_i(x,e)]{P}$ est alors équivalent à $\tg[e]{G}$ et $\omega$ peut-être définie comme étant à valeur dans $\mathfrak{g}\cong \tg[e]{G}$, l'algèbre de Lie de $G$ :
+
+\begin{definition}
+	Ainsi, dans le cas des VFP, la \emph{1-forme de connexion} $\conn$ est définie la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que :
 	\begin{equation} \label{eq:1-form2conn}
 		\forall p\in P,\quad \hg[p]{P} \defeq \Ker(\conn_p)
 	\end{equation}
 	\skipl
 	
-	Enfin, $\conn$ induit une 1-forme sur les cartes $U_i$ via la section canonique $\sigma_i$. Elle est noté $\locconn_{i}$ et pour que les $\locconn_i$ induisent une connexion sur $P$ il faut et il suffit que sur le chevauchement $U_{ij}$, $\locconn$ se transforme suivant :
+	En terme de coordonnée local, comme l'information $g$ dans $\ p=h_i(x,g)\ $ n'est pas important pour définir $\conn$, elle n'a pas besoin d'être définit sur $\ U_i\times G$, mais seulement sur $\ U_i \cong U_i \times \{e\}$. Ainsi, $\conn$ induit une 1-forme sur les cartes $U_i$ par l'image réciproque des sections canonique $\sigma_i$. Elles sont notées $\locconn_i \defeq \sigma_i^*\conn$ et pour que les $\locconn_i$ induisent une connexion sur $P$ il faut et il suffit que, sur le chevauchement $U_{ij}$, elles vérifient :
 	\begin{equation}\label{eq:conn_local}
 		\locconn_j = {\varphi_{ij}}^{-1} \locconn_i \varphi_{ij} + {\varphi_{ij}}^{-1} \d \varphi_{ij}
 	\end{equation}
 \end{definition}
 \skipl
 
+Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est encore  grâce à la compatibilité de la connexions avec la l'action de $G$ sur $P$, qui l'information sur $G$ redondante. \thoughts{MEH}. 
+\\
 
 
 
