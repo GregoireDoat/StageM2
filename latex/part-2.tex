@@ -17,7 +17,7 @@ Plan approximatif de cette partie :
 				
 				\item $\PC{n}$ vue comme variété différentielle complexe (voir annexe pour détails)
 				
-				\item \thoughts{lien avec la projection $\x \longmapsto \x\x^\dagger$ utilisé en physique}
+				\item \thoughts{un mot sur la projection $\x \longmapsto \x\x^\dagger$ utilisé en physique (c'est équivalent)}
 				
 			\end{itemize}
 			
@@ -84,7 +84,7 @@ Plan approximatif de cette partie :
 			
 			\item Géodésique de $\PC{n}$ et généralisation du cas pseudo-cyclique
 			
-			\item Remarque de Mukunda : phase géo est une 2-forme vs phase dyn est une 1-forme
+			%\item Remarque de Mukunda : phase géo est une 2-forme vs phase dyn est une 1-forme
 		
 			\item Bonnet-Gauss  \& Stokes : phase géo comme calcul d'air
 	
@@ -113,15 +113,6 @@ Plan approximatif de cette partie :
 		\item Cas particulier : $G=\U{1}$
 		
 	\end{itemize}
-	
-	\item Variétés différentielles complexe 
-	\begin{itemize} \normalfont
-		
-		\item Complexification de TM
-		
-		\item L'intérêt de faire ça : proprement définir $\partial/\partial\bar{z}$
-		
-		\item Exemple : écriture de forme de Kahler de Fubini-Study
 		
 	\end{itemize}
 \end{enumerate}
@@ -236,13 +227,13 @@ D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peu
 \begin{figure}[H]
 	\begin{floatrow}
 		\ffigbox{\caption[Représentation d'une section local]
-			{Représentation d'une section local $\sigma$ au dessus de $U_i\subset\R^2$. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
+			{Représentation d'une section local $\sigma$ au dessus de $U_i\subset B$ de dimension 2. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
 			\label{fig:section_local}}{
 			%\includegraphics[width=0.45\textwidth]{fig/placeholder}
 			\input{tikz/part-2/section_locale}}
 		
 		\ffigbox{\caption[Représentation de la section canonique]
-			{Représentation de la section canonique définie par rapport à $G$ avec une seconde section  $\sigma(x) = \sigma_i(x)\cdot g(x)$.% Sont également représentés leur espaces tangents horizontaux respectifs avec la transformation permettant de passer l'un à l'autre.
+			{Représentation de la section canonique définie par rapport à $G$ avec une seconde section  $\sigma(x) = \sigma_i(x)\cdot g(x)$. Cette fois $B$ est une variété de dimension 1. % Sont également représentés leur espaces tangents horizontaux respectifs avec la transformation permettant de passer l'un à l'autre.
 		}}{
 			\includegraphics[width=0.45\textwidth]{fig/placeholder}
 			\label{fig:section_cano}}
