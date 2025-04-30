@@ -3,52 +3,71 @@ Plan approximatif de cette partie :
 
 \begin{enumerate}[label=\Roman* --- ] \bfseries
 	
-	\item Prérequis \\
+	\item Cadre d'étude \\
 	{\normalfont\itshape Dans notre cas, tout s'écrit très simplement donc pas besoin de sortir tout l'arsenal de géo diff}
 	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
 		
-		\item Espace projectif complexe
-		\begin{itemize}%[label=\arabic{enumi}.2.\arabic* --- ]
+		\item Construction de $\PC{n}$
+		\begin{enumerate}[label=\arabic{enumi}.1.\arabic* --- ]
 			
-			\item Construction de $\PC{n-1}$ 
+			\item Rappel de géométrie différentielle et notation 
 			\begin{itemize} \normalfont
 				
-				\item Définition comme espace quotient $\S{2n-1}/\U{1}$
+				\item Atlas, carte coordo local
 				
-				\item $\PC{n}$ vue comme variété différentielle complexe (voir annexe pour détails)
+				\item Esapce tangent
 				
-				\item \thoughts{un mot sur la projection $\x \longmapsto \x\x^\dagger$ utilisé en physique (c'est équivalent)}
+				\item Différentielle et image réciproque
+				
+				\item Variété riemannienne
+				
+				\item \thoughts{un mot sur les variétés différentielles complexes (voir annexe pour plus de détail)}
 				
 			\end{itemize}
 			
-			\item Métrique de Fubini-Study 
+			\item Le cas de $\PC{n}$
 			\begin{itemize} \normalfont
 				
-				\item Métrique induite par la projection
+				\item Définition comme espace quotient ${\C^{n+1}}^*/\C^*$
 				
-				\item expression de la métrique
+				\item C'est variété différentielle (voir annexe pour détails)
 				
-				\item expression en coordonnée local
+				\item \thoughts{Un mot sur la projection $\x \longmapsto \x\x^\dagger$ utilisé en physique (c'est équivalent)}
 				
-			\end{itemize}
-			
-		\end{itemize}
+			\end{itemize}			
+		\end{enumerate}
 		
 		\item Fibré principaux
-		\begin{itemize}%[label=\arabic{enumi}.1.\arabic* --- ]
+		\begin{enumerate}[label=\arabic{enumi}.2.\arabic* --- ]
 			
-			\item Fondamentaux
+			\item Définitions de base
 			\begin{itemize} \normalfont
 				
-				\item Définitions de base
+				\item Définition de VFP
 				
 				\item Section local (canonique)
 				
-				\item changement de carte
+				\item Changement de carte
 				
 			\end{itemize}
 			
-			\item Espaces horizontaux et connexion
+			\item Application à notre cas
+			\begin{itemize} \normalfont
+				
+				\item $\PC{n}$ comme quotient $\S{n}/U(1)$
+				
+				\item explicite les cartes, sections, etc
+				
+				\item Interprétation des paramètres (amplitude, phase, polar)
+				
+				\item le pb du choix de phase (version géo diff)
+			\end{itemize}
+		\end{enumerate}
+			
+		\item Espaces horizontaux et connexion
+		\begin{enumerate}[label=\arabic{enumi}.2.\arabic* --- ]
+			
+			\item Définitions générales
 			\begin{itemize} \normalfont
 				
 				\item Espace verticaux
@@ -56,18 +75,39 @@ Plan approximatif de cette partie :
 				\item connexion comme ensemble d'espace horizontaux
 				
 				\item 1-forme de connexion
-				
-				\item notre choix de connexion (induite par le produit hermitien)
 			\end{itemize}
 			
-		\end{itemize}
+			\item Connexion sur $\S{n}(U(1), \PC{n})$
+			\begin{itemize} \normalfont
+				
+				\item Connexion induite par la métrique
+				
+				\item Explicitation de $\omega$
+				
+				\item Formule de changement de carte dans ce cas
+			\end{itemize}
+			
+		\end{enumerate}
 		
 	\end{enumerate}
 	
 	\item Interprétation géométrique des trois phases
+	
 	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
 		
-		\item Cas des signaux ``pseudo-cyclique'' (cyclique à phase près)
+		\item Première interprétation
+		\begin{itemize} \normalfont
+			
+			\item La découpe de $\C^n = \R^{+_*}\times U(1) \times \PC{n}$ fait exactement ce qu'on veut (et fuck l'amplitude)
+			
+			\item la phase instantanée revient faire un choix de jauge, un choix de relèvement. Mais pas possible avec $h_i$ parce que carte-dépendant
+			
+			\item c'est là qu'intervient l'horizontal lift : ca fait office de valeur de référence modulo un choix de phase initiale
+			
+			\item 
+		\end{itemize}
+		
+		\item Cas pseudo-cyclique
  		\begin{itemize} \normalfont
 			
 			\item Le dessin de Bohm :
@@ -113,8 +153,6 @@ Plan approximatif de cette partie :
 		\item Cas particulier : $G=\U{1}$
 		
 	\end{itemize}
-		
-	\end{itemize}
 \end{enumerate}
 
 \newpage
@@ -123,10 +161,10 @@ Plan approximatif de cette partie :
 \thoughts{A reprendre, comme toutes les intros} Pour étudier la phase géométrique d'un signal $\psi$, il nous faut projeter $\psi$ sur $\PC{n}$, et ceux, tout en gardant une trace de sa phase puisque c'est le lien entre les deux qui nous intéresse. Il nous faut donc envoyer $\psi$ dans le produit :
 \[\U{1}\times \PC{n}\qquad\qquad (\text{ou }\ \C^{n-1*}/\C^*)\]
 \\
-Garder le lien entre cet espace et celui d'origine mène à se placer dans le cadre avec d'un \emph{variété fibrée} (ou simplement fibré). Plus précisément, comme $\U{1}$ est un groupe de lie, ce sera un \emph{fibré principal} noté $\S{2n+1}\big(\U{1},\PC{n}\big)$.
+Garder le lien entre cet espace et celui d'origine mène à se placer dans le cadre avec d'un \emph{variété fibrée} (ou simplement fibré). Plus précisément, comme $\U{1}$ est un groupe de lie, ce sera un \emph{fibré principal} noté $S^{2n+1}\big(\U{1},\PC{n}\big)$.
 \\
 
-Comme son nom l'indique, $\S{2n+1}\big(\U{1},\PC{n}\big)$ à une structure de variété différentielle et le lien entre les $\U{1}$ et $\PC{n}$ va se faire par le biais d'une connexion. L'on verra alors que cette connexion est intrinsèquement lié à la phase dynamique du signal, et il sera discuté de la signification de ce résultat.
+Comme son nom l'indique, $S^{2n+1}\big(\U{1},\PC{n}\big)$ à une structure de variété différentielle et le lien entre les $\U{1}$ et $\PC{n}$ va se faire par le biais d'une connexion. L'on verra alors que cette connexion est intrinsèquement lié à la phase dynamique du signal, et il sera discuté de la signification de ce résultat.
 \\
 La phase géométrique, quand à elle, sera liée avec la métrique hermitienne associée aux l'espaces projectifs complexes.
 \\
@@ -137,39 +175,12 @@ Tout cela va demander quelques prérequis que nous allons voir à présent.
 
 \section{Prérequis mathématique}
 
-\subsection{Variétés différentielles complexes et les espaces projectifs complexes}\label{subsec:PC^n}
-
-Les espaces projectifs complexes se construisent ainsi. On se place dans ${\C^{n+1}}^*=\C^{n+1}\setminus\{0_{\C^{n+1}}\}$ avec la relation d'équivalence, $\forall x,y\in{\C^{n+1}}^*$ :
-\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
-\\
-L'espace projectif complexe, noté $\PC{n}$, est l'espace quotient :
-\[\PC{n} = {\C^{n+1}}^*/\C^* = {\C^{n+1}}^*/\sim\]
-\\
-En notant $[z]$ la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$, on définit les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
-\begin{align}
-	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
-		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}\big(z^0,\cdots, z^i,\cdots, z^n\big)
-	\end{aligned}
-\end{align}
-\\
-L'ensemble d'arrivé $\phi_i(U_i)$ est de dimension $n$ et s'assimile à $\C^{n}$ mais, par souci de comodité, on restera dans $\C^{n+1}$. Cela permet  d'écrire plus simplement les formules de changement de carte en évitant de devoir enlever et rajouter des coefficients :
-\[ \forall [z]\in U_i\cap U_j\quad (\ie~z^{i,j}\neq 0) ,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\]
-
-Les $(U_i,\phi_i)$ forment ainsi un atlas holomorphe sur l'espace projectif complexe, faisant de $\PC{n}$ une variété complexe de dimension $\dim[\C] = n$ (voir annexe \ref{ann:variet_complexe} pour plus de détail).
-
-
-\begin{proposition}
-	$\PC{n}$ admet une métrique hermitienne induite par la métrique de $\S{2n+1}$, elle même induite du produit scalaire sur $\R^{2n+1}$. Elle est appelé \emph{métrique de Fubini-Study} et est donnée par le formule :
-	\[\]
-\end{proposition}
-\skipl
-
-
-
 \subsection{Variété fibrée principale et connexion} \label{subsec:VFP}
 
+\subsubsection{Première définition}
+
 Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemble localement à des espaces produits. 
-Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $\S{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, il est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
+Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $S^{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, il est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
 \begin{figure}[h]
 	\includegraphics[width=0.45\textwidth]{fig/placeholder}
 	%\input{tikz/part-2/ruban2mobius}
@@ -264,6 +275,11 @@ Cela mène à la définition :
 
 Dans la suite, il sera nécessaire de munir $P$ d'une connexion, qui s'introduit comme suit.
 \\
+
+
+
+\subsubsection{Connexion sur VFP}
+
 Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les seconds \emph{horizontaux} et l'on note :
 \[\forall p\in P,\qquad \tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}\]
 \\
@@ -322,29 +338,87 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 
 
 
+\subsection{Application au signal multivariée complexe}\label{subsec:PC^n}
+
+\subsubsection{$\bf{\PC{n}}$ comme variété différentielle}
+
+Un façon de définir l'espace projectif complexe $\PC{n}$ est une structure quotient qui peut être obtenue de deux façon. La première, analogue aux espaces projectifs réels, est de poser :
+\[\PC{n} \defeq {\C^{n+1}}^*/\C^*\]
+\\
+C'est-à- dire l'ensemble des classes de ${\C^{n+1}}^* = \C^{n+1} \setminus \{0_{\C^{n+1}}\}$ par la relation d'équivalence :
+\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
+\\
+Cette formulation de $\PC{n}$ permet de le munir d'une structure de variété. Pour cela, la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$ est noté $[z]$ et sont définis les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
+\begin{align}
+	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z\in \C^{n+1},\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
+		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}z = \big(\nicefrac{z^0}{z^i},\cdots, 1, \cdots, \nicefrac{z^n}{z^i}\big)
+	\end{aligned}
+\end{align}
+\begin{remarque}
+	Si l'ensemble d'arrivé $\phi_i(U_i)$ est équivalent à un ouvert de $\C^{n}$, il est plus commode de travailler dans $\C^{n+1}$ puisque cela évite de devoir enlever et rajouter des coefficient dans les formules de changement de carte :
+	\[ \forall z\in\C^{n+1}\ |\ z^{i,j}\neq 0\quad (\ie~[z]\in U_i\cap U_j) ,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\]
+\end{remarque}
+\skipl
+Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Comme $\PC{n}$ est plus précisément une variété complexe\footnote{\itshape
+	Le formalisme des variétés complexes ne sera pas nécessaire outre mesure, certains concepts seront tout de même utiles et une rapide introduction de ces derniers se trouve en annexe \ref{ann:VDC}}
+, il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
+\[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{où } [z] = w\]
+ \\
+
+
+
+\subsubsection{$\bf{\PC{n}}$ comme base du fibré principale $\bf{\S{n}(\U{1},\PC{n})}$}
+
+
+Une deuxième façon d'aborder $\PC{n}$ est de se débarrasser de la norme (resp. du module) des vecteurs de ${\C^{n+1}}^*$ (resp. des scalaires $\C^*$). Le troisième théorème d'isomorphisme permet ainsi décrire :
+\[\PC{n} \defeq {\C^{n+1}}^*/\C^* \cong ({\C^{n+1}}^* / \R^{+_*})/(\C^* / \R^{+_*}) \cong \S{n}/\U{1}\]
+\\
+où $\S{n}\defeq S^{2n+1}\subset\C^{n+1}$ est la sphère unité de dimension (réelle) $2n+1$, vue comme sous-ensemble de $\C^{n+1}$. Une autre façon de le comprendre est de voir qu'en écrivant $\lambda=re^{i\theta}$, moralement $\C^*\cong \R^{+^*}\times \U{1}$. $\PC{n}$ peut alors être vu comme des vecteurs de ${\C^{n+1}}^*$ à une normalisation près puis à un $e^{i\theta}$ près. Ce qui revient à prendre des vecteurs normés de $\C^{n+1}$ (\ie~dans $\S{n}$) modulo l'action de $\U{1}$.
+
+De façon plus concrète, là où dans ${\C^{n+1}}^*/\C^*$, les coordonnées de $w\in U_i$ s'écrivait $w^\mu = \frac{z^\mu}{z^i}$ ; dans $\S{n}$, $z$ est déjà normé auquel cas :
+\[w^\mu = \frac{z^\mu}{|z^i|e^{i\arg (z^i)}} = \frac{z^{\mu}}{\sqrt{1-\sum_{\nu\neq i}|z^\nu|^2}}e^{-i\arg(z^i)}\]
+\\
+et on constate bien que $w^\nu$ est définie modulo un choix de $e^{-i\arg z^i}\in \U{1}$. Réciroquement, à chaque paire $(w,e^{i\theta})\in U_i\times \U{1}$, est associée un unique vecteur $z_i = h_i(w,e^{i\theta})\in\S{n}$ avec :
+\[{z_i}^\mu = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta}\]
+\\
+
+Par ailleurs, cette écriture est bien plus intéressante pour notre propos puisque le passage au quotient par $\U{1}$ traduit l'invariance par transformation de jauge.
+
+
+
+
+
+
 \section{Interprétation des trois phases dans ce cadre}
 
 \subsection{HHHHH}
 
 blablabla maintenant on peut recoller les morceaux.
  
+
+
+
 Comme $\PC{n}$ est une variété quotient, elle induit naturellement une variété principale :
 \begin{proposition}
-	La $2n+1$--sphère $\S{2n+1}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $\S{2n+1}$ étant induite par le produit complexe classique et où :
+	La $2n+1$--sphère $S^{2n+1}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $S^{2n+1}$ étant induite par le produit complexe classique et où :
 	\begin{itemize}
-		\item La fibration $\pi$ est la projection canonique de $\S{2n+1}$ sur $\PC{n}$ :
-		\[\pi\ :\ \begin{aligned}\S{2n+1}\ &\lr\ \PC{n} \\ x\quad\ &\lmt\ \ [x]\end{aligned}\]
-	
-	\item Les cartes locales $h_i$ sont telles que :
-	\[\forall z \in \pi^{-1}(U_i),\  {h_i}^{-1}(z) = \big( z_i/|z_i|, [z] \big)\in \U{1} \times \PC{n}\]
-	
-	\item Tout les représentant $z$ d'un élément de la base $\zeta\in\PC{n}$ sont normé, ainsi, alors tout La section canonique au dessus des $U_i$, $\sigma_i$ elle est définie par :
-	\[\]
-	
+		\item La fibration $\pi$ est la projection canonique de $S^{2n+1}$ sur $\PC{n}$ :
+		\[\pi\ :\ \begin{aligned}S^{2n+1}\ &\lr\ \PC{n} \\ z\quad\ &\lmt\ \ [z]\end{aligned}\]
+		
+		\item Les cartes locales $h_i$ sont telles que :
+		\[\forall z \in \pi^{-1}(U_i),\ \forall e^{i\theta}\in\U{1},\  h_i(z,e^{i\theta}) = \frac{[z]}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta} \in \S{n}\qquad \text{ où les}\]
+		
+		\item Tout les représentant $z$ d'un élément de la base $\zeta\in\PC{n}$ sont normé, ainsi, alors tout La section canonique au dessus des $U_i$, $\sigma_i$ elle est définie par :
+		\[\]
+		
 	\end{itemize}
 	
 	Voir \cite[lemme 2.17]{lafontaine_introduction_2015} pour une démonstration de l'aspect fibré.
 \end{proposition}
+
+
+
+
 \subsection{Cas pseudo-cyclique}
 
 
@@ -384,7 +458,7 @@ et on la projection de $X$ sur $\vg{P}$ est donnée par :
 
 
 
-\subsection{Variété différentielle complexe, tiré de \cite{nakahara_geometry_2003}}
+\subsection{Variété différentielle complexe, tiré de \cite{nakahara_geometry_2003}}\label{ann:VDC}
 
 Pour mémoire, une variété différentielle de classe $C^k$ ($k\in\N\cup\{\infty\}$) de dimension $n$ est un espace topologique\footnote{\itshape
 	La topologie de $\manu$ doit vérifier des propriétés type séparable, dénombrable à l'infinie, \etc, qui seront toutes admises dans la suite, voir par exemple \cite[chap. 2]{lafontaine_introduction_2015}}

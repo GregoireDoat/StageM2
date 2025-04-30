@@ -340,7 +340,11 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 	\\
 	où $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y = \chi$. La démonstration se trouve en annexe \ref{ann:demo_phases_2var}
 \end{proposition}
-\skipl
+
+\begin{figure}[h]
+	\includegraphics[width = 0.6\textwidth]{fig/premier_resultat}
+	\caption[Evolution de la phase géométrique d'un signal AM-FM-PM]{Evolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann. Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2.}
+\end{figure}
 
 Deux remarques sur ces formules. 
 La première est que la phase géométrique ne dépend que des paramètres de polarisations $\theta$ et $\chi$, un résultat rassurant sachant qu'elle est invariante par transformation de jauge.
@@ -375,7 +379,7 @@ où les $\sigma_i$ sont les matrices de Pauli :
 \end{align*}
 \par
 
-On remarque alors que les coefficients associés aux $\sigma_i$ sont des coordonnées sphériques lorsque les $\sigma_i$ sont associés à la base canonique de $\R^3$, conformément à la \Cref{fig:sphere2pointcare} ci-contre \thoughts{pas à jour}.
+On remarque alors que les coefficients associés aux $\sigma_i$ sont des coordonnées sphériques lorsque les $\sigma_i$ sont associés à la base canonique de $\R^3$, conformément à la \Cref{fig:sphere2pointcare} \thoughts{pas à jour} ci-contre.
 \\
 Posé ainsi, l'intégrale dans la phase dynamique ne s'interprète pas. Vraiment pas, \href{https://en.wikipedia.org/wiki/Spherical_coordinate_system#Integration_and_differentiation_in_spherical_coordinates}{Wikipedia} liste une tonne de formule mais aucune ne colle avec $\theta'\sin2\chi$ parce que les angles choisis ne le permette pas. 
 Notre convention est que $2\chi$ correspond à l'angle formé par $\sigma_2$ et $\rho$, là où sur Wikipedia, il est définie par l'angle entre la projection de $\rho$ sur $\Vec\{\sigma_{1,2}\}$ et $\rho$. Pour le dire rapidement, ce la change tout les $\cos 2\chi$ en $\sin 2\chi$ et inversement (modulo des signes).
