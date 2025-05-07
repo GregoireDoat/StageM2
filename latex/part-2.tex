@@ -157,6 +157,11 @@ Plan approximatif de cette partie :
 
 \newpage
 
+Au niveau ensemble, Décomposer un signal multivarié complexe en paramètre d'amplitude, phase et polarization instantanée, revient à décomposer $\C^n$ en un produit de trois ensembles. Pour cela, un vecteur de $\C^n$ est vu comme la donné d'une direction, \ie~un élément de la sphère unité $S^{2n-1}\subset\C^n$, et d'une norme, de sorte que :
+\[\C^n \cong \R^{+_*} \times S^{2n-1}\]
+\\
+Pour faire apparaître une phase au signal, $S^{2n-1}$ est lui-même décomposé de sorte à faire apparaître $\U{1}$, donnant :
+\[\C^n \cong \R^{+_*} \times \U{1} \times S^{2n-1}/\U{1}\]
 
 \thoughts{A reprendre, comme toutes les intros} Pour étudier la phase géométrique d'un signal $\psi$, il nous faut projeter $\psi$ sur $\PC{n}$, et ceux, tout en gardant une trace de sa phase puisque c'est le lien entre les deux qui nous intéresse. Il nous faut donc envoyer $\psi$ dans le produit :
 \[\U{1}\times \PC{n}\qquad\qquad (\text{ou }\ \C^{n-1*}/\C^*)\]
@@ -308,7 +313,7 @@ Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au 
 		
 		\item l'assignation des $\hg[p]{P}$ est invariantes pas l'action de $G$ au sens où :
 		\begin{equation}\label{eq:conn_G-inv}
-			\forall (p,g)\in P\times G,\quad \hg[R_g(p)]{P} = \tg[p]{R_g} (\hg[p]{P}) = \big\{\tg[p]{R_g}(v)\ |\ v \in \hg[p]{P} \big\}
+			\forall (p,g)\in P\times G,\quad \hg[R_g(p)]{P} = {R_g}_* (\hg[p]{P}) = \big\{{R_g}_*(v)\ |\ v \in \hg[p]{P} \big\}
 		\end{equation}
 	\end{itemize}
 \end{definition}
@@ -406,7 +411,7 @@ Comme $\PC{n}$ est une variété quotient, elle induit naturellement une variét
 		\[\pi\ :\ \begin{aligned}S^{2n+1}\ &\lr\ \PC{n} \\ z\quad\ &\lmt\ \ [z]\end{aligned}\]
 		
 		\item Les cartes locales $h_i$ sont telles que :
-		\[\forall z \in \pi^{-1}(U_i),\ \forall e^{i\theta}\in\U{1},\  h_i(z,e^{i\theta}) = \frac{[z]}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta} \in \S{n}\qquad \text{ où les}\]
+		\[\forall z \in \pi^{-1}(U_i),\ \forall e^{i\theta}\in\U{1},\  h_i(z,e^{i\theta}) = \frac{[z]}{\sqrt{1 + [z]^\nu \congu{[z]}_\nu}}e^{i\theta} \in \S{n}\qquad \text{ où les}\]
 		
 		\item Tout les représentant $z$ d'un élément de la base $\zeta\in\PC{n}$ sont normé, ainsi, alors tout La section canonique au dessus des $U_i$, $\sigma_i$ elle est définie par :
 		\[\]
@@ -420,6 +425,14 @@ Comme $\PC{n}$ est une variété quotient, elle induit naturellement une variét
 
 
 \subsection{Cas pseudo-cyclique}
+
+Mais si $\gamma$ est horizontal, alors pas de phase dynamique et :
+\[\phaseg  = \phaset\]
+Du point de vue de $\S{n}$, $\phaset$ est la distance (géodésique) entre $\gamma(0)$ et $\gamma(1)$.
+Si $\gamma_g$ est cette géodésique et que, de plus, elle n'a pas d'holonormie (\ie~$\omega_\gamma(0)\big(\dot{\gamma}(0))\big) = \omega_\gamma(1)\big(\dot{\gamma}(1))}\big)$)
+
+
+
 
 
 
