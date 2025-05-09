@@ -338,7 +338,7 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 	\end{aligned}
 	\end{equation}
 	\\
-	où $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y = \chi$. La démonstration se trouve en annexe \ref{ann:demo_phases_2var}
+	où $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y = \chi, \theta$. La démonstration se trouve en annexe \ref{ann:demo_phases_2var}
 \end{proposition}
 
 \begin{figure}[h]
@@ -347,58 +347,105 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 \end{figure}
 
 Deux remarques sur ces formules. 
-La première est que la phase géométrique ne dépend que des paramètres de polarisations $\theta$ et $\chi$, un résultat rassurant sachant qu'elle est invariante par transformation de jauge.
-La seconde, nettement plus troublante, est que $\varphi$ ne s'interprète ni comme la phase totale ni comme la phase dynamique. Plus loin, \thoughts{\cref{subsec:aller_plus_loin}}, nous reviendrons sur laquelle des deux ``doit'' représenter $\varphi$.
+La première est que la phase géométrique ne dépend que des paramètres de polarisations $\theta$ et $\chi$, ce qui reflète son invariance par transformation de jauge.
+La seconde, nettement plus troublante, est que $\varphi$ ne s'interprète ni comme phase totale ni comme phase dynamique. 
+%Plus loin, \thoughts{\cref{subsec:aller_plus_loin}}, nous reviendrons sur laquelle des deux ``doit'' représenter $\varphi$.
+\\
+Pour que ce soit le cas, il faut qu'à l'instant $t$ $\x $, retrouve la même polarization instantanée qu'à l'instant $t_0$, auquel cas :
+\begin{equation}\label{eq:phases_p-cyc_2var}
+	\begin{aligned}
+		\big( \chi(t), \theta(t) \big) = \big( \chi(t_0), \theta(t_0) \big)\quad 
+		&\Lr\quad \phaset(\x ) = \varphi(t) - \varphi(t) \\
+		&\Lr\quad \phaseg(\x ) = -\int_{t_0}^t \theta'(s) \sin 2\chi(s) ds
+	\end{aligned}
+\end{equation}
+\skipl
+
+Ce cas particulier est en fait très instructif puisque qu'il est toujours possible de s't ramener, comme ce sera montrer dans la partie \cref{part:phase_geo} suivante.
+\\
+Cela étant dit, pour interpréter la formule \eqref{eq:phases_p-cyc_2var} de la phase géométrique, il est utile de d'avoir une représentation de $\x $ qui soit indépendante de sa phase $\varphi$. Représentation ce que nous allons voir à présent.
 \\
 
-Aussi, la phase géométrique est séparée en deux termes. Le premier, en arctangente, correspond à l'angle formé par les vecteurs portant la polarisation instantanée, c'est-à-dire les vecteurs :
-\begin{align*}
-	R_{\theta(t_0)} \begin{pmatrix} \cos\chi(t_0) \\ -i\sin\chi(t_0) \end{pmatrix}\qquad \text{ et }\qquad R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix}
-\end{align*}
-\\
 
 
 \subsection{Interprétation dans la sphère de Poincaré}
 
-Pour interpréter le second membre, c'est beaucoup moins clair. Il faut d'intéresser  la projection  $\ \rho_{\x} = \frac{1}{\|\x \|^2} \congu{\x }\, ^t\x $. Avec des calculs (interminables), on obtient l'écriture :
-\[\rho_{\x} = id + \sin2\theta\cos2\chi \sigma_1 + \sin 2\chi \sigma_3 + \cos2\theta \cos2\chi \sigma_3\]
+Ces représentation n'est autre que la matrice de covariance de $\x $ :
+\begin{equation} \label{eq:proj2x_2var}
+	\forall t\in\R,\quad \rho_{\x}(t) = \frac{1}{\|\x(t) \|^2} \congu{\x(t) }\, ^t\x(t)
+\end{equation}
+Cette projection, invariante par transformation de jauge, donc indépendante de $\varphi$ et la normalisation est telle que $\rho_{\x}$ ne dépend pas non plus de $a$. La matrice $\rho_{\x}$ ne dépend alors que des paramètres de polarisations, $(\chi, \theta)$, et se décompose dans la base de Pauli suivant :
+\begin{equation} \label{eq:decompo_pauli}
+	\rho_{\x} = id + \sin(2\theta) \cos(2\chi) \sigma_1 + \sin (2\chi) \sigma_3 + \cos(2\theta) \cos(2\chi) \sigma_3
+\end{equation}
 
 
-\begin{wrapfigure}{r}{0.3\textwidth}
+\begin{wrapfigure}{r}{0.4\textwidth}
 	\input{tikz/part-1/sphere2poincare}
 	\caption{Sphère de Poincaré, blablabla}
-	\label{fig:sphere2pointcare}
+	\label{fig:sphere2poincare}
 \end{wrapfigure}
 
-\par
+\par \noindent
 où les $\sigma_i$ sont les matrices de Pauli :
 \begin{align*}
 	\sigma_1 &= \begin{pmatrix} 0 & 1 \\ 1 &  0 \end{pmatrix}  &
 	\sigma_2 &= \begin{pmatrix} 0 & -i \\  i &  0 \end{pmatrix}  &
 	\sigma_3 &= \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
 \end{align*}
-\par
+\skipl
 
-On remarque alors que les coefficients associés aux $\sigma_i$ sont des coordonnées sphériques lorsque les $\sigma_i$ sont associés à la base canonique de $\R^3$, conformément à la \Cref{fig:sphere2pointcare} \thoughts{pas à jour} ci-contre.
+Dans cette décomposition, la composante en $id$ est indépendante de $\x$ et peut donc être ignorée. Cela ne laisse qu'un vecteur (normé) de dimension 3 dont $2\theta$ et $2\chi$ correspondent aux coordonnées polaire conformément à la \Cref{fig:sphere2poincare} ci-contre.
+\\ 
 \\
-Posé ainsi, l'intégrale dans la phase dynamique ne s'interprète pas. Vraiment pas, \href{https://en.wikipedia.org/wiki/Spherical_coordinate_system#Integration_and_differentiation_in_spherical_coordinates}{Wikipedia} liste une tonne de formule mais aucune ne colle avec $\theta'\sin2\chi$ parce que les angles choisis ne le permette pas. 
-Notre convention est que $2\chi$ correspond à l'angle formé par $\sigma_2$ et $\rho$, là où sur Wikipedia, il est définie par l'angle entre la projection de $\rho$ sur $\Vec\{\sigma_{1,2}\}$ et $\rho$. Pour le dire rapidement, ce la change tout les $\cos 2\chi$ en $\sin 2\chi$ et inversement (modulo des signes).
+La sphère alors obtenue, plus connu sous le nom de sphère de Poincaré, représente l'ensemble des états de polarisation possible pour un signal :
 \\
-Pour pouvoir interpréter l'intégrale, il faut choisir les mêmes conventions qu'eux, auquel cas, il faut poser :
-\[\rho = \sin2\theta\sin2\chi \sigma_1 + \cos 2\chi \sigma_3 + \cos2\theta \sin2\chi \sigma_3\]
+À l'équateur, la polarisation est linéaire et $\theta$ pilote son orientation et plus $\rho_{\x}$ se rapproche des pôles, plus cette polarisation devient elliptique, jusqu'à devenir complètement circulaire, auquel cas $\theta$ devient insignifiant. 
+Aussi, suivant le schéma \cref{fig:ellipse2polat}, l'hémisphère nord (resp. sud) correspond à des polarisations elliptiques anti-horaire (resp. horaire).
+
+Le fait que ce soit deux fois les angles qui sont représentés tien naturellement compte des potentielles redondances dans les $(\theta,\chi)$. 
+Par exemple si $\x$ à pour paramètre de polarisation instantanée $(\theta_0, \chi_0)$, alors par symétrie de l'ellipse, $(\theta_0+\pi, \chi_0)$ est aussi une représentation valide. Autre exemple, si $\chi_0 = \nicefrac{\pi}{4}$, alors la polarisation est circulaire et indépendant de $\theta_0$.
 \\
-et notre vecteur apparaît comme la dérivée :
-\[\hat{\bf{\chi}} = \frac{\partial}{\partial\chi} \rho = \sin2\theta\cos2\chi \sigma_1 - \sin 2\chi \sigma_3 + \cos2\theta \cos2\chi \sigma_3\]
+Dans le deux cas, la représentation dans la sphère de Poincaré évite ces problèmes puisque, dans le premier cas $(2\theta_0, 2\chi_0)$ et $(2\theta_0+2\pi, 2\chi_0)$ représente le même point, et dans le second, le point associé à $2\chi_0=\nicefrac{\pi}{2}$ (pôle nord) est indépendant du choix de $\theta_0$.
 \\
-Dans ce cas, $\theta'\sin2\chi$ s'interprète (à un facteur près) comme la norme de la composante horizontale du vecteur vitesse de $\rho$, puisque :
-\[\partial_t\rho = 2 \chi'\hat{\bf{\chi}} + 2 \theta' \sin 2\chi \hat{\bf{\theta}}\]
-\\
-Ainsi, mais c'est vraiment pas beau, l'intégrale de $\phased$ s'interprète comme la longueur du déplacement horizontale-ish de la projection $\rho$ de $\x$.
-\\
-Si on veut le voir en terme d'élément d'air $dS$, alors on a :
-\[dS = \sin2\chi d\theta d\chi\]
-\\
-Mais comme $\theta$ et $\chi$ dépendent d'un paramètre commun $t$, ça serait très impropre de parler de calcul d'air sachant que $\theta'(t)\sin 2\chi(t)$ parcours un chemin vraiment. D'autant plus que là pas d'intégrale sur $\theta$... même si peut-être qu'on pourrait la faire apparaître avec un changement de variable approprié (surement que non en plus parce que le passage de $t$ à $(\theta,\chi)$ à par une différentielle inversible donc au cul le det de la Jacobienne :/ )
+
+\begin{figure}[h]
+	\includegraphics[width=0.8\textwidth]{fig/placeholder}
+	\caption{Représentation des paramètres de polarisation instantanée associés à chaque point de la sphère de Poincaré.}
+\end{figure}
+
+
+Pour interpréter la formule \eqref{eq:phases_p-cyc_2var} de la phase géométrique prenons un exemple. Si $\chi$ et $\theta$ sont telle que :
+\begin{align*}
+	2\theta(t_0) &= 0  &  2\theta(t) &= 2\pi  &  \chi(s) &= \chi_0
+\end{align*}
+Alors décrit un chemin horizontale sur la sphère, $\rho_{\x}(t_0) = \rho_{\x}(t)$ et sa phase géométrique s'écrit :
+\begin{align*}
+	\phaseg(\x, t_0, t) = -\int_{t_0}^t \theta'(s) \sin 2\chi(s) ds &= - \sin 2\chi_0 \int_{t_0}^t \theta'(s) ds \\
+	&= - \sin 2\chi_0 \big( \theta(t) - \theta(t_0)\big) \\
+	&= - \pi\sin 2\chi_0
+\end{align*}
+
+Cette formule est très proche de la formule de d'air de la calotte entouré par $\rho_{\x}$, à savoir%\footnote{\itshape
+	%La formule se trouve sans mal sur \href{https://fr.wikipedia.org/wiki/Calotte_sph%C3%A9rique#Aire}{Wikipédia}. Dans le lien donné, la formule est fait apparaître un cos, ce qui est dû au choix de convention sur l'angle décrit par $\chi_0$ ($=\nicefrac{\pi}{2} - \theta$ sur Wikipédia)} 
+ :
+\[\mathcal{A}ire = 2\pi - 2\pi \sin(2\chi_0)\]
+Pour la faire clairement apparaître, il suffit de noter que $\phaseg$ étant une phase, elle est définie modulo $2\pi$ et à un facteur 2 près, elle s'écrit :
+\begin{align*}
+	{\color{white}bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb}\phaseg(\x, t_0, t) &\equiv 2\pi - \pi\sin 2\chi_0   &  &[2\pi] {\color{white}bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb} \\
+	 &\equiv \frac{1}{2}\big( 4\pi - 2\pi\sin 2\chi_0 \big)    &  &[2\pi] 
+\end{align*}
+
+Soit la moitié de l'aire de la calotte au dessus du chemin tracé par $\rho_{\x}$ plus $2\pi$. Une fois n'est pas coutume, ca va toujours pas et j'ai envie de me foutre en l'air atm
+
+\begin{itemize}
+	\item Stokes et généralisation de la formule
+	
+	\item 
+\end{itemize}
+
+
+
 
 \subsection{Généralisation en plus haute dimension} \label{subsec:aller_plus_loin}
 
@@ -461,7 +508,7 @@ Mais comme $\theta$ et $\chi$ dépendent d'un paramètre commun $t$, ça serait 
 \end{itemize}
 
 
-\subsubsection{Démostrations}\label{ann:demo_phases_2var}
+\subsubsection{Démonstrations}\label{ann:demo_phases_2var}
 
 \begin{demo}[de la formule \eqref{eq:phased_2var}, \cref{prop:phases_2var}]
 	Par souci de lisibilité, on note $\ \mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix} = \begin{pmatrix} \cos\theta(t) \cos\chi(t) + i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - i\cos\theta(t) \sin\chi(t) \end{pmatrix}$, de sorte que la dérivée de $\ \x=ae^{i\varphi}\mathcal{U}\ $ s'écrive :

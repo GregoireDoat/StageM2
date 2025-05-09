@@ -1,4 +1,4 @@
-\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}[scale=0.9]
 	%\draw[black, opacity=0.1] (-4.5,-4.5) grid (4.5,4.5);
 	\draw[-Stealth] (-2.5,0) -- (4.5,0) node[below]{$\sigma_1$};
 	\draw[-Stealth] (0,-4.5) -- (0,4.5) node[right]{$\sigma_2$};
@@ -20,7 +20,7 @@
 	\draw[thick] (4,0) arc [start angle=0, end angle =-125, x radius = 4, y radius = 1];
 	
 	% droites
-	\draw[-stealth,thick, blue] (0,0) -- (u) node[above right] {$\rho$};
+	\draw[-stealth,thick, blue] (0,0) -- (u) node[above right] {$\rho_{\x}$};
 	\draw[dashed, blue] (u) -- (p);
 	\draw[dashed, blue] (0,0) -- (p);
 	
@@ -29,6 +29,8 @@
 	\draw[gray] (3.1,2.5) arc [start angle=0, end angle =-120, x radius = 3.1, y radius = 0.5];
 	
 	\draw[violet, -stealth] (-0.4, -0.2) arc [start angle=-120, end angle =-40, x radius = 0.9, y radius = 0.225] node[midway, below] {\scriptsize$2\theta$};    
-	\draw[violet, -stealth] (0,0.7) arc [start angle=90, end angle =20, x radius = 0.4, y radius = 0.5];
-	\draw[violet] (0.25, 0.8) node{\scriptsize$2\chi$};
+	\draw[violet, -stealth] (1, -0.2) arc [start angle=-20, end angle =40, x radius = 1, y radius = 1.15] node[midway, right]{\scriptsize$2\chi$};
+	
+	% pos fixing
+	\draw[white] (-4,0);
 \end{tikzpicture}
