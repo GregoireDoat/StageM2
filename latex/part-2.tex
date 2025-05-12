@@ -178,11 +178,42 @@ Tout cela va demander quelques prérequis que nous allons voir à présent.
 
 
 
-\section{Prérequis mathématique}
+\section{Cadre d'étude}
 
-\subsection{Variété fibrée principale et connexion} \label{subsec:VFP}
+\subsection{Construction de $\bf{\PC{n}}$} \label{subsec:construc_PC^n}
 
-\subsubsection{Première définition}
+\subsubsection{Rappels de géométrie différentielle et notations}\label{subsec:rappel2geo_diff}
+
+\subsubsection{$\bf{\PC{n}}$ comme variété différentielle}\label{subsec:rappel2geo_diff}
+
+Un façon de définir l'espace projectif complexe $\PC{n}$ est une structure quotient qui peut être obtenue de deux façon. La première, analogue aux espaces projectifs réels, est de poser :
+\[\PC{n} \defeq {\C^{n+1}}^*/\C^*\]
+\\
+C'est-à- dire l'ensemble des classes de ${\C^{n+1}}^* = \C^{n+1} \setminus \{0_{\C^{n+1}}\}$ par la relation d'équivalence :
+\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
+\\
+Cette formulation de $\PC{n}$ permet de le munir d'une structure de variété. Pour cela, la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$ est noté $[z]$ et sont définis les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
+\begin{align}
+	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z\in \C^{n+1},\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
+		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}z = \big(\nicefrac{z^0}{z^i},\cdots, 1, \cdots, \nicefrac{z^n}{z^i}\big)
+	\end{aligned}
+\end{align}
+\begin{remarque}
+	Si l'ensemble d'arrivé $\phi_i(U_i)$ est équivalent à un ouvert de $\C^{n}$, il est plus commode de travailler dans $\C^{n+1}$ puisque cela évite de devoir enlever et rajouter des coefficient dans les formules de changement de carte :
+	\[ \forall z\in\C^{n+1}\ |\ z^{i,j}\neq 0\quad (\ie~[z]\in U_i\cap U_j) ,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\]
+\end{remarque}
+\skipl
+Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Comme $\PC{n}$ est plus précisément une variété complexe\footnote{\itshape
+	Le formalisme des variétés complexes ne sera pas nécessaire outre mesure, certains concepts seront tout de même utiles et une rapide introduction de ces derniers se trouve en annexe \ref{ann:VDC}}
+, il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
+\[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{où } [z] = w\]
+\\
+
+
+
+\subsection{$\S{n}\times\bf{\PC{n}}$ comme fibré principal} \label{subsec:VFP}
+
+\subsubsection{Définition générale}
 
 Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemble localement à des espaces produits. 
 Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $S^{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, il est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
@@ -279,11 +310,50 @@ Cela mène à la définition :
 \skipl
 
 Dans la suite, il sera nécessaire de munir $P$ d'une connexion, qui s'introduit comme suit.
+
+
+\subsubsection{Le fibré $\bf{\S{n}\big(\U{1},\PC{n}\big)}$}
+
+Une deuxième façon d'aborder $\PC{n}$ est de se débarrasser de la norme (resp. du module) des vecteurs de ${\C^{n+1}}^*$ (resp. des scalaires $\C^*$). Le troisième théorème d'isomorphisme permet ainsi décrire :
+\[\PC{n} \defeq {\C^{n+1}}^*/\C^* \cong ({\C^{n+1}}^* / \R^{+_*})/(\C^* / \R^{+_*}) \cong \S{n}/\U{1}\]
+\\
+où $\S{n}\defeq S^{2n+1}\subset\C^{n+1}$ est la sphère unité de dimension (réelle) $2n+1$, vue comme sous-ensemble de $\C^{n+1}$. Une autre façon de le comprendre est de voir qu'en écrivant $\lambda=re^{i\theta}$, moralement $\C^*\cong \R^{+^*}\times \U{1}$. $\PC{n}$ peut alors être vu comme des vecteurs de ${\C^{n+1}}^*$ à une normalisation près puis à un $e^{i\theta}$ près. Ce qui revient à prendre des vecteurs normés de $\C^{n+1}$ (\ie~dans $\S{n}$) modulo l'action de $\U{1}$.
+
+De façon plus concrète, là où dans ${\C^{n+1}}^*/\C^*$, les coordonnées de $w\in U_i$ s'écrivait $w^\mu = \frac{z^\mu}{z^i}$ ; dans $\S{n}$, $z$ est déjà normé auquel cas :
+\[w^\mu = \frac{z^\mu}{|z^i|e^{i\arg (z^i)}} = \frac{z^{\mu}}{\sqrt{1-\sum_{\nu\neq i}|z^\nu|^2}}e^{-i\arg(z^i)}\]
+\\
+et on constate bien que $w^\nu$ est définie modulo un choix de $e^{-i\arg z^i}\in \U{1}$. Réciroquement, à chaque paire $(w,e^{i\theta})\in U_i\times \U{1}$, est associée un unique vecteur $z_i = h_i(w,e^{i\theta})\in\S{n}$ avec :
+\[{z_i}^\mu = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta}\]
 \\
 
+Par ailleurs, cette écriture est bien plus intéressante pour notre propos puisque le passage au quotient par $\U{1}$ traduit l'invariance par transformation de jauge.
+\\ \\ \\ \\ 
 
 
-\subsubsection{Connexion sur VFP}
+
+Comme $\PC{n}$ est une variété quotient, elle induit naturellement une variété principale :
+\begin{proposition}
+	La $2n+1$--sphère $S^{2n+1}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $S^{2n+1}$ étant induite par le produit complexe classique et où :
+	\begin{itemize}
+		\item La fibration $\pi$ est la projection canonique de $S^{2n+1}$ sur $\PC{n}$ :
+		\[\pi\ :\ \begin{aligned}S^{2n+1}\ &\lr\ \PC{n} \\ z\quad\ &\lmt\ \ [z]\end{aligned}\]
+		
+		\item Les cartes locales $h_i$ sont telles que :
+		\[\forall z \in \pi^{-1}(U_i),\ \forall e^{i\theta}\in\U{1},\  h_i(z,e^{i\theta}) = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta} \in \S{n}\qquad \text{ où les}\]
+		
+		\item Tout les représentant $z$ d'un élément de la base $\zeta\in\PC{n}$ sont normé, ainsi, alors tout La section canonique au dessus des $U_i$, $\sigma_i$ elle est définie par :
+		\[\]
+		
+	\end{itemize}
+	
+	Voir \cite[lemme 2.17]{lafontaine_introduction_2015} pour une démonstration de l'aspect fibré.
+\end{proposition}
+
+
+
+\subsection{Connexion sur VFP}\label{subsec:connexion2VFP}
+
+\subsubsection{Définition général}\label{subsec:def2conn}
 
 Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les seconds \emph{horizontaux} et l'on note :
 \[\forall p\in P,\qquad \tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}\]
@@ -343,51 +413,9 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 
 
 
-\subsection{Application au signal multivariée complexe}\label{subsec:PC^n}
-
-\subsubsection{$\bf{\PC{n}}$ comme variété différentielle}
-
-Un façon de définir l'espace projectif complexe $\PC{n}$ est une structure quotient qui peut être obtenue de deux façon. La première, analogue aux espaces projectifs réels, est de poser :
-\[\PC{n} \defeq {\C^{n+1}}^*/\C^*\]
-\\
-C'est-à- dire l'ensemble des classes de ${\C^{n+1}}^* = \C^{n+1} \setminus \{0_{\C^{n+1}}\}$ par la relation d'équivalence :
-\[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
-\\
-Cette formulation de $\PC{n}$ permet de le munir d'une structure de variété. Pour cela, la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$ est noté $[z]$ et sont définis les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
-\begin{align}
-	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z\in \C^{n+1},\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
-		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}z = \big(\nicefrac{z^0}{z^i},\cdots, 1, \cdots, \nicefrac{z^n}{z^i}\big)
-	\end{aligned}
-\end{align}
-\begin{remarque}
-	Si l'ensemble d'arrivé $\phi_i(U_i)$ est équivalent à un ouvert de $\C^{n}$, il est plus commode de travailler dans $\C^{n+1}$ puisque cela évite de devoir enlever et rajouter des coefficient dans les formules de changement de carte :
-	\[ \forall z\in\C^{n+1}\ |\ z^{i,j}\neq 0\quad (\ie~[z]\in U_i\cap U_j) ,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\]
-\end{remarque}
-\skipl
-Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Comme $\PC{n}$ est plus précisément une variété complexe\footnote{\itshape
-	Le formalisme des variétés complexes ne sera pas nécessaire outre mesure, certains concepts seront tout de même utiles et une rapide introduction de ces derniers se trouve en annexe \ref{ann:VDC}}
-, il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
-\[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{où } [z] = w\]
- \\
+\subsubsection{Choix de connexion sur $\bf{\S{n}\big(\U{1},\PC{n}\big)}$}\label{subsec:conn2SUPC}
 
 
-
-\subsubsection{$\bf{\PC{n}}$ comme base du fibré principale $\bf{\S{n}(\U{1},\PC{n})}$}
-
-
-Une deuxième façon d'aborder $\PC{n}$ est de se débarrasser de la norme (resp. du module) des vecteurs de ${\C^{n+1}}^*$ (resp. des scalaires $\C^*$). Le troisième théorème d'isomorphisme permet ainsi décrire :
-\[\PC{n} \defeq {\C^{n+1}}^*/\C^* \cong ({\C^{n+1}}^* / \R^{+_*})/(\C^* / \R^{+_*}) \cong \S{n}/\U{1}\]
-\\
-où $\S{n}\defeq S^{2n+1}\subset\C^{n+1}$ est la sphère unité de dimension (réelle) $2n+1$, vue comme sous-ensemble de $\C^{n+1}$. Une autre façon de le comprendre est de voir qu'en écrivant $\lambda=re^{i\theta}$, moralement $\C^*\cong \R^{+^*}\times \U{1}$. $\PC{n}$ peut alors être vu comme des vecteurs de ${\C^{n+1}}^*$ à une normalisation près puis à un $e^{i\theta}$ près. Ce qui revient à prendre des vecteurs normés de $\C^{n+1}$ (\ie~dans $\S{n}$) modulo l'action de $\U{1}$.
-
-De façon plus concrète, là où dans ${\C^{n+1}}^*/\C^*$, les coordonnées de $w\in U_i$ s'écrivait $w^\mu = \frac{z^\mu}{z^i}$ ; dans $\S{n}$, $z$ est déjà normé auquel cas :
-\[w^\mu = \frac{z^\mu}{|z^i|e^{i\arg (z^i)}} = \frac{z^{\mu}}{\sqrt{1-\sum_{\nu\neq i}|z^\nu|^2}}e^{-i\arg(z^i)}\]
-\\
-et on constate bien que $w^\nu$ est définie modulo un choix de $e^{-i\arg z^i}\in \U{1}$. Réciroquement, à chaque paire $(w,e^{i\theta})\in U_i\times \U{1}$, est associée un unique vecteur $z_i = h_i(w,e^{i\theta})\in\S{n}$ avec :
-\[{z_i}^\mu = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta}\]
-\\
-
-Par ailleurs, cette écriture est bien plus intéressante pour notre propos puisque le passage au quotient par $\U{1}$ traduit l'invariance par transformation de jauge.
 
 
 
@@ -395,33 +423,6 @@ Par ailleurs, cette écriture est bien plus intéressante pour notre propos puis
 
 
 \section{Interprétation des trois phases dans ce cadre}
-
-\subsection{HHHHH}
-
-blablabla maintenant on peut recoller les morceaux.
- 
-
-
-
-Comme $\PC{n}$ est une variété quotient, elle induit naturellement une variété principale :
-\begin{proposition}
-	La $2n+1$--sphère $S^{2n+1}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $S^{2n+1}$ étant induite par le produit complexe classique et où :
-	\begin{itemize}
-		\item La fibration $\pi$ est la projection canonique de $S^{2n+1}$ sur $\PC{n}$ :
-		\[\pi\ :\ \begin{aligned}S^{2n+1}\ &\lr\ \PC{n} \\ z\quad\ &\lmt\ \ [z]\end{aligned}\]
-		
-		\item Les cartes locales $h_i$ sont telles que :
-		\[\forall z \in \pi^{-1}(U_i),\ \forall e^{i\theta}\in\U{1},\  h_i(z,e^{i\theta}) = \frac{[z]}{\sqrt{1 + [z]^\nu \congu{[z]}_\nu}}e^{i\theta} \in \S{n}\qquad \text{ où les}\]
-		
-		\item Tout les représentant $z$ d'un élément de la base $\zeta\in\PC{n}$ sont normé, ainsi, alors tout La section canonique au dessus des $U_i$, $\sigma_i$ elle est définie par :
-		\[\]
-		
-	\end{itemize}
-	
-	Voir \cite[lemme 2.17]{lafontaine_introduction_2015} pour une démonstration de l'aspect fibré.
-\end{proposition}
-
-
 
 
 \subsection{Cas pseudo-cyclique}
