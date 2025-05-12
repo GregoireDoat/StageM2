@@ -184,6 +184,27 @@ Tout cela va demander quelques prérequis que nous allons voir à présent.
 
 \subsubsection{Rappels de géométrie différentielle et notations}\label{subsec:rappel2geo_diff}
 
+\begin{itemize}
+	
+	\item On fait des rappelles rapides, c'est surtout pour fixer les notations
+	
+	\item DEF : variété différentielles de classe $C^k$
+	
+	\item Espace et fibré tangent, espace des formes et leurs base respective
+	
+	\item NOTATION : on notera toujours les indices de coordo en lettres grèques ($\mu,\nu$) et les indices de cartes avec l'alphabet classique ($i,j,k$). 
+	
+	\item métrique riemannienne
+
+	
+	\item pour les variétés complexes, c'est un peu différente :
+	
+	\item carte holomorphe, doublage des esapces tangents, forme kahlerienne
+	
+\end{itemize}
+
+
+
 \subsubsection{$\bf{\PC{n}}$ comme variété différentielle}\label{subsec:rappel2geo_diff}
 
 Un façon de définir l'espace projectif complexe $\PC{n}$ est une structure quotient qui peut être obtenue de deux façon. La première, analogue aux espaces projectifs réels, est de poser :
@@ -211,7 +232,7 @@ Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de 
 
 
 
-\subsection{$\S{n}\times\bf{\PC{n}}$ comme fibré principal} \label{subsec:VFP}
+\subsection{$\S{n}$ comme fibré principal} \label{subsec:VFP}
 
 \subsubsection{Définition générale}
 
@@ -309,10 +330,10 @@ Cela mène à la définition :
 \end{definition}
 \skipl
 
-Dans la suite, il sera nécessaire de munir $P$ d'une connexion, qui s'introduit comme suit.
 
 
-\subsubsection{Le fibré $\bf{\S{n}\big(\U{1},\PC{n}\big)}$}
+
+\subsubsection{Le fibré $\bf{\VFP}$}
 
 Une deuxième façon d'aborder $\PC{n}$ est de se débarrasser de la norme (resp. du module) des vecteurs de ${\C^{n+1}}^*$ (resp. des scalaires $\C^*$). Le troisième théorème d'isomorphisme permet ainsi décrire :
 \[\PC{n} \defeq {\C^{n+1}}^*/\C^* \cong ({\C^{n+1}}^* / \R^{+_*})/(\C^* / \R^{+_*}) \cong \S{n}/\U{1}\]
@@ -352,6 +373,10 @@ Comme $\PC{n}$ est une variété quotient, elle induit naturellement une variét
 
 
 \subsection{Connexion sur VFP}\label{subsec:connexion2VFP}
+
+\begin{itemize}
+	\item Pour retrouver, dans ce cadre, une notion de fréquence instantanée il va nous falloir munir $\VFP$ d'une connexion
+\end{itemize}
 
 \subsubsection{Définition général}\label{subsec:def2conn}
 
@@ -411,11 +436,48 @@ De même, la 1-forme de connexion n'a besoin d'être définie que sur un point p
 Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est encore  grâce à la compatibilité de la connexions avec la l'action de $G$ sur $P$, qui l'information sur $G$ redondante. \thoughts{MEH}. 
 \\
 
+\begin{itemize}
+	
+	\item DEF horizontal lift : Par abue de language, on dira de $\Tilde{\gamma}$ que c'est le relèvement horizontale de $\gamma$ si c'est le relèvement horizontale de sa projection sur $\PC{n}$ avec la condition initiale $\Tilde{\gamma}(0) = \gamma(0)$
+\end{itemize}
 
 
-\subsubsection{Choix de connexion sur $\bf{\S{n}\big(\U{1},\PC{n}\big)}$}\label{subsec:conn2SUPC}
 
+\subsubsection{Choix de connexion sur $\bf{\VFP}$}\label{subsec:conn2SUPC}
 
+\begin{itemize}
+	
+	\item Pour choisir la connexion est mettre sur $\VFP$, il est important de comprendre son intérêt du point de vue signal.
+	
+	\item Comme, à chaque instant $t$, un signal $\gamma$ sur $\S{n}$ est représenté par une pair $(e^{i\alpha(t)}, w(t))\in\U{1}\times\PC{n}$ à travers les $h_i$, il parait naturelle de voir $\alpha(t)$ comme la fréquence instantanée du signal en $\gamma(t)$.
+	
+	\item Le problème de ce choix est qu'il dépend de la carte $U_i$ utilisé pour représenté $\gamma(t)$, ce qui n'est pas sensé être le cas de la fréquence instantanée.
+	
+	\item C'est là qu'intervient la connexion : Le relèvement horizontal $\Tilde{\gamma}$ d'une courbe $C_\gamma\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\gamma}$ n'a pas de variation dans $\U{1}$, de variation fréquentielle.
+	
+	\item Ainsi, si $C_\gamma$ est la projection d'un signal $\gamma$, le relèvement horizontale $\Tilde{\gamma}$ s'interprète comme une version de $\gamma$ dénué de toute fréquence instantanée.
+	À l'inverse, à l'instant $t$, l'action $e^{i\alpha}$ permettant de passé de $\Tilde{\gamma}(t)$ à $\gamma(t)$ est vu la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)
+	
+	\begin{figure}[h]
+		\includegraphics[width=0.4\textwidth]{fig/placeholder}
+		\caption[Interprétation géométrique de la fréquence instantanée]{Fréquence instantanée d'un signal $\gamma$ vu comme variation vertical de $\gamma$ par rapport à son relèvement vertical $\Tilde{\gamma}$ associé}
+		\label{fig:phases_p-cycl}
+	\end{figure}	
+	
+	\item Sachant cela, est étant donnée que l'algèbre de Lie $\U{1}$ est $i\R$,  les discutions de première partie suggère de poser :
+	\[\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle p, \bf{v}\rangle\]
+	
+	\item Un choix qui est doublement justifié puisque c'est également la 1-forme de connexion induite par la métrique sur $\S{n}$.
+	
+	\item En effet, si $\S{n}$ n'est pas une variété complexe (problème de dimensionnalité), elle a quand-même une métrique riemannienne (réelle) induite par celle sur $\C^n$ : $\Re e\langle \cdot,\cdot\rangle$.
+	
+	\item Dans ce cas, les espaces horizontaux de définissent comment les espaces orthogonaux aux verticaux : 
+	\[\forall p\in\S{n},\quad \hg[p]{\S{n}} = {\vg[p]{\S{n}}}^\perp\]
+	
+	\item et elle vérifie bien les règles de changement de cartes :
+	\[eoitbnetovqnerbmin\]
+	
+\end{itemize}
 
 
 
@@ -424,17 +486,94 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 
 \section{Interprétation des trois phases dans ce cadre}
 
+\begin{itemize}
+	
+	\item Rapide résumé : On décompose tout signal multivarié complexe comme la données d'une amplitude, d'une phase et d'un ``état de polarisation''. Indépendamment de l'amplitude, cela nous ramène à travailler dans la VFP $\VFP$.
+	
+	\item On la munie d'une connexion tenant compte de la métrique sur $\S{n}$, ce qui nous ramène à la définir comme la fréquence instantanée.
+	
+	\item Reste alors a réinterpréter les trois phases dans ce cadre
+	
+	\item Pour cela, d'abord un cas simple, similaire au cas particulier de la première partie : $\gamma$ pseudo-cyclique
+\end{itemize}
 
 \subsection{Cas pseudo-cyclique}
 
-Mais si $\gamma$ est horizontal, alors pas de phase dynamique et :
-\[\phaseg  = \phaset\]
-Du point de vue de $\S{n}$, $\phaset$ est la distance (géodésique) entre $\gamma(0)$ et $\gamma(1)$.
-Si $\gamma_g$ est cette géodésique et que, de plus, elle n'a pas d'holonomie (\ie~ $ \omega_{\gamma(0)}\big(\dot{\gamma}(0)\big) = \omega_{\gamma(1)}\big(\dot{\gamma}(1)\big)$)
+\begin{itemize}
+	\item DEF : pseudo-cyclique
+	
+	\item Dans ce cas, la projection $C_\gamma$ de $\gamma$ sur $\PC{n}$ est (proprement) cyclique
+	
+	\item Comme, entre autre, Bohm l'explique dans \cite{bohm_geometric_2003}, en fonction du choix de relèvement on peut isoler les différentes phases de $\gamma$. 
+	
+	\item En particulier, $C_\gamma$ est cyclique, $\gamma(1)$ est dans la même fibre que $\gamma(0)$ et les trois se décrivent dans une même fibre $\gamma(0)\U{1} = \gamma(1)\U{1}$ :
+	
+	\item Étant donné le choix de connexion, le relèvement horizontale $\Tilde{\gamma}$ de $C_\gamma$ (à partir du point initiale $\gamma(0)$) n'a pas de phase dynamique. $\phased$ est donc donnée par différence de phase entre $\gamma(1)$ et $\Tilde{\gamma}(1)$
+	
+	\item Pour obtenir la phase géométrique, on considère une troisième relèvement, $\eta$, de $C_\gamma$ qui cette fois est proprement cyclique. Comme il n'a, par construction, par de phase totale, sa phase géométrique est égale à sa phase dynamique au signe près.
+	
+	\item Or, la phase $\phased(\eta)$ est, comme pour $\gamma$ donné par la différence de jauge entre $\Tilde{\gamma}(1)$ et $\eta(1)$.
+	
+	\item Tout cela est résumé par la \Cref{fig:phases_p-cycl} ci-dessous :
+	\begin{figure}[h]
+		\includegraphics[width=0.4\textwidth]{fig/placeholder}
+		\caption[Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique]{Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique.}
+		\label{fig:phases_p-cycl}
+	\end{figure}
+	
+	\item Remarque importante : le choix de relèvement cyclique $\eta$ n'est pas unique mais n'est pas important pour autant, puisque c'est la seule propriété $\eta(0)=\eta(1)$ qui permet d'avoir l'interprétation exposé juste avant. Cela traduit, par ailleurs, l'aspect invariant par transformation de jauge de $\phaseg$.
+	
+	\item Ce que cette représentation montre c'est que $\phaseg$ est donné par l'holonomie du trajet $\gamma$.
+	
+	\item DEF : holonomie
+	
+		
+	
+	\item Dans notre cas, la variété est connexe ce qui assure que $\Hol$ est un sous-groupe de Lie connexe du groupe structural, à savoir $\U{1}$. Ainsi, $\Hol = \U{1}$, ce qui montre que (au moins dans le cas cyclique) la phase géométrique peut prendre n'importe qu'elle valeur.
+	
+	\item Cette formulation est très jolie mais finalement que très peu instructive. On pourrait alors se demander si $\phaseg$ ne pourrait pas, comme $\phased$, s'écrire comme l'intégrale d'une 1-forme sur $\PC{n}$.
+	
+	\item A cela, Mukunda \& Simon explique dans \cite{mukunda_quantum_1993} que non. Moralement, l'écriture $\phaseg = \phaset - \phased$ suggère que ça ne peut pas être le cas puisque la phase totale ne peut pas s'écrire comme l'intégrale d'une 1-forme.
+	
+	\item Cela vient du fait que $\phaset$ est indépendant de la trajectoire de $\gamma$ sur $]0,1[$. Au mieux, elle peut être vu comme la longueur de la géodésique $\gamma_g$ sur $\S{n}$ entre les points $\gamma(0)$ et $\gamma(1)$. C'est-à-dire comme l'intégrale de la norme sur $\S{n}$ de $\dot{\gamma}_g$ le long de $\gamma_g$. Mais rien par rapport à $\gamma$
+	
+\end{itemize}
 
 
 
 
+\subsection{La phase géométrique dans $\PC{n}$}
+
+\begin{itemize}
+	
+	\item Cela étant dit, dans le cas cyclique $\phaseg$ et $\phased$ se confonde et cette propriété peut être exploitée.
+	
+	\item En effet,  la commutativité de $\U{1}$ fait que $\Hol$ est indépendant du relèvement $\eta(0)$ de $C_\gamma(0)$ 
+	
+	\item Ajouter à cela le fait que la connexion s'exprime exclusivement dans les cartes $U_i$, on se ramène à calcul un calcul de la phase géométrique exclusivement dans $\PC{n}$.
+	
+	\item Dans ce cas, la phase géométrique est l'intégrale sur un lacet d'une 1-forme et le théorème de Stokes peut s'appliquer :
+	
+	\item THEO de Stokes
+	
+	\item Dans notre cas : on obtient l’intégrale d'une forme symplectique sur l'aire entouré par le lacet $C_\gamma$ (je suspecte que ce soit $-i\Im m$(métrique F-S + à affiner) 
+	
+	\item En somme, cela se ramène à un calcul d'aire sur $\PC{n}$
+	
+	\item \thoughts{Un mot sur le lien avec Fisher}
+	
+\end{itemize}
+
+
+\subsection{Retour au cas général}
+
+\begin{itemize}
+	\item Si maintenant $\gamma$ est qu'elle conque, pour retrouver les interprétation précédente, le plus simple est encore de se ramener au cas pseudo-cyclique.
+	
+	\item Cela demande de refermer $\gamma$ de sorte à ne pas engendré plus de phase géométrique. En somme, on veut savoir qu'elles sont les trajectoire de $\S{n}$ qui n'engendre pas de phase géométrique.
+	
+	\item Sachant le représentaiton par Stokes c'est plutôt simple : 
+\end{itemize}
 
 
 
