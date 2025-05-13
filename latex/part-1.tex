@@ -438,11 +438,6 @@ Pour la faire clairement apparaître, il suffit de noter que $\phaseg$ étant un
 
 Soit la moitié de l'aire de la calotte au dessus du chemin tracé par $\rho_{\x}$ plus $2\pi$. Une fois n'est pas coutume, ca va toujours pas et j'ai envie de me foutre en l'air atm
 
-\begin{itemize}
-	\item Stokes et généralisation de la formule
-	
-	\item 
-\end{itemize}
 
 
 
@@ -471,6 +466,17 @@ Soit la moitié de l'aire de la calotte au dessus du chemin tracé par $\rho_{\x
 	
 \end{itemize}
 
+Au niveau des ensembles, décomposer un signal multivarié complexe en paramètre d'amplitude, phase et polarization instantanée, revient à décomposer $\C^n$ en un produit de trois ensembles. Pour cela, un vecteur de $\C^n$ est vu comme la donné d'une direction, \ie~un élément de la sphère unité $S^{2n-1}\subset\C^n$, et d'une norme, de sorte que :
+\[\C^n \cong \R^{+_*} \times S^{2n-1}\]
+\\
+Les éléments de $\R^{+_*}$ s'interprète naturellement comme l'amplitude instantanée du signal et pour faire apparaître sa phase, $S^{2n-1}$ est lui-même décomposé de sorte à faire apparaître $\U{1}$, donnant :
+\[\C^n \cong \R^{+_*} \times \U{1} \times S^{2n-1}/\U{1}\]
+Le quotient restant n'est autre que l'espace projectif complexe de dimension (complexe) $n-1$, noté $\PC{n-1}$. Sa construction sera détaillée dans la \cref{part:phase_geo} suivante.
+\\
+
+Pour motiver d'autant plus cette décomposition, la projection $\rho : \x \lr \congu{\x}\,^t\x / \|\x\|^2$, qui s'est avérée fort instructive, peut être vue comme une projection sur l'espace complexe en cela qu'elles sont toutes deux invariantes par transformation de jauge\footnote{\itshape
+	Pour être précis, c'est le premier théorème d'isomorphisme assure $\rho(\C^n) \cong\PC{n-1}$ sont en bijection et de même structure.}.
+En particulier, si $n=2$, $\PC{1}\cong S^{2}$, soit exactement l'espace de représentation des $\rho_{\x}$ dans la section précédente.
 
 
 

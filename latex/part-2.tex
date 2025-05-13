@@ -1,168 +1,4 @@
 
-Plan approximatif de cette partie :
-
-\begin{enumerate}[label=\Roman* --- ] \bfseries
-	
-	\item Cadre d'étude \\
-	{\normalfont\itshape Dans notre cas, tout s'écrit très simplement donc pas besoin de sortir tout l'arsenal de géo diff}
-	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
-		
-		\item Construction de $\PC{n}$
-		\begin{enumerate}[label=\arabic{enumi}.1.\arabic* --- ]
-			
-			\item Rappel de géométrie différentielle et notation 
-			\begin{itemize} \normalfont
-				
-				\item Atlas, carte coordo local
-				
-				\item Esapce tangent
-				
-				\item Différentielle et image réciproque
-				
-				\item Variété riemannienne
-				
-				\item \thoughts{un mot sur les variétés différentielles complexes (voir annexe pour plus de détail)}
-				
-			\end{itemize}
-			
-			\item Le cas de $\PC{n}$
-			\begin{itemize} \normalfont
-				
-				\item Définition comme espace quotient ${\C^{n+1}}^*/\C^*$
-				
-				\item C'est variété différentielle (voir annexe pour détails)
-				
-				\item \thoughts{Un mot sur la projection $\x \longmapsto \x\x^\dagger$ utilisé en physique (c'est équivalent)}
-				
-			\end{itemize}			
-		\end{enumerate}
-		
-		\item Fibré principaux
-		\begin{enumerate}[label=\arabic{enumi}.2.\arabic* --- ]
-			
-			\item Définitions de base
-			\begin{itemize} \normalfont
-				
-				\item Définition de VFP
-				
-				\item Section local (canonique)
-				
-				\item Changement de carte
-				
-			\end{itemize}
-			
-			\item Application à notre cas
-			\begin{itemize} \normalfont
-				
-				\item $\PC{n}$ comme quotient $\S{n}/U(1)$
-				
-				\item explicite les cartes, sections, etc
-				
-				\item Interprétation des paramètres (amplitude, phase, polar)
-				
-				\item le pb du choix de phase (version géo diff)
-			\end{itemize}
-		\end{enumerate}
-			
-		\item Espaces horizontaux et connexion
-		\begin{enumerate}[label=\arabic{enumi}.2.\arabic* --- ]
-			
-			\item Définitions générales
-			\begin{itemize} \normalfont
-				
-				\item Espace verticaux
-				
-				\item connexion comme ensemble d'espace horizontaux
-				
-				\item 1-forme de connexion
-			\end{itemize}
-			
-			\item Connexion sur $\S{n}(U(1), \PC{n})$
-			\begin{itemize} \normalfont
-				
-				\item Connexion induite par la métrique
-				
-				\item Explicitation de $\omega$
-				
-				\item Formule de changement de carte dans ce cas
-			\end{itemize}
-			
-		\end{enumerate}
-		
-	\end{enumerate}
-	
-	\item Interprétation géométrique des trois phases
-	
-	\begin{enumerate}[label=\arabic{enumi}.\arabic* --- ]
-		
-		\item Première interprétation
-		\begin{itemize} \normalfont
-			
-			\item La découpe de $\C^n = \R^{+_*}\times U(1) \times \PC{n}$ fait exactement ce qu'on veut (et fuck l'amplitude)
-			
-			\item la phase instantanée revient faire un choix de jauge, un choix de relèvement. Mais pas possible avec $h_i$ parce que carte-dépendant
-			
-			\item c'est là qu'intervient l'horizontal lift : ca fait office de valeur de référence modulo un choix de phase initiale
-			
-			\item 
-		\end{itemize}
-		
-		\item Cas pseudo-cyclique
- 		\begin{itemize} \normalfont
-			
-			\item Le dessin de Bohm :
-			
-			\item phase dyn =  signal - horizontal lift
-			
-			\item phase geo = horizontal lift - cyclique lift (<- indé du signal !)
-			
-			\item phase tot = cumul des deux
-		\end{itemize}
-		
-		\item La phase géo dans l'espace projectif
-		\begin{itemize} \normalfont
-			
-			\item Géodésique de $\PC{n}$ et généralisation du cas pseudo-cyclique
-			
-			%\item Remarque de Mukunda : phase géo est une 2-forme vs phase dyn est une 1-forme
-		
-			\item Bonnet-Gauss  \& Stokes : phase géo comme calcul d'air
-	
-			
-			\item \thoughts{Comme partie imaginaire de la métrique \textit{(+ lien avec Fisher)}}
-		
-		\end{itemize}
-	\end{enumerate}
-\end{enumerate}
-\skipl
-\\
-\textbf{Annexes}
-\begin{enumerate}[label=\Alph* --- ] \bfseries
-	
-	%\item Forme différentielles \textit{(nécessaire ?)}
-	
-	\item Algèbre et groupe de Lie
-	\begin{itemize}\normalfont
-		
-		\item def : groupe de Lie $G$
-		
-		\item def : Algèbre de Lie $\mathfrak{g}$ associée à $G$
-		
-		\item $\mathfrak{g}$ vu comme tangent $\tg[e]{G}$
-		
-		\item Cas particulier : $G=\U{1}$
-		
-	\end{itemize}
-\end{enumerate}
-
-\newpage
-
-Au niveau ensemble, Décomposer un signal multivarié complexe en paramètre d'amplitude, phase et polarization instantanée, revient à décomposer $\C^n$ en un produit de trois ensembles. Pour cela, un vecteur de $\C^n$ est vu comme la donné d'une direction, \ie~un élément de la sphère unité $S^{2n-1}\subset\C^n$, et d'une norme, de sorte que :
-\[\C^n \cong \R^{+_*} \times S^{2n-1}\]
-\\
-Pour faire apparaître une phase au signal, $S^{2n-1}$ est lui-même décomposé de sorte à faire apparaître $\U{1}$, donnant :
-\[\C^n \cong \R^{+_*} \times \U{1} \times S^{2n-1}/\U{1}\]
-
 \thoughts{A reprendre, comme toutes les intros} Pour étudier la phase géométrique d'un signal $\psi$, il nous faut projeter $\psi$ sur $\PC{n}$, et ceux, tout en gardant une trace de sa phase puisque c'est le lien entre les deux qui nous intéresse. Il nous faut donc envoyer $\psi$ dans le produit :
 \[\U{1}\times \PC{n}\qquad\qquad (\text{ou }\ \C^{n-1*}/\C^*)\]
 \\
@@ -176,23 +12,82 @@ La phase géométrique, quand à elle, sera liée avec la métrique hermitienne 
 Tout cela va demander quelques prérequis que nous allons voir à présent.
 \\
 
+\begin{itemize}
+	\item Pour être un peu plus précis, même si $S^{2n-1}$ veut être vu comme produit le produit $\U{1}\times \PC{n-1}$, il faut pas complètement séparer les deux parce que si la phase géométrique est hérité de $\PC{n-1}$, c'est bien dans $\U{1}$ qu'elle se manifeste.
+	
+	\item Il s'avère que les variétés fibrées principales sont tout à fait adéquat pour décrit se double jeu entre $S^{2n-1}$ et $\U{1}\times \PC{n-1}$ et c'est dans ce cadre que la phase géométrique sera décrite et étudiée.
+	
+	\item Aussi, par souci de comodité, on se placera dans $\C^{n+1}$ et l'on notera la sphère unité de ce dernier :
+	\[\S{n} \defeq S^{2n+1} \cong \U{1}\times \PC{n}\]
+	
+	\item Tout le formalisme nécessaire sera exposé dans la \cref{sec:cadre_geodiff}, avec plus de détail technique en annexe et dans la \cref{sec:phases_dans_VFP} seront décrites les différentes phases d'un point de vue géométrique.
+	
+\end{itemize}
 
 
-\section{Cadre d'étude}
 
-\subsection{Construction de $\bf{\PC{n}}$} \label{subsec:construc_PC^n}
+\section{Cadre d'étude}\label{sec:cadre_geodiff}
+
+Pour proprement poser le cadre, il nous faudra trois choses :
+\begin{enumerate}
+	
+	\item D'abord faire quelque rappel de géométrie différentielle, ne serait-ce que pour fixer les notations (\Cref{subsec:rappel2geo_diff}), avec comme exemple le cas $\PC{n}$ (\Cref{subsec:PC^n_variet}), qui sera utile plus loin. 
+	
+	\item Ensuite, seront définies les variétés fibrés principales, avec les outils de bases qui leurs sont associés (\Cref{subsec:def2VFP}), puis $\U{1}\times \PC{n}$ sera écrit comme telle (\Cref{subsec:SUPC_VFP}).
+	
+	\item Enfin, il nous faudra définir une connexion sur ces fibrés, connexion qui seront, d'abord, définie de façon générale (\Cref{subsec:def2conn}), puis explicitée et interprétée dans le cas qui nous intéresse (\Cref{subsec:conn2SUPC}).
+	
+\end{enumerate}
+
+\subsection{$\bf{\PC{n}}$ vue comme variété différentielle} \label{subsec:construc_PC^n}
 
 \subsubsection{Rappels de géométrie différentielle et notations}\label{subsec:rappel2geo_diff}
 
+Une variété différentielle se définie comme suit :
+\begin{definition}[Variété différentielle] \label{defvarietoche}
+	une variété différentielle de classe $C^k$ de dimension $n$ est un espace topologique
+	$\manu$ munie d'un \emph{atlas} $\big\{ (\phi_i, U_i) \big\}_{i\in I}$, c'est-à-dire un ensemble finie de pair d'ouvert $U_i\subset \manu$ et d'application $\phi_i :U_i\ \lr\ \R^n$ telle que :
+	\begin{itemize}
+		
+		\item les $U_i$ forme un recouvrement de la variété :\qquad $\bigcup_{i\in I} U_i = \manu$
+		
+		\item les $\phi_i$ sont des homéomorphismes sur leur image $\phi_i(U_i)\subset\R^n$.
+		
+		\item si l'intersection $U_i \cap U_j$ est non vide, alors ${\phi_j \circ {\phi_i}^{-1}}_{| {\phi_i}(U_i\cap U_j)}$ est un $C^k$ difféomorphisme sur son image.
+		
+	\end{itemize}
+	A travers $\phi_i$, à tout point $x\in U_i$ sont associées des \emph{coordonnées locales} $(x^\mu)_{1\leq \mu\leq n}$, c'est-à-dire les coefficient de $\phi_i(x)$ dans une base $(e_\mu)_{1\leq \mu\leq n}$ de $\R^n$. Ces coordonnées sont dites locales car dépendantes du choix de la pair $(U_i,\phi_i)$ et la composée ${\phi_j \circ {\phi_i}^{-1}}_{| {\phi_i}(U_i\cap U_j)}$ est vue comme un \emph{changement de coordonnées}.\\
+	Dans toutes la suite, toutes les objets propre au cartes seront indexes via l'alphabet classique ($i,j,k$) et le indices associées au coordonnées locales par des lettres grecs ($\mu,\nu,\alpha$).
+\end{definition}
+
+\begin{figure}[h]
+	\includegraphics[width=0.6\textwidth]{fig/placeholder}
+	\caption[La première figure de tout bon livre de géométrie différentielle]{La première figure de tout bon livre de géométrie différentielle : représentation de deux cartes avec l'application de changement de coordonnées}
+\end{figure}
+
+Ensuite, les \emph{espaces tangents} de $\manu$  et son fibré tangent seront respectivement notés :
+\begin{align}
+	\forall x\in\manu,\ &\tg[x]{\manu}  &  \tg{\manu} &= \bigsqcup_{x\in\manu}\tg[x]{\manu}
+\end{align} 
+Pour le dire rapidement, les vecteurs tangents agissent comme une dérivation en cela que, pour une chemin $\gamma : \R\lr\manu$, sa différentielle au point $x=\gamma(0)$ est définie par l'application :
+\begin{equation} \label{eq:def2vec_tg}
+	\dot{\gamma}_{x}\  :\ \begin{aligned}
+		\conti[1]{\manu}{\R}\ &\lr\qquad \R \\ 
+		f\qquad &\lmt\ \frac{d}{dt} f \circ\gamma(t)\Big|_{t=0} \defeq \frac{d(f \circ \gamma)}{dt}(0)
+	\end{aligned}
+\end{equation}
+\\
+Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\tg[x]{\manu}$, qui sera noté  $\bt_\mu = \frac{\partial}{\partial x^\mu}$. notation qui est justifié en cela que, moralement, $\bt_\mu$ dérive toute fonction test $f\in\conti[k]{\manu}{\R}$ dans le long de la $\mu^{eme}$ coordonnée de $x$.
+\\
+
+Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et $f : \manu\lr \mathpzc{N}$ une application différentiable, sa différentielle (ou application tangent) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
+\[\tg{f}(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (\tg{f})_\mu^\nu v^\mu = \bt_\mu\big( f^\nu \big)v^\mu\]
+
 \begin{itemize}
 	
-	\item On fait des rappelles rapides, c'est surtout pour fixer les notations
+	\item Différentielle / application tangent et image réciproque
 	
-	\item DEF : variété différentielles de classe $C^k$
-	
-	\item Espace et fibré tangent, espace des formes et leurs base respective
-	
-	\item NOTATION : on notera toujours les indices de coordo en lettres grèques ($\mu,\nu$) et les indices de cartes avec l'alphabet classique ($i,j,k$). 
+	%\item NOTATION : on notera toujours les indices de coordo en lettres grèques ($\mu,\nu$) et les indices de cartes avec l'alphabet classique ($i,j,k$). 
 	
 	\item métrique riemannienne
 
@@ -205,7 +100,9 @@ Tout cela va demander quelques prérequis que nous allons voir à présent.
 
 
 
-\subsubsection{$\bf{\PC{n}}$ comme variété différentielle}\label{subsec:rappel2geo_diff}
+\subsubsection{$\bf{\PC{n}}$ comme variété différentielle}\label{subsec:PC^n_variet}
+
+
 
 Un façon de définir l'espace projectif complexe $\PC{n}$ est une structure quotient qui peut être obtenue de deux façon. La première, analogue aux espaces projectifs réels, est de poser :
 \[\PC{n} \defeq {\C^{n+1}}^*/\C^*\]
@@ -230,16 +127,22 @@ Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de 
 \[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{où } [z] = w\]
 \\
 
+\begin{itemize}
+	
+	\item \thoughts{Un mot sur la projection $\x \longmapsto \x\x^\dagger$ utilisé en physique (c'est équivalent)}
+	
+\end{itemize}
+
 
 
 \subsection{$\S{n}$ comme fibré principal} \label{subsec:VFP}
 
-\subsubsection{Définition générale}
+\subsubsection{Définition générale}\label{subsec:def2VFP}
 
 Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemble localement à des espaces produits. 
-Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $S^{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, il est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
+Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $S^{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, une tranche du ruban est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
 \begin{figure}[h]
-	\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	\includegraphics[width=0.6\textwidth]{fig/placeholder}
 	%\input{tikz/part-2/ruban2mobius}
 	\caption[Ruban de Mobius comme variété fibrée]{Représentation du ruban de Modius en tant que fibré. Les notations sont reprise de la \cref{def:VFP}.}
 	\label{fig:ruban2modius}
@@ -250,7 +153,7 @@ Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de 
 	Bien que ce ne sera pas précisé, il sera toujours sous-entendu que les différentes variétés et cartes doivent avoir les mêmes niveaux de régularités pour que le tout reste cohérent.} :
 \\
 \begin{definition}[Variété fibrée principale] \label{def:VFP}
-	Une \emph{variété fibrée principale}(VFP), ou \emph{fibré principal} est constituée de deux variétés différentielles $P$ et $B$ telles que :
+	Une \emph{variété fibrée principale} (VFP), ou \emph{fibré principal} est constituée de deux variétés différentielles $P$ et $B$ telles que :
 	\begin{itemize}
 		\item Il existe un groupe de Lie $G$ opérant à droite (ou à gauche) sur $P$ via l'application différentiable :
 		\begin{equation} \label{eq:VFP_action}
@@ -333,46 +236,53 @@ Cela mène à la définition :
 
 
 
-\subsubsection{Le fibré $\bf{\VFP}$}
+\subsubsection{Le fibré $\bf{\VFP}$}\label{subsec:SUPC_VFP}
 
-Une deuxième façon d'aborder $\PC{n}$ est de se débarrasser de la norme (resp. du module) des vecteurs de ${\C^{n+1}}^*$ (resp. des scalaires $\C^*$). Le troisième théorème d'isomorphisme permet ainsi décrire :
+Une deuxième façon d'aborder $\PC{n}$ est de se débarrasser de la norme (resp. du module) des vecteurs de ${\C^{n+1}}^*$ (resp. des scalaires de $\C^*$). Le troisième théorème d'isomorphisme permet ainsi décrire :
 \[\PC{n} \defeq {\C^{n+1}}^*/\C^* \cong ({\C^{n+1}}^* / \R^{+_*})/(\C^* / \R^{+_*}) \cong \S{n}/\U{1}\]
 \\
-où $\S{n}\defeq S^{2n+1}\subset\C^{n+1}$ est la sphère unité de dimension (réelle) $2n+1$, vue comme sous-ensemble de $\C^{n+1}$. Une autre façon de le comprendre est de voir qu'en écrivant $\lambda=re^{i\theta}$, moralement $\C^*\cong \R^{+^*}\times \U{1}$. $\PC{n}$ peut alors être vu comme des vecteurs de ${\C^{n+1}}^*$ à une normalisation près puis à un $e^{i\theta}$ près. Ce qui revient à prendre des vecteurs normés de $\C^{n+1}$ (\ie~dans $\S{n}$) modulo l'action de $\U{1}$.
+Une autre façon de le comprendre est de voir qu'en écrivant $\lambda=re^{i\theta}$, moralement $\C^*\cong \R^{+^*}\times \U{1}$. $\PC{n}$ peut alors être vu comme des vecteurs de ${\C^{n+1}}^*$ à une normalisation près puis à un $e^{i\theta}$ près. Ce qui revient à prendre des vecteurs normés de $\C^{n+1}$ (\ie~dans $\S{n}$) modulo l'action de $\U{1}$. Écrit de façon informelle :
+\begin{align*}
+	\PC{n} = {\C^{n+1}}^*/\C^* &\cong {\C^{n+1}}^*/(\R^* \times \U{1}) \\
+	&\cong \big( {\C^{n+1}}^*/\R^* \big) /\U{1} \\
+	&\cong \S{n}  / \U{1}
+\end{align*}
+\skipl
 
 De façon plus concrète, là où dans ${\C^{n+1}}^*/\C^*$, les coordonnées de $w\in U_i$ s'écrivait $w^\mu = \frac{z^\mu}{z^i}$ ; dans $\S{n}$, $z$ est déjà normé auquel cas :
 \[w^\mu = \frac{z^\mu}{|z^i|e^{i\arg (z^i)}} = \frac{z^{\mu}}{\sqrt{1-\sum_{\nu\neq i}|z^\nu|^2}}e^{-i\arg(z^i)}\]
 \\
-et on constate bien que $w^\nu$ est définie modulo un choix de $e^{-i\arg z^i}\in \U{1}$. Réciroquement, à chaque paire $(w,e^{i\theta})\in U_i\times \U{1}$, est associée un unique vecteur $z_i = h_i(w,e^{i\theta})\in\S{n}$ avec :
+et on constate bien que $w^\mu$ est définie modulo un choix de $e^{-i\arg z^i}\in \U{1}$. Réciroquement, à chaque paire $(w,e^{i\theta})\in U_i\times \U{1}$, est associée un unique vecteur $z_i = h_i(w,e^{i\theta})\in\S{n}$ avec :
 \[{z_i}^\mu = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta}\]
 \\
 
-Par ailleurs, cette écriture est bien plus intéressante pour notre propos puisque le passage au quotient par $\U{1}$ traduit l'invariance par transformation de jauge.
-\\ \\ \\ \\ 
-
-
-
-Comme $\PC{n}$ est une variété quotient, elle induit naturellement une variété principale :
+Présenté ainsi, $\PC{n}$ induit naturellement une variété principale :
 \begin{proposition}
-	La $2n+1$--sphère $S^{2n+1}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $S^{2n+1}$ étant induite par le produit complexe classique et où :
+	La $(2n+1)-$sphère $\S{n}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $\S{n}$ étant induite par la multiplication par un scalaire complexe et où :
 	\begin{itemize}
-		\item La fibration $\pi$ est la projection canonique de $S^{2n+1}$ sur $\PC{n}$ :
-		\[\pi\ :\ \begin{aligned}S^{2n+1}\ &\lr\ \PC{n} \\ z\quad\ &\lmt\ \ [z]\end{aligned}\]
+		\item La fibration $\pi$ est la projection canonique de $\S{n}$ sur $\PC{n}$ :
+		\begin{equation}
+			\pi\ :\ \begin{aligned} \S{n}\ &\lr\ \PC{n} \\ z\quad\ &\lmt\ \ [z]\end{aligned}
+		\end{equation}
 		
-		\item Les cartes locales $h_i$ sont telles que :
-		\[\forall z \in \pi^{-1}(U_i),\ \forall e^{i\theta}\in\U{1},\  h_i(z,e^{i\theta}) = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta} \in \S{n}\qquad \text{ où les}\]
+		\item Les cartes locales $h_i$ s'écrivent :
+		\begin{equation}
+			\forall w \in U_i,\ \forall e^{i\theta}\in\U{1},\  h_i(w,e^{i\theta}) = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta} \in \S{n}
+		\end{equation}
 		
-		\item Tout les représentant $z$ d'un élément de la base $\zeta\in\PC{n}$ sont normé, ainsi, alors tout La section canonique au dessus des $U_i$, $\sigma_i$ elle est définie par :
-		\[\]
+		\item Les sections canoniques au dessus des $U_i$, $\sigma_i$ elle est définie par :
+		\begin{equation}
+			\forall w \in U_i,\ \sigma_i(w) = h_i(w, 1) = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}
+		\end{equation}
 		
 	\end{itemize}
-	
-	Voir \cite[lemme 2.17]{lafontaine_introduction_2015} pour une démonstration de l'aspect fibré.
 \end{proposition}
+\skipl
 
 
 
-\subsection{Connexion sur VFP}\label{subsec:connexion2VFP}
+
+\subsection{Espaces horizontaux et connexion}\label{subsec:connexion2VFP}
 
 \begin{itemize}
 	\item Pour retrouver, dans ce cadre, une notion de fréquence instantanée il va nous falloir munir $\VFP$ d'une connexion
@@ -420,7 +330,7 @@ Au delà d'assurer une compatibilité avec la connexion, l'équation \eqref{eq:c
 De même, la 1-forme de connexion n'a besoin d'être définie que sur un point particulier au dessus de chaque fibre. Les espaces verticaux étant tous difféomorphes à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$, c'est sur $\mathfrak{g}$ qu'elle est définie :
 
 \begin{definition}
-	La \emph{1-forme de connexion} $\conn$ d'une VFP $P(G,B)$ est définie comme la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que :
+	La \emph{1-forme de connexion} $\conn$ d'une VFP $P(G,B)$ est définie comme la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est à valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que :
 	\begin{equation} \label{eq:1-form2conn}
 		\forall p\in P,\quad \hg[p]{P} \defeq \Ker(\conn_p)
 	\end{equation}
@@ -439,6 +349,8 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 \begin{itemize}
 	
 	\item DEF horizontal lift : Par abue de language, on dira de $\Tilde{\gamma}$ que c'est le relèvement horizontale de $\gamma$ si c'est le relèvement horizontale de sa projection sur $\PC{n}$ avec la condition initiale $\Tilde{\gamma}(0) = \gamma(0)$
+	
+	\item Remarque : Même si cette notion de connexion n'est pas la même que pour les connexions affines, les deux sont très liée. En particulier si $P$ est le fibré tangent d'une variété $\manu$ avec pour groupe structural $\GL_n(\R)$, alors toute connexion sur $P$ est une connexion affine sur $\manu$ .
 \end{itemize}
 
 
@@ -467,7 +379,7 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 	\item Sachant cela, est étant donnée que l'algèbre de Lie $\U{1}$ est $i\R$,  les discutions de première partie suggère de poser :
 	\[\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle p, \bf{v}\rangle\]
 	
-	\item Un choix qui est doublement justifié puisque c'est également la 1-forme de connexion induite par la métrique sur $\S{n}$.
+	\item Un choix qui est doublement justifié puisque c'est également la 1-forme de connexion induite par la métrique sur $\S{n}$. Plus de détail dans l'annexe \ref{ann:conn2submer_riemanian} ?.
 	
 	\item En effet, si $\S{n}$ n'est pas une variété complexe (problème de dimensionnalité), elle a quand-même une métrique riemannienne (réelle) induite par celle sur $\C^n$ : $\Re e\langle \cdot,\cdot\rangle$.
 	
@@ -484,7 +396,7 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 
 
 
-\section{Interprétation des trois phases dans ce cadre}
+\section{Interprétation des trois phases dans ce cadre} \label{sec:phases_dans_VFP}
 
 \begin{itemize}
 	
@@ -586,7 +498,7 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 
 \section{Annexe}
 
-\subsection{Connexion induite par une métrique}
+\subsection{Connexion induite par une métrique} \label{ann:conn2submer_riemanian}
 
 Si $P(G,B)$ une VFP munie d'une métrique riemannienne $g$. La connexion induite par $g$ sur $P$ est définie par :
 \begin{equation}
@@ -608,22 +520,14 @@ et on la projection de $X$ sur $\vg{P}$ est donnée par :
 
 \subsection{Algèbre et groupe de Lie} \label{ann:2Lie}
 
+\subsubsection{Quelques généraliés}
+
+\subsubsection{Cas particulier : $\bf{\U{1}}$}
 
 
 
 \subsection{Variété différentielle complexe, tiré de \cite{nakahara_geometry_2003}}\label{ann:VDC}
 
-Pour mémoire, une variété différentielle de classe $C^k$ ($k\in\N\cup\{\infty\}$) de dimension $n$ est un espace topologique\footnote{\itshape
-	La topologie de $\manu$ doit vérifier des propriétés type séparable, dénombrable à l'infinie, \etc, qui seront toutes admises dans la suite, voir par exemple \cite[chap. 2]{lafontaine_introduction_2015}}
-$\manu$ (ou $\manu^n$) munie d'un \emph{atlas} $(\phi_i, U_i)_{i\in I}$, c'est-à-dire un ensemble finie de pair d'ouvert $U_i\subset \manu$ et d'application $\phi_i :U_i\ \lr\ \R^n$ telle que :
-\begin{itemize}
-	
-	\item les $U_i$ forme un recouvrement de la variété :\qquad $\bigcup_{i\in I} \phi_i(U_i) = \manu$
-	
-	\item les $\phi_i$ sont des homéomorphismes sur leur image $\phi_i(U_i)\subset\R^4$.
-	
-	\item si l'intersection $U_i \cap U_j$ est non vide, alors ${\phi_j \circ {\phi_i}^{-1}}_{| {\phi_i}^{-1}(U_i\cap U_j)}$ est un $C^k$ difféomorphisme sur son image.
-\end{itemize}
 
 $\manu$ sera une \emph{variété différentielle complexe} si elle satisfait les propriétés ci-dessus où $\R^n$ est remplacé par $\C^n$ et où la condition de difféomorphisme est remplacé par la condition d'holomorphisme. 
 \\
