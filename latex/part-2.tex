@@ -77,61 +77,92 @@ Pour le dire rapidement, les vecteurs tangents agissent comme une dérivation en
 	\end{aligned}
 \end{equation}
 \\
-Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\tg[x]{\manu}$, qui sera noté  $\bt_\mu = \frac{\partial}{\partial x^\mu}$. notation qui est justifié en cela que, moralement, $\bt_\mu$ dérive toute fonction test $f\in\conti[k]{\manu}{\R}$ dans le long de la $\mu^{eme}$ coordonnée de $x$.
+Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\tg[x]{\manu}$, qui sera noté  $\bt_\mu = \frac{\partial}{\partial x^\mu}$. notation qui est justifié en cela que, moralement, $\bt_\mu$ dérive toute fonction test $f\in\conti[k]{\manu}{\R}$ dans le long de la $\mu^{eme}$ coordonnée (locale) de $x$.
 \\
 
-Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et $f : \manu\lr \mathpzc{N}$ une application différentiable, sa différentielle (ou application tangent) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
-\[\tg{f}(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (\tg{f})_\mu^\nu v^\mu = \bt_\mu\big( f^\nu \big)v^\mu\]
+Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et $f : \manu\lr \mathpzc{N}$ une application différentiable, sa différentielle (ou application tangent ou push forward) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
+\[f_*(v) = f_*(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (f_*)_\mu^\nu = \bt_\mu\big( f^\nu \big)\]
 
 \begin{itemize}
 	
-	\item Différentielle / application tangent et image réciproque
+	\item fibré tangent dual
 	
-	%\item NOTATION : on notera toujours les indices de coordo en lettres grèques ($\mu,\nu$) et les indices de cartes avec l'alphabet classique ($i,j,k$). 
+	\item image réciproque (``transposé'' de la différentielle)
 	
 	\item métrique riemannienne
+	
+	\item exemple : $\S{n}$, la métrique est induite par celle sur $\C^{n+1}$ et :
+	\[\langle X, Y\rangle = \delta_{\mu \nu}X^\mu Y^\nu = X_\mu Y^\mu\]
 
+	\item pour les variétés complexes, c'est un peu différente : carte holomorphe, doublage des espaces tangents
 	
-	\item pour les variétés complexes, c'est un peu différente :
+	\item exemple : sur $\C^{n+1}$ :
+	\[\langle X, \congu{Y}\rangle = \delta_{\mu \nu}X^\mu \congu{Y}^\nu = X_\mu \congu{Y}^\mu\]
+	En particulier, la passage au dual se fait sans changement les coefficients $X_\mu = X^\mu$
 	
-	\item carte holomorphe, doublage des esapces tangents, forme kahlerienne
+	\item forme kahlerienne :
+	\begin{equation}
+		\Omega = g_{\mu \congu{\alpha}} {J^{\congu{\alpha}}}_{\congu{\nu}} dw^\mu \wedge d\congu{w}^\nu
+	\end{equation}
+	
+	\item moralement, là où $g$ fait le passage du tangent au dual, $J$ fait le passage de tangent au conjugé
 	
 \end{itemize}
 
 
 
-\subsubsection{$\bf{\PC{n}}$ comme variété différentielle}\label{subsec:PC^n_variet}
+\subsubsection{$\bf{\PC{n}}$ comme variété différentielle} \label{subsec:PC^n_variet}
 
-
-
-Un façon de définir l'espace projectif complexe $\PC{n}$ est une structure quotient qui peut être obtenue de deux façon. La première, analogue aux espaces projectifs réels, est de poser :
-\[\PC{n} \defeq {\C^{n+1}}^*/\C^*\]
-\\
-C'est-à- dire l'ensemble des classes de ${\C^{n+1}}^* = \C^{n+1} \setminus \{0_{\C^{n+1}}\}$ par la relation d'équivalence :
+Si l'espace projectif complexe à été présenté comme le quotient $\S{n}/\U{1}$, il peut aussi être vu comme :
+\[\PC{n} \cong {\C^{n+1}}^*/\C^*\]
+C'est-à-dire l'ensemble des classes de ${\C^{n+1}}^* = \C^{n+1} \setminus \{0_{\C^{n+1}}\}$ par la relation d'équivalence :
 \[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
 \\
-Cette formulation de $\PC{n}$ permet de le munir d'une structure de variété. Pour cela, la classe de $\PC{n}$ du représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$ est noté $[z]$ et sont définis les ensembles et cartes, $\forall i\in\llbracket0,n\rrbracket$ :
+Moralement, en isolant la norme des vecteurs, ${\C^{n+1}}^*$ peut être vu comme le produit $\R^{+_*} \times \S{n}$, et de même pour $\C^*$ avec le module :
+\begin{align*}
+	{\C^{n+1}}^* &\cong \R^{+_*} \times \S{n}  &  \C^* &\cong \R^{+_*} \times \U{1}
+\end{align*}
+\\
+Ainsi, le quotient par $\C^*$ revient à regarder les vecteurs de ${\C^{n+1}}^*$ modulo leur norme, puis modulo l'action de $\U{1}$. Or, ignorer la norme des vecteurs est équivalent à ne regarder que les vecteurs normées, donc les vecteurs de $\S{n}$. De façon informelle, on pourrait alors écrire\footnote{\itshape
+	Ce qui s'écrit plus justement avec le troisième théorème d'isomorphisme : \[{\C^{n+1}}^*/\C^* \cong ({\C^{n+1}}^* / \R^{+_*})/(\C^* / \R^{+_*}) \cong \S{n}/\U{1} = \PC{n}\]
+} :
+\begin{align*}
+	{\C^{n+1}}^*/\C^* &\cong {\C^{n+1}}^*/(\R^* \times \U{1})\\
+	&\cong \big( {\C^{n+1}}^*/\R^* \big) /\U{1} \\
+	&\cong \S{n}  / \U{1} = \PC{n} 
+\end{align*}
+\skipl
+
+L'intérêt de cette écriture et que $\C^{n+1}$ est un espace vectoriel, ce qui permet de décrire $\PC{n}$ en terme de carte, ce qui se fait comme suit.
+La classe de $\PC{n}$ de représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$ est noté $[z]$ et on pose, $\forall i\in\llbracket0,n\rrbracket$ :
 \begin{align}
 	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z\in \C^{n+1},\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
 		U_i\ \ &\lr\quad\ \C^{i}\times \{1\} \times\C^{n-i}\cong \C^{n} \\ [z]\ \ &\lmt\ \frac{1}{z^i}z = \big(\nicefrac{z^0}{z^i},\cdots, 1, \cdots, \nicefrac{z^n}{z^i}\big)
 	\end{aligned}
 \end{align}
 \begin{remarque}
-	Si l'ensemble d'arrivé $\phi_i(U_i)$ est équivalent à un ouvert de $\C^{n}$, il est plus commode de travailler dans $\C^{n+1}$ puisque cela évite de devoir enlever et rajouter des coefficient dans les formules de changement de carte :
+	Si l'ensemble d'arrivé $\phi_i(U_i)$ est équivalent à un ouvert de $\C^{n}$ (l'une des composantes est constante), il est plus commode de travailler dans $\C^{n+1}$ puisque cela évite de devoir enlever et rajouter des coefficient dans les formules de changement de carte :
 	\[ \forall z\in\C^{n+1}\ |\ z^{i,j}\neq 0\quad (\ie~[z]\in U_i\cap U_j) ,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\]
 \end{remarque}
 \skipl
-Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Comme $\PC{n}$ est plus précisément une variété complexe\footnote{\itshape
-	Le formalisme des variétés complexes ne sera pas nécessaire outre mesure, certains concepts seront tout de même utiles et une rapide introduction de ces derniers se trouve en annexe \ref{ann:VDC}}
+Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Les $\phi_i \circ {\phi_j}^{-1}$ étant holomorphe, $\PC{n}$ est plus précisément une variété complexe de dimension complexe
 , il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
-\[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{où } [z] = w\]
+\[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{ où }\quad [z] = w\]
 \\
 
-\begin{itemize}
-	
-	\item \thoughts{Un mot sur la projection $\x \longmapsto \x\x^\dagger$ utilisé en physique (c'est équivalent)}
-	
-\end{itemize}
+Aussi, comme le produit hermitien sur ${\C^{n+1}}^*$ est invariante par la projection sur $\PC{n}$, dans le sens où\footnote{\itshape
+	En terme technique, la projection sur $\PC{n}$ est une submersion riemannienne} :
+\[\forall e^{i\alpha}\in\U{1},\ \forall z_{1,2}\in\C^{n+1},\quad \langle z_1 e^{i\alpha}, z_2 e^{i\alpha} \rangle = \langle z_1 , z_2 \rangle\]
+il induit une métrique hermitienne sur $\PC{n}$. Plus connue sous le nom de Fubini-Study, elle s'exprime en coordonnées locales par la formule :
+\begin{equation}
+	\begin{aligned}
+		\forall w\in\PC{n}, \forall X,Y\in\tg[w]{{\PC{n}}^+},\qquad \langle X, Y \rangle_w = g_{\mu\congu{\nu}}(w) X^\mu \congu{Y^\nu} 
+		&= \frac{(1+w^\alpha \congu{w}_\alpha)\delta_{\mu\nu} - w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2}X^\mu \congu{Y}^\nu \\
+		&= \frac{1}{1+w^\alpha \congu{w}_\alpha} X^\mu \congu{Y}_\mu - \frac{w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} X^\mu \congu{Y}^\nu
+	\end{aligned}
+\end{equation}
+et la forme de Kähler associée est :
+\[\Omega(w) = i\frac{(1+w^\alpha \congu{w}_\alpha)\delta_{\mu\nu} - w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} dw^\mu \wedge d\congu{w}^\nu\]
 
 
 
@@ -238,25 +269,32 @@ Cela mène à la définition :
 
 \subsubsection{Le fibré $\bf{\VFP}$}\label{subsec:SUPC_VFP}
 
-Une deuxième façon d'aborder $\PC{n}$ est de se débarrasser de la norme (resp. du module) des vecteurs de ${\C^{n+1}}^*$ (resp. des scalaires de $\C^*$). Le troisième théorème d'isomorphisme permet ainsi décrire :
-\[\PC{n} \defeq {\C^{n+1}}^*/\C^* \cong ({\C^{n+1}}^* / \R^{+_*})/(\C^* / \R^{+_*}) \cong \S{n}/\U{1}\]
+Dans notre cas $\S{n}$ qui fait office d'espace totale et, quant bien même il s'écrit directement comme une produit $\U{1}\times \PC{n}$, pour tenir compte du fait que $\PC{n}$ est une variété il vaut le voir localement comment le produit $\U{1}\times U_i$.
 \\
-Une autre façon de le comprendre est de voir qu'en écrivant $\lambda=re^{i\theta}$, moralement $\C^*\cong \R^{+^*}\times \U{1}$. $\PC{n}$ peut alors être vu comme des vecteurs de ${\C^{n+1}}^*$ à une normalisation près puis à un $e^{i\theta}$ près. Ce qui revient à prendre des vecteurs normés de $\C^{n+1}$ (\ie~dans $\S{n}$) modulo l'action de $\U{1}$. Écrit de façon informelle :
+Aussi, avec la normalisation sur $\S{n}$, les coordonnées locales sur $\PC{n}$ se réécrivent, $\forall w\in U_i$ :
 \begin{align*}
-	\PC{n} = {\C^{n+1}}^*/\C^* &\cong {\C^{n+1}}^*/(\R^* \times \U{1}) \\
-	&\cong \big( {\C^{n+1}}^*/\R^* \big) /\U{1} \\
-	&\cong \S{n}  / \U{1}
+	w^\mu = \frac{z^\mu}{z^i} &= \frac{z^\mu}{|z^i|e^{i\arg (z^i)}} = \frac{z^{\mu}}{\sqrt{1 - \sum_{\nu \neq i} |z^\nu|^2}} e^{-i\arg(z^i)}  &  \text{car }\quad \sum \big|z^\nu\big|^2 = \|z\|^2 = 1
 \end{align*}
-\skipl
-
-De façon plus concrète, là où dans ${\C^{n+1}}^*/\C^*$, les coordonnées de $w\in U_i$ s'écrivait $w^\mu = \frac{z^\mu}{z^i}$ ; dans $\S{n}$, $z$ est déjà normé auquel cas :
-\[w^\mu = \frac{z^\mu}{|z^i|e^{i\arg (z^i)}} = \frac{z^{\mu}}{\sqrt{1-\sum_{\nu\neq i}|z^\nu|^2}}e^{-i\arg(z^i)}\]
 \\
-et on constate bien que $w^\mu$ est définie modulo un choix de $e^{-i\arg z^i}\in \U{1}$. Réciroquement, à chaque paire $(w,e^{i\theta})\in U_i\times \U{1}$, est associée un unique vecteur $z_i = h_i(w,e^{i\theta})\in\S{n}$ avec :
-\[{z_i}^\mu = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta}\]
+On constate bien que $w^\mu$ n'est définie qu'à un choix de $e^{-i\arg z^i}\in \U{1}$ près. À l'inverse, un représentant $z_i$ dans $\S{n}$ de $w\in U_i$ aura pour coefficient :
+\begin{align*}
+	\forall \mu\neq i,\quad {z_i}^\mu &= \frac{w^\mu}{\|w\|}e^{i\theta}  &  {z_i}^i &= \frac{1}{\|w\|}e^{i\theta} 
+\end{align*}
+La norme de $w$ étant à comprendre au sens des coordonnées locales sur $U_i$\footnote{\itshape
+	C'est un abus de notation, $w$ n'a pas de norme en ce sens là puisqu'elle dépend du choix de carte $U_i$. Mais ici tout le raisonnement est purement local, donc ce n'est pas un problème
+} :
+\begin{align*}
+	\|w\|^2 = \big\|(w^\mu)_{1\leq \mu\leq n}\big\|^2 = \frac{1}{|{z_i}^i|^2}\sum_{\nu \neq i} \big|{z_i}^\nu\big|^2 = \frac{1 - |{z_i}^i|^2}{|{z_i}^i|^2} &\Llr\ \big| {z_i}^i \big|^2 \|w\|^2 = 1 - \big|{z_i}^i\big|^2 \\
+	&\Llr\ \big|{z_i}^i\big|^2 = \frac{1}{1 + \|w\|^2} \\
+	&\Llr\ \big|{z_i}^i\big| = \frac{1}{\sqrt{1 + w^\nu \congu{w}_\nu}}
+\end{align*}
+D'où l'expression des coefficients de $z_i\in\S{n}$ :
+\begin{align*}
+	 \forall \mu\neq i,\quad {z_i}^\mu &= \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta}  &  {z_i}^i &= \frac{1}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta} 
+\end{align*}
 \\
 
-Présenté ainsi, $\PC{n}$ induit naturellement une variété principale :
+Tout cela permet d'écrire $\S{n}$ comme une variété fibrée principale :
 \begin{proposition}
 	La $(2n+1)-$sphère $\S{n}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $\S{n}$ étant induite par la multiplication par un scalaire complexe et où :
 	\begin{itemize}
@@ -270,11 +308,15 @@ Présenté ainsi, $\PC{n}$ induit naturellement une variété principale :
 			\forall w \in U_i,\ \forall e^{i\theta}\in\U{1},\  h_i(w,e^{i\theta}) = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta} \in \S{n}
 		\end{equation}
 		
-		\item Les sections canoniques au dessus des $U_i$, $\sigma_i$ elle est définie par :
+		\item Les sections canoniques $\sigma_i$ au dessus des $U_i$, elles,  sont définies par :
 		\begin{equation}
 			\forall w \in U_i,\ \sigma_i(w) = h_i(w, 1) = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}
 		\end{equation}
 		
+		\item Les fonctions de transitions entre deux cartes $U_i$ et $U_j$ s'écrivent :
+		\begin{align}
+			\varphi_{ij}(w) = e^{-i \arg (z_i^i)} e^{i \arg (z_j^j)}  &  \text{ où }&\qquad z_{ij} = \phi_{ij}(w)
+		\end{align}
 	\end{itemize}
 \end{proposition}
 \skipl
@@ -284,39 +326,35 @@ Présenté ainsi, $\PC{n}$ induit naturellement une variété principale :
 
 \subsection{Espaces horizontaux et connexion}\label{subsec:connexion2VFP}
 
-\begin{itemize}
-	\item Pour retrouver, dans ce cadre, une notion de fréquence instantanée il va nous falloir munir $\VFP$ d'une connexion
-\end{itemize}
+Pour retrouver, dans ce cadre, une notion de fréquence instantanée il va nous falloir munir $\VFP$ d'une connexion
 
 \subsubsection{Définition général}\label{subsec:def2conn}
 
 Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les seconds \emph{horizontaux} et l'on note :
 \[\forall p\in P,\qquad \tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}\]
 \\
-Les tangents verticaux $\vg[p]{P}$ se définissent canoniquement par rapport à $\pi$. Pour cela, la \emph{fonction tangente} (ou \emph{dérivée}) \emph{de $\pi$ au point} $p$ est noté $\tg[p]{\pi}$ avec :
-\[(\tg[p]{\pi})^i_j = \frac{\partial \pi^i}{\partial x^j}(p) = \partial_j\pi^i(p)\]
-\\
-Ainsi, $\tg[p]{\pi}$ est à valeur de $\tg[p]{P}$ dans $\tg[\pi(p)]{B}$ et l'espace tangent vertical au point $p$ se défini comme :
+Les tangents verticaux $\vg[p]{P}$ se définissent canoniquement via $\pi$, en tant que noyau de sa différentielle :
 \[\vg[p]{P} \defeq \Ker (\tg[p]{\pi}) = \big\{ v\in\tg[p]{P}\ |\ \tg[p]{\pi}(v)=0 \big\}\]
 \\ 
-Il s'avère que les espaces horizontaux ne peuvent pas être construit de cette façon. Il faut donc faire un choix pour les $\hg[p]{P}$ et c'est ce choix qui est appelé connexion (elle connecte les esapce tangents entre eux).
-Ces sous-espaces peuvent être caractérisé par une 1-forme différentiable $\conn$ sur $P$ à valeur dans $\vg[p]{P}$, auquel cas :
+Ce n'est en revanche pas le cas des espaces horizontaux. Il faut donc faire un choix pour les $\hg[p]{P}$ et c'est ce choix qui est appelé \emph{connexion} (elle connecte les espace tangents entre eux).
+Comme pour les vercticaux, ces sous-espaces peuvent être caractérisés par une 1-forme différentiable $\conn$ sur $P$ à valeur dans $\vg[p]{P}$, auquel cas :
 \[\forall p\in P,\quad \hg[p]{P} = \Ker(\conn_p)\]
 \skipl
 
-Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au regarde de l'action $R$, aboutissant à la définition :
+Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au regarde de l'action de $G$ sur $P$, aboutissant à la définition :
+
 \begin{definition}[Connexion sur VFP] \label{def:connexion2VFP}
 	Une \emph{connexion} sur une VFP $P(G,B)$ est la donnée d'un sous-espace tangent, $\hg[p]{P}\subset \tg[p]{P}$, en tout point de $p\in P$ tel que :
 	\begin{itemize}
 		
-		\item $\hg{P}$ dépend différentiellement de $p$ (``dépendre différentiellement'' à un sens précis mais qui ne sera pas utile pour la suite).
+		\item $\hg{P}$ dépend différentiellement de $p$ (``dépendre différentiellement'' à un sens précis pour les sous-espaces mais qui ne sera pas utile pour la suite).
 		
 		\item $\hg[p]{P}$ est supplémentaire à $\vg[p]{P}$ dans $\tg[p]{P}$ :
 		\begin{equation}\label{eq:TP=V+H}
 			\tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}
 		\end{equation}
 		
-		\item l'assignation des $\hg[p]{P}$ est invariantes pas l'action de $G$ au sens où :
+		\item l'assignation des $\hg[p]{P}$ est invariante par l'action de $G$ au sens où :
 		\begin{equation}\label{eq:conn_G-inv}
 			\forall (p,g)\in P\times G,\quad \hg[R_g(p)]{P} = {R_g}_* (\hg[p]{P}) = \big\{{R_g}_*(v)\ |\ v \in \hg[p]{P} \big\}
 		\end{equation}
@@ -324,12 +362,13 @@ Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au 
 \end{definition}
 \skipl
 
-Au delà d'assurer une compatibilité avec la connexion, l'équation \eqref{eq:conn_G-inv} permet de n'avoir à définir la connexion qu'en un seul point de chaque fibre, les autres se déduisant par l'action de $G$. Entre autre, pour tout point de la base $x\in B$, il suffit de la définir en $\sigma_i(x) = h_i(e, x)$ et l'espace horizontale en tout autre point $\ p=h_i(x,g) = \sigma_i(x)\cdot g$ au dessus de $x$ est donné par :
+Au delà d'assurer une compatibilité entre $H$ et $R$, l'équation \eqref{eq:conn_G-inv} permet de n'avoir à définir la connexion qu'en un seul point de chaque fibre, les autres se déduisant par cette formule. 
+Concrètement, pour tout point de la base $x\in U_i$, il suffit de la définir en $\sigma_i(x) = h_i(e, x)$, de sorte que l'espace horizontale en tout autre point $\ p=h_i(g, x) = \sigma_i(x)\cdot g$ au dessus de $x$ sera donné par :
 \[\hg[p]{P} = \tg[\sigma_i(x)]{R_g} (\hg[\sigma_i(x)]{P})\]
 \\
-De même, la 1-forme de connexion n'a besoin d'être définie que sur un point particulier au dessus de chaque fibre. Les espaces verticaux étant tous difféomorphes à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$, c'est sur $\mathfrak{g}$ qu'elle est définie :
+De même, la 1-forme de connexion n'a besoin d'être définie que sur un point particulier au dessus de chaque fibre. Et comme tout les espaces verticaux sont difféomorphes à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$, c'est sur $\mathfrak{g}$ qu'elle est définie :
 
-\begin{definition}
+\begin{definition}[1-forme de connexion] \label{def:1-form2conn}
 	La \emph{1-forme de connexion} $\conn$ d'une VFP $P(G,B)$ est définie comme la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est à valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que :
 	\begin{equation} \label{eq:1-form2conn}
 		\forall p\in P,\quad \hg[p]{P} \defeq \Ker(\conn_p)
@@ -342,16 +381,17 @@ De même, la 1-forme de connexion n'a besoin d'être définie que sur un point p
 	\end{equation}
 \end{definition}
 \skipl
-
-Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est encore  grâce à la compatibilité de la connexions avec la l'action de $G$ sur $P$, qui l'information sur $G$ redondante. \thoughts{MEH}. 
 \\
 
 \begin{itemize}
 	
-	\item DEF horizontal lift : Par abue de language, on dira de $\Tilde{\gamma}$ que c'est le relèvement horizontale de $\gamma$ si c'est le relèvement horizontale de sa projection sur $\PC{n}$ avec la condition initiale $\Tilde{\gamma}(0) = \gamma(0)$
+	\item DEF horizontal+69 lift : Par abue de language, on dira de $\Tilde{\gamma}$ que c'est le relèvement horizontale de $\gamma$ si c'est le relèvement horizontale de sa projection sur $\PC{n}$ avec la condition initiale $\Tilde{\gamma}(0) = \gamma(0)$
+	
+	\item EDP du relèvement $g_i$ telle que $\Tilde{\gamma}(t) = h_i\big( C_\gamma(t), g_i(t) \big)$ (besoin d'un peu d'algèbre de Lie, soit annexe soit on skip les détails)
 	
 	\item Remarque : Même si cette notion de connexion n'est pas la même que pour les connexions affines, les deux sont très liée. En particulier si $P$ est le fibré tangent d'une variété $\manu$ avec pour groupe structural $\GL_n(\R)$, alors toute connexion sur $P$ est une connexion affine sur $\manu$ .
 \end{itemize}
+\skipl
 
 
 
@@ -367,6 +407,8 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 	
 	\item C'est là qu'intervient la connexion : Le relèvement horizontal $\Tilde{\gamma}$ d'une courbe $C_\gamma\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\gamma}$ n'a pas de variation dans $\U{1}$, de variation fréquentielle.
 	
+	\item Bonus : Le relèvement horizontal est unique modulo un choix de phase initiale, choix de phase qui se retrouve dans les bornes d'intégrations de la phase dynamique !
+	
 	\item Ainsi, si $C_\gamma$ est la projection d'un signal $\gamma$, le relèvement horizontale $\Tilde{\gamma}$ s'interprète comme une version de $\gamma$ dénué de toute fréquence instantanée.
 	À l'inverse, à l'instant $t$, l'action $e^{i\alpha}$ permettant de passé de $\Tilde{\gamma}(t)$ à $\gamma(t)$ est vu la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)
 	
@@ -376,18 +418,23 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 		\label{fig:phases_p-cycl}
 	\end{figure}	
 	
-	\item Sachant cela, est étant donnée que l'algèbre de Lie $\U{1}$ est $i\R$,  les discutions de première partie suggère de poser :
+	\item Sachant cela, es discutions de première partie suggère de poser :
 	\[\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle p, \bf{v}\rangle\]
+	\\
+	Ce qui colle tout à fait avec le fait que l'algèbre de Lie de $\U{1}$ soit $i\R$ !
 	
-	\item Un choix qui est doublement justifié puisque c'est également la 1-forme de connexion induite par la métrique sur $\S{n}$. Plus de détail dans l'annexe \ref{ann:conn2submer_riemanian} ?.
+	\item Un choix qui est doublement justifié puisque c'est également la 1-forme de connexion induite par la métrique sur $\S{n}$. \thoughts{Plus de détail dans l'annexe \ref{ann:conn2submer_riemanian} ?} (BTW c'est l'équivalent pour les VFP de la connexion de Levi-Civita)
 	
 	\item En effet, si $\S{n}$ n'est pas une variété complexe (problème de dimensionnalité), elle a quand-même une métrique riemannienne (réelle) induite par celle sur $\C^n$ : $\Re e\langle \cdot,\cdot\rangle$.
 	
 	\item Dans ce cas, les espaces horizontaux de définissent comment les espaces orthogonaux aux verticaux : 
 	\[\forall p\in\S{n},\quad \hg[p]{\S{n}} = {\vg[p]{\S{n}}}^\perp\]
 	
-	\item et elle vérifie bien les règles de changement de cartes :
-	\[eoitbnetovqnerbmin\]
+	\item Ce qui mène bien à poser $w_p = i\Im m \langle p, \cdot \rangle $ 
+	
+	\item Etant donné un signal $\gamma$, on peut alors voir sa fréquence instantanée à l'instant $t$ comme sa déviation au relèvement horizontale de $\gamma$. Ainsi :
+	\[\phased(\gamma) = \int_{0}^t t\big( \Tilde{\gamma}(s), \gamma(s) \big)ds \]
+
 	
 \end{itemize}
 
@@ -400,7 +447,7 @@ Si $\locconn_i$ est définie sur les $U_i$, plutôt que $U_i\times G$, c'est enc
 
 \begin{itemize}
 	
-	\item Rapide résumé : On décompose tout signal multivarié complexe comme la données d'une amplitude, d'une phase et d'un ``état de polarisation''. Indépendamment de l'amplitude, cela nous ramène à travailler dans la VFP $\VFP$.
+	\item Rapide résumé : On décompose tout signal multivarié complexe comme la données d'une amplitude, d'une phase et d'un ``état de polarisation''. Indépendamment de l'amplitude, cela nous ramène à travailler dans la VFP $\VFP$. La connexion 
 	
 	\item On la munie d'une connexion tenant compte de la métrique sur $\S{n}$, ce qui nous ramène à la définir comme la fréquence instantanée.
 	
