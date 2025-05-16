@@ -376,7 +376,7 @@ Ces représentation n'est autre que la matrice de covariance de $\x $ :
 \end{equation}
 Cette projection, invariante par transformation de jauge, donc indépendante de $\varphi$ et la normalisation est telle que $\rho_{\x}$ ne dépend pas non plus de $a$. La matrice $\rho_{\x}$ ne dépend alors que des paramètres de polarisations, $(\chi, \theta)$, et se décompose dans la base de Pauli suivant :
 \begin{equation} \label{eq:decompo_pauli}
-	\rho_{\x} = id + \sin(2\theta) \cos(2\chi) \sigma_1 + \sin (2\chi) \sigma_3 + \cos(2\theta) \cos(2\chi) \sigma_3
+	\rho_{\x} = id + \sin(2\theta) \cos(2\chi) \sigma_1 + \sin (2\chi) \sigma_2 + \cos(2\theta) \cos(2\chi) \sigma_3
 \end{equation}
 
 
@@ -581,5 +581,253 @@ En particulier, si $n=2$, $\PC{1}\cong S^{2}$, soit exactement l'espace de repr�
 		&= \cdots
 	\end{align*}
 \end{demo}
+\skipl
+
+
+\subsection{Lien entre Poincaré et Bloch}
+
+\subsubsection{Lien entre les deux types de signaux}
+
+Soit le signal :
+\[\x_B(\varphi, \theta, \chi) = e^{i\varphi} \begin{pmatrix}
+	\cos \chi/2 \\ e^{i\theta}\sin\chi/2\end{pmatrix}\]
+Pour le réécrire en terme de vecteur AM-FM-PM, il faut faire apparaître une matrice de rotation, matrice qui est diagonalisable dans $\C^{n\times n}$ via la relation :
+\begin{align*}
+	&\begin{pmatrix} 
+		\cos \alpha & -\sin \alpha \\ 
+		\sin\alpha & \cos\alpha 
+	\end{pmatrix} = \frac{1}{2} \begin{pmatrix} 
+		1 & -1 \\ i & i
+	\end{pmatrix}\begin{pmatrix} 
+		e^{-i\alpha} & 0 \\ 
+		0 & e^{i\alpha} 
+	\end{pmatrix}\begin{pmatrix} 
+		1 & -i \\ -1 & -i
+	\end{pmatrix}\\
+	&\Llr\quad \begin{pmatrix} 
+		1 & -i \\ -1 & -i
+	\end{pmatrix}\begin{pmatrix} 
+		\cos \alpha & -\sin \alpha \\ 
+		\sin\alpha & \cos\alpha 
+	\end{pmatrix} \begin{pmatrix} 
+		1 & -1 \\ i & i
+	\end{pmatrix} = 2 \begin{pmatrix} 
+		e^{-i\alpha} & 0 \\ 
+		0 & e^{i\alpha} 
+	\end{pmatrix}
+\end{align*}
+\\
+Cela permet d'écrire :
+\begin{align*}
+	\x_B(\varphi, \theta, \chi) &= e^{i\varphi} e^{i\theta/2}\begin{pmatrix}
+			e^{-i\theta/2} & 0 \\
+			0 & e^{i\theta/2}
+		\end{pmatrix}\begin{pmatrix} 
+			\cos \chi/2 \\ 
+			\sin \chi/2 
+		\end{pmatrix} \\
+		&= \frac{1}{2}e^{i\varphi} e^{i\theta/2}\begin{pmatrix} 
+			1 & -i \\
+			-1 & -i
+		\end{pmatrix}\begin{pmatrix} 
+			\cos \theta/2 & -\sin \theta/2 \\ 
+			\sin \theta/2 & \cos \theta/2 
+		\end{pmatrix} \begin{pmatrix} 
+			1 & -1 \\ i & i
+		\end{pmatrix}\begin{pmatrix} 
+			\cos \chi/2 \\ 
+			\sin\chi/2
+		\end{pmatrix} \\
+		&= \frac{\sqrt{2}}{2}e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+			\cos \chi/2 - \sin\chi/2 \\ 
+			i\big(\cos\chi/2 + \sin\chi/2\big)
+		\end{pmatrix}   & &\text{où }\quad U = \frac{\sqrt{2}}{2}\begin{pmatrix} 
+		1 & -i \\ -1 & -i
+		\end{pmatrix}\in \U{2} \\
+\end{align*}
+\\
+Ensuite, pour réduire les sommes dans le vecteur de droite, on a rappel les formules :
+\begin{align*}
+	\cos\left( \frac{\pi}{2} \pm \alpha\right) &= \frac{\sqrt{2}}{2}\big( \cos\alpha \mp \sin \alpha \big) & \sin\left( \frac{\pi}{2} \pm \alpha\right) &= \frac{\sqrt{2}}{2}\big( \cos\alpha \pm \sin \alpha \big)
+\end{align*}
+\\ 
+On a donc deux choix pour chaque composante du vecteur mais celle avec un signe moins son préférable sachant que : 
+\begin{align*}
+	\cos\left( \frac{\pi}{2} - \alpha\right) &= \sin(\alpha) &  \sin\left( \frac{\pi}{2} - \alpha\right) &= \cos(\alpha)
+\end{align*}
+\\
+On choisi donc la seconde formule pour la première composante et la premier pour la seconde composante, donnant :
+\begin{align*}
+	\x_B(\varphi, \theta, \chi) &= \frac{\sqrt{2}}{2}e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+		\cos \chi/2 - \sin\chi/2 \\ 
+		i\big(\cos\chi/2 + \sin\chi/2\big)
+	\end{pmatrix} \\
+	&= e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+		\sin\left( \frac{\pi}{2} - \chi/2\right) \\ 
+		i\cos\left( \frac{\pi}{2} - \chi/2\right)
+	\end{pmatrix} \\
+	&= e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+		\cos \chi/2 \\ 
+		i\sin \chi/2
+	\end{pmatrix}
+\end{align*}
+\\
+Ne reste alors plus qu'à ajuster les signes pour obtenir une écriture de signal $\x_P$ AM-FM-PM :
+\begin{align*}
+	\x_B(\varphi, \theta, \chi) &= e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+		\cos \chi/2 \\ 
+		i\sin \chi/2
+	\end{pmatrix} \\
+	&= U e^{i(\varphi + \theta/2)} R_{\theta/2} \begin{pmatrix} 
+		\cos (-\chi/2) \\ 
+		-i\sin (-\chi/2)
+	\end{pmatrix}
+\end{align*}
+En somme :
+\begin{align} \label{eq:bloch2poinca}
+	\x_B(\psi, \alpha, \beta) &= U \x_P(\psi + \alpha/2, \alpha/2, -\beta/2)  & 
+	\x_P(\varphi, \theta, \chi) = U^\dagger 	\x_B(\varphi-\theta, 2\theta, -2\chi)	
+\end{align}
+\skipl 
+
+
+
+\subsubsection{Lien entre les projections (/!$\backslash$ JE CONGUE PAS PAREIL)}
+
+Avec la formule \eqref{eq:bloch2poinca} ci-dessus, on a :
+
+\begin{align}
+	\rho_B(\alpha, \beta) &= U \rho_P(\alpha/2, -\beta/2)U^\dagger  & 
+	\rho_P(\theta, \chi) &= U^\dagger \rho_B(2\theta, -2\chi) U
+	%\\ \Llr\ \rho_B(\alpha, \beta) U &= U \rho_P(\alpha/2, -\beta/2) & \Llr\ \rho_P(\theta, \chi) U^\dagger &= U^\dagger \rho_B(2\theta, -2\chi) 
+\end{align}
+\\
+Mais on a aussi, dans la base Pauli :
+\begin{align*}
+	\sigma_1 &= \begin{pmatrix} 0 & 1 \\ 1 &  0 \end{pmatrix}  &
+	\sigma_2 &= \begin{pmatrix} 0 & -i \\  i &  0 \end{pmatrix}  &
+	\sigma_3 &= \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\end{align*}
+les expressions :
+\begin{align*}
+	2\rho_{P}(\theta, \chi) &= id + \sin(2\theta) \cos(2\chi) \sigma_1 - \sin (2\chi) \sigma_2 + \cos(2\theta) \cos(2\chi) \sigma_3 \\ 
+	2\rho_{B}(\alpha, \beta) &= id + \cos(\alpha) \sin(\beta) \sigma_1 + \sin(\alpha) \sin(\beta) \sigma_2 + \cos (\beta) \sigma_3
+\end{align*}
+\skipl
+
+Pour les lier, on pose $\ 2\theta = \nicefrac{\pi}{2} - \alpha\ $ et $\ 2\chi = \nicefrac{\pi}{2} - \beta$, donnant :
+\begin{align*}
+2\rho_P(\theta, \chi) - id 
+	&= \sin(\nicefrac{\pi}{2} - \alpha) \cos(\nicefrac{\pi}{2} - \beta) \sigma_1 - \sin (\nicefrac{\pi}{2} - \beta) \sigma_2 + \cos(\nicefrac{\pi}{2} - \alpha) \cos(\nicefrac{\pi}{2} - \beta) \sigma_3 \\
+	&= \cos(\alpha) \sin(\beta) \sigma_1 - \cos (\beta) \sigma_2 + \sin(\alpha) \sin(\beta) \sigma_3
+\end{align*}
+\\
+Ce qui sous forme matricielle se réécrit :
+\[\begin{pmatrix}
+	\sin(2\theta) \cos(2\chi) \\ -\sin (2\chi) \\ \cos(2\theta) \cos(2\chi)
+\end{pmatrix} = \begin{pmatrix}
+	\cos(\alpha) \sin(\beta) \\ -\cos (\beta) \\ \sin(\alpha) \sin(\beta)
+\end{pmatrix} = \begin{pmatrix}
+	1 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0
+\end{pmatrix}\begin{pmatrix}
+	\cos(\alpha) \sin(\beta) \\ \sin(\alpha) \sin(\beta) \\ \cos (\beta)
+\end{pmatrix}\]
+\\
+Donc la passage de $\rho_B$ à $\rho_S$ se fait via un changement et d'angle et une rotation de $\nicefrac{\pi}{2}$ autour de $\sigma_1$.
+\\
+Sinon, avec les changements $\ 2\theta = \alpha\ $ et $\ 2\chi = \nicefrac{\pi}{2} - \beta$, on a cette fois :
+\[\begin{pmatrix}
+	\sin(2\theta) \cos(2\chi) \\ -\sin (2\chi) \\ \cos(2\theta) \cos(2\chi)
+\end{pmatrix} = \begin{pmatrix}
+	\sin(\alpha) \sin(\beta) \\ -\cos (\beta) \\ \cos(\alpha) \sin(\beta)
+\end{pmatrix} = \begin{pmatrix}
+	0 & 1 & 0 \\ 0 & 0 & -1 \\ 1 & 0 & 0
+\end{pmatrix}\begin{pmatrix}
+\cos(\alpha) \sin(\beta) \\ \sin(\alpha) \sin(\beta) \\ \cos (\beta)
+\end{pmatrix}\]
+\\
+Finalement, dans la sphère la transformation se fait via :
+\[w_P(2\theta, 2\chi) = \begin{pmatrix}
+	1 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0
+\end{pmatrix} w_B\big( (\nicefrac{\pi}{2}-\theta ), \big(\nicefrac{\pi}{2}-\chi) \big)\]
+\\
+
+Encore une autre formule. Cette fois, en partant de \eqref{eq:bloch2poinca} :
+\begin{align*}
+	2\rho_P(\theta, \chi) &= 2U^\dagger \rho_B(2\theta, -2\chi) U \\
+	&= U^\dagger \Big( id + \cos(2\theta) \sin(-2\chi) \sigma_1 + \sin(2\theta) \sin(-2\chi) \sigma_2 + \cos (-2\chi) \sigma_3 \Big) U \\
+	&= id - \cos(2\theta) \sin(2\chi) U^\dagger \sigma_1 U - \sin(2\theta) \sin(2\chi) U^\dagger \sigma_2 U + \cos (2\chi) U^\dagger \sigma_3 U
+\end{align*}
+avec :
+\begin{align*}
+	U^\dagger \sigma_1 U &= \frac{1}{2} \begin{pmatrix} 
+		1 & -1 \\ i & i
+	\end{pmatrix} \begin{pmatrix} 
+		0 & 1 \\ 1 &  0 
+	\end{pmatrix} \begin{pmatrix} 
+		1 & -i \\ -1 & -i
+	\end{pmatrix} = \frac{1}{2} \begin{pmatrix} 
+		-2 & 0 \\ 0 & 2
+	\end{pmatrix} = -\sigma_3 \\
+	U^\dagger \sigma_2 U &= \frac{1}{2} \begin{pmatrix} 
+		1 & -1 \\ i & i
+	\end{pmatrix} \begin{pmatrix} 
+		0 & -i \\  i &  0 
+	\end{pmatrix} \begin{pmatrix} 
+		1 & -i \\ -1 & -i
+	\end{pmatrix} = \frac{1}{2} \begin{pmatrix} 
+		0 & -2 \\ -2 & 0
+	\end{pmatrix} = -\sigma_1 \\
+	U^\dagger \sigma_3 U &= \frac{1}{2} \begin{pmatrix} 
+		1 & -1 \\ i & i
+	\end{pmatrix}  \begin{pmatrix} 
+		1 & 0 \\ 0 & -1 
+	\end{pmatrix} \begin{pmatrix} 
+		1 & -i \\ -1 & -i
+	\end{pmatrix} = \frac{1}{2} \begin{pmatrix} 
+		0 & -2i \\ 2i & 0
+	\end{pmatrix} = \sigma_2
+\end{align*}
+\\
+Qui donne :
+\begin{align*}
+	2\rho_P(\theta, \chi) &= id - \cos(2\theta) \sin(2\chi) U^\dagger \sigma_1 U - \sin(2\theta) \sin(2\chi) U^\dagger \sigma_2 U + \cos (2\chi) U^\dagger \sigma_3 U \\
+	&= id + \cos(2\theta) \sin(-2\chi) \sigma_3 + \sin(2\theta) \sin(-2\chi)  \sigma_1 + \cos (-2\chi) \sigma_2 \\
+	&= id + \sin(2\theta) \sin(2\chi)  \sigma_1 + \cos (2\chi) \sigma_2 + \cos(2\theta) \sin(2\chi) \sigma_3
+\end{align*}
+\skipl 
+
+
+
+\subsubsection{Transformation de phases}
+
+Première chose, le produit hermitien est invariant par $U\in\U{2}$ (si si). Ainsi :
+\[\big\langle U\x(t_0), U\x(t) \big\rangle = \big\langle \x(t_0), \x(t) \big\rangle\]
+\[\big\langle (U\x)', U\x \big\rangle = \big\langle U\x', U\x \big\rangle = \big\langle \x', \x \big\rangle\]
+\\
+et les phases totale et dynamique se transforme suivant :
+\begin{align*}
+	\phaset \big(\x_B(\psi, \alpha, \beta) \big) &= \phaset \big(\x_P(\psi + \alpha/2, \alpha/2, -\beta/2) \big) 
+	\\ \\
+	\phased \big(\x_B(\psi, \alpha, \beta) \big) &= \Im m \int_{t_0}^t \left\langle \frac{d}{ds}\x_B(\psi, \alpha, \beta), \x_B(\psi, \alpha, \beta) \right\rangle ds \\
+	&= \Im m \int_{t_0}^t \left\langle \frac{d}{ds}\x_P(\psi + \alpha/2, \alpha/2, -\beta/2), \x_P(\psi + \alpha/2, \alpha/2, -\beta/2) \right\rangle ds \\
+	&= \phased \big( \x_P(\psi + \alpha/2, \alpha/2, -\beta/2) \big) \\
+	&= \psi(t) + \alpha(t)/2 - \big( \psi(t_0) + \alpha(t_0)/2 \big) - \int_{t_0}^t \alpha'(s)/2\sin \big( -2\beta(s)/2 \big) ds \\
+	&= \psi(t) - \psi(t_0) + \frac{\alpha(t) - \alpha(t_0)}{2} + \frac{1}{2} \int_{t_0}^t \alpha'(s)\sin \beta(s) ds
+\end{align*}
+\\
+Mais dans le même temps, si on déroule le calcul de la phase dynamique de $\x_B$, on tombe cette fois sur :
+\begin{align*}
+	\phased\big(\x_B(\psi, \alpha, \beta) \big) &= \psi(t) - \psi(t_0) +  \int_{t_0}^t \alpha'(s) \frac{1 - \cos\beta(s)}{2}ds \\
+	&= \psi(t) - \psi(t_0) + \frac{1}{2}\big(\alpha(t) - \alpha(t_0) \big)- \frac{1}{2} \int_{t_0}^t \alpha'(s) \cos\beta(s) ds 
+\end{align*}
+Auquel cas :
+\begin{align*}
+	\phased\big(\x_S(\varphi, \theta, \chi) \big) &= \phased\big(\x_B(\varphi-\theta, 2\theta, -2\chi) \big) \\
+	&= \varphi(t) - \theta(t) - \big( \varphi(t_0) - \theta(t_0) \big) + \frac{1}{2} \int_{t_0}^t 2\theta' (1 - \cos2\chi)ds \\
+	&= \varphi(t) - \varphi(t_0) - \big( \theta(t_0) - \theta(t) \big) + \int_{t_0}^t \theta' (1 - \cos2\chi)ds
+\end{align*}
+	
+
 
 \end{annexe}
