@@ -692,7 +692,7 @@ En somme :
 
 
 
-\subsubsection{Lien entre les projections (/!$\backslash$ JE CONGUE PAS PAREIL)}
+\subsubsection{Lien entre les projections}
 
 Avec la formule \eqref{eq:bloch2poinca} ci-dessus, on a :
 
@@ -710,14 +710,14 @@ Mais on a aussi, dans la base Pauli :
 \end{align*}
 les expressions :
 \begin{align*}
-	2\rho_{P}(\theta, \chi) &= id + \sin(2\theta) \cos(2\chi) \sigma_1 - \sin (2\chi) \sigma_2 + \cos(2\theta) \cos(2\chi) \sigma_3 \\ 
-	2\rho_{B}(\alpha, \beta) &= id + \cos(\alpha) \sin(\beta) \sigma_1 + \sin(\alpha) \sin(\beta) \sigma_2 + \cos (\beta) \sigma_3
+	\rho_{P}(\theta, \chi) &= \frac{1}{2} \Big( id + \sin(2\theta) \cos(2\chi) \sigma_1 - \sin (2\chi) \sigma_2 + \cos(2\theta) \cos(2\chi) \sigma_3 \Big) \\ 
+	\rho_{B}(\alpha, \beta) &= \frac{1}{2} \Big( id + \cos(\alpha) \sin(\beta) \sigma_1 + \sin(\alpha) \sin(\beta) \sigma_2 + \cos (\beta) \sigma_3 \Big)
 \end{align*}
 \skipl
 
 Pour les lier, on pose $\ 2\theta = \nicefrac{\pi}{2} - \alpha\ $ et $\ 2\chi = \nicefrac{\pi}{2} - \beta$, donnant :
 \begin{align*}
-2\rho_P(\theta, \chi) - id 
+\rho_P(\theta, \chi) - id 
 	&= \sin(\nicefrac{\pi}{2} - \alpha) \cos(\nicefrac{\pi}{2} - \beta) \sigma_1 - \sin (\nicefrac{\pi}{2} - \beta) \sigma_2 + \cos(\nicefrac{\pi}{2} - \alpha) \cos(\nicefrac{\pi}{2} - \beta) \sigma_3 \\
 	&= \cos(\alpha) \sin(\beta) \sigma_1 - \cos (\beta) \sigma_2 + \sin(\alpha) \sin(\beta) \sigma_3
 \end{align*}
@@ -735,24 +735,8 @@ Ce qui sous forme matricielle se réécrit :
 \\
 Donc la passage de $\rho_B$ à $\rho_S$ se fait via un changement et d'angle et une rotation de $\nicefrac{\pi}{2}$ autour de $\sigma_1$.
 \\
-Sinon, avec les changements $\ 2\theta = \alpha\ $ et $\ 2\chi = \nicefrac{\pi}{2} - \beta$, on a cette fois :
-\[\begin{pmatrix}
-	\sin(2\theta) \cos(2\chi) \\ -\sin (2\chi) \\ \cos(2\theta) \cos(2\chi)
-\end{pmatrix} = \begin{pmatrix}
-	\sin(\alpha) \sin(\beta) \\ -\cos (\beta) \\ \cos(\alpha) \sin(\beta)
-\end{pmatrix} = \begin{pmatrix}
-	0 & 1 & 0 \\ 0 & 0 & -1 \\ 1 & 0 & 0
-\end{pmatrix}\begin{pmatrix}
-\cos(\alpha) \sin(\beta) \\ \sin(\alpha) \sin(\beta) \\ \cos (\beta)
-\end{pmatrix}\]
-\\
-Finalement, dans la sphère la transformation se fait via :
-\[w_P(2\theta, 2\chi) = \begin{pmatrix}
-	1 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0
-\end{pmatrix} w_B\big( (\nicefrac{\pi}{2}-\theta ), \big(\nicefrac{\pi}{2}-\chi) \big)\]
-\\
 
-Encore une autre formule. Cette fois, en partant de \eqref{eq:bloch2poinca} :
+Même calcul, cette fois, en partant de \eqref{eq:bloch2poinca} :
 \begin{align*}
 	2\rho_P(\theta, \chi) &= 2U^\dagger \rho_B(2\theta, -2\chi) U \\
 	&= U^\dagger \Big( id + \cos(2\theta) \sin(-2\chi) \sigma_1 + \sin(2\theta) \sin(-2\chi) \sigma_2 + \cos (-2\chi) \sigma_3 \Big) U \\
@@ -795,6 +779,19 @@ Qui donne :
 	&= id + \cos(2\theta) \sin(-2\chi) \sigma_3 + \sin(2\theta) \sin(-2\chi)  \sigma_1 + \cos (-2\chi) \sigma_2 \\
 	&= id + \sin(2\theta) \sin(2\chi)  \sigma_1 + \cos (2\chi) \sigma_2 + \cos(2\theta) \sin(2\chi) \sigma_3
 \end{align*}
+\\ 
+Le tout reste cohérent et avec les notations :
+\begin{align*}
+	w_P(\theta, \chi) &= \begin{pmatrix}
+		\sin(\theta) \cos(\chi) \\ -\sin (\chi) \\ \cos(\theta) \cos(\chi)
+	\end{pmatrix}  &   w_B\big( \alpha, \beta \big) = \begin{pmatrix}
+		\cos(\alpha) \sin(\beta) \\ \sin(\alpha) \sin(\beta) \\ \cos (\beta)
+	\end{pmatrix}
+\end{align*}
+Cela devient :
+\[w_P(2\theta, 2\chi) = \begin{pmatrix}
+	1 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0
+\end{pmatrix} w_B\big( (\nicefrac{\pi}{2}-\theta ), \big(\nicefrac{\pi}{2}-\chi) \big)\]
 \skipl 
 
 
@@ -805,29 +802,33 @@ Première chose, le produit hermitien est invariant par $U\in\U{2}$ (si si). Ain
 \[\big\langle U\x(t_0), U\x(t) \big\rangle = \big\langle \x(t_0), \x(t) \big\rangle\]
 \[\big\langle (U\x)', U\x \big\rangle = \big\langle U\x', U\x \big\rangle = \big\langle \x', \x \big\rangle\]
 \\
-et les phases totale et dynamique se transforme suivant :
+Avec la formule de la phase dynamique dans Poincaré \eqref{eq:phased_2var}, on a :
 \begin{align*}
-	\phaset \big(\x_B(\psi, \alpha, \beta) \big) &= \phaset \big(\x_P(\psi + \alpha/2, \alpha/2, -\beta/2) \big) 
-	\\ \\
+	%\phaset \big(\x_B(\psi, \alpha, \beta) \big) &= \phaset \big(\x_P(\psi + \alpha/2, \alpha/2, -\beta/2) \big) 
+	%\\ \\
 	\phased \big(\x_B(\psi, \alpha, \beta) \big) &= \Im m \int_{t_0}^t \left\langle \frac{d}{ds}\x_B(\psi, \alpha, \beta), \x_B(\psi, \alpha, \beta) \right\rangle ds \\
 	&= \Im m \int_{t_0}^t \left\langle \frac{d}{ds}\x_P(\psi + \alpha/2, \alpha/2, -\beta/2), \x_P(\psi + \alpha/2, \alpha/2, -\beta/2) \right\rangle ds \\
 	&= \phased \big( \x_P(\psi + \alpha/2, \alpha/2, -\beta/2) \big) \\
-	&= \psi(t) + \alpha(t)/2 - \big( \psi(t_0) + \alpha(t_0)/2 \big) - \int_{t_0}^t \alpha'(s)/2\sin \big( -2\beta(s)/2 \big) ds \\
+	&= \psi(t) + \alpha(t)/2 - \big( \psi(t_0) + \alpha(t_0)/2 \big) - \int_{t_0}^t \frac{\alpha'(s)}{2} \sin \big( -2\beta(s)/2 \big) ds \\
 	&= \psi(t) - \psi(t_0) + \frac{\alpha(t) - \alpha(t_0)}{2} + \frac{1}{2} \int_{t_0}^t \alpha'(s)\sin \beta(s) ds
 \end{align*}
 \\
-Mais dans le même temps, si on déroule le calcul de la phase dynamique de $\x_B$, on tombe cette fois sur :
+Mais dans le même temps, si on calcul la phase dynamique de $\x_B$, on tombe cette fois sur :
 \begin{align*}
 	\phased\big(\x_B(\psi, \alpha, \beta) \big) &= \psi(t) - \psi(t_0) +  \int_{t_0}^t \alpha'(s) \frac{1 - \cos\beta(s)}{2}ds \\
-	&= \psi(t) - \psi(t_0) + \frac{1}{2}\big(\alpha(t) - \alpha(t_0) \big)- \frac{1}{2} \int_{t_0}^t \alpha'(s) \cos\beta(s) ds 
+	&= \psi(t) - \psi(t_0) + \frac{\alpha(t) - \alpha(t_0)}{2}- \frac{1}{2} \int_{t_0}^t \alpha'(s) \cos\beta(s) ds 
 \end{align*}
 Auquel cas :
 \begin{align*}
 	\phased\big(\x_S(\varphi, \theta, \chi) \big) &= \phased\big(\x_B(\varphi-\theta, 2\theta, -2\chi) \big) \\
 	&= \varphi(t) - \theta(t) - \big( \varphi(t_0) - \theta(t_0) \big) + \frac{1}{2} \int_{t_0}^t 2\theta' (1 - \cos2\chi)ds \\
-	&= \varphi(t) - \varphi(t_0) - \big( \theta(t_0) - \theta(t) \big) + \int_{t_0}^t \theta' (1 - \cos2\chi)ds
+	&= \varphi(t) - \varphi(t_0) - \big( \theta(t) - \theta(t_0) \big) + \int_{t_0}^t \theta' (1 - \cos2\chi)ds \\
+	&= \varphi(t) - \varphi(t_0) - \big( \theta(t) - \theta(t_0) \big) + \big( \theta(t) - \theta(t_0) \big) - \int_{t_0}^t \theta' \cos2\chi ds \\
+	&= \varphi(t) - \varphi(t_0) - \int_{t_0}^t \theta' \cos2\chi ds
 \end{align*}
-	
+Ce qui voudrait dire que :
+\[\varphi(t) - \varphi(t_0) - \int_{t_0}^t \theta' \cos2\chi ds = 	\phased\big(\x_S(\varphi, \theta, \chi) \big) = \varphi(t) - \varphi(t_0) - \int_{t_0}^t \theta' \cos2\chi ds\]
+... bizarre
 
 
 \end{annexe}

@@ -83,6 +83,9 @@ Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\
 Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et $f : \manu\lr \mathpzc{N}$ une application différentiable, sa différentielle (ou application tangent ou push forward) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
 \[f_*(v) = f_*(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (f_*)_\mu^\nu = \bt_\mu\big( f^\nu \big)\]
 
+Et le pull back (image réciproque) s'écrit par dualité :
+\[f^*(g) = g\circ f_* \ \Llr\ f^*\]
+
 \begin{itemize}
 	
 	\item fibré tangent dual
@@ -150,9 +153,9 @@ Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de 
 \[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{ où }\quad [z] = w\]
 \\
 
-Aussi, comme le produit hermitien sur ${\C^{n+1}}^*$ est invariante par la projection sur $\PC{n}$, dans le sens où\footnote{\itshape
-	En terme technique, la projection sur $\PC{n}$ est une submersion riemannienne} :
-\[\forall e^{i\alpha}\in\U{1},\ \forall z_{1,2}\in\C^{n+1},\quad \langle z_1 e^{i\alpha}, z_2 e^{i\alpha} \rangle = \langle z_1 , z_2 \rangle\]
+Aussi, comme le produit hermitien sur $\S{n}$ (induit par ${\C^{n+1}}^*$) est invariante par la projection sur $\PC{n}$, dans le sens où\footnote{\itshape
+	En terme technique, la projection sur $\PC{n}$ est une submersion riemannienne.} :
+\[\forall e^{i\alpha}\in\U{1},\ \forall z_{1,2}\in\S{n},\quad \langle z_1 e^{i\alpha}, z_2 e^{i\alpha} \rangle = \langle z_1 , z_2 \rangle\]
 il induit une métrique hermitienne sur $\PC{n}$. Plus connue sous le nom de Fubini-Study, elle s'exprime en coordonnées locales par la formule :
 \begin{equation}
 	\begin{aligned}
@@ -173,8 +176,8 @@ et la forme de Kähler associée est :
 Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemble localement à des espaces produits. 
 Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $S^{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, une tranche du ruban est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
 \begin{figure}[h]
-	\includegraphics[width=0.6\textwidth]{fig/placeholder}
-	%\input{tikz/part-2/ruban2mobius}
+	\input{tikz/part-2/ruban2mobius}
+	%\includegraphics[width=0.4\textwidth]{fig/placeholder}
 	\caption[Ruban de Mobius comme variété fibrée]{Représentation du ruban de Modius en tant que fibré. Les notations sont reprise de la \cref{def:VFP}.}
 	\label{fig:ruban2modius}
 \end{figure}
@@ -258,7 +261,7 @@ Son caractère libre, lui assure l'unicité d'un choix canonique de section $\si
 Cela mène à la définition :
 \begin{definition}[Fonctions de transitions]
 	L'intersection de deux cartes  est noté $U_{ij} = U_i\cap U_j$ et le passage d'une section local canonique est donné par :
-	\[\forall x\in U_{ij},\qquad \sigma_j(x) = \sigma_i(x) t\big(\sigma_i(x), \sigma_j(x)\big)\]
+	\[\forall x\in U_{ij},\qquad \sigma_j(x) = \sigma_i(x) \cdot t\big(\sigma_i(x), \sigma_j(x)\big)\]
 	L'élément de $G$, $t(\sigma_i, \sigma_j)$, est alors appelé \emph{fonction de transition} et sera noté $\varphi_{ij}$. Elle fait effectivement la transition entre deux cartes dans le sens où :
 	\[\forall (g,x)\in G\times U_{ij},\qquad {h_i}^{-1} \circ h_j(g,x) = \big( \varphi_{ij}(x)g, x \big)\]
 \end{definition}
@@ -281,7 +284,7 @@ On constate bien que $w^\mu$ n'est définie qu'à un choix de $e^{-i\arg z^i}\in
 	\forall \mu\neq i,\quad {z_i}^\mu &= \frac{w^\mu}{\|w\|}e^{i\theta}  &  {z_i}^i &= \frac{1}{\|w\|}e^{i\theta} 
 \end{align*}
 La norme de $w$ étant à comprendre au sens des coordonnées locales sur $U_i$\footnote{\itshape
-	C'est un abus de notation, $w$ n'a pas de norme en ce sens là puisqu'elle dépend du choix de carte $U_i$. Mais ici tout le raisonnement est purement local, donc ce n'est pas un problème
+	C'est un abus de notation, $w$ n'a pas de norme en ce sens là puisqu'elle dépend du choix de carte $U_i$. Mais ici tout le raisonnement est purement local, donc ce n'est pas un problème.
 } :
 \begin{align*}
 	\|w\|^2 = \big\|(w^\mu)_{1\leq \mu\leq n}\big\|^2 = \frac{1}{|{z_i}^i|^2}\sum_{\nu \neq i} \big|{z_i}^\nu\big|^2 = \frac{1 - |{z_i}^i|^2}{|{z_i}^i|^2} &\Llr\ \big| {z_i}^i \big|^2 \|w\|^2 = 1 - \big|{z_i}^i\big|^2 \\
@@ -296,7 +299,7 @@ D'où l'expression des coefficients de $z_i\in\S{n}$ :
 
 Tout cela permet d'écrire $\S{n}$ comme une variété fibrée principale :
 \begin{proposition}
-	La $(2n+1)-$sphère $\S{n}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $\S{n}$ étant induite par la multiplication par un scalaire complexe et où :
+	La $(2n+1)-$sphère $\S{n}$, vu comme variété plongée dans $\C^n$ est une VFP de base $\PC{n}$ et de fibre type $\U{1}$. L'action de $\U{1}$ sur $\S{n}$ est induite par la multiplication par un scalaire complexe et où :
 	\begin{itemize}
 		\item La fibration $\pi$ est la projection canonique de $\S{n}$ sur $\PC{n}$ :
 		\begin{equation}
@@ -315,7 +318,7 @@ Tout cela permet d'écrire $\S{n}$ comme une variété fibrée principale :
 		
 		\item Les fonctions de transitions entre deux cartes $U_i$ et $U_j$ s'écrivent :
 		\begin{align}
-			\varphi_{ij}(w) = e^{-i \arg (z_i^i)} e^{i \arg (z_j^j)}  &  \text{ où }&\qquad z_{ij} = \phi_{ij}(w)
+			\varphi_{ij}(w) &= e^{-i \arg (z_i^i)} e^{i \arg (z_j^j)}  &  \text{ où }&\qquad z_{i,j} = \phi_{i,j}(w)
 		\end{align}
 	\end{itemize}
 \end{proposition}
@@ -337,7 +340,7 @@ Les tangents verticaux $\vg[p]{P}$ se définissent canoniquement via $\pi$, en t
 \[\vg[p]{P} \defeq \Ker (\tg[p]{\pi}) = \big\{ v\in\tg[p]{P}\ |\ \tg[p]{\pi}(v)=0 \big\}\]
 \\ 
 Ce n'est en revanche pas le cas des espaces horizontaux. Il faut donc faire un choix pour les $\hg[p]{P}$ et c'est ce choix qui est appelé \emph{connexion} (elle connecte les espace tangents entre eux).
-Comme pour les vercticaux, ces sous-espaces peuvent être caractérisés par une 1-forme différentiable $\conn$ sur $P$ à valeur dans $\vg[p]{P}$, auquel cas :
+Comme pour les vercticaux, ces sous-espaces peuvent être caractérisés par une 1-forme différentiable $\conn$ sur $P$ à valeur dans $\vg{P}$, auquel cas :
 \[\forall p\in P,\quad \hg[p]{P} = \Ker(\conn_p)\]
 \skipl
 
@@ -369,10 +372,10 @@ Concrètement, pour tout point de la base $x\in U_i$, il suffit de la définir e
 De même, la 1-forme de connexion n'a besoin d'être définie que sur un point particulier au dessus de chaque fibre. Et comme tout les espaces verticaux sont difféomorphes à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$, c'est sur $\mathfrak{g}$ qu'elle est définie :
 
 \begin{definition}[1-forme de connexion] \label{def:1-form2conn}
-	La \emph{1-forme de connexion} $\conn$ d'une VFP $P(G,B)$ est définie comme la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est à valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que :
-	\begin{equation} \label{eq:1-form2conn}
-		\forall p\in P,\quad \hg[p]{P} \defeq \Ker(\conn_p)
-	\end{equation}
+	La \emph{1-forme de connexion} $\conn$ d'une VFP $P(G,B)$ est définie comme la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est à valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que $\forall p\in P$ :
+	\begin{align} \label{eq:1-form2conn}
+		\forall \bf{v}\in \mathfrak{g},\ \conn_p(\bf{v}) &= \bf{v}  &  \hg[p]{P} &= \Ker(\conn_p)
+	\end{align}
 	\skipl
 	
 	En terme de coordonnée local, $\conn$ elle n'a pas besoin d'être définit sur $\ U_i\times G$, mais seulement sur $\ U_i \cong U_i \times \{e\}$. Ainsi, $\conn$ induit une 1-forme sur les cartes $U_i$ par l'image réciproque des sections canonique $\sigma_i$. Elles sont notées $\locconn_i \defeq \sigma_i^*\conn$ et sur le chevauchement $U_{ij}$, elles vérifient :
@@ -381,15 +384,37 @@ De même, la 1-forme de connexion n'a besoin d'être définie que sur un point p
 	\end{equation}
 \end{definition}
 \skipl
-\\
 
+
+Munir $P(G,B)$ d'une connexion permet, entre autre de définir la notion de relèvement horizontale :
+\begin{definition}[Relèvement horizontal]
+	Étant donné une trajectoire $\ \rho : \R\ \lr B\ $ sur la base et une condition initiale $\gamma_0\in \rho(0)G$ dans la fibre au dessus de $\rho(0)$, il existe un unique relèvement $\gamma$ de $\rho$ dans $P$ tel que $\forall t\in\R$ :
+	\begin{align} \label{eq:condi2hori_lift}
+	\pi\circ\gamma(t) &= \rho(t)  &  \dot{\gamma}(t) &\in \hg[\gamma(t)]{P} &  \gamma(0) &= \gamma_0
+	\end{align}
+	\\
+	On parle de \emph{relèvement horizontal} (\emph{horizontal lift}, ou \emph{transport parallèle} de $\gamma_0$ le long de $\rho$) puisque $\gamma$ n'a pas de déplacement vertical au sens de la connexion. Du point de vue de la 1-forme $\omega$, si $\gamma$ s'écrit localement $\gamma_i = \sigma_i(\rho) g_i$, alors $g_i$ vérifie l'équation (d'où vient l'unicité du relèvement) :
+	\begin{equation} \label{eq:EDP2hori_lift}
+		\frac{d}{dt}g_i(t)  = - \locconn_i(t) \cdot g_i(t)
+	\end{equation}
+	\\
+	Enfin, si maintenant $\gamma$ est une trajectoire de $P$, on dira, par abue de langage, que $\Tilde{\gamma}$ est le relèvement horizontale de $\gamma$ si c'est le relèvement horizontale de la projection $\pi\circ\gamma$ avec $\ \Tilde{\gamma}(0) = \gamma(0)$.
+\end{definition}
+\skipl
+
+Soit $\gamma$ une trajectoire de $P$ de projection $\rho_\gamma$ et de relèvement horizontale $\Tilde{\gamma}$, avec localement :
+\begin{align*}
+	\gamma(t) &= h_i\big( g_i(t), \rho_\gamma \big)  &  \Tilde{\gamma}(t) &= h_i\big( \Tilde{g}_i(t), \rho_\gamma \big)
+\end{align*}
+\\
+Par définition, on a $\Tilde{g}$ suit l'équation \eqref{eq:EDP2hori_lift} et le passage de $\gamma$ à $\Tilde{\gamma}$ se fait suivant :
+\[\gamma(t) = h_i\big( g_i, \rho_\gamma \big) = h_i\big( \Tilde{g}_i(t), \rho_\gamma \big) \cdot g_i \Tilde{g}^{-1}_i = \Tilde{\gamma} \cdot g_i \Tilde{g}^{-1}_i\]
+\\
+\\
 \begin{itemize}
 	
-	\item DEF horizontal+69 lift : Par abue de language, on dira de $\Tilde{\gamma}$ que c'est le relèvement horizontale de $\gamma$ si c'est le relèvement horizontale de sa projection sur $\PC{n}$ avec la condition initiale $\Tilde{\gamma}(0) = \gamma(0)$
+	\item Remarque : Même si cette notion de connexion n'est pas la même que pour les connexions affines, les deux sont très liée. En particulier si $P$ est le fibré tangent d'une variété $\manu$ avec pour groupe structural $\GL_n(\R)$, alors toute connexion sur $P$ est une connexion affine sur $\manu$.
 	
-	\item EDP du relèvement $g_i$ telle que $\Tilde{\gamma}(t) = h_i\big( C_\gamma(t), g_i(t) \big)$ (besoin d'un peu d'algèbre de Lie, soit annexe soit on skip les détails)
-	
-	\item Remarque : Même si cette notion de connexion n'est pas la même que pour les connexions affines, les deux sont très liée. En particulier si $P$ est le fibré tangent d'une variété $\manu$ avec pour groupe structural $\GL_n(\R)$, alors toute connexion sur $P$ est une connexion affine sur $\manu$ .
 \end{itemize}
 \skipl
 
@@ -397,31 +422,50 @@ De même, la 1-forme de connexion n'a besoin d'être définie que sur un point p
 
 \subsubsection{Choix de connexion sur $\bf{\VFP}$}\label{subsec:conn2SUPC}
 
-\begin{itemize}
-	
-	\item Pour choisir la connexion est mettre sur $\VFP$, il est important de comprendre son intérêt du point de vue signal.
-	
-	\item Comme, à chaque instant $t$, un signal $\gamma$ sur $\S{n}$ est représenté par une pair $(e^{i\alpha(t)}, w(t))\in\U{1}\times\PC{n}$ à travers les $h_i$, il parait naturelle de voir $\alpha(t)$ comme la fréquence instantanée du signal en $\gamma(t)$.
-	
-	\item Le problème de ce choix est qu'il dépend de la carte $U_i$ utilisé pour représenté $\gamma(t)$, ce qui n'est pas sensé être le cas de la fréquence instantanée.
-	
-	\item C'est là qu'intervient la connexion : Le relèvement horizontal $\Tilde{\gamma}$ d'une courbe $C_\gamma\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\gamma}$ n'a pas de variation dans $\U{1}$, de variation fréquentielle.
-	
-	\item Bonus : Le relèvement horizontal est unique modulo un choix de phase initiale, choix de phase qui se retrouve dans les bornes d'intégrations de la phase dynamique !
-	
-	\item Ainsi, si $C_\gamma$ est la projection d'un signal $\gamma$, le relèvement horizontale $\Tilde{\gamma}$ s'interprète comme une version de $\gamma$ dénué de toute fréquence instantanée.
-	À l'inverse, à l'instant $t$, l'action $e^{i\alpha}$ permettant de passé de $\Tilde{\gamma}(t)$ à $\gamma(t)$ est vu la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)
-	
-	\begin{figure}[h]
-		\includegraphics[width=0.4\textwidth]{fig/placeholder}
-		\caption[Interprétation géométrique de la fréquence instantanée]{Fréquence instantanée d'un signal $\gamma$ vu comme variation vertical de $\gamma$ par rapport à son relèvement vertical $\Tilde{\gamma}$ associé}
-		\label{fig:phases_p-cycl}
-	\end{figure}	
-	
-	\item Sachant cela, es discutions de première partie suggère de poser :
-	\[\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle p, \bf{v}\rangle\]
+Pour choisir la connexion est mettre sur $\VFP$, il est important de comprendre son intérêt du point de vue signal.
+Comme, à chaque instant $t$, un signal $\x$ sur $\S{n}$ est représenté par une pair $(e^{i\alpha(t)}, \rho(t))\in\U{1}\times\PC{n}$ à travers les $h_i$, $\alpha(t)$ peut être vu comme la fréquence et $\rho(t)$ l'état de polarisation instantanée du signal $\x(t)$.
+\\
+Le problème de cette représentation est qu'elle dépend du choix de carte $U_i$, ainsi sur l'intersection $U_{ij}$, $\x$ aurait (au moins) deux notions de fréquence instantanée.
+\\
+
+C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ qui lui est associée est définie globalement sur le fibré, autrement dit, elle est indépendante des représentations locales de $\x$.
+\\
+D'autre part, le relèvement horizontal $\Tilde{\x}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\x}$ n'a pas de variation dans la direction $\U{1}$ (par opposition à celle de $\PC{n}$), donc de variation fréquentielle.
+\\
+Ainsi, si $\rho_{\x}$ est la projection d'un signal $\x$, le relèvement horizontale $\Tilde{\x}$ s'interprète comme une version de $\x$ dénuée de toute fréquence instantanée.
+En allant un peu plus loin, à tout instant $t$, l'action $e^{i\alpha}$ permettant de passé de $\Tilde{\x}(t)$ à $\x(t)$ (\ie~$\x(t) = e^{i\alpha} \Tilde{\x}(t)$) peut-être vu comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)
+
+\begin{figure}[h]
+	\includegraphics[width=0.4\textwidth]{fig/placeholder}
+	\caption[Interprétation géométrique de la fréquence instantanée]{Fréquence instantanée d'un signal $\x$ vu comme variation vertical de $\x$ par rapport à son relèvement horizontale $\Tilde{\x}$ associé}
+	\label{fig:freq_inst_geodiff}
+\end{figure}	
+
+\begin{remarque}
+	Un signal qui n'aurait pas fréquence instantanée mais une polarisation instantanée n'a pas vraiment de sens. 
+	Cela revoit à notre discussion de première partie où. Il avait était expliqué que la fréquence instantanée d'un signal univarié devait contenir les hautes fréquences et son amplitude les basses et que, si ce n'était pas le cas, alors toutes les fréquences sur signal pourrait se retrouver dans l'amplitude.
+	Ici le problème est le même, mais avec l'état de polarisation en lieu de l’amplitude. Pour s'en convaincre, il est utile de retourner sur le cas bivarié.
 	\\
-	Ce qui colle tout à fait avec le fait que l'algèbre de Lie de $\U{1}$ soit $i\R$ !
+	La projection sur $\PC{2}$ de $\x$ représente l'ellipse de polarisation instantanée. 
+	Mais si $\x$ n'as pas de fréquence instantanée, alors $\x(t)$ n'est plus représenté que par le sommet de l’ellipse paramétrée par $\rho_{\x}$. 
+	L'on pourrait alors argumenter que tout signal peut être décrit ainsi, ce qui est parfaitement inintéressant.
+	
+	Cette vision du relèvement horizontale est donc purement formelle et à bien un sens géométrique même si en terme de signal, elle ne correspond à rien.
+\end{remarque}
+\skipl
+
+En admettant l'interprétation de la connexion comme fréquence instantanée, les discussions de première partie (\Cref{subsec:intro_phased}) suggère choisir comme 1-forme de connexion :
+\[\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = \Im m \langle \bf{v}, p\rangle\]
+\\
+Or, l'algèbre de Lie de $\U{1}$ est représenté par $\mathfrak{u}(1)\cong i\R$. Il convient alors de poser :
+\begin{equation} \label{eq:conn2SUPC}
+	\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle \bf{v}, p\rangle
+\end{equation}
+\\
+
+Il s'avère que ce choix est doublement justifié par le fait que c'est la connexion induite par la métrique de $\S{n}$.
+	
+\begin{itemize}
 	
 	\item Un choix qui est doublement justifié puisque c'est également la 1-forme de connexion induite par la métrique sur $\S{n}$. \thoughts{Plus de détail dans l'annexe \ref{ann:conn2submer_riemanian} ?} (BTW c'est l'équivalent pour les VFP de la connexion de Levi-Civita)
 	
@@ -532,6 +576,19 @@ De même, la 1-forme de connexion n'a besoin d'être définie que sur un point p
 	\item Cela demande de refermer $\gamma$ de sorte à ne pas engendré plus de phase géométrique. En somme, on veut savoir qu'elles sont les trajectoire de $\S{n}$ qui n'engendre pas de phase géométrique.
 	
 	\item Sachant le représentaiton par Stokes c'est plutôt simple : 
+\end{itemize}
+
+
+
+\section{Aller plus loin}
+
+\begin{itemize}
+	
+	\item La présentation dans $\PC{n}$ à été fructueuse dimension $n=1$, avec les paramètres de l'ellipse. Mais, au delà, ca devient moins clair. Intuitivement, on pourrait généraliser les états de polarisations en ajoutant simplement une matrice de rotation dans $\C^n$ au signal bivarié polarisé. Autrement dit, il faudrait découper $\PC{n}$ en une produit du genre :
+	\[\PC{n} \cong \SO_n(\R)\times \PC{2}-ish\]
+	C'est pas clair comment faire ça (est-ce que $\SU_n(\C)$ serait mieux ?)
+	
+	\item Plot d'un relèvement horizontale (juste pour voir à quoi ca ressemble)
 \end{itemize}
 
 

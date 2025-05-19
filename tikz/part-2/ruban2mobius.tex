@@ -1,0 +1,58 @@
+\begin{tikzpicture}[scale=0.8]
+	%\draw[opacity=0.1] (-4.5,-4.5) grid (12.5,4.5);
+	
+	
+%%%%     MOBIUS     %%%%
+
+	%main points
+	\coordinate (s1-) at ($(90+0-30:4) + (0,-1)$);
+	\coordinate (s1+) at ($(90+0+30:4) + (0,-1)$);
+	
+	\coordinate (s2+) at ($(90+120-30:4) + (0,-1)$);
+	\coordinate (s2-) at ($(90-120+30:4) + (0,-1)$);
+	
+	\coordinate (s3+) at (90+120+30:4);
+	\coordinate (s3-) at (90-120-30:4);
+	
+	%\draw (s1-) -- (s2+) -- (s3-) -- (s1-);
+	%\draw (s1+) -- (s3+) -- (s2-) -- (s1+);
+	%\draw (s3+) -- (s3-);
+	\colorlet{tmpb}{blue!30!};
+	\colorlet{tmpr}{red!30!};
+	\colorlet{tmpv}{blue!30!red!30!};
+	\definecolor{tmpg}{gray}{0.95};
+	
+	
+	% bande droite
+	\draw[fill=tmpr] (s1-) .. controls  ($(s1-)+(-60:3)$) and  ($(s3+)+(0:3)$) .. 
+		(s3+) -- (s3-) 
+		.. controls ($(s3-)+(0:1)$) and ($(s2-)+(-60:1)$) .. 
+		(s2-) -- cycle;
+		
+	% bande haut
+	\draw[fill=tmpv] (s1-) .. controls  ($(s1-)+(120:0.5)$) and  ($(s1+)+(60:0.5)$) .. 
+		(s1+) -- (s2+) 
+		.. controls ($(s2+)+(60:2)$) and ($(s2-)+(120:2)$) .. 
+		(s2-) -- cycle;
+		
+	% bande gauche
+	\draw[fill=tmpb] (s1+) .. controls  ($(s1+)+(-120:3)$) and  	($(s3-)+(-180:3)$) .. 
+		(s3-) -- (s3+) 
+		.. controls ($(s3+)+(-180:1)$) and ($(s2+)+(-120:1)$) .. 
+		(s2+) -- cycle;
+		
+		
+	%%%%     CARTE LOCALE     %%%%
+	
+	% ouvert U_i
+	\draw (-1,0.25) -- (-1.5,2.67) node[midway, above right]{$U_i$};
+	\draw (1,0.25) -- (1.5,2.67);
+	
+	% carte
+	\draw[fill=tmpg, shift={(6.25,-1.5)}] (0,0) -- (0, 4) node[midway, left]{$G$} -- (3.5,4) -- (3.5,0) -- cycle node[midway, below]{$\pi(U_i)$};
+	
+	% fleche vers la carte
+	\draw[-Stealth, thick] (0,2.5) ..
+	controls ($(0,2.5) + (30:2)$)  and ($(7, 2) + (180-30:2)$) .. (7, 2) node[midway, above]{$h_i$};
+	
+\end{tikzpicture}
