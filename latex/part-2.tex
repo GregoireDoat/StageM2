@@ -359,7 +359,10 @@ Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au 
 		
 		\item l'assignation des $\hg[p]{P}$ est invariante par l'action de $G$ au sens où :
 		\begin{equation}\label{eq:conn_G-inv}
-			\forall (p,g)\in P\times G,\quad \hg[R_g(p)]{P} = {R_g}_* (\hg[p]{P}) = \big\{{R_g}_*(v)\ |\ v \in \hg[p]{P} \big\}
+			\forall (p,g)\in P\times G,\quad \hg[R_g(p)]{P} = {R_g}_* (\hg[p]{P}) = \big\{{R_g}_*(\bf{v})\ |\ \bf{v} \in \hg[p]{P} \big\}
+		\end{equation}
+		\begin{equation}
+		\forall (p,g)\in P\times G,\quad \hg[p\cdot g]{P} = \hg[p]{P}\cdot g = \big\{\bf{v}\cdot g\ |\ \bf{v} \in \hg[p]{P} \big\}
 		\end{equation}
 	\end{itemize}
 \end{definition}
@@ -367,15 +370,19 @@ Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au 
 
 Au delà d'assurer une compatibilité entre $H$ et $R$, l'équation \eqref{eq:conn_G-inv} permet de n'avoir à définir la connexion qu'en un seul point de chaque fibre, les autres se déduisant par cette formule. 
 Concrètement, pour tout point de la base $x\in U_i$, il suffit de la définir en $\sigma_i(x) = h_i(e, x)$, de sorte que l'espace horizontale en tout autre point $\ p=h_i(g, x) = \sigma_i(x)\cdot g$ au dessus de $x$ sera donné par :
-\[\hg[p]{P} = \tg[\sigma_i(x)]{R_g} (\hg[\sigma_i(x)]{P})\]
+\[\hg[p]{P} = \tg[\sigma_i(x)]{R_g} (\hg[\sigma_i(x)]{P}) =  (\hg[\sigma_i(x)]{P}) \cdot g\]
 \\
 De même, la 1-forme de connexion n'a besoin d'être définie que sur un point particulier au dessus de chaque fibre. Et comme tout les espaces verticaux sont difféomorphes à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$, c'est sur $\mathfrak{g}$ qu'elle est définie :
 
 \begin{definition}[1-forme de connexion] \label{def:1-form2conn}
 	La \emph{1-forme de connexion} $\conn$ d'une VFP $P(G,B)$ est définie comme la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est à valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que $\forall p\in P$ :
 	\begin{align} \label{eq:1-form2conn}
-		\forall \bf{v}\in \mathfrak{g},\ \conn_p(\bf{v}) &= \bf{v}  &  \hg[p]{P} &= \Ker(\conn_p)
+		\forall a\in \mathfrak{g},\ \conn_p(p\cdot a) &= a  &  \hg[p]{P} &= \Ker(\conn_p)
 	\end{align}
+	Où $p\cdot a$ est vu comme vecteur vertical de $\vg[p]{P}$. La condition de compatibilité de la connexion avec l'action \eqref{eq:conn_G-inv} devient :
+	\begin{equation} \label{eq:1-form_G-inv}
+		\forall \bf{v}\in\tg[p]{P},\quad \conn_{p\cdot g}(\bf{v}\cdot g) \defeq \conn_{p\cdot g}(R_{g\, *}(\bf{v})) = g^{-1}\conn_p(\bf{v})g
+	\end{equation}
 	\skipl
 	
 	En terme de coordonnée local, $\conn$ elle n'a pas besoin d'être définit sur $\ U_i\times G$, mais seulement sur $\ U_i \cong U_i \times \{e\}$. Ainsi, $\conn$ induit une 1-forme sur les cartes $U_i$ par l'image réciproque des sections canonique $\sigma_i$. Elles sont notées $\locconn_i \defeq \sigma_i^*\conn$ et sur le chevauchement $U_{ij}$, elles vérifient :
@@ -402,14 +409,23 @@ Munir $P(G,B)$ d'une connexion permet, entre autre de définir la notion de rel�
 \end{definition}
 \skipl
 
-Soit $\gamma$ une trajectoire de $P$ de projection $\rho_\gamma$ et de relèvement horizontale $\Tilde{\gamma}$, avec localement :
+Pour la suite, il sera utile d'avoir l'expression d'une trajectoire $\gamma:\R\lr P$ par rapport à son relèvement horizontale $\Tilde{\gamma}$. Pour l'obtenir, on note  $\gamma = \Tilde{\gamma}\cdot g$, de sorte que sa dérivée s'écrive :
+\[\dot{\gamma} = \dot{\Tilde{\gamma}}\cdot g + \Tilde{\gamma}\cdot dg = \dot{\Tilde{\gamma}}\cdot g + \gamma \cdot g^{-1}dg\]
+\\
+Ce à quoi on applique $\conn$, donnant :
 \begin{align*}
-	\gamma(t) &= h_i\big( g_i(t), \rho_\gamma \big)  &  \Tilde{\gamma}(t) &= h_i\big( \Tilde{g}_i(t), \rho_\gamma \big)
+	\conn_\gamma(\dot{\gamma}) &= \conn_\gamma\big( \dot{\Tilde{\gamma}}\cdot g \big) + \conn_\gamma \big( \gamma \cdot g^{-1}dg \big) \\
+	&= g^{-1}\conn_{\Tilde{\gamma}}\big(\dot{\Tilde{\gamma}} \big) g + \conn_\gamma \big( \gamma \cdot g^{-1}dg \big)   &  &\text{d'après \eqref{eq:1-form_G-inv}} \\
+	&= \conn_\gamma \big( \gamma \cdot g^{-1}dg \big)  &  &\text{car $\Tilde{\gamma}$ est horizontale}
 \end{align*}
 \\
-Par définition, on a $\Tilde{g}$ suit l'équation \eqref{eq:EDP2hori_lift} et le passage de $\gamma$ à $\Tilde{\gamma}$ se fait suivant :
-\[\gamma(t) = h_i\big( g_i, \rho_\gamma \big) = h_i\big( \Tilde{g}_i(t), \rho_\gamma \big) \cdot g_i \Tilde{g}^{-1}_i = \Tilde{\gamma} \cdot g_i \Tilde{g}^{-1}_i\]
+Le terme $g^{-1}dg$ restant étant un vecteur de $g^{-1}\tg[g]{G}\cong \tg[e]{G}\cong \mathfrak{g}$, le vecteur $\gamma \cdot g^{-1}dg$ est vertical et :
+\[\conn_\gamma(\dot{\gamma}) = \conn_\gamma \big( \gamma \cdot g^{-1}dg \big) = g^{-1}dg\]
 \\
+D'où $\gamma = \Tilde{\gamma}\cdot g$ où $g$ est solution de :
+\begin{equation} \label{eq:deviation2hozi}
+	\frac{d}{dt}g(t)  = g(t) \conn_{\gamma(t)}\big( \dot{\gamma}(t) \big)
+\end{equation}
 \\
 \begin{itemize}
 	
@@ -462,22 +478,24 @@ Or, l'algèbre de Lie de $\U{1}$ est représenté par $\mathfrak{u}(1)\cong i\R$
 	\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle \bf{v}, p\rangle
 \end{equation}
 \\
+Avec cette interprétation un signal, on peut alors voir la phase dynamique d'un signal $\gamma$ comme la déviation à son relèvement horizontale $\Tilde{\gamma}$. Ainsi, $\ g = e^{i\phased(\gamma)}\ $ est solution de \eqref{eq:deviation2hozi}, qui se réécrit alors :
+\begin{align*}
+	\frac{d}{dt}g  = g\, i\Im m\langle \dot{\gamma} , \gamma \rangle\ &\Llr\ g = e^{\int_{t_0}^t i\Im m\langle \dot{\gamma}(s) , \gamma(s) \rangle ds} \\
+	&\Llr\ \phased(\gamma) = \int_{t_0}^t \Im m\big\langle \dot{\gamma}(s) , \gamma(s) \big\rangle ds
+\end{align*}
+\\
 
-Il s'avère que ce choix est doublement justifié par le fait que c'est la connexion induite par la métrique de $\S{n}$.
+À noter ce que choix de connexion est doublement justifié par le fait que c'est la connexion induite par la métrique de $\S{n}$.
 	
 \begin{itemize}
 	
-	\item Un choix qui est doublement justifié puisque c'est également la 1-forme de connexion induite par la métrique sur $\S{n}$. \thoughts{Plus de détail dans l'annexe \ref{ann:conn2submer_riemanian} ?} (BTW c'est l'équivalent pour les VFP de la connexion de Levi-Civita)
-	
-	\item En effet, si $\S{n}$ n'est pas une variété complexe (problème de dimensionnalité), elle a quand-même une métrique riemannienne (réelle) induite par celle sur $\C^n$ : $\Re e\langle \cdot,\cdot\rangle$.
+	\item En effet, si $\S{n}$ n'est pas une variété complexe (problème de dimensionnalité), elle a quand-même une métrique riemannienne (réelle) induite par celle sur $\C^n$ : $\Re e\langle \, \cdot\, ,\, \cdot\, \rangle$.
 	
 	\item Dans ce cas, les espaces horizontaux de définissent comment les espaces orthogonaux aux verticaux : 
 	\[\forall p\in\S{n},\quad \hg[p]{\S{n}} = {\vg[p]{\S{n}}}^\perp\]
 	
-	\item Ce qui mène bien à poser $w_p = i\Im m \langle p, \cdot \rangle $ 
-	
-	\item Etant donné un signal $\gamma$, on peut alors voir sa fréquence instantanée à l'instant $t$ comme sa déviation au relèvement horizontale de $\gamma$. Ainsi :
-	\[\phased(\gamma) = \int_{0}^t t\big( \Tilde{\gamma}(s), \gamma(s) \big)ds \]
+	\item Ce qui mène bien à poser $w_p = i\Im m \langle\, \cdot\, , p\rangle $ 
+
 
 	
 \end{itemize}
