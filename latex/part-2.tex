@@ -308,12 +308,12 @@ Tout cela permet d'écrire $\S{n}$ comme une variété fibrée principale :
 		
 		\item Les cartes locales $h_i$ s'écrivent :
 		\begin{equation}
-			\forall w \in U_i,\ \forall e^{i\theta}\in\U{1},\  h_i(w,e^{i\theta}) = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta} \in \S{n}
+			\forall w \in U_i,\ \forall e^{i\theta}\in\U{1},\  h_i(w,e^{i\theta}) = \frac{(w^0,\cdots, 1,\cdots, w^n)}{\sqrt{1 + w^\nu \congu{w}_\nu}}e^{i\theta} \in \S{n}
 		\end{equation}
 		
 		\item Les sections canoniques $\sigma_i$ au dessus des $U_i$, elles,  sont définies par :
 		\begin{equation}
-			\forall w \in U_i,\ \sigma_i(w) = h_i(w, 1) = \frac{w^\mu}{\sqrt{1 + w^\nu \congu{w}_\nu}}
+			\forall w \in U_i,\ \sigma_i(w) = h_i(w, 1) = \frac{1}{\sqrt{1 + w^\nu \congu{w}_\nu}}(w^0,\cdots, 1,\cdots, w^n)
 		\end{equation}
 		
 		\item Les fonctions de transitions entre deux cartes $U_i$ et $U_j$ s'écrivent :
@@ -479,26 +479,37 @@ Or, l'algèbre de Lie de $\U{1}$ est représenté par $\mathfrak{u}(1)\cong i\R$
 \end{equation}
 \\
 Avec cette interprétation un signal, on peut alors voir la phase dynamique d'un signal $\gamma$ comme la déviation à son relèvement horizontale $\Tilde{\gamma}$. Ainsi, $\ g = e^{i\phased(\gamma)}\ $ est solution de \eqref{eq:deviation2hozi}, qui se réécrit alors :
-\begin{align*}
-	\frac{d}{dt}g  = g\, i\Im m\langle \dot{\gamma} , \gamma \rangle\ &\Llr\ g = e^{\int_{t_0}^t i\Im m\langle \dot{\gamma}(s) , \gamma(s) \rangle ds} \\
-	&\Llr\ \phased(\gamma) = \int_{t_0}^t \Im m\big\langle \dot{\gamma}(s) , \gamma(s) \big\rangle ds
-\end{align*}
+\[\forall t\in\R,\quad \left\{ \begin{aligned}
+	g'(t)  &= g(t)\, i\Im m \big\langle \dot{\gamma}(t) , \gamma(t) \big\rangle \\
+	g(t_0) &= 1
+\end{aligned}\ \right. \Llr\ g(t) = e^{\int_{t_0}^t i\Im m\langle \dot{\gamma}(s) , \gamma(s) \rangle ds}\]
+\\
+Ce qui redonne la formule :
+\begin{equation}\label{eq:phased_vgeodiff}
+	\phased(\gamma, t_0, t) = \int_{t_0}^t \Im m\big\langle \dot{\gamma}(s) , \gamma(s) \big\rangle ds
+\end{equation}
 \\
 
-À noter ce que choix de connexion est doublement justifié par le fait que c'est la connexion induite par la métrique de $\S{n}$.
-	
-\begin{itemize}
-	
-	\item En effet, si $\S{n}$ n'est pas une variété complexe (problème de dimensionnalité), elle a quand-même une métrique riemannienne (réelle) induite par celle sur $\C^n$ : $\Re e\langle \, \cdot\, ,\, \cdot\, \rangle$.
-	
-	\item Dans ce cas, les espaces horizontaux de définissent comment les espaces orthogonaux aux verticaux : 
-	\[\forall p\in\S{n},\quad \hg[p]{\S{n}} = {\vg[p]{\S{n}}}^\perp\]
-	
-	\item Ce qui mène bien à poser $w_p = i\Im m \langle\, \cdot\, , p\rangle $ 
-
-
-	
-\end{itemize}
+À noter ce que choix de connexion est doublement justifié par le fait que c'est la connexion induite par la métrique de $\S{n}$. En effet, le produit hermitien de $\C^{n+1}$ induit sur les espaces tangents de $\S{n}$ une métrique riemannienne\footnote{\itshape
+	Cette métrique induite n'est pas hermitienne }, de sorte que :
+\[\tg[p]{\S{n}} = \{p\}^\perp \defeq \big\{ \bf{v}\in\C^{n+1}\ |\  \Re e \langle \bf{v},p\rangle = 0\big\}\]
+\\
+Sachant que $ip\in \{p\}^\perp$, $\tg[p]{\S{n}}$ se sépare en deux composante :
+\[\tg[p]{\S{n}} = \{p\}^\perp = \Vec\{ip\} \oplus \Vec\{ip\}^\perp\]
+\\
+La seconde composante étant invariante par l'action de $\U{1}$ dans le sens où :
+\[\forall e^{i\theta}\in\U{1},\quad \Vec\big\{i(e^{i\theta}p)\big\}^\perp = \Vec\{ip\}^\perp\]
+\\
+Ce qui permet de définir $\Vec\{ip\}^\perp$ comme espace tangent horizontale au point $p$ et son écriture donne directement :
+\[\begin{aligned}
+	\hg[p]{\S{n}} &= \big\{\bf{v}\in\tg[p]{\S{n}}\ |\ \Re e \langle \bf{v}, ip \rangle = 0\} \\
+	&= \big\{\bf{v}\in\tg[p]{\S{n}}\ |\ \Im m\langle \bf{v}, p \rangle = 0\}
+\end{aligned}\quad \Llr\quad \conn_p(\bf{v}) = i\Im m\langle \bf{v},p\rangle\]
+\\
+BONUS : Cette invariance de $\hg[p]{\S{n}}$ par $\U{1}$ permet d'écrire les espaces tangents à $\PC{n}$ comme :
+\begin{equation}
+	\tg[w]{\PC {n}} \cong \Ker \langle\, \cdot\, , w\rangle \defeq \big\{ \bf{v}\in\C^{n+1}\ |\ \forall p\in w,\ \langle \bf{v},p\rangle =0 \big\}
+\end{equation}
 
 
 
@@ -550,13 +561,16 @@ Avec cette interprétation un signal, on peut alors voir la phase dynamique d'un
 	
 		
 	
-	\item Dans notre cas, la variété est connexe ce qui assure que $\Hol$ est un sous-groupe de Lie connexe du groupe structural, à savoir $\U{1}$. Ainsi, $\Hol = \U{1}$, ce qui montre que (au moins dans le cas cyclique) la phase géométrique peut prendre n'importe qu'elle valeur.
+	\item Dans notre cas, la variété est connexe ce qui assure que $\Hol$ est un sous-groupe de Lie connexe du groupe structural, à savoir $\U{1}$. Ainsi, $\Hol = \U{1}$, ce qui montre que la phase géométrique peut prendre n'importe qu'elle valeur.
 	
-	\item Cette formulation est très jolie mais finalement que très peu instructive. On pourrait alors se demander si $\phaseg$ ne pourrait pas, comme $\phased$, s'écrire comme l'intégrale d'une 1-forme sur $\PC{n}$.
+	\item Cette formulation est très jolie mais finalement que très peu instructive. 
 	
-	\item A cela, Mukunda \& Simon explique dans \cite{mukunda_quantum_1993} que non. Moralement, l'écriture $\phaseg = \phaset - \phased$ suggère que ça ne peut pas être le cas puisque la phase totale ne peut pas s'écrire comme l'intégrale d'une 1-forme.
+	\item Rq : On pourrait alors se demander si $\phaseg$ ne pourrait pas, comme $\phased$, s'écrire comme l'intégrale d'une 1-forme sur $\PC{n}$.
+	\\
+	A cela, Mukunda \& Simon explique dans \cite{mukunda_quantum_1993} que non. Moralement, l'écriture $\phaseg = \phaset - \phased$ suggère que ça ne peut pas être le cas puisque la phase totale ne peut pas s'écrire comme l'intégrale d'une 1-forme.
+	\\
 	
-	\item Cela vient du fait que $\phaset$ est indépendant de la trajectoire de $\gamma$ sur $]0,1[$. Au mieux, elle peut être vu comme la longueur de la géodésique $\gamma_g$ sur $\S{n}$ entre les points $\gamma(0)$ et $\gamma(1)$. C'est-à-dire comme l'intégrale de la norme sur $\S{n}$ de $\dot{\gamma}_g$ le long de $\gamma_g$. Mais rien par rapport à $\gamma$
+	 Cela vient du fait que $\phaset$ est indépendant de la trajectoire de $\gamma$ sur $]0,1[$. Au mieux, elle peut être vu comme la longueur de la géodésique $\gamma_g$ sur $\S{n}$ entre les points $\gamma(0)$ et $\gamma(1)$. C'est-à-dire comme l'intégrale de la norme sur $\S{n}$ de $\dot{\gamma}_g$ le long de $\gamma_g$. Mais rien par rapport à $\gamma$
 	
 \end{itemize}
 
@@ -568,6 +582,9 @@ Avec cette interprétation un signal, on peut alors voir la phase dynamique d'un
 \begin{itemize}
 	
 	\item Cela étant dit, dans le cas cyclique $\phaseg$ et $\phased$ se confonde et cette propriété peut être exploitée.
+	
+	\item En effet, modulo l'exponentielle, la phase dynamique est l'intégrale de la connexion sur la courbe. Ainsi, d'après le théorme de Stokes, on a relation :
+	\[\oint_\rho \locconn_i(d\rho) = \iint_\Sigma d\locconn_i(dx,dy) dx\,dy\]
 	
 	\item En effet,  la commutativité de $\U{1}$ fait que $\Hol$ est indépendant du relèvement $\eta(0)$ de $C_\gamma(0)$ 
 	
@@ -598,19 +615,6 @@ Avec cette interprétation un signal, on peut alors voir la phase dynamique d'un
 
 
 
-\section{Aller plus loin}
-
-\begin{itemize}
-	
-	\item La présentation dans $\PC{n}$ à été fructueuse dimension $n=1$, avec les paramètres de l'ellipse. Mais, au delà, ca devient moins clair. Intuitivement, on pourrait généraliser les états de polarisations en ajoutant simplement une matrice de rotation dans $\C^n$ au signal bivarié polarisé. Autrement dit, il faudrait découper $\PC{n}$ en une produit du genre :
-	\[\PC{n} \cong \SO_n(\R)\times \PC{2}-ish\]
-	C'est pas clair comment faire ça (est-ce que $\SU_n(\C)$ serait mieux ?)
-	
-	\item Plot d'un relèvement horizontale (juste pour voir à quoi ca ressemble)
-\end{itemize}
-
-
-
 
 %%%% ANNEXES %%%%
 
@@ -620,7 +624,9 @@ Avec cette interprétation un signal, on peut alors voir la phase dynamique d'un
 
 \section{Annexe}
 
-\subsection{Connexion induite par une métrique} \label{ann:conn2submer_riemanian}
+\subsection{Connexion et métrique} \label{ann:conn2submer_riemanian}
+
+\subsubsection{Connexion induite par la métrique}
 
 Si $P(G,B)$ une VFP munie d'une métrique riemannienne $g$. La connexion induite par $g$ sur $P$ est définie par :
 \begin{equation}
@@ -638,6 +644,45 @@ et on la projection de $X$ sur $\vg{P}$ est donnée par :
 	\ver X = \conn(X)^*\quad &\Llr\quad  \ver (X^ie_i) = \sum_i g_{ij}X^j e_i \\
 	&\Llr\quad  (\ver X)^i = g_{ij}X^j
 \end{align*}
+
+\subsubsection{Dérivée extérieure de la connexion}
+
+Par définition, sur l'ouvert $U_i$, la 1-forme de connexion local est définie par :
+\[\locconn_i = {\sigma_i}^*\conn = \conn\circ \sigma_{i*}\]
+\\
+Soit, $\forall w\in U_i,\ \forall X\in\tg[w]{\PC{n}}$ :
+\[\locconn_i(w)X= i\Im m \big\langle \sigma_{i*}(X), \sigma_i(w) \big\rangle\]
+\\
+où les $\sigma_{i*}$ s'écrivent, $\forall \mu$ :
+\begin{align*}
+	\mu &\neq i : &  \sigma_i(w)^\mu = \frac{w^\mu}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\quad \Lr\quad
+	\sigma_{i*}(w)^\mu &= \frac{dw^\mu}{\sqrt{1 + w^\alpha\congu{w}_\alpha}} - \frac{w^\mu}{2(1 + w^\alpha\congu{w}_\alpha)^{\nicefrac{3}{2}}}2\Re e(w^\alpha d\congu{w}_\alpha) \\
+	&  &  &= \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\left(dw^\mu - w^\mu \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\ \right)
+	\\ \\
+	\mu &= i :  &  \sigma_i(w)^\mu = \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\quad \Lr\quad
+	\sigma_{i*}(w)^\mu &= - \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{(1 + w^\alpha\congu{w}_\alpha)^{\nicefrac{3}{2}}}
+\end{align*}
+\\
+Ce qui donne\footnote{\itshape
+	Dans le formule ci-dessous, les 0 et 1 sont placés à la $i^{eme}$ coordonnées.
+} :
+\begin{align*}
+	\locconn_i(w) &= i\Im m \big\langle \sigma_{i*}(w), \sigma_i(w) \big\rangle \\
+	&= i\Im m \left\langle \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\left((dw^0,\cdots , 0, \cdots, dw^n) - (w^0,\cdots , 1, \cdots, w^n) \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\ \right), \frac{(w^0,\cdots , 1, \cdots, w^n)}{\sqrt{1 + w^\alpha\congu{w}_\alpha}} \right\rangle \\
+	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \left( \Big\langle (dw^0,\cdots , 0, \cdots, dw^n), (w^0,\cdots , 1, \cdots, w^n) \Big\rangle \bigg. \right. \\
+	&\qquad\qquad\qquad\qquad\qquad - \left.  \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\Big\langle (w^0,\cdots , 1, \cdots, w^n) , (w^0,\cdots , 1, \cdots, w^n) \Big\rangle \right) \\
+	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \left( dw^\mu\congu{w}_\mu -  \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\big( w^\nu\congu{w}_\nu +1 \big) \right)
+\end{align*}
+\\
+Enfin, sachant que le second membre dans la partie imaginaire est réel, il vient :
+\begin{align*}
+	\locconn_i(w) = \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \left( dw^\mu\congu{w}_\mu -  \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\big( w^\nu\congu{w}_\nu +1 \big) \right) 
+	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \big( dw^\mu\congu{w}_\mu \big) \\
+	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} \frac{dw^\mu\congu{w}_\mu -  d\congu{w}^\nu w_\nu }{2}
+\end{align*}
+\\
+
+Point de subtilité : les coefficients associées au $dw^\mu$ et $d\congu{w}^\nu$ doivent être traité séparément
 
 
 \subsection{Algèbre et groupe de Lie} \label{ann:2Lie}
