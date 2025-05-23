@@ -402,7 +402,7 @@ Munir $P(G,B)$ d'une connexion permet, entre autre de définir la notion de rel�
 	\\
 	On parle de \emph{relèvement horizontal} (\emph{horizontal lift}, ou \emph{transport parallèle} de $\gamma_0$ le long de $\rho$) puisque $\gamma$ n'a pas de déplacement vertical au sens de la connexion. Du point de vue de la 1-forme $\omega$, si $\gamma$ s'écrit localement $\gamma_i = \sigma_i(\rho) g_i$, alors $g_i$ vérifie l'équation (d'où vient l'unicité du relèvement) :
 	\begin{equation} \label{eq:EDP2hori_lift}
-		\frac{d}{dt}g_i(t)  = - \locconn_i(t) \cdot g_i(t)
+		\frac{d}{dt}g_i(t)  = - \locconn_i\rho(t) \cdot g_i(t)
 	\end{equation}
 	\\
 	Enfin, si maintenant $\gamma$ est une trajectoire de $P$, on dira, par abue de langage, que $\Tilde{\gamma}$ est le relèvement horizontale de $\gamma$ si c'est le relèvement horizontale de la projection $\pi\circ\gamma$ avec $\ \Tilde{\gamma}(0) = \gamma(0)$.
@@ -449,7 +449,7 @@ C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ qui lui est
 D'autre part, le relèvement horizontal $\Tilde{\x}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\x}$ n'a pas de variation dans la direction $\U{1}$ (par opposition à celle de $\PC{n}$), donc de variation fréquentielle.
 \\
 Ainsi, si $\rho_{\x}$ est la projection d'un signal $\x$, le relèvement horizontale $\Tilde{\x}$ s'interprète comme une version de $\x$ dénuée de toute fréquence instantanée.
-En allant un peu plus loin, à tout instant $t$, l'action $e^{i\alpha}$ permettant de passé de $\Tilde{\x}(t)$ à $\x(t)$ (\ie~$\x(t) = e^{i\alpha} \Tilde{\x}(t)$) peut-être vu comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)
+En allant un peu plus loin, à tout instant $t$, l'action $e^{i\alpha}$ permettant de passé de $\Tilde{\x}(t)$ à $\x(t)$ (\ie~$\x(t) = e^{i\alpha(t)} \Tilde{\x}(t)$) peut-être vu comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)
 
 \begin{figure}[h]
 	\includegraphics[width=0.4\textwidth]{fig/placeholder}
@@ -518,18 +518,14 @@ BONUS : Cette invariance de $\hg[p]{\S{n}}$ par $\U{1}$ permet d'écrire les esp
 
 \section{Interprétation des trois phases dans ce cadre} \label{sec:phases_dans_VFP}
 
-\begin{itemize}
-	
-	\item Rapide résumé : On décompose tout signal multivarié complexe comme la données d'une amplitude, d'une phase et d'un ``état de polarisation''. Indépendamment de l'amplitude, cela nous ramène à travailler dans la VFP $\VFP$. La connexion 
-	
-	\item On la munie d'une connexion tenant compte de la métrique sur $\S{n}$, ce qui nous ramène à la définir comme la fréquence instantanée.
-	
-	\item Reste alors a réinterpréter les trois phases dans ce cadre
-	
-	\item Pour cela, d'abord un cas simple, similaire au cas particulier de la première partie : $\gamma$ pseudo-cyclique
-\end{itemize}
+Résumons la situation. Pour étudier le comportement des fréquentielles d'un signal multivarié complexe, il est utile de voir l'espace $\C^{n+1}$ de tel signaux comme on le ``produit'' :
+\[\R^{+_-} \times \U{1} \times \PC{n}\]
+\\
+Le ``produit'' étant en réalité un fibré principal et chaque terme paramètre respectivement l'amplitude, la phase et l'état de polarisation instantanée. Dans ce cadre, la variété $\VFP$ est naturellement munie d'une connexion qui s'interprète 
 
 \subsection{Cas pseudo-cyclique}
+
+Comme dans la première partie de ce mémoire, pour mieux comprendre le comportement de la phase géométrique 
 
 \begin{itemize}
 	\item DEF : pseudo-cyclique

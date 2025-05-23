@@ -321,20 +321,19 @@ Et, comme pour les signaux AM-FM, les hypothèses sur $a,\varphi,\theta,\chi$ as
 
 Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} suivante :
 \begin{proposition}[phases de signal AM--FM--PM]\label{prop:phases_2var}
-	Les trois phases d'un signal bivarié AM--FM--PM $\x$ de paramètres $(a,\varphi,\theta,\chi)$ sont données par les formules :
+	Les trois phases d'un signal bivarié AM--FM--PM $\x$ 	de paramètres $(a,\varphi,\theta,\chi)$ sont données par les formules :
 	\begin{equation}\label{eq:phased_2var}
 		\phased(\x, t_0,t) = \varphi(t) -\varphi(t_0) + \int_{t_0}^t\theta'(s) \sin2\chi(s) ds
 	\end{equation}
 	\begin{equation}\label{eq:phaset_2var}
 	\begin{aligned}
-		\phaset(\x,t_0,t) &= \varphi(t)-\varphi(t_0) + \arg\Big(\cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big) \\
-		&= \varphi(t)-\varphi(t_0) + \arctan\left(\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right)
+		\phaset(\x,t_0,t) &= \varphi(t)-\varphi(t_0) + \arg\Big(\cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big)
 	\end{aligned}
 	\end{equation}
 	\begin{equation}\label{eq:phaseg_2var}
 	\begin{aligned}
 		\phaseg(\x,t_0,t) &= \phaset(\x,t_0,t) - \phased(\x,t_0,t) \\
-			&= \arctan\left(\tan\Delta\theta \frac{ \tan\chi(t_0)+\tan\chi(t)}{1 + \tan\chi(t_0)\tan\chi(t)}\right) - \int_{t_0}^t\theta'(s) \sin2\chi(s) ds
+			&= \arg\Big(\cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big) - \int_{t_0}^t\theta'(s) \sin2\chi(s) ds
 	\end{aligned}
 	\end{equation}
 	\\
@@ -387,7 +386,7 @@ Cette projection, invariante par transformation de jauge, donc indépendante de 
 \end{wrapfigure}
 
 \par \noindent
-où les $\sigma_i$ sont les matrices de Pauli :
+où les $\sigma_i$ s'écrivent :
 \begin{align*}
 	\sigma_1 &= \begin{pmatrix} 0 & 1 \\ 1 &  0 \end{pmatrix}  &
 	\sigma_2 &= \begin{pmatrix} 0 & -i \\  i &  0 \end{pmatrix}  &
@@ -417,29 +416,35 @@ Dans le deux cas, la représentation dans la sphère de Poincaré évite ces pro
 
 Pour interpréter la formule \eqref{eq:phases_p-cyc_2var} de la phase géométrique prenons un exemple. Si $\chi$ et $\theta$ sont telle que :
 \begin{align*}
-	2\theta(t_0) &= 0  &  2\theta(t) &= 2\pi  &  \chi(s) &= \chi_0
+	\theta(t_0) &= 0  &  \theta(t) &= 2\pi  &  \chi(s) &= \chi_0
 \end{align*}
-Alors décrit un chemin horizontale sur la sphère, $\rho_{\x}(t_0) = \rho_{\x}(t)$ et sa phase géométrique s'écrit :
+Alors $\rho_{\x}$ décrit un chemin horizontale sur la sphère, $\rho_{\x}(t_0) = \rho_{\x}(t)$ et sa phase géométrique s'écrit :
 \begin{align*}
 	\phaseg(\x, t_0, t) = -\int_{t_0}^t \theta'(s) \sin 2\chi(s) ds &= - \sin 2\chi_0 \int_{t_0}^t \theta'(s) ds \\
 	&= - \sin 2\chi_0 \big( \theta(t) - \theta(t_0)\big) \\
-	&= - \pi\sin 2\chi_0
+	&= - 2\pi\sin 2\chi_0
 \end{align*}
 
-Cette formule est très proche de la formule de d'air de la calotte entouré par $\rho_{\x}$, à savoir%\footnote{\itshape
+Formule qui est égale, à $2\pi$ près, à d'air de la calotte entourée par $\rho_{\x}$, à savoir%\footnote{\itshape
 	%La formule se trouve sans mal sur \href{https://fr.wikipedia.org/wiki/Calotte_sph%C3%A9rique#Aire}{Wikipédia}. Dans le lien donné, la formule est fait apparaître un cos, ce qui est dû au choix de convention sur l'angle décrit par $\chi_0$ ($=\nicefrac{\pi}{2} - \theta$ sur Wikipédia)} 
  :
-\[\mathcal{A}ire = 2\pi - 2\pi \sin(2\chi_0)\]
-Pour la faire clairement apparaître, il suffit de noter que $\phaseg$ étant une phase, elle est définie modulo $2\pi$ et à un facteur 2 près, elle s'écrit :
-\begin{align*}
-	{\color{white}bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb}\phaseg(\x, t_0, t) &\equiv 2\pi - \pi\sin 2\chi_0   &  &[2\pi] {\color{white}bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb} \\
-	 &\equiv \frac{1}{2}\big( 4\pi - 2\pi\sin 2\chi_0 \big)    &  &[2\pi] 
-\end{align*}
+\[\mathcal{A}ire(\chi_0) = 2\pi - 2\pi \sin(2\chi_0)\]
+\\
+Plus précisément, $\rho_{\x}$ fait deux tours de la sphère ($2\theta(t) = 4\pi$). 
+Pour qu'il n'en fasse qu'un, il faut faire varier $\theta$ de 0 à $\pi$, auquel cas, le terme de la phase géométrique hérité de la phase totale vaut $\pi$ et :
+\[\phaseg(\x, t_0, t) = \pi - \pi\sin 2\chi_0 = \frac{1}{2}\mathcal{A}ire(\chi_0)\]
+\\
 
-Soit la moitié de l'aire de la calotte au dessus du chemin tracé par $\rho_{\x}$ plus $2\pi$. Une fois n'est pas coutume, ca va toujours pas et j'ai envie de me foutre en l'air atm
+Le fait que $\rho_{\x}$ doivent faire deux tours pour que $(\theta,\chi)$ retourne à son état initiale, met en évidence le problème quand à la paramétrisations de l'ellipse de polarisation :
+\\
+Toujours à $\chi$ fixé, si $\theta$ subit une rotation de $\pi$, alors l'ellipse est la même et $\ \rho(\theta+\pi,\chi) = \rho(\theta, \chi)$. 
+Pourtant, si l'on s'intéresse à un point particulier de l'ellipse, après une rotation de $\pi$, ce même point ce retrouvera à l'opposer de là où il était auparavant. 
+En d'autre terme, il a subit une rotation de $\pi$ mais qui apparaît non plus dans l'état de polarisation mais dans la phase. 
+\\
+Moralement, c'est ce genre de subtilité donc permet de tenir compte la composante de $\phaset$ associée à l'état de polarisation.
+\\
 
-
-
+Sachant que la sphère $S^2$ représente les rotations de $\R^3$, donc $\SO(3)$ il est aisé de voir un lien entre cette relation et le fait que $\SU(2)$ soit un double recouvrement de $\SO(3)$.
 
 
 \subsection{Généralisation en plus haute dimension} \label{subsec:aller_plus_loin}
