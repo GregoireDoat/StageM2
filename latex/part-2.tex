@@ -43,6 +43,10 @@ Pour proprement poser le cadre, il nous faudra trois choses :
 
 \subsubsection{Rappels de géométrie différentielle et notations}\label{subsec:rappel2geo_diff}
 
+\thoughts{\begin{itemize}
+		\item Compléter en fonction du reste de la partie
+\end{itemize}}
+
 Une variété différentielle se définie comme suit :
 \begin{definition}[Variété différentielle] \label{defvarietoche}
 	une variété différentielle de classe $C^k$ de dimension $n$ est un espace topologique
@@ -116,6 +120,13 @@ Et le pull back (image réciproque) s'écrit par dualité :
 
 \subsubsection{$\bf{\PC{n}}$ comme variété différentielle} \label{subsec:PC^n_variet}
 
+\thoughts{\begin{itemize}
+		
+		\item Sûrement pas besoin de détailler autant
+		
+		\item Détailler partir métrique /  
+\end{itemize}}
+
 Si l'espace projectif complexe à été présenté comme le quotient $\S{n}/\U{1}$, il peut aussi être vu comme :
 \[\PC{n} \cong {\C^{n+1}}^*/\C^*\]
 C'est-à-dire l'ensemble des classes de ${\C^{n+1}}^* = \C^{n+1} \setminus \{0_{\C^{n+1}}\}$ par la relation d'équivalence :
@@ -178,12 +189,12 @@ Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme l
 \begin{figure}[h]
 	\input{tikz/part-2/ruban2mobius}
 	%\includegraphics[width=0.4\textwidth]{fig/placeholder}
-	\caption[Ruban de Mobius comme variété fibrée]{Représentation du ruban de Modius en tant que fibré. Les notations sont reprise de la \cref{def:VFP}.}
+	\caption[Ruban de Mobius comme variété fibrée]{Représentation du ruban de Modius en tant que fibré. Les notations sont reprises de la \cref{def:VFP}.}
 	\label{fig:ruban2modius}
 \end{figure}
 \skipl
 
-Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de structure remarquable. Celles qui vont nous intéresser sont celle dites principales\footnote{\itshape
+Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de structure remarquable. Celles qui vont nous intéresser sont dites principales\footnote{\itshape
 	Bien que ce ne sera pas précisé, il sera toujours sous-entendu que les différentes variétés et cartes doivent avoir les mêmes niveaux de régularités pour que le tout reste cohérent.} :
 \\
 \begin{definition}[Variété fibrée principale] \label{def:VFP}
@@ -225,7 +236,7 @@ Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de 
 \skipl 
 
 
-L'ensemble $\big\{(U_i\times G, h_i)\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
+L'ensemble $\big\{(U_i\times G, {h_i}^{-1})\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
 \\
 D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur la \Cref{fig:section_local} \thoughts{ci-dessous}. Formellement, une section locale au dessus  de $U_i \subset B$ est une application $\sigma : U_i \lr P$ vérifiant :
 \[\pi\circ \sigma = id_{{\displaystyle |}U_i}\]
@@ -419,10 +430,10 @@ Ce à quoi on applique $\conn$, donnant :
 	&= \conn_\gamma \big( \gamma \cdot g^{-1}dg \big)  &  &\text{car $\Tilde{\gamma}$ est horizontale}
 \end{align*}
 \\
-Le terme $g^{-1}dg$ restant étant un vecteur de $g^{-1}\tg[g]{G}\cong \tg[e]{G}\cong \mathfrak{g}$, le vecteur $\gamma \cdot g^{-1}dg$ est vertical et :
+Le terme $g^{-1}dg$ restant étant un vecteur de $\ g^{-1}\tg[g]{G}\cong \tg[e]{G}\cong \mathfrak{g}$, le vecteur $\ \gamma \cdot g^{-1}dg\ $ est vertical et :
 \[\conn_\gamma(\dot{\gamma}) = \conn_\gamma \big( \gamma \cdot g^{-1}dg \big) = g^{-1}dg\]
 \\
-D'où $\gamma = \Tilde{\gamma}\cdot g$ où $g$ est solution de :
+D'où $\ \gamma = \Tilde{\gamma}\cdot g\ $ avec $g$ est solution de :
 \begin{equation} \label{eq:deviation2hozi}
 	\frac{d}{dt}g(t)  = g(t) \conn_{\gamma(t)}\big( \dot{\gamma}(t) \big)
 \end{equation}
@@ -449,7 +460,7 @@ C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ qui lui est
 D'autre part, le relèvement horizontal $\Tilde{\x}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\x}$ n'a pas de variation dans la direction $\U{1}$ (par opposition à celle de $\PC{n}$), donc de variation fréquentielle.
 \\
 Ainsi, si $\rho_{\x}$ est la projection d'un signal $\x$, le relèvement horizontale $\Tilde{\x}$ s'interprète comme une version de $\x$ dénuée de toute fréquence instantanée.
-En allant un peu plus loin, à tout instant $t$, l'action $e^{i\alpha}$ permettant de passé de $\Tilde{\x}(t)$ à $\x(t)$ (\ie~$\x(t) = e^{i\alpha(t)} \Tilde{\x}(t)$) peut-être vu comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)
+En allant un peu plus loin, à tout instant $t$, l'action $\alpha$ permettant de passé de $\Tilde{\x}(t)$ à $\x(t)$ (\ie~$\x(t) = e^{i\alpha(t)} \Tilde{\x}(t)$) peut-être vu comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)
 
 \begin{figure}[h]
 	\includegraphics[width=0.4\textwidth]{fig/placeholder}
@@ -473,7 +484,7 @@ En allant un peu plus loin, à tout instant $t$, l'action $e^{i\alpha}$ permetta
 En admettant l'interprétation de la connexion comme fréquence instantanée, les discussions de première partie (\Cref{subsec:intro_phased}) suggère choisir comme 1-forme de connexion :
 \[\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = \Im m \langle \bf{v}, p\rangle\]
 \\
-Or, l'algèbre de Lie de $\U{1}$ est représenté par $\mathfrak{u}(1)\cong i\R$. Il convient alors de poser :
+L'algèbre de Lie de $\U{1}$ étant représentée par $\mathfrak{u}(1)\cong i\R$, il convient de poser :
 \begin{equation} \label{eq:conn2SUPC}
 	\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle \bf{v}, p\rangle
 \end{equation}
@@ -492,10 +503,10 @@ Ce qui redonne la formule :
 
 À noter ce que choix de connexion est doublement justifié par le fait que c'est la connexion induite par la métrique de $\S{n}$. En effet, le produit hermitien de $\C^{n+1}$ induit sur les espaces tangents de $\S{n}$ une métrique riemannienne\footnote{\itshape
 	Cette métrique induite n'est pas hermitienne }, de sorte que :
-\[\tg[p]{\S{n}} = \{p\}^\perp \defeq \big\{ \bf{v}\in\C^{n+1}\ |\  \Re e \langle \bf{v},p\rangle = 0\big\}\]
+\[\tg[p]{\S{n}} = \Vec\{p\}^\perp \defeq \big\{ \bf{v}\in\C^{n+1}\ |\  \Re e \langle \bf{v},p\rangle = 0\big\}\]
 \\
 Sachant que $ip\in \{p\}^\perp$, $\tg[p]{\S{n}}$ se sépare en deux composante :
-\[\tg[p]{\S{n}} = \{p\}^\perp = \Vec\{ip\} \oplus \Vec\{ip\}^\perp\]
+\[\tg[p]{\S{n}} = \Vec\{p\}^\perp = \Vec\{ip\} \oplus \Vec\{ip\}^\perp\]
 \\
 La seconde composante étant invariante par l'action de $\U{1}$ dans le sens où :
 \[\forall e^{i\theta}\in\U{1},\quad \Vec\big\{i(e^{i\theta}p)\big\}^\perp = \Vec\{ip\}^\perp\]
@@ -518,10 +529,13 @@ BONUS : Cette invariance de $\hg[p]{\S{n}}$ par $\U{1}$ permet d'écrire les esp
 
 \section{Interprétation des trois phases dans ce cadre} \label{sec:phases_dans_VFP}
 
-Résumons la situation. Pour étudier le comportement des fréquentielles d'un signal multivarié complexe, il est utile de voir l'espace $\C^{n+1}$ de tel signaux comme on le ``produit'' :
-\[\R^{+_-} \times \U{1} \times \PC{n}\]
+Résumons la situation. Pour étudier le comportement des fréquentielles d'un signal multivarié complexe, il est utile de voir l'espace $\C^{n+1}$ de tel signaux comme le ``produit'' :
+\[\C^{n+1}\ \leadsto\ \R^{+_-} \times \U{1} \times \PC{n}\]
 \\
-Le ``produit'' étant en réalité un fibré principal et chaque terme paramètre respectivement l'amplitude, la phase et l'état de polarisation instantanée. Dans ce cadre, la variété $\VFP$ est naturellement munie d'une connexion qui s'interprète 
+Ce ``produit'' étant en réalité un fibré principal et chaque terme paramètre respectivement l'amplitude, la phase et l'état de polarisation instantanée. Dans ce cadre, la variété $\VFP$ est naturellement (par la métrique de $\S{n}$) munie d'une connexion qui s'interprète comme fréquence instantanée et tout relèvement horizontale dans $\S{n}$ est vu comme un signal dénué de toute fréquence.
+\\
+La question est maintenant de savoir comment comprendre l'émergence de la phase géométrique dans ce cadre. Pour se faire, suivant les travaux de Aharonov et Anandan \cite[sec. 4, p. 53]{bohm_geometric_2003}
+
 
 \subsection{Cas pseudo-cyclique}
 
@@ -679,6 +693,57 @@ Enfin, sachant que le second membre dans la partie imaginaire est réel, il vien
 \\
 
 Point de subtilité : les coefficients associées au $dw^\mu$ et $d\congu{w}^\nu$ doivent être traité séparément
+
+
+\subsection{Métrique et géodésique de $\bf{\PC{n}}$}
+
+
+\subsubsection{Métrique dans les espaces horizontaux}
+
+\subsubsection{Ecriture des géodésiques}
+
+Etant donnée, sur une variété $\manu$, une métrique $g$ de symbole de Christoffel associé $\Gamma$, une géodésique $\gamma$ de $\manu$ vérifie :
+\[\forall \sigma,\quad \ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \nu} \dot{\gamma}^\mu \dot{\gamma}^\nu = 0\]
+\\
+Comme $\PC{n}$ est une variété complexe, il faut également tenir compte des composantes (anti-)holomorphe et le système de vient alors :
+\begin{equation}\label{eq:EDP2geode}
+	\forall \sigma,\quad 
+	\left\{ \begin{aligned}
+		\ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \alpha}\,  \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
+		\ddot{\congu{\gamma}}^\sigma + \Gamma^{\congu{\sigma}} _{\congu{\nu \beta}}\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
+	\end{aligned}\right.
+\end{equation}
+\\
+Où les seuls coefficients non nuls de $\Gamma$ s'écrivent :
+\begin{align}\label{eq:symb2Christo}
+	\Gamma^\sigma _{\mu \alpha} &= g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}})  &  \Gamma^{\congu{\sigma}} _{\congu{\nu \beta}} &= g^{\alpha \congu{\sigma}} \partial_{\congu{\nu}} (g_{\alpha \congu{\beta}}) 
+\end{align}
+\\
+Le système d'EDP \eqref{eq:EDP2geode} s'écrit alors :
+\begin{align*}
+	\left\{ \begin{aligned}
+		\ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \alpha}\,  \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
+		\ddot{\congu{\gamma}}^\sigma + \Gamma^{\congu{\sigma}} _{\congu{\nu \beta}}\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
+	\end{aligned}\right.
+	\quad &\Llr\quad
+	\left\{ \begin{aligned}
+		\ddot{\gamma}^\sigma + g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
+		\ddot{\congu{\gamma}}^\sigma + g^{\alpha \congu{\sigma}} \partial_{\congu{\nu}} (g_{\alpha \congu{\beta}})\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
+	\end{aligned}\right. \\
+	&\Llr\quad 
+	\left\{ \begin{aligned}
+		g_{\sigma \congu{\lambda}}\, \ddot{\gamma}^\sigma + g_{\sigma \congu{\lambda}}\, g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
+		g_{\lambda \congu{\sigma}}\, \ddot{\congu{\gamma}}^\sigma + g_{\lambda \congu{\sigma}}\, g^{\alpha \congu{\sigma}} \partial_{\congu{\nu}} (g_{\alpha \congu{\beta}})\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
+	\end{aligned}\right. \\ 
+	&\Llr\quad 
+	\left\{ \begin{aligned}
+		g_{\sigma \congu{\lambda}}\, \ddot{\gamma}^\sigma + \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
+		g_{\lambda \congu{\sigma}}\, \ddot{\congu{\gamma}}^\sigma + \partial_{\congu{\nu}} (g_{\alpha \congu{\beta}})\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
+	\end{aligned}\right. \\
+\end{align*}
+\skipl
+
+Dans notre cas, les 
 
 
 \subsection{Algèbre et groupe de Lie} \label{ann:2Lie}
