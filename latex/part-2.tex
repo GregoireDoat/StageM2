@@ -180,7 +180,7 @@ et la forme de Kähler associée est :
 
 
 
-\subsection{$\S{n}$ comme fibré principal} \label{subsec:VFP}
+\subsection{$\bf{S^{2n+1}}$ comme fibré principal} \label{subsec:VFP}
 
 \subsubsection{Définition générale}\label{subsec:def2VFP}
 
@@ -340,7 +340,7 @@ Tout cela permet d'écrire $\S{n}$ comme une variété fibrée principale :
 
 \subsection{Espaces horizontaux et connexion}\label{subsec:connexion2VFP}
 
-Pour retrouver, dans ce cadre, une notion de fréquence instantanée il va nous falloir munir $\VFP$ d'une connexion
+Le cadre étant posé, pour retrouver la notion de fréquence instantanée, il est nécessaire de munir $\VFP$ d'une connexion. Cette dernière est introduit comme suit.
 
 \subsubsection{Définition général}\label{subsec:def2conn}
 
@@ -370,8 +370,9 @@ Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au 
 		
 		\item l'assignation des $\hg[p]{P}$ est invariante par l'action de $G$ au sens où :
 		\begin{equation}\label{eq:conn_G-inv}
-			\forall (p,g)\in P\times G,\quad \hg[R_g(p)]{P} = {R_g}_* (\hg[p]{P}) = \big\{{R_g}_*(\bf{v})\ |\ \bf{v} \in \hg[p]{P} \big\}
+			\forall (p,g)\in P\times G,\quad \hg[R_g(p)]{P} = R_{g*} (\hg[p]{P}) = \big\{R_{g*}(\bf{v})\ |\ \bf{v} \in \hg[p]{P} \big\}
 		\end{equation}
+		Que l'on notera plus simplement (\cf annexe \ref{ann:2Lie}) :
 		\begin{equation}
 		\forall (p,g)\in P\times G,\quad \hg[p\cdot g]{P} = \hg[p]{P}\cdot g = \big\{\bf{v}\cdot g\ |\ \bf{v} \in \hg[p]{P} \big\}
 		\end{equation}
@@ -379,34 +380,38 @@ Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au 
 \end{definition}
 \skipl
 
-Au delà d'assurer une compatibilité entre $H$ et $R$, l'équation \eqref{eq:conn_G-inv} permet de n'avoir à définir la connexion qu'en un seul point de chaque fibre, les autres se déduisant par cette formule. 
+Au delà d'assurer une compatibilité entre $H$ et $G$, l'équation \eqref{eq:conn_G-inv} permet de n'avoir à définir la connexion qu'en un seul point de chaque fibre, les autres se déduisant par cette formule. 
 Concrètement, pour tout point de la base $x\in U_i$, il suffit de la définir en $\sigma_i(x) = h_i(e, x)$, de sorte que l'espace horizontale en tout autre point $\ p=h_i(g, x) = \sigma_i(x)\cdot g$ au dessus de $x$ sera donné par :
-\[\hg[p]{P} = \tg[\sigma_i(x)]{R_g} (\hg[\sigma_i(x)]{P}) =  (\hg[\sigma_i(x)]{P}) \cdot g\]
+\[\hg[p]{P} = \hg[\sigma_i(x)]{P}\cdot g\]
 \\
-De même, la 1-forme de connexion n'a besoin d'être définie que sur un point particulier au dessus de chaque fibre. Et comme tout les espaces verticaux sont difféomorphes à l'algèbre de Lie $\mathfrak{g}\cong \tg[e]{G}$ de $G$, c'est sur $\mathfrak{g}$ qu'elle est définie :
+Aussi, le fait que $G$ soit un groupe de Lie permet de lié son algèbre $\mathfrak{g}\cong \tg[e]{G}$ au tangent verticaux via l'application $\#$ : \footnote{\itshape 
+	Les vecteurs tangents étant des formes linéaire, $A^\#(p)$ est plus précisément définie par l'application :
+	\[A^\#(p) : f\ \lmt\  \frac{d}{dt} f\big( p\cdot \exp(tA) \big)\Big|_{t=0}\]}
+\[\forall (p,A)\in P\times \mathfrak{g},\ \forall f\in\conti{P}{\R},\quad A^\#(p) = \frac{d}{dt} p\cdot \exp(tA) \Big|_{t=0}\in\vg[p]{P}\]
+\\
+Sachant cela, toujours dans le cas des VFP, la $1-$forme de connexion est à valeur dans $\mathfrak{g}$ :
 
-\begin{definition}[1-forme de connexion] \label{def:1-form2conn}
-	La \emph{1-forme de connexion} $\conn$ d'une VFP $P(G,B)$ est définie comme la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est à valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que $\forall p\in P$ :
+\begin{definition}[$1-$forme de connexion] \label{def:1-form2conn}
+	La \emph{$1-$forme de connexion} $\conn$ d'une VFP $P(G,B)$ est définie comme la 1-forme différentiable sur $P$ à valeur dans $\mathfrak{g}$ (\ie~en tout point $p\in P$, $\conn_p$ est à valeur de $\tg[p]{P}$ dans $\mathfrak{g}$), telle que $\forall p\in P$ :
 	\begin{align} \label{eq:1-form2conn}
-		\forall a\in \mathfrak{g},\ \conn_p(p\cdot a) &= a  &  \hg[p]{P} &= \Ker(\conn_p)
+		\forall A\in \mathfrak{g},\ \conn_p\big(A^\#(p)\big) &= A  &  \hg[p]{P} &= \Ker(\conn_p)
 	\end{align}
-	Où $p\cdot a$ est vu comme vecteur vertical de $\vg[p]{P}$. La condition de compatibilité de la connexion avec l'action \eqref{eq:conn_G-inv} devient :
 	\begin{equation} \label{eq:1-form_G-inv}
 		\forall \bf{v}\in\tg[p]{P},\quad \conn_{p\cdot g}(\bf{v}\cdot g) \defeq \conn_{p\cdot g}(R_{g\, *}(\bf{v})) = g^{-1}\conn_p(\bf{v})g
 	\end{equation}
 	\skipl
 	
-	En terme de coordonnée local, $\conn$ elle n'a pas besoin d'être définit sur $\ U_i\times G$, mais seulement sur $\ U_i \cong U_i \times \{e\}$. Ainsi, $\conn$ induit une 1-forme sur les cartes $U_i$ par l'image réciproque des sections canonique $\sigma_i$. Elles sont notées $\locconn_i \defeq \sigma_i^*\conn$ et sur le chevauchement $U_{ij}$, elles vérifient :
+	Tout comme les $H[p]{P}$, la troisième égalité assure que $\conn$ n'a besoin d'être définie que sur un point de chaque fibre. Cela permet de définir $\conn$ localement non pas sur $\ U_i\times G$, mais seulement sur $\ U_i \cong U_i \times \{e\}$. Ainsi, $\conn$ induit une 1-forme sur les cartes $U_i$ par l'image réciproque des sections canonique $\sigma_i$. Elles sont notées $\locconn_i \defeq \sigma_i^*\conn$ et sur le chevauchement $U_i\cap U_j$, elles vérifient :
 	\begin{equation}\label{eq:conn_local}
-		\locconn_j = {\varphi_{ij}}^{-1} \locconn_i \varphi_{ij} + {\varphi_{ij}}^{-1} \d \varphi_{ij}
+		\locconn_j = {\varphi_{ij}}^{-1} \locconn_i \varphi_{ij} + {\varphi_{ij}}^{-1} d \varphi_{ij}
 	\end{equation}
 \end{definition}
 \skipl
 
 
-Munir $P(G,B)$ d'une connexion permet, entre autre de définir la notion de relèvement horizontale :
+Munir $P(G,B)$ d'une connexion permet, entre autre de définir la notion de relèvement horizontal :
 \begin{definition}[Relèvement horizontal]
-	Étant donné une trajectoire $\ \rho : \R\ \lr B\ $ sur la base et une condition initiale $\gamma_0\in \rho(0)G$ dans la fibre au dessus de $\rho(0)$, il existe un unique relèvement $\gamma$ de $\rho$ dans $P$ tel que $\forall t\in\R$ :
+	Étant donné une trajectoire $\ \rho : \R\ \lr B\ $ sur la base et un point $\gamma_0\in \rho(0)G$ au dessus de $\rho(0)$, il existe un unique relèvement $\gamma$ de $\rho$ donc les vecteurs tangents sont tous horizontaux. \ie~tel que $\forall t\in\R$ :
 	\begin{align} \label{eq:condi2hori_lift}
 	\pi\circ\gamma(t) &= \rho(t)  &  \dot{\gamma}(t) &\in \hg[\gamma(t)]{P} &  \gamma(0) &= \gamma_0
 	\end{align}
@@ -416,7 +421,7 @@ Munir $P(G,B)$ d'une connexion permet, entre autre de définir la notion de rel�
 		\frac{d}{dt}g_i(t)  = - \locconn_i\rho(t) \cdot g_i(t)
 	\end{equation}
 	\\
-	Enfin, si maintenant $\gamma$ est une trajectoire de $P$, on dira, par abue de langage, que $\Tilde{\gamma}$ est le relèvement horizontale de $\gamma$ si c'est le relèvement horizontale de la projection $\pi\circ\gamma$ avec $\ \Tilde{\gamma}(0) = \gamma(0)$.
+	Si maintenant $\gamma$ est une trajectoire de $P$, on dira, par abus de langage, que $\Tilde{\gamma}$ est le relèvement horizontale de $\gamma$ si c'est le relèvement horizontale de sa projection $\pi\circ\gamma$ avec la condition initiale $\ \Tilde{\gamma}(0) = \gamma(0)$.
 \end{definition}
 \skipl
 
@@ -430,66 +435,110 @@ Ce à quoi on applique $\conn$, donnant :
 	&= \conn_\gamma \big( \gamma \cdot g^{-1}dg \big)  &  &\text{car $\Tilde{\gamma}$ est horizontale}
 \end{align*}
 \\
-Le terme $g^{-1}dg$ restant étant un vecteur de $\ g^{-1}\tg[g]{G}\cong \tg[e]{G}\cong \mathfrak{g}$, le vecteur $\ \gamma \cdot g^{-1}dg\ $ est vertical et :
-\[\conn_\gamma(\dot{\gamma}) = \conn_\gamma \big( \gamma \cdot g^{-1}dg \big) = g^{-1}dg\]
+Le terme $g^{-1}dg$ restant étant un vecteur de $\ g^{-1}\tg[g]{G}\cong \tg[e]{G}\cong \mathfrak{g}$ et :
+\[\conn_\gamma(\dot{\gamma}) = \conn_\gamma \big( \gamma \cdot g^{-1}dg \big) = \conn_\gamma \big( (g^{-1}dg)^\#(p) \big) = g^{-1}dg\]
 \\
 D'où $\ \gamma = \Tilde{\gamma}\cdot g\ $ avec $g$ est solution de :
 \begin{equation} \label{eq:deviation2hozi}
 	\frac{d}{dt}g(t)  = g(t) \conn_{\gamma(t)}\big( \dot{\gamma}(t) \big)
 \end{equation}
-\\
-\begin{itemize}
-	
-	\item Remarque : Même si cette notion de connexion n'est pas la même que pour les connexions affines, les deux sont très liée. En particulier si $P$ est le fibré tangent d'une variété $\manu$ avec pour groupe structural $\GL_n(\R)$, alors toute connexion sur $P$ est une connexion affine sur $\manu$.
-	
-\end{itemize}
 \skipl
 
 
 
 \subsubsection{Choix de connexion sur $\bf{\VFP}$}\label{subsec:conn2SUPC}
 
+À noter ce que choix de connexion est doublement justifié par le fait que c'est la connexion induite par la métrique de $\S{n}$. Point qui sera important dans la suite et que nous allons maintenant détaillé.
+
+En effet, le produit hermitien de $\C^{n+1}$ induit sur les espaces tangents de $\S{n}$ une métrique riemannienne\footnote{\itshape
+	Cette métrique induite n'est pas hermitienne }, et :
+\[\tg[p]{\S{n}} = \Vec\{p\}^\perp \defeq \big\{ \bf{v}\in\C^{n+1}\ |\  \Re e \langle \bf{v},p\rangle = 0\big\}\]
+\\
+Sachant que $ip\in \Vec\{p\}^\perp$, $\tg[p]{\S{n}}$ se sépare en deux composantes :
+\[\tg[p]{\S{n}} = \Vec\{p\}^\perp = \Vec\{ip\} \oplus \Vec\{ip\}^\perp\]
+\\
+Dont le premier membre est l’espace tangent vertical et second invariant par l'action de $\U{1}$ dans le sens où :
+\[\forall e^{i\theta}\in\U{1},\quad \Vec\big\{i(e^{i\theta}p)\big\}^\perp = \Vec\{ip\}^\perp\]
+\\
+Ainsi l'ensemble des  $\Vec\{ip\}^\perp$ définissent une connexion sur $\S{n}$ son écriture donne directement la 1-forme :
+\[\begin{aligned}
+	\hg[p]{\S{n}} &= \big\{\bf{v}\in\tg[p]{\S{n}}\ |\ \Re e \langle \bf{v}, ip \rangle = 0\} \\
+	&= \big\{\bf{v}\in\tg[p]{\S{n}}\ |\ \Im m\langle \bf{v}, p \rangle = 0\}
+\end{aligned}\quad \Llr\quad \conn_p(\bf{v}) = i\Im m\langle \bf{v},p\rangle\]
+\\
+C'est la version fibré principal de la connexion de Levi-Civita pour les fibrés tangent et ces propriétés permettent d'induire sur $\PC{n}$ une métrique telle que la projection $\pi_*$ de $\hg{p}{\S{n}}$ sur $\tg[\pi(p)]{\PC{n}}$ soit une isométrie permettant l'identification  (voir \cite{kayban_riemannian_nodate}, par exemple) :
+\begin{equation}
+	\tg[w]{\PC {n}} \cong \Ker \langle\, \cdot\, , w\rangle \defeq \big\{ \bf{v}\in\C^{n+1}\ |\ \forall p\in w,\ \langle \bf{v},p\rangle =0 \big\}
+\end{equation}
+\\
+La métrique induite est celle de Fubini-Study et le rapport entre espaces horizontaux et tangent de $\PC{n}$ permet de travailler dans $\S{n}$, ce qui est plus commode pour la suite. 
+Concrètement en notant $\bf{v}_H$ la composante horizontale de $\bf{v}$, on a :
+\[\forall p\in \pi^{-1}(w),\ \forall \bf{u},\bf{v}\in\tg[p]{\S{n}},\quad  g_{\pi(p)}\big( \pi_*\bf{u}, \pi_*\bf{v}\big) = \langle \bf{u}_H, \bf{v}_H\rangle\]
+\skipl
+
+
+
+
+\section{\wip Interprétation des trois phases dans ce cadre} \label{sec:phases_dans_VFP}
+
+Résumons la situation. Pour étudier le comportement des fréquentielles d'un signal multivarié complexe, il est utile de voir l'espace $\C^{n+1}$ de tel signaux comme le ``produit'' :
+\[\C^{n+1}\ \leadsto\ \R^{+_-} \times \U{1} \times \PC{n}\]
+\\
+Ce ``produit'' étant en réalité un fibré principal et chaque terme paramètre respectivement l'amplitude, la phase et l'état de polarisation instantanée. Dans ce cadre, la variété $\VFP$ est naturellement (par la métrique de $\S{n}$) munie d'une connexion qui s'interprète comme fréquence instantanée et tout relèvement horizontale dans $\S{n}$ est vu comme un signal dénué de toute fréquence.
+\\
+La question est maintenant de savoir comment comprendre l'émergence de la phase géométrique dans ce cadre. Pour se faire, suivant les travaux de Aharonov et Anandan \cite[sec. 4, p. 53]{bohm_geometric_2003}
+
+\subsection{Fréquence et phase dynamique}
+
 Pour choisir la connexion est mettre sur $\VFP$, il est important de comprendre son intérêt du point de vue signal.
-Comme, à chaque instant $t$, un signal $\x$ sur $\S{n}$ est représenté par une pair $(e^{i\alpha(t)}, \rho(t))\in\U{1}\times\PC{n}$ à travers les $h_i$, $\alpha(t)$ peut être vu comme la fréquence et $\rho(t)$ l'état de polarisation instantanée du signal $\x(t)$.
+Comme, à chaque instant $t$, un signal $x$ sur $\S{n}$ est représenté par une pair $(e^{i\alpha(t)}, \rho(t))\in\U{1}\times\PC{n}$ à travers les $h_i$, $\alpha(t)$ peut être vu comme la fréquence et $\rho(t)$ l'état de polarisation instantanée du signal $\gamma(t)$.
 \\
-Le problème de cette représentation est qu'elle dépend du choix de carte $U_i$, ainsi sur l'intersection $U_{ij}$, $\x$ aurait (au moins) deux notions de fréquence instantanée.
+Le problème de cette représentation est qu'elle dépend du choix de carte $U_i$, ainsi sur l'intersection $U_{ij}$, $\gamma$ aurait (au moins) deux notions de fréquence instantanée.
 \\
 
-C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ qui lui est associée est définie globalement sur le fibré, autrement dit, elle est indépendante des représentations locales de $\x$.
+C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ qui lui est associée est définie globalement sur le fibré, autrement dit, elle est indépendante des représentations locales de $\gamma$.
 \\
-D'autre part, le relèvement horizontal $\Tilde{\x}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\x}$ n'a pas de variation dans la direction $\U{1}$ (par opposition à celle de $\PC{n}$), donc de variation fréquentielle.
+D'autre part, le relèvement horizontal $\Tilde{\gamma}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\gamma}$ n'a pas de variation dans la direction de $\U{1}$, donc son état de polarisation (composante sur $\PC{n}$) varie mais pas ses ``fréquences''.
 \\
-Ainsi, si $\rho_{\x}$ est la projection d'un signal $\x$, le relèvement horizontale $\Tilde{\x}$ s'interprète comme une version de $\x$ dénuée de toute fréquence instantanée.
-En allant un peu plus loin, à tout instant $t$, l'action $\alpha$ permettant de passé de $\Tilde{\x}(t)$ à $\x(t)$ (\ie~$\x(t) = e^{i\alpha(t)} \Tilde{\x}(t)$) peut-être vu comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)
-
-\begin{figure}[h]
-	\includegraphics[width=0.4\textwidth]{fig/placeholder}
-	\caption[Interprétation géométrique de la fréquence instantanée]{Fréquence instantanée d'un signal $\x$ vu comme variation vertical de $\x$ par rapport à son relèvement horizontale $\Tilde{\x}$ associé}
-	\label{fig:freq_inst_geodiff}
-\end{figure}	
+Ainsi, le relèvement horizontale $\Tilde{\gamma}$ d'un signal $\gamma$ s'interprète comme une version de ce dernier $\gamma$ dénué de toute fréquence instantanée.
+En allant un peu plus loin, à tout instant $t$, l'action $\alpha$ permettant de passé de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\ie~$(t) = e^{i\alpha(t)} \Tilde{\gamma}(t)$) peut-être vu comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)	
+\\
 
 \begin{remarque}
 	Un signal qui n'aurait pas fréquence instantanée mais une polarisation instantanée n'a pas vraiment de sens. 
-	Cela revoit à notre discussion de première partie où. Il avait était expliqué que la fréquence instantanée d'un signal univarié devait contenir les hautes fréquences et son amplitude les basses et que, si ce n'était pas le cas, alors toutes les fréquences sur signal pourrait se retrouver dans l'amplitude.
+	Cela revoit à notre discussion de première partie : la fréquence instantanée d'un signal univarié devait contenir les hautes fréquences et son amplitude les basses, contrainte qui est nécessaire pour que toutes les fréquences du signal ne se retrouve pas dans l'amplitude instantanée.
 	Ici le problème est le même, mais avec l'état de polarisation en lieu de l’amplitude. Pour s'en convaincre, il est utile de retourner sur le cas bivarié.
 	\\
-	La projection sur $\PC{2}$ de $\x$ représente l'ellipse de polarisation instantanée. 
-	Mais si $\x$ n'as pas de fréquence instantanée, alors $\x(t)$ n'est plus représenté que par le sommet de l’ellipse paramétrée par $\rho_{\x}$. 
+	La projection sur $\PC{2}$ de $\gamma$ représente l'ellipse de polarisation instantanée. 
+	Mais si $\gamma$ n'as pas de fréquence instantanée, alors $\gamma(t)$ n'est plus représenté que par le sommet de l’ellipse paramétrée par $\rho_\gamma$. 
 	L'on pourrait alors argumenter que tout signal peut être décrit ainsi, ce qui est parfaitement inintéressant.
 	
 	Cette vision du relèvement horizontale est donc purement formelle et à bien un sens géométrique même si en terme de signal, elle ne correspond à rien.
 \end{remarque}
 \skipl
 
-En admettant l'interprétation de la connexion comme fréquence instantanée, les discussions de première partie (\Cref{subsec:intro_phased}) suggère choisir comme 1-forme de connexion :
-\[\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = \Im m \langle \bf{v}, p\rangle\]
+
+\begin{figure}[h]
+	\includegraphics[width=0.6\textwidth]{fig/placeholder}
+	\caption[Interprétation géométrique de la fréquence instantanée]{Fréquence instantanée d'un signal $x$ vu comme variation vertical de $x$ par rapport à son relèvement horizontale $\Tilde{x}$ associé. À noter que $\Tilde{x}$ ne dépend pas des cartes mais dépend de la trajectoir $\rho_x$ de $x$ sur $\PC{n}$.}
+	\label{fig:freq_inst_geodiff}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[width=0.6\textwidth]{fig/placeholder}
+	\caption[Exemple relèvement horizontale]{Exemple du relèvement horizontale d'une signal bivarié}
+	\label{fig:horiz_lift_2var}
+\end{figure}
+
+En admettant l'interprétation de la 1-forme de connexion comme fréquence instantanée, les discussions de première partie (\Cref{subsec:intro_phased}) suggère de choisir :
+\[\forall x\in\S{n},\ \forall \bf{v}\in\tg[x]{\S{n}},\quad \conn_x(\bf{v}) = \Im m \langle \bf{v}, x\rangle\]
 \\
 L'algèbre de Lie de $\U{1}$ étant représentée par $\mathfrak{u}(1)\cong i\R$, il convient de poser :
 \begin{equation} \label{eq:conn2SUPC}
-	\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle \bf{v}, p\rangle
+	\forall x\in\S{n},\ \forall \bf{v}\in\tg[x]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle \bf{v}, x\rangle
 \end{equation}
 \\
-Avec cette interprétation un signal, on peut alors voir la phase dynamique d'un signal $\gamma$ comme la déviation à son relèvement horizontale $\Tilde{\gamma}$. Ainsi, $\ g = e^{i\phased(\gamma)}\ $ est solution de \eqref{eq:deviation2hozi}, qui se réécrit alors :
+La phase dynamique, quand à elle, s'interprète à présent comme la déviation sur signal à son relèvement horizontale. Ainsi, $\ g = e^{i\phased(\gamma)}\ $ est solution de \eqref{eq:deviation2hozi}, qui se réécrit alors :
 \[\forall t\in\R,\quad \left\{ \begin{aligned}
 	g'(t)  &= g(t)\, i\Im m \big\langle \dot{\gamma}(t) , \gamma(t) \big\rangle \\
 	g(t_0) &= 1
@@ -499,45 +548,13 @@ Ce qui redonne la formule :
 \begin{equation}\label{eq:phased_vgeodiff}
 	\phased(\gamma, t_0, t) = \int_{t_0}^t \Im m\big\langle \dot{\gamma}(s) , \gamma(s) \big\rangle ds
 \end{equation}
-\\
-
-À noter ce que choix de connexion est doublement justifié par le fait que c'est la connexion induite par la métrique de $\S{n}$. En effet, le produit hermitien de $\C^{n+1}$ induit sur les espaces tangents de $\S{n}$ une métrique riemannienne\footnote{\itshape
-	Cette métrique induite n'est pas hermitienne }, de sorte que :
-\[\tg[p]{\S{n}} = \Vec\{p\}^\perp \defeq \big\{ \bf{v}\in\C^{n+1}\ |\  \Re e \langle \bf{v},p\rangle = 0\big\}\]
-\\
-Sachant que $ip\in \{p\}^\perp$, $\tg[p]{\S{n}}$ se sépare en deux composante :
-\[\tg[p]{\S{n}} = \Vec\{p\}^\perp = \Vec\{ip\} \oplus \Vec\{ip\}^\perp\]
-\\
-La seconde composante étant invariante par l'action de $\U{1}$ dans le sens où :
-\[\forall e^{i\theta}\in\U{1},\quad \Vec\big\{i(e^{i\theta}p)\big\}^\perp = \Vec\{ip\}^\perp\]
-\\
-Ce qui permet de définir $\Vec\{ip\}^\perp$ comme espace tangent horizontale au point $p$ et son écriture donne directement :
-\[\begin{aligned}
-	\hg[p]{\S{n}} &= \big\{\bf{v}\in\tg[p]{\S{n}}\ |\ \Re e \langle \bf{v}, ip \rangle = 0\} \\
-	&= \big\{\bf{v}\in\tg[p]{\S{n}}\ |\ \Im m\langle \bf{v}, p \rangle = 0\}
-\end{aligned}\quad \Llr\quad \conn_p(\bf{v}) = i\Im m\langle \bf{v},p\rangle\]
-\\
-BONUS : Cette invariance de $\hg[p]{\S{n}}$ par $\U{1}$ permet d'écrire les espaces tangents à $\PC{n}$ comme :
-\begin{equation}
-	\tg[w]{\PC {n}} \cong \Ker \langle\, \cdot\, , w\rangle \defeq \big\{ \bf{v}\in\C^{n+1}\ |\ \forall p\in w,\ \langle \bf{v},p\rangle =0 \big\}
-\end{equation}
 
 
 
+\subsection{Phase géométrique...}
 
 
-
-\section{Interprétation des trois phases dans ce cadre} \label{sec:phases_dans_VFP}
-
-Résumons la situation. Pour étudier le comportement des fréquentielles d'un signal multivarié complexe, il est utile de voir l'espace $\C^{n+1}$ de tel signaux comme le ``produit'' :
-\[\C^{n+1}\ \leadsto\ \R^{+_-} \times \U{1} \times \PC{n}\]
-\\
-Ce ``produit'' étant en réalité un fibré principal et chaque terme paramètre respectivement l'amplitude, la phase et l'état de polarisation instantanée. Dans ce cadre, la variété $\VFP$ est naturellement (par la métrique de $\S{n}$) munie d'une connexion qui s'interprète comme fréquence instantanée et tout relèvement horizontale dans $\S{n}$ est vu comme un signal dénué de toute fréquence.
-\\
-La question est maintenant de savoir comment comprendre l'émergence de la phase géométrique dans ce cadre. Pour se faire, suivant les travaux de Aharonov et Anandan \cite[sec. 4, p. 53]{bohm_geometric_2003}
-
-
-\subsection{Cas pseudo-cyclique}
+\subsubsection{... dans le cas pseudo-cyclique}
 
 Comme dans la première partie de ce mémoire, pour mieux comprendre le comportement de la phase géométrique 
 
@@ -587,6 +604,22 @@ Comme dans la première partie de ce mémoire, pour mieux comprendre le comporte
 
 
 
+\subsection{Retour au cas général}
+
+\begin{itemize}
+	
+	\item Si maintenant $\gamma$ est qu'elle conque, pour retrouver les interprétation précédente, le plus simple est encore de se ramener au cas pseudo-cyclique.
+	
+	\item Cela demande de refermer $\gamma$ de sorte à ne pas engendré plus de phase géométrique. En somme, on veut savoir qu'elles sont les trajectoire de $\S{n}$ qui n'engendre pas de phase géométrique.
+	
+	\item pour cela on étudie les géodésiques !
+	
+	\item Sachant le représentaiton par Stokes c'est plutôt simple : 
+\end{itemize}
+
+
+
+
 \subsection{La phase géométrique dans $\PC{n}$}
 
 \begin{itemize}
@@ -613,17 +646,6 @@ Comme dans la première partie de ce mémoire, pour mieux comprendre le comporte
 \end{itemize}
 
 
-\subsection{Retour au cas général}
-
-\begin{itemize}
-	\item Si maintenant $\gamma$ est qu'elle conque, pour retrouver les interprétation précédente, le plus simple est encore de se ramener au cas pseudo-cyclique.
-	
-	\item Cela demande de refermer $\gamma$ de sorte à ne pas engendré plus de phase géométrique. En somme, on veut savoir qu'elles sont les trajectoire de $\S{n}$ qui n'engendre pas de phase géométrique.
-	
-	\item Sachant le représentaiton par Stokes c'est plutôt simple : 
-\end{itemize}
-
-
 
 
 %%%% ANNEXES %%%%
@@ -634,28 +656,7 @@ Comme dans la première partie de ce mémoire, pour mieux comprendre le comporte
 
 \section{Annexe}
 
-\subsection{Connexion et métrique} \label{ann:conn2submer_riemanian}
-
-\subsubsection{Connexion induite par la métrique}
-
-Si $P(G,B)$ une VFP munie d'une métrique riemannienne $g$. La connexion induite par $g$ sur $P$ est définie par :
-\begin{equation}
-	\forall p\in P,\quad \hg[p]{P} = \vg[p]{P}^\perp
-\end{equation}
-\\
-Plus concrètement, $\vg[p]{P}$ est isomorphe à $\mathfrak{g}$ via la transformation :
-\[\forall p\in P,\ \forall a\in\mathfrak{g},\quad a^*(p) = \frac{d}{dt} p\cdot \exp(t a)\Big|_{t=0} = \frac{d}{dt} p\cdot \exp(t a)\Big|_{t=0}\defeq pa\]
-\\
-Avec, une base $\{\mathfrak{e}_i\}_{1\leq i\leq k}$ de $\mathfrak{g}$ induit un base $\{e_i\}_{1\leq i\leq k} = \{\mathfrak{e}^*_i\}_{1\leq i\leq k}$ sur $\vg[p]{P}$. La métrique $g$ induit alors une connexion de 1-forme :
-\[\conn_g(X) = \sum_i g(X, e_i) \mathfrak{e}_i = \sum_i g_{ij}X^j \mathfrak{e}_i\]
-\\
-et on la projection de $X$ sur $\vg{P}$ est donnée par :
-\begin{align*}
-	\ver X = \conn(X)^*\quad &\Llr\quad  \ver (X^ie_i) = \sum_i g_{ij}X^j e_i \\
-	&\Llr\quad  (\ver X)^i = g_{ij}X^j
-\end{align*}
-
-\subsubsection{Dérivée extérieure de la connexion}
+\subsection{Dérivée extérieure de la connexion}
 
 Par définition, sur l'ouvert $U_i$, la 1-forme de connexion local est définie par :
 \[\locconn_i = {\sigma_i}^*\conn = \conn\circ \sigma_{i*}\]
@@ -695,55 +696,113 @@ Enfin, sachant que le second membre dans la partie imaginaire est réel, il vien
 Point de subtilité : les coefficients associées au $dw^\mu$ et $d\congu{w}^\nu$ doivent être traité séparément
 
 
-\subsection{Métrique et géodésique de $\bf{\PC{n}}$}
+\subsection{Géodésique de $\bf{\PC{n}}$}
 
 
 \subsubsection{Métrique dans les espaces horizontaux}
 
+
+D'abord les vecteurs tangent de $\S{n}$ sont séparés en composantes verticale et horizontales :
+\begin{align}
+	\forall \bf{v}\in \tg[p]{\S{n}},\quad \bf{v} = \bf{v}_H + \omega_p(\bf{v})^\# &= \bf{v}_H + \frac{d}{dt}p\cdot \exp\big(it\Im m \langle \bf{v}, p \rangle\big)\Big|_{t=0} \\
+	&= \bf{v}_H  + i\Im m \langle \bf{v}, p \rangle p
+\end{align}
+\\
+Ainsi, $\forall \bf{u},\bf{v}\in \tg[p]{\S{n}}$ :
+\begin{align*}
+	g_{\pi(p)}( \pi_*\bf{u}, \pi_*\bf{v}) = \big\langle \bf{u}_H, \bf{v}_H \big\rangle &= \big\langle\bf{u} - \conn_p(\bf{u})^\#, \bf{v} - \conn_p(\bf{v})^\# \big\rangle \\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  - \big\langle\bf{u}, \conn_p(\bf{v})^\# \big\rangle - \big\langle \conn_p(\bf{u})^\#, \bf{v} \big\rangle + \big\langle \conn_p(\bf{u})^\#, \conn_p(\bf{v})^\# \big\rangle \\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  - \big\langle\bf{u},  i\Im m \langle \bf{v}, p \rangle p \big\rangle - \big\langle  i\Im m \langle \bf{u}, p \rangle p, \bf{v} \big\rangle + \big\langle  i\Im m \langle \bf{u}, p \rangle p,  i\Im m \langle \bf{v}, p \rangle p \big\rangle \\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  + i\Im m \langle \bf{v}, p \rangle\big\langle\bf{u}, p \big\rangle - i\Im m \langle \bf{u}, p \rangle\big\langle p, \bf{v} \big\rangle - i\Im m \langle \bf{u}, p \rangle i\Im m \langle \bf{v}, p \rangle \big\langle p, p \big\rangle
+\end{align*}
+\\
+Sachant que $\ \|p\|=1\ $ et $\ \Re e \langle \bf{v},p\rangle = 0$, il vient :
+\begin{align*}
+g_{\pi(p)}( \pi_*\bf{u}, \pi_*\bf{v}) 
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  + i\Im m \langle \bf{v}, p \rangle\big\langle\bf{u}, p \big\rangle - i\Im m \langle \bf{u}, p \rangle\big\langle p, \bf{v} \big\rangle - i\Im m \langle \bf{u}, p \rangle i\Im m \langle \bf{v}, p \rangle \big\langle p, p \big\rangle \\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  -\Im m \langle \bf{v}, p \rangle \Im m\big\langle\bf{u}, p \big\rangle + \Im m \langle \bf{u}, p \rangle \Im m \big\langle p, \bf{v} \big\rangle - \langle \bf{u}, p \rangle \langle \bf{v}, p \rangle\\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle -  \langle \bf{u}, p \rangle \langle \bf{v}, p \rangle
+\end{align*}
+
+Ce qui donne en coordonnées locales sur $\S{n}$ : 
+\[g = \delta_{\mu \nu} dz^\mu d\congu{z}^\nu - \delta_{\mu \beta}z^\mu d\congu{z}^\beta \delta_{\alpha \nu} dz^\alpha \congu{z}^\nu = \big( \delta_{\mu \nu} - z_\nu \congu{z}_\mu \big) dz^\mu d\congu{z}^\nu\]
+\skipl
+
+
+
 \subsubsection{Ecriture des géodésiques}
 
-Etant donnée, sur une variété $\manu$, une métrique $g$ de symbole de Christoffel associé $\Gamma$, une géodésique $\gamma$ de $\manu$ vérifie :
-\[\forall \sigma,\quad \ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \nu} \dot{\gamma}^\mu \dot{\gamma}^\nu = 0\]
+\textit{Les calculs de cette section reprenne en partie les calculs de Mukunda \& Simon \cite[sec. 4, p. 219]{mukunda_quantum_1993}.}
 \\
-Comme $\PC{n}$ est une variété complexe, il faut également tenir compte des composantes (anti-)holomorphe et le système de vient alors :
+
+Etant donnée, sur une variété $\manu$, une métrique $g$ de symbole de Christoffel associé $\Gamma$, une géodésique $\gamma$ de $\manu$ vérifie \cite{do_carmo_riemannian_1992} :
 \begin{equation}\label{eq:EDP2geode}
-	\forall \sigma,\quad 
-	\left\{ \begin{aligned}
-		\ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \alpha}\,  \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
-		\ddot{\congu{\gamma}}^\sigma + \Gamma^{\congu{\sigma}} _{\congu{\nu \beta}}\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
-	\end{aligned}\right.
+	\forall \sigma,\quad \ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \nu} \dot{\gamma}^\mu \dot{\gamma}^\nu = 0
 \end{equation}
 \\
-Où les seuls coefficients non nuls de $\Gamma$ s'écrivent :
+Pour une variété complexe, les contraintes apportés par les composantes holomorphe  et anti-holomorphe  sont les mêmes. Le système reste donc le même à la différence près que cette fois les symboles de Christoffel vont s'écrire\footnote{\itshape
+	Les symétries imposées à $g$ par la forme symplectique $J$ annule la majorité des composantes de $g$ et \afortiori, de $\Gamma$. Voir \cite[sec. 8.4.3]{nakahara_geometry_2003}
+} :
 \begin{align}\label{eq:symb2Christo}
 	\Gamma^\sigma _{\mu \alpha} &= g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}})  &  \Gamma^{\congu{\sigma}} _{\congu{\nu \beta}} &= g^{\alpha \congu{\sigma}} \partial_{\congu{\nu}} (g_{\alpha \congu{\beta}}) 
 \end{align}
 \\
 Le système d'EDP \eqref{eq:EDP2geode} s'écrit alors :
 \begin{align*}
-	\left\{ \begin{aligned}
-		\ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \alpha}\,  \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
-		\ddot{\congu{\gamma}}^\sigma + \Gamma^{\congu{\sigma}} _{\congu{\nu \beta}}\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
-	\end{aligned}\right.
+	\ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \alpha}\,  \dot{\gamma}^\mu\, \dot{\gamma}^\alpha = 0 
 	\quad &\Llr\quad
-	\left\{ \begin{aligned}
-		\ddot{\gamma}^\sigma + g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
-		\ddot{\congu{\gamma}}^\sigma + g^{\alpha \congu{\sigma}} \partial_{\congu{\nu}} (g_{\alpha \congu{\beta}})\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
-	\end{aligned}\right. \\
+	\ddot{\gamma}^\sigma + g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha = 0 \\
 	&\Llr\quad 
-	\left\{ \begin{aligned}
-		g_{\sigma \congu{\lambda}}\, \ddot{\gamma}^\sigma + g_{\sigma \congu{\lambda}}\, g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
-		g_{\lambda \congu{\sigma}}\, \ddot{\congu{\gamma}}^\sigma + g_{\lambda \congu{\sigma}}\, g^{\alpha \congu{\sigma}} \partial_{\congu{\nu}} (g_{\alpha \congu{\beta}})\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
-	\end{aligned}\right. \\ 
+	g_{\sigma \congu{\beta}}\, \ddot{\gamma}^\sigma + g_{\sigma \congu{\beta}}\, g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha = 0 \\
 	&\Llr\quad 
-	\left\{ \begin{aligned}
-		g_{\sigma \congu{\lambda}}\, \ddot{\gamma}^\sigma + \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha &= 0 \\
-		g_{\lambda \congu{\sigma}}\, \ddot{\congu{\gamma}}^\sigma + \partial_{\congu{\nu}} (g_{\alpha \congu{\beta}})\, \dot{\congu{\gamma}}^\nu\, \dot{\congu{\gamma}}^\beta &= 0
-	\end{aligned}\right. \\
+	g_{\sigma \congu{\beta}}\, \ddot{\gamma}^\sigma + \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha = 0
 \end{align*}
-\skipl
+\\
+Dans le cas de $\VFP$, les $\partial g_{\alpha \congu{\beta}}$ s'écrivent :
+\begin{align*}
+	\partial_{\mu} (g_{\alpha \congu{\beta}}) &= \partial_{\mu} \big( \delta_{\alpha \beta} - \congu{z}_\alpha z_\beta \big) = - \delta_{\mu\beta} \congu{z}_\alpha   &  
+	\partial_{\congu{\nu}} (g_{\alpha \congu{\beta}}) &= \partial_{\congu{\nu}} \big( \delta_{\alpha \beta} - \congu{z}_\alpha z_\beta \big) = - \delta_{\nu \alpha} z_\beta
+\end{align*}
+\\
+Donnant les équations :
+\begin{align*}
+	\forall \beta,\quad \begin{aligned}
+		0 &= g_{\sigma \congu{\beta}}\, \ddot{\gamma}^\sigma + \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha \\
+		&= \big( \delta_{\sigma \beta} - \congu{\gamma}_\sigma \gamma_\beta \big)\, \ddot{\gamma}^\sigma - \delta_{\mu\beta} \congu{\gamma}_\alpha \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha \\
+		&= \ddot{\gamma}_\beta - \gamma_\beta \langle \ddot{\gamma},\gamma\rangle - \dot{\gamma}_\beta \langle  \dot{\gamma}, \gamma \rangle 
+	\end{aligned} \qquad \Llr\quad 
+	0 = \ddot{\gamma} -  \langle \ddot{\gamma},\gamma\rangle \gamma -  \langle  \dot{\gamma}, \gamma \rangle \dot{\gamma}
+\end{align*}
+\\
+Où l'équivalence est justifiée par le fait que les composantes anti-holomorphes des $\gamma, \dot{\gamma}, \ddot{\gamma}$ suivent les mêmes contraintes (à conjugaison près) celles holomorphes.
 
-Dans notre cas, les 
+Pour résoudre ce système, le produit hermitien de ce dernier avec $\gamma$ est calculé :
+\begin{align*}
+	 \ddot{\gamma} =  \langle \ddot{\gamma},\gamma\rangle \gamma + \langle  \dot{\gamma}, \gamma \rangle \dot{\gamma} \quad 
+	 &\Lr\quad \langle \ddot{\gamma}, \gamma \rangle =  \langle \ddot{\gamma},\gamma\rangle \langle \gamma, \gamma \rangle + \langle  \dot{\gamma}, \gamma \rangle^2 \\
+	 &\Lr\quad 0 =  \langle  \dot{\gamma}, \gamma \rangle
+\end{align*}
+On retrouve alors le fait que $\dot{\gamma}$ est horizontale et $\ \ddot{\gamma} = \gamma \langle \ddot{\gamma},\gamma\rangle$.
+\\
+En appliquant à nouveau le produit hermitien mais de l'autre côté, cette fois :
+\[\ddot{\gamma} = \gamma \langle \ddot{\gamma},\gamma\rangle\quad 
+\Lr\quad \langle \gamma, \ddot{\gamma} \rangle = \langle  \gamma, \gamma \rangle \langle \ddot{\gamma},\gamma\rangle  =  \langle  \ddot{\gamma}, \gamma \rangle\]
+\\
+Sachant que $\gamma\in\S{n}$, on a alors :
+\begin{align*}
+	\|\gamma\| = 1\ &\Lr\ \langle \gamma, \dot{\gamma} \rangle + \langle \dot{\gamma}, \gamma \rangle =0 \\
+	&\Lr\ \langle \gamma, \ddot{\gamma} \rangle + 2\langle \dot{\gamma}, \dot{\gamma} \rangle + \langle \ddot{\gamma}, \gamma \rangle =0 \\
+	&\Lr\ \langle \gamma, \ddot{\gamma} \rangle = - \langle \dot{\gamma}, \dot{\gamma} \rangle
+\end{align*}
+\\
+Finalement l'EDP devient :
+\[\ddot{\gamma} = - \langle \dot{\gamma}, \dot{\gamma} \rangle \gamma \]
+\\
+Or, il existe une paramétrisation de $\gamma$ telle que $\|\gamma\| = 1$. D'où les solutions :
+\[\gamma(t) = \gamma(t_0) \cos (t - t_0) + \dot{\gamma}(t_0) \sin (t - t_0)\]
+
+
+
 
 
 \subsection{Algèbre et groupe de Lie} \label{ann:2Lie}
