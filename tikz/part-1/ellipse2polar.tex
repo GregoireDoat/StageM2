@@ -1,0 +1,69 @@
+\makeatletter % fonction pour increasing width !
+	\pgfkeys{/pgf/decoration/.cd,
+		start color/.store in =\startcolor,
+		end color/.store in   =\endcolor
+	}
+	
+	\pgfdeclaredecoration{width and color change}{initial}{
+		\state{initial}[width=0pt, next state=line, persistent precomputation={%
+			\pgfmathdivide{50}{\pgfdecoratedpathlength}%
+			\let\increment=\pgfmathresult%
+			\def\x{0}%
+		}]{}
+		\state{line}[width=.5pt,   persistent postcomputation={%
+			\pgfmathadd@{\x}{\increment}%
+			\let\x=\pgfmathresult%
+		}]{%
+			\pgfsetlinewidth{\x/80*0.001pt+\pgflinewidth}%
+			\pgfsetarrows{-}%
+			\pgfpathmoveto{\pgfpointorigin}%
+			\pgfpathlineto{\pgfqpoint{.75pt}{0pt}}%
+			\pgfsetstrokecolor{\endcolor!\x!\startcolor}%
+			\pgfusepath{stroke}%
+		}
+		\state{final}{%
+			\pgfsetlinewidth{\pgflinewidth}%
+			\pgfpathmoveto{\pgfpointorigin}%
+			\color{\endcolor!\x!\startcolor}%
+			\pgfusepath{stroke}% 
+		}
+	}
+\makeatother
+
+
+\begin{tikzpicture}[scale=1]
+	%\draw[black, opacity=0.3] (-4.5,-4.5) grid (4.5,4.5);
+	\draw[opacity=1, -Stealth] (0,-4) -- (0,4);
+	\draw[opacity=1, -Stealth] (-4,0) -- (4,0);
+	
+	\coordinate (o) at (0,0);
+	\coordinate (i) at (4,0);
+	\coordinate (j) at (0,4);
+	\coordinate (theta) at (40:4);
+	
+	
+	%axis de l'ellipse
+	\draw[thick, opacity=0.9, rotate = 40] (-4,0) -- (o) node[midway, below, rotate=40]{$a\cos\chi$} -- (4,0);
+	\draw[thick, opacity=0.9, rotate = 40] (0,-3) -- (o) -- (0,3) node[midway, above, rotate=-50]{$a\sin\chi$};
+	
+	% paramètres
+		
+		%theta
+	\draw[opacity=0.9, -stealth] (2, 0) arc [start angle=0, end angle =40, radius = 2] node[midway, right]{$\theta$};
+		
+		%chi
+	\draw[opacity=0.8, -stealth, rotate = 40] (-2,0) arc [start angle=0, end angle =37, radius = 2] node[midway, above right]{$\chi$};
+	
+	\draw[opacity=0.8, rotate = 40] (-4,0) -- (0,3);
+		
+		%varphi
+	\draw[color=blue, opacity=0.8, -stealth, rotate = 40] (0.75,0) arc [start angle=0, end angle =60, radius = 0.75] node[midway, above right]{$\varphi$};
+	
+	\draw[color=blue, opacity=0.8, rotate = 40] (o) -- (60:3.18);
+	
+	\fill[blue] (100:3.18) circle (0.05);
+	
+	% ellipse
+	\draw[line width=0.5pt, rotate=40, decoration={width and color change, start color=black, end color=blue}, decorate] (60:3.18) arc [start angle=66.65, end angle =426.65, x radius = 4, y radius = 3];
+	
+\end{tikzpicture}

@@ -1,0 +1,215 @@
+\section{Annexe}
+
+\subsection{\wip Variété différentielle complexe }\label{ann:VDC}
+
+\textit{Pour plus de détails, voir \cite{nakahara_geometry_2003, ballmann_lectures_2006}.}
+\\
+
+$\manu$ sera une \emph{variété différentielle complexe} si elle satisfait les propriétés ci-dessus où $\R^n$ est remplacé par $\C^n$ et où la condition de difféomorphisme est remplacé par la condition d'holomorphisme. 
+\\
+Une application $f : \C^n\lr \C^n$ étant holomorphe si chacune de ses composantes vérifie l'équation de Cauchy-Riemann :
+\[\forall x,y\in\R^n,\ \forall \mu,\qquad \frac{\partial f }{\partial y^\mu}(x+iy) = i \frac{\partial f }{\partial x^\mu}(x+iy)\]
+\\
+Les fonctions holomorphes étant automatiquement $C^\infty$, les variétés différentielles complexes sont toujours lisse, c'est-à-dire $C^\infty$. Aussi, $\manu$ est dite de dimension complexe $n$ et dimension (réel) $2n$, notés :
+\begin{align}\label{eq:manuC-base_cano}
+	\dim[\C](\manu) &\defeq n  &  \dim[\R] (\manu) \defeq \dim (\manu) = 2n
+\end{align}
+\\
+
+Ensuite, pour le dire rapidement, la structure complexe de $\manu$ permet de séparer les espaces tangents en deux sous espaces. Pour ce faire, on commence par noter qu'en tout point $p\in\manu$ de coordonnée $z^\nu=x^\nu+iy^\nu$, l'espace tangent $\tg[p]{\manu}$, vu comme variété réelle, admet une base :
+\begin{equation}
+	\tg[p]{\manu} = \vec \left\{ \frac{\partial}{\partial x^1}, \cdots, \frac{\partial}{\partial x^n}, \frac{\partial}{\partial y^1}, \cdots,  \frac{\partial}{\partial y^n} \right\}
+\end{equation}
+\\
+Plus tôt que de se basé sur les $x^\mu$ et $y^\mu$ pour séparer les $\tg[p]{\manu}$, on définit sur ces derniers un tenseur $J_p$ de type (1,1) tel que :
+\begin{align}
+	J_p \frac{\partial}{\partial x^\mu} &= \frac{\partial}{\partial y^\mu}  &  J_p \frac{\partial}{\partial y^\mu} &= -\frac{\partial}{\partial x^\mu}
+\end{align}
+\\
+Ce tenseur est l'équivalent de la multiplication par $\pm i$ et le fait que $\manu$ soit complexe assure qu'il soit défini globalement, \ie~sur $\tg{\manu}$. Il est diagonaliseable dans la base :
+\begin{align}\label{eq:manuC-base_holo}
+	\partial_\mu = \frac{\partial}{\partial z^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} - i\frac{\partial}{\partial y^\mu} \right)  
+	&  
+	\partial_{\bar{\mu}} = \frac{\partial}{\partial \overline{z}^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} + i\frac{\partial}{\partial y^\mu} \right)
+\end{align}
+\\
+Ainsi en fonction de la base (\eqref{eq:manuC-base_cano} ou \eqref{eq:manuC-base_holo}), $J_p$ va s'écrire :
+\begin{align}
+	J_p &= \begin{pmatrix}
+		\text{\large\ 0\ }\Big. & I_n \\ -I_n & \text{\large\ 0\ }\Big.
+	\end{pmatrix}  &
+	J_p &= \begin{pmatrix}
+		iI_n & \text{\large\ 0\ }\Big. \\ \text{\large\ 0\ }\Big. & -iI_n
+	\end{pmatrix} 
+\end{align}
+\\
+Finalement, $\tg{\manu}$ peut être séparé en deux sous-espaces engendré respectivement par les $\partial_\mu$ et $\partial_{\bar{\nu}}$. On parle de vecteur holomorphe et anti-holomorphe et on note :
+\begin{align}
+	\tg[p]{\manu}^+ &= \Vec\big\{ \partial_\mu\ |\ 1\leq \mu\leq n \big\}  &  \tg[p]{\manu}^- &= \Vec\big\{ \partial_{\bar{\mu}}\ |\ 1\leq \mu\leq n \big\}
+\end{align}
+\\ \\
+
+forme kahlerienne :
+\begin{equation}
+	\Omega = g_{\mu \congu{\alpha}} {J^{\congu{\alpha}}}_{\congu{\nu}} dw^\mu \wedge d\congu{w}^\nu
+\end{equation}
+sur $\PC{n}$ :
+\[\Omega(w) = i\frac{(1+w^\alpha \congu{w}_\alpha)\delta_{\mu\nu} - w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} dw^\mu \wedge d\congu{w}^\nu\]
+\skipl
+
+
+
+\subsection{\wip Dérivée extérieure de la connexion}
+
+Par définition, sur l'ouvert $U_i$, la 1-forme de connexion local est définie par :
+\[\locconn_i = {\sigma_i}^*\conn = \conn\circ \sigma_{i*}\]
+\\
+Soit, $\forall w\in U_i,\ \forall X\in\tg[w]{\PC{n}}$ :
+\[\locconn_i(w)X= i\Im m \big\langle \sigma_{i*}(X), \sigma_i(w) \big\rangle\]
+\\
+où les $\sigma_{i*}$ s'écrivent, $\forall \mu$ :
+\begin{align*}
+	\mu &\neq i : &  \sigma_i(w)^\mu = \frac{w^\mu}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\quad \Lr\quad
+	\sigma_{i*}(w)^\mu &= \frac{dw^\mu}{\sqrt{1 + w^\alpha\congu{w}_\alpha}} - \frac{w^\mu}{2(1 + w^\alpha\congu{w}_\alpha)^{\nicefrac{3}{2}}}2\Re e(w^\alpha d\congu{w}_\alpha) \\
+	&  &  &= \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\left(dw^\mu - w^\mu \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\ \right)
+	\\ \\
+	\mu &= i :  &  \sigma_i(w)^\mu = \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\quad \Lr\quad
+	\sigma_{i*}(w)^\mu &= - \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{(1 + w^\alpha\congu{w}_\alpha)^{\nicefrac{3}{2}}}
+\end{align*}
+\\
+Ce qui donne\footnote{\itshape
+	Dans le formule ci-dessous, les 0 et 1 sont placés à la $i^{eme}$ coordonnées.
+} :
+\begin{align*}
+	\locconn_i(w) &= i\Im m \big\langle \sigma_{i*}(w), \sigma_i(w) \big\rangle \\
+	&= i\Im m \left\langle \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\left((dw^0,\cdots , 0, \cdots, dw^n) - (w^0,\cdots , 1, \cdots, w^n) \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\ \right), \frac{(w^0,\cdots , 1, \cdots, w^n)}{\sqrt{1 + w^\alpha\congu{w}_\alpha}} \right\rangle \\
+	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \left( \Big\langle (dw^0,\cdots , 0, \cdots, dw^n), (w^0,\cdots , 1, \cdots, w^n) \Big\rangle \bigg. \right. \\
+	&\qquad\qquad\qquad\qquad\qquad - \left.  \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\Big\langle (w^0,\cdots , 1, \cdots, w^n) , (w^0,\cdots , 1, \cdots, w^n) \Big\rangle \right) \\
+	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \left( dw^\mu\congu{w}_\mu -  \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\big( w^\nu\congu{w}_\nu +1 \big) \right)
+\end{align*}
+\\
+Enfin, sachant que le second membre dans la partie imaginaire est réel, il vient :
+\begin{align*}
+	\locconn_i(w) = \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \left( dw^\mu\congu{w}_\mu -  \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\big( w^\nu\congu{w}_\nu +1 \big) \right) 
+	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \big( dw^\mu\congu{w}_\mu \big) \\
+	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} \frac{dw^\mu\congu{w}_\mu -  d\congu{w}^\nu w_\nu }{2}
+\end{align*}
+\\
+
+Point de subtilité : les coefficients associées au $dw^\mu$ et $d\congu{w}^\nu$ doivent être traité séparément
+
+
+\subsection{Géodésique de $\bf{\PC{n}}$}
+
+
+\subsubsection{Métrique relevée dans les espaces horizontaux}
+
+
+D'abord les vecteurs tangent de $\S{n}$ sont séparés en composantes verticale et horizontales :
+\begin{align}
+	\forall \bf{v}\in \tg[p]{\S{n}},\quad \bf{v} = \bf{v}_H + \omega_p(\bf{v})^\# &= \bf{v}_H + \frac{d}{dt}p\cdot \exp\big(it\Im m \langle \bf{v}, p \rangle\big)\Big|_{t=0} \\
+	&= \bf{v}_H  + i\Im m \langle \bf{v}, p \rangle p
+\end{align}
+\\
+Ainsi, $\forall \bf{u},\bf{v}\in \tg[p]{\S{n}}$ :
+\begin{align*}
+	g_{\pi(p)}( \pi_*\bf{u}, \pi_*\bf{v}) = \big\langle \bf{u}_H, \bf{v}_H \big\rangle &= \big\langle\bf{u} - \conn_p(\bf{u})^\#, \bf{v} - \conn_p(\bf{v})^\# \big\rangle \\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  - \big\langle\bf{u}, \conn_p(\bf{v})^\# \big\rangle - \big\langle \conn_p(\bf{u})^\#, \bf{v} \big\rangle + \big\langle \conn_p(\bf{u})^\#, \conn_p(\bf{v})^\# \big\rangle \\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  - \big\langle\bf{u},  i\Im m \langle \bf{v}, p \rangle p \big\rangle - \big\langle  i\Im m \langle \bf{u}, p \rangle p, \bf{v} \big\rangle + \big\langle  i\Im m \langle \bf{u}, p \rangle p,  i\Im m \langle \bf{v}, p \rangle p \big\rangle \\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  + i\Im m \langle \bf{v}, p \rangle\big\langle\bf{u}, p \big\rangle - i\Im m \langle \bf{u}, p \rangle\big\langle p, \bf{v} \big\rangle - i\Im m \langle \bf{u}, p \rangle i\Im m \langle \bf{v}, p \rangle \big\langle p, p \big\rangle
+\end{align*}
+\\
+Sachant que $\ \|p\|=1\ $ et $\ \Re e \langle \bf{v},p\rangle = 0$, il vient :
+\begin{align*}
+	g_{\pi(p)}( \pi_*\bf{u}, \pi_*\bf{v}) 
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  + i\Im m \langle \bf{v}, p \rangle\big\langle\bf{u}, p \big\rangle - i\Im m \langle \bf{u}, p \rangle\big\langle p, \bf{v} \big\rangle - i\Im m \langle \bf{u}, p \rangle i\Im m \langle \bf{v}, p \rangle \big\langle p, p \big\rangle \\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle  -\Im m \langle \bf{v}, p \rangle \Im m\big\langle\bf{u}, p \big\rangle + \Im m \langle \bf{u}, p \rangle \Im m \big\langle p, \bf{v} \big\rangle - \langle \bf{u}, p \rangle \langle \bf{v}, p \rangle\\
+	&= \big\langle\bf{u}, \bf{v} \big\rangle -  \langle \bf{u}, p \rangle \langle \bf{v}, p \rangle
+\end{align*}
+
+Ce qui donne en coordonnées locales sur $\S{n}$ : 
+\[g = \delta_{\mu \nu} dz^\mu d\congu{z}^\nu - \delta_{\mu \beta}z^\mu d\congu{z}^\beta \delta_{\alpha \nu} dz^\alpha \congu{z}^\nu = \big( \delta_{\mu \nu} - z_\nu \congu{z}_\mu \big) dz^\mu d\congu{z}^\nu\]
+\skipl
+
+
+
+\subsubsection{Ecriture des géodésiques}
+
+\textit{Les calculs de cette section reprenne en partie les calculs de Mukunda \& Simon \cite[sec. 4, p. 219]{mukunda_quantum_1993}.}
+\\
+
+Etant donnée, sur une variété $\manu$, une métrique $g$ de symbole de Christoffel associé $\Gamma$, une géodésique $\gamma$ de $\manu$ vérifie \cite{do_carmo_riemannian_1992} :
+\begin{equation}\label{eq:EDP2geode}
+	\forall \sigma,\quad \ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \nu} \dot{\gamma}^\mu \dot{\gamma}^\nu = 0
+\end{equation}
+\\
+Pour une variété complexe, les contraintes apportés par les composantes holomorphe  et anti-holomorphe  sont les mêmes. Le système reste donc le même à la différence près que cette fois les symboles de Christoffel vont s'écrire\footnote{\itshape
+	Les symétries imposées à $g$ par la forme symplectique $J$ annule la majorité des composantes de $g$ et \afortiori, de $\Gamma$. Voir \cite[sec. 8.4.3]{nakahara_geometry_2003}
+} :
+\begin{align}\label{eq:symb2Christo}
+	\Gamma^\sigma _{\mu \alpha} &= g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}})  &  \Gamma^{\congu{\sigma}} _{\congu{\nu \beta}} &= g^{\alpha \congu{\sigma}} \partial_{\congu{\nu}} (g_{\alpha \congu{\beta}}) 
+\end{align}
+\\
+Le système d'EDP \eqref{eq:EDP2geode} s'écrit alors :
+\begin{align*}
+	\ddot{\gamma}^\sigma + \Gamma^\sigma _{\mu \alpha}\,  \dot{\gamma}^\mu\, \dot{\gamma}^\alpha = 0 
+	\quad &\Llr\quad
+	\ddot{\gamma}^\sigma + g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha = 0 \\
+	&\Llr\quad 
+	g_{\sigma \congu{\beta}}\, \ddot{\gamma}^\sigma + g_{\sigma \congu{\beta}}\, g^{\sigma \congu{\beta}} \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha = 0 \\
+	&\Llr\quad 
+	g_{\sigma \congu{\beta}}\, \ddot{\gamma}^\sigma + \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha = 0
+\end{align*}
+\\
+Dans le cas de $\VFP$, les $\partial g_{\alpha \congu{\beta}}$ s'écrivent :
+\begin{align*}
+	\partial_{\mu} (g_{\alpha \congu{\beta}}) &= \partial_{\mu} \big( \delta_{\alpha \beta} - \congu{z}_\alpha z_\beta \big) = - \delta_{\mu\beta} \congu{z}_\alpha   &  
+	\partial_{\congu{\nu}} (g_{\alpha \congu{\beta}}) &= \partial_{\congu{\nu}} \big( \delta_{\alpha \beta} - \congu{z}_\alpha z_\beta \big) = - \delta_{\nu \alpha} z_\beta
+\end{align*}
+\\
+Donnant les équations :
+\begin{align*}
+	\forall \beta,\quad \begin{aligned}
+		0 &= g_{\sigma \congu{\beta}}\, \ddot{\gamma}^\sigma + \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha \\
+		&= \big( \delta_{\sigma \beta} - \congu{\gamma}_\sigma \gamma_\beta \big)\, \ddot{\gamma}^\sigma - \delta_{\mu\beta} \congu{\gamma}_\alpha \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha \\
+		&= \ddot{\gamma}_\beta - \gamma_\beta \langle \ddot{\gamma},\gamma\rangle - \dot{\gamma}_\beta \langle  \dot{\gamma}, \gamma \rangle 
+	\end{aligned} \qquad \Llr\quad 
+	0 = \ddot{\gamma} -  \langle \ddot{\gamma},\gamma\rangle \gamma -  \langle  \dot{\gamma}, \gamma \rangle \dot{\gamma}
+\end{align*}
+\\
+Où l'équivalence est justifiée par le fait que les composantes anti-holomorphes des $\gamma, \dot{\gamma}, \ddot{\gamma}$ suivent les mêmes contraintes (à conjugaison près) celles holomorphes.
+
+Pour résoudre ce système, le produit hermitien de ce dernier avec $\gamma$ est calculé :
+\begin{align*}
+	\ddot{\gamma} =  \langle \ddot{\gamma},\gamma\rangle \gamma + \langle  \dot{\gamma}, \gamma \rangle \dot{\gamma} \quad 
+	&\Lr\quad \langle \ddot{\gamma}, \gamma \rangle =  \langle \ddot{\gamma},\gamma\rangle \langle \gamma, \gamma \rangle + \langle  \dot{\gamma}, \gamma \rangle^2 \\
+	&\Lr\quad 0 =  \langle  \dot{\gamma}, \gamma \rangle
+\end{align*}
+On retrouve alors le fait que $\dot{\gamma}$ est horizontale et $\ \ddot{\gamma} = \gamma \langle \ddot{\gamma},\gamma\rangle$.
+\\
+En appliquant à nouveau le produit hermitien mais de l'autre côté, cette fois :
+\[\ddot{\gamma} = \gamma \langle \ddot{\gamma},\gamma\rangle\quad 
+\Lr\quad \langle \gamma, \ddot{\gamma} \rangle = \langle  \gamma, \gamma \rangle \langle \ddot{\gamma},\gamma\rangle  =  \langle  \ddot{\gamma}, \gamma \rangle\]
+\\
+Sachant que $\gamma\in\S{n}$, on a alors :
+\begin{align*}
+	\| \gamma \| = 1\ &\Lr\ \langle \gamma, \dot{\gamma} \rangle + \langle \dot{\gamma}, \gamma \rangle =0 \\
+	&\Lr\ \langle \gamma, \ddot{\gamma} \rangle + 2\langle \dot{\gamma}, \dot{\gamma} \rangle + \langle \ddot{\gamma}, \gamma \rangle =0 \\
+	&\Lr\ \langle \gamma, \ddot{\gamma} \rangle = - \langle \dot{\gamma}, \dot{\gamma} \rangle
+\end{align*}
+\\
+Finalement l'EDP devient :
+\[\ddot{\gamma} = - \langle \dot{\gamma}, \dot{\gamma} \rangle \gamma \]
+\\
+Or, il existe une paramétrisation de $\gamma$ telle que $\|\gamma\| = 1$. D'où les solutions :
+\[\gamma(t) = \gamma(t_0) \cos (t - t_0) + \dot{\gamma}(t_0) \sin (t - t_0)\]
+
+
+
+
+
+%\subsection{Algèbre et groupe de Lie} \label{ann:2Lie}
+
+%\subsubsection{Quelques généraliés}
+
+%\subsubsection{Cas particulier : $\bf{\U{1}}$}

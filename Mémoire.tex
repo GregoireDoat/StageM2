@@ -78,9 +78,9 @@
 \section*{\begin{center}\scshape Introduction \end{center}}
 
 
-La phase géométrique fait partie de ces concepts qui apparaissent régulièrement en physique, mais qui demande beaucoup de contexte pour être mis en évidence.
-Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'un signal multivarié complexe (\ie~à valeur dans $\C^n$) $\x$ est donné par :
-\[\phaseg(\x, t_0, t) = \arg\big\langle \x(t), \x(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds ds\]
+La phase géométrique fait partie de ces concepts qui apparaissent régulièrement en physique, mais qui nécessite beaucoup de contexte pour être mis en évidence.
+Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'un signal multivarié complexe (\ie~à valeurs dans $\C^n$) $\x$ est donné par :
+\[\phaseg(\x, t_0, t) = \arg\big\langle \x(t), \x(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds\]
 Ce qui rend cette phase si intéressante c'est qu'elle est invariante par transformation de jauge, c'est-à-dire invariante par toute transformation du type :
 \[\x(t)\ \leadsto\ \psi'(t) = e^{i\alpha(t)}\x(t) \]
 \\
@@ -93,17 +93,17 @@ L'article \cite{cohen_geometric_2019} de Cohen \etal~en présente quelques unes 
 \\
 
 Du point de vue du traitement du signal en revanche, rien n'a été fait et ce n'est que récemment que Le Bihan, Flamant \& Amblard s'y sont intéressés \cite{le_bihan_modephysiques_2023, le_bihan_geometric_2024}.
-L'objectif de ce mémoire est donc de réintroduit la phase géométrique dans le cadre du traitement du signal et de discuter de ses applications :
+L'objectif de ce mémoire est donc de décrire la phase géométrique dans le cadre du traitement du signal et de discuter de ses applications :
 \\
 \begin{itemize}
-	\item Dans un premier temps (\cref{part:param_instant}), cette phase sera mise en évidence à travers des concepts d'analyse temps-fréquence, notamment la notion fréquence instantanée qui sera présente tout au long de l'écrit. 
-	Suite à quoi elle sera explicitement calculée dans une cas particulier de signaux, déjà étudié par Le Bihan \etal~\cite{le_bihan_geometric_2024} : les signaux dit AM-FM-PM.
+	\item Dans un premier temps (\cref{part:param_instant}), cette phase sera mise en évidence à travers des concepts d'analyse temps-fréquence, notamment la notion de fréquence instantanée qui sera présente tout au long de l'écrit. 
+	Suite à quoi elle sera explicitement calculée dans une cas particulier de signaux, déjà étudié par Le Bihan \etal~\cite{le_bihan_geometric_2024} : les signaux AM-FM-PM.
 	Cela permettra de mieux comprendre son comportement et permettra de motiver une description des signaux multivariés complexes dans l'esprit de l'analyse temps-fréquence.
 	
 	\item Cela mènera à travailler dans une variété dite fibrée principale, $S^{2n-1} \big(\U{1}, \PC{n-1}\big)$, et la seconde partie de ce mémoire sera dédiée à son formalisme. Contrairement à l'état de l'art, les résultats seront présenté d'un point de vue de mathématicien plus que de physicien et, entre autre, l'accent sera mis sur l'intuition géométrique derrière les concepts abordés.
-	Des résultats, connus par ailleurs, sur la phase géométrique seront redémontrés avec ce formalisme purement géométrique et avec, les notions de fréquences instantanées et de phase géométrique seront reformuler et réinterpréter. 
+	Des résultats, connus par ailleurs, sur la phase géométrique seront redémontrés avec ce formalisme et avec, les notions de fréquences instantanées et de phase géométrique seront reformulée et réinterprétée. 
 	
-	\item Enfin, dans une troisième partie, sera présenté un moyen de calculer la phase géométrique en pratique via l'invariant de Bargmann, tiré de \cite{rabei_bargmann_1999} et déjà repris par Le Bihan \etal~\cite{le_bihan_geometric_2024}. Seront ensuite discutées diverses applications \thoughts{et là sa dépend d'à quelle point j'ai le temps}.
+	\item Enfin, dans une troisième partie, sera présenté un moyen de calculer la phase géométrique en pratique via l'invariant de Bargmann, tiré de \cite{rabei_bargmann_1999} et déjà repris par Le Bihan \etal~\cite{le_bihan_geometric_2024}. Seront ensuite discutées diverses applications \thoughts{et là ça dépend d'à quel point j'ai le temps}.
 \end{itemize}
 
 
@@ -154,25 +154,18 @@ Notations math :
 
 
 \part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
-
-
+\begin{annexe}\input{latex/part-1_ann}\end{annexe}
 
 
 \part{Aspects Géométriques d'une Phase Éponyme} \label{part:phase_geo} \input{latex/part-2}
-
-
+\begin{annexe}\input{latex/part-2_ann}\end{annexe}
 
 
 %\part{Applications et généralisation} \label{part:app&gene} \input{latex/part-3}
 
 
-
-
-
 %\part{Notes 'n' thoughts} \input{latex/garb}
 	
-	
-
 
 %\part{Legacy}\input{latex/part-1(legacy)}
 	
