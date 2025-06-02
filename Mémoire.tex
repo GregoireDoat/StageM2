@@ -53,8 +53,14 @@
 
 \tableofcontents\thispagestyle{empty}
 
+\skipl \\ \\ \\
 
+\wip : \textsc{partiellement terminée}
+\\
 
+\todo : \textsc{au stade de note}
+\\ \\
+\textsc{Tout les textes en rouges sont des notes}
 
 \newpage
 
@@ -72,21 +78,33 @@
 \section*{\begin{center}\scshape Introduction \end{center}}
 
 
-\thoughts{INTRO A REFAIRE QUAND ON SAURA VRAIMENT DE QUOI ON PARLE DANS CETTE PARTIE}
-
-La phase géométrique fait partie de ces concepts qui apparaissent régulièrement en physique, mais qui demande beaucoup de contexte pour être expliqué.
-Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'un signal complexe $\psi$ est donné par :
-\[\phaseg(\psi, t_0, t) = \arg\big\langle \psi(t), \psi(t_0)\big\rangle \Im m\int_{t_0}^t \frac{\big\langle \dot{\psi}(s) , \psi(s) \big\rangle}{\|\psi(s)\|^2} ds\]
+La phase géométrique fait partie de ces concepts qui apparaissent régulièrement en physique, mais qui demande beaucoup de contexte pour être mis en évidence.
+Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'un signal multivarié complexe (\ie~à valeur dans $\C^n$) $\x$ est donné par :
+\[\phaseg(\x, t_0, t) = \arg\big\langle \x(t), \x(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds ds\]
 Ce qui rend cette phase si intéressante c'est qu'elle est invariante par transformation de jauge, c'est-à-dire invariante par toute transformation du type :
-\[\psi(t)\ \leadsto\ \psi'(t) = e^{i\alpha(t)}\psi(t) \]
+\[\x(t)\ \leadsto\ \psi'(t) = e^{i\alpha(t)}\x(t) \]
 \\
-Cette propriété rend la phase $\phaseg$ intrinsèquement liée à la trajectoire que prend la projection de $\psi$ dans l'espace projectif complexe $\PC{n-1}$ et par conséquence, à la géométrie de ce dernier, d'où son nom.
-\\ \\
-Ceci à largement été étudié dans le carde de système dynamique régis par EDP \cite{faure_introduction_2022,marsden_introduction_1999}, notamment en mécanique quantique avec l'équation Schrödinger \cite{bohm_geometric_2003,mukunda_quantum_1993,nakahara_geometry_2003}. 
-Ce n'est que récemment que Le Bihan, Flamant et Amblard se sont intéressés à son application en traitement du signal dans le cas de signaux bivariés \cite{le_bihan_modephysiques_2023, le_bihan_geometric_2024}.
+Elle est également invariante par reparamétrisation et pour ces raisons, c'est une mesure qui est intrinsèquement liée à la trajectoire du signal dans l'espace, à sa géométrie.
 \\
 
-$[...]$%L'objectif de ce mémoire est alors de résumer les résultats et interprétations de la phase géométrique mais du point de vue du traitement du signal. 
+La phase géométrique est un phénomène qui apparaît dans de nombreuses circonstances, en fonction desquelles elle peut changer de nom et de forme : phase Pancharatnam, de Berry, d'Aharonov-Anandan, d'Aharonov-Bohm, angle de Hannay, \etc
+\\
+L'article \cite{cohen_geometric_2019} de Cohen \etal~en présente quelques unes et le livre ``\textit{Geometric Phases in Classical and Quantum Mechanics}'' \cite{chruscinski_geometric_2004} de Chru\'sci\'nski \& Jamio\l kowski en fait une description plus qu'extensive.
+\\
+
+Du point de vue du traitement du signal en revanche, rien n'a été fait et ce n'est que récemment que Le Bihan, Flamant \& Amblard s'y sont intéressés \cite{le_bihan_modephysiques_2023, le_bihan_geometric_2024}.
+L'objectif de ce mémoire est donc de réintroduit la phase géométrique dans le cadre du traitement du signal et de discuter de ses applications :
+\\
+\begin{itemize}
+	\item Dans un premier temps (\cref{part:param_instant}), cette phase sera mise en évidence à travers des concepts d'analyse temps-fréquence, notamment la notion fréquence instantanée qui sera présente tout au long de l'écrit. 
+	Suite à quoi elle sera explicitement calculée dans une cas particulier de signaux, déjà étudié par Le Bihan \etal~\cite{le_bihan_geometric_2024} : les signaux dit AM-FM-PM.
+	Cela permettra de mieux comprendre son comportement et permettra de motiver une description des signaux multivariés complexes dans l'esprit de l'analyse temps-fréquence.
+	
+	\item Cela mènera à travailler dans une variété dite fibrée principale, $S^{2n-1} \big(\U{1}, \PC{n-1}\big)$, et la seconde partie de ce mémoire sera dédiée à son formalisme. Contrairement à l'état de l'art, les résultats seront présenté d'un point de vue de mathématicien plus que de physicien et, entre autre, l'accent sera mis sur l'intuition géométrique derrière les concepts abordés.
+	Des résultats, connus par ailleurs, sur la phase géométrique seront redémontrés avec ce formalisme purement géométrique et avec, les notions de fréquences instantanées et de phase géométrique seront reformuler et réinterpréter. 
+	
+	\item Enfin, dans une troisième partie, sera présenté un moyen de calculer la phase géométrique en pratique via l'invariant de Bargmann, tiré de \cite{rabei_bargmann_1999} et déjà repris par Le Bihan \etal~\cite{le_bihan_geometric_2024}. Seront ensuite discutées diverses applications \thoughts{et là sa dépend d'à quelle point j'ai le temps}.
+\end{itemize}
 
 
 
@@ -95,64 +113,23 @@ $[...]$%L'objectif de ce mémoire est alors de résumer les résultats et interp
 \newpage
 
 \phantomsection
-\addcontentsline{toc}{section}{Notations et conventions}
-\section*{\begin{center}\scshape Notations et conventions \end{center}}\label{sec:index_nota}
+\addcontentsline{toc}{section}{Préambule}
+\section*{\begin{center}\scshape \todo Préambule \end{center}}\label{sec:index_nota}
 
-\begin{tabular}{|| l | l ||} \hline
-	\textsc{Objet/fonction}  & \textsc{Notation} \\
-	\hline\hline
-	Conjugué complexe  					 &  $\congu{x}$ \\ \hline
-	Transposée (resp. adjoint) de la matrice $A$ & $^tA$ (resp. $A^\dagger)$ \\ \hline
-	Distribution de Dirac   &  $\delta$\\ \hline 
-	Indicatrice de $E$   	 &  $\one_E$ \\ \hline 
-	Fonction signe   		    &  $\sign(x)$ \\ \hline
-	Transformée de Fourier   						&  $\Fou{x}$, $\fou{x}$ \\ \hline
-	Transformée en SA   		  &  $\SA{x}$\\ \hline
-	Transformée de Hilbert   	&  $\hilb{x}$ \\ \hline
-	Produit hermitien &  $\langle \cdot, \cdot \rangle$ \\ \hline
-	Espérance et variance de $f$ suivant $\densit$   &  $\esp[\densit]{f(t)}$, $\var[\densit]{f(t)}$ \\  \hline
-	Espace des fonctions p.p. de puissance $p^{eme}$ intégrable à valeur de $E$ dans $F$  &  $L^p(E, F)$ \\  \hline		
-	Support d'une fonction $f$   &  $\supp f =\{x\in\R\ |\ f(x)\neq0\}$ \\  \hline
-	Matrice de rotation de paramètre $\Theta$ (resp. d'angle $\theta$ en dimension 2)  &  $R_\Theta$ (resp. $R_\theta$)  \\  \hline
-	Ensemble des matrices symétriques (resp. anti-symétriques) de taille $n$  &  $\sym{n}{\R}$ (resp. $\asym{n}{\R}$) \\  \hline	
-	Ensemble des matrices hermitiennes (resp. anti-hermitiennes) de taille $n$  &  $\sym{n}{\C}$ (resp. $\asym{n}{\C}$) \\  \hline	
-\end{tabular}
-\\ \\
-
-%\textsc{ToDo de  la \cref{part:param_instant} :}
-%\begin{itemize}	
-	
-	%\item rectifier la démo de la \cref{prop:integ_trick} (et mettre à jour la formule la où elle est utilisée)
-	
-	%\item Principe d'incertitude à éclaircir (comprendre + expliquer) \cref{sec:freq_instant}
-	
-	%\item \`A quoi sert Bedrosian au juste ? \Cref{theo:2Bedrosian}
-	
-	%\item \'Eventuellement ajouter que'qu'part: ``On parle éventuellement de signal AM-FM (amplitude modulated - frequancy modulated)'' \cref{coro:AM-FM}
-	
-	%\item Refaire les graphs en Tikz (\cref{fig:densi_spec_sym,,fig:exemple_tSA_1/2,fig:exemple_tSA_2/2})
-	
-%\end{itemize}
-
-
-\textbf{Note générale}
+Généralités :
 \begin{itemize}
 	
-	\item les références sont en fin de mémoire est en .bib sur le \href{https://github.com/GregoireDoat/StageM2}{GitHub}
+	\item Les références sont en fin de mémoire est en .bib sur le \href{https://github.com/GregoireDoat/StageM2}{GitHub}
 	
 	\item Idem pour les codes et un mot sur \texttt{pygeomphase}
-	
-	\item En italique sont les notes un peu plus informelles
-	
-	%\item Y'a des annexes pour chaque partie mais ce sera précisé si elles sont nécessaire pour suivre (n)
-	
-	\item On va parler de géo diff et pour éviter de réécrire un livre, on va admettre beaucoup de résultats, on renvoi vers \cite{lafontaine_introduction_2015, nakahara_geometry_2003} \thoughts{(mets en d'autre)} pour une introduction extensive à la théorie
+
+	\item On va parler de géo diff et pour éviter de réécrire un livre, on va admettre beaucoup de résultats, on renvoi vers \cite{lafontaine_introduction_2015,do_carmo_riemannian_1992} pour les bases et  \cite{nakahara_geometry_2003,pham_mau_quan_introduction_1969,ballmann_lectures_2006} pour toute ce qui est variété fibrée principales et variétés complexes.
 	
 	%\item ne seront numérotées que les équations importants
 \end{itemize}
 \skipl
 
-\textbf{Notations math :}
+Notations math :
 \begin{itemize}
 	
 	\item Convention sur le produit hermitien (congué à droite)
@@ -199,33 +176,6 @@ $[...]$%L'objectif de ce mémoire est alors de résumer les résultats et interp
 
 %\part{Legacy}\input{latex/part-1(legacy)}
 	
-
-
-%%% TO DO %%%
-
-\newpage
-\begin{itemize}
-	
-	\item Annexes partie 1
-	
-	\item Intros partie 1
-	
-	\item Organisation partie 2
-	
-	\item variété complexe dans partie construction PC
-	
-	\item plots
-	
-	\item HHHHHHHHHHHHHHHHHH
-	
-	\item qui est quelle phase ? (apparemment personne n'est personne)
-	
-	\item \textit{G. Feldman – Multivariate Analytic Signals and the Hilbert Transform}
-	
-	\item Plot d'un relèvement horizontale (juste pour voir à quoi ca ressemble)
-	
-	\item Arnaud Breloy, Pascal Vallet
-\end{itemize}
 	
 	
 	

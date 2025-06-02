@@ -81,7 +81,7 @@
 \newcommand{\K}{\mathbb{K}}
 \renewcommand{\k}{\Bbbk}
 \newcommand{\U}[1]{\text{\normalfont U}(#1)}
-\renewcommand{\u}{\text{U}}
+\renewcommand{\u}[1]{\mathfrak{u}(#1)}
 \newcommand{\A}{\mathbb{A}}
 \newcommand{\T}{\mathscr{T}}
 \newcommand{\I}{\mathbb{I}}
@@ -185,11 +185,12 @@
 \newcommand{\apriori}{\textit{a priori}}
 \newcommand{\Apriori}{\textit{A priori}}
 \newcommand{\afortiori}{\textit{a fortiori}}
+\newcommand{\Afortiori}{\textit{A fortiori}}
 \newcommand{\acontrario}{\textit{a contrario}}
 \newcommand{\infine}{\textit{in fine}}
 \newcommand{\ie}{\textit{i.e.}}
 \newcommand{\eg}{\textit{e.g.}}
-\newcommand{\cf}{\textit{cf. }}
+\newcommand{\cf}{\textit{cf.}}
 
 % tmp (notation)
 
@@ -614,6 +615,9 @@
 	% Equation
 \numberwithin{equation}{part}
 \renewcommand{\theequation}{\arabic{part}.\arabic{equation}}
+
+\crefname{equation}{\itshape eq.}{\itshape eqs.}
+\Crefname{equation}{équation}{équations}
 
 	% Figure
 \numberwithin{figure}{part}

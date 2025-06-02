@@ -1,24 +1,12 @@
 
-\thoughts{A reprendre, comme toutes les intros} Pour étudier la phase géométrique d'un signal $\psi$, il nous faut projeter $\psi$ sur $\PC{n}$, et ceux, tout en gardant une trace de sa phase puisque c'est le lien entre les deux qui nous intéresse. Il nous faut donc envoyer $\psi$ dans le produit :
-\[\U{1}\times \PC{n}\qquad\qquad (\text{ou }\ \C^{n-1*}/\C^*)\]
-\\
-Garder le lien entre cet espace et celui d'origine mène à se placer dans le cadre avec d'un \emph{variété fibrée} (ou simplement fibré). Plus précisément, comme $\U{1}$ est un groupe de lie, ce sera un \emph{fibré principal} noté $S^{2n+1}\big(\U{1},\PC{n}\big)$.
-\\
-
-Comme son nom l'indique, $S^{2n+1}\big(\U{1},\PC{n}\big)$ à une structure de variété différentielle et le lien entre les $\U{1}$ et $\PC{n}$ va se faire par le biais d'une connexion. L'on verra alors que cette connexion est intrinsèquement lié à la phase dynamique du signal, et il sera discuté de la signification de ce résultat.
-\\
-La phase géométrique, quand à elle, sera liée avec la métrique hermitienne associée aux l'espaces projectifs complexes.
-\\
-Tout cela va demander quelques prérequis que nous allons voir à présent.
-\\
+note pour intro :
 
 \begin{itemize}
-	\item Pour être un peu plus précis, même si $S^{2n-1}$ veut être vu comme produit le produit $\U{1}\times \PC{n-1}$, il faut pas complètement séparer les deux parce que si la phase géométrique est hérité de $\PC{n-1}$, c'est bien dans $\U{1}$ qu'elle se manifeste.
 	
-	\item Il s'avère que les variétés fibrées principales sont tout à fait adéquat pour décrit se double jeu entre $S^{2n-1}$ et $\U{1}\times \PC{n-1}$ et c'est dans ce cadre que la phase géométrique sera décrite et étudiée.
+	\item $S^{2n-1}$ est semblable au produit $\U{1}\times \PC{n-1}$ mais que de façon local. C'est un exemple de variété fibré et de ce formalisme donc on aura besoin
 	
 	\item Aussi, par souci de comodité, on se placera dans $\C^{n+1}$ et l'on notera la sphère unité de ce dernier :
-	\[\S{n} \defeq S^{2n+1} \cong \U{1}\times \PC{n}\]
+	\[\S{n} \defeq S^{2n+1}\]
 	
 	\item Tout le formalisme nécessaire sera exposé dans la \cref{sec:cadre_geodiff}, avec plus de détail technique en annexe et dans la \cref{sec:phases_dans_VFP} seront décrites les différentes phases d'un point de vue géométrique.
 	
@@ -41,11 +29,10 @@ Pour proprement poser le cadre, il nous faudra trois choses :
 
 \subsection{$\bf{\PC{n}}$ vue comme variété différentielle} \label{subsec:construc_PC^n}
 
-\subsubsection{Rappels de géométrie différentielle et notations}\label{subsec:rappel2geo_diff}
+\subsubsection{\wip Rappels de géométrie différentielle et notations}\label{subsec:rappel2geo_diff}
 
-\thoughts{\begin{itemize}
-		\item Compléter en fonction du reste de la partie
-\end{itemize}}
+\thoughts{À compléter en fonction du la suite}
+\\
 
 Une variété différentielle se définie comme suit :
 \begin{definition}[Variété différentielle] \label{defvarietoche}
@@ -84,11 +71,25 @@ Pour le dire rapidement, les vecteurs tangents agissent comme une dérivation en
 Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\tg[x]{\manu}$, qui sera noté  $\bt_\mu = \frac{\partial}{\partial x^\mu}$. notation qui est justifié en cela que, moralement, $\bt_\mu$ dérive toute fonction test $f\in\conti[k]{\manu}{\R}$ dans le long de la $\mu^{eme}$ coordonnée (locale) de $x$.
 \\
 
-Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et $f : \manu\lr \mathpzc{N}$ une application différentiable, sa différentielle (ou application tangent ou push forward) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
-\[f_*(v) = f_*(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (f_*)_\mu^\nu = \bt_\mu\big( f^\nu \big)\]
+Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa différentielle (ou application tangent ou push forward) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
+\[f_*(\bf{v}) = f_*(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (f_*)_\mu^\nu = \bt_\mu\big( f^\nu \big)\]
+\\
+A partir de  $f_*$ est définie l'image réciproque ou pull back de $f$, qui correspond moralement à la transposée de $f_*$. Formellement elle est définie par dualité :
 
-Et le pull back (image réciproque) s'écrit par dualité :
-\[f^*(g) = g\circ f_* \ \Llr\ f^*\]
+\[f^*\ :\ \begin{aligned}
+	\tg{^*\mathpzc{N}}\ &\lr\ \tg{^*\manu} \\ g\quad\ &\lmt\ g\circ f^*
+\end{aligned} \]
+
+
+\begin{figure}[h]
+	\begin{tikzcd}[column sep=large]
+		\manu \arrow[d]  \arrow[r, "f" above]  & \mathpzc{N} \arrow[d]\\
+		\tg{\manu} \arrow[d]  \arrow[r, "f_*" above]  & \tg{\mathpzc{N}} \arrow[d]\\
+		\tg{^*\manu}  & \tg{^*\mathpzc{N}} \arrow[l, "f^*" above]
+	\end{tikzcd}
+	\caption{Diagramme commutatif du passage de $f$ à sa différentielle et/ou à son image réciproque}
+	\label{fig:diagc_pullb/pushf}
+\end{figure}
 
 \begin{itemize}
 	
@@ -98,34 +99,12 @@ Et le pull back (image réciproque) s'écrit par dualité :
 	
 	\item métrique riemannienne
 	
-	\item exemple : $\S{n}$, la métrique est induite par celle sur $\C^{n+1}$ et :
-	\[\langle X, Y\rangle = \delta_{\mu \nu}X^\mu Y^\nu = X_\mu Y^\mu\]
-
-	\item pour les variétés complexes, c'est un peu différente : carte holomorphe, doublage des espaces tangents
-	
-	\item exemple : sur $\C^{n+1}$ :
-	\[\langle X, \congu{Y}\rangle = \delta_{\mu \nu}X^\mu \congu{Y}^\nu = X_\mu \congu{Y}^\mu\]
-	En particulier, la passage au dual se fait sans changement les coefficients $X_\mu = X^\mu$
-	
-	\item forme kahlerienne :
-	\begin{equation}
-		\Omega = g_{\mu \congu{\alpha}} {J^{\congu{\alpha}}}_{\congu{\nu}} dw^\mu \wedge d\congu{w}^\nu
-	\end{equation}
-	
-	\item moralement, là où $g$ fait le passage du tangent au dual, $J$ fait le passage de tangent au conjugé
-	
 \end{itemize}
 
 
 
-\subsubsection{$\bf{\PC{n}}$ comme variété différentielle} \label{subsec:PC^n_variet}
+\subsubsection{\wip $\bf{\PC{n}}$ comme variété différentielle} \label{subsec:PC^n_variet}
 
-\thoughts{\begin{itemize}
-		
-		\item Sûrement pas besoin de détailler autant
-		
-		\item Détailler partir métrique /  
-\end{itemize}}
 
 Si l'espace projectif complexe à été présenté comme le quotient $\S{n}/\U{1}$, il peut aussi être vu comme :
 \[\PC{n} \cong {\C^{n+1}}^*/\C^*\]
@@ -159,24 +138,33 @@ La classe de $\PC{n}$ de représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*
 	\[ \forall z\in\C^{n+1}\ |\ z^{i,j}\neq 0\quad (\ie~[z]\in U_i\cap U_j) ,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\]
 \end{remarque}
 \skipl
-Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Les $\phi_i \circ {\phi_j}^{-1}$ étant holomorphe, $\PC{n}$ est plus précisément une variété complexe de dimension complexe
-, il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
+Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Les $\phi_i \circ {\phi_j}^{-1}$ étant holomorphe, $\PC{n}$ est plus précisément une variété complexe de dimension complexe $n$ et il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
 \[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{ où }\quad [z] = w\]
 \\
-
-Aussi, comme le produit hermitien sur $\S{n}$ (induit par ${\C^{n+1}}^*$) est invariante par la projection sur $\PC{n}$, dans le sens où\footnote{\itshape
-	En terme technique, la projection sur $\PC{n}$ est une submersion riemannienne.} :
-\[\forall e^{i\alpha}\in\U{1},\ \forall z_{1,2}\in\S{n},\quad \langle z_1 e^{i\alpha}, z_2 e^{i\alpha} \rangle = \langle z_1 , z_2 \rangle\]
-il induit une métrique hermitienne sur $\PC{n}$. Plus connue sous le nom de Fubini-Study, elle s'exprime en coordonnées locales par la formule :
+En annexe \ref{ann:VDC} se trouve plus de détail sur les variétés différentielles complexes, mais pour aller à l'essentiel, mais si la notation prête à confusion, il faut considérer les coordonnées $w^\mu$ et $\congu{w}^\mu$ comme complètement décorréler. Par exemple, :
+\begin{align*}
+	\bt_\mu(w^\mu) &= \frac{\partial}{\partial w^\mu} w^\mu = 1  &  
+	\bt_{\congu{\mu}}(w^\mu) = \frac{\partial}{\partial \congu{w}^\mu} w^\mu &= 0 
+		\\
+	\bt_\mu(\congu{w}^\mu) &= \frac{\partial}{\partial w^\mu} \congu{w}^\mu = 0  &  
+	\bt_{\congu{\mu}}(\congu{w}^\mu) = \frac{\partial}{\partial \congu{w}^\mu} \congu{w}^\mu &= 1
+\end{align*}
+Ce qui fait $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$ est bien une base de dimension réelle $\ \dim[\R]\PC{n} = 2n$. Ces ``notations'' (encore une fois \cf~annexe \ref{ann:VDC}) permettent, par exemple, de décrire le fait qu'une soit fonction holomorphe $f: \PC{n}\lr \C$ par la contrainte :
+\[\forall w\in\PC{n},\ \forall \mu,\qquad \frac{\partial}{\partial \congu{w}^\mu}f(w) = 0\] 
+\\
+Pour ce qui est des espaces tangents, $(\bt_\mu, \bt_{\congu{\mu}})_\mu$ forme une base de $\tg{\PC{n}}$ et $(dw^\mu, d\congu{w}^\mu)_\mu$ une base de $\tg{^* \PC{n}}$.
+\\
+$\PC{n}$, en particulier, admet un produit hermitien plus connue sous le nom de métrique de Fubini-Study, donné par :
 \begin{equation}
 	\begin{aligned}
-		\forall w\in\PC{n}, \forall X,Y\in\tg[w]{{\PC{n}}^+},\qquad \langle X, Y \rangle_w = g_{\mu\congu{\nu}}(w) X^\mu \congu{Y^\nu} 
-		&= \frac{(1+w^\alpha \congu{w}_\alpha)\delta_{\mu\nu} - w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2}X^\mu \congu{Y}^\nu \\
-		&= \frac{1}{1+w^\alpha \congu{w}_\alpha} X^\mu \congu{Y}_\mu - \frac{w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} X^\mu \congu{Y}^\nu
+		\forall w\in\PC{n}, \forall \bf{u},\bf{v}\in\tg[w]{\PC{n}},\qquad g_w(\bf{u}, \bf{v}) = g_{\mu\congu{\nu}} u^\mu \congu{v^\nu} 
+		&= \frac{(1+w^\alpha \congu{w}_\alpha)\delta_{\mu\nu} - w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2}u^\mu \congu{v}^\nu \\
+		&= \frac{1}{1+w^\alpha \congu{w}_\alpha} u^\mu \congu{v}_\mu - \frac{w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} u^\mu \congu{v}^\nu
 	\end{aligned}
 \end{equation}
-et la forme de Kähler associée est :
-\[\Omega(w) = i\frac{(1+w^\alpha \congu{w}_\alpha)\delta_{\mu\nu} - w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} dw^\mu \wedge d\congu{w}^\nu\]
+À noter que seul les coefficients $g_{\mu \congu{\nu}}$ apparaissent. Cela est du au fait que $g$ est produit hermitien, ce qui impose $\ g_{\mu\nu} = 0\ $ et $\ g_{\congu{\mu} \nu} = g_{\mu \congu{\nu}}$.
+
+
 
 
 
@@ -238,7 +226,7 @@ Il existe toutes sorte de variétés fibrées dès lors qu'elles sont munies de 
 
 L'ensemble $\big\{(U_i\times G, {h_i}^{-1})\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Explicité les changements de cartes dans $P$, ce fait comme suit.
 \\
-D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur la \Cref{fig:section_local} \thoughts{ci-dessous}. Formellement, une section locale au dessus  de $U_i \subset B$ est une application $\sigma : U_i \lr P$ vérifiant :
+D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur les \Cref{fig:section_local,fig:section_cano} ci-dessous. Formellement, une section locale au dessus  de $U_i \subset B$ est une application $\sigma : U_i \lr P$ vérifiant :
 \[\pi\circ \sigma = id_{{\displaystyle |}U_i}\]
 \begin{figure}[H]
 	\begin{floatrow}
@@ -283,17 +271,18 @@ Cela mène à la définition :
 
 \subsubsection{Le fibré $\bf{\VFP}$}\label{subsec:SUPC_VFP}
 
-Dans notre cas $\S{n}$ qui fait office d'espace totale et, quant bien même il s'écrit directement comme une produit $\U{1}\times \PC{n}$, pour tenir compte du fait que $\PC{n}$ est une variété il vaut le voir localement comment le produit $\U{1}\times U_i$.
+Dans notre cas $\S{n}$ qui fait office d'espace totale avec $\PC{n}$ la base et $\U{1}$ pour le groupe structural.
 \\
-Aussi, avec la normalisation sur $\S{n}$, les coordonnées locales sur $\PC{n}$ se réécrivent, $\forall w\in U_i$ :
+Pour obtenir la projection de $\S{n}$ sur $\PC{n}$, il suffit de prendre la restriction de $\pi$ à $\S{n}$. En tenant compte de la normalisation, les coordonnées locales sur $\PC{n}$ se réécrivent, $\forall w\in U_i$ :
 \begin{align*}
 	w^\mu = \frac{z^\mu}{z^i} &= \frac{z^\mu}{|z^i|e^{i\arg (z^i)}} = \frac{z^{\mu}}{\sqrt{1 - \sum_{\nu \neq i} |z^\nu|^2}} e^{-i\arg(z^i)}  &  \text{car }\quad \sum \big|z^\nu\big|^2 = \|z\|^2 = 1
 \end{align*}
 \\
-On constate bien que $w^\mu$ n'est définie qu'à un choix de $e^{-i\arg z^i}\in \U{1}$ près. À l'inverse, un représentant $z_i$ dans $\S{n}$ de $w\in U_i$ aura pour coefficient :
+On constate bien que $w^\mu$ n'est définie par rapport à $z^\mu$ qu'à un choix de phase $e^{-i\arg z^i}\in \U{1}$ près. À l'inverse, un représentant $z_i$ dans $\S{n}$ de $w\in U_i$ aura pour coefficient :
 \begin{align*}
 	\forall \mu\neq i,\quad {z_i}^\mu &= \frac{w^\mu}{\|w\|}e^{i\theta}  &  {z_i}^i &= \frac{1}{\|w\|}e^{i\theta} 
 \end{align*}
+\\
 La norme de $w$ étant à comprendre au sens des coordonnées locales sur $U_i$\footnote{\itshape
 	C'est un abus de notation, $w$ n'a pas de norme en ce sens là puisqu'elle dépend du choix de carte $U_i$. Mais ici tout le raisonnement est purement local, donc ce n'est pas un problème.
 } :
@@ -448,97 +437,101 @@ D'où $\ \gamma = \Tilde{\gamma}\cdot g\ $ avec $g$ est solution de :
 
 \subsubsection{Choix de connexion sur $\bf{\VFP}$}\label{subsec:conn2SUPC}
 
-À noter ce que choix de connexion est doublement justifié par le fait que c'est la connexion induite par la métrique de $\S{n}$. Point qui sera important dans la suite et que nous allons maintenant détaillé.
-
-En effet, le produit hermitien de $\C^{n+1}$ induit sur les espaces tangents de $\S{n}$ une métrique riemannienne\footnote{\itshape
-	Cette métrique induite n'est pas hermitienne }, et :
+Dans le cas de  $\VFP$, la métrique sur $\S{n}$ induit naturellement un choix de connexion car la projection $\pi$ est une submersion dite riemannienne \cite{kayban_riemannian_nodate}. Formellement, c'est dire que la projection de $\S{n}$ sur $\PC{n}$ est telle que :
+\begin{equation} \label{eq:sub_riem}
+	\forall p\in \pi^{-1}(w),\ \forall \bf{u},\bf{v}\in\tg[p]{\S{n}},\quad  g_{\pi(p)}\big( \pi_*\bf{u}, \pi_*\bf{v}\big) = \langle \bf{u}_H, \bf{v}_H\rangle
+\end{equation}
+\\
+où $g$ est la partie réelle\footnote{\itshape
+	Cette métrique induite ne peut pas être hermitienne car $\S{n}$ n'est pas une variété complexe.}
+hermitienne de la métrique de Fubini-Study. Plus concrètement, les espaces tangents de $\S{n}$ s'écrivent :
 \[\tg[p]{\S{n}} = \Vec\{p\}^\perp \defeq \big\{ \bf{v}\in\C^{n+1}\ |\  \Re e \langle \bf{v},p\rangle = 0\big\}\]
 \\
-Sachant que $ip\in \Vec\{p\}^\perp$, $\tg[p]{\S{n}}$ se sépare en deux composantes :
+et sachant que $ip\in \Vec\{p\}^\perp$, ils se séparent en deux composantes orthogonales :
 \[\tg[p]{\S{n}} = \Vec\{p\}^\perp = \Vec\{ip\} \oplus \Vec\{ip\}^\perp\]
 \\
-Dont le premier membre est l’espace tangent vertical et second invariant par l'action de $\U{1}$ dans le sens où :
+Ainsi, la nature de $\pi$ \eqref{eq:sub_riem} est telle que le premier membre est l’espace tangent vertical à $p$ et le second invariant par l'action de $\U{1}$ :
 \[\forall e^{i\theta}\in\U{1},\quad \Vec\big\{i(e^{i\theta}p)\big\}^\perp = \Vec\{ip\}^\perp\]
 \\
-Ainsi l'ensemble des  $\Vec\{ip\}^\perp$ définissent une connexion sur $\S{n}$ son écriture donne directement la 1-forme :
+Ce qui permet de poser $\ \hg[p]{\S{n}} \defeq \Vec\{ip\}^\perp\ $ et donne directement la 1-forme associée :
 \[\begin{aligned}
 	\hg[p]{\S{n}} &= \big\{\bf{v}\in\tg[p]{\S{n}}\ |\ \Re e \langle \bf{v}, ip \rangle = 0\} \\
 	&= \big\{\bf{v}\in\tg[p]{\S{n}}\ |\ \Im m\langle \bf{v}, p \rangle = 0\}
-\end{aligned}\quad \Llr\quad \conn_p(\bf{v}) = i\Im m\langle \bf{v},p\rangle\]
+\end{aligned}
+\quad \Llr\quad \conn_p(\bf{v}) = \Im m\langle \bf{v},p\rangle\]
 \\
-C'est la version fibré principal de la connexion de Levi-Civita pour les fibrés tangent et ces propriétés permettent d'induire sur $\PC{n}$ une métrique telle que la projection $\pi_*$ de $\hg{p}{\S{n}}$ sur $\tg[\pi(p)]{\PC{n}}$ soit une isométrie permettant l'identification  (voir \cite{kayban_riemannian_nodate}, par exemple) :
-\begin{equation}
-	\tg[w]{\PC {n}} \cong \Ker \langle\, \cdot\, , w\rangle \defeq \big\{ \bf{v}\in\C^{n+1}\ |\ \forall p\in w,\ \langle \bf{v},p\rangle =0 \big\}
+Enfin, comme l'algèbre de Lie de $\U{1}$ est $\u{1}\cong i\R$, il convient de poser :
+\begin{equation}\label{eq:conn2sub_riem}
+	\forall p\in\S{n},\ \forall \bf{v}\in\tg[p]{\S{n}},\qquad \conn_p(\bf{v}) \defeq i\Im m\langle \bf{v},p\rangle
 \end{equation}
 \\
-La métrique induite est celle de Fubini-Study et le rapport entre espaces horizontaux et tangent de $\PC{n}$ permet de travailler dans $\S{n}$, ce qui est plus commode pour la suite. 
-Concrètement en notant $\bf{v}_H$ la composante horizontale de $\bf{v}$, on a :
-\[\forall p\in \pi^{-1}(w),\ \forall \bf{u},\bf{v}\in\tg[p]{\S{n}},\quad  g_{\pi(p)}\big( \pi_*\bf{u}, \pi_*\bf{v}\big) = \langle \bf{u}_H, \bf{v}_H\rangle\]
-\skipl
+Un tel choix de connexion n'est pas anodin d'un point de vue signal puisque $\conn$ donne la fréquence instantanée telle que définie dans la \cref{part:param_instant} précédente et c'est la première chose qui sera justifier dans la partie suivante.
+\\
 
 
 
 
 \section{\wip Interprétation des trois phases dans ce cadre} \label{sec:phases_dans_VFP}
 
-Résumons la situation. Pour étudier le comportement des fréquentielles d'un signal multivarié complexe, il est utile de voir l'espace $\C^{n+1}$ de tel signaux comme le ``produit'' :
-\[\C^{n+1}\ \leadsto\ \R^{+_-} \times \U{1} \times \PC{n}\]
+Résumons la situation. Pour étudier le comportement des fréquentielles d'un signal multivarié complexe, il est utile de voir l'espace de tel signaux, $\C^{n+1}$, comme le produit :
+\[\C^{n+1} \cong \R^{+_*} \times \VFP\]
 \\
-Ce ``produit'' étant en réalité un fibré principal et chaque terme paramètre respectivement l'amplitude, la phase et l'état de polarisation instantanée. Dans ce cadre, la variété $\VFP$ est naturellement (par la métrique de $\S{n}$) munie d'une connexion qui s'interprète comme fréquence instantanée et tout relèvement horizontale dans $\S{n}$ est vu comme un signal dénué de toute fréquence.
+Dans ce cadre, la variété $\VFP$ est naturellement -- par la projection $\pi$ -- munie d'une connexion qui, par ailleurs ressemble beaucoup à la formule de la fréquence instantanée \eqref{eq:phas_inst_v1} vue en première partie.
+%La question est maintenant de savoir comment comprendre l'émergence de la phase géométrique dans ce cadre. Pour se faire, suivant les travaux de Aharonov et Anandan \cite[sec. 4, p. 53]{bohm_geometric_2003}
 \\
-La question est maintenant de savoir comment comprendre l'émergence de la phase géométrique dans ce cadre. Pour se faire, suivant les travaux de Aharonov et Anandan \cite[sec. 4, p. 53]{bohm_geometric_2003}
 
-\subsection{Fréquence et phase dynamique}
 
-Pour choisir la connexion est mettre sur $\VFP$, il est important de comprendre son intérêt du point de vue signal.
-Comme, à chaque instant $t$, un signal $x$ sur $\S{n}$ est représenté par une pair $(e^{i\alpha(t)}, \rho(t))\in\U{1}\times\PC{n}$ à travers les $h_i$, $\alpha(t)$ peut être vu comme la fréquence et $\rho(t)$ l'état de polarisation instantanée du signal $\gamma(t)$.
+
+\subsection{Fréquence instantanée et phase dynamique sur $\bf{\VFP}$}
+
+
+Pour comprendre pourquoi le choix de connexion \eqref{eq:conn2sub_riem} est justifié du point de vue signal, on se propose de prendre le problème par l'autre bout : comment définir la notion de fréquence instantanée d'un signal dans la variété $\VFP$ ?
+\\
+ 
+Comme, à chaque instant $t$, un signal $\gamma$ sur $\S{n}$ est représenté par une pair $(e^{i\alpha(t)}, \rho(t))\in\U{1}\times\PC{n}$ à travers les $h_i$,  l'un serait tenté de voir $\alpha(t)$ comme la fréquence du signal et $\rho(t)$ comme l'état de polarisation.
 \\
 Le problème de cette représentation est qu'elle dépend du choix de carte $U_i$, ainsi sur l'intersection $U_{ij}$, $\gamma$ aurait (au moins) deux notions de fréquence instantanée.
 \\
 
-C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ qui lui est associée est définie globalement sur le fibré, autrement dit, elle est indépendante des représentations locales de $\gamma$.
+C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ associée est définie globalement sur le fibré, autrement dit, elle est indépendante des représentations locales de $\gamma$.
 \\
 D'autre part, le relèvement horizontal $\Tilde{\gamma}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\gamma}$ n'a pas de variation dans la direction de $\U{1}$, donc son état de polarisation (composante sur $\PC{n}$) varie mais pas ses ``fréquences''.
 \\
 Ainsi, le relèvement horizontale $\Tilde{\gamma}$ d'un signal $\gamma$ s'interprète comme une version de ce dernier $\gamma$ dénué de toute fréquence instantanée.
-En allant un peu plus loin, à tout instant $t$, l'action $\alpha$ permettant de passé de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\ie~$(t) = e^{i\alpha(t)} \Tilde{\gamma}(t)$) peut-être vu comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff} ci-dessous)	
+L'action $\alpha$ permettant de passé de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\ie~$(t) = e^{i\alpha(t)} \Tilde{\gamma}(t)$) peut alors être comprise comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff,fig:horiz_lift_2var} ci-dessous)	
 \\
 
 \begin{remarque}
 	Un signal qui n'aurait pas fréquence instantanée mais une polarisation instantanée n'a pas vraiment de sens. 
-	Cela revoit à notre discussion de première partie : la fréquence instantanée d'un signal univarié devait contenir les hautes fréquences et son amplitude les basses, contrainte qui est nécessaire pour que toutes les fréquences du signal ne se retrouve pas dans l'amplitude instantanée.
+	Cela revoit à notre discussion de première partie : la fréquence instantanée d'un signal univarié devait contenir les hautes fréquences et son amplitude les basses.
 	Ici le problème est le même, mais avec l'état de polarisation en lieu de l’amplitude. Pour s'en convaincre, il est utile de retourner sur le cas bivarié.
 	\\
 	La projection sur $\PC{2}$ de $\gamma$ représente l'ellipse de polarisation instantanée. 
 	Mais si $\gamma$ n'as pas de fréquence instantanée, alors $\gamma(t)$ n'est plus représenté que par le sommet de l’ellipse paramétrée par $\rho_\gamma$. 
-	L'on pourrait alors argumenter que tout signal peut être décrit ainsi, ce qui est parfaitement inintéressant.
+	L'on pourrait alors argumenter que tout signal peut être décrit par la seule variation de son état de polarisation, ce qui est parfaitement inintéressant.
 	
-	Cette vision du relèvement horizontale est donc purement formelle et à bien un sens géométrique même si en terme de signal, elle ne correspond à rien.
+	Cette vision du relèvement horizontale est donc purement formelle et, si elle à bien un sens géométrique, elle ne correspond à rien en terme de signal.
 \end{remarque}
 \skipl
 
-
-\begin{figure}[h]
-	\includegraphics[width=0.6\textwidth]{fig/placeholder}
-	\caption[Interprétation géométrique de la fréquence instantanée]{Fréquence instantanée d'un signal $x$ vu comme variation vertical de $x$ par rapport à son relèvement horizontale $\Tilde{x}$ associé. À noter que $\Tilde{x}$ ne dépend pas des cartes mais dépend de la trajectoir $\rho_x$ de $x$ sur $\PC{n}$.}
-	\label{fig:freq_inst_geodiff}
-\end{figure}
-
-\begin{figure}[h]
-	\includegraphics[width=0.6\textwidth]{fig/placeholder}
-	\caption[Exemple relèvement horizontale]{Exemple du relèvement horizontale d'une signal bivarié}
-	\label{fig:horiz_lift_2var}
+\begin{figure}[H]
+	\begin{floatrow}		
+		\ffigbox{ \label{fig:freq_inst_geodiff}
+			\caption[Interprétation géométrique de la fréquence instantanée]{Fréquence instantanée d'un signal $x$ vu comme variation vertical de $x$ par rapport à son relèvement horizontale $\Tilde{x}$ associé. À noter que $\Tilde{x}$ ne dépend pas des cartes mais dépend de la trajectoir $\rho_x$ de $x$ sur $\PC{n}$.}}
+			{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
+			
+		\ffigbox{ \label{fig:horiz_lift_2var}
+			\caption[Exemple relèvement horizontale]{Exemple du relèvement horizontale d'une signal bivarié}}
+		{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
+	\end{floatrow}
 \end{figure}
 
 En admettant l'interprétation de la 1-forme de connexion comme fréquence instantanée, les discussions de première partie (\Cref{subsec:intro_phased}) suggère de choisir :
-\[\forall x\in\S{n},\ \forall \bf{v}\in\tg[x]{\S{n}},\quad \conn_x(\bf{v}) = \Im m \langle \bf{v}, x\rangle\]
-\\
-L'algèbre de Lie de $\U{1}$ étant représentée par $\mathfrak{u}(1)\cong i\R$, il convient de poser :
 \begin{equation} \label{eq:conn2SUPC}
 	\forall x\in\S{n},\ \forall \bf{v}\in\tg[x]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle \bf{v}, x\rangle
 \end{equation}
 \\
-La phase dynamique, quand à elle, s'interprète à présent comme la déviation sur signal à son relèvement horizontale. Ainsi, $\ g = e^{i\phased(\gamma)}\ $ est solution de \eqref{eq:deviation2hozi}, qui se réécrit alors :
+La phase dynamique, s'interprète alors comme la déviation du signal à son par rapport à son relèvement horizontale. Ainsi, $\ g = e^{i\phased(\gamma)}\ $ est solution de \eqref{eq:deviation2hozi}, qui se réécrit alors :
 \[\forall t\in\R,\quad \left\{ \begin{aligned}
 	g'(t)  &= g(t)\, i\Im m \big\langle \dot{\gamma}(t) , \gamma(t) \big\rangle \\
 	g(t_0) &= 1
@@ -548,13 +541,17 @@ Ce qui redonne la formule :
 \begin{equation}\label{eq:phased_vgeodiff}
 	\phased(\gamma, t_0, t) = \int_{t_0}^t \Im m\big\langle \dot{\gamma}(s) , \gamma(s) \big\rangle ds
 \end{equation}
+\skipl
+
+Chose importante tout de même : si cette définition de la phase dynamique est bien indépendante du choix de carte, elle dépend en revanche du relèvement horizontale de $\gamma$. Elle dépendant donc, \afortiori, de la trajectoire de la projection $\pi(\gamma)$ de $\gamma$ sur $\PC{n}$ et c'est de là que va émerger la phase géométrique.
+\\
 
 
 
-\subsection{Phase géométrique...}
+\subsection{Phase géométrique}
 
 
-\subsubsection{... dans le cas pseudo-cyclique}
+\subsubsection{\todo ... dans le cas pseudo-cyclique}
 
 Comme dans la première partie de ce mémoire, pour mieux comprendre le comportement de la phase géométrique 
 
@@ -604,7 +601,7 @@ Comme dans la première partie de ce mémoire, pour mieux comprendre le comporte
 
 
 
-\subsection{Retour au cas général}
+\subsection{\todo ... dans le cas général}
 
 \begin{itemize}
 	
@@ -620,7 +617,7 @@ Comme dans la première partie de ce mémoire, pour mieux comprendre le comporte
 
 
 
-\subsection{La phase géométrique dans $\PC{n}$}
+\subsection{\todo ... sur $\PC{n}$}
 
 \begin{itemize}
 	
@@ -656,7 +653,66 @@ Comme dans la première partie de ce mémoire, pour mieux comprendre le comporte
 
 \section{Annexe}
 
-\subsection{Dérivée extérieure de la connexion}
+\subsection{\wip Variété différentielle complexe }\label{ann:VDC}
+
+\textit{Pour plus de détails, voir \cite{nakahara_geometry_2003, ballmann_lectures_2006}.}
+\\
+
+$\manu$ sera une \emph{variété différentielle complexe} si elle satisfait les propriétés ci-dessus où $\R^n$ est remplacé par $\C^n$ et où la condition de difféomorphisme est remplacé par la condition d'holomorphisme. 
+\\
+Une application $f : \C^n\lr \C^n$ étant holomorphe si chacune de ses composantes vérifie l'équation de Cauchy-Riemann :
+\[\forall x,y\in\R^n,\ \forall \mu,\qquad \frac{\partial f }{\partial y^\mu}(x+iy) = i \frac{\partial f }{\partial x^\mu}(x+iy)\]
+\\
+Les fonctions holomorphes étant automatiquement $C^\infty$, les variétés différentielles complexes sont toujours lisse, c'est-à-dire $C^\infty$. Aussi, $\manu$ est dite de dimension complexe $n$ et dimension (réel) $2n$, notés :
+\begin{align}\label{eq:manuC-base_cano}
+	\dim[\C](\manu) &\defeq n  &  \dim[\R] (\manu) \defeq \dim (\manu) = 2n
+\end{align}
+\\
+
+Ensuite, pour le dire rapidement, la structure complexe de $\manu$ permet de séparer les espaces tangents en deux sous espaces. Pour ce faire, on commence par noter qu'en tout point $p\in\manu$ de coordonnée $z^\nu=x^\nu+iy^\nu$, l'espace tangent $\tg[p]{\manu}$, vu comme variété réelle, admet une base :
+\begin{equation}
+	\tg[p]{\manu} = \vec \left\{ \frac{\partial}{\partial x^1}, \cdots, \frac{\partial}{\partial x^n}, \frac{\partial}{\partial y^1}, \cdots,  \frac{\partial}{\partial y^n} \right\}
+\end{equation}
+\\
+Plus tôt que de se basé sur les $x^\mu$ et $y^\mu$ pour séparer les $\tg[p]{\manu}$, on définit sur ces derniers un tenseur $J_p$ de type (1,1) tel que :
+\begin{align}
+	J_p \frac{\partial}{\partial x^\mu} &= \frac{\partial}{\partial y^\mu}  &  J_p \frac{\partial}{\partial y^\mu} &= -\frac{\partial}{\partial x^\mu}
+\end{align}
+\\
+Ce tenseur est l'équivalent de la multiplication par $\pm i$ et le fait que $\manu$ soit complexe assure qu'il soit défini globalement, \ie~sur $\tg{\manu}$. Il est diagonaliseable dans la base :
+\begin{align}\label{eq:manuC-base_holo}
+	\partial_\mu = \frac{\partial}{\partial z^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} - i\frac{\partial}{\partial y^\mu} \right)  
+	&  
+	\partial_{\bar{\mu}} = \frac{\partial}{\partial \overline{z}^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} + i\frac{\partial}{\partial y^\mu} \right)
+\end{align}
+\\
+Ainsi en fonction de la base (\eqref{eq:manuC-base_cano} ou \eqref{eq:manuC-base_holo}), $J_p$ va s'écrire :
+\begin{align}
+	J_p &= \begin{pmatrix}
+		\text{\large\ 0\ }\Big. & I_n \\ -I_n & \text{\large\ 0\ }\Big.
+	\end{pmatrix}  &
+	J_p &= \begin{pmatrix}
+		iI_n & \text{\large\ 0\ }\Big. \\ \text{\large\ 0\ }\Big. & -iI_n
+	\end{pmatrix} 
+\end{align}
+\\
+Finalement, $\tg{\manu}$ peut être séparé en deux sous-espaces engendré respectivement par les $\partial_\mu$ et $\partial_{\bar{\nu}}$. On parle de vecteur holomorphe et anti-holomorphe et on note :
+\begin{align}
+	\tg[p]{\manu}^+ &= \Vec\big\{ \partial_\mu\ |\ 1\leq \mu\leq n \big\}  &  \tg[p]{\manu}^- &= \Vec\big\{ \partial_{\bar{\mu}}\ |\ 1\leq \mu\leq n \big\}
+\end{align}
+\\ \\
+
+forme kahlerienne :
+\begin{equation}
+	\Omega = g_{\mu \congu{\alpha}} {J^{\congu{\alpha}}}_{\congu{\nu}} dw^\mu \wedge d\congu{w}^\nu
+\end{equation}
+sur $\PC{n}$ :
+\[\Omega(w) = i\frac{(1+w^\alpha \congu{w}_\alpha)\delta_{\mu\nu} - w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} dw^\mu \wedge d\congu{w}^\nu\]
+\skipl
+
+
+
+\subsection{\wip Dérivée extérieure de la connexion}
 
 Par définition, sur l'ouvert $U_i$, la 1-forme de connexion local est définie par :
 \[\locconn_i = {\sigma_i}^*\conn = \conn\circ \sigma_{i*}\]
@@ -699,7 +755,7 @@ Point de subtilité : les coefficients associées au $dw^\mu$ et $d\congu{w}^\nu
 \subsection{Géodésique de $\bf{\PC{n}}$}
 
 
-\subsubsection{Métrique dans les espaces horizontaux}
+\subsubsection{Métrique relevée dans les espaces horizontaux}
 
 
 D'abord les vecteurs tangent de $\S{n}$ sont séparés en composantes verticale et horizontales :
@@ -805,60 +861,18 @@ Or, il existe une paramétrisation de $\gamma$ telle que $\|\gamma\| = 1$. D'où
 
 
 
-\subsection{Algèbre et groupe de Lie} \label{ann:2Lie}
+%\subsection{Algèbre et groupe de Lie} \label{ann:2Lie}
 
-\subsubsection{Quelques généraliés}
+%\subsubsection{Quelques généraliés}
 
-\subsubsection{Cas particulier : $\bf{\U{1}}$}
-
-
-
-\subsection{Variété différentielle complexe, tiré de \cite{nakahara_geometry_2003}}\label{ann:VDC}
+%\subsubsection{Cas particulier : $\bf{\U{1}}$}
 
 
-$\manu$ sera une \emph{variété différentielle complexe} si elle satisfait les propriétés ci-dessus où $\R^n$ est remplacé par $\C^n$ et où la condition de difféomorphisme est remplacé par la condition d'holomorphisme. 
-\\
-Une application $f : \C^n\lr \C^n$ étant holomorphe si chacune de ses composantes vérifie l'équation de Cauchy-Riemann :
-\[\forall x,y\in\R^n,\ \forall \mu,\qquad \frac{\partial f }{\partial y^\mu}(x+iy) = i \frac{\partial f }{\partial x^\mu}(x+iy)\]
-\\
-Les fonctions holomorphes étant automatiquement $C^\infty$, les variétés différentielles complexes sont toujours lisse, c'est-à-dire $C^\infty$. Aussi, $\manu$ est dite de dimension complexe $n$ et dimension (réel) $2n$, notés :
-\begin{align}\label{eq:manuC-base_cano}
-	\dim[\C](\manu) &\defeq n  &  \dim[\R] (\manu) \defeq \dim (\manu) = 2n
-\end{align}
-\\
 
-Ensuite, pour le dire rapidement, la structure complexe de $\manu$ permet de séparer les espaces tangents en deux sous espaces. Pour ce faire, on commence par noter qu'en tout point $p\in\manu$ de coordonnée $z^\nu=x^\nu+iy^\nu$, l'espace tangent $\tg[p]{\manu}$, vu comme variété réelle, admet une base :
-\begin{equation}
-	\tg[p]{\manu} = \vec \left\{ \frac{\partial}{\partial x^1}, \cdots, \frac{\partial}{\partial x^n}, \frac{\partial}{\partial y^1}, \cdots,  \frac{\partial}{\partial y^n} \right\}
-\end{equation}
-\\
-Plus tôt que de se basé sur les $x^\mu$ et $y^\mu$ pour séparer les $\tg[p]{\manu}$, on définit sur ces derniers un tenseur $J_p$ de type (1,1) tel que :
-\begin{align}
-	J_p \frac{\partial}{\partial x^\mu} &= \frac{\partial}{\partial y^\mu}  &  J_p \frac{\partial}{\partial y^\mu} &= -\frac{\partial}{\partial x^\mu}
-\end{align}
-\\
-Ce tenseur est l'équivalent de la multiplication par $\pm i$ et le fait que $\manu$ soit complexe assure qu'il soit défini globalement, \ie~sur $\tg{\manu}$. Il est diagonaliseable dans la base :
-\begin{align}\label{eq:manuC-base_holo}
-	\partial_\mu = \frac{\partial}{\partial z^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} - i\frac{\partial}{\partial y^\mu} \right)  
-	&  
-	\partial_{\bar{\mu}} = \frac{\partial}{\partial \overline{z}^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} + i\frac{\partial}{\partial y^\mu} \right)
-\end{align}
-\\
-Ainsi en fonction de la base (\eqref{eq:manuC-base_cano} ou \eqref{eq:manuC-base_holo}), $J_p$ va s'écrire :
-\begin{align}
-	J_p &= \begin{pmatrix}
-		\text{\large\ 0\ }\Big. & I_n \\ -I_n & \text{\large\ 0\ }\Big.
-	\end{pmatrix}  &
-	J_p &= \begin{pmatrix}
-		iI_n & \text{\large\ 0\ }\Big. \\ \text{\large\ 0\ }\Big. & -iI_n
-	\end{pmatrix} 
-\end{align}
-\\
-Finalement, $\tg{\manu}$ peut être séparé en deux sous-espaces engendré respectivement par les $\partial_\mu$ et $\partial_{\bar{\nu}}$. On parle de vecteur holomorphe et anti-holomorphe et on note :
-\begin{align}
-	\tg[p]{\manu}^+ &= \Vec\big\{ \partial_\mu\ |\ 1\leq \mu\leq n \big\}  &  \tg[p]{\manu}^- &= \Vec\big\{ \partial_{\bar{\mu}}\ |\ 1\leq \mu\leq n \big\}
-\end{align}
+
 
 \end{annexe}
+
+
 
 
