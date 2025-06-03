@@ -175,10 +175,6 @@
 \renewcommand{\AC}{\sim}
 \newcommand{\para}{\sslash}
 
-\newcommand{\thoughts}[1]{{\itshape\color{red}#1}}
-\newcommand{\wip}{{\color{violet}$\bf{*}$\ \ }}
-\newcommand{\todo}{{\color{red}$\bf{*}$\ \ }}
-
 % latin
 \newcommand{\etal}{\textit{et al.}}
 \newcommand{\etc}{\textit{etc.}}
@@ -214,6 +210,11 @@
 \newcommand{\vpC}{\text{\normalfont vp} \frac{1}{x}}
 \newcommand{\barint}[2][]{\text{\sout{\ensuremath{\displaystyle \int_{#2}}}}^{#1}}
 
+	% writing progress
+\newcommand{\thoughts}[1]{{\itshape\color{red}#1}}
+\newcommand{\wip}{{\color{violet}$\bf{*}$\ \ }}
+\newcommand{\todo}{{\color{red}$\bf{*}$\ \ }}
+\newcommand{\DONE}{{\color{red}DONE\ }}
 
 	%variétoche
 \newcommand{\manu}{\mathpzc{M}}
@@ -421,6 +422,9 @@
 \usepackage{scalerel, pict2e}
 \usetikzlibrary{calc, patterns, decorations, shapes.arrows, arrows.meta, shadows, external} 
 
+\tikzcdset{every label/.append style = {scale=1.0 ,yshift=0.6ex},
+	every matrix/.append style={nodes={font=\small}}}
+
 % pour les maxis plots
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest, scaled y ticks=false}
@@ -545,7 +549,7 @@
 \Crefname{part}{\itshape pt.}{\itshape pt.}
 \Crefname{section}{\itshape sec.}{\itshape sec.}
 \Crefname{subsection}{\itshape sec.}{\itshape sec.}
-\Crefname{subsubsection}{\itshape s-sec.}{\itshape s-sec.}
+\Crefname{subsubsection}{\itshape ss-sec.}{\itshape ss-sec.}
 
 
 	% le TOC en lé-gende

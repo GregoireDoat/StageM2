@@ -1,3 +1,8 @@
+\colorlet{tmpb}{blue!30!}
+\colorlet{tmpr}{red!30!}
+\colorlet{tmpv}{blue!30!red!30!}
+\definecolor{tmpg}{gray}{0.8}
+
 \begin{tikzpicture}[scale=0.8]
 	%\draw[opacity=0.1] (-4.5,-4.5) grid (12.5,4.5);
 	
@@ -17,11 +22,6 @@
 	%\draw (s1-) -- (s2+) -- (s3-) -- (s1-);
 	%\draw (s1+) -- (s3+) -- (s2-) -- (s1+);
 	%\draw (s3+) -- (s3-);
-	\colorlet{tmpb}{blue!30!};
-	\colorlet{tmpr}{red!30!};
-	\colorlet{tmpv}{blue!30!red!30!};
-	\definecolor{tmpg}{gray}{0.75};
-	
 	
 	% bande droite
 	\draw[fill=tmpr] (s1-) .. controls  ($(s1-)+(-60:3)$) and  ($(s3+)+(0:3)$) .. 

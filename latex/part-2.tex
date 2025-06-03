@@ -27,12 +27,11 @@ Pour proprement poser le cadre, il nous faudra trois choses :
 	
 \end{enumerate}
 
+
+
 \subsection{$\bf{\PC{n}}$ vue comme variété différentielle} \label{subsec:construc_PC^n}
 
-\subsubsection{\wip Rappels de géométrie différentielle et notations}\label{subsec:rappel2geo_diff}
-
-\thoughts{À compléter en fonction du la suite}
-\\
+\subsubsection{Rappels de géométrie différentielle et notations}\label{subsec:rappel2geo_diff}
 
 Une variété différentielle se définie comme suit :
 \begin{definition}[Variété différentielle] \label{defvarietoche}
@@ -71,35 +70,25 @@ Pour le dire rapidement, les vecteurs tangents agissent comme une dérivation en
 Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\tg[x]{\manu}$, qui sera noté  $\bt_\mu = \frac{\partial}{\partial x^\mu}$. notation qui est justifié en cela que, moralement, $\bt_\mu$ dérive toute fonction test $f\in\conti[k]{\manu}{\R}$ dans le long de la $\mu^{eme}$ coordonnée (locale) de $x$.
 \\
 
-Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa différentielle (ou application tangent ou push forward) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
+\begin{wrapfigure}{r}{0.3\textwidth}
+	\begin{tikzcd}[column sep=huge, row sep=large]
+		\tg{\manu}  \arrow[r, "f_*" above]  & \tg{\mathpzc{N}} \\
+		\manu \arrow[d] \arrow[u]  \arrow[r, "f" above]  & \mathpzc{N} \arrow[d] \arrow[u] \\
+		\tg{^*\manu}  & \tg{^*\mathpzc{N}} \arrow[l, "f^*" above]
+	\end{tikzcd}
+	\caption{Diagramme de passage de $f$ à $f_*$ et/ou $f^*$.}
+	\label{fig:diagc_pullb/pushf}
+\end{wrapfigure}
+Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et\\ $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa différentielle (ou application tangent ou push forward) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
 \[f_*(\bf{v}) = f_*(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (f_*)_\mu^\nu = \bt_\mu\big( f^\nu \big)\]
 \\
 A partir de  $f_*$ est définie l'image réciproque ou pull back de $f$, qui correspond moralement à la transposée de $f_*$. Formellement elle est définie par dualité :
-
 \[f^*\ :\ \begin{aligned}
 	\tg{^*\mathpzc{N}}\ &\lr\ \tg{^*\manu} \\ g\quad\ &\lmt\ g\circ f^*
 \end{aligned} \]
 
 
-\begin{figure}[h]
-	\begin{tikzcd}[column sep=large]
-		\manu \arrow[d]  \arrow[r, "f" above]  & \mathpzc{N} \arrow[d]\\
-		\tg{\manu} \arrow[d]  \arrow[r, "f_*" above]  & \tg{\mathpzc{N}} \arrow[d]\\
-		\tg{^*\manu}  & \tg{^*\mathpzc{N}} \arrow[l, "f^*" above]
-	\end{tikzcd}
-	\caption{Diagramme commutatif du passage de $f$ à sa différentielle et/ou à son image réciproque}
-	\label{fig:diagc_pullb/pushf}
-\end{figure}
 
-\begin{itemize}
-	
-	\item fibré tangent dual
-	
-	\item image réciproque (``transposé'' de la différentielle)
-	
-	\item métrique riemannienne
-	
-\end{itemize}
 
 
 
@@ -141,7 +130,7 @@ La classe de $\PC{n}$ de représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*
 Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Les $\phi_i \circ {\phi_j}^{-1}$ étant holomorphe, $\PC{n}$ est plus précisément une variété complexe de dimension complexe $n$ et il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
 \[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{ où }\quad [z] = w\]
 \\
-En annexe \ref{ann:VDC} se trouve plus de détail sur les variétés différentielles complexes, mais pour aller à l'essentiel, mais si la notation prête à confusion, il faut considérer les coordonnées $w^\mu$ et $\congu{w}^\mu$ comme complètement décorréler. Par exemple, :
+En annexe \ref{ann:VDC} se trouve plus de détail sur les variétés différentielles complexes. Pour aller à l'essentiel, même si la notation prête à confusion, il faut considérer les coordonnées $w^\mu$ et $\congu{w}^\mu$ comme complètement décorréler. Par exemple, :
 \begin{align*}
 	\bt_\mu(w^\mu) &= \frac{\partial}{\partial w^\mu} w^\mu = 1  &  
 	\bt_{\congu{\mu}}(w^\mu) = \frac{\partial}{\partial \congu{w}^\mu} w^\mu &= 0 
@@ -150,11 +139,17 @@ En annexe \ref{ann:VDC} se trouve plus de détail sur les variétés différenti
 	\bt_{\congu{\mu}}(\congu{w}^\mu) = \frac{\partial}{\partial \congu{w}^\mu} \congu{w}^\mu &= 1
 \end{align*}
 Ce qui fait $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$ est bien une base de dimension réelle $\ \dim[\R]\PC{n} = 2n$. Ces ``notations'' (encore une fois \cf~annexe \ref{ann:VDC}) permettent, par exemple, de décrire le fait qu'une soit fonction holomorphe $f: \PC{n}\lr \C$ par la contrainte :
-\[\forall w\in\PC{n},\ \forall \mu,\qquad \frac{\partial}{\partial \congu{w}^\mu}f(w) = 0\] 
+\[\forall \mu\in\llbracket1,n\rrbracket,\qquad (f_*)_{\congu{\mu}} = \frac{\partial}{\partial \congu{w}^\mu}f = 0\] 
 \\
 Pour ce qui est des espaces tangents, $(\bt_\mu, \bt_{\congu{\mu}})_\mu$ forme une base de $\tg{\PC{n}}$ et $(dw^\mu, d\congu{w}^\mu)_\mu$ une base de $\tg{^* \PC{n}}$.
 \\
-$\PC{n}$, en particulier, admet un produit hermitien plus connue sous le nom de métrique de Fubini-Study, donné par :
+Dans ce contexte, un champ de forme bilinéaire $g$ (tenseur de type (0,2)) à quatre type de composantes :
+\begin{align*}
+	g_{\mu \nu} &= g(\bt_{\mu}, \bt_{\nu})  &  g_{\mu \congu{\nu}} &= g(\bt_{\mu}, \bt_{\congu{\nu}}) \\
+	g_{\congu{\mu} \nu} &= g(\bt_{\congu{\mu}}, \bt_{\nu})  &  g_{\congu{\mu} \congu{\nu}} &= g(\bt_{\congu{\mu}}, \bt_{\congu{\nu}})
+\end{align*}
+\\
+L'espace projectif complexe, en particulier, admet un produit hermitien, la \emph{métrique de Fubini-Study}, qui donné par :
 \begin{equation}
 	\begin{aligned}
 		\forall w\in\PC{n}, \forall \bf{u},\bf{v}\in\tg[w]{\PC{n}},\qquad g_w(\bf{u}, \bf{v}) = g_{\mu\congu{\nu}} u^\mu \congu{v^\nu} 
@@ -162,7 +157,11 @@ $\PC{n}$, en particulier, admet un produit hermitien plus connue sous le nom de 
 		&= \frac{1}{1+w^\alpha \congu{w}_\alpha} u^\mu \congu{v}_\mu - \frac{w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} u^\mu \congu{v}^\nu
 	\end{aligned}
 \end{equation}
-À noter que seul les coefficients $g_{\mu \congu{\nu}}$ apparaissent. Cela est du au fait que $g$ est produit hermitien, ce qui impose $\ g_{\mu\nu} = 0\ $ et $\ g_{\congu{\mu} \nu} = g_{\mu \congu{\nu}}$.
+À noter que seul les coefficients $g_{\mu \congu{\nu}}$ apparaissent. Cela est du à la symétrie hermitienne de $g$, ce qui impose $\ g_{\mu\nu} = g_{\congu{\mu\nu}} = 0\ $ et $\ g_{\congu{\mu} \nu} = g_{\mu \congu{\nu}}$.
+\\
+Enfin, et ce sera important pour la suite, $g$ induit sur $\PC{n}$ une forme symplectique, qui s'interprète comme l'élément d'aire induit par $g$ et s'écrit :
+\[\Omega = \Omega_{\mu\congu{\nu}}\, dw^\mu \wedge d\congu{w}^\nu 
+	= ig_{\mu \congu{\nu}}\, dw^\mu \wedge d\congu{w}^\nu\]
 
 
 
@@ -175,9 +174,9 @@ $\PC{n}$, en particulier, admet un produit hermitien plus connue sous le nom de 
 Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemblent localement à des espaces produits. 
 Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $S^{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, une tranche du ruban est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
 \begin{figure}[h]
-	\input{tikz/part-2/ruban2mobius}
-	%\includegraphics[width=0.4\textwidth]{fig/placeholder}
-	\caption[Ruban de Mobius comme variété fibrée]{Représentation du ruban de Modius en tant que fibré. Les notations sont reprises de la \cref{def:VFP}.}
+	%\input{tikz/part-2/ruban2mobius}
+	\includegraphics[width=0.55\textwidth]{fig/placeholder}
+	\caption[Ruban de Mobius comme variété fibrée]{\DONE Représentation du ruban de Modius en tant que fibré. Les notations sont reprises de la \cref{def:VFP}.}
 	\label{fig:ruban2modius}
 \end{figure}
 \skipl
@@ -231,16 +230,17 @@ D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peu
 \begin{figure}[H]
 	\begin{floatrow}
 		\ffigbox{\caption[Représentation d'une section local]
-			{Représentation d'une section local $\sigma$ au dessus de $U_i\subset B$ de dimension 2. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
+			{\DONE Représentation d'une section local $\sigma$ au dessus de $U_i\subset B$ de dimension 2. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
 			\label{fig:section_local}}{
-			%\includegraphics[width=0.45\textwidth]{fig/placeholder}
-			\input{tikz/part-2/section_locale}}
-		
-		\ffigbox{\caption[Représentation de la section canonique]
-			{Représentation de la section canonique définie par rapport à $G$ avec une seconde section  $\sigma(x) = \sigma_i(x)\cdot g(x)$. Cette fois $B$ est une variété de dimension 1. % Sont également représentés leur espaces tangents horizontaux respectifs avec la transformation permettant de passer l'un à l'autre.
-		}}{
 			\includegraphics[width=0.45\textwidth]{fig/placeholder}
-			\label{fig:section_cano}}
+			%\input{tikz/part-2/section_locale}
+			}
+		
+		\ffigbox{ \caption[Représentation de la section canonique]
+			{Représentation de la section canonique définie par rapport à $G$ avec une seconde section  $\sigma(x) = \sigma_i(x)\cdot g(x)$. Cette fois $B$ est une variété de dimension 1. % Sont également représentés leur espaces tangents horizontaux respectifs avec la transformation permettant de passer l'un à l'autre.
+			}
+			\label{fig:section_cano}}{
+			\includegraphics[width=0.45\textwidth]{fig/placeholder}}
 	\end{floatrow}
 \end{figure}
 \noindent
@@ -361,7 +361,7 @@ Dans le cas des VFP, une connexion doit en plus avoir de bonnes propriétés au 
 		\begin{equation}\label{eq:conn_G-inv}
 			\forall (p,g)\in P\times G,\quad \hg[R_g(p)]{P} = R_{g*} (\hg[p]{P}) = \big\{R_{g*}(\bf{v})\ |\ \bf{v} \in \hg[p]{P} \big\}
 		\end{equation}
-		Que l'on notera plus simplement \thoughts{(\cf~annexe \ref{ann:2Lie})} :
+		Que l'on notera plus simplement :
 		\begin{equation}
 		\forall (p,g)\in P\times G,\quad \hg[p\cdot g]{P} = \hg[p]{P}\cdot g = \big\{\bf{v}\cdot g\ |\ \bf{v} \in \hg[p]{P} \big\}
 		\end{equation}
@@ -374,7 +374,7 @@ Concrètement, pour tout point de la base $x\in U_i$, il suffit de la définir e
 \[\hg[p]{P} = \hg[\sigma_i(x)]{P}\cdot g\]
 \\
 Aussi, le fait que $G$ soit un groupe de Lie permet de lier son algèbre $\mathfrak{g}\cong \tg[e]{G}$ aux tangents verticaux via l'application $\#$ : \footnote{\itshape 
-	Les vecteurs tangents étant des formes linéaire, $A^\#(p)$ est plus précisément définie par l'application :
+	Les vecteurs tangents étant des formes linéaires, $A^\#(p)$ est plus précisément définie par l'application :
 	\[A^\#(p) : f\ \lmt\  \frac{d}{dt} f\big( p\cdot \exp(tA) \big)\Big|_{t=0}\]}
 \[\forall (p,A)\in P\times \mathfrak{g},\ \forall f\in\conti{P}{\R},\quad A^\#(p) = \frac{d}{dt} p\cdot \exp(tA) \Big|_{t=0}\in\vg[p]{P}\]
 \\
@@ -479,6 +479,7 @@ Résumons la situation. Pour étudier le comportement fréquentiel d'un signal m
 \\
 Dans ce cadre, la variété $\VFP$ est naturellement -- par la projection $\pi$ -- munie d'une connexion qui, par ailleurs, n'est pas sans rappeler à la formule de la fréquence instantanée \eqref{eq:phas_inst_v1} vue en première partie.
 %La question est maintenant de savoir comment comprendre l'émergence de la phase géométrique dans ce cadre. Pour se faire, suivant les travaux de Aharonov et Anandan \cite[sec. 4, p. 53]{bohm_geometric_2003}
+\thoughts{Résume mieux, plus de détail (antiphrase KEKW)}
 \\
 
 
@@ -486,20 +487,20 @@ Dans ce cadre, la variété $\VFP$ est naturellement -- par la projection $\pi$ 
 \subsection{Fréquence instantanée et phase dynamique sur $\bf{\VFP}$}
 
 
-Pour comprendre pourquoi le choix de connexion \eqref{eq:conn2sub_riem} est justifié du point de vue signal, on se propose de prendre le problème par l'autre bout : comment définir la notion de fréquence instantanée d'un signal dans la variété $\VFP$ ?
+Pour comprendre pourquoi le choix de connexion \eqref{eq:conn2sub_riem} est justifié du point de vue signal, on se propose de prendre le problème par l'autre bout : comment définir la notion de fréquence instantanée d'un signal dans le fibré $\VFP$ ?
 \\
  
-Comme, à chaque instant $t$, un signal $\gamma$ sur $\S{n}$ est représenté par une paire $(e^{i\alpha(t)}, \rho(t))\in\U{1}\times\PC{n}$ à travers les $h_i$,  l'un serait tenté de voir $\alpha(t)$ comme la fréquence du signal et $\rho(t)$ comme l'état de polarisation.
+Comme, à chaque instant $t$, un signal $\gamma$ sur $\S{n}$ est représenté par une paire $(e^{i\alpha(t)}, \rho(t))\in\U{1}\times\PC{n}$ à travers les $h_i$,  l'un serait tenté de voir $\alpha(t)$ comme la fréquence du signal et $\rho(t)$ comme son état de polarisation.
 \\
 Le problème de cette représentation est qu'elle dépend du choix de carte $U_i$, ainsi sur l'intersection $U_{ij}$, $\gamma$ aurait (au moins) deux notions de fréquence instantanée.
 \\
 
 C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ associée est définie globalement sur le fibré, autrement dit, elle est indépendante des représentations locales de $\gamma$.
 \\
-D'autre part, le relèvement horizontal $\Tilde{\gamma}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre cas, cela signifie que $\Tilde{\gamma}$ n'a pas de variation dans la direction de $\U{1}$, donc son état de polarisation (composante sur $\PC{n}$) varie mais pas ses ``fréquences''.
+D'autre part, le relèvement horizontal $\Tilde{\gamma}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre contexte, cela signifie que $\Tilde{\gamma}$ n'a pas de variation dans la direction de $\U{1}$, donc son état de polarisation (composante sur $\PC{n}$) varie mais pas ses ``fréquences''.
 \\
-Ainsi, le relèvement horizontale $\Tilde{\gamma}$ d'un signal $\gamma$ s'interprète comme une version de ce dernier $\gamma$ dénuée de toute fréquence instantanée.
-L'action $\alpha$ permettant de passé de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\ie~$(t) = e^{i\alpha(t)} \Tilde{\gamma}(t)$) peut alors être comprise comme la fréquence instantanée du signal (voir \cref{fig:freq_inst_geodiff,fig:horiz_lift_2var} ci-dessous)	
+Ainsi, le relèvement horizontale $\Tilde{\gamma}$ d'un signal $\gamma$ s'interprète comme une version de ce dernier dénuée de toute fréquence instantanée.
+L'action $\alpha$ permettant de passer de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\ie~$(t) = e^{i\alpha(t)} \Tilde{\gamma}(t)$) peut alors être comprise comme l'ajout d'une fréquence instantanée (voir \cref{fig:freq_inst_geodiff,fig:horiz_lift_2var} ci-dessous)	
 \\
 
 \begin{remarque}
@@ -515,21 +516,23 @@ L'action $\alpha$ permettant de passé de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\i
 \end{remarque}
 \skipl
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\begin{floatrow}		
-		\ffigbox{ \label{fig:freq_inst_geodiff}
-			\caption[Interprétation géométrique de la fréquence instantanée]{Fréquence instantanée d'un signal $x$ vu comme variation vertical de $x$ par rapport à son relèvement horizontale $\Tilde{x}$ associé. À noter que $\Tilde{x}$ ne dépend pas des cartes mais dépend de la trajectoir $\rho_x$ de $x$ sur $\PC{n}$.}}
+		\ffigbox{ \caption[Interprétation géométrique de la fréquence instantanée]
+			{Fréquence instantanée d'un signal $x$ vu comme variation vertical de $x$ par rapport à son relèvement horizontale $\Tilde{x}$ associé. À noter que $\Tilde{x}$ ne dépend pas des cartes mais dépend de la trajectoir $\rho_x$ de $x$ sur $\PC{n}$.}
+			\label{fig:freq_inst_geodiff}}
 			{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
 			
-		\ffigbox{ \label{fig:horiz_lift_2var}
-			\caption[Exemple relèvement horizontale]{Exemple du relèvement horizontale d'une signal bivarié}}
+		\ffigbox{ \caption[Exemple relèvement horizontale]
+			{Exemple du relèvement horizontale d'une signal bivarié}
+			\label{fig:horiz_lift_2var}}
 		{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
 	\end{floatrow}
 \end{figure}
 
-En admettant l'interprétation de la 1-forme de connexion comme fréquence instantanée, les discussions de première partie (\Cref{subsec:intro_phased}) suggèrent de choisir :
+En admettant l'interprétation de la 1-forme de connexion comme fréquence instantanée, les discussions de première partie (\Cref{subsec:intro_phased}) suggèrent de choisir là encore :
 \begin{equation} \label{eq:conn2SUPC}
-	\forall x\in\S{n},\ \forall \bf{v}\in\tg[x]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle \bf{v}, x\rangle
+	\forall p\in\S{n},\ \forall \bf{v}\in\tg[x]{\S{n}},\quad \conn_p(\bf{v}) = i\Im m \langle \bf{v}, p\rangle
 \end{equation}
 \\
 La phase dynamique, s'interprète alors comme la déviation du signal par rapport à son relèvement horizontal. Ainsi, $\ g = e^{i\phased(\gamma)}\ $ est solution de \eqref{eq:deviation2hozi}, qui se réécrit alors :
@@ -544,37 +547,49 @@ Ce qui redonne la formule :
 \end{equation}
 \skipl
 
-Chose importante tout de même : si cette définition de la phase dynamique est bien indépendante du choix de carte, elle dépend en revanche du relèvement horizontale de $\gamma$. Elle dépendant donc, \afortiori, de la trajectoire de la projection $\pi(\gamma)$ de $\gamma$ sur $\PC{n}$ et c'est de là que va émerger la phase géométrique.
-\\
-\\
-\thoughts{``Ok, je m'arrête ici. 
-	
-	A quelques détails près je pense que c'est très bien. Tu as fait la "connexion" entre description via les fibrés et notion de phase instantanée. Il faudra le dire explicitement (au debut de la partie ou dans l'intro ?)'' :\ COMMENT ?}
+Chose importante tout de même : si cette définition de la phase dynamique est bien indépendante du choix de carte, elle dépend en revanche du relèvement horizontale de $\gamma$ et, \afortiori, de la trajectoire de la projection $\pi(\gamma)$ de $\gamma$ sur $\PC{n}$. C'est de là que va émerger la phase géométrique.
 \\
 
 
 
 \subsection{Phase géométrique}
 
-\begin{itemize}
-	\item Cas projectivement cyclique (PC, cyclique dans $\PC{n}$). C'est un cas qui avait été étudier par Aharonov \& Anandan dans le cadre d'un système quantique qui s'adapte très bien au cadre plus général des signaux. Les propos ici seront principalement tiré du livre de Bohm \cite{bohm_geometric_2003}.
-	
-	\item Cas qui sera généraliser grâce à l'étude des géodésiques de $\PC{n}$.
-	
-	\item Cela permettre de montrer un autre résultat bien connu dans la cas quantique \cite{chruscinski_geometric_2004}, déjà été mentionné en dans le cas bivarié, à savoir que la phase géométrique calcul l'air entouré par la projection du signal sur $\PC{n}$.
-	
-	\item Enfin, il sera montrer comment ces résultats s'étendent lorsque la contrainte PC est lévée, ce qui nécessitera d'étudier les géodésiques de $\PC{n}$.
-\end{itemize}
+Notamment dans le cadre quantique, la phase géométrique est connue pour avoir deux interprétations géométriques \cite{bohm_geometric_2003, chruscinski_geometric_2004,faure_introduction_2022} : soit comme conséquence d'un transport parallèle sur $\S{n}$ soit comme une mesure de l'air entouré par le signal projeté sur $\PC{n}$. Ici ses résultats seront redémontrés (avec les détails en annexes) dans le notre dans notre cadre -- plus général --- et réinterpréter en terme de signal.
+
+Pour se faire, sera d'abord traité le cas particulier des signaux cycliques (\Cref{subsec:phase_g2cycl}). Les résultats seront ensuite généralisé au cas plus générale (\Cref{subsec:phase_g2geode}) via l'étude des géodésiques de $\PC{n}$ avant, enfin, de faire montrer le lien entre phase géométrique et les aires sur $\PC{n}$ (\Cref{subsec:phase_g2aire}).
 \skipl
 
 
 
-\subsubsection{Cas des signaux projectivement cycliques}
+\subsubsection{Cas des signaux projectivement cycliques} \label{subsec:phase_g2cycl}
 
-Comme dans la première partie de ce mémoire, pour mieux comprendre le comportement de la phase géométrique, on se 
+Dans toute la suite un signal $\gamma$ se $\S{n}$ sera dit cyclique s'il entre les instants $t_0$ et $t$, $\gamma$ retourne dans la même fibre :
+\begin{equation}\label{eq:def2cycl}
+	\exists \alpha \in\R\ |\ \gamma(t) = e^{i\alpha}\gamma(t_0)
+\end{equation}
+\\
+Dit autrement, la projection de $\gamma$ de $\PC{n}$, $\pi\circ\gamma$, retourne à son état initial au temps $t$.
+Cette hypothèse est très restrictive puisqu'elle ne peut arriver que certain instant, sans quoi $\gamma$ n'aurait qu'un mouvement vertical, ce qui n'est d'autant plus contraignant.
+\\
+
+Cela étant dit, elle a le bon goût d'énormément simplifier les choses puisque, comme tout ce passe dans la même fibre, il est très simple calculer et d'annuler individuellement les phases de $\gamma$. 
+\\
+Suivant les travaux de Aharonov \& Anandan \cite{aharonov_phase_1987} et les explications de Bohm \cite{bohm_geometric_2003}, la première remarque est que, comme $\gamma(t_0)$ et $\gamma(t)$ sont dans une même fibre, la phase totale est donné par le paramètre $\alpha$ de \eqref{eq:def2cycl} :
+\[e^{i\phaset} = \alpha = t\big( \gamma(t_0), \gamma(t) \big)\]
+\\
+La phase dynamique, conformément à ce qui a été dit plutôt, elle donne la déviation au relèvement horizontale $\Tilde{\gamma}$ :
+\[e^{i\phased}= t\big( \Tilde{\gamma}(t), \gamma(t) \big)\]
+\\
+D'où :
+\begin{align*}
+	e^{i\phaseg}= e^{i\phaset} e^{-i\phased} &= t\big( \gamma(t_0), \gamma(t) \big)\ t\big( \Tilde{\gamma}(t), \gamma(t) \big)^{-1} \\
+	&= t\big( \gamma(t_0), \gamma(t) \big)\ t\big( \gamma(t), \Tilde{\gamma}(t) \big) \\
+	&= t\big( \Tilde{\gamma}(t_0), \Tilde{\gamma}(t) \big)  &  \text{car }\gamma(t_0) &= \Tilde{\gamma}(t_0)
+\end{align*}
+\\
+Autrement dit, la phase géométrique correspond au déplacement vertical de $\U{1}$ dû à la trajectoire de $\Tilde{\gamma}$.
 
 \begin{itemize}
-	\item DEF : projectivement cyclique
 	
 	\item Dans ce cas, la projection $C_\gamma$ de $\gamma$ sur $\PC{n}$ est (proprement) cyclique
 	
@@ -617,7 +632,13 @@ Comme dans la première partie de ce mémoire, pour mieux comprendre le comporte
 
 
 
-\subsubsection{\todo  Généralisation à tout signal}
+\subsubsection{\todo  Généralisation à tout signal}\label{subsec:phase_g2geode}
+
+
+
+
+
+\subsubsection{\todo La phase géométrique sur $\bf{\PC{n}}$} \label{subsec:phase_g2aire}
 
 \begin{itemize}
 	
@@ -641,11 +662,6 @@ Comme dans la première partie de ce mémoire, pour mieux comprendre le comporte
 	\item \thoughts{Un mot sur le lien avec Fisher}
 	
 \end{itemize}
-
-
-
-
-\subsubsection{\todo La phase géométrique sur $\bf{\PC{n}}$}
 
 \begin{itemize}
 	
