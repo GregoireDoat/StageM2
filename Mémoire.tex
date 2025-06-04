@@ -74,7 +74,7 @@
 %%%% INTRO DU MEMOIRE %%%%
 
 \phantomsection
-\addcontentsline{toc}{section}{Introduction}
+\addcontentsline{toc}{section}{Introduction \& préambule}
 \section*{\begin{center}\scshape Introduction \end{center}}
 
 
@@ -112,8 +112,8 @@ L'objectif de ce mémoire est donc de décrire la phase géométrique dans le ca
 
 \newpage
 
-\phantomsection
-\addcontentsline{toc}{section}{Préambule}
+%\phantomsection
+%\addcontentsline{toc}{section}{Préambule}
 \section*{\begin{center}\scshape \todo Préambule \end{center}}\label{sec:index_nota}
 
 Généralités :
@@ -153,15 +153,15 @@ Notations math :
 %%%% COEUR DU MEMOIRE %%%%
 
 
-%\part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
-%\begin{annexe}\input{latex/part-1_ann}\end{annexe}
+\part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
+\begin{annexe}\input{latex/part-1_ann}\end{annexe}
 
 
 \part{Aspects Géométriques d'une Phase Éponyme} \label{part:phase_geo} \input{latex/part-2}
-%\begin{annexe}\input{latex/part-2_ann}\end{annexe}
+\begin{annexe}\input{latex/part-2_ann}\end{annexe}
 
 
-%\part{Applications et généralisation} \label{part:app&gene} \input{latex/part-3}
+\part{Applications et généralisation} \label{part:app&gene} \input{latex/part-3}
 
 
 %\part{Notes 'n' thoughts} \input{latex/garb}
@@ -176,14 +176,25 @@ Notations math :
 
 \newpage
 
+
+\phantomsection \addcontentsline{toc}{section}{Table des figures \& références}
 \listoffigures
+
 \vfill
+
+
+%\phantomsection \addcontentsline{toc}{section}{Table des codes}
 \lstlistoflistings
+
 \vfill
+
+
 %\listtheorems
+
 
 \newpage
 
+%\phantomsection\addcontentsline{toc}{section}{Références}
 \bibliography{ref.bib}{}
 \bibliographystyle{siam}
 

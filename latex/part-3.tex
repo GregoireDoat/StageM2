@@ -1,81 +1,140 @@
 
+\begin{itemize}
+	\item On va donner trois exemples qui permettrons de voir à quoi ce peut servir, quelles sont les limites du notre modèle et comment les générliser en corps (et pourquoi)
+	
+	\item On va montrer crescendo dans les dimensions :\begin{itemize}
+		
+		\item en 2D  : pour faire le lien avec la première partie
+		
+		\item en 3D : ondes gravitationnelles générées par un système binaire. L'occasion de voir le problème d'interprétabilité du modèle avec le modèle et de parler de bruit
+		
+		\item en nD : système de capteur. Pour parler de ``l'état de polarisation'' (composante sur $\PC{n}$) même si le terme n'est plus approprié et du cas non commutatif
+	\end{itemize}
+\end{itemize}
 
-\section{Calcul pratique de la phase géométrique}
+\section{\todo Exemples d'applications} \label{sec:exemples_appli}
 
-\subsection{Invariant de Bargmann}
+\subsection{\todo Cas 2D : lien avec la première partie} \label{subsec:ex-2D}
 
 \begin{itemize}
-	\item L'idée c'est d'approcher la courbe par des géodésiques
 	
-	\item géodésique $\Lr\ \phaseg = \phaset$ donc c'est juste des arg !
+	\item $\PC{1} \cong S^2$
 	
-	\item En cumulant le tout, ca fait donne l'invariant de Bargmann :
+	\item Stokes donne exactement le calcul de la demi-aire \\
 	
-	\item Bonus : c'est super parce que, en pratique, on a toujours des données ponctuelles, dont pas de besoin de "choisir" la subtivision !
+	\hrule
+	
+	\item Présentations des résultats de \cite{le_bihan_modephysiques_2023}
+	
+	\item \thoughts{je trouve qu'on s'éloigne un peu trop du sujet : $\phaseg$ pour les SIGNAUX. Là on a un EDP qui dirige le truc + j'ai rien à apporté dessus}
+	
 \end{itemize}
 
 
 
-\subsection{Lien avec la première partie}
+\subsection{\todo Cas 3D : application aux ondes gravitationnelles} \label{subsec:ex-3D}
 
 \begin{itemize}
-	\item La présentation dans $\PC{n}$ à été fructueuse dimension (complexe) $n=1$, avec les paramètres de l'ellipse. Mais, au delà, ca devient moins clair. Intuitivement, on pourrait généraliser les états de polarisations en ajoutant simplement une matrice de rotation dans $\C^n$ au signal bivarié polarisé. Autrement dit, il faudrait découper $\PC{n}$ en une produit du genre :
-	\[\PC{n} \cong \SO_n(\R)\times \PC{2}-ish\]
-	C'est pas clair comment faire ça (est-ce que $\SU_n(\C)$ serait mieux ?)
+	
+	\item Deux trous noirs tournent autour l'un de l'autre
+	
+	\item Ils sont caractérisés par 3 paramètres : masse, spin, l'autre
+	
+	\item 4 simulations : \begin{itemize}
+		
+		\item leur axe de rotations sont de moins en moins aligné
+		
+		\item ca affecte l'état de polarisation 
+		
+		\item ... et ca engendre de la phase géométrique qui se mesure
+	\end{itemize}
+	
+	\item Cet exemple amène 2 questions : \begin{itemize}
+		
+		\item comment le modèle AM-FM-PM se généralise en hauteD ?
+		
+		\item comment la phase géométrique réagit au bruit
+		
+		\item on en reparle en dernière partie
+
+	\end{itemize}
+\end{itemize}
+
+\subsection{\todo Cas nD : sytème de capteurs} \label{subsec:ex-nD}
+
+\begin{itemize}
+	
+	\item cf \href{https://theses.hal.science/tel-00199884}{ici} pour les détails
+	
+	\item invariance par $\U{n}$ ? vraiment ?
 \end{itemize}
 
 
 
-\section{Application}
+\section{\todo Pour la suite}\label{sec:2lasuite}
 
-\subsection{Information apportée}
+
+\subsection{\todo Limite du modèle}\label{subsec:limite2model}
+
+\begin{itemize}
+	
+	\item $\PC{1} \cong S^2$ est super satisfaisant mais au dela c'est beaucoup moins claire.
+	
+	\item Pour passer de 2D à 3D, on a juste augmenté les matrices de rotation, \ie~$\SO(3)$ au lieu de $\SO(2)$. 
+	
+	\item C'est ce qu'on fait par Lilly \& Olhede \cite{lilly_modulated_2011} et Lefèvre a discuté des généralisations dans sa thèse \cite{lefevre_polarization_2021}
+	
+	\item Ca fait sens physiquement mais par rapport à $\PC{n}$ c'est loin d'être évident
+	
+	\item ... est-ce que c'est là que se cache le lien avec le double-cover de $\SO$ par $\SU$ ???
+	\begin{itemize}
+		\item Il serait vraiment intéressant (instructif) de faire ce lien 
+		
+		\item peut-être notre travail sur le phase g est une généralisation de ça ? 
+	\end{itemize}
+	
+\end{itemize}
+
+
+
+\subsection{\todo Rapport de la phase géométrique au bruit}\label{subsec:rapportObruit}
 
 \begin{itemize}
 	\item Si une source d'information n'est pas sensé changer d'état de polarisation, mais qu'on constate qu'il y a phase géométrique, alors ce n'est (quasiment) que du bruit. Ça peut donc être un premier filtre pour débruiter.
-	\\
+	\begin{itemize}
+		
+		\item pour le corriger en revanche, c'est un peu plus technique parce que ça veut dire qu'il faut tuer la polarisation du signal ou au moins la réduire à une géodésique.
+		
+		\item une idée serait de regarder la moyenne du signal projeté dans $\PC{n}$ et du tout simplement remplacer l'état de polarisation du signal par ca moyenne. 
+		
+		\item ca devrait pas affecter le phase dynamique	
+	\end{itemize}
 	
-	Pour le corriger en revanche, c'est un peu plus technique parce que ça veut dire qu'il faut faut TUER la polarisation du signal.
-	\\
-	Une idée serait de regarder la moyenne du signal projeté dans $\PC{n}$ et du tout simplement remplacer l'état de polarisation du ce signal par ca moyenne.
+	\item En étant un peu moins restrictif l'évolution de l'état de polarisation du signal, on a vu qu'un la phase instantanée doit contenir les hautes fréquences du signal, Peut-être qu'on pourrait se servir de ça pour contraindre les variations de l'état de polar et, là encore, en faire un critère de débruitage.
+	\begin{itemize}
+		
+		\item  par exemple en tuant les hautes fréquences de la phase géométrique
+		
+		\item d'ailleurs, ca amène la question : quide de faire du Fourier sur les phases ? La phase totale est pas très intéressante (j'imagine), mais les deux autres ? 
+		
+		\item c'est un peu flou quand-même parce $\phaseg$ vient de l'état de polar, qui lui n'est affecté parles transfo de jauge
+	\end{itemize}
 	
-	\item En étant un peu moins restrictif l'évolution de l'état de polarisation du signal, on a vu qu'un la phase instantanée doit contenir les hautes fréquences du signal, Peut-être qu'on pourrait se servir de ça pour contraindre les variations de l'état de polar et, là encore, en faire un critère de débruitage. Genre tué les hautes fréquences de la phase géométrique
-	
-	\item D'ailleurs, ca amène la question : QUIDE de faire du Fourier sur les phases ? La phase totale est pas très intéressante, mais les deux autres, elle sont, en gros à valeur dans $\R$.\\
-	Donc qu'est-ce qu'on peut dire de $\Fou{\phaseg}$ ? est-ce qu'on peut en faire des trucs (passe-bas notamment).
-	
-\end{itemize}
+	\hrule
 
-
-
-
-\subsection{Sensibilité de la phase géométrique par rapport au bruit}
-
-\begin{itemize}
 	\item Il faudrait voir comment la phase géométrique réagit au bruit.
-	
-	\item Si elle y est très résiliente, elle pourrait être source d'information sur des données. Voir même, être une information de base pour reconstruire une signal (genre en utilisant le fait qu'elle soit à propos des basse-fréquence)
-	
-	\item Plus généralement, il serait bien de voir comment elle réagit en fonction du spectre du bruit
-	
-\end{itemize}
-
-
-
-\section{Cas non commutatif}
-
-\subsection{Motivation}
-
-\begin{itemize}
-	
-	\item Comparer les mesures de différents cite de mesure (chacun sont propre bruit, sa propre phase géo)
-	
-	\item Subspace tracking
+	\begin{itemize}
+		
+		\item Si elle y est très résiliente, elle pourrait être source d'information sur des données. Voir même, être une information de base pour reconstruire une signal (genre en utilisant le fait qu'elle soit à propos des basse-fréquence)
+		
+		\item Plus généralement, il serait bien de voir comment elle réagit en fonction de la distribution spectrale du bruit
+	\end{itemize}
 	
 \end{itemize}
 
 
 
-\subsection{Possible généralisation des concepts abordées}
+\subsection{\todo Cas non commutatif}\label{subsec:non-commu}
 
 \begin{itemize}
 	
@@ -85,6 +144,13 @@
 	
 	\item La formule de la phase dyn va changer par contre (path ordering) et donc son interprétations sera à revoir :/
 	
-	\item
+	\item Autres potentielles applications :
+	\begin{itemize}
+		
+		\item Subspace tracking
+		
+		\item ?
+	\end{itemize}
 	
 \end{itemize}
+

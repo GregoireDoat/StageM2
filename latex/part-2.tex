@@ -92,7 +92,7 @@ A partir de  $f_*$ est définie l'image réciproque ou pull back de $f$, qui cor
 
 
 
-\subsubsection{\wip $\bf{\PC{n}}$ comme variété différentielle} \label{subsec:PC^n_variet}
+\subsubsection{\wip $\bf{\PC{n}}$, une variété complexe} \label{subsec:PC^n_variet}
 
 
 Si l'espace projectif complexe à été présenté comme le quotient $\S{n}/\U{1}$, il peut aussi être vu comme :
@@ -152,16 +152,17 @@ Dans ce contexte, un champ de forme bilinéaire $g$ (tenseur de type (0,2)) à q
 L'espace projectif complexe, en particulier, admet un produit hermitien, la \emph{métrique de Fubini-Study}, qui donné par :
 \begin{equation}
 	\begin{aligned}
-		\forall w\in\PC{n}, \forall \bf{u},\bf{v}\in\tg[w]{\PC{n}},\qquad g_w(\bf{u}, \bf{v}) = g_{\mu\congu{\nu}} u^\mu \congu{v^\nu} 
+		\forall w\in\PC{n}, \forall \bf{u},\bf{v}\in\tg[w]{\PC{n}},\qquad g_w(\bf{u}, \bf{v}) = g_{\mu\congu{\nu}} u^\mu \congu{v}^\nu 
 		&= \frac{(1+w^\alpha \congu{w}_\alpha)\delta_{\mu\nu} - w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2}u^\mu \congu{v}^\nu \\
 		&= \frac{1}{1+w^\alpha \congu{w}_\alpha} u^\mu \congu{v}_\mu - \frac{w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} u^\mu \congu{v}^\nu
 	\end{aligned}
 \end{equation}
-À noter que seul les coefficients $g_{\mu \congu{\nu}}$ apparaissent. Cela est du à la symétrie hermitienne de $g$, ce qui impose $\ g_{\mu\nu} = g_{\congu{\mu\nu}} = 0\ $ et $\ g_{\congu{\mu} \nu} = g_{\mu \congu{\nu}}$.
+À noter que seul les coefficients $g_{\mu \congu{\nu}}$ apparaissent. Cela est du à la symétrie hermitienne de $g$, ce qui impose $\ g_{\mu\nu} = g_{\congu{\mu\nu}} = 0\ $ et $\ g_{\congu{\mu} \nu} = \congu{g_{\mu \congu{\nu}}}$.
 \\
-Enfin, et ce sera important pour la suite, $g$ induit sur $\PC{n}$ une forme symplectique, qui s'interprète comme l'élément d'aire induit par $g$ et s'écrit :
+Enfin, et ce sera important pour la suite, $g$ induit sur $\PC{n}$ une forme symplectique -- dite de Kähler -- qui s'interprète comme l'élément d'aire induit par $g$ et s'écrit :
 \[\Omega = \Omega_{\mu\congu{\nu}}\, dw^\mu \wedge d\congu{w}^\nu 
 	= ig_{\mu \congu{\nu}}\, dw^\mu \wedge d\congu{w}^\nu\]
+\skipl
 
 
 
@@ -327,11 +328,11 @@ Tout cela permet d'écrire $\S{n}$ comme une variété fibrée principale :
 
 
 
-\subsection{Espaces horizontaux et connexion}\label{subsec:connexion2VFP}
+\subsection{Connexion et relèvements horizontaux}\label{subsec:connexion2VFP}
 
 Le cadre étant posé, pour retrouver la notion de fréquence instantanée, il est nécessaire de munir $\VFP$ d'une connexion. Cette dernière est introduite comme suit.
 
-\subsubsection{Définition général}\label{subsec:def2conn}
+\subsubsection{Définition générale}\label{subsec:def2conn}
 
 Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les seconds \emph{horizontaux} et l'on note :
 \[\forall p\in P,\qquad \tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}\]
@@ -467,24 +468,30 @@ Enfin, comme l'algèbre de Lie de $\U{1}$ est $\u{1}\cong i\R$, il convient de p
 \\
 Un tel choix de connexion n'est pas anodin d'un point de vue signal puisque $\conn$ donne la fréquence instantanée telle que définie dans la \cref{part:param_instant} précédente et c'est la première chose qui sera justifié dans la partie suivante.
 \\
+
+Juste avant d'y venir, une remarque : ce lien entre la métrique de $\S{n}$ et celle de $\PC{n}$ s’avérera très utile puisqu'il permet de faire tout les calculs de norme dans $\S{n}$. Par exemple, si $\rho$ est une courbe de $\PC{n}$ avec $\gamma$ un de ses relèvements, alors sa longueur s'écrit :
+\[\int \sqrt{g_{\rho} \big(\dot{\rho}, \dot{\rho}\big) } d\rho = \int \sqrt{\big\langle \dot{\gamma}_H, \dot{\gamma}_H \big\rangle} d\gamma\]
+où $\bf{v}_H$ est la composante horizontale de $\bf{v}\in\tg{\S{n}}$.
+Sachant que $\S{n}$ est récrite de façon extrinsèque et que sa métrique est induite par celle de $\C^{n+1}$, cela simplifie les calculs théoriques et pratiques.
 \\
 
 
 
 
-\section{\wip Interprétation des trois phases dans ce cadre} \label{sec:phases_dans_VFP}
+\section{\wip Interprétation des phases sur $\bf{\VFP}$} \label{sec:phases_dans_VFP}
 
 Résumons la situation. Pour étudier le comportement fréquentiel d'un signal multivarié complexe, il est utile de voir l'espace de tel signaux, $\C^{n+1}$, comme le produit :
-\[\C^{n+1} \cong \R^{+_*} \times \VFP\]
+\[\C^{n+1} \cong \R^{+_*} \times \S{n} \overset{\text{-ish}}{\cong} \R^{+_*} \times \U{1} \times \PC{n}\]
+Cette égalité n'étant valable que localement, l'établir proprement nécessite de passer par le formalisme des fibrés, qui plus et principaux.
 \\
-Dans ce cadre, la variété $\VFP$ est naturellement -- par la projection $\pi$ -- munie d'une connexion qui, par ailleurs, n'est pas sans rappeler à la formule de la fréquence instantanée \eqref{eq:phas_inst_v1} vue en première partie.
-%La question est maintenant de savoir comment comprendre l'émergence de la phase géométrique dans ce cadre. Pour se faire, suivant les travaux de Aharonov et Anandan \cite[sec. 4, p. 53]{bohm_geometric_2003}
-\thoughts{Résume mieux, plus de détail (antiphrase KEKW)}
+Dans ce cadre, la VFP $\VFP$ est naturellement -- par sa métrique -- munie d'une connexion qui, par ailleurs, n'est pas sans rappeler à la formule de la fréquence instantanée \eqref{eq:phas_inst_v1} vue en première partie.
+\\
+Reste alors à clairement établir ce lien et comprendre comment émerge la phase géométrique dans ce contexte, chose qui sera fait dans cette partie.
 \\
 
 
 
-\subsection{Fréquence instantanée et phase dynamique sur $\bf{\VFP}$}
+\subsection{Fréquence instantanée et phase dynamique}
 
 
 Pour comprendre pourquoi le choix de connexion \eqref{eq:conn2sub_riem} est justifié du point de vue signal, on se propose de prendre le problème par l'autre bout : comment définir la notion de fréquence instantanée d'un signal dans le fibré $\VFP$ ?
@@ -539,7 +546,7 @@ La phase dynamique, s'interprète alors comme la déviation du signal par rappor
 \[\forall t\in\R,\quad \left\{ \begin{aligned}
 	g'(t)  &= g(t)\, i\Im m \big\langle \dot{\gamma}(t) , \gamma(t) \big\rangle \\
 	g(t_0) &= 1
-\end{aligned}\ \right. \Llr\ g(t) = e^{\int_{t_0}^t i\Im m\langle \dot{\gamma}(s) , \gamma(s) \rangle ds}\]
+\end{aligned}\ \right. \Llr\ g(t) = e^{i \int_{t_0}^t \Im m\langle \dot{\gamma}(s) , \gamma(s) \rangle ds}\]
 \\
 Ce qui redonne la formule :
 \begin{equation}\label{eq:phased_vgeodiff}
@@ -561,108 +568,104 @@ Pour se faire, sera d'abord traité le cas particulier des signaux cycliques (\C
 
 
 
-\subsubsection{Cas des signaux projectivement cycliques} \label{subsec:phase_g2cycl}
+\subsubsection{... du point de vue de la connexion} \label{subsec:phase_g2cycl}
 
 Dans toute la suite un signal $\gamma$ se $\S{n}$ sera dit cyclique s'il entre les instants $t_0$ et $t$, $\gamma$ retourne dans la même fibre :
 \begin{equation}\label{eq:def2cycl}
 	\exists \alpha \in\R\ |\ \gamma(t) = e^{i\alpha}\gamma(t_0)
 \end{equation}
 \\
-Dit autrement, la projection de $\gamma$ de $\PC{n}$, $\pi\circ\gamma$, retourne à son état initial au temps $t$.
+Dit autrement, la projection de $\gamma$, $\rho_\gamma \defeq \pi\circ\gamma$ forme un lacet sur $\PC{n}$.
 Cette hypothèse est très restrictive puisqu'elle ne peut arriver que certain instant, sans quoi $\gamma$ n'aurait qu'un mouvement vertical, ce qui n'est d'autant plus contraignant.
 \\
 
 Cela étant dit, elle a le bon goût d'énormément simplifier les choses puisque, comme tout ce passe dans la même fibre, il est très simple calculer et d'annuler individuellement les phases de $\gamma$. 
 \\
 Suivant les travaux de Aharonov \& Anandan \cite{aharonov_phase_1987} et les explications de Bohm \cite{bohm_geometric_2003}, la première remarque est que, comme $\gamma(t_0)$ et $\gamma(t)$ sont dans une même fibre, la phase totale est donné par le paramètre $\alpha$ de \eqref{eq:def2cycl} :
-\[e^{i\phaset} = \alpha = t\big( \gamma(t_0), \gamma(t) \big)\]
+\begin{equation}\label{eq:phase_t-cycl}
+	e^{i\phaset} = e^{i\alpha} = t\big( \gamma(t_0), \gamma(t) \big)
+\end{equation}
 \\
-La phase dynamique, conformément à ce qui a été dit plutôt, elle donne la déviation au relèvement horizontale $\Tilde{\gamma}$ :
-\[e^{i\phased}= t\big( \Tilde{\gamma}(t), \gamma(t) \big)\]
+La phase dynamique, conformément à ce qui a été dit plutôt, donne la déviation au relèvement horizontale $\Tilde{\gamma}$ :
+\begin{equation}\label{eq:phase_d-cycl}
+	e^{i\phased}= t\big( \Tilde{\gamma}(t), \gamma(t) \big)
+\end{equation}
 \\
-D'où :
-\begin{align*}
-	e^{i\phaseg}= e^{i\phaset} e^{-i\phased} &= t\big( \gamma(t_0), \gamma(t) \big)\ t\big( \Tilde{\gamma}(t), \gamma(t) \big)^{-1} \\
-	&= t\big( \gamma(t_0), \gamma(t) \big)\ t\big( \gamma(t), \Tilde{\gamma}(t) \big) \\
-	&= t\big( \Tilde{\gamma}(t_0), \Tilde{\gamma}(t) \big)  &  \text{car }\gamma(t_0) &= \Tilde{\gamma}(t_0)
-\end{align*}
+La phase géométrique s'écrit alors :
+\begin{equation}\label{eq:phase_g-cycl}
+	\begin{aligned}
+		e^{i\phaseg}= e^{i\phaset} e^{-i\phased} &= t\big( \gamma(t_0), \gamma(t) \big)\ t\big( \Tilde{\gamma}(t), \gamma(t) \big)^{-1} \\
+		&= t\big( \gamma(t_0), \gamma(t) \big)\ t\big( \gamma(t), \Tilde{\gamma}(t) \big) \\
+		&= t\big( \Tilde{\gamma}(t_0), \Tilde{\gamma}(t) \big)  &  \text{car }\gamma(t_0) &= \Tilde{\gamma}(t_0)
+	\end{aligned}
+\end{equation}
 \\
-Autrement dit, la phase géométrique correspond au déplacement vertical de $\U{1}$ dû à la trajectoire de $\Tilde{\gamma}$.
+Elle correspond donc au déplacement vertical dû à la trajectoire de $\Tilde{\gamma}$. Dit autrement, elle mesure la déviation du au transport parallèle le long de $\gamma$. Les trois dernières formules, \cref{eq:phase_t-cycl,,eq:phase_d-cycl,eq:phase_g-cycl}, sont représentées dans la \Cref{fig:phases-cycl} ci-dessous : 
 
-\begin{itemize}
-	
-	\item Dans ce cas, la projection $C_\gamma$ de $\gamma$ sur $\PC{n}$ est (proprement) cyclique
-	
-	\item Comme, entre autre, Bohm l'explique dans \cite{bohm_geometric_2003}, en fonction du choix de relèvement on peut isoler les différentes phases de $\gamma$. 
-	
-	\item En particulier, $C_\gamma$ est cyclique, $\gamma(1)$ est dans la même fibre que $\gamma(0)$ et les trois se décrivent dans une même fibre $\gamma(0)\U{1} = \gamma(1)\U{1}$ :
-	
-	\item Étant donné le choix de connexion, le relèvement horizontale $\Tilde{\gamma}$ de $C_\gamma$ (à partir du point initiale $\gamma(0)$) n'a pas de phase dynamique. $\phased$ est donc donnée par différence de phase entre $\gamma(1)$ et $\Tilde{\gamma}(1)$
-	
-	\item Pour obtenir la phase géométrique, on considère une troisième relèvement, $\eta$, de $C_\gamma$ qui cette fois est proprement cyclique. Comme il n'a, par construction, par de phase totale, sa phase géométrique est égale à sa phase dynamique au signe près.
-	
-	\item Or, la phase $\phased(\eta)$ est, comme pour $\gamma$ donné par la différence de jauge entre $\Tilde{\gamma}(1)$ et $\eta(1)$.
-	
-	\item Tout cela est résumé par la \Cref{fig:phases_p-cycl} ci-dessous :
-	\begin{figure}[h]
-		\includegraphics[width=0.4\textwidth]{fig/placeholder}
-		\caption[Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique]{Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique.}
-		\label{fig:phases_p-cycl}
-	\end{figure}
-	
-	\item Remarque importante : le choix de relèvement cyclique $\eta$ n'est pas unique mais n'est pas important pour autant, puisque c'est la seule propriété $\eta(0)=\eta(1)$ qui permet d'avoir l'interprétation exposé juste avant. Cela traduit, par ailleurs, l'aspect invariant par transformation de jauge de $\phaseg$.
-	
-	\item Ce que cette représentation montre c'est que $\phaseg$ est donné par l'holonomie du trajet $\gamma$.
-	
-	\item DEF : holonomie
-	
-	\item Dans notre cas, la variété est connexe ce qui assure que $\Hol$ est un sous-groupe de Lie connexe du groupe structural, à savoir $\U{1}$. Ainsi, $\Hol = \U{1}$, ce qui montre que la phase géométrique peut prendre n'importe qu'elle valeur.
-	
-	\item Cette formulation est très jolie mais finalement que très peu instructive. 
-	
-	\item Rq : On pourrait alors se demander si $\phaseg$ ne pourrait pas, comme $\phased$, s'écrire comme l'intégrale d'une 1-forme sur $\PC{n}$.
+\begin{figure}[h]
+	\includegraphics[width=0.6\textwidth]{fig/placeholder}
+	\caption[Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique]{Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique.}
+	\label{fig:phases-cycl}
+\end{figure}
+
+\noindent Vu ainsi, il est clair que $\phaseg$ est complètement indépendante du relèvement $\gamma$ par rapport à $\rho_\gamma$, dit autrement, qu'elle est invariante par transformation de jauge. De même, elle ne dépend que de $\gamma(t_0)$ et $\Tilde{\gamma}(t)$, ce qui montre qu'elle est invariante par reparamétrisation de $\gamma$.
+\\
+
+Cette description de  $e^{i\phaseg}$ est plus connue sous le nom d’holonomie du lacet $\rho_\gamma$. De façon généralement, le groupe d'holonomie du point $p\in P$ associé à la (1-forme de) connexion $\conn$ sur $P(B,G)$, est l'ensemble des points de $pG$ qui peuvent être atteint par une relèvement horizontale partant de $p$ :
+\begin{equation} \label{eq:def2Hol}
+	\Hol_p(\conn) \defeq \big\{ g\in G\ |\ \exists \gamma, \Tilde{\gamma}(0) = p \text{ et } p\cdot g = \Tilde{\gamma}(1) \big\}
+\end{equation}
+\\
+Cette formulation, si elle est très élégante, n'est en revanche que très peu instructive. En effet, en fonction des propriétés de l'espace totale et de la base du fibré, $\Hol$ peut avoir diverses propriétés. 
+\\
+Dans notre cas, $\Hol_p(\conn)$ est un sous-groupe de Lie connexe non trivial du groupe structural. Concrètement, cela signifie dans notre cas que $\Hol_p(\conn)=\U{1}$\footnote{\itshape
+	$\Hol_p(\conn)$ est toujours un sous-groupe de Lie. Ici connexe car $\PC{n}$ est simplement connexe, et non trivial car la connexion sur $\S{n}$ n'est pas plate.  Or, le seul sous-groupe de Lie de $\U{1}$ ayant c'est propriété est lui-même. Ces informations sont tirées de Wikipédia, voir également \cite[sec. 8.5.3]{nakahara_geometry_2003} pour plus d'information sur le cas particulier des $\PC{n}$.}
+, \ie~$\phaseg$ peut prendre absolument n'importe quelle valeur (alors même que l'on est toujours dans le cas particulier des signaux cycliques). Ceci n'est donc pas très instructif mais ce n'est pas la seule façon de voir les choses.
+\\
+
+
+
+\subsubsection{\todo  ... du point de vue de la métrique} \label{subsec:phase_g2geode}
+
+Une autre façon de voir la phase géométrique de considérer un troisième relèvement de $C_\gamma$, $\eta$, qui soit un lacet de $\S{n}$. C'est-à-dire telle que $\eta(t) = \eta(t_0) = \gamma(t_0)$.
+\\
+Dans ce cas, la phase totale de $\eta$ est nulle et :
+\[\phaseg(\gamma) = \phaseg(\eta) = -\phased(\eta)\]
+\\
+Soit encore, via \eqref{eq:phased_vgeodiff} :
+\[\phaseg(\gamma) = -\frac{1}{i}\int_{t_0}^t \conn_{\eta(s)} \big( \dot{\eta}(s) \big) ds = i\oint_\eta \conn\]
+\\
+Le résultat obtenu est l'intégrale d'une forme linéaire le long d'un lacet, ce à quoi le théorème de Stokes s'applique
+ : étant donnée une surface $\Sigma$ de bord $\eta$, on a :
+\[\phaseg(\gamma) = i\oint_\eta \conn = i\iint_\Sigma d \conn\]
+\\
+Où la dérivée extérieure de $\conn$ n'est autre que la forme de Kähler de $\PC{n}$ ramené sur $\S{n}$ (\cf~annexe \ref{ann:stokes} pour une démonstration) :
+\begin{equation} \label{eq:phaseg-aire2S}
+	!! \phaseg(\gamma) = i\iint_\Sigma d \conn  = -i\iint_\Sigma \delta_{\mu \nu} dz^\mu \wedge d\congu{z}^\nu
+\end{equation}
+\\
+Ce qui en ramené dans $\PC{n}$ donne :
+\begin{equation} \label{eq:phaseg-aire2PC^n}
+	!! \phaseg(\gamma) = -i\iint_\Sigma \delta_{\mu \nu} dz^\mu \wedge d\congu{z}^\nu = \iint_{\pi(\Sigma)} \Omega_{\mu\congu{\nu}} dw^\mu\wedge d\congu{w}^\nu 
+\end{equation}
+\\
+Ainsi, la phase géométrique de toute courbe cyclique $\gamma$ est donnée par la demi-aire de la surface entourée par sa projection $\pi(\gamma)$ sur $\PC{n}$.
+
+\begin{remarque}
+	On pourrait alors se demander si $\phaseg$ ne pourrait pas, comme $\phased$, s'écrire comme l'intégrale d'une 1-forme sur $\PC{n}$.
 	\\
 	A cela, Mukunda \& Simon explique dans \cite{mukunda_quantum_1993} que non. Moralement, l'écriture $\phaseg = \phaset - \phased$ suggère que ça ne peut pas être le cas puisque la phase totale ne peut pas s'écrire comme l'intégrale d'une 1-forme.
-	\\
 	
-	 Cela vient du fait que $\phaset$ est indépendant de la trajectoire de $\gamma$ sur $]0,1[$. Au mieux, elle peut être vu comme la longueur de la géodésique $\gamma_g$ sur $\S{n}$ entre les points $\gamma(0)$ et $\gamma(1)$. C'est-à-dire comme l'intégrale de la norme sur $\S{n}$ de $\dot{\gamma}_g$ le long de $\gamma_g$. Mais rien par rapport à $\gamma$
-	
-\end{itemize}
+	Cela vient du fait que $\phaset$ est indépendant de la trajectoire de $\gamma$ sur $]0,1[$. Au mieux, elle peut être vu comme la longueur de la géodésique $\gamma_g$ sur $\S{n}$ entre les points $\gamma(0)$ et $\gamma(1)$. C'est-à-dire comme l'intégrale de la norme sur $\S{n}$ de $\dot{\gamma}_g$ le long de $\gamma_g$. Mais rien par rapport à $\gamma$
+\end{remarque}
 
 
 
 
-\subsubsection{\todo  Généralisation à tout signal}\label{subsec:phase_g2geode}
+\subsubsection{\todo ... dans le cas le plus générale} \label{subsec:phase_g2aire}
 
 
-
-
-
-\subsubsection{\todo La phase géométrique sur $\bf{\PC{n}}$} \label{subsec:phase_g2aire}
-
-\begin{itemize}
 	
-	\item Cela étant dit, dans le cas cyclique $\phaseg$ et $\phased$ se confonde et cette propriété peut être exploitée.
-	
-	\item En effet, modulo l'exponentielle, la phase dynamique est l'intégrale de la connexion sur la courbe. Ainsi, d'après le théorme de Stokes, on a relation :
-	\[\oint_\rho \locconn_i(d\rho) = \iint_\Sigma d\locconn_i(dx,dy) dx\,dy\]
-	
-	\item En effet,  la commutativité de $\U{1}$ fait que $\Hol$ est indépendant du relèvement $\eta(0)$ de $C_\gamma(0)$ 
-	
-	\item Ajouter à cela le fait que la connexion s'exprime exclusivement dans les cartes $U_i$, on se ramène à calcul un calcul de la phase géométrique exclusivement dans $\PC{n}$.
-	
-	\item Dans ce cas, la phase géométrique est l'intégrale sur un lacet d'une 1-forme et le théorème de Stokes peut s'appliquer :
-	
-	\item THEO de Stokes
-	
-	\item Dans notre cas : on obtient l’intégrale d'une forme symplectique sur l'aire entouré par le lacet $C_\gamma$ 
-	
-	\item En somme, cela se ramène à un calcul d'aire sur $\PC{n}$
-	
-	\item \thoughts{Un mot sur le lien avec Fisher}
-	
-\end{itemize}
-
 \begin{itemize}
 	
 	\item Si maintenant $\gamma$ est qu'elle conque, pour retrouver les interprétation précédente, le plus simple est encore de se ramener au cas pseudo-cyclique.
@@ -672,4 +675,33 @@ Autrement dit, la phase géométrique correspond au déplacement vertical de $\U
 	\item pour cela on étudie les géodésiques !
 	
 	\item Sachant le représentaiton par Stokes c'est plutôt simple : 
+\end{itemize}
+
+
+
+\subsection{\todo Calcul pratique de la phase géométrique}
+
+
+\begin{itemize}
+	
+	\item Il faut faire du calcul approximé d'aire sur $\PC{n}$. 2 pb : \begin{itemize}
+		
+		\item Calcul d'aire : Meh
+		
+		\item  $\PC{n}$ est une variété quoitent : MEH
+		
+	\end{itemize}
+	
+	\item Solution : \begin{itemize}
+		
+		\item $\pi(\x) \cong \rho_{\x}$
+		
+		\item On simplifie tout par des approxes de géodésique
+	\end{itemize}
+	
+	\item géodésique $\Lr\ \phaseg = \phaset$ donc c'est juste des arg ! (super fast)
+	
+	\item En cumulant le tout, ca fait donne l'invariant de Bargmann :
+	
+	\item Bonus : c'est super parce que, en pratique, on a toujours des données ponctuelles, dont pas de besoin de "choisir" les points de subdivision !
 \end{itemize}
