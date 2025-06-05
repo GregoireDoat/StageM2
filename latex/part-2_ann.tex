@@ -61,15 +61,67 @@ sur $\PC{n}$ :
 
 \subsection{Théorème de Stokes} \label{ann:stokes}
 
-\subsubsection{\wip Dérivée extérieure de la connexion}
+Avant toute chose, pour pouvoir appliquer le théorème de Stokes il faut s'assurer que la variété étudiée est orientable, ce qui est le cas de $\S{n}$ et de toute variété complexe (y compris $\PC{n}$). Le théorème s'applique donc pour vu que $\eta$ soit suffisamment régulière (par conséquent $\pi\circ\eta$ le sera aussi).
+\\
 
-POUR STOKES : Les variétés complexes sont toujours orientables et le $\PC{n}$ sont finie, ce qui assure que le théorème s'applique bien, pour vue que $\eta$ soit suffisement régulière.
-\\ \\
+\subsubsection{Depuis $\S{n}$ (le plus simple)}
+
+Pour écrire la dérivée extérieure de $\conn$, il faut d'abord réécrire la 1-forme dans la base des $dz^\mu$ et $d\congu{z}^\nu$ :
+\begin{align*}
+	\conn_z = i\Im m \langle , z\rangle &= \frac{1}{2}\Big( \langle\, \cdot\, , z \rangle - \langle z,\, \cdot\, \rangle \Big) \\
+	&= \frac{1}{2}\Big( \delta_{\mu\nu} \congu{z}^\nu dz^\mu -  \delta_{\mu\nu} z^\mu d\congu{z}^\nu \Big) \\
+	&= \frac{1}{2}\Big( \congu{z}_\nu dz^\mu -  z_\nu d\congu{z}^\nu \Big)
+\end{align*}
+\\
+Donc $\conn$ à pour coefficient :
+\begin{align} \label{eq:sym2conn}
+	\conn_\mu &= \frac{1}{2} \congu{z}_\mu  &  \conn_{\congu{\nu}} &= - \frac{1}{2} z_\nu = -\congu{\conn_\nu}
+\end{align}
+\skipl
+
+Ainsi, par définition, sa dérivée extérieure s'écrit :
+\begin{align*}
+	d\conn &= \partial_\lambda\conn_\mu\, dz^\lambda \wedge dz^\mu 
+	+ \partial_\lambda\conn_{\congu{\nu}}\, dz^\lambda \wedge d\congu{z}^\nu
+	+ \partial_{\congu{\lambda}}\conn_\mu\, d\congu{z}^\lambda \wedge dz^\mu 
+	+ \partial_{\congu{\lambda}}\conn_{\congu{\nu}}\, d\congu{z}^\lambda \wedge d\congu{z}^\nu
+\end{align*}
+\\
+avec :
+\begin{align*}
+	\partial_\lambda \conn_\mu &= \frac{1}{2}\partial_\lambda \congu{z}_\mu = 0   &
+	\partial_\lambda\conn_{\congu{\nu}} &= -\frac{1}{2}\partial_\lambda z_\nu = -\delta_{\lambda \nu} \\
+	\partial_{\congu{\lambda}}\conn_\mu &= \frac{1}{2}\partial_{\congu{\lambda}} \congu{z}_\mu = \delta_{\lambda \mu}  &
+	\partial_{\congu{\lambda}} \conn_{\congu{\nu}} &= -\frac{1}{2}\partial_{\congu{\lambda}} z_\nu = 0
+\end{align*}
+\\
+D'où le résultat :
+\begin{align*}
+	d\conn &= \partial_\lambda\conn_\mu\, dz^\lambda \wedge dz^\mu 
+	+ \partial_\lambda\conn_{\congu{\nu}}\, dz^\lambda \wedge d\congu{z}^\nu
+	+ \partial_{\congu{\lambda}}\conn_\mu\, d\congu{z}^\lambda \wedge dz^\mu 
+	+ \partial_{\congu{\lambda}}\conn_{\congu{\nu}}\, d\congu{z}^\lambda \wedge d\congu{z}^\nu \\
+	&= -\frac{1}{2}\delta_{\lambda \nu}\, dz^\lambda \wedge d\congu{z}^\nu
+	+ \frac{1}{2}\delta_{\lambda \mu}\, d\congu{z}^\lambda \wedge dz^\mu \\
+	&= -\frac{1}{2}\Big( \delta_{\lambda \nu}\, dz^\lambda \wedge d\congu{z}^\nu + \delta_{\mu \lambda}\, dz^\mu \wedge d\congu{z}^\lambda \Big)  &  &\text{par anti-symétrique de $\wedge$}\\
+	&= -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu  &  &\text{par simple changement de notations}
+\end{align*}
+\skipl
+
+Ainsi, les coefficients de $d\conn$ sont, au signe près, les coefficients du produit hermitien sur $\C^{n+1}$. Pour obtenir sa projection sur $\PC{n}$, il suffit alors de remplacer ces derniers pas les coefficients de la métrique de Fubini-Study, aboutissant à :
+\[d\locconn_i(w) = \pi^*d\conn_w = -g_{\mu \congu{\nu}}(w) dw^\mu \wedge d\congu{w}^\nu = i\Omega(w)\]
+\skipl
+
+
+
+
+\subsubsection{\wip En projetant d'abord sur $\PC{n}$}
+
 Par définition, sur l'ouvert $U_i$, la 1-forme de connexion local est définie par :
 \[\locconn_i = {\sigma_i}^*\conn = \conn\circ \sigma_{i*}\]
 \\
-Soit, $\forall w\in U_i,\ \forall X\in\tg[w]{\PC{n}}$ :
-\[\locconn_i(w)X= i\Im m \big\langle \sigma_{i*}(X), \sigma_i(w) \big\rangle\]
+Soit, $\forall w\in U_i,\ \forall \bf{v}\in\tg[w]{\PC{n}}$ :
+\[\locconn_i(w)\bf{v}= i\Im m \big\langle \sigma_{i*}(\bf{v}), \sigma_i(w) \big\rangle\]
 \\
 où les $\sigma_{i*}$ s'écrivent, $\forall \mu$ :
 \begin{align*}
@@ -98,9 +150,7 @@ Enfin, sachant que le second membre dans la partie imaginaire est réel, il vien
 	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \big( dw^\mu\congu{w}_\mu \big) \\
 	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} \frac{dw^\mu\congu{w}_\mu -  d\congu{w}^\nu w_\nu }{2}
 \end{align*}
-\\
-
-Point de subtilité : les coefficients associées au $dw^\mu$ et $d\congu{w}^\nu$ doivent être traité séparément
+\skipl
 
 
 \subsection{Géodésique de $\bf{\PC{n}}$}
