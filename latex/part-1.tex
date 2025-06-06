@@ -286,8 +286,8 @@ On parle de polarisation elliptique et $s$ va s'écrire :
 Les paramètres $a$ et $\chi$ caractérisent respectivement la taille et l'excentricité de l'ellipse, $\theta$ son orientation dans le plan et $\varphi(t)$ précise où se trouve $s$ à l'instant $t$ sur cette ellipse. 
 Le tout est représenté sur la \Cref{fig:ellipse2polar} ci-dessous :
 \begin{figure}[H]
-	\includegraphics[width=0.45\textwidth]{fig/placeholder}
-	%\input{tikz/part-1/ellipse2polar}
+	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	\input{tikz/part-1/ellipse2polar}
 	\caption[Ellipse de polarisation d'un signal bivarié réel]{Ellipse de polarisation du signal $s$ sur laquelle sont représenter ses paramètres $a,\varphi,\theta,\chi$.}
 	\label{fig:ellipse2polar}
 \end{figure}
@@ -461,29 +461,9 @@ Sachant que $S^2$ est une représentation de rotation $\SO(3)$ de $\R^3$, ce lie
 
 
 
-\subsection{\todo Généralisation en plus haute dimension} \label{subsec:aller_plus_loin}
+\subsection{\wip Généralisation en plus haute dimension} \label{subsec:aller_plus_loin}
 
-\begin{itemize}
-	
-	\item Différentes écritures du bivarié pour différentes généralisation :
-	
-	\item Les quaterions on passe vites parce que ca se généralise très mal, Lefevre a a parlée, ca mène aux algèbres Clifford : trop de contrainte sur les dimensions des signaux
-	
-	\item En terme d'expo de matrice ? Lefevre \cite[sec. I.3]{lefevre_polarization_2021} l'a fait en trivarié mais au delà, y'a plus vraiment de choix remarquable de base pour $\mathfrak{u}(n)$
-	
-	\item En augmentant la taille de la matrice de rotation ? Lilly \cite{lilly_modulated_2011} l'a fait en trivarié et mais là encore, en terme de généralisation c'est pas si dingue parce que la matrice de rotation est pas calculable.
-	
-	\item Dans tout ça, on ratte le plus important : La phase géo est invariante par transfo de jauge, donc il faut faut faire apparaître $\PC{n-1}$ dans la décomposition.
-	
-	\item et en fait, c'est le cas en bivarié car $\PC{1}\cong \S{2}$ !
-	
-	\item $\PC{n-1}$ oui mais il faut pas non plus regarder que la projection parce qu'on perd toute les phases dans ce cas.
-	
-	\item Le bon compromis c'est les variétés fibrées : on est dans $\PC{n-1}$ mais on garde les phases dans les fibres.
-	
-	\item D'autant plus que ça à déjà était fait en physique et c'est vraiment concluant... (transition vers la grande partie suivante.)
-	
-\end{itemize}
+\thoughts{Pas encore trop au point...}
 
 Au niveau des ensembles, décomposer un signal multivarié complexe en paramètre d'amplitude, phase et polarization instantanée, revient à décomposer $\C^n$ en un produit de trois ensembles. Pour cela, un vecteur de $\C^n$ est vu comme la donné d'une direction, \ie~un élément de la sphère unité $S^{2n-1}\subset\C^n$, et d'une norme, de sorte que :
 \[\C^n \cong \R^{+_*} \times S^{2n-1}\]

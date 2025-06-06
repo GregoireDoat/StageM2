@@ -2,10 +2,12 @@
 
 \subsection{\wip Variété différentielle complexe }\label{ann:VDC}
 
+\thoughts{Pas sur que je la garde cette annexe, c'est beaucoup de math pour pas grande chose... enfin c'est plus rigoureux mais pas sur que ca serve le propos vraiment.}
+\\ \\
 \textit{Pour plus de détails, voir \cite{nakahara_geometry_2003, ballmann_lectures_2006}.}
 \\
 
-$\manu$ sera une \emph{variété différentielle complexe} si elle satisfait les propriétés ci-dessus où $\R^n$ est remplacé par $\C^n$ et où la condition de difféomorphisme est remplacé par la condition d'holomorphisme. 
+$\manu$ sera une \emph{variété différentielle complexe} si elle satisfait les propriétés ci-dessus où $\R^n$ est remplacé par $\C^n$ et où la condition de difféomorphisme est remplacée par la condition d'holomorphisme. 
 \\
 Une application $f : \C^n\lr \C^n$ étant holomorphe si chacune de ses composantes vérifie l'équation de Cauchy-Riemann :
 \[\forall x,y\in\R^n,\ \forall \mu,\qquad \frac{\partial f }{\partial y^\mu}(x+iy) = i \frac{\partial f }{\partial x^\mu}(x+iy)\]
@@ -61,7 +63,7 @@ sur $\PC{n}$ :
 
 \subsection{Démonstration des résultats \cref{subsec:phase_g2aire}} \label{ann:stokes}
 
-\subsubsection{Calcul de $\bf{\phaseg}$ sur $\bf{\PC{n}}$} \label{ann:proj2phaseg}
+\subsubsection{Formule pour $\bf{\phaseg}$ sur $\bf{\PC{n}}$} \label{ann:proj2phaseg}
 
 Ici $\gamma$ est supposé cyclique et au dessus d'une unique carte $U_i$ (par commodité), avec :
 \[\gamma = h_i(\rho, e^{i\theta}) = \sigma_i(\rho) e^{i\theta}\]
@@ -98,64 +100,15 @@ et par conséquent la phase géométrique :
 \end{align*}
 \\
 
-Maintenant, pour pouvoir appliquer le théorème de Stokes, il faut s'assurer que la variété étudiée est orientable, ce qui est le cas de toute les variétés complexes \cite[sec. 8.4.2]{nakahara_geometry_2003} (y compris $\PC{n}$). Le théorème s'applique donc pour vu que $\rho$ soit suffisamment régulière.
-
-
-\subsubsection{Calcul de la dérivée $\S{n}$ (le plus simple, mais faux :/)} \label{ann:wedge2conn}
-
-Cela étant dit, plutôt que de faire le calcul dans $\PC{n}$, qui demanderait de calculer les $\locconn_i = {\sigma_i}^*\conn$, le plus simple est encore de se ramener dans $\S{n}$ :
-\[\oint \locconn_{i\, \rho}(\dot{\rho}) = \oint \omega_{\sigma_i(\rho)}\big(\sigma_{i*}(\dot{\rho})\big)\]
+Maintenant, pour pouvoir appliquer le théorème de Stokes, il faut s'assurer que la variété étudiée est orientable, ce qui est le cas de toute les variétés complexes \cite[sec. 8.4.2]{nakahara_geometry_2003} (y compris $\PC{n}$). Ppour vu que $\rho$ soit suffisamment régulière, le théorème s'applique et :
+\[\oint \locconn_{i}  = \iint_\Sigma d\locconn_i\]
 \\
-Où, en notant $\ z = \sigma_i(\rho)^\mu\ $ et $\ dz = \sigma_{i*}(\dot{\rho})\ $,  $\conn$ s'écrit en coordonnées locales :
-\begin{align*}
-	\conn_z(dz) = i\Im m \langle dz , z\rangle &= \frac{1}{2}\Big( \langle dz , z \rangle - \langle z, dz \rangle \Big) \\
-	&= \frac{1}{2}\Big( \delta_{\mu\nu} \congu{z}^\nu dz^\mu -  \delta_{\mu\nu} z^\mu d\congu{z}^\nu \Big) \\
-	&= \frac{1}{2}\Big( \congu{z}_\nu dz^\mu -  z_\nu d\congu{z}^\nu \Big)
-\end{align*}
+avec $\Sigma$ une surface de$\PC{n}$ de bord $\rho$.
 \\
 
-Donc $\conn$ à pour coefficient :
-\begin{align} \label{eq:sym2conn}
-	\conn_\mu &= \frac{1}{2} \congu{z}_\mu  &  \conn_{\congu{\nu}} &= - \frac{1}{2} z_\nu = -\congu{\conn_\nu}
-\end{align}
-\\
-Ce qui donne pour dérivée extérieure :
-\begin{align*}
-	d\conn &= \partial_\lambda\conn_\mu\, dz^\lambda \wedge dz^\mu 
-	+ \partial_\lambda\conn_{\congu{\nu}}\, dz^\lambda \wedge d\congu{z}^\nu
-	+ \partial_{\congu{\lambda}}\conn_\mu\, d\congu{z}^\lambda \wedge dz^\mu 
-	+ \partial_{\congu{\lambda}}\conn_{\congu{\nu}}\, d\congu{z}^\lambda \wedge d\congu{z}^\nu
-\end{align*}
-\\
-avec :
-\begin{align*}
-	\partial_\lambda \conn_\mu &= \frac{1}{2}\partial_\lambda \congu{z}_\mu = 0   &
-	\partial_\lambda\conn_{\congu{\nu}} &= -\frac{1}{2}\partial_\lambda z_\nu = -\delta_{\lambda \nu} \\
-	\partial_{\congu{\lambda}}\conn_\mu &= \frac{1}{2}\partial_{\congu{\lambda}} \congu{z}_\mu = \delta_{\lambda \mu}  &
-	\partial_{\congu{\lambda}} \conn_{\congu{\nu}} &= -\frac{1}{2}\partial_{\congu{\lambda}} z_\nu = 0
-\end{align*}
-\\
-D'où le résultat :
-\begin{align*}
-	d\conn &= \partial_\lambda\conn_\mu\, dz^\lambda \wedge dz^\mu 
-	+ \partial_\lambda\conn_{\congu{\nu}}\, dz^\lambda \wedge d\congu{z}^\nu
-	+ \partial_{\congu{\lambda}}\conn_\mu\, d\congu{z}^\lambda \wedge dz^\mu 
-	+ \partial_{\congu{\lambda}}\conn_{\congu{\nu}}\, d\congu{z}^\lambda \wedge d\congu{z}^\nu \\
-	&= -\frac{1}{2}\delta_{\lambda \nu}\, dz^\lambda \wedge d\congu{z}^\nu
-	+ \frac{1}{2}\delta_{\lambda \mu}\, d\congu{z}^\lambda \wedge dz^\mu \\
-	&= -\frac{1}{2}\Big( \delta_{\lambda \nu}\, dz^\lambda \wedge d\congu{z}^\nu + \delta_{\mu \lambda}\, dz^\mu \wedge d\congu{z}^\lambda \Big)  &  &\text{par anti-symétrique de $\wedge$}\\
-	&= -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu  &  &\text{par simple changement de notations}
-\end{align*}
-\skipl
-
-Enfin, comme $\pi$ est une submersion riemannienne, l'on retombe sur :
-\[d\locconn_i(w) = d\sigma_{i*}\conn_w = -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu = -g_{\mu \congu{\nu}}(w) dw^\mu \wedge d\congu{w}^\nu = i\Omega(w)\]
-\skipl
 
 
-
-
-\subsubsection{\wip En projetant d'abord sur $\bf{\PC{n}}$}
+\subsubsection{Dérivation de $\bf{\phaseg}$ en tant qu'aire de $\bf{\PC{n}}$} \label{ann:phaseg=aire}
 
 Par définition, sur l'ouvert $U_i$, la 1-forme de connexion local est définie par :
 \[\locconn_i = {\sigma_i}^*\conn = \conn\circ \sigma_{i*}\]
@@ -222,7 +175,61 @@ Ce qui mène finalement à :
 \skipl
 
 
-\subsection{Géodésique de $\bf{\PC{n}}$}
+
+
+\subsubsection{\wip Idem que \ref{ann:phaseg=aire} depuis $\S{n}$ (plus simple, mais j'arrive à finir le calcul)} \label{ann:wedge2conn}
+
+Cela étant dit, plutôt que de faire le calcul dans $\PC{n}$, qui demanderait de calculer les $\locconn_i = {\sigma_i}^*\conn$, le plus simple est encore de se ramener dans $\S{n}$ :
+\[\oint \locconn_{i\, \rho}(\dot{\rho}) = \oint \omega_{\sigma_i(\rho)}\big(\sigma_{i*}(\dot{\rho})\big)\]
+\\
+Où, en notant $\ z = \sigma_i(\rho)^\mu\ $ et $\ dz = \sigma_{i*}(\dot{\rho})\ $,  $\conn$ s'écrit en coordonnées locales :
+\begin{align*}
+	\conn_z(dz) = i\Im m \langle dz , z\rangle &= \frac{1}{2}\Big( \langle dz , z \rangle - \langle z, dz \rangle \Big) \\
+	&= \frac{1}{2}\Big( \delta_{\mu\nu} \congu{z}^\nu dz^\mu -  \delta_{\mu\nu} z^\mu d\congu{z}^\nu \Big) \\
+	&= \frac{1}{2}\Big( \congu{z}_\nu dz^\mu -  z_\nu d\congu{z}^\nu \Big)
+\end{align*}
+\\
+
+Donc $\conn$ à pour coefficient :
+\begin{align} \label{eq:sym2conn}
+	\conn_\mu &= \frac{1}{2} \congu{z}_\mu  &  \conn_{\congu{\nu}} &= - \frac{1}{2} z_\nu = -\congu{\conn_\nu}
+\end{align}
+\\
+Ce qui donne pour dérivée extérieure :
+\begin{align*}
+	d\conn &= \partial_\lambda\conn_\mu\, dz^\lambda \wedge dz^\mu 
+	+ \partial_\lambda\conn_{\congu{\nu}}\, dz^\lambda \wedge d\congu{z}^\nu
+	+ \partial_{\congu{\lambda}}\conn_\mu\, d\congu{z}^\lambda \wedge dz^\mu 
+	+ \partial_{\congu{\lambda}}\conn_{\congu{\nu}}\, d\congu{z}^\lambda \wedge d\congu{z}^\nu
+\end{align*}
+\\
+avec :
+\begin{align*}
+	\partial_\lambda \conn_\mu &= \frac{1}{2}\partial_\lambda \congu{z}_\mu = 0   &
+	\partial_\lambda\conn_{\congu{\nu}} &= -\frac{1}{2}\partial_\lambda z_\nu = -\delta_{\lambda \nu} \\
+	\partial_{\congu{\lambda}}\conn_\mu &= \frac{1}{2}\partial_{\congu{\lambda}} \congu{z}_\mu = \delta_{\lambda \mu}  &
+	\partial_{\congu{\lambda}} \conn_{\congu{\nu}} &= -\frac{1}{2}\partial_{\congu{\lambda}} z_\nu = 0
+\end{align*}
+\\
+D'où le résultat :
+\begin{align*}
+	d\conn &= \partial_\lambda\conn_\mu\, dz^\lambda \wedge dz^\mu 
+	+ \partial_\lambda\conn_{\congu{\nu}}\, dz^\lambda \wedge d\congu{z}^\nu
+	+ \partial_{\congu{\lambda}}\conn_\mu\, d\congu{z}^\lambda \wedge dz^\mu 
+	+ \partial_{\congu{\lambda}}\conn_{\congu{\nu}}\, d\congu{z}^\lambda \wedge d\congu{z}^\nu \\
+	&= -\frac{1}{2}\delta_{\lambda \nu}\, dz^\lambda \wedge d\congu{z}^\nu
+	+ \frac{1}{2}\delta_{\lambda \mu}\, d\congu{z}^\lambda \wedge dz^\mu \\
+	&= -\frac{1}{2}\Big( \delta_{\lambda \nu}\, dz^\lambda \wedge d\congu{z}^\nu + \delta_{\mu \lambda}\, dz^\mu \wedge d\congu{z}^\lambda \Big)  &  &\text{par anti-symétrique de $\wedge$}\\
+	&= -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu  &  &\text{par simple changement de notations}
+\end{align*}
+\skipl
+
+Enfin, comme $\pi$ est une submersion riemannienne, l'on retombe sur :
+\[d\locconn_i(w) = d\sigma_{i*}\conn_w = -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu = -g_{\mu \congu{\nu}}(w) dw^\mu \wedge d\congu{w}^\nu = i\Omega(w)\]
+\skipl
+
+
+\subsection{Géodésique de $\bf{\PC{n}}$} \label{ann:geode2PC^n}
 
 \subsubsection{Métrique relevée dans les espaces horizontaux}
 

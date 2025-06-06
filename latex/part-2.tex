@@ -1,5 +1,5 @@
 
-note pour intro :
+\thoughts{note pour intro :}
 
 \begin{itemize}
 	
@@ -86,7 +86,7 @@ A partir de  $f_*$ est définie l'image réciproque ou pull back de $f$, qui cor
 \[f^*\ :\ \begin{aligned}
 	\tg{^*\mathpzc{N}}\ &\lr\ \tg{^*\manu} \\ g\quad\ &\lmt\ g\circ f^*
 \end{aligned} \]
-
+\skipl
 
 
 
@@ -233,8 +233,8 @@ D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peu
 		\ffigbox{\caption[Représentation d'une section local]
 			{\DONE Représentation d'une section local $\sigma$ au dessus de $U_i\subset B$ de dimension 2. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
 			\label{fig:section_local}}{
-			\includegraphics[width=0.45\textwidth]{fig/placeholder}
-			%\input{tikz/part-2/section_locale}
+			%\includegraphics[width=0.45\textwidth]{fig/placeholder}
+			\input{tikz/part-2/section_locale}
 			}
 		
 		\ffigbox{ \caption[Représentation de la section canonique]
@@ -527,7 +527,7 @@ L'action $\alpha$ permettant de passer de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\i
 			{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
 			
 		\ffigbox{ \caption[Exemple relèvement horizontale]
-			{Exemple du relèvement horizontale d'une signal bivarié}
+			{Exemple du relèvement horizontale d'une signal bivarié ?}
 			\label{fig:horiz_lift_2var}}
 		{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
 	\end{floatrow}
@@ -622,10 +622,10 @@ Dans notre cas, $\Hol_p(\conn)$ est un sous-groupe de Lie connexe non trivial du
 
 
 
-\subsubsection{\todo  ... du point de vue de la métrique} \label{subsec:phase_g2aire}
+\subsubsection{\wip ... du point de vue de la métrique} \label{subsec:phase_g2aire}
 
-Cela dit, la phase géométrique étant invariante par transformation de jauge, elle doit s'écrire uniquement dans $\PC{n}$. Pour cela, l'on suppose, sans perte de généralité\footnote{\itshape 
-	Les propriétés de changement de cartes assure qu'elle n'est pas nécessaire.
+Cela dit, la phase géométrique étant invariante par transformation de jauge, elle doit s'écrire uniquement dans $\PC{n}$. Pour cela l'on suppose, sans perte de généralité\footnote{\itshape 
+	Les propriétés de changement de cartes assure qu'elle n'est pas un problème.
 }, que $\gamma$ reste au dessus de la carte $U_i$, de sorte que :
 \[\gamma = h_i(w, e^{i\theta}) = \sigma_i(w) e^{i\theta}\]
 \\
@@ -639,9 +639,9 @@ Avec, toujours sous l'hypothèse que $\gamma$ est cyclique, $\phaseg$ se réécr
 Or, $\rho$ forme un lacet sur $\PC{n}$, ainsi $\phaseg$ est l'intégrale d'une forme linéaire le long d'un lacet, ce à quoi le théorème de Stokes s'applique et donne :
 \[\phaseg(\gamma) = i\oint_\rho \locconn_i = i\iint_\Sigma d \locconn_i\]
 \\
-Où $\Sigma$ est surface de bord $\rho$ et où la dérivée extérieure de $\conn$ n'est autre que la forme de Kähler de $\PC{n}$ (\cf~annexe \ref{ann:stokes} pour une démonstration) :
+Où $\Sigma$ est surface de bord $\rho$ et où la dérivée extérieure de $\conn$ n'est autre que la forme de Kähler de $\PC{n}$ (\cf~annexe \ref{ann:wedge2conn} pour une démonstration) :
 \begin{equation} \label{eq:phaseg-aire2PC^n}
-	!! \phaseg(\gamma) = -i\iint_\Sigma g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu = \iint_{\Sigma} \Omega_{\mu\congu{\nu}} dw^\mu\wedge d\congu{w}^\nu 
+	\phaseg(\gamma) = -i\iint_\Sigma g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu = \iint_{\Sigma} \Omega_{\mu\congu{\nu}} dw^\mu\wedge d\congu{w}^\nu 
 \end{equation}
 \\
 Ainsi, la phase géométrique de toute courbe cyclique $\gamma$ est donnée par l'aire\footnote{\itshape
@@ -666,7 +666,7 @@ Ainsi, la phase géométrique de toute courbe cyclique $\gamma$ est donnée par 
 	\item Si $\gamma$ est une relèvement horizontal de $\rho$, alors elle vérifie :
 	\[\gamma(t) = \gamma(t_0) \cos (t - t_0) + \dot{\gamma}(t_0) \sin (t - t_0)\]
 	
-	\item Comme elle est horizontale, on a :
+	\item Comme elle est horizontale, on a  (démo en annexe \ref{ann:geode2PC^n}):
 \begin{align*}
 	\phaseg(\rho) &= \phaset(\gamma) \\
 	&= \arg\Big\langle \gamma(t_0) \cos (t - t_0) + \dot{\gamma}(t_0) \sin (t - t_0),  \gamma(t_0) \Big\rangle \\
