@@ -59,27 +59,67 @@ sur $\PC{n}$ :
 
 
 
-\subsection{Théorème de Stokes} \label{ann:stokes}
+\subsection{Démonstration des résultats \cref{subsec:phase_g2aire}} \label{ann:stokes}
 
-Avant toute chose, pour pouvoir appliquer le théorème de Stokes il faut s'assurer que la variété étudiée est orientable, ce qui est le cas de $\S{n}$ et de toute variété complexe (y compris $\PC{n}$). Le théorème s'applique donc pour vu que $\eta$ soit suffisamment régulière (par conséquent $\pi\circ\eta$ le sera aussi).
+\subsubsection{Calcul de $\bf{\phaseg}$ sur $\bf{\PC{n}}$} \label{ann:proj2phaseg}
+
+Ici $\gamma$ est supposé cyclique et au dessus d'une unique carte $U_i$ (par commodité), avec :
+\[\gamma = h_i(\rho, e^{i\theta}) = \sigma_i(\rho) e^{i\theta}\]
+\\
+Avec ces notations, la phase totale de $\gamma$ va s'écrire :
+\[\phaset(\gamma, t_0, t) = t\big( \gamma(t), \gamma(t_0) \big) = \theta(t) - \theta(t_0)\]
 \\
 
-\subsubsection{Depuis $\S{n}$ (le plus simple)}
-
-Pour écrire la dérivée extérieure de $\conn$, il faut d'abord réécrire la 1-forme dans la base des $dz^\mu$ et $d\congu{z}^\nu$ :
+Pour ce qui est de la phase dynamique, on comment par calculer la connexion le long de $\gamma$, ce qui nécessite d'écrire :
 \begin{align*}
-	\conn_z = i\Im m \langle , z\rangle &= \frac{1}{2}\Big( \langle\, \cdot\, , z \rangle - \langle z,\, \cdot\, \rangle \Big) \\
+	\dot{\gamma} = \frac{d}{dt} \Big( \sigma_i(\rho) e^{i\theta} \Big) &=  \sigma_{i*}(\dot{\rho}) e^{i\theta} + i\theta' \sigma_i(\rho) e^{i\theta} \\
+	&= \sigma_{i*}(\dot{\rho}) e^{i\theta} + (i\theta')^\#\big(\sigma_i(\rho) e^{i\theta}\big)  & \text{par définition de $\#$, \cref{eq:alg2vg}}
+\end{align*}
+\\
+Avec, et sachant les propriétés de $\conn$ (\cref{eq:1-form2conn,eq:1-form_G-inv}, \Cref{def:1-form2conn}), on a :
+\begin{align*}
+	i\conn_\gamma(\dot{\gamma}) &= i\conn_{\sigma_i(\rho) e^{i\theta}} \Big( \sigma_{i*}(\dot{\rho}) e^{i\theta} + (i\theta')^\#\big(\sigma_i(\rho) e^{i\theta}\big) \Big) \\
+	&= \conn_{\sigma_i(\rho) e^{i\theta}} \Big( \sigma_{i*}(\dot{\rho}) e^{i\theta} \Big) + \conn_{\sigma_i(\rho) e^{i\theta}} \Big((i\theta')^\#\big(\sigma_i(\rho) e^{i\theta}\big) \Big) \\
+	&= e^{-i\theta} \conn_{\sigma_i(\rho)} \big( \sigma_{i*}(\dot{\rho}) \big) e^{i\theta} + i\theta'
+\end{align*}
+\\
+D'où la phase dynamique (\cref{eq:phased_vgeodiff}) :
+\begin{align*}
+	\phased(\gamma) = \frac{1}{i}\int_{t_0}^t \conn_{\gamma(s)} \big( \dot{\gamma}(s) \big)ds 
+	&= \frac{1}{i}\int_{t_0}^t \Big( \locconn_{i\, \rho(s)}\big(\dot{\rho}(s) \big) + i\theta'(s)\Big)ds \\
+	&= -i \oint \locconn_{i\, \rho} (\dot{\rho}) + \theta(t) - \theta(t_0)
+\end{align*}
+\\
+et par conséquent la phase géométrique :
+\begin{align*}
+	\phaseg(\gamma) &= \phaset(\gamma) - \phased(\gamma) \\
+	&= \theta(t) - \theta(t_0) - \left( -i \oint \locconn_{i\, \rho} (\dot{\rho}) + \theta(t) - \theta(t_0) \right) \\
+	&= i \oint \locconn_{i\, \rho} (\dot{\rho})
+\end{align*}
+\\
+
+Maintenant, pour pouvoir appliquer le théorème de Stokes, il faut s'assurer que la variété étudiée est orientable, ce qui est le cas de toute les variétés complexes \cite[sec. 8.4.2]{nakahara_geometry_2003} (y compris $\PC{n}$). Le théorème s'applique donc pour vu que $\rho$ soit suffisamment régulière.
+
+
+\subsubsection{Calcul de la dérivée $\S{n}$ (le plus simple, mais faux :/)} \label{ann:wedge2conn}
+
+Cela étant dit, plutôt que de faire le calcul dans $\PC{n}$, qui demanderait de calculer les $\locconn_i = {\sigma_i}^*\conn$, le plus simple est encore de se ramener dans $\S{n}$ :
+\[\oint \locconn_{i\, \rho}(\dot{\rho}) = \oint \omega_{\sigma_i(\rho)}\big(\sigma_{i*}(\dot{\rho})\big)\]
+\\
+Où, en notant $\ z = \sigma_i(\rho)^\mu\ $ et $\ dz = \sigma_{i*}(\dot{\rho})\ $,  $\conn$ s'écrit en coordonnées locales :
+\begin{align*}
+	\conn_z(dz) = i\Im m \langle dz , z\rangle &= \frac{1}{2}\Big( \langle dz , z \rangle - \langle z, dz \rangle \Big) \\
 	&= \frac{1}{2}\Big( \delta_{\mu\nu} \congu{z}^\nu dz^\mu -  \delta_{\mu\nu} z^\mu d\congu{z}^\nu \Big) \\
 	&= \frac{1}{2}\Big( \congu{z}_\nu dz^\mu -  z_\nu d\congu{z}^\nu \Big)
 \end{align*}
 \\
+
 Donc $\conn$ à pour coefficient :
 \begin{align} \label{eq:sym2conn}
 	\conn_\mu &= \frac{1}{2} \congu{z}_\mu  &  \conn_{\congu{\nu}} &= - \frac{1}{2} z_\nu = -\congu{\conn_\nu}
 \end{align}
-\skipl
-
-Ainsi, par définition, sa dérivée extérieure s'écrit :
+\\
+Ce qui donne pour dérivée extérieure :
 \begin{align*}
 	d\conn &= \partial_\lambda\conn_\mu\, dz^\lambda \wedge dz^\mu 
 	+ \partial_\lambda\conn_{\congu{\nu}}\, dz^\lambda \wedge d\congu{z}^\nu
@@ -108,14 +148,14 @@ D'où le résultat :
 \end{align*}
 \skipl
 
-Ainsi, les coefficients de $d\conn$ sont, au signe près, les coefficients du produit hermitien sur $\C^{n+1}$. Pour obtenir sa projection sur $\PC{n}$, il suffit alors de remplacer ces derniers pas les coefficients de la métrique de Fubini-Study, aboutissant à :
-\[d\locconn_i(w) = \pi^*d\conn_w = -g_{\mu \congu{\nu}}(w) dw^\mu \wedge d\congu{w}^\nu = i\Omega(w)\]
+Enfin, comme $\pi$ est une submersion riemannienne, l'on retombe sur :
+\[d\locconn_i(w) = d\sigma_{i*}\conn_w = -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu = -g_{\mu \congu{\nu}}(w) dw^\mu \wedge d\congu{w}^\nu = i\Omega(w)\]
 \skipl
 
 
 
 
-\subsubsection{\wip En projetant d'abord sur $\PC{n}$}
+\subsubsection{\wip En projetant d'abord sur $\bf{\PC{n}}$}
 
 Par définition, sur l'ouvert $U_i$, la 1-forme de connexion local est définie par :
 \[\locconn_i = {\sigma_i}^*\conn = \conn\circ \sigma_{i*}\]
@@ -150,16 +190,43 @@ Enfin, sachant que le second membre dans la partie imaginaire est réel, il vien
 	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} i\Im m \big( dw^\mu\congu{w}_\mu \big) \\
 	&= \frac{1}{1 + w^\alpha\congu{w}_\alpha} \frac{dw^\mu\congu{w}_\mu -  d\congu{w}^\nu w_\nu }{2}
 \end{align*}
+\\
+
+Maintenant, pour avoir les coefficients de $d\locconn_i$, il faut calculer respectivement :
+\begin{align*}
+	\partial_\lambda \locconn_{i\, \mu} &= \partial_\lambda \frac{\congu{w}_\mu}{2(1 + w^\alpha\congu{w}_\alpha)}  &  
+		\partial_{\congu{\lambda}} \locconn_{i\, \mu} &= \partial_{\congu{\lambda}} \frac{\congu{w}_\mu}{2(1 + w^\alpha\congu{w}_\alpha)}
+	\\
+	&= \frac{\congu{w}_\mu\congu{w}_\lambda}{2(1 + w^\alpha\congu{w}_\alpha)^2}  &  
+		&=  \frac{1}{2(1 + w^\alpha\congu{w}_\alpha)} \Big( \delta_{\lambda\mu} - \frac{\congu{w}_\mu w_\lambda}{1 + w^\alpha\congu{w}_\alpha}\Big) \\
+	& &  &= \frac{1}{2} g_{\mu \congu{\lambda}}
+	\\ \\
+	\partial_\lambda \locconn_{i\, \congu{\nu}} &= \partial_{\lambda} \frac{ -w_\nu}{2(1 + w^\alpha\congu{w}_\alpha)}  &  
+		\partial_{\congu{\lambda}} \locconn_{i\, \congu{\nu}} &= \partial_{\congu{\lambda}} \frac{ -w_\nu}{2(1 + w^\alpha\congu{w}_\alpha)}
+	\\
+	&=  \frac{-1}{2(1 + w^\alpha w_\alpha)} \Big( \delta_{\lambda\nu} - \frac{ w_\nu \congu{w}_\lambda}{1 + w^\alpha\congu{w}_\alpha}\Big)  &
+		&= -\frac{ w_\nu w_\lambda}{2(1 + w^\alpha\congu{w}_\alpha)^2} \\
+	&= -\frac{1}{2} g_{\lambda \congu{\nu}}
+\end{align*}
+\\
+On remarque alors les coefficient $d\locconn_{i\, \lambda \mu}$ et $d\locconn_{i\, \congu{\lambda \mu}}$ sont symétriques, ce qui fait qu'avec le produit extérieur il s'annule. Par exemple :
+\[(d\locconn_i)_{\lambda \mu}\, dw^\lambda \wedge dw^\mu = \frac{\congu{w}_\mu\congu{w}_\lambda}{2(1 + w^\alpha\congu{w}_\alpha)^2} dw^\lambda \otimes dw^\mu - \frac{\congu{w}_\mu\congu{w}_\lambda}{2(1 + w^\alpha\congu{w}_\alpha)^2} dw^\mu \otimes dw^\lambda = 0\]
+\\
+Ce qui mène finalement à :
+\begin{align*}
+	d\locconn_i &= \frac{1}{2} g_{\mu \congu{\lambda}} d\congu{w}^\lambda \wedge dw^\mu  - \frac{1}{2} g_{\lambda \congu{\nu}} dw^\lambda \wedge d\congu{w}^\nu \\
+	&= -\frac{1}{2} g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu  - \frac{1}{2} g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu  &  &\text{par anti-symétrie du produit extérieur}\\
+	&= - g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu \\
+	&= i\Omega_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu
+\end{align*}
 \skipl
 
 
 \subsection{Géodésique de $\bf{\PC{n}}$}
 
-
 \subsubsection{Métrique relevée dans les espaces horizontaux}
 
-
-D'abord les vecteurs tangent de $\S{n}$ sont séparés en composantes verticale et horizontales :
+D'abord les vecteurs tangent de $\S{n}$ sont séparés en composantes verticale et horizontale :
 \begin{align}
 	\forall \bf{v}\in \tg[p]{\S{n}},\quad \bf{v} = \bf{v}_H + \omega_p(\bf{v})^\# &= \bf{v}_H + \frac{d}{dt}p\cdot \exp\big(it\Im m \langle \bf{v}, p \rangle\big)\Big|_{t=0} \\
 	&= \bf{v}_H  + i\Im m \langle \bf{v}, p \rangle p
@@ -184,6 +251,8 @@ Sachant que $\ \|p\|=1\ $ et $\ \Re e \langle \bf{v},p\rangle = 0$, il vient :
 Ce qui donne en coordonnées locales sur $\S{n}$ : 
 \[g = \delta_{\mu \nu} dz^\mu d\congu{z}^\nu - \delta_{\mu \beta}z^\mu d\congu{z}^\beta \delta_{\alpha \nu} dz^\alpha \congu{z}^\nu = \big( \delta_{\mu \nu} - z_\nu \congu{z}_\mu \big) dz^\mu d\congu{z}^\nu\]
 \skipl
+
+
 
 
 
