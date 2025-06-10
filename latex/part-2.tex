@@ -67,7 +67,7 @@ Pour le dire rapidement, les vecteurs tangents agissent comme une dérivation en
 	\end{aligned}
 \end{equation}
 \\
-Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\tg[x]{\manu}$, qui sera noté  $\bt_\mu = \frac{\partial}{\partial x^\mu}$. notation qui est justifié en cela que, moralement, $\bt_\mu$ dérive toute fonction test $f\in\conti[k]{\manu}{\R}$ dans le long de la $\mu^{eme}$ coordonnée (locale) de $x$.
+Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\tg[x]{\manu}$, qui sera noté  $\bt_\mu = \frac{\partial}{\partial x^\mu}$. notation qui est justifié en cela que, intuitivement, $\bt_\mu$ dérive toute fonction test $f\in\conti[k]{\manu}{\R}$ dans le long de la $\mu^{eme}$ coordonnée (locale) de $x$.
 \\
 
 \begin{wrapfigure}{r}{0.3\textwidth}
@@ -82,9 +82,9 @@ Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\
 Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et\\ $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa différentielle (ou application tangent ou push forward) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
 \[f_*(\bf{v}) = f_*(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (f_*)_\mu^\nu = \bt_\mu\big( f^\nu \big)\]
 \\
-A partir de  $f_*$ est définie l'image réciproque ou pull back de $f$, qui correspond moralement à la transposée de $f_*$. Formellement elle est définie par dualité :
+A partir de  $f_*$ est définie l'image réciproque ou pull back de $f$, qui correspond intuitivement à la transposée de $f_*$. Formellement elle est définie par dualité :
 \[f^*\ :\ \begin{aligned}
-	\tg{^*\mathpzc{N}}\ &\lr\ \tg{^*\manu} \\ g\quad\ &\lmt\ g\circ f^*
+	\tg{^*\mathpzc{N}}\ &\lr\ \tg{^*\manu} \\ g\quad\ &\lmt\ g\circ f_*
 \end{aligned} \]
 \skipl
 
@@ -100,7 +100,7 @@ Si l'espace projectif complexe à été présenté comme le quotient $\S{n}/\U{1
 C'est-à-dire l'ensemble des classes de ${\C^{n+1}}^* = \C^{n+1} \setminus \{0_{\C^{n+1}}\}$ par la relation d'équivalence :
 \[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
 \\
-Moralement, en isolant la norme des vecteurs, ${\C^{n+1}}^*$ peut être vu comme le produit $\R^{+_*} \times \S{n}$, et de même pour $\C^*$ avec le module :
+intuitivement, en isolant la norme des vecteurs, ${\C^{n+1}}^*$ peut être vu comme le produit $\R^{+_*} \times \S{n}$, et de même pour $\C^*$ avec le module :
 \begin{align*}
 	{\C^{n+1}}^* &\cong \R^{+_*} \times \S{n}  &  \C^* &\cong \R^{+_*} \times \U{1}
 \end{align*}
@@ -546,7 +546,7 @@ La phase dynamique, s'interprète alors comme la déviation du signal par rappor
 \\
 Ce qui redonne la formule :
 \begin{equation}\label{eq:phased_vgeodiff}
-	\phased(\gamma, t_0, t) = \int_{t_0}^t \Im m\big\langle \dot{\gamma}(s) , \gamma(s) \big\rangle ds
+	\phased[\gamma](t_0, t) = \int_{t_0}^t \Im m\big\langle \dot{\gamma}(s) , \gamma(s) \big\rangle ds
 \end{equation}
 \skipl
 

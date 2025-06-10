@@ -103,7 +103,8 @@
 \newcommand{\matr}{\mathpzc{M}_n(\mathbb{R})}
 \newcommand{\mat}[2][]{\mathpzc{M}_{#1}(#2)}
 
-\newcommand{\Id}{I}
+\newcommand{\Id}[1][]{I_{#1}}
+\newcommand{\id}[1][]{id_{#1}}
 
 \newcommand{\sym}[2]{\mathcal{S}_{#1}(#2)}
 \newcommand{\asym}[2]{\mathcal{A}_{#1}(#2)}
@@ -115,6 +116,7 @@
 \newcommand{\Argch}{\text{\normalfont Argch}}       
 \newcommand{\Argsh}{\text{\normalfont Argsh}}
 
+\newcommand{\transp}[1]{{#1}^\top}
 \newcommand{\congu}[1]{\overline{#1}}
 
 \newcommand{\argmin}[1]{\underset{#1}{\text{\normalfont argmin}}}
@@ -172,7 +174,7 @@
 % autre
 \newcommand{\defeq}{:=}
 \renewcommand{\bf}[1]{\boldsymbol{#1}}
-\renewcommand{\AC}{\sim}
+%\renewcommand{\AC}{\sim}
 \newcommand{\para}{\sslash}
 
 % latin
@@ -193,7 +195,7 @@
 \newcommand{\x}{\bf{x}}
 	%phase
 \newcommand{\phaset}{\Phi_{\text{\normalfont tot}}}
-\newcommand{\phased}{\Phi_{\text{\normalfont dyn}}}
+\newcommand{\phased}[1][]{\Phi_{\text{\normalfont dyn}\, #1}}
 \newcommand{\phaseg}{\Phi_{\text{\normalfont geo}}}
 \newcommand{\phasei}{\Phi_{\text{\normalfont inst}}}
 
