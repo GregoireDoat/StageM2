@@ -243,7 +243,7 @@ Cette déviation s'observe expérimentalement, comme le montre la \Cref{fig:calc
 \\
 \begin{figure}[h]
 	\includegraphics[width=0.6\textwidth]{fig/placeholder}
-	\caption[Déviation de la phase dynamique par rapport à la phase totale]{Sur le graphe de gauche, le signal $\x$ est à valeurs dans $\R^2$ et dans celui de droite le calcul des phases dynamique et totale ainsi que de leur différence. %Résultat tiré des simulation de Le Bihan \etal~\cite{le_bihan_modephysiques_2023}
+	\caption[Déviation de la phase dynamique d'un signal bivarié par rapport à sa phase totale]{Sur le graphe de gauche, le signal $\x$ est à valeurs dans $\R^2$. Dans celui de droite, le calcul des phases dynamique et totale,  ainsi que de leur différence, de $\x$ une fois transformé en signal analytique. %Résultat tiré des simulation de Le Bihan \etal~\cite{le_bihan_modephysiques_2023}
 	}
 	\label{fig:calc_diff_phases}
 \end{figure}
@@ -288,9 +288,9 @@ On parle de polarisation elliptique et $s$ s'écrire :
 Les paramètres $a$ et $\chi$ caractérisent respectivement la taille et l'excentricité de l'ellipse, $\theta$ son orientation dans le plan et $\varphi(t)$ précise où se trouve $s$ à l'instant $t$ sur cette ellipse. 
 Le tout est représenté sur la \Cref{fig:ellipse2polar} ci-dessous :
 \begin{figure}[H]
-	\includegraphics[width=0.45\textwidth]{fig/placeholder}
-	%\input{tikz/part-1/ellipse2polar}
-	\caption[Ellipse de polarisation d'un signal bivarié réel]{Ellipse de polarisation du signal $s$ sur laquelle sont représentés ses paramètres $a,\varphi,\theta$ et $\chi$.}
+	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	\input{tikz/part-1/ellipse2polar}
+	\caption[\DONE Ellipse de polarisation d'un signal bivarié réel]{Ellipse de polarisation du signal $s$ sur laquelle sont représentés ses paramètres $a,\varphi,\theta$ et $\chi$.}
 	\label{fig:ellipse2polar}
 \end{figure}
 \skipl \\
@@ -381,9 +381,9 @@ Dans le cas des AM-FM-PM, Le Bihan \etal~ont montré qu'elle se décompose dans 
 
 
 \begin{wrapfigure}{r}{0.4\textwidth}
-	\includegraphics[width=0.9\textwidth]{fig/placeholder}
-	%\input{tikz/part-1/sphere2poincare}
-	\caption{Sphère de Poincaré, \thoughts{REVOIR LES AXES ET ANGLES}}
+	%\includegraphics[width=0.9\textwidth]{fig/placeholder}
+	\input{tikz/part-1/sphere2poincare}
+	\caption[\DONE Projection sur la sphère de Poincaré]{Représentation de $\rho_{\x}$ sur la sphère de Poincaré en fonction des paramètres $\theta$ et $\chi$.}
 	\label{fig:sphere2poincare}
 \end{wrapfigure}
 
@@ -408,11 +408,12 @@ Le fait que ce soit le double des angles qui sont représentés tient naturellem
 Par exemple si $\x$ a pour paramètre de polarisation instantanée $(\theta_0, \chi_0)$, alors par symétrie de l'ellipse, $(\theta_0+\pi, \chi_0)$ est aussi une représentation valide. Autre exemple, si $\chi_0 = \nicefrac{\pi}{4}$, alors la polarisation est circulaire et indépendant de $\theta_0$.
 \\
 Dans les deux cas, la représentation dans la sphère de Poincaré évite ces problèmes puisque, dans le premier cas $(2\theta_0, 2\chi_0)$ et $(2\theta_0+2\pi, 2\chi_0)$ représente le même point, et dans le second, le point associé à $2\chi_0=\nicefrac{\pi}{2}$ (pôle nord) est indépendant du choix de $\theta_0$.
-\\
 
-\begin{figure}[h]
-	\includegraphics[width=0.8\textwidth]{fig/placeholder}
-	\caption{Représentation des paramètres de polarisation instantanée associés à chaque point de la sphère de Poincaré.}
+\begin{figure}[H]
+	%\includegraphics[width=0.8\textwidth]{fig/placeholder}
+	\input{tikz/part-1/carte2polar}
+	\caption[\DONE États de polarisation associés à divers point de la sphère de Poincaré.]{Représentation des paramètres de polarisation instantanée associés à divers points de la sphère de Poincaré. La couleur donne le sens de parcours de l'ellipse lorsque $\varphi$ varie : en rouge dans le sens trigonométrique et en bleu anti-trigonométrique. Dans les cas de polarisation linéaire, l'orientation n'a pas d'importance.}
+	%\\ Dans la colonne de gauche $\theta=\nicefrac{\pi}{4}$ est $\chi$ varie. Idem dans celle de droite avec $\theta=-\nicefrac{\pi}{4}$. En bas, $\chi=0$ et $\theta$ varie.}
 \end{figure}
 
 

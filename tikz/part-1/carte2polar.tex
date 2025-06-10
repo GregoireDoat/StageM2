@@ -1,0 +1,144 @@
+\begin{tikzpicture}[scale=0.85]	
+% axes 'n' shit
+	%\draw[black, opacity=0.3] (-8.5,-7.5) grid (8.5,5.5);
+	\draw[-Stealth] (1.5,1.1) -- (-1.5,-1.1)  node[below right]{$\sigma_1$};
+	\draw[-Stealth] (0,-4.5) -- (0,4.5) node[right]{$\sigma_2$};
+	\draw[-Stealth] (-4.5,0) -- (4.5,0) node[below]{$\sigma_3$};
+	
+	\coordinate (o) at (0,0);
+	\coordinate (i) at (4,0);
+	\coordinate (j) at (0,4);
+	
+	\coordinate (u) at (2.1,2.14);
+	\coordinate (p) at (2.1, -0.5);
+	\coordinate (v) at (3.4,0.5);
+	
+	
+% sphère
+
+	% upttom
+	\draw[thick, fill=red, fill opacity=0.1] (4,0) arc [start angle=0, end angle =180, radius = 4] --  (-4,0) arc [start angle=-180, end angle =0, x radius = 4, y radius = 0.75];
+	
+	%bottom
+	\draw[thick, fill=blue, fill opacity=0.1] (4,0) arc [start angle=0, end angle =-180, radius = 4]  --  (-4,0) arc [start angle=-180, end angle =0, x radius = 4, y radius = 0.75];
+	
+	% vertical line
+	\draw[thick] (0,4) arc [start angle=90, end angle =270, x radius = 1, y radius = 4];
+	
+	% back line
+	\draw[dashed] (4,0) arc [start angle=0, end angle =180, radius = 4, y radius = 0.75];
+	\draw[dashed] (0,4) arc [start angle=90, end angle =-90, x radius = 1, y radius = 4];
+	
+	
+% left boxs
+
+	%frame + axes + ellispe
+	\draw[thick] (-8,4) rectangle (-6,-4);
+	
+	%\draw[thick] (-8,3) -- (-6,3);
+	%\draw[-stealth] (-7.75,4) -- (-6.25,4);
+	%\draw[stealth-] (-7,4.75) -- (-7,3.25);
+	%\draw[color=red, rotate around={45:(-7,4)}] (-6.375,4) arc [start angle=0, end angle =360, radius = 0.625, y radius = 0.625];
+	
+	
+	\draw[thick] (-8,2) -- (-6,2);
+	\draw[-stealth] (-7.75,3) -- (-6.25,3);
+	\draw[stealth-] (-7,3.75) -- (-7,2.25);
+	\draw[color=red, rotate around={45:(-7,3)}] (-6.25,3) arc [start angle=0, end angle =360, radius = 0.75, y radius = 0.3];
+	
+	\draw[thick] (-8,0) -- (-6,0);
+	\draw[-stealth] (-7.75,1) -- (-6.25,1);
+	\draw[stealth-] (-7,1.75) -- (-7,0.25);
+	\draw[thick, color=red, rotate around={45:(-7,1)}] (-6.15,1) arc [start angle=0, end angle =360, radius = 0.85, y radius = 0];
+	
+	\draw[thick] (-8,-2) -- (-6,-2);
+	\draw[-stealth] (-7.75,-1) -- (-6.25,-1);
+	\draw[stealth-] (-7,-0.25) -- (-7,-1.75);
+	\draw[color=blue, rotate around={45:(-7,-1)}] (-6.25,-1) arc [start angle=0, end angle =360, radius = 0.75, y radius = 0.3];
+	
+	
+	\draw[-stealth] (-7.75,-3) -- (-6.25,-3);
+	\draw[stealth-] (-7,-2.25) -- (-7,-3.75);
+	\draw[color=blue, rotate around={45:(-7,-3)}] (-6.375,-3) arc [start angle=0, end angle =360, radius = 0.625, y radius = 0.625];
+	
+	
+% right boxs
+	
+	%frame + axes + ellispe
+	\draw[thick] (8,4) rectangle (6,-4);
+	
+	\draw[thick] (8,2) -- (6,2);
+	\draw[stealth-] (7.75,3) -- (6.25,3);
+	\draw[stealth-] (7,3.75) -- (7,2.25);
+	\draw[color=red, rotate around={-45:(7,3)}] (7.625,3) arc [start angle=0, end angle =360, radius = 0.625, y radius = 0.625];
+	
+	\draw[thick] (8,0) -- (6,0);
+	\draw[stealth-] (7.75,1) -- (6.25,1);
+	\draw[stealth-] (7,1.75) -- (7,0.25);
+	\draw[color=red, rotate around={-45:(7,1)}] (7.75,1) arc [start angle=0, end angle =360, radius = 0.75, y radius = 0.3];
+	
+	\draw[thick] (8,-2) -- (6,-2);
+	\draw[stealth-] (7.75,-1) -- (6.25,-1);
+	\draw[stealth-] (7,-0.25) -- (7,-1.75);
+	\draw[thick, color=blue, rotate around={-45:(7,-1)}] (7.85,-1) arc [start angle=0, end angle =360, radius = 0.85, y radius = 0];
+	
+	\draw[stealth-] (7.75,-3) -- (6.25,-3);
+	\draw[stealth-] (7,-2.25) -- (7,-3.75);
+	\draw[color=blue, rotate around={-45:(7,-3)}] (7.75,-3) arc [start angle=0, end angle =360, radius = 0.75, y radius = 0.3];
+	
+	
+	%\draw[stealth-] (7.75,-4) -- (6.25,-4);
+	%\draw[stealth-] (7,-3.25) -- (7,-4.75);
+	%\draw[color=blue, rotate around={-45:(7,-4)}] (7.625,-4) arc [start angle=0, end angle =360, radius = 0.625, y radius = 0.625];
+	
+	
+	% bottom boxs
+	
+	%frame + axes + ellispe
+	\draw[thick] (-5,-5) rectangle (-1,-7);
+	
+	\draw[-stealth] (-4.75, -6) -- (-3.25,-6);
+	\draw[stealth-] (-4,-5.25) -- (-4,-6.75);
+	\draw[thick, color=red, rotate around={90:(-4,-6)}] (-3.15,-6) arc [start angle=0, end angle =360, radius = 0.85, y radius = 0];
+
+	\draw[thick] (-3,-5) -- (-3,-7);	
+
+	\draw[-stealth] (-2.75, -6) -- (-1.25,-6);
+	\draw[stealth-] (-2,-5.25) -- (-2,-6.75);
+	\draw[thick, color=red, rotate around={45:(-2,-6)}] (-1.15,-6) arc [start angle=0, end angle =360, radius = 0.85, y radius = 0];
+	
+	
+	\draw[thick] (1,-5) rectangle (5,-7);
+	
+	\draw[-stealth] (1.25, -6) -- (2.75,-6);
+	\draw[stealth-] (2,-5.25) -- (2,-6.75);
+	\draw[thick, color=red, rotate around={27.5:(2,-6)}] (2.85,-6) arc [start angle=0, end angle =360, radius = 0.85, y radius = 0];
+	
+	\draw[thick] (3,-5) -- (3,-7);
+	
+	\draw[-stealth] (3.25, -6) -- (4.75,-6);
+	\draw[stealth-] (4,-5.25) -- (4,-6.75);
+	\draw[thick, color=red, rotate around={0:(4,-6)}] (4.85,-6) arc [start angle=0, end angle =360, radius = 0.85, y radius = 0];
+	
+	
+% link sphere -- polar
+	
+	%left
+	\draw[thin, {Circle[]}-Stealth] (-0.85,1.5) -- (-6,3);
+	\draw[thin, {Circle[]}-Stealth] (-0.925,-0.75) -- (-6,1);
+	\draw[thin, {Circle[]}-Stealth] (-0.675,-2.75) -- (-6,-1);
+	\draw[thin, {Circle[]}-Stealth] (0.075,-4) -- (-6,-3);
+	
+	%right
+	\draw[thin, {Circle[]}-Stealth] (-0.075,4) -- (6,3);
+	\draw[thin, {Circle[]}-Stealth] (0.675,2.75) -- (6,1);
+	\draw[thin, {Circle[]}-Stealth] (0.925,0.75) -- (6,-1);
+	\draw[thin, {Circle[]}-Stealth] (0.85,-1.5) -- (6,-3);
+	
+	%bot
+	\draw[thin, {Circle[]}-Stealth] (-4,0) -- (-4,-5);
+	\draw[thin, {Circle[]}-Stealth] (-2.75,-0.5) -- (-2,-5);
+	\draw[thin, {Circle[]}-Stealth] (1.5, -0.625) -- (2,-5);
+	\draw[thin, {Circle[]}-Stealth] (4,0) -- (4,-5);
+
+\end{tikzpicture}
