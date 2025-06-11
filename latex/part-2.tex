@@ -16,14 +16,14 @@
 
 \section{Cadre d'étude}\label{sec:cadre_geodiff}
 
-Pour proprement poser le cadre, il nous faudra trois choses :
+Pour proprement poser le cadre, il nous faudra trois ingrédients :
 \begin{enumerate}
 	
-	\item D'abord faire quelque rappel de géométrie différentielle, ne serait-ce que pour fixer les notations (\Cref{subsec:rappel2geo_diff}), avec comme exemple le cas $\PC{n}$ (\Cref{subsec:PC^n_variet}), qui sera utile plus loin. 
+	\item D'abord, faire quelques rappels de géométrie différentielle, ne serait-ce que pour fixer les notations (\Cref{subsec:rappel2geo_diff}), avec comme exemple le cas $\PC{n}$ (\Cref{subsec:PC^n_variet}), qui sera utile plus loin. 
 	
-	\item Ensuite, seront définies les variétés fibrés principales, avec les outils de bases qui leurs sont associés (\Cref{subsec:def2VFP}), puis $\U{1}\times \PC{n}$ sera écrit comme telle (\Cref{subsec:SUPC_VFP}).
+	\item Ensuite, seront définies les variétés fibrées principales, avec les outils de bases qui leurs sont associés (\Cref{subsec:def2VFP}), puis $\U{1}\times \PC{n}$ sera écrit comme telle (\Cref{subsec:SUPC_VFP}).
 	
-	\item Enfin, il nous faudra définir une connexion sur ces fibrés, connexion qui seront, d'abord, définie de façon générale (\Cref{subsec:def2conn}), puis explicitée et interprétée dans le cas qui nous intéresse (\Cref{subsec:conn2SUPC}).
+	\item Enfin, il nous faudra définir une connexion sur ces fibrés, connexion qui sera, d'abord, définie de façon générale (\Cref{subsec:def2conn}), puis explicitée et interprétée dans le cas qui nous intéresse (\Cref{subsec:conn2SUPC}).
 	
 \end{enumerate}
 
@@ -36,7 +36,7 @@ Pour proprement poser le cadre, il nous faudra trois choses :
 Une variété différentielle se définie comme suit :
 \begin{definition}[Variété différentielle] \label{defvarietoche}
 	une variété différentielle de classe $C^k$ de dimension $n$ est un espace topologique
-	$\manu$ munie d'un \emph{atlas} $\big\{ (\phi_i, U_i) \big\}_{i\in I}$, c'est-à-dire un ensemble finie de pair d'ouvert $U_i\subset \manu$ et d'application $\phi_i :U_i\ \lr\ \R^n$ telle que :
+	$\manu$ munie d'un \emph{atlas} $\big\{ (\phi_i, U_i) \big\}_{i\in I}$, c'est-à-dire un ensemble finie de paires d'ouverts $U_i\subset \manu$ et d'applications $\phi_i :U_i\ \lr\ \R^n$ telle que :
 	\begin{itemize}
 		
 		\item les $U_i$ forme un recouvrement de la variété :\qquad $\bigcup_{i\in I} U_i = \manu$
@@ -51,14 +51,14 @@ Une variété différentielle se définie comme suit :
 \end{definition}
 
 \begin{figure}[h]
-	\includegraphics[width=0.55\textwidth]{fig/placeholder}
-	%\input{tikz/part-2/carte2varietoche}
+	%\includegraphics[width=0.55\textwidth]{fig/placeholder}
+	\input{tikz/part-2/carte2varietoche}
 	\caption[\DONE La première figure de tout bon livre de géométrie différentielle]{La première figure de tout bon livre de géométrie différentielle : représentation de deux cartes avec l'application de changement de coordonnées. }
 \end{figure}
 
 Ensuite, les \emph{espaces tangents} de $\manu$  et son fibré tangent seront respectivement notés :
 \begin{align}
-	\forall x\in\manu,\ &\tg[x]{\manu}  &  \tg{\manu} &= \bigsqcup_{x\in\manu}\tg[x]{\manu}
+	\qquad\qquad\qquad \forall x\in\manu,\ &\tg[x]{\manu}  & &\text{et}  &  \tg{\manu} &= \bigsqcup_{x\in\manu}\tg[x]{\manu} \qquad\qquad\qquad
 \end{align} 
 Pour le dire rapidement, les vecteurs tangents agissent comme une dérivation en cela que, pour une chemin $\gamma : \R\lr\manu$, sa différentielle au point $x=\gamma(0)$ est définie par l'application :
 \begin{equation} \label{eq:def2vec_tg}
@@ -80,10 +80,10 @@ Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\
 	\caption{Diagramme de passage de $f$ à $f_*$ et $f^*$.}
 	\label{fig:diagc_pullb/pushf}
 \end{wrapfigure}
-Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et\\ $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa différentielle (ou application tangent ou push forward) au point $x$ est l'application linéaire qui, en coordonnée local s'écrit :
+Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et\\ $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa \emph{différentielle} (ou \emph{application tangent} ou \emph{push forward}) au point $x$ est l'application linéaire qui, avec les conventions de sommation d'Einstein, s'écrit en coordonnée local :
 \[f_*(\bf{v}) = f_*(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (f_*)_\mu^\nu = \bt_\mu\big( f^\nu \big)\]
 \\
-A partir de  $f_*$ est définie l'image réciproque ou pull back de $f$, qui correspond intuitivement à la transposée de $f_*$. Formellement elle est définie par dualité :
+A partir de  $f_*$ est définie l'\emph{image réciproque} ou \emph{pull back} de $f$, qui correspond intuitivement à la transposée de $f_*$. Formellement elle est définie par dualité :
 \[f^*\ :\ \begin{aligned}
 	\tg{^*\mathpzc{N}}\ &\lr\ \tg{^*\manu} \\ g\quad\ &\lmt\ g\circ f_*
 \end{aligned} \]
@@ -101,12 +101,12 @@ Si l'espace projectif complexe à été présenté comme le quotient $\S{n}/\U{1
 C'est-à-dire l'ensemble des classes de ${\C^{n+1}}^* = \C^{n+1} \setminus \{0_{\C^{n+1}}\}$ par la relation d'équivalence :
 \[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
 \\
-intuitivement, en isolant la norme des vecteurs, ${\C^{n+1}}^*$ peut être vu comme le produit $\R^{+_*} \times \S{n}$, et de même pour $\C^*$ avec le module :
+En isolant la norme des vecteurs, ${\C^{n+1}}^*$ peut être vu comme le produit $\R^{+_*} \times \S{n}$, et de même pour $\C^*$ avec le module :
 \begin{align*}
 	{\C^{n+1}}^* &\cong \R^{+_*} \times \S{n}  &  \C^* &\cong \R^{+_*} \times \U{1}
 \end{align*}
 \\
-Ainsi, le quotient par $\C^*$ revient à regarder les vecteurs de ${\C^{n+1}}^*$ modulo leur norme, puis modulo l'action de $\U{1}$. Or, ignorer la norme des vecteurs est équivalent à ne regarder que les vecteurs normées, donc les vecteurs de $\S{n}$. De façon informelle, on pourrait alors écrire\footnote{\itshape
+Ainsi, le quotient par $\C^*$ revient à regarder les vecteurs de ${\C^{n+1}}^*$ modulo leur norme, puis modulo l'action de $\U{1}$. Or, ignorer la norme des vecteurs est équivalent à ne regarder que les vecteurs normés, donc appartenant à $\S{n}$. De façon informelle, on pourrait alors écrire\footnote{\itshape
 	Ce qui s'écrit plus justement avec le troisième théorème d'isomorphisme : \[{\C^{n+1}}^*/\C^* \cong ({\C^{n+1}}^* / \R^{+_*})/(\C^* / \R^{+_*}) \cong \S{n}/\U{1} = \PC{n}\]
 } :
 \begin{align*}
@@ -131,7 +131,8 @@ La classe de $\PC{n}$ de représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*
 Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Les $\phi_i \circ {\phi_j}^{-1}$ étant holomorphe, $\PC{n}$ est plus précisément une variété complexe de dimension complexe $n$ et il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
 \[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{ où }\quad [z] = w\]
 \\
-En annexe \ref{ann:VDC} se trouve plus de détail sur les variétés différentielles complexes. Pour aller à l'essentiel, même si la notation prête à confusion, il faut considérer les coordonnées $w^\mu$ et $\congu{w}^\mu$ comme complètement décorréler. Par exemple, :
+En annexe \ref{ann:VDC} se trouve plus de détail sur les variétés différentielles complexes. Pour aller à l'essentiel, même si la notation prête à confusion, il faut considérer les coordonnées $w^\mu$ et $\congu{w}^\mu$ comme complètement indépendantes.
+Par exemple, :
 \begin{align*}
 	\bt_\mu(w^\mu) &= \frac{\partial}{\partial w^\mu} w^\mu = 1  &  
 	\bt_{\congu{\mu}}(w^\mu) = \frac{\partial}{\partial \congu{w}^\mu} w^\mu &= 0 
@@ -176,8 +177,8 @@ Enfin, et ce sera important pour la suite, $g$ induit sur $\PC{n}$ une forme sym
 Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemblent localement à des espaces produits. 
 Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $S^{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, une tranche du ruban est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
 \begin{figure}[h]
-	%\input{tikz/part-2/ruban2mobius}
-	\includegraphics[width=0.55\textwidth]{fig/placeholder}
+	%\includegraphics[width=0.55\textwidth]{fig/placeholder}
+	\input{tikz/part-2/ruban2mobius}
 	\caption[\DONE Ruban de Möbius comme variété fibrée]{Représentation du ruban de Möbius en tant que fibré. Les notations sont reprises de la \cref{def:VFP}.}
 	\label{fig:ruban2modius}
 \end{figure}
@@ -228,20 +229,21 @@ Il existe toutes sortes de variétés fibrées dès lors qu'elles sont munies de
 L'ensemble $\big\{(U_i\times G, {h_i}^{-1})\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Expliciter les changements de cartes dans $P$, ce fait comme suit.
 \\
 D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur les \Cref{fig:section_local,fig:section_cano} ci-dessous. Formellement, une section locale au dessus  de $U_i \subset B$ est une application $\sigma : U_i \lr P$ vérifiant :
-\[\pi\circ \sigma = id_{{\displaystyle |}U_i}\]
+\[\pi\circ \sigma = \id{{\displaystyle |}U_i}\]
+
 \begin{figure}[H]
 	\begin{floatrow}
 		\ffigbox{\caption[\DONE Représentation d'une section local]
 			{Représentation d'une section local $\sigma$ au dessus de $U_i\subset B$ de dimension 2. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
 			\label{fig:section_local}}{
-			\includegraphics[width=0.45\textwidth]{fig/placeholder}}
-			%\input{tikz/part-2/section_locale}}
-		
-		\ffigbox{ \caption[Représentation de la section canonique]
-			{Représentation de la section canonique définie par rapport à $G$ avec une seconde section  $\sigma(x) = \sigma_i(x)\cdot g(x)$. Cette fois $B$ est une variété de dimension 1. % Sont également représentés leur espaces tangents horizontaux respectifs avec la transformation permettant de passer l'un à l'autre.
-			}
+			%\includegraphics[width=0.45\textwidth]{fig/placeholder}}
+			\input{tikz/part-2/section_locale}}
+			
+		\ffigbox{\caption[\DONE Représentation de la section canonique]
+			{Représentation de deux sections canoniques $\sigma_{i,j}=h_{i,j}(e, \cdot)$ au dessus de deux cartes $U_i$ et $U_j$ avec la fonction de transition $\varphi_{ij}$ (\Cref{def:fonc2transi2VFP}). Est également représentée une section $\sigma$ quelconque avec les translations $g_{i,j}$ telles que $\sigma(x) = \sigma_i(x)\cdot g_i(x) = \sigma_j(x)\cdot g_j(x)$.}
 			\label{fig:section_cano}}{
-			\includegraphics[width=0.45\textwidth]{fig/placeholder}}
+			%\includegraphics[width=0.45\textwidth]{fig/placeholder}}
+			\input{tikz/part-2/sections_cano}}
 	\end{floatrow}
 \end{figure}
 \noindent
@@ -259,7 +261,7 @@ De la transitivité de $G$, découle le fait que toutes les sections locales $\s
 Son caractère libre, lui assure l'unicité d'un choix canonique de section $\sigma_i$ sur $U_i$. Elle est donnée par :
 \[{h_i}(x,e) = \sigma_i(x)\]
 Cela mène à la définition :
-\begin{definition}[Fonctions de transitions]
+\begin{definition}[Fonctions de transitions] \label{def:fonc2transi2VFP}
 	L'intersection de deux cartes est noté $U_{ij} = U_i\cap U_j$ et le passage d'une section locale canonique est donné par :
 	\[\forall x\in U_{ij},\qquad \sigma_j(x) = \sigma_i(x) \cdot t\big(\sigma_i(x), \sigma_j(x)\big)\]
 	L'élément de $G$, $t(\sigma_i, \sigma_j)$, est alors appelé \emph{fonction de transition} et sera noté $\varphi_{ij}$. Elle fait effectivement la transition entre deux cartes dans le sens où :
@@ -503,7 +505,7 @@ C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ associée e
 D'autre part, le relèvement horizontal $\Tilde{\gamma}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre contexte, cela signifie que $\Tilde{\gamma}$ n'a pas de variation dans la direction de $\U{1}$, donc son état de polarisation (composante sur $\PC{n}$) varie mais pas ses ``fréquences''.
 \\
 Ainsi, le relèvement horizontale $\Tilde{\gamma}$ d'un signal $\gamma$ s'interprète comme une version de ce dernier dénuée de toute fréquence instantanée.
-L'action $\alpha$ permettant de passer de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\ie~$(t) = e^{i\alpha(t)} \Tilde{\gamma}(t)$) peut alors être comprise comme l'ajout d'une fréquence instantanée (voir \cref{fig:freq_inst_geodiff,fig:horiz_lift_2var} ci-dessous)	
+L'action $\alpha$ permettant de passer de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\ie~$(t) = e^{i\alpha(t)} \Tilde{\gamma}(t)$) peut alors être comprise comme l'ajout d'une fréquence instantanée (voir \cref{fig:freq_inst-Vgeodiff,fig:horiz_lift-2var} ci-dessous)	
 \\
 
 \begin{remarque}
@@ -523,13 +525,14 @@ L'action $\alpha$ permettant de passer de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\i
 	\begin{floatrow}		
 		\ffigbox{ \caption[Interprétation géométrique de la fréquence instantanée]
 			{Fréquence instantanée d'un signal $x$ vu comme variation vertical de $x$ par rapport à son relèvement horizontale $\Tilde{x}$ associé. À noter que $\Tilde{x}$ ne dépend pas des cartes mais dépend de la trajectoir $\rho_x$ de $x$ sur $\PC{n}$.}
-			\label{fig:freq_inst_geodiff}}
+			\label{fig:freq_inst-Vgeodiff}}
 			{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
+			%{\input{tikz/part-2/freq_inst-Vgeodiff}}
 			
-		\ffigbox{ \caption[Exemple relèvement horizontale]
-			{Exemple du relèvement horizontale d'une signal bivarié ?}
-			\label{fig:horiz_lift_2var}}
-		{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
+		%\ffigbox{ \caption[Exemple relèvement horizontale]
+		%	{Exemple du relèvement horizontale d'une signal bivarié ?}
+		%	\label{fig:horiz_lift-2var}}
+		%{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
 	\end{floatrow}
 \end{figure}
 
