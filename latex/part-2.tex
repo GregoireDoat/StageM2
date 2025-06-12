@@ -1,18 +1,14 @@
 
-\thoughts{note pour intro :}
+Dans cette seconde partie, l'objectif est de décrire la phase géométrique dans son environnement naturel, les variétés fibrées principales. Cela se fera en deux temps.
+\\
+D'abord, $S^{2n-1}$ sera proprement décrite comme une variété fibrée. Ce faisant, les outils mise en jeu seront exposés avec détail, dans le but de simplifier la généralisation des résultats au cas non commutatif. Lequel sera abordé à la fin de ce mémoire.
+\\ \\
+Ensuite, des résultats sur la phase géométrique, déjà bien connus dans des cadres spécifiques\footnote{\itshape
+	Généralement des systèmes quantiques soumis à l'équation de Schrödinger.} 
+\cite{berry_quantal_1997, bohm_geometric_2003, mukunda_quantum_1993, chruscinski_geometric_2004} seront redémontrés dans un cadre plus général : celui de chemins quelconques de $S^{2n-1}$. Cela permettra de donner une nouvelle interprétation des outils géométrique en terme de signal.
+\\
 
-\begin{itemize}
-	
-	\item $S^{2n-1}$ est semblable au produit $\U{1}\times \PC{n-1}$ mais que de façon local. C'est un exemple de variété fibré et de ce formalisme donc on aura besoin
-	
-	\item Aussi, par souci de comodité, on se placera dans $\C^{n+1}$ et l'on notera la sphère unité de ce dernier :
-	\[\S{n} \defeq S^{2n+1}\]
-	
-	\item Tout le formalisme nécessaire sera exposé dans la \cref{sec:cadre_geodiff}, avec plus de détail technique en annexe et dans la \cref{sec:phases_dans_VFP} seront décrites les différentes phases d'un point de vue géométrique.
-	
-\end{itemize}
-
-
+Enfin, par souci de comidité, on se placera dans $\C^{n+1}$ et l'on notera la sphère unité de se dernier $\ \S{n} \defeq S^{2n+1}$.
 
 \section{Cadre d'étude}\label{sec:cadre_geodiff}
 
@@ -41,26 +37,26 @@ Une variété différentielle se définie comme suit :
 		
 		\item les $U_i$ forme un recouvrement de la variété :\qquad $\bigcup_{i\in I} U_i = \manu$
 		
-		\item les $\phi_i$ sont des homéomorphismes sur leur image $\phi_i(U_i)\subset\R^n$.
+		\item les $\phi_i$ sont des homéomorphismes sur leurs images respectives $\phi_i(U_i)\subset\R^n$.
 		
 		\item si l'intersection $U_i \cap U_j$ est non vide, alors ${\phi_j \circ {\phi_i}^{-1}}_{| {\phi_i}(U_i\cap U_j)}$ est un $C^k$ difféomorphisme sur son image.
 		
 	\end{itemize}
-	A travers $\phi_i$, à tout point $x\in U_i$ sont associées des \emph{coordonnées locales} $(x^\mu)_{1\leq \mu\leq n}$, c'est-à-dire les coefficient de $\phi_i(x)$ dans une base $(e_\mu)_{1\leq \mu\leq n}$ de $\R^n$. Ces coordonnées sont dites locales car dépendantes du choix de la pair $(U_i,\phi_i)$ et la composée ${\phi_j \circ {\phi_i}^{-1}}_{| {\phi_i}(U_i\cap U_j)}$ est vue comme un \emph{changement de coordonnées}.\\
-	Dans toutes la suite, toutes les objets propre au cartes seront indexes via l'alphabet classique ($i,j,k$) et le indices associées au coordonnées locales par des lettres grecs ($\mu,\nu,\alpha$).
+	A travers $\phi_i$, à tout point $x\in U_i$ sont associées des \emph{coordonnées locales} $(x^\mu)_{1\leq \mu\leq n}$, c'est-à-dire les coefficient de $\phi_i(x)$ dans une base $(e_\mu)_{1\leq \mu\leq n}$ de $\R^n$. Ces coordonnées sont dites locales car dépendantes du choix de la paire $(U_i,\phi_i)$ et la composée ${\phi_j \circ {\phi_i}^{-1}}_{| {\phi_i}(U_i\cap U_j)}$ est vue comme un \emph{changement de coordonnées}.\\
+	Dans toute la suite, toutes les objets propre au cartes seront indexés via l'alphabet latin ($i,j,k$) et les indices associés aux coordonnées locales par des lettres grecs ($\mu,\nu,\alpha$).
 \end{definition}
 
 \begin{figure}[h]
 	%\includegraphics[width=0.55\textwidth]{fig/placeholder}
 	\input{tikz/part-2/carte2varietoche}
-	\caption[\DONE La première figure de tout bon livre de géométrie différentielle]{La première figure de tout bon livre de géométrie différentielle : représentation de deux cartes avec l'application de changement de coordonnées. }
+	\caption[\DONE La première figure de tout bon livre de géométrie différentielle]{La première figure de tout bon livre de géométrie différentielle : représentation de deux cartes avec l'application de changement de coordonnées. On y voit qu'à un point $x$ peut être associé différentes coordonnées locales et que $\phi_j \circ {\phi_i}^{-1}$ permet de passer d'un repère à l'autre, \ie d'un système de coordonnées à l'autre.}
 \end{figure}
 
 Ensuite, les \emph{espaces tangents} de $\manu$  et son fibré tangent seront respectivement notés :
 \begin{align}
 	\qquad\qquad\qquad \forall x\in\manu,\ &\tg[x]{\manu}  & &\text{et}  &  \tg{\manu} &= \bigsqcup_{x\in\manu}\tg[x]{\manu} \qquad\qquad\qquad
 \end{align} 
-Pour le dire rapidement, les vecteurs tangents agissent comme une dérivation en cela que, pour une chemin $\gamma : \R\lr\manu$, sa différentielle au point $x=\gamma(0)$ est définie par l'application :
+Pour le dire rapidement, les vecteurs tangents agissent comme une dérivation en cela que, pour une chemin $\gamma : \R\lr\manu$, la différentielle au point $x=\gamma(0)$ est définie par l'application :
 \begin{equation} \label{eq:def2vec_tg}
 	\dot{\gamma}_{x}\  :\ \begin{aligned}
 		\conti[1]{\manu}{\R}\ &\lr\qquad \R \\ 
@@ -68,7 +64,7 @@ Pour le dire rapidement, les vecteurs tangents agissent comme une dérivation en
 	\end{aligned}
 \end{equation}
 \\
-Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\tg[x]{\manu}$, qui sera noté  $\bt_\mu = \frac{\partial}{\partial x^\mu}$. notation qui est justifié en cela que, intuitivement, $\bt_\mu$ dérive toute fonction test $f\in\conti[k]{\manu}{\R}$ dans le long de la $\mu^{eme}$ coordonnée (locale) de $x$.
+Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\tg[x]{\manu}$, qui sera noté  $\bt_\mu = \frac{\partial}{\partial x^\mu}$. notation qui est justifiée en cela que, intuitivement, $\bt_\mu$ dérive toute fonction test $f\in\conti[k]{\manu}{\R}$ dans le long de la $\mu^{eme}$ coordonnée (locale) de $x$.
 \\
 
 \begin{wrapfigure}{r}{0.3\textwidth}
@@ -80,10 +76,10 @@ Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\
 	\caption{Diagramme de passage de $f$ à $f_*$ et $f^*$.}
 	\label{fig:diagc_pullb/pushf}
 \end{wrapfigure}
-Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et\\ $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa \emph{différentielle} (ou \emph{application tangent} ou \emph{push forward}) au point $x$ est l'application linéaire qui, avec les conventions de sommation d'Einstein, s'écrit en coordonnée local :
+Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et\\ $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa \emph{différentielle} (ou \emph{application tangente} ou \emph{push forward}) au point $x$ est l'application linéaire qui, avec les conventions de sommation d'Einstein, s'écrit en coordonnées locales :
 \[f_*(\bf{v}) = f_*(v^\mu \bt_\mu) = \bt_\mu\big( f^\nu \big)v^\mu \Tilde{\bt}_\nu\qquad \text{ ou encore }\qquad  (f_*)_\mu^\nu = \bt_\mu\big( f^\nu \big)\]
 \\
-A partir de  $f_*$ est définie l'\emph{image réciproque} ou \emph{pull back} de $f$, qui correspond intuitivement à la transposée de $f_*$. Formellement elle est définie par dualité :
+A partir de  $f_*$ est définie l'\emph{image réciproque} ou \emph{pull back} de $f$, qui correspond intuitivement à la transposée de $f_*$(dans ce cas, $\tg{^*\manu}$ est identifié à $\tg{\manu}$). Formellement elle est définie par dualité :
 \[f^*\ :\ \begin{aligned}
 	\tg{^*\mathpzc{N}}\ &\lr\ \tg{^*\manu} \\ g\quad\ &\lmt\ g\circ f_*
 \end{aligned} \]
@@ -95,9 +91,9 @@ A partir de  $f_*$ est définie l'\emph{image réciproque} ou \emph{pull back} d
 
 \subsubsection{$\bf{\PC{n}}$, une variété complexe} \label{subsec:PC^n_variet}
 
-
 Si l'espace projectif complexe à été présenté comme le quotient $\S{n}/\U{1}$, il peut aussi être vu comme :
 \[\PC{n} \cong {\C^{n+1}}^*/\C^*\]
+\\
 C'est-à-dire l'ensemble des classes de ${\C^{n+1}}^* = \C^{n+1} \setminus \{0_{\C^{n+1}}\}$ par la relation d'équivalence :
 \[x \sim y\ \Llr\ \exists \lambda\in\C^*\ |\ x=\lambda y\]
 \\
@@ -116,7 +112,7 @@ Ainsi, le quotient par $\C^*$ revient à regarder les vecteurs de ${\C^{n+1}}^*$
 \end{align*}
 \skipl
 
-L'intérêt de cette écriture et que $\C^{n+1}$ est un espace vectoriel, ce qui permet de décrire $\PC{n}$ en terme de carte, ce qui se fait comme suit.
+L'intérêt de cette écriture et que $\C^{n+1}$ est un espace vectoriel, ce qui permet de décrire $\PC{n}$ en terme de carte \cite[lemme 2.17, p. 64]{lafontaine_introduction_2015}, \cite[chap. 2]{ballmann_lectures_2006}, ce qui se fait comme suit.
 La classe de $\PC{n}$ de représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*$ est noté $[z]$ et on pose, $\forall i\in\llbracket0,n\rrbracket$ :
 \begin{align}
 	U_i &= \Big\{[z]\in\PC{n}\ \big|\ z\in \C^{n+1},\ z^i\neq 0\Big\}  &  \phi_i\  :\quad &\begin{aligned}
@@ -124,14 +120,14 @@ La classe de $\PC{n}$ de représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*
 	\end{aligned}
 \end{align}
 \begin{remarque}
-	Si l'ensemble d'arrivé $\phi_i(U_i)$ est équivalent à un ouvert de $\C^{n}$ (l'une des composantes est constante), il est plus commode de travailler dans $\C^{n+1}$ puisque cela évite de devoir enlever et rajouter des coefficient dans les formules de changement de carte :
+	Si l'ensemble d'arrivée $\phi_i(U_i)$ est équivalent à un ouvert de $\C^{n}$ (l'une des composantes est constante), il est plus commode de travailler dans $\C^{n+1}$ puisque cela évite de devoir enlever et rajouter des coefficients dans les formules de changement de cartes :
 	\[ \forall z\in\C^{n+1}\ |\ z^{i,j}\neq 0\quad (\ie~[z]\in U_i\cap U_j) ,\qquad \phi_i \circ {\phi_j}^{-1}(z) = \frac{z^j}{z^i}z\]
 \end{remarque}
 \skipl
-Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Les $\phi_i \circ {\phi_j}^{-1}$ étant holomorphe, $\PC{n}$ est plus précisément une variété complexe de dimension complexe $n$ et il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
+Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Les $\phi_i \circ {\phi_j}^{-1}$ étant holomorphes, $\PC{n}$ est plus précisément une variété complexe de dimension complexe $n$ et il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
 \[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{ où }\quad [z] = w\]
 \\
-En annexe \ref{ann:VDC} se trouve plus de détail sur les variétés différentielles complexes. Pour aller à l'essentiel, même si la notation prête à confusion, il faut considérer les coordonnées $w^\mu$ et $\congu{w}^\mu$ comme complètement indépendantes.
+En annexe \ref{ann:VDC} se trouvent plus de détails sur les variétés différentielles complexes. Pour aller à l'essentiel, même si la notation prête à confusion, il faut considérer les coordonnées $w^\mu$ et $\congu{w}^\mu$ comme complètement indépendantes.
 Par exemple, :
 \begin{align*}
 	\bt_\mu(w^\mu) &= \frac{\partial}{\partial w^\mu} w^\mu = 1  &  
@@ -140,18 +136,18 @@ Par exemple, :
 	\bt_\mu(\congu{w}^\mu) &= \frac{\partial}{\partial w^\mu} \congu{w}^\mu = 0  &  
 	\bt_{\congu{\mu}}(\congu{w}^\mu) = \frac{\partial}{\partial \congu{w}^\mu} \congu{w}^\mu &= 1
 \end{align*}
-Ce qui fait $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$ est bien une base de dimension réelle $\ \dim[\R]\PC{n} = 2n$. Ces ``notations'' (encore une fois \cf~annexe \ref{ann:VDC}) permettent, par exemple, de décrire le fait qu'une soit fonction holomorphe $f: \PC{n}\lr \C$ par la contrainte :
+Ce qui fait que $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$ est bien une base de dimension réelle $\ \dim[\R]\PC{n} = 2n$. Par exemple, avec ces ``notations'' (\cf~annexe \ref{ann:VDC}), le fait qu'une fonction $f: \PC{n}\lr \C$ soit holomorphe s'exprime via l'égalité :
 \[\forall \mu\in\llbracket1,n\rrbracket,\qquad (f_*)_{\congu{\mu}} = \frac{\partial}{\partial \congu{w}^\mu}f = 0\] 
 \\
 Pour ce qui est des espaces tangents, $(\bt_\mu, \bt_{\congu{\mu}})_\mu$ forme une base de $\tg{\PC{n}}$ et $(dw^\mu, d\congu{w}^\mu)_\mu$ une base de $\tg{^* \PC{n}}$.
 \\
-Dans ce contexte, un champ de forme bilinéaire $g$ (tenseur de type (0,2)) à quatre type de composantes :
+Dans ce contexte, un champs de forme bilinéaire $g$ (tenseur de type (0,2)) a quatre types de composantes :
 \begin{align*}
 	g_{\mu \nu} &= g(\bt_{\mu}, \bt_{\nu})  &  g_{\mu \congu{\nu}} &= g(\bt_{\mu}, \bt_{\congu{\nu}}) \\
 	g_{\congu{\mu} \nu} &= g(\bt_{\congu{\mu}}, \bt_{\nu})  &  g_{\congu{\mu} \congu{\nu}} &= g(\bt_{\congu{\mu}}, \bt_{\congu{\nu}})
 \end{align*}
 \\
-L'espace projectif complexe, en particulier, admet un produit hermitien, la \emph{métrique de Fubini-Study}, qui donné par :
+L'espace projectif complexe, en particulier, admet un produit hermitien, la \emph{métrique de Fubini-Study}, qui est donnée par \cite[sec. 8.5]{nakahara_geometry_2003}, \cite[chap. 4]{ballmann_lectures_2006} :
 \begin{equation}
 	\begin{aligned}
 		\forall w\in\PC{n}, \forall \bf{u},\bf{v}\in\tg[w]{\PC{n}},\qquad g_w(\bf{u}, \bf{v}) = g_{\mu\congu{\nu}} u^\mu \congu{v}^\nu 
@@ -159,9 +155,9 @@ L'espace projectif complexe, en particulier, admet un produit hermitien, la \emp
 		&= \frac{1}{1+w^\alpha \congu{w}_\alpha} u^\mu \congu{v}_\mu - \frac{w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} u^\mu \congu{v}^\nu
 	\end{aligned}
 \end{equation}
-À noter que seul les coefficients $g_{\mu \congu{\nu}}$ apparaissent. Cela est du à la symétrie hermitienne de $g$, ce qui impose $\ g_{\mu\nu} = g_{\congu{\mu\nu}} = 0\ $ et $\ g_{\congu{\mu} \nu} = \congu{g_{\mu \congu{\nu}}}$.
+À noter que seul les coefficients $g_{\mu \congu{\nu}}$ apparaissent. Cela est dû à la symétrie hermitienne de $g$, ce qui impose $\ g_{\mu\nu} = g_{\congu{\mu\nu}} = 0\ $ et $\ g_{\congu{\mu} \nu} = \congu{g_{\mu \congu{\nu}}}$.
 \\
-Enfin, et ce sera important pour la suite, $g$ induit sur $\PC{n}$ une forme symplectique -- dite de Kähler -- qui s'interprète comme l'élément d'aire induit par $g$ et s'écrit :
+Enfin, et ce sera important pour la suite, $g$ induit sur $\PC{n}$ une forme symplectique -- dite de Kähler -- qui s'interprète comme l'élément d'aire sur la variété induite par $g$ et qui s'écrit :
 \[\Omega = \Omega_{\mu\congu{\nu}}\, dw^\mu \wedge d\congu{w}^\nu 
 	= ig_{\mu \congu{\nu}}\, dw^\mu \wedge d\congu{w}^\nu\]
 \skipl
@@ -175,7 +171,7 @@ Enfin, et ce sera important pour la suite, $g$ induit sur $\PC{n}$ une forme sym
 \subsubsection{Définition générale}\label{subsec:def2VFP}
 
 Pour le dire simplement, les \emph{variétés fibrés} sont des variétés qui ressemblent localement à des espaces produits. 
-Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $S^{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, une tranche du ruban est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
+Le ruban de Möbius en est un exemple typique : il ne peut pas s'écrire comme le produit d'un cercle avec un segment $S^{1}\times [0,1]$ à cause de la façon dont il est construit. Mais localement, une tranche du ruban est tout à fait comparable (\ie~difféomorphe) à un tel produit (\cf~\cref{fig:ruban2modius}).
 \begin{figure}[h]
 	%\includegraphics[width=0.55\textwidth]{fig/placeholder}
 	\input{tikz/part-2/ruban2mobius}
@@ -184,8 +180,8 @@ Le ruban de Modiüs en est un exemple typique : il ne peut pas s'écrire comme l
 \end{figure}
 \skipl
 
-Il existe toutes sortes de variétés fibrées dès lors qu'elles sont munies de structure remarquable. Celles qui vont nous intéresser sont dites principales\footnote{\itshape
-	Bien que ce ne sera pas précisé, il sera toujours sous-entendu que les différentes variétés et cartes doivent avoir les mêmes niveaux de régularités pour que le tout reste cohérent.} :
+Il existe tout un bestiaire de variétés fibrées en fonction de leurs propriétés. Parmi elles, celles qui vont nous intéresser sont dites principales\footnote{\itshape
+	Même si ce ne sera pas précisé, il sera toujours sous-entendu que les différentes variétés et cartes doivent avoir les mêmes niveaux de régularités pour que le tout reste cohérent.} :
 \\
 \begin{definition}[Variété fibrée principale] \label{def:VFP}
 	Une \emph{variété fibrée principale} (VFP), ou \emph{fibré principal} est constituée de deux variétés différentielles $P$ et $B$ telles que :
@@ -226,26 +222,22 @@ Il existe toutes sortes de variétés fibrées dès lors qu'elles sont munies de
 \skipl 
 
 
-L'ensemble $\big\{(U_i\times G, {h_i}^{-1})\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapter pour tenir compte de la structure fibré de $P$ et de l'action de $G$. Expliciter les changements de cartes dans $P$, ce fait comme suit.
+L'ensemble $\big\{(U_i\times G, {h_i}^{-1})\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapté pour tenir compte de l'aspect fibrée de $P$ et de l'action de $G$. Expliciter les changements de cartes dans $P$, ce fait comme suit.
 \\
 D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur les \Cref{fig:section_local,fig:section_cano} ci-dessous. Formellement, une section locale au dessus  de $U_i \subset B$ est une application $\sigma : U_i \lr P$ vérifiant :
 \[\pi\circ \sigma = \id{{\displaystyle |}U_i}\]
+\\
 
-\begin{figure}[H]
-	\begin{floatrow}
-		\ffigbox{\caption[\DONE Représentation d'une section local]
-			{Représentation d'une section local $\sigma$ au dessus de $U_i\subset B$ de dimension 2. Comme $P$ n'est pas un produit à proprement parler, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
-			\label{fig:section_local}}{
-			%\includegraphics[width=0.45\textwidth]{fig/placeholder}}
-			\input{tikz/part-2/section_locale}}
-			
-		\ffigbox{\caption[\DONE Représentation de la section canonique]
-			{Représentation de deux sections canoniques $\sigma_{i,j}=h_{i,j}(e, \cdot)$ au dessus de deux cartes $U_i$ et $U_j$ avec la fonction de transition $\varphi_{ij}$ (\Cref{def:fonc2transi2VFP}). Est également représentée une section $\sigma$ quelconque avec les translations $g_{i,j}$ telles que $\sigma(x) = \sigma_i(x)\cdot g_i(x) = \sigma_j(x)\cdot g_j(x)$.}
-			\label{fig:section_cano}}{
-			%\includegraphics[width=0.45\textwidth]{fig/placeholder}}
-			\input{tikz/part-2/sections_cano}}
-	\end{floatrow}
+\begin{figure}[h]
+	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	\input{tikz/part-2/section_locale}
+	\caption[\DONE Représentation d'une section local]
+		{Représentation d'une section locale $\sigma$ au dessus de $U_i\subset B$ de dimension 2. 
+		Comme $P$ n'est pas un produit à proprement parlé, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$.}
+	\label{fig:section_local}
 \end{figure}
+\skipl
+
 \noindent
 Ensuite, les hypothèses sur $P(G,B)$ sont telles que $G$ agit transitivement et librement (ou sans point fixe) sur $P$. C'est-à-dire que, sur une même fibre, tout point peut être atteint par n'importe quel autre via l'action de $G$ (transitivité) :
 \begin{align*}
@@ -258,13 +250,22 @@ et que la seule façon de laisser les points invariants par cette même action e
 \\
 De la transitivité de $G$, découle le fait que toutes les sections locales $\sigma$ au dessus de $U_i$ peuvent s'écrire à partir d'une même section $\sigma_i$ via la formule :
 \[\forall x\in B,\qquad \sigma(x) = \sigma_i(x) \cdot t\big(\sigma_i(x), \sigma(x)\big)\]
-Son caractère libre, lui assure l'unicité d'un choix canonique de section $\sigma_i$ sur $U_i$. Elle est donnée par :
+Son caractère libre, lui assure l'unicité d'un choix canonique de section $\sigma_i$ sur $U_i$ : 
 \[{h_i}(x,e) = \sigma_i(x)\]
+\begin{figure}[h]
+	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	\input{tikz/part-2/sections_cano}
+	\caption[\DONE Représentation de la section canonique]
+		{Représentation de deux sections canoniques $\sigma_{i,j}=h_{i,j}(e, \cdot)$ au dessus de deux cartes $U_i$ et $U_j$ avec la fonction de transition $\varphi_{ij}$ (\Cref{def:fonc2transi2VFP}). 
+		Est également représentée une section $\sigma$ quelconque avec les translations $g_{i,j}$ telles que $\sigma(x) = \sigma_i(x)\cdot g_i(x) = \sigma_j(x)\cdot g_j(x)$.}
+	\label{fig:section_cano}
+\end{figure}
+\\
 Cela mène à la définition :
 \begin{definition}[Fonctions de transitions] \label{def:fonc2transi2VFP}
-	L'intersection de deux cartes est noté $U_{ij} = U_i\cap U_j$ et le passage d'une section locale canonique est donné par :
+	À l'intersection entre deux cartes $U_{ij} \defeq U_i\cap U_j$, le passage d'une section locale canonique à une autre se fait via :
 	\[\forall x\in U_{ij},\qquad \sigma_j(x) = \sigma_i(x) \cdot t\big(\sigma_i(x), \sigma_j(x)\big)\]
-	L'élément de $G$, $t(\sigma_i, \sigma_j)$, est alors appelé \emph{fonction de transition} et sera noté $\varphi_{ij}$. Elle fait effectivement la transition entre deux cartes dans le sens où :
+	L'élément de $G$, $t(\sigma_i, \sigma_j)$, qui permet de faire le changement, est alors appelé \emph{fonction de transition} et sera noté $\varphi_{ij}$. Elle fait effectivement la transition entre les cartes $h_i$ et $h_j$ en cela que :
 	\[\forall (g,x)\in G\times U_{ij},\qquad {h_i}^{-1} \circ h_j(g,x) = \big( \varphi_{ij}(x)g, x \big)\]
 \end{definition}
 \skipl
@@ -274,7 +275,7 @@ Cela mène à la définition :
 
 \subsubsection{Le fibré $\bf{\VFP}$}\label{subsec:SUPC_VFP}
 
-Dans notre cas c'est $\S{n}$ qui fait office d'espace totale avec pour base $\PC{n}$ et de groupe structural $\U{1}$.
+Dans ce travail, $\S{n}$ fait office d'espace total avec pour base $\PC{n}$ et pour groupe structural $\U{1}$.
 \\
 Pour obtenir la projection de $\S{n}$ sur $\PC{n}$, il suffit de prendre la restriction de $\pi$ à $\S{n}$. En tenant compte de la normalisation, les coordonnées locales sur $\PC{n}$ se réécrivent, $\forall w\in U_i$ :
 \begin{align*}
@@ -330,11 +331,17 @@ Tout cela permet d'écrire $\S{n}$ comme une variété fibrée principale :
 
 
 
-\subsection{Connexion et relèvements horizontaux}\label{subsec:connexion2VFP}
+\section{Interprétation des phases dynamique et géométrique}
+
+\subsection{Notion de connexion sur une VFP}
+%\subsection{Connexion et relèvements horizontaux}
+\label{subsec:connexion2VFP}
 
 Le cadre étant posé, pour retrouver la notion de fréquence instantanée, il est nécessaire de munir $\VFP$ d'une connexion. Cette dernière est introduite comme suit.
 
-\subsubsection{Définition générale}\label{subsec:def2conn}
+\subsubsection{Notion de connexion sur une VFP}
+%\subsubsection{Définition générale}
+\label{subsec:def2conn}
 
 Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les seconds \emph{horizontaux} et l'on note :
 \[\forall p\in P,\qquad \tg[p]{P} = \vg[p]{P} \oplus \hg[p]{P}\]
@@ -476,7 +483,8 @@ Un tel choix de connexion n'est pas anodin d'un point de vue signal puisque $\co
 
 
 
-\section{\wip Interprétation des phases sur $\bf{\VFP}$} \label{sec:phases_dans_VFP}
+%\section{Interprétation des phases sur $\bf{\VFP}$} \label{sec:phases_dans_VFP}
+\subsubsection{Fréquence instantanée et phase dynamique}
 
 Résumons la situation. Pour étudier le comportement fréquentiel d'un signal multivarié complexe, il est utile de voir l'espace de tel signaux, $\C^{n+1}$, comme le produit :
 \[\C^{n+1} \cong \R^{+_*} \times \S{n} \overset{\text{-ish}}{\cong} \R^{+_*} \times \U{1} \times \PC{n}\]
@@ -485,11 +493,11 @@ Cette égalité n'étant valable que localement, l'établir proprement nécessit
 Dans ce cadre, la VFP $\VFP$ est naturellement -- par sa métrique -- munie d'une connexion qui, par ailleurs, n'est pas sans rappeler à la formule de la fréquence instantanée \eqref{eq:phas_inst_v1} vue en première partie.
 \\
 Reste alors à clairement établir ce lien et comprendre comment émerge la phase géométrique dans ce contexte, chose qui sera fait dans cette partie.
-\\
+\\ \\
 
 
 
-\subsection{Fréquence instantanée et phase dynamique}
+%\subsection{Fréquence instantanée et phase dynamique}
 
 
 Pour comprendre pourquoi le choix de connexion \eqref{eq:conn2sub_riem} est justifié du point de vue signal, on se propose de prendre le problème par l'autre bout : comment définir la notion de fréquence instantanée d'un signal dans le fibré $\VFP$ ?

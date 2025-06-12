@@ -13,12 +13,12 @@
 	\draw (0.1,-3.5) node{$\manu$};
 		  
 	% cartes
-	\draw[fill = blue, fill opacity=0.2] (-1,-1) .. controls (-1.25,-2) and (-0.5,-1.25) .. 
+	\draw[fill = blue, fill opacity=0.25] (-1,-1) .. controls (-1.25,-2) and (-0.5,-1.25) .. 
 		(0,-2) .. controls (0.25,-2.25) and (0.75,-2.25) .. 
 		(1,-2) .. controls (1, -1.5) and (0.25, -0.25) .. cycle;
 	\draw (-0.5, -1.3) node{$U_i$};
 	
-	\draw[fill = violet, fill opacity=0.2] (0.5,-2.5)  .. controls (0.75,-2.75) and (2,-3.25) ..
+	\draw[fill = violet, fill opacity=0.25] (0.5,-2.5)  .. controls (0.75,-2.75) and (2,-3.25) ..
 		(2,-2) .. controls (2,-1.5) and (1,-1) ..
 		(1,-0.5) .. controls (1,-0.25) and (-0.5,0) ..
 		(0,-1) .. controls (0.25, -2.25) and (0,-2) .. cycle;
@@ -28,7 +28,7 @@
 
 	% U_i
 	\draw[black, opacity=0.3, shift={(-6,-3)}, rotate=-15] (-1.5,-1.5) grid (1.5,1.5);
-	\draw[thick, -Stealth, shift={(-6,-3)}, rotate=-15] (-1.75,0) -- (1.75,0) node[above right]{$e_1(x)$} ;
+	\draw[thick, -Stealth, shift={(-6,-3)}, rotate=-15] (-1.75,0) -- (1.75,0) ;
 	\draw[thick, -Stealth, shift={(-6,-3)}, rotate=-15] (0,-1.75) -- (0,1.75) ;
 	
 	\draw[fill = blue, fill opacity=0.1, shift={(-6,-1)}, scale=1.5] (-1,-1) .. controls (-1.25,-2) and (-0.5,-1.25) .. 
@@ -36,7 +36,7 @@
 		(1,-2) .. controls (1, -1.5) and (0.25, -0.25) .. cycle;
 	
 	% U_j
-	\draw[black, opacity=0.3, shift={(6,-1)}, rotate=10] (-1.5,-1.5) grid (1.5,1.5);
+	\draw[black, opacity=0.3, shift={(6,-1)}, rotate=10 ,scale=0.5] (-2.5,-2.5) grid (2.5,2.5);
 	\draw[thick, -Stealth, shift={(6,-1)}, rotate=10] (-1.75,0) -- (1.75,0) ;
 	\draw[thick, -Stealth, shift={(6,-1)}, rotate=10] (0,-1.75) -- (0,1.75) ;
 	
@@ -46,9 +46,11 @@
 		(0,-1) .. controls (0.25, -2.25) and (0,-2) .. cycle;
 		
 	% mapping
-	\draw[-Stealth, rotate around={15:(-5.25,-3.5)}] (-5.25,-3.5) arc [start angle=-160, end angle =-20, x radius = 3.2, y radius = 1]  node[midway, below]{${\phi_i}^{-1}$};
+	\draw[{Circle[]}-Stealth, rotate around={15:(-5.25,-3.5)}] (-5.25,-3.5) node[below left]{$\phi_i(x)$} arc [start angle=-160, end angle =-20, x radius = 3.2, y radius = 1]  node[midway, below]{${\phi_i}^{-1}$};
 	
-	\draw[{Circle[]}-Stealth, rotate around={5:(0.55,-1.8)}] (0.55,-1.8) arc [start angle=160, end angle =20, x radius = 2.7, y radius = 0.7]  node[midway, above]{$\phi_j$};
+	\draw[{Circle[]}-Stealth, rotate around={5:(0.55,-1.8)}] (0.55,-1.8) node[above left]{$x$} arc [start angle=160, end angle =20, x radius = 2.7, y radius = 0.7]  node[midway, above]{$\phi_j$};
+
+	\draw[fill=black] (5.7,-1.4) circle (0.05) node[below]{$\phi_j(x)$};
 	
 
 	

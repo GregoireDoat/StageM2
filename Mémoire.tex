@@ -84,10 +84,10 @@
 
 
 La phase géométrique fait partie de ces concepts qui apparaissent régulièrement en physique, mais qui nécessite beaucoup de contexte pour être mis en évidence.
-Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'un signal multivarié complexe (\ie~à valeurs dans $\C^n$) $\x$ est donné par :
+Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'un signal multivarié complexe (\ie~à valeurs dans $\C^n$) $\x$ est donnée par :
 \[\phaseg(\x, t_0, t) = \arg\big\langle \x(t), \x(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds\]
 Ce qui rend cette phase si intéressante c'est qu'elle est invariante par transformation de jauge, c'est-à-dire invariante par toute transformation du type :
-\[\x(t)\ \leadsto\ \psi'(t) = e^{i\alpha(t)}\x(t) \]
+\[\x(t)\ \leadsto\ \x'(t) = e^{i\alpha(t)}\x(t) \]
 \\
 Elle est également invariante par reparamétrisation et pour ces raisons, c'est une mesure qui est intrinsèquement liée à la trajectoire du signal dans l'espace, à sa géométrie.
 \\
@@ -160,7 +160,7 @@ Notations math :
 %%%% COEUR DU MEMOIRE %%%%
 
 
-\part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
+%\part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
 
 
 
@@ -168,12 +168,19 @@ Notations math :
 
 
 
-\part{\todo Applications et généralisation} \label{part:app&gene} \input{latex/part-3}
+%\part{\todo Applications et généralisation} \label{part:app&gene} \input{latex/part-3}
 
 
 \begin{annexe}
-	\input{latex/part-1_ann}
-	\input{latex/part-2_ann}
+	\phantomsection
+	\addcontentsline{toc}{part}{Annexes}
+	\part*{Annexes}
+	
+	\section{Annexes de la partie I} 
+		\input{latex/part-1_ann}
+	
+	\section{Annexes de la partie II}
+		\input{latex/part-2_ann}
 \end{annexe}
 
 %\part{Notes 'n' thoughts} \input{latex/garb}

@@ -1,17 +1,22 @@
 # TO DO
 
-- Vérifier les calculs 2-var
-    - comparaison numérique
-    - comparaison avec l'écriture quaternionique
-    
-- Une EDP pour le signaux ? (pour lié avec la méca-Q) 2 ouvertures :
-    - Le passage dans C (et mieux le justifier)
-    - Formes des sinaux AM-FM-PM
+- Bargmann
 
+- Faire la partie 3
+    - code des résultats
+    - présentation des résultats
+    - le gros blabla
 
-- PDV géo diff 
-    - Un peu d'algèbre de Lie
-    - Formalisme des fibrés principaux
-    - Lien des 2 définitions de connexions
-    - Bonnet-Gauss
-    - Application au AM-FM-PM
+- Plan pour l'oral
+
+- Fix les pb de la partie 2 
+    - Stokes & géodésiqueq
+
+- Annexes
+    - Retaper l'annexe 1.A
+    - Bloch au propre (vidéo double cover)
+    - VDC ?
+
+- Figure
+    - URGENT : finir les dessins
+    - si le temps : tikzifier les plots

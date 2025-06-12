@@ -285,8 +285,7 @@ En quelques mots, dans le cas le plus simple, un signal bivarié à valeurs \emp
 On parle de polarisation elliptique et $s$ s'écrire :
 \[s(t) = a \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta  &  \cos\theta \end{pmatrix} \begin{pmatrix} \cos\chi \cos\varphi(t) \\ \sin\chi \sin\varphi(t) \end{pmatrix}  \qquad \text{ où }\quad  a\in\R^+,\ \theta \in \left]-\frac{\pi}{2}, \frac{\pi}{2}\right],\ \chi \in \left[-\frac{\pi}{4}, \frac{\pi}{4}\right] \]
 \\
-Les paramètres $a$ et $\chi$ caractérisent respectivement la taille et l'excentricité de l'ellipse, $\theta$ son orientation dans le plan et $\varphi(t)$ précise où se trouve $s$ à l'instant $t$ sur cette ellipse. 
-Le tout est représenté sur la \Cref{fig:ellipse2polar} ci-dessous :
+Les paramètres $a$ et $\chi$ caractérisent la taille respectivement et l'excentricité de l'ellipse, $\theta$ son orientation dans le plan et $\varphi(t)$ précise où se trouve $s$ à l'instant $t$ sur cette ellipse. Le signe de $\chi$ donne également les sens rotations de que $\varphi$ sur l'ellipse (trigonométrique ou anti-trigonométrique), le tout est représenté sur la \Cref{fig:ellipse2polar} ci-dessous :
 \begin{figure}[H]
 	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
 	\input{tikz/part-1/ellipse2polar}
@@ -310,8 +309,8 @@ En autorisant les paramètres de polarisation à varier au cours du temps et apr
 \end{definition}
 \skipl
 
-La transformation en signal à valeurs complexes est nécessaire\footnote{
-	\thoughts{Nous reviendrons sur ce point dans la dernière partie du mémoire (.. si je trouve le temps et des choses à en dire)}}
+Jusqu'à présent, la phase géométrique n'a été étudier que dans le cadre multivarié complexe et pour cette raison, il nécessaire de passer par la transformée en signal analytique (\cf annexe \cref{ann:complement_t-f}). \thoughts{Plus loin, dans la \cref{part:app&gene}, nous reviendrons sur la nécessité de faire ce passe vers les nombres complexes.}
+La transformation du signal à valeurs réelles à valeurs complexes est nécessaire
 pour étudier la phase géométrique car c'est uniquement dans le cadre complexe qu'elle a été étudiée jusqu'à présent. 
 Et, comme pour les signaux AM-FM, les hypothèses sur $a,\varphi,\theta,\chi$ assure que les paramètres soient interprétables suivant la \Cref{fig:ellipse2polar} précédente.
 \\
@@ -342,12 +341,12 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 	\caption[Evolution de la phase géométrique d'un signal AM-FM-PM]{Evolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann. Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2.}
 \end{figure}
 
-\textbf{\textsc{\color{red} FAIT LE LIEN AVEC BERRY, \href{https://royalsocietypublishing.org/doi/10.1098/rspa.1984.0023}{ICI}}}
+\textbf{\textsc{\color{red} FAIRE LE LIEN AVEC BERRY \cite{berry_quantal_1997} ?}}
+\\
 
 Deux remarques sur ces formules. 
 La première est que la phase géométrique ne dépend que des paramètres de polarisations $\theta$ et $\chi$, ce qui reflète son invariance par transformation de jauge.
-La seconde, nettement plus troublante, est que $\varphi$ ne s'interprète ni comme phase totale ni comme phase dynamique. 
-%Plus loin, \thoughts{\cref{subsec:aller_plus_loin}}, nous reviendrons sur laquelle des deux ``doit'' représenter $\varphi$.
+La seconde, nettement plus troublante, est que $\varphi$ ne s'interprète ni comme phase totale ni comme phase dynamique.
 \\
 Pour que ce soit le cas, il faut qu'à l'instant $t$, $\x $ retrouve la même polarisation instantanée qu'à l'instant $t_0$, auquel cas :
 \begin{equation}\label{eq:phases_p-cyc_2var}
@@ -396,7 +395,7 @@ où les $\sigma_i$ s'écrivent :
 \end{align*}
 \skipl
 
-Dans cette décomposition, la composante en $\Id$ est indépendante de $\x$ et peut donc être ignorée (idem pour le facteur $\nicefrac{1}{2}$). Cela ne laisse qu'un vecteur (normé) de dimension 3 dont $2\theta$ et $2\chi$ correspondent aux coordonnées polaires conformément à la \Cref{fig:sphere2poincare} ci-contre.
+Dans cette décomposition, la composante en $\Id$ est indépendante de $\x$ et peut donc être ignorée (idem pour le facteur $\nicefrac{1}{2}$). Cela ne laisse qu'un vecteur (normé) de dimension 3 dont $2\theta$ et $2\chi$ correspondent aux coordonnées sphériques conformément à la \Cref{fig:sphere2poincare} ci-contre.
 \\ 
 \\
 La sphère alors obtenue, plus connue sous le nom de sphère de Poincaré, représente l'ensemble des états de polarisation possibles pour un signal :
@@ -463,22 +462,34 @@ En d'autre termes, il a subi une rotation de $\pi$ mais qui apparaît non plus d
 \\
 Sachant que $S^2$ est une représentation de rotation $\SO(3)$ de $\R^3$, ce lien entre l'évolution de $\x$ est le nombre de rotations de $\rho_{\x}$ sur $S^2$, n'est pas sans rappeler le fait que $\SU(2)$ est connu pour être un double recouvrement de ce dernier.
 \\
+\thoughts{Là je dis des conneries, c'est à corriger \href{https://www.youtube.com/watch?v=Ay482u6b3Xo}{avec ca} !!!!}
+\\
 
 
 
 
-\subsection{\wip Généralisation en plus haute dimension} \label{subsec:aller_plus_loin}
+\subsection{Généralisation en plus haute dimension} \label{subsec:aller_plus_loin}
 
-\thoughts{Pas encore trop au point...}
+En résumé. Pour étudier de phase géométrique d'un point de vue signal, il est utile de passer par des notions de paramètres instantanées. Comme l'a montré l'exemple des signaux AM-FM-PM, décomposer un signal en amplitude, phase, et état polarisation donne un cadre propice à la description et l'interprétation de la phase géométrique.
+\\
 
-Au niveau des ensembles, décomposer un signal multivarié complexe en paramètre d'amplitude, phase et polarization instantanée, revient à décomposer $\C^n$ en un produit de trois ensembles. Pour cela, un vecteur de $\C^n$ est vu comme la donné d'une direction, \ie~un élément de la sphère unité $S^{2n-1}\subset\C^n$, et d'une norme, de sorte que :
+Généraliser cette décomposition en plus haute dimension revient alors à composer $\C^n$ comme un produit de trois ensemble. 
+\\
+D'abord, en isolant l'amplitude, qui n'est pas très utile à notre propos, $\C^n$ s'écrit :
 \[\C^n \cong \R^{+_*} \times S^{2n-1}\]
+avec $S^{2n-1}$ la sphère unité de $\C^n$ de dimension réel $2n-1$.
 \\
-Les éléments de $\R^{+_*}$ s'interprète naturellement comme l'amplitude instantanée du signal et pour faire apparaître sa phase, $S^{2n-1}$ est lui-même décomposé de sorte à faire apparaître $\U{1}$, donnant :
-\[\C^n \cong \R^{+_*} \times \U{1} \times S^{2n-1}/\U{1}\]
-Le quotient restant n'est autre que l'espace projectif complexe de dimension (complexe) $n-1$, noté $\PC{n-1}$. Sa construction sera détaillée dans la \cref{part:phase_geo} suivante.
+Ensuite, la phase ($e^{i\varphi}$ dans \eqref{eq:AM-FM-PM}) est un élément de $\U{1}$, donc pour dissocier la phase et état de polarisation, il faudrait décomposer $S^{2n-1}$ de sorte à le faire apparaître. À première vue, il faudrait écrire :
+\begin{equation}\label{eq:decompo2C^n}
+	\C^n \cong \R^{+_*} \times \U{1} \times \big( S^{2n-1}/\U{1} \big)
+\end{equation}
+\\
+où le quotient qui apparaît n'est autre que l'espace projectif complexe de dimension (complexe) $n-1$ et noté $\PC{n-1}$ (dont la construction sera détaillée dans la \cref{part:phase_geo} suivante).
+\\
+Le problème de cette formule est qu'elle n'est pas juste en l'état. Plus précisément, elle n'est valable que localement. 
+Corrigé cela nécessite d'écrire $S^{2n-1}$, non pas comme un produit de deux ensembles, mais comme un fibré, chose que nous nous attacherons à faire dans la suite de ce mémoire \thoughts{``ce à quoi est dédié la suite de ce mémoire'' serait mieux ?}.
 \\
 
-Pour motiver d'autant plus cette décomposition, la projection $\rho : \x \lr \congu{\x}\, \transp{\x} / \|\x\|^2$, qui s'est avérée fort instructive, peut être vue comme une projection sur l'espace complexe en cela qu'elles sont toutes deux invariantes par transformation de jauge\footnote{\itshape
-	Pour être précis, c'est le premier théorème d'isomorphisme assure $\rho(\C^n) \cong\PC{n-1}$ sont en bijection et de même structure.}.
-En particulier, si $n=2$, $\PC{1}\cong S^{2}$, soit exactement l'espace de représentation des $\rho_{\x}$ dans la section précédente.
+Avant d'y venir et pour motiver d'autant plus la décomposition \eqref{eq:decompo2C^n}, revenons sur le cas $n=2$. Holf a montré, en 1931 \cite{hopf_uber_1931}, que la sphère $S^3$ s'écrit localement (toujours au sens des fibrés) comme le produit $S^1\times S^2$. Le premier étant $\U{1}$ et le second difféomorphe\footnote{\itshape
+	Par le premier théorème d'isomorphisme, la projection $\rho$ est équivalente à la projection canonique de $\C^2$ sur $\PC{1}$, de sorte que $\ \rho(\C^n)\cong S^2\cong \PC{1}$.} au plan projectif complexe $\PC{1}$.
+Ainsi, l'écriture des signaux AM-FM-PM utilise, sans le dire, la ``décomposition'' \eqref{eq:decompo2C^n}, qui n'est alors qu'une généralisation du modèle utilisé plus tôt.

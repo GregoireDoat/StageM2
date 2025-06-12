@@ -43,8 +43,8 @@
 	
 	
 	%axis de l'ellipse
-	\draw[thick, opacity=0.9, rotate = 40] (-4,0) -- (o) node[midway, below, rotate=40]{$a\cos\chi$} -- (4,0);
-	\draw[thick, opacity=0.9, rotate = 40] (0,-3) -- (o) -- (0,3) node[midway, above, rotate=-50]{$a\sin\chi$};
+	\draw[thick, opacity=0.9, rotate = 40] (-4.25,0) -- (o) node[midway, below, rotate=40]{$a\cos\chi$} -- (4.25,0);
+	\draw[thick, opacity=0.9, rotate = 40] (0,-2.75) -- (o) -- (0,2.75) node[midway, above, rotate=-50]{$a\sin\chi$};
 	
 	% paramètres
 		
@@ -54,16 +54,15 @@
 		%chi
 	\draw[opacity=0.8, -stealth, rotate = 40] (-2,0) arc [start angle=0, end angle =37, radius = 2] node[midway, above right]{$\chi$};
 	
-	\draw[opacity=0.8, rotate = 40] (-4,0) -- (0,3);
+	\draw[opacity=0.8, rotate = 40] (-4.25,0) -- (0,2.75);
 		
 		%varphi
-	\draw[color=blue, opacity=0.8, -stealth, rotate = 40] (0.75,0) arc [start angle=0, end angle =60, radius = 0.75] node[midway, above right]{$\varphi$};
+	\draw[color=blue, opacity=0.8, -stealth, rotate = 40] (0.75,0) arc [start angle=0, end angle = 56, radius = 0.75] node[midway, above]{$\quad \varphi(t)$};
 	
-	\draw[color=blue, opacity=0.8, rotate = 40] (o) -- (60:3.18);
+	\draw[-{Circle}, color=blue, rotate = 40, shift={(0.1,-0.24)}] (o) -- (60:3.25) node[above left]{$s(t)$};
 	
-	\fill[blue] (100:3.18) circle (0.05);
 	
 	% ellipse
-	\draw[line width=0.5pt, rotate=40, decoration={width and color change, start color=black, end color=blue}, decorate] (60:3.18) arc [start angle=66.65, end angle =426.65, x radius = 4, y radius = 3];
+	\draw[line width=0.5pt, rotate=40, shift={(0.1,-0.24)}, decoration={width and color change, start color=black, end color=blue}, decorate] (60:3.18) arc [start angle=66.65, end angle =426.65, x radius = 4.25, y radius = 2.75];
 	
 \end{tikzpicture}
