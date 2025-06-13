@@ -22,7 +22,7 @@ C'est en réponse à cela, entre autre, que fut développée l'analyse temps-fr�
 	Soit $x$, est un signal complexe écrit sous forme exponentielle :
 	\begin{align}
 		x\ &:\ \begin{aligned}\R\ &\lr\qquad \C \\
-			t\ &\longmapsto\ a(t)e^{i\phi(t)}
+			t\ &\longmapsto\ a(t)e^{\i \phi(t)}
 		\end{aligned}  &  \text{où }\quad a(t)\in\R^+\quad &\text{et}\quad \phi(t)\in\R
 	\end{align}
 	$a$ est appelé \emph{amplitude instantanée} du signal, la dérivée $\nicefrac{1}{2\pi}\phi'$ sa \emph{fréquence instantanée} et sa \emph{phase instantanée} est définie --- modulo un choix de phase initiale --- par :
@@ -57,7 +57,7 @@ Ces conditions sont liées au théorème de Bedrosian, et plus de détails se tr
 \\
 Sous ces conditions, $x$ peut être vu comme le signal complexe $\SA{x}$ telle que :
 \begin{equation}
-	\forall t\in\R,\qquad \SA{x}(t) = a(t) e^{i\phi(t)}= a(t)\cos\phi(t) + ia(t)\sin\phi(t)
+	\forall t\in\R,\qquad \SA{x}(t) = a(t) e^{\i \phi(t)}= a(t)\cos\phi(t) + ia(t)\sin\phi(t)
 \end{equation}
 \\
 Ce signal $\SA{x}$ est appelé \emph{transformée en signal analytique de} $x$ et a, par construction, les mêmes paramètres instantanées que $x$.
@@ -67,13 +67,13 @@ Là encore, le lecteur est renvoyé vers l'annexe \ref{ann:complement_t-f} pour 
 L'intérêt d'introduire toutes ces notions est que les signaux multivariés --- même complexes --- souffrent du même problème que les signaux réels. 
 En effet, en écrivant un signal $\x$ sous la forme :
 \[\forall t\in\R,\qquad 
-\x(t) = \begin{pmatrix} A_1(t)e^{i\phi_1(t)} \\ A_2(t)e^{i\phi_2(t)} \\ \vdots \\ A_n(t)e^{i\phi_n(t)}
+\x(t) = \begin{pmatrix} A_1(t)e^{\i \phi_1(t)} \\ A_2(t)e^{\i \phi_2(t)} \\ \vdots \\ A_n(t)e^{\i \phi_n(t)}
 \end{pmatrix}\]
 \\
 le fait que $\x$ soit à valeur dans $\C^n$ impose un choix naturel d'amplitude instantanée : sa norme. Pour ce qui est de la phase instantanée, en revanche, n'importe quel choix de $\phi$ convient \apriori. En écrivant :
 \[\forall t\in\R,\qquad 
-\x(t) = \begin{pmatrix} A_1(t)e^{i\phi_1(t)} \\ A_2(t)e^{i\phi_2(t)} \\ \vdots \\ A_n(t)e^{i\phi_n(t)} \end{pmatrix}
-= a(t)e^{i\phi(t)}\begin{pmatrix} a_1(t)e^{i\psi_1(t)} \\ a_2(t)e^{i\psi_2(t)} \\ \vdots \\ a_n(t)e^{i\psi_n(t)} \end{pmatrix}
+\x(t) = \begin{pmatrix} A_1(t)e^{\i \phi_1(t)} \\ A_2(t)e^{\i \phi_2(t)} \\ \vdots \\ A_n(t)e^{\i \phi_n(t)} \end{pmatrix}
+= a(t)e^{\i \phi(t)}\begin{pmatrix} a_1(t)e^{\i \psi_1(t)} \\ a_2(t)e^{\i \psi_2(t)} \\ \vdots \\ a_n(t)e^{\i \psi_n(t)} \end{pmatrix}
 \qquad\text{ avec }\qquad 
 \left\{ \begin{aligned}
 	& a(t) = \| \x(t) \|_2 \\
@@ -94,7 +94,7 @@ il suffit que les $\psi_i$ soient ajustés pour assurer que $\ \phi_i = \phi + \
 
 On se propose ici de définir la phase instantanée comme suit :
 \begin{definition}[Phase dynamique/instantanée] \label{def:phase_d}
-	La \emph{phase instantanée} ou \emph{dynamique} (à l'instant $t$ partant de $t_0$) d'un signal multivarié $\x = a\big(a_ie^{i\phi_i}\big)_{1\leq i\leq n} \in \conti[1]{\R}{\C^n}$, est donnée par la formule :
+	La \emph{phase instantanée} ou \emph{dynamique} (à l'instant $t$ partant de $t_0$) d'un signal multivarié $\x = a\big(a_ie^{\i \phi_i}\big)_{1\leq i\leq n} \in \conti[1]{\R}{\C^n}$, est donnée par la formule :
 	\begin{equation} \label{eq:phase_d}
 		\forall t_0, t\in\R, \quad \phased[\x](t_0,t) \defeq \int_{t_0}^t \frac{\Im m \big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds =\sum_{i=1}^n \int_{t_0}^t a_i(s)^2 \phi_i'(s)ds
 	\end{equation}
@@ -111,12 +111,12 @@ Cette définition est motivée par deux arguments :
 
 Le premier, fortement inspiré par les travaux de Lilly \& Olhede  \cite{lilly_analysis_2012}, consiste à généraliser la condition \eqref{eq:condi_AM-FM} de séparation hautes/basses fréquences sur les signaux AM-FM.
 Pour cela, on commence par faire apparaître une phase $\phi$ --- pour l'instant inconnue --- en écrivant $\x$ sous la forme :
-\[\forall t\in\R,\qquad \x(t) = e^{i\phi(t)} e^{-i\phi(t)} \x(t) \defeq e^{i\phi(t)} \bf{y}(t)\]
+\[\forall t\in\R,\qquad \x(t) = e^{\i \phi(t)} e^{-\i \phi(t)} \x(t) \defeq e^{\i \phi(t)} \bf{y}(t)\]
 \\
 Si $\phi$ est bien choisie, alors $\bf{y}$ ne devrait contenir que les informations associées à l'amplitude et à la polarisation de $\x$. Or, conformément à la condition \eqref{eq:condi_AM-FM}, la phase doit contenir les hautes fréquences du signal et, inversement, les basses fréquences doivent se trouver dans le reste. 
 \\
 La fréquence donnant, pour le dire vite, la vitesse d'ondulation, la contrainte sur $\x$ va être de limiter les variations de  $\bf{y}$. Concrètement, $\phi$ doit être choisie de sorte à minimiser la dérivée $\dot{\bf{y}}$ :
-\[\forall t\in\R,\qquad \phi(t) = \argmin{\theta(t)}{\big\|\dot{\bf{y}}(t)\big\|_2}^2 = \argmin{\theta(t)}{\Big\|e^{-i\theta(t)}\big(\dot{\x}(t) - i\theta'(t) \x(t)\big) \Big\|_2}^2 = \argmin{\theta(t)}{\big\|\dot{\x}(t) - i\theta'(t)\x(t)\big\|_2}^2\]
+\[\forall t\in\R,\qquad \phi(t) = \argmin{\theta(t)}{\big\|\dot{\bf{y}}(t)\big\|_2}^2 = \argmin{\theta(t)}{\Big\|e^{-\i \theta(t)}\big(\dot{\x}(t) - i\theta'(t) \x(t)\big) \Big\|_2}^2 = \argmin{\theta(t)}{\big\|\dot{\x}(t) - i\theta'(t)\x(t)\big\|_2}^2\]
 \\
 La contrainte ne dépendant que de la dérivée $\theta'$, on se ramène à :
 \[\min_{\theta(t)}{\|\dot{\bf{y}}(t)\|_2}^2 = \min_{\theta'(t)}{\big\|\dot{\x}(t) - i\theta'(t) \x(t)\big\|_2}^2\]
@@ -172,7 +172,7 @@ Dans le cas d'un signal $\x=(x_i)_{1\leq i\leq n}$ multivarié, les densités d'
 Le second argument consiste alors à dire que l'égalité des moyennes $\eqref{eq:esp_freq}$ doit rester valable dans le cas multivarié. Cela assure, a minima, que la fréquence instantanée de $\x$, $\nicefrac{1}{2\pi}\phi'$, à pour moyenne $\esp[\densis]{\nu}$.
 \\
 
-En appliquant la formule \eqref{eq:esp_freq} au $\densis_i$, et en notant toujours $\x = a\big(a_ie^{i\phi_i}\big)_{1\leq i\leq n}$, on obtient :
+En appliquant la formule \eqref{eq:esp_freq} au $\densis_i$, et en notant toujours $\x = a\big(a_ie^{\i \phi_i}\big)_{1\leq i\leq n}$, on obtient :
 \begin{align*}
 	\esp[\densis]{\nu} = \int_\R \nu\densis(\nu)d\nu &= \int_\R \nu\sum_{i=1}^n \densis_i(\nu) d\nu \\
 	&= \sum_{i=1}^n\esp[\densis_i]{\nu} \\
@@ -191,7 +191,7 @@ Ce qui mène à poser $\displaystyle \ \sum_{i=1}^n \phi_i'(t){a_i}^2(t)\ $ pour
 
 Formule qui concorde bien avec celle de la phase dynamique une fois explicitée :
 \begin{align*}
-	\Im m\frac{\big\langle \dot{\x}(t) , \x(t) \big\rangle}{\|\x(t)\|^2} &= \Im m\left( \frac{1}{a(t)^2} \sum_{i=1}^n \Big( \big(aa_i\big)'(t) +a(t)a_i(t)i\phi_i'(t)\Big)e^{i\phi_i(t)}\congu{a(t)a_i(t)e^{i\phi_i(t)}} \right) \\
+	\Im m\frac{\big\langle \dot{\x}(t) , \x(t) \big\rangle}{\|\x(t)\|^2} &= \Im m\left( \frac{1}{a(t)^2} \sum_{i=1}^n \Big( \big(aa_i\big)'(t) +a(t)a_i(t)i\phi_i'(t)\Big)e^{\i \phi_i(t)}\congu{a(t)a_i(t)e^{\i \phi_i(t)}} \right) \\
 	&=\frac{1}{a(t)^2}  \Im m\left( \sum_{i=1}^n a(t)a_i(t)\big(aa_i\big)'(t) +ia(t)^2a_i(t)^2\phi_i'(t) \right) \\
 	&= \frac{1}{a(t)^2} \sum_{i=1}^n a(t)^2a_i(t)^2 \phi_i'(t) \\
 	&= \sum_{i=1}^n a_i(t)^2 \phi_i'(t)
@@ -204,7 +204,7 @@ D'où
 
 \subsection{Apparition de la phase géométrique}\label{subsec:intro_phaseg}
 
-Cela étant dit, il existe une autre façon, plus simple, d'obtenir la phase d'un signal. D'abord, dans le cas univarié, la phase instantanée de $x=ae^{i\phi}$ peut être réécrite comme :
+Cela étant dit, il existe une autre façon, plus simple, d'obtenir la phase d'un signal. D'abord, dans le cas univarié, la phase instantanée de $x=ae^{\i \phi}$ peut être réécrite comme :
 \[\phi(t)-\phi(t_0)  = \arg\left( x(t) \congu{x(t_0)} \right)\]
 \\
 Formule qui se généralise en cas multivarié par ce qui sera appelé la \emph{phase totale} du signal :
@@ -216,21 +216,21 @@ D'un point de vu géométrique, il est bien connue que le produit scalaire entre
 \[\langle u,v\rangle_\R = \|u\|^2 \|v\|^2 \cos \angle(v,u)\]
 \\
 Pour le produit hermitien, cet angle ce retrouve dans l'argument, de sorte que si $u$ et $v$ sont complexes :
-\[\langle u,v\rangle_\C = \|u\|^2 \|v\|^2 e^{i \angle(v,u)}\]
+\[\langle u,v\rangle_\C = \|u\|^2 \|v\|^2 e^{\i  \angle(v,u)}\]
 \\
-En ce sens, la phase totale calcule explicitement l'angle entre $\x(t_0)$ et $\x(t)$ et il est montré, dans le cas univarié, qu'elle est égale à la phase dynamique. En effet, pour $\x = ae^{i\phi}$ :
+En ce sens, la phase totale calcule explicitement l'angle entre $\x(t_0)$ et $\x(t)$ et il est montré, dans le cas univarié, qu'elle est égale à la phase dynamique. En effet, pour $\x = ae^{\i \phi}$ :
 \begin{align*}
-	\phased(\x) = \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds &= \Im m \int_{t_0}^t \frac{\big(a'(s) + ia(s)\phi'(s) \big) e^{i\phi(s)} \congu{a(s) e^{i\phi(s)}}}{a^2(s)} ds \\
+	\phased(\x) = \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds &= \Im m \int_{t_0}^t \frac{\big(a'(s) + ia(s)\phi'(s) \big) e^{\i \phi(s)} \congu{a(s) e^{\i \phi(s)}}}{a^2(s)} ds \\
 	&= \int_{t_0}^t \frac{a^2(s)\phi'(s))}{a^2(s)} ds \\
 	&= \phi(t) - \phi(t_0) = \phaset(\x)
 \end{align*}
 \skipl
 
-Dans le cas multivarié, en revanche, c'est une autre histoire. En notant cette fois le signal $\ \x = ae^{i\phased} \big( a_ie^{\psi_i} \big)_{1\leq i\leq n}$, la phase totale se réécrit :
+Dans le cas multivarié, en revanche, c'est une autre histoire. En notant cette fois le signal $\ \x = ae^{\i \phased} \big( a_ie^{\psi_i} \big)_{1\leq i\leq n}$, la phase totale se réécrit :
 \begin{equation}\label{eq:diff_phases_t/d}
 	\begin{aligned}
-		\phaset(\x,t_0, t) &= \arg \left(a(t)a(t_0) e^{i\big(\phased(t) - \phased(t_0)\big)}\sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\psi_i(t)-\psi_i(t_0))} \right) \\
-		&= \phased(t) + \arg \left(\sum_{i=1}^n a_i(t)a_i(t_0)e^{i(\psi_i(t)-\psi_i(t_0))} \right)  \qquad\qquad\qquad\qquad \text{car } \phased(t_0,t_0) = 0
+		\phaset(\x,t_0, t) &= \arg \left(a(t)a(t_0) e^{\i \big(\phased(t) - \phased(t_0)\big)}\sum_{i=1}^n a_i(t)a_i(t_0)e^{\i (\psi_i(t)-\psi_i(t_0))} \right) \\
+		&= \phased(t) + \arg \left(\sum_{i=1}^n a_i(t)a_i(t_0)e^{\i (\psi_i(t)-\psi_i(t_0))} \right)  \qquad\qquad\qquad\qquad \text{car } \phased(t_0,t_0) = 0
 		%\\ &= \phased + \arctan \left( \frac{\sum_i a_i(t)a_i(t_0)\sin\big( \psi_i(t)-\psi_i(t_0)\big)}{\sum_i a_i(t)a_i(t_0)\cos\big( \psi_i(t)-\psi_i(t_0)\big)}  \right)
 	\end{aligned}
 \end{equation}
@@ -250,11 +250,11 @@ Cette déviation s'observe expérimentalement, comme le montre la \Cref{fig:calc
 \\
 
 Comme mentionné en introduction, un résultat bien connu en physique \cite{bohm_geometric_2003,mukunda_quantum_1993,chruscinski_geometric_2004} est que cette troisième phase est invariante par transformation de jauge et par reparamétrisation.
-Dans notre contexte, cela signifie d'une part que si $\x$ et $\Tilde{\x}$ sont deux signaux multivariés complexes tels que $\ \Tilde{\x} = e^{i\alpha}\x$, avec $\alpha$ une \underline{fonction} dérivable du temps, alors :
+Dans notre contexte, cela signifie d'une part que si $\x$ et $\Tilde{\x}$ sont deux signaux multivariés complexes tels que $\ \Tilde{\x} = e^{\i \alpha}\x$, avec $\alpha$ une \underline{fonction} dérivable du temps, alors :
 \begin{align*}
 	\phaseg(\Tilde{\x}) &= \phaset(\Tilde{\x}) - \phased(\Tilde{\x})  = \phaset(\x) - \phased(\x) = \phaseg(\x)\\
 	%&= \arg\big\langle \Tilde{\x}(t), \Tilde{\x}(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{\Tilde{\x}}(s) , \Tilde{\x}(s) \big\rangle}{\|\Tilde{\x}(s)\|^2} ds \\
-	%&= \arg\big\langle e^{i\alpha(t)}\x(t), e^{i\alpha(t_0)}\x(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{e^{i\alpha(s)}\x}(s) , e^{i\alpha(s)}\x(s) \big\rangle}{\|e^{i\alpha(s)}\x(s)\|^2} ds 
+	%&= \arg\big\langle e^{\i \alpha(t)}\x(t), e^{\i \alpha(t_0)}\x(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{e^{\i \alpha(s)}\x}(s) , e^{\i \alpha(s)}\x(s) \big\rangle}{\|e^{\i \alpha(s)}\x(s)\|^2} ds 
 \end{align*}
 Et d'autre part que, pour tout difféomorphisme $\gamma$ de $\R$ tel que :
 \begin{align*}
@@ -302,8 +302,8 @@ En autorisant les paramètres de polarisation à varier au cours du temps et apr
 	\end{align}
 	Auquel cas, $\x$ prend la forme, $\forall t\in\R$ :
 	\begin{equation}\label{eq:AM-FM-PM}
-		\x(t) = a(t)e^{i\varphi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} 
-		= a(t)e^{i\varphi(t)} \begin{pmatrix} \cos\theta(t) \cos\chi(t) + i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - i\cos\theta(t) \sin\chi(t) \end{pmatrix}
+		\x(t) = a(t)e^{\i \varphi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} 
+		= a(t)e^{\i \varphi(t)} \begin{pmatrix} \cos\theta(t) \cos\chi(t) + i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - i\cos\theta(t) \sin\chi(t) \end{pmatrix}
 	\end{equation}
 	où $R_{\theta(t)}$ est la matrice de rotation d'angle $\theta(t)$. Voir \cite[ann. 4.B]{flamant_approche_2018} pour une construction plus détaillée.
 \end{definition}
@@ -372,7 +372,7 @@ Dans l'étude de la phase géométrique, il est standard de s'intéresser à la 
 	\forall t\in\R,\quad \rho_{\x}(t) = \frac{1}{\|\x(t) \|^2} \congu{\x(t) }\, \transp{\x}(t)
 \end{equation}
 \\
-Outre son utilité en traitement du signal, elle présente l'avantage d'être invariante par transformation de de jauge (\ie~ $\rho_{e^{i\alpha}\x} = \rho_{\x}$).
+Outre son utilité en traitement du signal, elle présente l'avantage d'être invariante par transformation de de jauge (\ie~ $\rho_{e^{\i \alpha}\x} = \rho_{\x}$).
 Dans le cas des AM-FM-PM, Le Bihan \etal~ont montré qu'elle se décompose dans la base de Pauli comme :
 \begin{equation} \label{eq:decompo_pauli}
 	\rho_{\x} = \frac{1}{2}\Big( \Id + \sin(2\theta) \cos(2\chi) \sigma_1 + \sin (2\chi) \sigma_2 + \cos(2\theta) \cos(2\chi) \sigma_3 \Big)
@@ -479,7 +479,7 @@ D'abord, en isolant l'amplitude, qui n'est pas très utile à notre propos, $\C^
 \[\C^n \cong \R^{+_*} \times S^{2n-1}\]
 avec $S^{2n-1}$ la sphère unité de $\C^n$ de dimension réel $2n-1$.
 \\
-Ensuite, la phase ($e^{i\varphi}$ dans \eqref{eq:AM-FM-PM}) est un élément de $\U{1}$, donc pour dissocier la phase et état de polarisation, il faudrait décomposer $S^{2n-1}$ de sorte à le faire apparaître. À première vue, il faudrait écrire :
+Ensuite, la phase ($e^{\i \varphi}$ dans \eqref{eq:AM-FM-PM}) est un élément de $\U{1}$, donc pour dissocier la phase et état de polarisation, il faudrait décomposer $S^{2n-1}$ de sorte à le faire apparaître. À première vue, il faudrait écrire :
 \begin{equation}\label{eq:decompo2C^n}
 	\C^n \cong \R^{+_*} \times \U{1} \times \big( S^{2n-1}/\U{1} \big)
 \end{equation}

@@ -75,7 +75,7 @@ Pour généraliser cette écriture, il suffit donc de poser les amplitude et pha
 \[x(t) = a(t) \cos\big( \phi(t) \big)\]
 \\
 Contrairement au cas complexe, ici la pair $(a,\phi)$ n'est pas unique et pour contraindre ce choix, on s'appuie sur la transformée $\SA{x}$. Sachant que, dans le cas $x(t)\in\R$, la transformée de Hilbert est à valeur dans $\R$ (intégrale d'une fonction réelle), on a :
-\[\SA{x}(t) = a(t)e^{i\phi(t)}\quad \Lr\quad \left\{\begin{aligned}x(t) &= \Re e \SA{x} = a(t) \cos\phi(t) \\ \mathcal{H}[x](t) &= \Im m \SA{x} = a(t) \sin\phi(t)
+\[\SA{x}(t) = a(t)e^{\i \phi(t)}\quad \Lr\quad \left\{\begin{aligned}x(t) &= \Re e \SA{x} = a(t) \cos\phi(t) \\ \mathcal{H}[x](t) &= \Im m \SA{x} = a(t) \sin\phi(t)
 \end{aligned}\right.\]
 \\
 D'où la définition :
@@ -189,10 +189,10 @@ Pour revenir sur l'exemple $x_1$ précédent, dans la seconde figure \ref{fig:ex
 
 On note $\mathcal{V} = \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix}$ et on a :
 \begin{align*}
-	\phaset{\x} = \big\langle \x(t), \x(t_0)\big\rangle &= \Big\langle a(t)e^{i\varphi(t)}R_{\theta(t)}\mathcal{V}(t), a(t_0)e^{i\varphi(t_0)}R_{\theta(t_0)}\mathcal{V}(t_0) \Big\rangle \\
-	&= a(t)e^{i\varphi(t)} a(t_0)e^{-i\varphi(t_0)} \Big\langle R_{\theta(t)}\mathcal{V}(t), R_{\theta(t_0)}\mathcal{V}(t_0) \Big\rangle \\
-	%&= a(t_0)a(t)e^{i(\varphi(t_0)-\varphi(t))}\Big\langle \mathcal{V}(t_0), R_{\theta(t_0)}^{-1}R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
-	&= a(t_0)a(t)e^{i(\varphi(t)-\varphi(t_0))}\Big\langle R_{\theta(t)- \theta(t_0)}\mathcal{V}(t), \mathcal{V}(t_0) \Big\rangle
+	\phaset{\x} = \big\langle \x(t), \x(t_0)\big\rangle &= \Big\langle a(t)e^{\i \varphi(t)}R_{\theta(t)}\mathcal{V}(t), a(t_0)e^{\i \varphi(t_0)}R_{\theta(t_0)}\mathcal{V}(t_0) \Big\rangle \\
+	&= a(t)e^{\i \varphi(t)} a(t_0)e^{-\i \varphi(t_0)} \Big\langle R_{\theta(t)}\mathcal{V}(t), R_{\theta(t_0)}\mathcal{V}(t_0) \Big\rangle \\
+	%&= a(t_0)a(t)e^{\i (\varphi(t_0)-\varphi(t))}\Big\langle \mathcal{V}(t_0), R_{\theta(t_0)}^{-1}R_{\theta(t)}\mathcal{V}(t) \Big\rangle \\
+	&= a(t_0)a(t)e^{\i (\varphi(t)-\varphi(t_0))}\Big\langle R_{\theta(t)- \theta(t_0)}\mathcal{V}(t), \mathcal{V}(t_0) \Big\rangle
 \end{align*}
 Pour alléger les notations, on note $\ \Delta y =y(t)-y(t_0)$, $\ y_1=y(t_0)\ $ et $\ y_2=(t)\ $ pour $\ y=\varphi,\theta,\chi$. Le produit hermitien à droite s'écrit alors :
 \begin{align*}
@@ -204,7 +204,7 @@ Pour alléger les notations, on note $\ \Delta y =y(t)-y(t_0)$, $\ y_1=y(t_0)\ $
 \\
 D'où la phase totale :
 \begin{align*}
-	\phaset(\x) = \arg\big\langle \x(t), \x(t_0)\big\rangle &= \arg\left( a(t_0)a(t)e^{i(\varphi(t) - \varphi(t_0))}\Big( \cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin(\chi_1+\chi_2) \Big) \right) \\
+	\phaset(\x) = \arg\big\langle \x(t), \x(t_0)\big\rangle &= \arg\left( a(t_0)a(t)e^{\i (\varphi(t) - \varphi(t_0))}\Big( \cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin(\chi_1+\chi_2) \Big) \right) \\
 	&= \varphi(t) - \varphi(t_0) + \arg\Big( \cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin(\chi_1+\chi_2) \Big)
 \end{align*}
 et l'argument restant s'écrit comme une arctangente, donnant :
@@ -220,8 +220,8 @@ et l'argument restant s'écrit comme une arctangente, donnant :
 
 \subsubsection{Formule de la phase dynamique \eqref{eq:phased_2var}}
 
-Par souci de lisibilité, on note $\ \mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix} = \begin{pmatrix} \cos\theta(t) \cos\chi(t) + i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - i\cos\theta(t) \sin\chi(t) \end{pmatrix}$, de sorte que la dérivée de $\ \x=ae^{i\varphi}\mathcal{U}\ $ s'écrive :
-\[\dot{\x} = a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} -\sin\theta \cos\chi + i\cos\theta \sin\chi \\ \cos\theta \cos\chi + i\sin\theta \sin\chi \end{pmatrix} + ae^{i\varphi}\chi'\begin{pmatrix} -\cos\theta \sin\chi + i\sin\theta \cos\chi \\ -\sin\theta \sin\chi - i\cos\theta \cos\chi \end{pmatrix}\]
+Par souci de lisibilité, on note $\ \mathcal{U} = R_{\theta} \begin{pmatrix} \cos\chi \\ -i\sin\chi \end{pmatrix} = \begin{pmatrix} \cos\theta(t) \cos\chi(t) + i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - i\cos\theta(t) \sin\chi(t) \end{pmatrix}$, de sorte que la dérivée de $\ \x=ae^{\i \varphi}\mathcal{U}\ $ s'écrive :
+\[\dot{\x} = a'e^{\i \varphi}\mathcal{U} + ia\varphi'e^{\i \varphi} \mathcal{U} + ae^{\i \varphi}\theta'\begin{pmatrix} -\sin\theta \cos\chi + i\cos\theta \sin\chi \\ \cos\theta \cos\chi + i\sin\theta \sin\chi \end{pmatrix} + ae^{\i \varphi}\chi'\begin{pmatrix} -\cos\theta \sin\chi + i\sin\theta \cos\chi \\ -\sin\theta \sin\chi - i\cos\theta \cos\chi \end{pmatrix}\]
 \\
 Les vecteurs des deux derniers membres s'expriment en fonction des composantes $\ \mathcal{U}_{1,2}\ $ de $\ \mathcal{U}$ :
 \begin{align*}
@@ -232,7 +232,7 @@ Les vecteurs des deux derniers membres s'expriment en fonction des composantes $
 Le produit hermitien $\langle \dot{\x}, \x \rangle$ s'écrit alors :
 \begin{align*}
 	\langle \dot{\x}, \x \rangle 
-	&= \left\langle a'e^{i\varphi}\mathcal{U} + ia\varphi'e^{i\varphi} \mathcal{U} + ae^{i\varphi}\theta'\begin{pmatrix} -\mathcal{U}_2 \\ \mathcal{U}_1 \end{pmatrix} + iae^{i\varphi}\chi'\begin{pmatrix} \congu{\mathcal{U}}_2 \\ -\congu{\mathcal{U}}_1 \end{pmatrix}, ae^{i\varphi}\mathcal{U} \right\rangle \\
+	&= \left\langle a'e^{\i \varphi}\mathcal{U} + ia\varphi'e^{\i \varphi} \mathcal{U} + ae^{\i \varphi}\theta'\begin{pmatrix} -\mathcal{U}_2 \\ \mathcal{U}_1 \end{pmatrix} + iae^{\i \varphi}\chi'\begin{pmatrix} \congu{\mathcal{U}}_2 \\ -\congu{\mathcal{U}}_1 \end{pmatrix}, ae^{\i \varphi}\mathcal{U} \right\rangle \\
 	&= \left\langle a'\mathcal{U} + ia\varphi' \mathcal{U} + a\theta'\begin{pmatrix} -\mathcal{U}_2 \\ \mathcal{U}_1 \end{pmatrix} + ia\chi'\begin{pmatrix} \congu{\mathcal{U}}_2 \\ -\congu{\mathcal{U}}_1 \end{pmatrix}, a\mathcal{U} \right\rangle \\
 	&= aa' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + ia^2\varphi' \big\langle \mathcal{U}, \mathcal{U}\big\rangle  + a^2\theta'\left\langle \begin{pmatrix} -\mathcal{U}_2 \\ \mathcal{U}_1 \end{pmatrix}, \mathcal{U} \right\rangle + ia^2\chi'\left\langle \begin{pmatrix} \congu{\mathcal{U}}_2 \\ -\congu{\mathcal{U}}_1 \end{pmatrix}, \mathcal{U} \right\rangle
 \end{align*}
@@ -269,8 +269,8 @@ D'où, sachant que $\ \|\x\|^2=a^2\ $ et $\ \|\mathcal{U}\|=1$, la formule :
 \subsubsection{\todo Lien entre les deux types de signaux}
 
 Soit le signal :
-\[\x_B(\varphi, \theta, \chi) = e^{i\varphi} \begin{pmatrix}
-	\cos \chi/2 \\ e^{i\theta}\sin\chi/2\end{pmatrix}\]
+\[\x_B(\varphi, \theta, \chi) = e^{\i \varphi} \begin{pmatrix}
+	\cos \chi/2 \\ e^{\i \theta}\sin\chi/2\end{pmatrix}\]
 Pour le réécrire en terme de vecteur AM-FM-PM, il faut faire apparaître une matrice de rotation, matrice qui est diagonalisable dans $\C^{n\times n}$ via la relation :
 \begin{align*}
 	&\begin{pmatrix} 
@@ -279,8 +279,8 @@ Pour le réécrire en terme de vecteur AM-FM-PM, il faut faire apparaître une m
 	\end{pmatrix} = \frac{1}{2} \begin{pmatrix} 
 		1 & -1 \\ i & i
 	\end{pmatrix}\begin{pmatrix} 
-		e^{-i\alpha} & 0 \\ 
-		0 & e^{i\alpha} 
+		e^{-\i \alpha} & 0 \\ 
+		0 & e^{\i \alpha} 
 	\end{pmatrix}\begin{pmatrix} 
 		1 & -i \\ -1 & -i
 	\end{pmatrix}\\
@@ -292,21 +292,21 @@ Pour le réécrire en terme de vecteur AM-FM-PM, il faut faire apparaître une m
 	\end{pmatrix} \begin{pmatrix} 
 		1 & -1 \\ i & i
 	\end{pmatrix} = 2 \begin{pmatrix} 
-		e^{-i\alpha} & 0 \\ 
-		0 & e^{i\alpha} 
+		e^{-\i \alpha} & 0 \\ 
+		0 & e^{\i \alpha} 
 	\end{pmatrix}
 \end{align*}
 \\
 Cela permet d'écrire :
 \begin{align*}
-	\x_B(\varphi, \theta, \chi) &= e^{i\varphi} e^{i\theta/2}\begin{pmatrix}
-		e^{-i\theta/2} & 0 \\
-		0 & e^{i\theta/2}
+	\x_B(\varphi, \theta, \chi) &= e^{\i \varphi} e^{\i \theta/2}\begin{pmatrix}
+		e^{-\i \theta/2} & 0 \\
+		0 & e^{\i \theta/2}
 	\end{pmatrix}\begin{pmatrix} 
 		\cos \chi/2 \\ 
 		\sin \chi/2 
 	\end{pmatrix} \\
-	&= \frac{1}{2}e^{i\varphi} e^{i\theta/2}\begin{pmatrix} 
+	&= \frac{1}{2}e^{\i \varphi} e^{\i \theta/2}\begin{pmatrix} 
 		1 & -i \\
 		-1 & -i
 	\end{pmatrix}\begin{pmatrix} 
@@ -318,7 +318,7 @@ Cela permet d'écrire :
 		\cos \chi/2 \\ 
 		\sin\chi/2
 	\end{pmatrix} \\
-	&= \frac{\sqrt{2}}{2}e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+	&= \frac{\sqrt{2}}{2}e^{\i (\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
 		\cos \chi/2 - \sin\chi/2 \\ 
 		i\big(\cos\chi/2 + \sin\chi/2\big)
 	\end{pmatrix}   & &\text{où }\quad U = \frac{\sqrt{2}}{2}\begin{pmatrix} 
@@ -338,15 +338,15 @@ On a donc deux choix pour chaque composante du vecteur mais celle avec un signe 
 \\
 On choisi donc la seconde formule pour la première composante et la premier pour la seconde composante, donnant :
 \begin{align*}
-	\x_B(\varphi, \theta, \chi) &= \frac{\sqrt{2}}{2}e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+	\x_B(\varphi, \theta, \chi) &= \frac{\sqrt{2}}{2}e^{\i (\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
 		\cos \chi/2 - \sin\chi/2 \\ 
 		i\big(\cos\chi/2 + \sin\chi/2\big)
 	\end{pmatrix} \\
-	&= e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+	&= e^{\i (\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
 		\sin\left( \frac{\pi}{2} - \chi/2\right) \\ 
 		i\cos\left( \frac{\pi}{2} - \chi/2\right)
 	\end{pmatrix} \\
-	&= e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+	&= e^{\i (\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
 		\cos \chi/2 \\ 
 		i\sin \chi/2
 	\end{pmatrix}
@@ -354,11 +354,11 @@ On choisi donc la seconde formule pour la première composante et la premier pou
 \\
 Ne reste alors plus qu'à ajuster les signes pour obtenir une écriture de signal $\x_P$ AM-FM-PM :
 \begin{align*}
-	\x_B(\varphi, \theta, \chi) &= e^{i(\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
+	\x_B(\varphi, \theta, \chi) &= e^{\i (\varphi + \theta/2)}U R_{\theta/2} \begin{pmatrix} 
 		\cos \chi/2 \\ 
 		i\sin \chi/2
 	\end{pmatrix} \\
-	&= U e^{i(\varphi + \theta/2)} R_{\theta/2} \begin{pmatrix} 
+	&= U e^{\i (\varphi + \theta/2)} R_{\theta/2} \begin{pmatrix} 
 		\cos (-\chi/2) \\ 
 		-i\sin (-\chi/2)
 	\end{pmatrix}
