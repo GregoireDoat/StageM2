@@ -99,7 +99,7 @@ et par conséquent la phase géométrique :
 \end{align*}
 \\
 
-Maintenant, pour pouvoir appliquer le théorème de Stokes, il faut s'assurer que la variété étudiée est orientable, ce qui est le cas de toute les variétés complexes \cite[sec. 8.4.2]{nakahara_geometry_2003} (y compris $\PC{n}$). Ppour vu que $\rho$ soit suffisamment régulière, le théorème s'applique et :
+Maintenant, pour pouvoir appliquer le théorème de Stokes, il faut s'assurer que la variété étudiée est orientable, ce qui est le cas de toute les variétés complexes \cite[sec. 8.4.2]{nakahara_geometry_2003} (y compris $\PC{n}$). Ainsi, pour peu que $\rho$ soit suffisamment régulière, le théorème s'applique et :
 \[\oint \locconn_{i}  = \iint_\Sigma d\locconn_i\]
 \\
 avec $\Sigma$ une surface de$\PC{n}$ de bord $\rho$.
@@ -230,6 +230,14 @@ Enfin, comme $\pi$ est une submersion riemannienne, l'on retombe sur :
 
 \subsection{Géodésique de $\bf{\PC{n}}$} \label{ann:geode2PC^n}
 
+\begin{itemize}
+	
+	\item Géodésique de $\PC{n}$ : \cite[sec. 3.E]{besse_manifolds_1978}
+	
+	\item longueur et aire sur $\PC{n}$ : \cite[p. 119]{huybrechts_complex_2005}
+	
+\end{itemize}
+
 \subsubsection{Métrique relevée dans les espaces horizontaux}
 
 D'abord les vecteurs tangent de $\S{n}$ sont séparés en composantes verticale et horizontale :
@@ -298,8 +306,8 @@ Dans le cas de $\VFP$, les $\partial g_{\alpha \congu{\beta}}$ s'écrivent :
 \\
 Donnant les équations :
 \begin{align*}
-	\forall \beta,\quad \begin{aligned}
-		0 &= g_{\sigma \congu{\beta}}\, \ddot{\gamma}^\sigma + \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha \\
+	\begin{aligned}
+		\forall \beta,\quad 0 &= g_{\sigma \congu{\beta}}\, \ddot{\gamma}^\sigma + \partial_{\mu} (g_{\alpha \congu{\beta}}) \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha \\
 		&= \big( \delta_{\sigma \beta} - \congu{\gamma}_\sigma \gamma_\beta \big)\, \ddot{\gamma}^\sigma - \delta_{\mu\beta} \congu{\gamma}_\alpha \, \dot{\gamma}^\mu\, \dot{\gamma}^\alpha \\
 		&= \ddot{\gamma}_\beta - \gamma_\beta \langle \ddot{\gamma},\gamma\rangle - \dot{\gamma}_\beta \langle  \dot{\gamma}, \gamma \rangle 
 	\end{aligned} \qquad \Llr\quad 
