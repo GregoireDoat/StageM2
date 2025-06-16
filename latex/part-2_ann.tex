@@ -119,10 +119,11 @@ où les $\sigma_{i*}$ s'écrivent, $\forall \mu$ :
 \begin{align*}
 	\mu &\neq i : &  \sigma_i(w)^\mu = \frac{w^\mu}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\quad \Lr\quad
 	\sigma_{i*}(w)^\mu &= \frac{dw^\mu}{\sqrt{1 + w^\alpha\congu{w}_\alpha}} - \frac{w^\mu}{2(1 + w^\alpha\congu{w}_\alpha)^{\nicefrac{3}{2}}}2\Re e(w^\alpha d\congu{w}_\alpha) \\
-	&  &  &= \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\left(dw^\mu - w^\mu \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\ \right)
+	&  &  &= \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\left(dw^\mu - w^\mu \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{1 + w^\alpha\congu{w}_\alpha}\ \right) \\
+	&  &  &= \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\left(dw^\mu - w^\mu \frac{\congu{w}^\alpha dw_\alpha + w^\alpha d\congu{w}_\alpha}{1 + w^\alpha\congu{w}_\alpha}\ \right)
 	\\ \\
 	\mu &= i :  &  \sigma_i(w)^\mu = \frac{1}{\sqrt{1 + w^\alpha\congu{w}_\alpha}}\quad \Lr\quad
-	\sigma_{i*}(w)^\mu &= - \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{(1 + w^\alpha\congu{w}_\alpha)^{\nicefrac{3}{2}}}
+	\sigma_{i*}(w)^\mu &= - \frac{\Re e(w^\alpha d\congu{w}_\alpha)}{(1 + w^\alpha\congu{w}_\alpha)^{\nicefrac{3}{2}}} = - \frac{\congu{w}^\alpha dw_\alpha + w^\alpha d\congu{w}_\alpha}{(1 + w^\alpha\congu{w}_\alpha)^{\nicefrac{3}{2}}}
 \end{align*}
 \\
 Ce qui donne\footnote{\itshape
@@ -223,6 +224,31 @@ D'où le résultat :
 \end{align*}
 \skipl
 
+Pour ramener le résultat dans $\PC{n}$, on a :
+\begin{align*}
+	d\locconn_i(w) &= d(\sigma_i^* \conn_{\sigma_i(w)}) \\
+	&= \sigma_i^* (d\conn_{\sigma_i(w)}) \\
+	&= d\conn_{\sigma_i(w)}\circ \sigma_{i*}  \\
+	\Lr\ d\locconn_i(w)_\mu &= {\sigma_{i*}}^\alpha \big( d\conn_{\sigma_i(w)} \big)_{\alpha\mu}
+	\\ \\
+	&= \sigma_i^* \big( -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu \big) \\
+	&= -\delta_{\mu \nu}\, \sigma_i^* (dz^\mu) \wedge \sigma_{i*}(d\congu{z}^\nu) \\
+	&= -\delta_{\mu \nu}\,  \Big( 
+		dw^\alpha {\sigma_{i*}}_{\alpha}^\mu + d\congu{w}^\beta {\sigma_{i*}}_{\congu{\beta}}^\mu 
+		\Big) \wedge \Big(
+		dw^\lambda {\sigma_{i*}}_{\lambda}^{\congu{\nu}} + d\congu{w}^\kappa {\sigma_{i*}}_{\congu{\kappa}}^{\congu{\nu}} \Big) \\
+	&= -\delta_{\mu \nu}\,  \Big(
+		{\sigma_{i*}}_{\alpha}^\mu {\sigma_{i*}}_{\lambda}^{\congu{\nu}} 
+		dw^\alpha \wedge dw^\lambda + 
+		{\sigma_{i*}}_{\alpha}^\mu {\sigma_{i*}}_{\congu{\kappa}}^{\congu{\nu}}
+		dw^\alpha \wedge d\congu{w}^\kappa + 
+		{\sigma_{i*}}_{\congu{\beta}}^\mu {\sigma_{i*}}_{\lambda}^{\congu{\nu}}
+		d\congu{w}^\beta  \wedge dw^\lambda +
+		{\sigma_{i*}}_{\congu{\beta}}^\mu {\sigma_{i*}}_{\congu{\kappa}}^{\congu{\nu}} 
+		d\congu{w}^\beta \wedge d\congu{w}^\kappa 
+		\Big) \\
+\end{align*}
+\\ \\ \\
 Enfin, comme $\pi$ est une submersion riemannienne, l'on retombe sur :
 \[d\locconn_i(w) = d\sigma_{i*}\conn_w = -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu = -g_{\mu \congu{\nu}}(w) dw^\mu \wedge d\congu{w}^\nu = i\Omega(w)\]
 \skipl
@@ -261,6 +287,7 @@ Sachant que $\ \|p\|=1\ $ et $\ \Re e \langle \bf{v},p\rangle = 0$, il vient :
 	&= \big\langle\bf{u}, \bf{v} \big\rangle  -\Im m \langle \bf{v}, p \rangle \Im m\big\langle\bf{u}, p \big\rangle + \Im m \langle \bf{u}, p \rangle \Im m \big\langle p, \bf{v} \big\rangle - \langle \bf{u}, p \rangle \langle \bf{v}, p \rangle\\
 	&= \big\langle\bf{u}, \bf{v} \big\rangle -  \langle \bf{u}, p \rangle \langle \bf{v}, p \rangle
 \end{align*}
+\\
 
 Ce qui donne en coordonnées locales sur $\S{n}$ : 
 \[g = \delta_{\mu \nu} dz^\mu d\congu{z}^\nu - \delta_{\mu \beta}z^\mu d\congu{z}^\beta \delta_{\alpha \nu} dz^\alpha \congu{z}^\nu = \big( \delta_{\mu \nu} - z_\nu \congu{z}_\mu \big) dz^\mu d\congu{z}^\nu\]
