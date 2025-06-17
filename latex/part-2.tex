@@ -340,16 +340,16 @@ Le cadrer étant planement posé, \thoughts{blablabla on va passer au interprét
 
 
 
-\section{Interprétation des phases dynamique et géométrique}
+%\section{Interprétation des phases dynamique et géométrique}
 
-\subsection{Notion de connexion sur une VFP}
-%\subsection{Connexion et relèvements horizontaux}
+%\subsection{Notion de connexion sur une VFP}
+\subsection{Connexion et relèvements horizontaux}
 \label{subsec:connexion2VFP}
 
 Le cadre étant posé, pour retrouver la notion de fréquence instantanée, il est nécessaire de munir $\VFP$ d'une connexion. Cette dernière est introduite comme suit.
 
-\subsubsection{Notion de connexion sur une VFP}
-%\subsubsection{Définition générale}
+%\subsubsection{Notion de connexion sur une VFP}
+\subsubsection{Définition générale}
 \label{subsec:def2conn}
 
 Comme $P$ ressemble localement à un produit $G\times U_i$, il est utile de séparer ses espaces tangents $\tg[p]{P}$ comme une somme directe d'espaces tangents respectivement aux fibres et à la base. Conformément aux représentations précédentes (\cref{fig:ruban2modius,fig:section_cano,fig:section_local}), les premiers sont appelées espaces tangents \emph{verticaux}, les seconds \emph{horizontaux} et l'on note :
@@ -500,8 +500,9 @@ Reste alors une question : pourquoi la fréquence instantanée apparaît ici et 
 
 
 
-%\section{Interprétation des phases sur $\bf{\VFP}$} \label{sec:phases_dans_VFP}
-\subsubsection{Fréquence instantanée et phase dynamique sur $\bf{\VFP}$}
+\section{Interprétation des phases sur $\bf{\VFP}$} \label{sec:phases_dans_VFP}
+
+\subsection{Fréquence instantanée et phase dynamique sur $\bf{\VFP}$}
 
 
 Pour y apporter une réponse, on se propose de prendre le problème par l'autre bout : comment définir la notion de fréquence instantanée d'un signal dans le fibré $\VFP$ ?
@@ -580,7 +581,7 @@ Ensuite, si cette définition \eqref{eq:phased_vgeodiff} de la phase dynamique e
 
 
 
-\subsection{Phase géométrique} \label{subsec:phase_g}
+\subsection{Phase géométrique dans le cas cyclique} \label{subsec:phase_g-cycl}
 
 Notamment dans le cadre quantique, la phase géométrique est connue pour avoir deux interprétations géométriques \cite{bohm_geometric_2003, chruscinski_geometric_2004,faure_introduction_2022} : soit comme conséquence d'un transport parallèle sur $\S{n}$ soit comme une mesure de l'aire de la surface entourée par le signal projeté sur $\PC{n}$. Résultats qui sont présentés et redémontrés (avec les détails en annexes) dans cette section.
 
@@ -688,7 +689,7 @@ de la surface entourée par sa projection $\pi(\gamma)$ sur $\PC{n}$.
 
 
 
-\subsection{\wip ... dans le cas le plus générale}
+\subsection{Phase géométrique dans le cas le plus générale} \label{subsec:phase_g-gene}
 
 De retour au cas général, si maintenant $\gamma$ est qu'elle conque, pour retrouver les interprétation précédente, le plus simple est encore de se ramener au cas cyclique.
 Pour cela, il suffit de refermer la courbe tracée par $\gamma$ dans $\S{n}$ de sorte à que cet ajout n'altère pas la phase géométrique de $\gamma$.
@@ -698,35 +699,74 @@ Pour se faire, et sachant que $\phaseg$ est intimement lié à la métrique (par
 \\
 
 
-\subsection{Les géodésiques et leurs phases} \label{subsec:phase_g2geode}
+\subsubsection{Les géodésiques et leurs phases} \label{subsec:phase_g2geode}
 
- Il est montrer -- \cf~annexe \ref{ann:geode2PC^n} -- que, étant donnée une géodésique $\rho_g$ de $\PC{n}$, tout relèvement horizontale\footnote{\itshape
+ Il est montrer -- \cf~annexe \ref{ann:geode2PC^n}, ou \cite[sec.~3.E]{besse_manifolds_1978} -- que, étant donnée une géodésique $\rho_g$ de $\PC{n}$, tout relèvement horizontale\footnote{\itshape
 	Tout relèvement horizontale oui, mais avec une paramétrisation particulière (trajectoire uniforme).  $\phaseg$ étant, comme on la vu, invariante par le choix de paramétrisation cela n'a pas d'importance.}
-$\gamma_g$ de cette dernière vérifie :
+$\Tilde{\gamma}_g$ de cette dernière vérifie :
 \begin{equation}\label{eq:2geodesique}
-	\forall t\geq t_0,\quad \gamma_g(t) = \gamma_g(t_0) \cos (t - t_0) + \dot{\gamma_g}(t_0) \sin (t - t_0)
+	\forall t\geq t_0,\quad \Tilde{\gamma}_g(t) = \Tilde{\gamma}_g(t_0) \cos (t - t_0) + \dot{\Tilde{\gamma}}_g(t_0) \sin (t - t_0)
 \end{equation}
 \\
 La courbe $\gamma_g$ étant horizontale, elle n'a pas de phase dynamique, et donc :
-\begin{align*}
-	\phaseg(\rho_g) = \phaset(\gamma_g) 
-	&= \arg\Big\langle \gamma_g(t_0) \cos (t - t_0) + \dot{\gamma}_g(t_0) \sin (t - t_0),  \gamma_g(t_0) \Big\rangle \\
-	&= \arg\Big(\cos (t - t_0)\big\langle \gamma_g(t_0) ,  \gamma_g(t_0) \big\rangle\Big)   &  \text{car }\ \langle\dot{\gamma}_g,  \gamma_g \rangle &= 0\\
-	&= \arg\big(\cos (t - t_0)\big)
-\end{align*}
+\begin{equation} \label{eq:phase_g2geode}
+	\begin{aligned}
+		\phaseg(\rho_g) = \phaset(\Tilde{\gamma}_g) 
+		&= \arg\Big\langle \Tilde{\gamma}_g(t_0) \cos (t - t_0) + \dot{\Tilde{\gamma}}_g(t_0) \sin (t - t_0),  \Tilde{\gamma}_g(t_0) \Big\rangle \\
+		&= \arg\Big(\cos (t - t_0)\big\langle \Tilde{\gamma}_g(t_0) ,  \Tilde{\gamma}_g(t_0) \big\rangle\Big)   &  \text{car }\ \langle\dot{\Tilde{\gamma}}_g,  \Tilde{\gamma}_g \rangle &= 0\\
+		&= \arg\big(\cos (t - t_0)\big)
+	\end{aligned}
+\end{equation}
 \\ 
-$\phaseg(\rho_g)$ est donc donné par l'argument d'un réel, soit $0$ ou $\pi$ (modulo $2\pi$) en fonction du signe du cosinus. Contrairement à ce qui était dit dans \cite{mukunda_quantum_1993}, la phase géométrique n'est donc pas systématiquement sur les géodésique de $\PC{n}$.
-\\
-Cela étant dit, il est bien connu \cite[sec. 3.E]{besse_manifolds_1978} que les géodésique de $\PC{n}$ sont fermées. 
-Aussi, on montre (\cf annexe \ref{ann:geode2PC^n}) que, si l'une trajectoire géodésique reliant deux points admet une phase géométrique non nul (donc égale à $\pi$), alors son complémentaire par rapport à la géodésique fermée qui la prolonge, elle, n'en n'aura pas. De cette façon, il est toujours possible de relier deux points pas une trajectoire n'ayant pas de phase géométrique.
+Ce qui vaut $0$ ou $\pi$ (modulo $2\pi$) selon le signe du cosinus. 
+Contrairement à ce qui était dit dans \cite{mukunda_quantum_1993}, la phase géométrique n'est donc pas systématiquement nulle sur les géodésique de $\PC{n}$ et tenir compte de cela va permettre de renforcer le lien en cette l'écriture géométrique des signaux $n-$variés vue dans cette partie et le celle des signaux AM-FM-PM.
+\\ 
+
+Toujours d'après \cite[sec.~3.E]{besse_manifolds_1978}, l'ensemble des géodésiques de $\PC{n}$ passent par deux points donnés, reposent sur une unique ligne complexe, c'est-à-dire une sous-variété difféomorphe à $\PC{1}\cong S^2$. De plus, ces géodésiques, sont des grands cercles.
 \\
 
-Sachant ce résultat, on se donne alors un signal $\gamma: [t_0,t]\ \lr \S{n}$ quelconque de projection sur $\PC{n}$ $\rho$, et on note $\gamma_g$ le relèvement de la géodésique reliant $\rho(t)$ à $\rho(t_0)$ n'ayant pas de phase géométrique et tel que :
+La phase géométrique d'un de ces grands cercles $\rho_c$, il est donc cyclique, à pour phase géométrique l'intégrale de $\nicefrac{1}{2} \Omega$ sur la moitié de $S^2$ :
+\[\phaseg(\rho_c) = \frac{1}{4} \iint_{S^2} \Omega\]
+\\
+D'autre part, cette intégrale est un résultat connue \cite[p. 119]{huybrechts_complex_2005} et vaut $4\pi$, ce qui donne :
+\[\phaseg(\rho_c) = \frac{1}{4} \iint_{S^2} \Omega = \pi\]
+\\
+Ainsi, la courbe $\rho_g$, qui n'est donc d'une portion de $\rho_c$, a une phase géométrique qui est soit nul, soit égale à celle de son prolongement $\rho_c$. 
+Cela suggère que, dans le second cas, la phase géométrique du complémentaire de $\rho_g$ par rapport à $\rho_c$, noté $\widehat{\rho_c}$ est nulle. 
+\\
+Pour le montrer, il suffit de considérer un nouveau relèvement $\gamma_c$ (resp. $\gamma_g$, $\widehat{\gamma_g}$) de $\rho_c$ (resp. $\rho_g$, $\widehat{\rho_g}$) tel que chacune de leur phase totale soit nul -- ce qui est toujours possible et n'affecter pas la phase géométrique de $\rho_c$. De cette façon, on peut écrire :
+\begin{align*}
+	\phaseg(\rho_c) = -\phased(\gamma_c) = -\int_{\gamma_c}\conn 
+	&= -\int_{\gamma_g}\conn -\int_{\widehat{\gamma_g}}\conn \\
+	&= -\phased(\gamma_g) - \phased(\widehat{\gamma_g}) \\
+	&= \phaseg(\gamma_g) + \phaseg(\widehat{\gamma_g})
+\end{align*}
+\skipl
+
+Il vient alors que, si jamais la géodésique reliant deux points est non nulle, il est toujours possible de considérer son complémentaire par rapport à $\gamma_g$, qui sera alors de phase géométrique nulle :
+\[\phaseg(\rho_c) = \phaseg(\gamma_g) = \pi \quad \Lr\quad \phaseg(\widehat{\gamma_g}) = \phaseg(\gamma_c) - \phaseg(\gamma_g) = 0\]
+\\
+
+De retour sur l'exemple de la \cref{part:param_instant}, \cref{subsec:phase_g2Poincare}, on a vue qu'une signal décrivant une boucle horizontale sur la sphère de Poincaré, sa phase géométrique était donné par :
+\[\qquad\qquad\qquad\qquad\qquad\qquad \phaseg(\x) = \pi - \pi\sin (2\chi_0) \qquad\qquad\qquad\qquad \text{avec $2\chi_0$ la latitude}\]
+\\ 
+En considérant le cas $\chi_0=0$, $\x$ décrit alors une géodésique et $\phaseg$ donne à nouveau $\pi$. Aussi, et surtout, si l'on se met à faire varier $\theta$ entre $0$ et $\pi$, un rapide calcul montre que :
+\[\phaseg(\x) = \arg\Big(\cos\big( \theta(t) - \theta(t_0) \big)\Big)\]
+\\
+Avec l’interprétation graphique en tête, cette formule suggère que la géodésique, au sens du chemin le plus cours, reliant deux points sera toujours 0, car le ``$\cos\Delta\theta$'' est positif. Ceux, hors mis dans le cas le cas où les points sont antipodaux, auquel cas $\ \phaseg(\x)=\pi$.
+\\
+Ce n'est en revanche pas démontrer et ce qui est, de toute façon, sans conséquence pour la suite du mémoire.
+\\
+
+
+\subsubsection{Phase géométrique dans le cas le plus générale}
+
+Considérons à présent un signal $\gamma: [t_0,t]\ \lr \S{n}$ quelconque de projection $\rho$ sur $\PC{n}$ , et $\gamma_g$ le relèvement de la géodésique reliant $\rho(t)$ à $\rho(t_0)$ n'ayant pas de phase géométrique et vérifiant :
 \begin{align*}
 	\gamma_g(t_0) &= \gamma(t)  &  \gamma_g(t) &= \gamma(t_0)
 \end{align*}
 \\
-De cette façon, la concaténation des deux, noté $\concat{\gamma}{\gamma_g}$, vérifie :
+De cette façon, la concaténation des deux, notée $\concat{\gamma}{\gamma_g}$, vérifie :
 \begin{align*}
 	\phaset(\concat{\gamma}{\gamma_g}) &= \arg\big\langle \gamma(t_0), \gamma(t_0) \big\rangle =0  &  \phaset(\gamma_g) &= \arg\big\langle \gamma(t_0), \gamma(t) \big\rangle = - \phaset(\gamma)
 \end{align*}
@@ -741,14 +781,14 @@ et donc :
 \end{align*}
 \\
 
-Ainsi, $\concat{\gamma}{\gamma_g}$ est cyclique et on peut appliquer les résultats précédent, aboutissant à la formule :
+Ainsi, $\concat{\gamma}{\gamma_g}$ est cyclique et on peut appliquer les résultats de la \cref{subsec:phase_g-gene}, aboutissant à la formule :
 \begin{equation} \label{eq:phase_g-general}
 	\phaseg(\gamma) = \phaseg(\concat{\gamma }{\gamma_g}) = \frac{1}{2} \iint_{\overset{\frown}{\Sigma}} \Omega
 \end{equation}
 où $\overset{\frown}{\Sigma}$ est la surface entourée par $\gamma \smallfrown \gamma_g$.
 \\
 
-Avant de conclure cette partie, cette formule permet de mieux comprendre de que signifie le choix 
+\thoughts{Y'aurait un truc sympa à dire ici mais j'ai pas encore trouvé quoi... genre pourquoi j'ai mis un facteur 2 sur la métrique de Fubini-Study...}
 
 
 
