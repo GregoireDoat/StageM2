@@ -152,25 +152,25 @@ Maintenant, pour avoir les coefficients de $d\locconn_i$, il faut calculer respe
 	\\
 	&= \frac{\congu{w}_\mu\congu{w}_\lambda}{2(1 + w^\alpha\congu{w}_\alpha)^2}  &  
 		&=  \frac{1}{2(1 + w^\alpha\congu{w}_\alpha)} \Big( \delta_{\lambda\mu} - \frac{\congu{w}_\mu w_\lambda}{1 + w^\alpha\congu{w}_\alpha}\Big) \\
-	& &  &= \frac{1}{2} g_{\mu \congu{\lambda}}
+	& &  &= \frac{1}{4} g_{\mu \congu{\lambda}}
 	\\ \\
 	\partial_\lambda \locconn_{i\, \congu{\nu}} &= \partial_{\lambda} \frac{ -w_\nu}{2(1 + w^\alpha\congu{w}_\alpha)}  &  
 		\partial_{\congu{\lambda}} \locconn_{i\, \congu{\nu}} &= \partial_{\congu{\lambda}} \frac{ -w_\nu}{2(1 + w^\alpha\congu{w}_\alpha)}
 	\\
 	&=  \frac{-1}{2(1 + w^\alpha w_\alpha)} \Big( \delta_{\lambda\nu} - \frac{ w_\nu \congu{w}_\lambda}{1 + w^\alpha\congu{w}_\alpha}\Big)  &
 		&= -\frac{ w_\nu w_\lambda}{2(1 + w^\alpha\congu{w}_\alpha)^2} \\
-	&= -\frac{1}{2} g_{\lambda \congu{\nu}}
+	&= -\frac{1}{4} g_{\lambda \congu{\nu}}
 \end{align*}
 \\
-On remarque alors les coefficient $d\locconn_{i\, \lambda \mu}$ et $d\locconn_{i\, \congu{\lambda \mu}}$ sont symétriques, ce qui fait qu'avec le produit extérieur il s'annule. Par exemple :
+On remarque alors les coefficient $d\locconn_{i\, \lambda \mu}$ et $d\locconn_{i\, \congu{\lambda \mu}}$ sont symétriques, ce qui fait qu'avec le produit extérieur il s'annule (anti-symétrie). Par exemple :
 \[(d\locconn_i)_{\lambda \mu}\, dw^\lambda \wedge dw^\mu = \frac{\congu{w}_\mu\congu{w}_\lambda}{2(1 + w^\alpha\congu{w}_\alpha)^2} dw^\lambda \otimes dw^\mu - \frac{\congu{w}_\mu\congu{w}_\lambda}{2(1 + w^\alpha\congu{w}_\alpha)^2} dw^\mu \otimes dw^\lambda = 0\]
 \\
 Ce qui mène finalement à :
 \begin{align*}
-	d\locconn_i &= \frac{1}{2} g_{\mu \congu{\lambda}} d\congu{w}^\lambda \wedge dw^\mu  - \frac{1}{2} g_{\lambda \congu{\nu}} dw^\lambda \wedge d\congu{w}^\nu \\
-	&= -\frac{1}{2} g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu  - \frac{1}{2} g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu  &  &\text{par anti-symétrie du produit extérieur}\\
-	&= - g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu \\
-	&= i\Omega_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu
+	d\locconn_i &= \frac{1}{4} g_{\mu \congu{\lambda}} d\congu{w}^\lambda \wedge dw^\mu  - \frac{1}{2} g_{\lambda \congu{\nu}} dw^\lambda \wedge d\congu{w}^\nu \\
+	&= -\frac{1}{4} \big( g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu  + g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu \big)  &  &\text{par anti-symétrie du produit extérieur}\\
+	&= - \frac{1}{2} g_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu \\
+	&= \i \frac{1}{2} \Omega_{\mu \congu{\nu}} dw^\mu \wedge d\congu{w}^\nu
 \end{align*}
 \skipl
 
