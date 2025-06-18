@@ -341,14 +341,14 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 	\caption[Evolution de la phase géométrique d'un signal AM-FM-PM]{Evolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann. Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2.}
 \end{figure}
 
-\textbf{\textsc{\color{red} FAIRE LE LIEN AVEC BERRY \cite{berry_quantal_1997} ?}}
+\textbf{\textsc{\color{red} FAIRE LE LIEN AVEC BERRY \cite{berry_quantal_1997} ? plus de détail avec }}
 \\
 
 Deux remarques sur ces formules. 
 La première est que la phase géométrique ne dépend que des paramètres de polarisations $\theta$ et $\chi$, ce qui reflète son invariance par transformation de jauge.
-La seconde, nettement plus troublante, est que $\varphi$ ne s'interprète ni comme phase totale ni comme phase dynamique.
+La seconde, nettement plus troublante, est que $\varphi$ ne s'interprète ni comme phase totale ni comme phase dynamique, un point qui sera expliqué dans la \cref{part:phase_geo}.
 \\
-Pour que ce soit le cas, il faut qu'à l'instant $t$, $\x $ retrouve la même polarisation instantanée qu'à l'instant $t_0$, auquel cas :
+Un moyen d'avoir cette interprétation est de supposer qu'à l'instant $t$, $\x $ retrouve la même polarisation instantanée qu'à l'instant $t_0$, auquel cas :
 \begin{equation}\label{eq:phases_p-cyc_2var}
 	\begin{aligned}
 		\big( \chi(t), \theta(t) \big) = \big( \chi(t_0), \theta(t_0) \big)\quad 
@@ -366,14 +366,14 @@ Même dans ce cas, il est utile de d'avoir une représentation de $\x $ qui soit
 \subsection{Interprétation sur la sphère de Poincaré}\label{subsec:phase_g2Poincare}
 
 Dans l'étude de la phase géométrique, il est standard de s'intéresser à la matrice de covariance\footnote{\itshape
-	La conjugaison ici est à gauche pour simplifier l'interprétation de $\rho$ dans la \Cref{fig:sphere2poincare}
+	Il est plus commun en physique de conjuger à droite, mais la conjugaison gauche simplifie l'interprétation de $\rho$ dans la \Cref{fig:sphere2poincare}. Cela est également plus cohérent avec notre définition du produit hermitien qui utilise la convention $\ \langle x, y\rangle = \transp{x}\congu{y}$.
 } :
 \begin{equation} \label{eq:proj2x_2var}
 	\forall t\in\R,\quad \rho_{\x}(t) = \frac{1}{\|\x(t) \|^2} \congu{\x(t) }\, \transp{\x}(t)
 \end{equation}
 \\
 Outre son utilité en traitement du signal, elle présente l'avantage d'être invariante par transformation de de jauge (\ie~ $\rho_{e^{\i \alpha}\x} = \rho_{\x}$).
-Dans le cas des AM-FM-PM, Le Bihan \etal~ont montré qu'elle se décompose dans la base de Pauli comme :
+Aussi c'est matrice sont connue \cite{brosseau} pour avoir pour base les matrices de Pauli $\sigma_i$, ce qui, dans le cas des signaux AM-FM-PM, donne \cite{le_bihan_geometric_2024} :
 \begin{equation} \label{eq:decompo_pauli}
 	\rho_{\x} = \frac{1}{2}\Big( \Id + \sin(2\theta) \cos(2\chi) \sigma_1 + \sin (2\chi) \sigma_2 + \cos(2\theta) \cos(2\chi) \sigma_3 \Big)
 \end{equation}
@@ -400,7 +400,7 @@ Dans cette décomposition, la composante en $\Id$ est indépendante de $\x$ et p
 \\
 La sphère alors obtenue, plus connue sous le nom de sphère de Poincaré, représente l'ensemble des états de polarisation possibles pour un signal :
 \\
-À l'équateur, la polarisation est linéaire et $\theta$ pilote son orientation et plus $\rho_{\x}$ se rapproche des pôles, plus cette polarisation devient elliptique, jusqu'à devenir complètement circulaire, auquel cas $\theta$ devient insignifiant. 
+À l'équateur, la polarisation est linéaire et $\theta$ pilote son orientation et plus $\rho_{\x}$ se rapproche des pôles, plus cette polarisation devient elliptique, jusqu'à être complètement circulaire, auquel cas $\theta$ devient insignifiant. 
 Aussi, suivant le schéma \cref{fig:ellipse2polar}, l'hémisphère nord (resp. sud) correspond à des polarisations elliptiques anti-horaire (resp. horaire).
 
 Le fait que ce soit le double des angles qui sont représentés tient naturellement compte des potentielles redondances dans les $(\theta,\chi)$. 
@@ -430,7 +430,7 @@ alors $\rho_{\x}$ décrit un chemin horizontal sur la sphère, $\rho_{\x}(t_0) =
 \end{align*}
 \skipl
 
-Cette dernière formule donne également à $2\pi$ près l’aire de la calotte entourée par $\rho_{\x}$, à savoir :
+Cette dernière formule donne également, à $2\pi$ près, l’aire de la calotte entourée par $\rho_{\x}$, à savoir :
 \[\mathcal{A}ire(\chi_0) = 2\pi - 2\pi \sin(2\chi_0)\]
 \\
 Pour être précis, pour tenir compte du fait que $\x$ a fait une rotation complète, il est plus naturel de prendre comme phase totale :

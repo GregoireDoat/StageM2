@@ -19,35 +19,38 @@
 
 
 
-\section{\todo Calcul pratique de la phase géométrique}
+\section{\wip Calcul pratique de la phase géométrique}
 
-Dans la \cref{part:phase_geo} précédente, deux formulations de la phase géométrique ont été présenté. Cela dit, elle ne sont que très peut pertinente en partique car passant par des intégrales dans $\PC{n}$ qui ne s'écrivent explicitement qu'avec des coordonnées locales.
+Dans la \cref{part:phase_geo} précédente, deux formulations de la phase géométrique ont été présenté. Cela dit, elle ne sont que très peut pertinente pour le calcul de $\phaseg$ en pratique car passant par des intégrales dans $\PC{n}$ qui ne s'écrivent explicitement qu'avec des coordonnées locales.
 \\
-Que ce soit par rapport à la connexion où à forme de Kähler, les termes intégrales sont principalement dû à l'écriture de la phase dynamique. Mais la phase géométrique étant invariante par transformation de jauge, il est tout à fait possible de s'en débarasser en considérant un
-\begin{itemize}
-	
-	\item Il faut faire du calcul approximé d'aire sur $\PC{n}$. 2 pb : \begin{itemize}
-		
-		\item Calcul d'aire : MEH
-		
-		\item  $\PC{n}$ est une variété quotent : MEH
-		
-	\end{itemize}
-	
-	\item Solution : \begin{itemize}
-		
-		\item $\pi(\x) \cong \rho_{\x}$
-		
-		\item On simplifie tout par des approxes de géodésique
-	\end{itemize}
-	
-	\item géodésique $\Lr\ \phaseg = \phaset$ donc c'est juste des arg ! (super fast)
-	
-	\item En cumulant le tout, ca fait donne l'invariant de Bargmann :
-	
-	\item Bonus : c'est super parce que, en pratique, on a toujours des données ponctuelles, dont pas de besoin de "choisir" les points de subdivision !
-\end{itemize}
 
+Une solution apporté par Rabei \etal~\cite{rabei_bargmann_1999} est de s'intéresser à une par approximation polygonale du signal projeté dans $\PC{n}$. 
+C'est-à-dire de l'approcher par une suite de géodésique concaténée les unes aux autres. 
+\\
+Sachant que les mesures sont toujours de nature discrète, cette opération n'a pas vraiment de coût en pratique et permet d'exploiter les résultats de la \cref{part:phase_geo}, \cref{subsec:phase_g2geode}. 
+Ainsi, en notant $(\x_i)_{1\leq i\leq k}$ les $k$ mesures du signal, $\x_{i\rightarrow i+1}$ la géodésique reliant $\x_i$ à $\x_{i+1}$, et $\x$ le concaténation de toutes ces géodésiques, on a  :
+\begin{align*}
+\phaseg(\x) &= \phaset(\x) - \phased(\x) \\
+	&= \phaset(\x) - \sum_{i=1}^{k-1} \phased(\x_{i\rightarrow i+1}) \\
+	&= \phaset(\x) - \sum_{i=1}^{k-1} \phaset(\x_{i\rightarrow i+1}) - \phaseg(\x_{i\rightarrow i+1}) \\
+	&= \phaset(\x) - \sum_{i=1}^{k-1} \phaset(\x_{i\rightarrow i+1}) \\
+	&= \arg\langle\x_k, \x_1\rangle - \sum_{i=1}^{k-1} \arg\langle\x_{i+1}, \x_i\rangle
+\end{align*} 
+\\
+Après quelques opération élémentaires, cette formule ce réécrit par rapport aux $\rho_i \defeq \congu{\x_i}\transp{\x_i}$ :
+\begin{equation} \label{eq:bargmann}
+	\phaseg(\x) = \arg\langle\x_k, \x_1\rangle + \sum_{i=1}^{k-1} \arg\langle\x_i, \x_{i+1}\rangle = \arg \left( \tr \prod_{i=1}^{k} \rho_i \right)
+\end{equation}
+\\
+Cette formule, en plus d'être facilement implémentable, n'est que très peu coûteuse en temps de calcul. Aussi, elle partiellement itérative, dans sens où, en ajoutant un point $\x_{k+1}$ au signal, il suffit d'ajouter $\rho_{k+1}$ au produit des $\rho_i$ avant de prendre l'argument de la trace du tout.
+\\
+
+C'est cette formule qu'ont implémentée Flamant \etal dans leur package python \pyt{pygeomphase} --  -- et utilisé dans les articles \cite{le_bihan_modephysiques_2023, le_bihan_geometric_2024}.
+\\
+\begin{remarque}
+	A la limite on retrouve la géodésique exacte et en ca sens :\cite{sjoqvist_geometric_2015}
+	\[\phaseg = global\ phase - \sum local phase changes\]
+\end{remarque}
 
 
 
@@ -55,23 +58,52 @@ Que ce soit par rapport à la connexion où à forme de Kähler, les termes int�
 
 \subsection{\todo Cas 2D : lien avec la première partie} \label{subsec:ex-2D}
 
-\begin{itemize}
-	
-	\item $\PC{1} \cong S^2$
-	
-	\item Stokes donne exactement le calcul de la demi-aire \\
-	
-	\hrule
-	
-	\item Présentations des résultats de \cite{le_bihan_modephysiques_2023}
-	
-	\item \thoughts{je trouve qu'on s'éloigne un peu trop du sujet : $\phaseg$ pour les SIGNAUX. Là on a un EDP qui dirige le truc + j'ai rien à apporté dessus}
-	
-\end{itemize}
+ Rabi
+\\ \\ \\
+En mécanique quantique, les systèmes à deux niveaux sont à la base de l'information quantique. En effet, un tel système est l'archetype d'un qubit, pouvait encoder deux valeurs (0 et 1) par la présence des deux états du système. Ces systèmes sont centraux en théorie de l'information quantique du fait du principe de superposition qui assure que l'état est une superposition d'un 0 et d'un 1. La puissance de la théorie de l'information quantique est basée sur cette spécificité, qui n'existe pas pour les bits non-quantiques. Il existe de nombreux ouvrages qui décrivent la façon de transmettre l'information et la manipuler [ref,ref,ref].
+Ici, nous nous intéressons au système à deux états, mais d'un point de vue déterministe. En fait, nous reprenons le modèle issu de la mécanique et montrons comment il permet d'avoir un modèle de signal bivarié possédant une phase géométrique. Cette phase est bien connue pour ces systèmes [Bohm] et nous reformulons ici les résultats donnés dans [ref gretsi] avec un formalisme légèrement différent.
+\\ 
+
+On considère un signal bivarié $x(t) \in C^2$, solution de l'equation différentielle du premier ordre suivante :(2) puis (3) de  \cite{le_bihan_modephysiques_2023}
+\\ \\
+
+ Commentaire : 
+\\ \\ \\
+A partir de là, il faut réécrire en $\C^2$ à la place de H.
+dans ce qui est écrit 
+
+\[x(t) = x1(t) + i x2(t) \text{x(t) est donc quaternionique}\] 
+
+avec $x1(t) = Re[x1(t)] + j Im[x1(t)]$
+
+et pareil pour $x2(t)$.
+
+---
+
+
+Ensuite, il faut dérouler le petit calcul que j'ai fait dans la note manuscrite. 
+
+Après ça raccroche avec le papier et il faut faire une figure avec les paramètres que tu veux dans le notebook et ça suffira. 
 
 
 
 \subsection{\todo Cas 3D : application aux ondes gravitationnelles} \label{subsec:ex-3D}
+
+Ondes gravitationnelles
+\\ \\ \\
+Les ondes gravitationnelles sont des perturbations de la métrique de l'espace-temps se propageant dans l'univers. Elles ont été prédites par la théorie de la relativité générale d'Einstein (finalisée vers 1915) et ont été détectées pour la première fois 100 ans plus tard en 2015 par le réseau d'interféromètres Ligo-Virgo. La théorie de la relativité générale prédit que les ondes gravitationnelles sont polarisées, comme les ondes électromagnétiques ou les ondes élastiques/sismiques. Jusqu'à présent, il n'a pas été possible de mesurer la polarisation des ondes gravitationnelles mesurées, pour plusieurs raison (niveau de bruit, réseau de capteur partiellement opérationnel, etc). Mesurer, et donc mettre en évidence expérimentalement, cette polarisation serait une validation expérimentale supplémentaire de la théorie de la relativité générale.
+
+Les sources d'ondes gravitationnelles actuellement visibles sont les binaires d'étoiles massives coalescentes. Ainsi, près de deux cent évènements ont pu être détectés en 10 ans, principalement des paires de trous noirs (appelées "BBH" pour Binary Black Hole) et d'étoiles à neutrons pendant la phase terminale du phénomène de fusion ("merger"). [Là, faire ref au schema]. Il existe des BBH particulières pour lesquelles il est prédit que les ondes gravitationnelles émises exhibent un phénomène de "modulation de polarisation" (polarisation qui varie au cours du temps). Ce sont les BBH dans lesquelles les spin (moment angulaire) des deux trous noirs composant la binaire sont désalignés. Il serait donc intéressant de pouvoir mesurer ces variations de polarisation pendant la phase "merger", car cela permettrait de remonter à la dynamique de la source d'ondes. Ainsi, par la mesure des variations de polarisation, il serait possible d'accéder à des informations importantes sur la source. La phase géométrique étant un marqueur d'une variation temporelle dans l'espace projectif (chemin sur la sphère de Poincaré), l'idée est de voir comment se comporte la phase géométrique des BBH avec spin désalignés afin d'ensuite proposer un estimateur de ce désalignement de spin. 
+
+Les résultats présentés ici sont illustratifs et montrent qualitativement l'effet du désalignement sur la phase géométrique du signal bivarié émis. La polarisation des ondes gravitationnelles se décrit à l'aide des modes $h_+$ et $h_x$ [référence thèse cyril par exemple] et le signal bivarié associé est h(t), dont les composantes sont les signaux analytiques de $h_+$ et $h_x$. 
+\\ \\
+
+Commentaire : 
+\\ \\ \\
+Ensuite, tu montres des exemples de $h_+$ et $h_x$ pour différentes précessions (il y en a 4 différents dans le fichier que j'avais envoyé), et la phase géométrique calculée pour chacun des cas. 
+
+Ensuite, petite conclusion sur le fait que (si ça se voit) la phase géométrique est bien sensible aux effets de precession dus au désalignement des spins. Et tu rajoutes que dans le futur, il faudra voir jusqu'à quel niveau de bruit on pourra utiliser la phase géo (donc étude sur sa sensibilité au bruit) et aussi voir comment obtenir une estimation de la phase géo à partir des mesures en sortie des trois interféro (problème de passage entre les trois mesures et les deux composantes $h_x$ et $h_+$)
+
 
 \begin{itemize}
 	
