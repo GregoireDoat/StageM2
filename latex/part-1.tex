@@ -340,8 +340,6 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 	\includegraphics[width = 0.6\textwidth]{fig/premier_resultat}
 	\caption[Evolution de la phase géométrique d'un signal AM-FM-PM]{Evolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann. Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2.}
 \end{figure}
-
-\textbf{\textsc{\color{red} FAIRE LE LIEN AVEC BERRY \cite{berry_quantal_1997} ? plus de détail avec }}
 \\
 
 Deux remarques sur ces formules. 
@@ -487,9 +485,10 @@ Ensuite, la phase ($e^{\i \varphi}$ dans \eqref{eq:AM-FM-PM}) est un élément d
 où le quotient qui apparaît n'est autre que l'espace projectif complexe de dimension (complexe) $n-1$ et noté $\PC{n-1}$ (dont la construction sera détaillée dans la \cref{part:phase_geo} suivante).
 \\
 Le problème de cette formule est qu'elle n'est pas juste en l'état. Plus précisément, elle n'est valable que localement. 
-Corrigé cela nécessite d'écrire $S^{2n-1}$, non pas comme un produit de deux ensembles, mais comme un fibré, chose que nous nous attacherons à faire dans la suite de ce mémoire \thoughts{``ce à quoi est dédié la suite de ce mémoire'' serait mieux ?}.
+Corrigé cela nécessite d'écrire $S^{2n-1}$, non pas comme un produit de deux ensembles, mais comme un fibré, chose que nous nous attacherons à faire dans la suite de ce mémoire.
 \\
 
-Avant d'y venir et pour motiver d'autant plus la décomposition \eqref{eq:decompo2C^n}, revenons sur le cas $n=2$. Holf a montré, en 1931 \cite{hopf_uber_1931}, que la sphère $S^3$ s'écrit localement (toujours au sens des fibrés) comme le produit $S^1\times S^2$. Le premier étant $\U{1}$ et le second difféomorphe\footnote{\itshape
-	Par le premier théorème d'isomorphisme, la projection $\rho$ est équivalente à la projection canonique de $\C^2$ sur $\PC{1}$, de sorte que $\ \rho(\C^n)\cong S^2\cong \PC{1}$.} au plan projectif complexe $\PC{1}$.
+Avant d'y venir et pour motiver d'autant plus la décomposition \eqref{eq:decompo2C^n}, revenons sur le cas $n=2$. Hopf a montré, en 1931 \cite{hopf_uber_1931}, que la sphère $S^3$ s'écrit localement (toujours au sens des fibrés) comme le produit $S^1\times S^2$. Le premier étant $\U{1}$ et le second difféomorphe\footnote{\itshape
+	Par le premier théorème d'isomorphisme, la projection $\rho$ est équivalente à la projection canonique de $\C^2$ sur $\PC{1}$, de sorte que $\ \rho(\C^n)\cong S^2\cong \PC{1}$.}
+au plan projectif complexe $\PC{1}$.
 Ainsi, l'écriture des signaux AM-FM-PM utilise, sans le dire, la ``décomposition'' \eqref{eq:decompo2C^n}, qui n'est alors qu'une généralisation du modèle utilisé plus tôt.

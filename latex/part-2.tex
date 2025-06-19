@@ -241,7 +241,7 @@ D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peu
 	\caption[\DONE Représentation d'une section local]
 		{Représentation d'une section locale $\sigma$ au dessus de $U_i\subset B$ de dimension 2. 
 		Comme $P$ n'est pas un produit à proprement parlé, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$. \\
-		On voit ici l'idée le nom ``fibré'' : de la base partent toutes les fibres, comme le feraient les fibres d'un tronc d'arbre et une section est littéralement une section, une coupe, de ces fibres.}
+		On voit ici l'idée dernière le nom ``fibré'' : de la base partent toutes les fibres, comme le feraient les fibres d'un tronc d'arbre et une section est littéralement une section, une coupe, de ces fibres.}
 	\label{fig:section_local}
 \end{figure}
 \skipl
@@ -260,14 +260,6 @@ De la transitivité de $G$, découle le fait que toutes les sections locales $\s
 \[\forall x\in B,\qquad \sigma(x) = \sigma_i(x) \cdot t\big(\sigma_i(x), \sigma(x)\big)\]
 Son caractère libre, lui assure l'unicité d'un choix canonique de section $\sigma_i$ sur $U_i$ : 
 \[{h_i}(x,e) = \sigma_i(x)\]
-\begin{figure}[h]
-	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
-	\input{tikz/part-2/sections_cano}
-	\caption[\DONE Représentation de la section canonique]
-		{Représentation de deux sections canoniques $\sigma_{i,j}=h_{i,j}(e, \cdot)$ au dessus de deux cartes $U_i$ et $U_j$ avec la fonction de transition $\varphi_{ij}$ (\Cref{def:fonc2transi2VFP}). 
-		Est également représentée une section $\sigma$ quelconque avec les translations $g_{i,j}$ telles que $\sigma(x) = \sigma_i(x)\cdot g_i(x) = \sigma_j(x)\cdot g_j(x)$.}
-	\label{fig:section_cano}
-\end{figure}
 \\
 Cela mène à la définition :
 \begin{definition}[Fonctions de transitions] \label{def:fonc2transi2VFP}
@@ -277,6 +269,17 @@ Cela mène à la définition :
 	\[\forall (g,x)\in G\times U_{ij},\qquad {h_i}^{-1} \circ h_j(g,x) = \big( \varphi_{ij}(x)g, x \big)\]
 \end{definition}
 \skipl
+
+\begin{figure}[h]
+	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	\input{tikz/part-2/sections_cano}
+	\caption[\DONE Représentation de la section canonique]
+	{Représentation de deux sections canoniques $\sigma_{i,j}=h_{i,j}(e,\, \cdot\, )$ au dessus de deux cartes $U_i$ et $U_j$ avec la fonction de transition $\varphi_{ij}$ (\Cref{def:fonc2transi2VFP}). 
+		Est également représentée une section $\sigma$ quelconque avec les translations $g_{i,j}$ telles que $\sigma(x) = \sigma_i(x)\cdot g_i(x) = \sigma_j(x)\cdot g_j(x)$.}
+	\label{fig:section_cano}
+\end{figure}
+\skipl
+
 
 
 
