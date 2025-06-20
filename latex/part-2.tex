@@ -456,7 +456,7 @@ D'où $\ \gamma = \Tilde{\gamma}\cdot g\ $ avec $g$ est solution de :
 	\frac{d}{dt}g(t)  = g(t) \conn_{\gamma(t)}\big( \dot{\gamma}(t) \big)
 \end{equation}
 \\
-\thoughts{Un Commentaire sur cette Formule peut-être ? (mais je sais pas quoi}
+\thoughts{Un Commentaire sur cette Formule peut-être ? (oui, mais je vois pas quoi)}
 \\
 
 
@@ -699,7 +699,7 @@ de la surface entourée par sa projection $\pi(\gamma)$ sur $\PC{n}$.
 
 De retour au cas général, si maintenant $\gamma$ est qu'elle conque, pour retrouver les interprétation précédente, le plus simple est encore de se ramener au cas cyclique.
 Pour cela, il suffit de refermer la courbe tracée par $\gamma$ dans $\S{n}$ de sorte à que cet ajout n'altère pas la phase géométrique de $\gamma$.
-\\
+	\\
 
 Pour se faire, et sachant que $\phaseg$ est intimement lié à la métrique (par la connexion) de $\VFP$, c'est naturellement du côté des géodésiques de $\PC{n}$ que l'on se tourne.
 \\
@@ -807,6 +807,15 @@ où $\overset{\frown}{\Sigma}$ est la surface entourée par $\gamma \smallfrown 
 
 
 
-\section{Coclusion}
+\section{Conclusion}
 
-On a donner une nouvelle 
+En résumé, pour décrire un signal multivarié en terme de paramètre instantanée (amplitude, phase, polarisation), il nécessaire de faire intervenir des outils de géométrie différentielle. Cela est dû au fait que la séparation phase/polarisation ne peut être faite que localement. 
+Ce n'est alors qu'en voyant $\S{n}$ comme une variété fibrée que les phases dynamique et géométrique reprennent un sens du point de vue signal : la première correspond effectivement à une notation de phase instantanée, analogue à celle des signaux univariés ; chose qui ne peut avoir de sens qu'au regard d'un relèvement horizontal. La seconde, quant à elle, s'interprète comme un déphasage dû la déviation de cette trajectoire horizontale, conséquence de la courbure de $\S{n}$ (au sens de la connexion).
+\\
+
+Cela à permis de comprendre pourquoi la ``phase instantanée'' $\varphi$ des signaux AM-FM-PM ne pouvait pas s'interpréter comme une phase (totale ou dynamique) : car ce modèle cherche à décrire des trajectoires de $\VFP$ mais avec un unique système de coordonnées locales. Elle ne peut donc pas être complète, quand-bien même les paramètres de l'état de polarisation, $(\theta,\chi)$ s'interprètent très bien.
+\\
+De plus, si les signaux AM-FM-PM sont soumis à des conditions pour que leurs paramètres $(\varphi,\theta,\chi)$ soient interprétables, ce n'est pas le cas de le formalisme géométrique. \Apriori, n'importe quel signal multivarié complexe peut être ``séparé '' en composantes horizontale et verticale. Aussi, il est tout à fait possible que les hypothèses auxquelles sont soumises les signaux AM-FM-PM soient dû à ces limitations.
+\\
+
+Enfin, Facchi \etal~\cite{facchi_classical_2010} ont montré l'existence d'un lien entre la métrique de Fubini-Study, celle de Fisher et la phase géométrique : les deux dernières  seraient respectivement la partie réelle et imaginaire de la première. Un point qui n'a pas été abordé jusqu'ici mais qui suggère un lien entre la phase géométrique et la géométrie de l'information et qu'il serait intéressant d'approfondir.

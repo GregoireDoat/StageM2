@@ -1,25 +1,17 @@
 
-\thoughts{C'est juste un premier jet du plan, ca va surement bouger. Notamment l'exemple 3D qu'est en fait 2D :/}
-\\
 \begin{itemize}
-	\item On va donner trois exemples qui permettrons de voir à quoi ce peut servir, quelles sont les limites du notre modèle et comment les générliser en corps (et pourquoi)
 	
-	\item On va montrer crescendo dans les dimensions :\begin{itemize}
-		
-		\item en 2D  : pour faire le lien avec la première partie
-		
-		\item en 3D : ondes gravitationnelles générées par un système binaire. L'occasion de voir le problème d'interprétabilité du modèle avec le modèle et de parler de bruit
-		
-		\item en nD : système de capteur. Pour parler de ``l'état de polarisation'' (composante sur $\PC{n}$) même si le terme n'est plus approprié et du cas non commutatif
-	\end{itemize}
+	\item Comment on calcul $\phaseg$ en pratique ?
 	
-	\item conséquence de l'hypothèse bédro ?
+	\item Application
+	
+	\item Conclusion sur le mémoire et perspective.
 \end{itemize}
 
 
 
 
-\section{\wip Calcul pratique de la phase géométrique}
+\section{Calcul pratique de la phase géométrique}
 
 Dans la \cref{part:phase_geo} précédente, deux formulations de la phase géométrique ont été présenté. Cela dit, elle ne sont que très peut pertinente pour le calcul de $\phaseg$ en pratique car passant par des intégrales dans $\PC{n}$ qui ne s'écrivent explicitement qu'avec des coordonnées locales.
 \\
@@ -37,191 +29,83 @@ Ainsi, en notant $(\x_i)_{1\leq i\leq k}$ les $k$ mesures du signal, $\x_{i\righ
 	&= \arg\langle\x_k, \x_1\rangle - \sum_{i=1}^{k-1} \arg\langle\x_{i+1}, \x_i\rangle
 \end{align*} 
 \\
-Après quelques opération élémentaires, cette formule ce réécrit par rapport aux $\rho_i \defeq \congu{\x_i}\transp{\x_i}$ :
-\begin{equation} \label{eq:bargmann}
-	\phaseg(\x) = \arg\langle\x_k, \x_1\rangle + \sum_{i=1}^{k-1} \arg\langle\x_i, \x_{i+1}\rangle = \arg \left( \tr \prod_{i=1}^{k} \rho_i \right)
-\end{equation}
+%Après quelques opération élémentaires, cette formule ce réécrit par rapport aux $\rho_i \defeq \congu{\x_i}\transp{\x_i}$ :
+%\begin{equation} \label{eq:bargmann}
+	%\phaseg(\x) = \arg\langle\x_k, \x_1\rangle - \sum_{i=1}^{k-1} \arg\langle\x_{i+1}, %\x_i\rangle = \arg \left( \tr \prod_{i=1}^{k} \rho_i \right)
+%\end{equation}
 \\
-Cette formule, en plus d'être facilement implémentable, n'est que très peu coûteuse en temps de calcul. Aussi, elle partiellement itérative, dans sens où, en ajoutant un point $\x_{k+1}$ au signal, il suffit d'ajouter $\rho_{k+1}$ au produit des $\rho_i$ avant de prendre l'argument de la trace du tout.
-\\SAmsic
+Cette formule, en plus d'être facilement implémentable, n'est que très peu coûteuse en temps de calcul. Aussi, elle partiellement itérative, permettant d'obtenir un algorithme de calcul de $\phaseg$ en tout point relativement efficace :
 
-C'est cette formule qu'ont implémentée Flamant \etal dans leur package python \pyt{pygeomphase} --  -- et utilisé dans les articles \cite{le_bihan_modephysiques_2023, le_bihan_geometric_2024}.
+C'est cette formule qui est implémenté dans les codes disponibles de le \href{https://github.com/GregoireDoat/StageM2}{GitHub}.
 \\
-\begin{remarque}
-	A la limite on retrouve la géodésique exacte et en ca sens :\cite{sjoqvist_geometric_2015}
-	\[\phaseg = global\ phase - \sum local phase changes\]
-\end{remarque}
 
 
 
-\section{\todo Exemples d'applications} \label{sec:exemples_appli}
+\section{Première application : ondes gravitationnelles} \label{subsec:ex-3D}
 
-\subsection{\todo Cas 2D : lien avec la première partie} \label{subsec:ex-2D}
+En relativité générale, la gravité n'est plus décrit comme une force mais comme une conséquence de la déformation de la métrique l’espace-temps en fonction des masses qui s'y trouve \cite{vankov_einsteins_nodate}.
+Cela a de multiple conséquences, comme par exemple le fait que la lumière puisse être déviée par les objets massifs, ce qui ne pouvait pas être le cas en mécanique Newtonienne et qui fût observé en pratique.
+\\
+Une autre prédiction de la relativité générale est l'existence d'onde gravitationnelle, qui sont dû à la propagation des déformations de l’espace-temps causé par le déplacement d’objet massif.
+Cela dit, mesurer de telles ondes n'est pas chose aisé et il a fallu attendre cent ans après l'article fondateur d'Einstein (1915) pour pouvoir les détecter (2015).
+\\
 
- Rabi
-\\ \\ \\
-En mécanique quantique, les systèmes à deux niveaux sont à la base de l'information quantique. En effet, un tel système est l'archetype d'un qubit, pouvait encoder deux valeurs (0 et 1) par la présence des deux états du système. Ces systèmes sont centraux en théorie de l'information quantique du fait du principe de superposition qui assure que l'état est une superposition d'un 0 et d'un 1. La puissance de la théorie de l'information quantique est basée sur cette spécificité, qui n'existe pas pour les bits non-quantiques. Il existe de nombreux ouvrages qui décrivent la façon de transmettre l'information et la manipuler [ref,ref,ref].
-Ici, nous nous intéressons au système à deux états, mais d'un point de vue déterministe. En fait, nous reprenons le modèle issu de la mécanique et montrons comment il permet d'avoir un modèle de signal bivarié possédant une phase géométrique. Cette phase est bien connue pour ces systèmes [Bohm] et nous reformulons ici les résultats donnés dans [ref gretsi] avec un formalisme légèrement différent.
-\\ 
+En plus de leur existence, la théorie de la relativité générale prédit que ces ondes doivent être polarisées, comme ça peut être le cas avec les ondes électromagnétiques ou sismiques. En revanche, il n'a pas encore été possible de confirmer que nos mesures présentent effectivement ces propriétés, que ce soit dû au niveau de bruit élevé des mesures ou à des difficultés techniques au niveau des capteurs. Mettre en évidence ces propriétés serait une validation expérimentale supplémentaire de la théorie d'Einstein et sur ce point la phase géométrique est un outil prometteur.
+\\
 
-On considère un signal bivarié $x(t) \in C^2$, solution de l'equation différentielle du premier ordre suivante :(2) puis (3) de  \cite{le_bihan_modephysiques_2023}
-\\ \\
+Avant d'y venir revenons sur les mesures. Pour pouvoir détecter des ondes aussi discrète, il est nécessaire de tourner vers des objets à la fois massifs et en mouvement rapide, en l'occurrence des systèmes binaires de trous noirs (BBH, Binary Black Holes) en phase de ``merge''. C'est-à-dire deux étoiles massives, ici des trous noirs, en orbite l'une autour de l'autre et sur le point d'entre en collision, comme le montre la \Cref{fig:merge2BBH} ci-dessous :
 
- Commentaire : 
-\\ \\ \\
-A partir de là, il faut réécrire en $\C^2$ à la place de H.
-dans ce qui est écrit 
+\begin{figure}[h]
+	\input{fig/not_mine/imr.tex}
+\end{figure}
 
-\[x(t) = x1(t) + i x2(t) \text{x(t) est donc quaternionique}\] 
+Il est donc prédit que les ondes engendrés par tes phénomènes sont polarisées mais aussi et surtout, qu'en fonction de l'alignement des axes de rotations des deux étoiles, l'état de polarisation de ces dernières doit varier au cours du temps. Chose qui doit pouvoir être mis en évidence par le calcul de la phase géométrique des ondes.
+\\
 
-avec $x1(t) = Re[x1(t)] + j Im[x1(t)]$
+Pour cela, sont utilisés quatre jeux de données synthétiques et sans bruit avec des spins plus où moins alignés et la \Cref{fig:phase_g2} présent l’évolution des trois phases du signal dans chacun des cas.
+\\
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_plot_1.pdf}\hfill
+	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_plot_2.pdf}\\
+	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_plot_3.pdf}\hfill
+	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_plot_4.pdf}
+	\caption[Évolution de la phase géométrique sur des données simulées d'ondes gravitationnelles]{Évolution de la phase géométrique sur des données simulées d'ondes gravitationnelles. Sur chaque graphiques (de haut en bas et de gauches à droites) les spins des trous noirs sont de moins en moins aligné. Dans les parties hautes est représenté les signals simulés et en dessous le calculs des différentes phases.}
+\end{figure}
 
-et pareil pour $x2(t)$.
+Ces signaux étant à valeur dans $\R^2$, il a fallu les transformer en signaux analytiques pour pouvoir calculer leurs différentes phases. Cela suppose (\cf~\ref{ann:complement_t-f}) qu'ils soit de type AM-FM-PM, ce qui n'est pas un problème au vue de l'allure des composantes $h_+$ et $h_\times$ des signaux.
+\\
+Ensuite, comme attendu, la phase géométrique de ces signaux n'est pas constante et devient de plus en plus changeante à mesure la polarisation des ondes devient variable.
+\\
 
----
-
-
-Ensuite, il faut dérouler le petit calcul que j'ai fait dans la note manuscrite. 
-
-Après ça raccroche avec le papier et il faut faire une figure avec les paramètres que tu veux dans le notebook et ça suffira. 
-
-
-
-\subsection{\todo Cas 3D : application aux ondes gravitationnelles} \label{subsec:ex-3D}
-
-Ondes gravitationnelles
-\\ \\ \\
-Les ondes gravitationnelles sont des perturbations de la métrique de l'espace-temps se propageant dans l'univers. Elles ont été prédites par la théorie de la relativité générale d'Einstein (finalisée vers 1915) et ont été détectées pour la première fois 100 ans plus tard en 2015 par le réseau d'interféromètres Ligo-Virgo. La théorie de la relativité générale prédit que les ondes gravitationnelles sont polarisées, comme les ondes électromagnétiques ou les ondes élastiques/sismiques. Jusqu'à présent, il n'a pas été possible de mesurer la polarisation des ondes gravitationnelles mesurées, pour plusieurs raison (niveau de bruit, réseau de capteur partiellement opérationnel, etc). Mesurer, et donc mettre en évidence expérimentalement, cette polarisation serait une validation expérimentale supplémentaire de la théorie de la relativité générale.
-
-Les sources d'ondes gravitationnelles actuellement visibles sont les binaires d'étoiles massives coalescentes. Ainsi, près de deux cent évènements ont pu être détectés en 10 ans, principalement des paires de trous noirs (appelées "BBH" pour Binary Black Hole) et d'étoiles à neutrons pendant la phase terminale du phénomène de fusion ("merger"). [Là, faire ref au schema]. Il existe des BBH particulières pour lesquelles il est prédit que les ondes gravitationnelles émises exhibent un phénomène de "modulation de polarisation" (polarisation qui varie au cours du temps). Ce sont les BBH dans lesquelles les spin (moment angulaire) des deux trous noirs composant la binaire sont désalignés. Il serait donc intéressant de pouvoir mesurer ces variations de polarisation pendant la phase "merger", car cela permettrait de remonter à la dynamique de la source d'ondes. Ainsi, par la mesure des variations de polarisation, il serait possible d'accéder à des informations importantes sur la source. La phase géométrique étant un marqueur d'une variation temporelle dans l'espace projectif (chemin sur la sphère de Poincaré), l'idée est de voir comment se comporte la phase géométrique des BBH avec spin désalignés afin d'ensuite proposer un estimateur de ce désalignement de spin. 
-
-Les résultats présentés ici sont illustratifs et montrent qualitativement l'effet du désalignement sur la phase géométrique du signal bivarié émis. La polarisation des ondes gravitationnelles se décrit à l'aide des modes $h_+$ et $h_x$ [référence thèse cyril par exemple] et le signal bivarié associé est h(t), dont les composantes sont les signaux analytiques de $h_+$ et $h_x$. 
-\\ \\
-
-Commentaire : 
-\\ \\ \\
-Ensuite, tu montres des exemples de $h_+$ et $h_x$ pour différentes précessions (il y en a 4 différents dans le fichier que j'avais envoyé), et la phase géométrique calculée pour chacun des cas. 
-
-Ensuite, petite conclusion sur le fait que (si ça se voit) la phase géométrique est bien sensible aux effets de precession dus au désalignement des spins. Et tu rajoutes que dans le futur, il faudra voir jusqu'à quel niveau de bruit on pourra utiliser la phase géo (donc étude sur sa sensibilité au bruit) et aussi voir comment obtenir une estimation de la phase géo à partir des mesures en sortie des trois interféro (problème de passage entre les trois mesures et les deux composantes $h_x$ et $h_+$)
-
-
-\begin{itemize}
-	
-	\item Deux trous noirs tournent autour l'un de l'autre
-	
-	\item Ils sont caractérisés par 3 paramètres : masse, spin, l'autre
-	
-	\item 4 simulations : \begin{itemize}
-		
-		\item leur axe de rotations sont de moins en moins aligné
-		
-		\item ca affecte l'état de polarisation 
-		
-		\item ... et ca engendre de la phase géométrique qui se mesure
-	\end{itemize}
-	
-	\item Cet exemple amène 2 questions : \begin{itemize}
-		
-		\item comment le modèle AM-FM-PM se généralise en hauteD ?
-		
-		\item comment la phase géométrique réagit au bruit
-		
-		\item on en reparle en dernière partie
-
-	\end{itemize}
-\end{itemize}
-
-\subsection{\todo Cas nD : sytème de capteurs} \label{subsec:ex-nD}
-
-\begin{itemize}
-	
-	\item cf \href{https://theses.hal.science/tel-00199884}{ici} pour les détails
-	
-	\item invariance par $\U{n}$ ? vraiment ?
-\end{itemize}
+Ces résultats, bien que très préliminaire, permettent déjà d'entre voir les difficultés quand à la mesure de la phase géométrique :
+\\
+D'abord, au début de chaque signaux, elle présente un saut conséquent par rapport à ces valeurs et il semblerait qu'il soit très sensible à la valeur de départ du signal. Aussi, quand-bien même ce saut ne semble pas se faire d'un multiple de $\pi$, il est probable que ce soit en partie lié au choix de représentant de $\phaseg$ (qui est définie modulo $2\pi$).
+Dans tout les cas, cela risque de poser problème pour une utilisation plus avancée.
+\\
+Ensuite, même dans le pire des cas, la phase géométrique ne reste que très marginale par rapport aux deux autres, ce qui risque d'être un problème sur des mesures réelles, nécessairement bruitées.
+\\
 
 
 
-\section{\todo Pour la suite}\label{sec:2lasuite}
 
+\section{Conclusion et perspectives}
 
-\subsection{\todo Limite du modèle}\label{subsec:limite2model}
+Même si ce n'était pas l'objectif premier, s’intéresser à la phase géométrique à permis d'apporter un point de vue nouveau sur les signaux multivariés en terme des paramètres instantanée (amplitude, phase et polarisation). 
+\\
+Cela à permis, d'un côté, de mettre en lumière une subtile limite au modèle AM-FM-PM au niveau de l'interprétabilité de ces paramètres $(\varphi, \theta, \chi)$ et pourquoi il était nécessaire de passer par des notions de géométrie différentielle pour retrouver ces interprétations. 
+De l'autre, cela à permis de donner une nouvelle interprétation, en terme de signal, à d'outils déjà bien connus en mécanique quantique.
+\\
 
-\begin{itemize}
-	
-	\item $\PC{1} \cong S^2$ est super satisfaisant mais au dela c'est beaucoup moins claire.
-	
-	\item Pour passer de 2D à 3D, on a juste augmenté les matrices de rotation, \ie~$\SO(3)$ au lieu de $\SO(2)$. 
-	
-	\item C'est ce qu'on fait par Lilly \& Olhede \cite{lilly_modulated_2011} et Lefèvre a discuté des généralisations dans sa thèse \cite{lefevre_polarization_2021}
-	
-	\item Ca fait sens physiquement mais par rapport à $\PC{n}$ c'est loin d'être évident
-	
-	\item ... est-ce que c'est là que se cache le lien avec le double-cover de $\SO$ par $\SU$ ???
-	\begin{itemize}
-		\item Il serait vraiment intéressant (instructif) de faire ce lien 
-		
-		\item peut-être notre travail sur le phase g est une généralisation de ça ? 
-	\end{itemize}
-	
-\end{itemize}
+Il a été montré que la phase géométrique est une quantité qui se mesure effectivement en pratique et, même si ces interprétations géométrique laisse entendre que ses applications sont limitées, il n'est pas exclus qu'elle puisse avoir des applications en débruitage. Par exemple, si une onde mesuré n'est pas sensé être à polarisation variable, une phase géométrique non nulle de ce dernier ne pourrait être dû qu'à du bruit. L'on pourrait alors imaginer des traitement qui se ferait uniquement sur le signal projeté sur $\PC{n}$, sans affecter sa phase dynamique/instantanée (ou inversement).
+\\
+A l'inverse, il serait intéressant, notamment pour les ondes gravitationnelles, de voir dans quelle mesure la phase géométrique est résiliente au bruit. Par exemple, les argument de la \cref{part:param_instant}, \cref{subsec:intro_phased} suggèrent que la phase dynamique est associée aux hautes fréquences du signal. La phase géométrique devrait alors être de plus basse fréquence, chose qui pourrait être mise en perspective avec les plages de fréquences favorisées par certaines sources de bruits.
+\\
 
+Pour ce qui est des perspectives théoriques, il serait intéressant voir dans quelle mesure la projection sur $\PC{n}$ d'un signal multivarié peut être séparer en différents paramètres, comme c'est le cas pour les AM-FM-PM en bivarié (orientation de l'ellipse de polarisation).
+\\
+Enfin, il est connu que la phase géométrique se généralise aux Grassmannien, une généralisation des espaces projectifs complexes. Cela donne lieu à un nouveau type de phase géométrique, dite non-commutative, et c'est en partie pour cette raison que la \cref{part:phase_geo} était aussi extensive sur le formalisme mathématiques : pour facilité la généralisation des concepts mis en place à ces espaces, le tout en gardant autant que possible leurs interprétations.
+\\
+En outre, un système de $k$ capteur mesurant un signal $n-$varié, semble être un cadre propice à l'apparaissions de cette phase non-commutative, ce qui donne déjà des perspectives d'applications.
+\\
 
-
-\subsection{\todo Rapport de la phase géométrique au bruit}\label{subsec:rapportObruit}
-
-\begin{itemize}
-	\item Si une source d'information n'est pas sensé changer d'état de polarisation, mais qu'on constate qu'il y a phase géométrique, alors ce n'est (quasiment) que du bruit. Ça peut donc être un premier filtre pour débruiter.
-	\begin{itemize}
-		
-		\item pour le corriger en revanche, c'est un peu plus technique parce que ça veut dire qu'il faut tuer la polarisation du signal ou au moins la réduire à une géodésique.
-		
-		\item une idée serait de regarder la moyenne du signal projeté dans $\PC{n}$ et du tout simplement remplacer l'état de polarisation du signal par ca moyenne. 
-		
-		\item ca devrait pas affecter le phase dynamique	
-	\end{itemize}
-	
-	\item En étant un peu moins restrictif l'évolution de l'état de polarisation du signal, on a vu qu'un la phase instantanée doit contenir les hautes fréquences du signal, Peut-être qu'on pourrait se servir de ça pour contraindre les variations de l'état de polar et, là encore, en faire un critère de débruitage.
-	\begin{itemize}
-		
-		\item  par exemple en tuant les hautes fréquences de la phase géométrique
-		
-		\item d'ailleurs, ca amène la question : quide de faire du Fourier sur les phases ? La phase totale est pas très intéressante (j'imagine), mais les deux autres ? 
-		
-		\item c'est un peu flou quand-même parce $\phaseg$ vient de l'état de polar, qui lui n'est affecté parles transfo de jauge
-	\end{itemize}
-	
-	\hrule
-
-	\item Il faudrait voir comment la phase géométrique réagit au bruit.
-	\begin{itemize}
-		
-		\item Si elle y est très résiliente, elle pourrait être source d'information sur des données. Voir même, être une information de base pour reconstruire une signal (genre en utilisant le fait qu'elle soit à propos des basse-fréquence)
-		
-		\item Plus généralement, il serait bien de voir comment elle réagit en fonction de la distribution spectrale du bruit
-	\end{itemize}
-	
-\end{itemize}
-
-
-
-\subsection{\todo Cas non commutatif}\label{subsec:non-commu}
-
-\begin{itemize}
-	
-	\item En gros on va devoir aller Stiefel, aka $\PC{n}$ va devenir une grassmannienne $Stiefel/\U{k}$
-	
-	\item Fubini-Study s'étend à ces espaces, et les grassmannienne sont toujours des variétés complexes
-	
-	\item La formule de la phase dyn va changer par contre (path ordering) et donc son interprétations sera à revoir :/
-	
-	\item Autres potentielles applications :
-	\begin{itemize}
-		
-		\item Subspace tracking
-		
-		\item ?
-	\end{itemize}
-	
-\end{itemize}
-
+Pour toutes ces raisons, la phase géométrique reste un outil avec du potentiel, bien que méconnue et qui, en toute vraisemblance, ferait un bon sujet de thèse.

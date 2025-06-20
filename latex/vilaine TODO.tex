@@ -1,0 +1,115 @@
+\section{\todo Exemples d'applications} \label{sec:exemples_appli}
+
+\subsection{\todo Cas 2D : lien avec la première partie} \label{subsec:ex-2D}
+
+Rabi
+\\ \\ \\
+En mécanique quantique, les systèmes à deux niveaux sont à la base de l'information quantique. En effet, un tel système est l'archetype d'un qubit, pouvait encoder deux valeurs (0 et 1) par la présence des deux états du système. Ces systèmes sont centraux en théorie de l'information quantique du fait du principe de superposition qui assure que l'état est une superposition d'un 0 et d'un 1. La puissance de la théorie de l'information quantique est basée sur cette spécificité, qui n'existe pas pour les bits non-quantiques. Il existe de nombreux ouvrages qui décrivent la façon de transmettre l'information et la manipuler [ref,ref,ref].
+Ici, nous nous intéressons au système à deux états, mais d'un point de vue déterministe. En fait, nous reprenons le modèle issu de la mécanique et montrons comment il permet d'avoir un modèle de signal bivarié possédant une phase géométrique. Cette phase est bien connue pour ces systèmes [Bohm] et nous reformulons ici les résultats donnés dans [ref gretsi] avec un formalisme légèrement différent.
+\\ 
+
+On considère un signal bivarié $x(t) \in C^2$, solution de l'equation différentielle du premier ordre suivante :(2) puis (3) de  \cite{le_bihan_modephysiques_2023}
+\\ \\
+
+Commentaire : 
+\\ \\ \\
+A partir de là, il faut réécrire en $\C^2$ à la place de H.
+dans ce qui est écrit 
+
+\[x(t) = x1(t) + i x2(t) \text{x(t) est donc quaternionique}\] 
+
+avec $x1(t) = Re[x1(t)] + j Im[x1(t)]$
+
+et pareil pour $x2(t)$.
+
+---
+
+
+Ensuite, il faut dérouler le petit calcul que j'ai fait dans la note manuscrite. 
+
+Après ça raccroche avec le papier et il faut faire une figure avec les paramètres que tu veux dans le notebook et ça suffira. 
+
+
+
+\section{\todo Pour la suite}\label{sec:2lasuite}
+
+
+\subsection{\todo Limite du modèle}\label{subsec:limite2model}
+
+\begin{itemize}
+	
+	\item $\PC{1} \cong S^2$ est super satisfaisant mais au dela c'est beaucoup moins claire.
+	
+	\item Pour passer de 2D à 3D, on a juste augmenté les matrices de rotation, \ie~$\SO(3)$ au lieu de $\SO(2)$. 
+	
+	\item C'est ce qu'on fait par Lilly \& Olhede \cite{lilly_modulated_2011} et Lefèvre a discuté des généralisations dans sa thèse \cite{lefevre_polarization_2021}
+	
+	\item Ca fait sens physiquement mais par rapport à $\PC{n}$ c'est loin d'être évident
+	
+	\item ... est-ce que c'est là que se cache le lien avec le double-cover de $\SO$ par $\SU$ ???
+	\begin{itemize}
+		\item Il serait vraiment intéressant (instructif) de faire ce lien 
+		
+		\item peut-être notre travail sur le phase g est une généralisation de ça ? 
+	\end{itemize}
+	
+\end{itemize}
+
+
+
+\subsection{\todo Rapport de la phase géométrique au bruit}\label{subsec:rapportObruit}
+
+\begin{itemize}
+	\item Si une source d'information n'est pas sensé changer d'état de polarisation, mais qu'on constate qu'il y a phase géométrique, alors ce n'est (quasiment) que du bruit. Ça peut donc être un premier filtre pour débruiter.
+	\begin{itemize}
+		
+		\item pour le corriger en revanche, c'est un peu plus technique parce que ça veut dire qu'il faut tuer la polarisation du signal ou au moins la réduire à une géodésique.
+		
+		\item une idée serait de regarder la moyenne du signal projeté dans $\PC{n}$ et du tout simplement remplacer l'état de polarisation du signal par ca moyenne. 
+		
+		\item ca devrait pas affecter le phase dynamique	
+	\end{itemize}
+	
+	\item En étant un peu moins restrictif l'évolution de l'état de polarisation du signal, on a vu qu'un la phase instantanée doit contenir les hautes fréquences du signal, Peut-être qu'on pourrait se servir de ça pour contraindre les variations de l'état de polar et, là encore, en faire un critère de débruitage.
+	\begin{itemize}
+		
+		\item  par exemple en tuant les hautes fréquences de la phase géométrique
+		
+		\item d'ailleurs, ca amène la question : quide de faire du Fourier sur les phases ? La phase totale est pas très intéressante (j'imagine), mais les deux autres ? 
+		
+		\item c'est un peu flou quand-même parce $\phaseg$ vient de l'état de polar, qui lui n'est affecté parles transfo de jauge
+	\end{itemize}
+	
+	\hrule
+	
+	\item Il faudrait voir comment la phase géométrique réagit au bruit.
+	\begin{itemize}
+		
+		\item Si elle y est très résiliente, elle pourrait être source d'information sur des données. Voir même, être une information de base pour reconstruire une signal (genre en utilisant le fait qu'elle soit à propos des basse-fréquence)
+		
+		\item Plus généralement, il serait bien de voir comment elle réagit en fonction de la distribution spectrale du bruit
+	\end{itemize}
+	
+\end{itemize}
+
+
+
+\subsection{\todo Cas non commutatif}\label{subsec:non-commu}
+
+\begin{itemize}
+	
+	\item En gros on va devoir aller Stiefel, aka $\PC{n}$ va devenir une grassmannienne $Stiefel/\U{k}$
+	
+	\item Fubini-Study s'étend à ces espaces, et les grassmannienne sont toujours des variétés complexes
+	
+	\item La formule de la phase dyn va changer par contre (path ordering) et donc son interprétations sera à revoir :/
+	
+	\item Autres potentielles applications :
+	\begin{itemize}
+		
+		\item Subspace tracking
+		
+		\item ?
+	\end{itemize}
+	
+\end{itemize}
