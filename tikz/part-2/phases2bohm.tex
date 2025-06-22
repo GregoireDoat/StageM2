@@ -1,0 +1,52 @@
+\begin{tikzpicture}%[scale=0.9]
+	%\draw[opacity=0.1] (-4.5,-4.5) grid (4.5,4.5);
+	\coordinate (p) at (-2,-2);
+	
+% esapce
+	% base
+	\draw[scale=1.3] (-4,-2) .. controls ($(-4,-2) + (-10:1)$) and ($(-1,-4) + (120:1)$) .. 
+		(-1,-4) .. controls ($(-1,-4) + (40:1)$) and ($(4,-2) + (180:1)$) ..  
+		(4,-2) .. controls ($(4,-2) + (120:1)$) and ($(1,0) + (-10:1)$) .. 
+		(1,0) .. controls ($(1,0) + (180:1)$) and ($(-4,-2) + (40:1)$) .. cycle ; 
+	\draw (4.6,-2.4) node{$\PC{n}$};
+	% fibre
+	\draw[] (p) -- (-2.75,1) node[above left]{$\gamma(t_0)\cdot\U{1}$};
+	
+% rho
+	\draw[thick] (p) .. controls ($(p) + (-80:1)$) and ($(-1,-3.5) + (-150:1)$) .. 
+	(-1,-3.5) .. controls ($(-1,-3.5) + (30:2)$) and ($(3,-2) + (-80:1)$) .. 
+	(3,-2) .. controls ($(3,-2) + (100:2)$) and ($(0.5,-1) + (1,0)$)..
+	(0.5,-1) .. controls ($(0.5,-1) + (-1,0)$) and ($(p) + (70:1)$).. cycle;
+	\draw[] (3.4,-2.2) node{$\rho_\gamma$};
+	
+% gamma tilde
+	\draw[thick, violet, scale=1.3, shift={(0,2)}] 
+		(-1.8,-2.5) .. controls ($(-1.8,-2.5) + (-80:1)$) and ($(-1,-3.5) + (-150:1)$) .. 
+		(-1,-3.5) .. controls ($(-1,-3.5) + (30:2)$) and ($(3,-2) + (-80:1)$) .. 
+		(3,-2) .. controls ($(3,-2) + (100:2)$) and ($(0.5,-1) + (1,0)$).. 
+		(0.5,-1) .. controls ($(0.5,-1) + (-1,0)$) and ($(-1.88,-2.2) + (70:1)$).. (-1.88,-2.2);
+		
+	\draw[color=violet, fill=violet, scale=1.3, shift={(0,2)}] (-1.88,-2.2) circle (0.05) node[left]{$\Tilde{\gamma}(t)$};
+	
+	
+% gamma
+	\draw[thick, blue, scale=1.3, shift={(0,2)}, fill=white, fill opacity=0.08] (-1.8,-2.5) .. controls ($(-1.8,-2.5) + (-80:0.5)$) and ($(-1,-2.9) + (-150:0.5)$) .. 
+		(-1,-2.9) .. controls ($(-1,-2.9) + (30:2)$) and ($(3,-2) + (-80:1)$) .. 
+		(3,-2.5) .. controls ($(3,-2.5) + (100:1)$) and ($(0.5,-1.2) + (1,0)$).. 
+		(0.5,-1.2) .. controls ($(0.5,-1.2) + (-1,0)$) and ($(-2,-1.7) + (70:1)$).. (-2,-1.7);
+	
+	
+	\draw[color=blue, fill=blue, scale=1.3, shift={(0,2)}] (-1.8,-2.5) circle (0.05) node[left]{$\gamma(t_0)$};
+	\draw[color=blue, fill=blue, scale=1.3, shift={(0,2)}] (-2,-1.7) circle (0.05) node[left]{$\gamma(t)$};
+	
+% phases
+	\draw[-Stealth, scale=1.3, shift={(0,2)}] (-1.8,-2.5) .. controls ($(-1.8,-2.5) + (60:0.1)$) .. (-1.88,-2.2) node[midway, right]{$\phaseg(\gamma)$};
+	\draw[-Stealth, scale=1.3, shift={(0,2)}] (-1.88,-2.2) .. controls ($(-1.88,-2.2) + (80:0.2)$) .. (-2,-1.7) node[midway, right]{$\phased(\gamma)$};
+	\draw[-Stealth, scale=1.3, shift={(-0.7,2)}] (-1.8,-2.5) .. controls ($(-1.88,-2.2) + (180:0.2)$) and  ($(-1.9,-1.8) + (-120:0.2)$) .. (-1.9,-1.8) node[midway, left]{$\phaset(\gamma)$};
+	
+	
+	
+	
+
+	
+\end{tikzpicture}

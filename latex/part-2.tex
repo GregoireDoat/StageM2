@@ -73,7 +73,7 @@ Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\
 		\manu \arrow[d] \arrow[u]  \arrow[r, "f" above]  & \mathpzc{N} \arrow[d] \arrow[u] \\
 		\tg{^*\manu}  & \tg{^*\mathpzc{N}} \arrow[l, "f^*" above]
 	\end{tikzcd}
-	\caption{Diagramme de passage de $f$ à $f_*$ et $f^*$.}
+	\caption[\DONE Diagramme de passage de $f$ à $f_*$ et $f^*$.]{Diagramme de passage de $f$ à $f_*$ et $f^*$.}
 	\label{fig:diagc_pullb/pushf}
 \end{wrapfigure}
 Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et\\ $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa \emph{différentielle} (ou \emph{application tangente} ou \emph{push forward}) au point $x$ est l'application linéaire qui, avec les conventions de sommation d'Einstein, s'écrit en coordonnées locales :
@@ -441,7 +441,7 @@ Munir $P(G,B)$ d'une connexion permet, entre autre de définir la notion de rel�
 Pour la suite, il sera utile d'avoir l'expression d'une trajectoire $\gamma:\R\lr P$ par rapport à son relèvement horizontal $\Tilde{\gamma}$. Pour l'obtenir, on note  $\gamma = \Tilde{\gamma}\cdot g$, de sorte que sa dérivée s'écrive :
 \[\dot{\gamma} = \dot{\Tilde{\gamma}}\cdot g + \Tilde{\gamma}\cdot dg = \dot{\Tilde{\gamma}}\cdot g + \gamma \cdot g^{-1}dg\]
 \\
-Ce à quoi on applique $\conn$, donnant :
+Ce à quoi, appliquer $\conn$ donne :
 \begin{align*}
 	\conn_\gamma(\dot{\gamma}) &= \conn_\gamma\big( \dot{\Tilde{\gamma}}\cdot g \big) + \conn_\gamma \big( \gamma \cdot g^{-1}dg \big) \\
 	&= g^{-1}\conn_{\Tilde{\gamma}}\big(\dot{\Tilde{\gamma}} \big) g + \conn_\gamma \big( \gamma \cdot g^{-1}dg \big)   &  &\text{d'après \eqref{eq:1-form_G-inv}} \\
@@ -638,7 +638,8 @@ Elle correspond donc au déplacement vertical de $\Tilde{\gamma}$ dû à la cour
 \\
 
 \begin{figure}[h]
-	\includegraphics[width=0.6\textwidth]{fig/placeholder}
+	%\includegraphics[width=0.6\textwidth]{fig/placeholder}
+	\input{tikz/part-2/phases2bohm.tex}
 	\caption[Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique]{Représentation des trois phases de $\gamma$ dans le cas cyclique. Schéma repris de \cite[fig. 4.1]{bohm_geometric_2003}}
 	\label{fig:phases-cycl}
 \end{figure}
