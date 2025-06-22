@@ -4,7 +4,7 @@ C'est donc de ce point que commencera notre discussion pour introduire la phase 
 Pour cela, seront rapidement introduites quelques notions et résultats d'analyse temps-fréquence dans le cas univarié (sec. \ref{subsec:ana_temp-freq}). Suite à quoi, une notion de phase instantanée sera proposée dans le cas multivarié (sec. \ref{subsec:intro_phased}), ce qui permettra, enfin, de mettre en évidence la phase géométrique (sec. \ref{subsec:intro_phaseg}).
 \\
 
-Dans une seconde partie, seront introduits les signaux bivariés dits AM-FM-PM, dont la phase géométrique sera calculée explicitement (sec. \ref{subsec:AM-FM-PM}), ce qui permettra de mettre en évidence certaines de ses propriétés (sec. \ref{subsec:phase_g2Poincare}). Dans une dernière section, seront proposées des généralisations des signaux AM-FM-PM au delà du cas bivarié (sec. \ref{subsec:aller_plus_loin}), ce qui mènera au formalisme de la \cref{part:phase_geo} suivante.
+Dans une seconde partie, seront introduits les signaux bivariés dits AM-FM-PM, dont la phase géométrique sera calculée explicitement (sec. \ref{subsec:AM-FM-PM}), ce qui permettra de mettre en évidence certaines de ses propriétés (sec. \ref{subsec:phase_g2Poincare}). \thoughts{Dans une dernière section, seront proposées des généralisations des signaux AM-FM-PM au-delà du cas bivarié (sec. \ref{subsec:aller_plus_loin}), ce qui mènera au formalisme de la \cref{part:phase_geo} suivante.}
 \\
 
 
@@ -16,16 +16,16 @@ Dans une seconde partie, seront introduits les signaux bivariés dits AM-FM-PM, 
 
 En traitement du signal, l'analyse fréquentielle par la transformée de Fourier est un incontournable. 
 Seulement, cette transformation fait perdre toute notion temporelle : si l'étude du spectre du signal permet de dire quelles fréquences apparaissent dans le signal, elle ne permet pas de dire à quel(s) moment(s). 
-C'est en réponse à cela, entre autre, que fut développée l'analyse temps-fréquence et, à cette fin, sont définis les paramètres instantanées d'un signal :\par
+C'est en réponse à cela, entre autres, que fut développée l'analyse temps-fréquence et, à cette fin, sont définis les paramètres instantanées d'un signal :\par
 
 \begin{definition}[Paramètres instantanés] \label{def:param_instant}
-	Soit $x$, est un signal complexe écrit sous forme exponentielle :
+	Soit $x$ un signal complexe écrit sous forme exponentielle :
 	\begin{align}
 		x\ &:\ \begin{aligned}\R\ &\lr\qquad \C \\
 			t\ &\longmapsto\ a(t)e^{\i \phi(t)}
 		\end{aligned}  &  \text{où }\quad a(t)\in\R^+\quad &\text{et}\quad \phi(t)\in\R
 	\end{align}
-	$a$ est appelé \emph{amplitude instantanée} du signal, la dérivée $\nicefrac{1}{2\pi}\phi'$ sa \emph{fréquence instantanée} et sa \emph{phase instantanée} est définie --- modulo un choix de phase initiale --- par :
+	$a$ est appelé \emph{amplitude instantanée} du signal, la dérivée $\nicefrac{\phi'}{2\pi}$ sa \emph{fréquence instantanée} et sa \emph{phase instantanée} est définie --- modulo un choix de phase initiale --- par :
 	\begin{equation} \label{eq:phasei}
 		\phasei(x,t_0,t) = \phi(t) - \phi(t_0)
 	\end{equation}
@@ -35,7 +35,7 @@ C'est en réponse à cela, entre autre, que fut développée l'analyse temps-fr�
 Pour les signaux réels, ces notions sont moins évidentes à définir puisqu'elles demandent d'écrire les signaux sous la forme :
 \[x(t) = a(t) \cos\phi(t)\]
 \\
-Auquel cas, le choix de la pair $(a,\phi)$ n'est pas unique. Il existe tout de même un ``bon'' choix dans le cas des signaux AM-FM :
+Auquel cas, le choix de la paire $(a,\phi)$ n'est pas unique. Il existe tout de même un ``bon'' choix dans le cas des signaux AM-FM :
 \begin{definition}[Signal AM-FM]
 	Un signal réel de la forme :
 	\begin{align}
@@ -49,15 +49,15 @@ Auquel cas, le choix de la pair $(a,\phi)$ n'est pas unique. Il existe tout de m
 		\supp \Fou{a} \subset [-\lambda, \lambda],\quad \supp \Fou{\cos\phi} \subset \R\setminus[-\lambda,\lambda]
 	\end{equation}
 	\\
-	Dans ce cas, $a$ et $\phi$ donne lieu au même vocabulaire que pour le cas complexe (\cref{def:param_instant}).
+	Dans ce cas, $a$ et $\phi$ donnent lieu au même vocabulaire que pour le cas complexe (\cref{def:param_instant}).
 \end{definition}
 \skipl
 \\
-Ces conditions sont liées au théorème de Bedrosian, et plus de détails se trouvent dans l'annexe \ref{ann:complement_t-f}. Pour le dire rapidement, exiger que toutes les hautes fréquences de $x$ se trouvent dans la phase traduit l'idée que l'amplitude doit moduler la phase, et non l'inverse. Une autre façon de le dire est que cela évite que toutes les fréquences puissent se trouver dans l'amplitude $a$, auquel cas, $x$ n'aurait ``pas de fréquence'' au sens où $\phi$ pourrait être choisie constante, voir nulle.
+\thoughts{Ces conditions sont liées au théorème de Bedrosian, et plus de détails se trouvent dans l'annexe \ref{ann:complement_t-f}. Pour le dire rapidement, exiger que toutes les hautes fréquences de $x$ se trouvent dans la phase traduit l'idée que l'amplitude doit moduler la phase, et non l'inverse. Une autre façon de le dire est que cela évite que toutes les fréquences puissent se trouver dans l'amplitude $a$, auquel cas, $x$ n'aurait ``pas de fréquence'' au sens où $\phi$ pourrait être choisie constante, voire nulle.}
 \\
-Sous ces conditions, $x$ peut être vu comme le signal complexe $\SA{x}$ telle que :
+Sous ces conditions, $x$ peut être vu comme le signal complexe $\SA{x}$ tel que :
 \begin{equation}
-	\forall t\in\R,\qquad \SA{x}(t) = a(t) e^{\i \phi(t)}= a(t)\cos\phi(t) + ia(t)\sin\phi(t)
+	\forall t\in\R,\qquad \SA{x}(t) = a(t) e^{\i \phi(t)}= a(t)\cos\phi(t) + \i a(t)\sin\phi(t)
 \end{equation}
 \\
 Ce signal $\SA{x}$ est appelé \emph{transformée en signal analytique de} $x$ et a, par construction, les mêmes paramètres instantanées que $x$.
@@ -83,7 +83,7 @@ le fait que $\x$ soit à valeur dans $\C^n$ impose un choix naturel d'amplitude 
 il suffit que les $\psi_i$ soient ajustés pour assurer que $\ \phi_i = \phi + \psi_i$.
 \\
 \begin{remarque}
-	Si $a$ et $\phi$ correspondent respectivement à une amplitude et une phase, le vecteur restant $\big( a_ie^{\phi_i} \big)_{1\leq i\leq n}$ correspond à un état de polarisation, sur lequel nous reviendrons dans la \cref{sec:AM-FM-PM} suivante.
+	Si $a$ et $\phi$ correspondent respectivement à une amplitude et une phase, le vecteur restant $\big( a_ie^{\i \phi_i} \big)_{1\leq i\leq n}$ correspond à un état de polarisation, sur lequel nous reviendrons dans la \cref{sec:AM-FM-PM} suivante.
 \end{remarque}
 \skipl
 
@@ -99,7 +99,7 @@ On se propose ici de définir la phase instantanée comme suit :
 		\forall t_0, t\in\R, \quad \phased[\x](t_0,t) \defeq \int_{t_0}^t \frac{\Im m \big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds =\sum_{i=1}^n \int_{t_0}^t a_i(s)^2 \phi_i'(s)ds
 	\end{equation}
 	\\
-	L'on s'autorisera à omettre les paramètres de $\phased$ lorsque cela ne prête pas à confusion.
+	On s'autorisera à omettre les paramètres de $\phased$ lorsque cela ne prête pas à confusion.
 \end{definition}
 \skipl
 
@@ -111,15 +111,15 @@ Cette définition est motivée par deux arguments :
 
 Le premier, fortement inspiré par les travaux de Lilly \& Olhede  \cite{lilly_analysis_2012}, consiste à généraliser la condition \eqref{eq:condi_AM-FM} de séparation hautes/basses fréquences sur les signaux AM-FM.
 Pour cela, on commence par faire apparaître une phase $\phi$ --- pour l'instant inconnue --- en écrivant $\x$ sous la forme :
-\[\forall t\in\R,\qquad \x(t) = e^{\i \phi(t)} e^{-\i \phi(t)} \x(t) \defeq e^{\i \phi(t)} \bf{y}(t)\]
+\[\forall t\in\R,\qquad \x(t) = e^{\i \phi(t)} e^{-\i \phi(t)} \x(t) \defeq e^{\i \phi(t)} \bf{y}_\phi(t)\]
 \\
-Si $\phi$ est bien choisie, alors $\bf{y}$ ne devrait contenir que les informations associées à l'amplitude et à la polarisation de $\x$. Or, conformément à la condition \eqref{eq:condi_AM-FM}, la phase doit contenir les hautes fréquences du signal et, inversement, les basses fréquences doivent se trouver dans le reste. 
+Si $\phi$ est bien choisie, alors $\bf{y}_\phi$ ne devrait contenir que les informations associées à l'amplitude et à la polarisation de $\x$. Or, conformément à la condition \eqref{eq:condi_AM-FM}, la phase doit contenir les hautes fréquences du signal et, inversement, les basses fréquences doivent se trouver dans le reste. 
 \\
-La fréquence donnant, pour le dire vite, la vitesse d'ondulation, la contrainte sur $\x$ va être de limiter les variations de  $\bf{y}$. Concrètement, $\phi$ doit être choisie de sorte à minimiser la dérivée $\dot{\bf{y}}$ :
-\[\forall t\in\R,\qquad \phi(t) = \argmin{\theta(t)}{\big\|\dot{\bf{y}}(t)\big\|_2}^2 = \argmin{\theta(t)}{\Big\|e^{-\i \theta(t)}\big(\dot{\x}(t) - i\theta'(t) \x(t)\big) \Big\|_2}^2 = \argmin{\theta(t)}{\big\|\dot{\x}(t) - i\theta'(t)\x(t)\big\|_2}^2\]
+La fréquence donnant, pour le dire vite, la vitesse d'ondulation, la contrainte sur $\x$ va être de limiter les variations de  $\bf{y}_\phi$. Concrètement, $\phi$ doit être choisie de sorte à minimiser la dérivée $\dot{\bf{y}}_\phi$ :
+\[\forall t\in\R,\qquad \phi(t) = \argmin{\theta(t)}{\big\|\dot{\bf{y}}_\theta(t)\big\|_2}^2 = \argmin{\theta(t)}{\Big\|e^{-\i \theta(t)}\big(\dot{\x}(t) - i\theta'(t) \x(t)\big) \Big\|_2}^2 = \argmin{\theta(t)}{\big\|\dot{\x}(t) - i\theta'(t)\x(t)\big\|_2}^2\]
 \\
 La contrainte ne dépendant que de la dérivée $\theta'$, on se ramène à :
-\[\min_{\theta(t)}{\|\dot{\bf{y}}(t)\|_2}^2 = \min_{\theta'(t)}{\big\|\dot{\x}(t) - i\theta'(t) \x(t)\big\|_2}^2\]
+\[\min_{\theta(t)}{\|\dot{\bf{y}_\theta}(t)\|_2}^2 = \min_{\theta'(t)}{\big\|\dot{\x}(t) - i\theta'(t) \x(t)\big\|_2}^2\]
 \\
 En rappelant que $\frac{d}{dx}{\big\|f(x)\big\|_2}^2 = 2\Re e\big\langle f(x), f'(x)\big\rangle$, il vient que l'unique minimum\footnote{\itshape
 	L'extremum obtenu est l'unique minimum globale puisque $t\longmapsto \|at + b\|^2$ est strictement convexe pour $a\neq0$.}
@@ -131,9 +131,9 @@ est atteint par $\phi'(t)$ à condition que :
 	&= 2\Re e\Big(i\big\langle  \dot{\x} ,  \x\big\rangle\Big) + 2\phi'\Re e\big\langle   \x ,  \x\big\rangle\\
 	&= -2\Im m\big\langle  \dot{\x} ,  \x\big\rangle + 2\phi'{\| \x\|_2}^2
 \end{align*}
-Ainsi $\displaystyle \ \phi' = \frac{\Im m\big\langle  \dot{\x} ,  \x\big\rangle}{{\| \x\|_2}^2}\ $ et :
+Ainsi $\displaystyle \ \phi' = \frac{\Im m\big\langle \dot{\x} ,  \x\big\rangle}{{\| \x\|_2}^2}\ $ et :
 \begin{equation}\label{eq:phas_inst_v1}
-  \phi(t) = \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds = \phased(\x,t_0,t)
+	\phi(t) = \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds = \phased[\x](t_0,t)
 \end{equation}
 \skipl
 
@@ -150,11 +150,11 @@ D'abord dans le cas d'un signal complexe univarié, sont définies les fonctions
 	\text{resp.}\qquad \densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big|\fou{x}(\nu)\big|^2 \end{aligned}
 \end{align}
 \\
-À partir de ces dernières est définie la fréquence moyenne de $x$ comme comme l'espérance $\esp[\densis]{\nu}$ de $\densis$\footnote{\itshape
-	La notation avec l'espérance n'est pas complètement approprier puisque $\densit$ n'est pas une densité de probabilité (non normalisé). Cela dit, on peut supposer sans perte de généralité que $\ \|\densit\|_2 = \|\densis\|_2 = 1\ $ et, dans tout les cas, l'interprétation en terme de moyenne tien toujours.
+À partir de ces dernières est définie la fréquence moyenne de $x$ comme l'espérance $\esp[\densis]{\nu}$ de $\densis$\footnote{\itshape
+	La notation avec l'espérance n'est pas complètement appropriée puisque $\densit$ n'est pas une densité de probabilité (non normalisée). Cela dit, on peut supposer sans perte de généralité que $\ \|\densit\|_2 = \|\densis\|_2 = 1\ $ et, dans tous les cas, l'interprétation en terme de moyenne tient toujours.
 }. Cette fréquence moyenne est liée à la fréquence instantanée par la formule\footnote{\itshape
-	Cette formule de généralise à tout les moments de $\densis$ et existe également pour les moments de $\densit$, voir \cite[sec. 1.4]{cohen_time_1995} pour une démonstration ``à la physicienne''
-} :
+	Cette formule de généralise à tous les moments de $\densis$ et existe également pour les moments de $\densit$, voir \cite[sec. 1.4]{cohen_time_1995} pour une démonstration.}
+:
 \begin{equation}\label{eq:esp_freq}
 	\esp[\densis]{\nu} = \frac{1}{2\pi}\int_\R \phi'(t)\densit(t)dt = \esp[\densit]{\frac{1}{2\pi} \phi'}
 \end{equation}
@@ -169,10 +169,10 @@ Dans le cas d'un signal $\x=(x_i)_{1\leq i\leq n}$ multivarié, les densités d'
 	&
 	\densis\ &:\quad \begin{aligned}\R\ &\lr\quad \R^+ \\ \nu\ &\longmapsto\ \big\|\fou{\x}(\nu)\big\|^2 = \sum_{i=1}^n \densis_i(t) \end{aligned}	
 \end{align*}
-Le second argument consiste alors à dire que l'égalité des moyennes $\eqref{eq:esp_freq}$ doit rester valable dans le cas multivarié. Cela assure, a minima, que la fréquence instantanée de $\x$, $\nicefrac{1}{2\pi}\phi'$, à pour moyenne $\esp[\densis]{\nu}$.
+Le second argument consiste alors à dire que l'égalité des moyennes $\eqref{eq:esp_freq}$ doit rester valable dans le cas multivarié. Cela assure, à minima, que la fréquence instantanée de $\x$, $\nicefrac{1}{2\pi}\phi'$, à pour moyenne $\esp[\densis]{\nu}$.
 \\
 
-En appliquant la formule \eqref{eq:esp_freq} au $\densis_i$, et en notant toujours $\x = a\big(a_ie^{\i \phi_i}\big)_{1\leq i\leq n}$, on obtient :
+En appliquant la formule \eqref{eq:esp_freq} aux $\densis_i$, et en notant toujours $\x = a\big(a_1e^{\i \phi_1}, \cdots, a_ne^{\i \phi_n}\big)$, on obtient :
 \begin{align*}
 	\esp[\densis]{\nu} = \int_\R \nu\densis(\nu)d\nu &= \int_\R \nu\sum_{i=1}^n \densis_i(\nu) d\nu \\
 	&= \sum_{i=1}^n\esp[\densis_i]{\nu} \\
@@ -192,7 +192,7 @@ Ce qui mène à poser $\displaystyle \ \sum_{i=1}^n \phi_i'(t){a_i}^2(t)\ $ pour
 Formule qui concorde bien avec celle de la phase dynamique une fois explicitée :
 \begin{align*}
 	\Im m\frac{\big\langle \dot{\x}(t) , \x(t) \big\rangle}{\|\x(t)\|^2} &= \Im m\left( \frac{1}{a(t)^2} \sum_{i=1}^n \Big( \big(aa_i\big)'(t) +a(t)a_i(t)i\phi_i'(t)\Big)e^{\i \phi_i(t)}\congu{a(t)a_i(t)e^{\i \phi_i(t)}} \right) \\
-	&=\frac{1}{a(t)^2}  \Im m\left( \sum_{i=1}^n a(t)a_i(t)\big(aa_i\big)'(t) +ia(t)^2a_i(t)^2\phi_i'(t) \right) \\
+	&=\frac{1}{a(t)^2}  \Im m\left( \sum_{i=1}^n a(t)a_i(t)\big(aa_i\big)'(t) +\i a(t)^2a_i(t)^2\phi_i'(t) \right) \\
 	&= \frac{1}{a(t)^2} \sum_{i=1}^n a(t)^2a_i(t)^2 \phi_i'(t) \\
 	&= \sum_{i=1}^n a_i(t)^2 \phi_i'(t)
 \end{align*}
@@ -212,21 +212,22 @@ Formule qui se généralise en cas multivarié par ce qui sera appelé la \emph{
 	\phaset(\x, t_0, t) \defeq \arg\big\langle \x(t), \x(t_0)\big\rangle
 \end{equation}
 \\
-D'un point de vu géométrique, il est bien connue que le produit scalaire entre deux vecteurs réels $u,v\in\R^n$ est lié à l'angle $\angle(u,v)$ entre ces derniers par la formule :
-\[\langle u,v\rangle_\R = \|u\|^2 \|v\|^2 \cos \angle(v,u)\]
+D'un point de vu géométrique, il est bien connu que le produit scalaire entre deux vecteurs réels $u,v\in\R^n$ est lié à l'angle $\angle(u,v)$ entre ces derniers par la formule :
+\[\langle u,v\rangle_\R = \|u\|^2 \|v\|^2 \cos \angle(u,v)\]
 \\
 Pour le produit hermitien, cet angle ce retrouve dans l'argument, de sorte que si $u$ et $v$ sont complexes :
-\[\langle u,v\rangle_\C = \|u\|^2 \|v\|^2 e^{\i  \angle(v,u)}\]
+\[\langle u,v\rangle_\C = \|u\|^2 \|v\|^2 e^{\i  \angle(u,v)}\]
 \\
 En ce sens, la phase totale calcule explicitement l'angle entre $\x(t_0)$ et $\x(t)$ et il est montré, dans le cas univarié, qu'elle est égale à la phase dynamique. En effet, pour $\x = ae^{\i \phi}$ :
 \begin{align*}
-	\phased(\x) = \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds &= \Im m \int_{t_0}^t \frac{\big(a'(s) + ia(s)\phi'(s) \big) e^{\i \phi(s)} \congu{a(s) e^{\i \phi(s)}}}{a^2(s)} ds \\
+	\phased[\x] = \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds &= \Im m \int_{t_0}^t \frac{\big(a'(s) + \i a(s)\phi'(s) \big) e^{\i \phi(s)} \congu{a(s) e^{\i \phi(s)}}}{a^2(s)} ds \\
 	&= \int_{t_0}^t \frac{a^2(s)\phi'(s))}{a^2(s)} ds \\
 	&= \phi(t) - \phi(t_0) = \phaset(\x)
 \end{align*}
 \skipl
 
-Dans le cas multivarié, en revanche, c'est une autre histoire. En notant cette fois le signal $\ \x = ae^{\i \phased} \big( a_ie^{\psi_i} \big)_{1\leq i\leq n}$, la phase totale se réécrit :
+Dans le cas multivarié, en revanche, c'est une autre histoire. En notant cette fois le signal \\
+$\x = ae^{\i \phased} \big( a_ie^{\i \psi_i} \big)_{1\leq i\leq n}$, la phase totale se réécrit :
 \begin{equation}\label{eq:diff_phases_t/d}
 	\begin{aligned}
 		\phaset(\x,t_0, t) &= \arg \left(a(t)a(t_0) e^{\i \big(\phased(t) - \phased(t_0)\big)}\sum_{i=1}^n a_i(t)a_i(t_0)e^{\i (\psi_i(t)-\psi_i(t_0))} \right) \\
@@ -235,7 +236,7 @@ Dans le cas multivarié, en revanche, c'est une autre histoire. En notant cette 
 	\end{aligned}
 \end{equation}
 \\
-Apparaît alors un terme de déviation de la phase dynamique par rapport à la phase totale, appelé (surprise) phase géomatique et noté :
+Apparaît alors un terme de déviation de la phase dynamique par rapport à la phase totale, appelé (surprise) phase géométrique et noté :
 \begin{equation}\label{eq:phase_g}
 	\phaseg(\x,t_0,t) \defeq \phaset(\x, t_0,t) - \phased[\x](t_0,t)
 \end{equation}
@@ -243,7 +244,7 @@ Cette déviation s'observe expérimentalement, comme le montre la \Cref{fig:calc
 \\
 \begin{figure}[h]
 	\includegraphics[width=0.6\textwidth]{fig/placeholder}
-	\caption[Déviation de la phase dynamique d'un signal bivarié par rapport à sa phase totale]{Sur le graphe de gauche, le signal $\x$ est à valeurs dans $\R^2$. Dans celui de droite, le calcul des phases dynamique et totale,  ainsi que de leur différence, de $\x$ une fois transformé en signal analytique. %Résultat tiré des simulation de Le Bihan \etal~\cite{le_bihan_modephysiques_2023}
+	\caption[Déviation de la phase dynamique d'un signal bivarié par rapport à sa phase totale]{Sur le graphe de gauche, le signal $\x$ est à valeurs dans $\R^2$. Dans celui de droite, le calcul des phases dynamique et totale de $\SA{\x}$,  ainsi que de leur différence. %Résultat tiré des simulation de Le Bihan \etal~\cite{le_bihan_modephysiques_2023}
 	}
 	\label{fig:calc_diff_phases}
 \end{figure}
@@ -272,20 +273,20 @@ D'un point de vue signal, cette invariance par transformation de jauge indique q
 
 \section{Première cas d'étude : les signaux AM-FM-PM} \label{sec:AM-FM-PM}
 
-Pour une première étude de la phase géométrique du signal, Le Bihan, Flamant \& Amblard se sont penchés sur un cas particulier de signal bivarié \cite{flamant_timefrequency_2019,le_bihan_modephysiques_2023, le_bihan_geometric_2024}. Ces signaux, AM-FM-PM, sont présentés dans une première partie avec le calcul explicite de leur phases --- totale, dynamique et géométrique. Puis, sera introduite la sphère de Poincaré, sur laquelle, $\phaseg$ pourra être interprétée.
-Cela mènera à proposer un modèle pour décrire les signaux multivariés complexes (modèle très largement inspiré par ce qui à déjà été fait dans l'étude de la phase géométrique).
+Pour une première étude de la phase géométrique du signal, Le Bihan, Flamant \& Amblard se sont penchés sur un cas particulier de signal bivarié \cite{flamant_timefrequency_2019,le_bihan_modephysiques_2023, le_bihan_geometric_2024}. Ces signaux, AM-FM-PM, sont présentés dans une première partie avec le calcul explicite de leur phases --- totale, dynamique et géométrique --- puis sera introduite la sphère de Poincaré, sur laquelle $\phaseg$ pourra être interprétée.
+Cela mènera à proposer un modèle pour décrire les signaux multivariés complexes, modèle très largement inspiré par ce qui a déjà été fait dans l'étude de la phase géométrique.
 \\
 
 
 
 \subsection{Définitions et calcul des phases} \label{subsec:AM-FM-PM}
 
-Ces signaux AM-FM-PM viennent généraliser les signaux AM-FM univarié en tenant compte de l'état de polarisation permis par l'accès à une seconde dimension. 
-En quelques mots, dans le cas le plus simple, un signal bivarié à valeurs \emph{réelles} $s$ décrit une ellipse en cours du temps. 
-On parle de polarisation elliptique et $s$ s'écrire :
+Ces signaux AM-FM-PM viennent généraliser les signaux AM-FM univariés en tenant compte de l'état de polarisation permis par l'accès à une seconde dimension. 
+En quelques mots, dans le cas le plus simple, un signal bivarié à valeurs \emph{réelles} $s$ décrit une ellipse au cours du temps. 
+On parle de polarisation elliptique et $s$ s'écrit :
 \[s(t) = a \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta  &  \cos\theta \end{pmatrix} \begin{pmatrix} \cos\chi \cos\varphi(t) \\ \sin\chi \sin\varphi(t) \end{pmatrix}  \qquad \text{ où }\quad  a\in\R^+,\ \theta \in \left]-\frac{\pi}{2}, \frac{\pi}{2}\right],\ \chi \in \left[-\frac{\pi}{4}, \frac{\pi}{4}\right] \]
 \\
-Les paramètres $a$ et $\chi$ caractérisent la taille respectivement et l'excentricité de l'ellipse, $\theta$ son orientation dans le plan et $\varphi(t)$ précise où se trouve $s$ à l'instant $t$ sur cette ellipse. Le signe de $\chi$ donne également les sens rotations de que $\varphi$ sur l'ellipse (trigonométrique ou anti-trigonométrique), le tout est représenté sur la \Cref{fig:ellipse2polar} ci-dessous :
+Les paramètres $a$ et $\chi$ caractérisent respectivement la taille et l'excentricité de l'ellipse, $\theta$ son orientation dans le plan et $\varphi(t)$ précise où se trouve $s$ à l'instant $t$ sur cette ellipse. Le signe de $\chi$ donne également le sens de rotation de $\varphi$ sur l'ellipse (trigonométrique ou anti-trigonométrique), le tout est représenté sur la \Cref{fig:ellipse2polar} ci-dessous :
 \begin{figure}[H]
 	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
 	\input{tikz/part-1/ellipse2polar}
@@ -302,17 +303,16 @@ En autorisant les paramètres de polarisation à varier au cours du temps et apr
 	\end{align}
 	Auquel cas, $\x$ prend la forme, $\forall t\in\R$ :
 	\begin{equation}\label{eq:AM-FM-PM}
-		\x(t) = a(t)e^{\i \varphi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -i\sin\chi(t) \end{pmatrix} 
-		= a(t)e^{\i \varphi(t)} \begin{pmatrix} \cos\theta(t) \cos\chi(t) + i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - i\cos\theta(t) \sin\chi(t) \end{pmatrix}
+		\x(t) = a(t)e^{\i \varphi(t)} R_{\theta(t)} \begin{pmatrix} \cos\chi(t) \\ -\i\sin\chi(t) \end{pmatrix} 
+		= a(t)e^{\i \varphi(t)} \begin{pmatrix} \cos\theta(t) \cos\chi(t) + \i\sin\theta(t) \sin\chi(t) \\ \sin\theta(t) \cos\chi(t) - \i\cos\theta(t) \sin\chi(t) \end{pmatrix}
 	\end{equation}
 	où $R_{\theta(t)}$ est la matrice de rotation d'angle $\theta(t)$. Voir \cite[ann. 4.B]{flamant_approche_2018} pour une construction plus détaillée.
 \end{definition}
 \skipl
 
-Jusqu'à présent, la phase géométrique n'a été étudier que dans le cadre multivarié complexe et pour cette raison, il nécessaire de passer par la transformée en signal analytique (\cf annexe \cref{ann:complement_t-f}). \thoughts{Plus loin, dans la \cref{part:app&gene}, nous reviendrons sur la nécessité de faire ce passe vers les nombres complexes.}
-La transformation du signal à valeurs réelles à valeurs complexes est nécessaire
-pour étudier la phase géométrique car c'est uniquement dans le cadre complexe qu'elle a été étudiée jusqu'à présent. 
-Et, comme pour les signaux AM-FM, les hypothèses sur $a,\varphi,\theta,\chi$ assure que les paramètres soient interprétables suivant la \Cref{fig:ellipse2polar} précédente.
+Jusqu'à présent, la phase géométrique n'a été étudiée que dans le cadre complexe et pour cette raison, il est nécessaire de passer par la transformée en signal analytique (\cf~annexe \cref{ann:complement_t-f}).
+La transformation du signal à valeurs réelles en un signal à valeurs complexes est nécessaire pour étudier la phase géométrique car c'est uniquement dans le cadre complexe qu'elle a été étudiée jusqu'à présent. 
+Et, comme pour les signaux AM-FM, les hypothèses sur $a,\varphi,\theta,\chi$ assure que les paramètres restent interprétables suivant la \Cref{fig:ellipse2polar} précédente.
 \\
 
 Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} suivante :
@@ -320,17 +320,17 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 	Les trois phases d'un signal bivarié AM--FM--PM $\x$ 	de paramètres $(a,\varphi,\theta,\chi)$ sont données par les formules :
 	\begin{equation}\label{eq:phaset_2var}
 		\begin{aligned}
-			\phaset(\x,t_0,t) &= \varphi(t)-\varphi(t_0) + \arg\Big(\cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big)
+			\phaset(\x,t_0,t) &= \varphi(t)-\varphi(t_0) + \arg\Big(\cos\Delta\theta \cos\Delta\chi + \i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big)
 		\end{aligned}
 	\end{equation}
 	\begin{equation}\label{eq:phased_2var}
 		\phased[\x](t_0,t) = \varphi(t) -\varphi(t_0) + \int_{t_0}^t\theta'(s) \sin2\chi(s) ds
 	\end{equation}
 	\begin{equation}\label{eq:phaseg_2var}
-	\begin{aligned}
-		\phaseg(\x,t_0,t) &= \phaset(\x,t_0,t) - \phased(\x,t_0,t) \\
-			&= \arg\Big(\cos\Delta\theta \cos\Delta\chi + i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big) - \int_{t_0}^t\theta'(s) \sin2\chi(s) ds
-	\end{aligned}
+		\begin{aligned}
+			\phaseg(\x,t_0,t) &= \phaset(\x,t_0,t) - \phased(\x,t_0,t) \\
+			&= \arg\Big(\cos\Delta\theta \cos\Delta\chi + \i\sin\Delta\theta \sin\big(\chi(t_0)+\chi(t)\big)\Big) - \int_{t_0}^t\theta'(s) \sin2\chi(s) ds
+		\end{aligned}
 	\end{equation}
 	\\
 	où $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y = \chi, \theta$. La démonstration se trouve en annexe \ref{ann:demo_phases_2var}.
@@ -338,7 +338,7 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 
 \begin{figure}[h]
 	\includegraphics[width = 0.6\textwidth]{fig/premier_resultat}
-	\caption[Evolution de la phase géométrique d'un signal AM-FM-PM]{Evolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann. Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2.}
+	\caption[Evolution de la phase géométrique d'un signal AM-FM-PM]{Evolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann (\cf~\cref{part:app&gene}). Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2.}
 \end{figure}
 \\
 
@@ -364,14 +364,14 @@ Même dans ce cas, il est utile de d'avoir une représentation de $\x $ qui soit
 \subsection{Interprétation sur la sphère de Poincaré}\label{subsec:phase_g2Poincare}
 
 Dans l'étude de la phase géométrique, il est standard de s'intéresser à la matrice de covariance\footnote{\itshape
-	Il est plus commun en physique de conjuger à droite, mais la conjugaison gauche simplifie l'interprétation de $\rho$ dans la \Cref{fig:sphere2poincare}. Cela est également plus cohérent avec notre définition du produit hermitien qui utilise la convention $\ \langle x, y\rangle = \transp{x}\congu{y}$.
+	Il est plus commun en physique de conjuger à droite, mais la conjugaison à gauche simplifie l'interprétation de $\rho$ dans la \Cref{fig:sphere2poincare}. Cela est également plus cohérent avec notre définition du produit hermitien qui utilise la convention $\ \langle x, y\rangle = \transp{x}\congu{y}$.
 } :
 \begin{equation} \label{eq:proj2x_2var}
 	\forall t\in\R,\quad \rho_{\x}(t) = \frac{1}{\|\x(t) \|^2} \congu{\x(t) }\, \transp{\x}(t)
 \end{equation}
 \\
-Outre son utilité en traitement du signal, elle présente l'avantage d'être invariante par transformation de de jauge (\ie~ $\rho_{e^{\i \alpha}\x} = \rho_{\x}$).
-Aussi c'est matrice sont connue \cite{brosseau} pour avoir pour base les matrices de Pauli $\sigma_i$, ce qui, dans le cas des signaux AM-FM-PM, donne \cite{le_bihan_geometric_2024} :
+Outre son utilité en traitement du signal, elle présente l'avantage d'être invariante par transformation de jauge (\ie~ $\rho_{e^{\i \alpha}\x} = \rho_{\x}$).
+Aussi ces matrices sont connues \cite{brosseau} pour avoir pour base les matrices de Pauli $\sigma_i$, ce qui, dans le cas des signaux AM-FM-PM, donne \cite{le_bihan_geometric_2024} :
 \begin{equation} \label{eq:decompo_pauli}
 	\rho_{\x} = \frac{1}{2}\Big( \Id + \sin(2\theta) \cos(2\chi) \sigma_1 + \sin (2\chi) \sigma_2 + \cos(2\theta) \cos(2\chi) \sigma_3 \Big)
 \end{equation}
@@ -398,33 +398,33 @@ Dans cette décomposition, la composante en $\Id$ est indépendante de $\x$ et p
 \\
 La sphère alors obtenue, plus connue sous le nom de sphère de Poincaré, représente l'ensemble des états de polarisation possibles pour un signal :
 \\
-À l'équateur, la polarisation est linéaire et $\theta$ pilote son orientation et plus $\rho_{\x}$ se rapproche des pôles, plus cette polarisation devient elliptique, jusqu'à être complètement circulaire, auquel cas $\theta$ devient insignifiant. 
+À l'équateur, la polarisation est linéaire et $\theta$ pilote son orientation ; plus $\rho_{\x}$ se rapproche des pôles, plus cette polarisation devient elliptique, jusqu'à être complètement circulaire, auquel cas $\theta$ devient insignifiant. 
 Aussi, suivant le schéma \cref{fig:ellipse2polar}, l'hémisphère nord (resp. sud) correspond à des polarisations elliptiques anti-horaire (resp. horaire).
 
 Le fait que ce soit le double des angles qui sont représentés tient naturellement compte des potentielles redondances dans les $(\theta,\chi)$. 
-Par exemple si $\x$ a pour paramètre de polarisation instantanée $(\theta_0, \chi_0)$, alors par symétrie de l'ellipse, $(\theta_0+\pi, \chi_0)$ est aussi une représentation valide. Autre exemple, si $\chi_0 = \nicefrac{\pi}{4}$, alors la polarisation est circulaire et indépendant de $\theta_0$.
+Par exemple si $\x$ a pour paramètre de polarisation instantanée $(\theta_0, \chi_0)$, alors par symétrie de l'ellipse, $(\theta_0+\pi, \chi_0)$ est aussi une représentation valide. Autre exemple, si $\chi_0 = \nicefrac{\pi}{4}$, alors la polarisation est circulaire et indépendante de $\theta_0$.
 \\
-Dans les deux cas, la représentation dans la sphère de Poincaré évite ces problèmes puisque, dans le premier cas $(2\theta_0, 2\chi_0)$ et $(2\theta_0+2\pi, 2\chi_0)$ représente le même point, et dans le second, le point associé à $2\chi_0=\nicefrac{\pi}{2}$ (pôle nord) est indépendant du choix de $\theta_0$.
+Dans les deux cas, la représentation dans la sphère de Poincaré évite ces problèmes puisque, dans le premier cas $(2\theta_0, 2\chi_0)$ et $(2\theta_0+2\pi, 2\chi_0)$ représentent le même point, et dans le second, le point associé à $2\chi_0=\nicefrac{\pi}{2}$ (pôle nord) est indépendant du choix de $\theta_0$.
 
 \begin{figure}[H]
 	%\includegraphics[width=0.8\textwidth]{fig/placeholder}
 	\input{tikz/part-1/carte2polar}
 	\caption[\DONE États de polarisation associés à divers point de la sphère de Poincaré.]{Représentation des paramètres de polarisation instantanée associés à divers points de la sphère de Poincaré. La couleur donne le sens de parcours de l'ellipse lorsque $\varphi$ varie : en rouge dans le sens trigonométrique et en bleu anti-trigonométrique. Dans les cas de polarisation linéaire, l'orientation n'a pas d'importance.}
 	%\\ Dans la colonne de gauche $\theta=\nicefrac{\pi}{4}$ est $\chi$ varie. Idem dans celle de droite avec $\theta=-\nicefrac{\pi}{4}$. En bas, $\chi=0$ et $\theta$ varie.}
-\end{figure}
-
-
-Pour interpréter la formule \eqref{eq:phases_p-cyc_2var} de la phase géométrique prenons un exemple. Si $\chi$ et $\theta$ sont tels que :
-\begin{align*}
-	\theta(t_0) &= 0  &  \theta(t) &= 2\pi  &  \chi(s) &= \chi_0
+	\end{figure}
+	
+	
+	Pour interpréter la formule \eqref{eq:phases_p-cyc_2var} de la phase géométrique prenons un exemple. Si $\chi$ et $\theta$ sont tels que :
+	\begin{align*}
+\theta(t_0) &= 0  &  \theta(t) &= 2\pi  &  \chi(s) &= \chi_0
 \end{align*}
 \\
 alors $\rho_{\x}$ décrit un chemin horizontal sur la sphère, $\rho_{\x}(t_0) = \rho_{\x}(t)$ et sa phase géométrique s'écrit\footnote{\itshape 
-	L'on retrouve dans cette formule le fait que $\phaseg$ est indépendant de la paramétrisation : le résultat est indépendant des l'évolution de $\theta$ sur $]t_0,t[$.} :
+On retrouve dans cette formule le fait que $\phaseg$ est indépendant de la paramétrisation : le résultat est indépendant des évolutions de $\theta$ sur $]t_0,t[$.} :
 \begin{align*}
-	\phaseg(\x, t_0, t) = -\int_{t_0}^t \theta'(s) \sin 2\chi(s) ds &= - \sin 2\chi_0 \int_{t_0}^t \theta'(s) ds \\
-	&= - \sin 2\chi_0 \big( \theta(t) - \theta(t_0)\big) \\
-	&= - 2\pi\sin 2\chi_0
+\phaseg(\x, t_0, t) = -\int_{t_0}^t \theta'(s) \sin 2\chi(s) ds &= - \sin 2\chi_0 \int_{t_0}^t \theta'(s) ds \\
+&= - \sin 2\chi_0 \big( \theta(t) - \theta(t_0)\big) \\
+&= - 2\pi\sin 2\chi_0
 \end{align*}
 \skipl
 
@@ -437,30 +437,30 @@ Pour être précis, pour tenir compte du fait que $\x$ a fait une rotation compl
 Auquel cas, la phase géométrique donne exactement l'aire de la calotte. Dans la même logique, si l'état de polarisation subit une rotation de $n$ tours, alors $\theta$ va de $0$ à $2n\pi$ et :
 \[\phaseg(\x) = 2n\pi - 2n\pi\sin(2\chi_0) = n\mathcal{A}ire(\chi_0)\]
 \\
-Ainsi, même si $\phaseg$ est définie modulo $2\pi$, le choix du représentant reste important pour mieux tenir compte de l'évolution de $\rho_{\x}$ au court du temps.
+Ainsi, même si $\phaseg$ est définie modulo $2\pi$, le choix du représentant reste important pour mieux tenir compte de l'évolution de $\rho_{\x}$ au cours du temps.
 \\
 
 En revanche, l'aire totale de la sphère est de $4\pi$, donc l'aire de toute surface de $S^2$ peut être vue comme étant définie modulo $4\pi$, ce qui n'est pas cohérent avec la phase géométrique, qui elle l'est à $2\pi$ près.
 \\
-Pour résoudre ce problème apparent, il suffit de noter que, tant dis que l’ellipse de polarisation de $\x$ a fait un tour complet, 
+Pour résoudre ce problème apparent, il suffit de noter que, tandis que l’ellipse de polarisation de $\x$ a fait un tour complet, 
 $\rho_{\x}$ en a effectué deux sur la sphère ($2\theta(t) = 4\pi$).
 Pour qu'il n'en fasse qu'un, il faut faire varier $\theta$ de 0 à $\pi$, auquel cas le terme de la phase géométrique hérité de la $\phaset$ vaut $\pi$ et :
 \begin{equation} \label{eq:phase_g2calotte}
-	\phaseg(\x, t_0, t) = \pi - \pi\sin 2\chi_0 = \frac{1}{2}\mathcal{A}ire(\chi_0)
+\phaseg(\x, t_0, t) = \pi - \pi\sin 2\chi_0 = \frac{1}{2}\mathcal{A}ire(\chi_0)
 \end{equation}
 \\
 Dans ce cas, la phase géométrique s'interprète comme la demi-aire de la surface entourée par $\rho_{\x}$. Cela n'est, pour l'instant, valable que pour le cas particulier où $\chi$ est constant mais il sera montré dans la \cref{part:phase_geo} que cela se généralise très bien.
 \\
 
-Cela étant dit, le fait que $\rho_{\x}$ doive faire deux tours pour que $(\theta,\chi)$ retourne à son état initial, met en évidence un problème quand à la paramétrisations de l'ellipse de polarisation.
+Cela étant dit, le fait que $\rho_{\x}$ doive faire deux tours pour que $(\theta,\chi)$ retourne à son état initial, met en évidence un problème quant à la paramétrisation de l'ellipse de polarisation.
 \\
 Toujours à $\chi$ fixé, si $\theta$ se voit ajouter $\pi$, alors l'état de polarisation est le même, comme expliqué plutôt : $\ \rho(\theta+\pi,\chi) = \rho(\theta, \chi)$.
 En revanche, si l'on s'intéresse à un point particulier de l'ellipse, après une rotation de $\pi$, ce même point se retrouvera à l'opposé de là où il était auparavant. 
-En d'autre termes, il a subi une rotation de $\pi$ mais qui apparaît non plus dans l'état de polarisation $\rho_{\x}$ mais dans la phase totale (\cref{eq:phase_g2calotte}).
+En d'autres termes, il a subi une rotation de $\pi$ mais qui apparaît non plus dans l'état de polarisation $\rho_{\x}$ mais dans la phase totale (\cref{eq:phase_g2calotte}).
 \\
-Sachant que $S^2$ est une représentation de rotation $\SO(3)$ de $\R^3$, ce lien entre l'évolution de $\x$ est le nombre de rotations de $\rho_{\x}$ sur $S^2$, n'est pas sans rappeler le fait que $\SU(2)$ est connu pour être un double recouvrement de ce dernier.
+\thoughts{Sachant que $S^2$ est une représentation des rotations $\SO(3)$ de $\R^3$, ce lien entre l'évolution de $\x$ est le nombre de rotations de $\rho_{\x}$ sur $S^2$, n'est pas sans rappeler le fait que $\SU(2)$ est connu pour être un double recouvrement de ce dernier.
 \\
-\thoughts{Là je dis des conneries, c'est à corriger \href{https://www.youtube.com/watch?v=Ay482u6b3Xo}{avec ca} !!!!}
+Là je dis des conneries, c'est à corriger \href{https://www.youtube.com/watch?v=Ay482u6b3Xo}{avec ca} !!!!}
 \\
 
 
@@ -468,7 +468,7 @@ Sachant que $S^2$ est une représentation de rotation $\SO(3)$ de $\R^3$, ce lie
 
 \subsection{Généralisation en plus haute dimension} \label{subsec:aller_plus_loin}
 
-En résumé. Pour étudier de phase géométrique d'un point de vue signal, il est utile de passer par des notions de paramètres instantanées. Comme l'a montré l'exemple des signaux AM-FM-PM, décomposer un signal en amplitude, phase, et état polarisation donne un cadre propice à la description et l'interprétation de la phase géométrique.
+En résumé. Pour étudier la phase géométrique d'un point de vue signal, il est utile de passer par des notions de paramètres instantanées. Comme l'a montré l'exemple des signaux AM-FM-PM, décomposer un signal en amplitude, phase, et état de polarisation donne un cadre propice à la description et l'interprétation de la phase géométrique.
 \\
 
 Généraliser cette décomposition en plus haute dimension revient alors à composer $\C^n$ comme un produit de trois ensemble. 
@@ -477,7 +477,7 @@ D'abord, en isolant l'amplitude, qui n'est pas très utile à notre propos, $\C^
 \[\C^n \cong \R^{+_*} \times S^{2n-1}\]
 avec $S^{2n-1}$ la sphère unité de $\C^n$ de dimension réel $2n-1$.
 \\
-Ensuite, la phase ($e^{\i \varphi}$ dans \eqref{eq:AM-FM-PM}) est un élément de $\U{1}$, donc pour dissocier la phase et état de polarisation, il faudrait décomposer $S^{2n-1}$ de sorte à le faire apparaître. À première vue, il faudrait écrire :
+Ensuite, la phase ($e^{\i \varphi}$ dans \eqref{eq:AM-FM-PM}) est un élément de $\U{1}$, donc pour dissocier la phase de l'état de polarisation, il faudrait décomposer $S^{2n-1}$ de sorte à le faire apparaître. À première vue, il faudrait écrire :
 \begin{equation}\label{eq:decompo2C^n}
 	\C^n \cong \R^{+_*} \times \U{1} \times \big( S^{2n-1}/\U{1} \big)
 \end{equation}
@@ -485,10 +485,10 @@ Ensuite, la phase ($e^{\i \varphi}$ dans \eqref{eq:AM-FM-PM}) est un élément d
 où le quotient qui apparaît n'est autre que l'espace projectif complexe de dimension (complexe) $n-1$ et noté $\PC{n-1}$ (dont la construction sera détaillée dans la \cref{part:phase_geo} suivante).
 \\
 Le problème de cette formule est qu'elle n'est pas juste en l'état. Plus précisément, elle n'est valable que localement. 
-Corrigé cela nécessite d'écrire $S^{2n-1}$, non pas comme un produit de deux ensembles, mais comme un fibré, chose que nous nous attacherons à faire dans la suite de ce mémoire.
+Corriger cela nécessite d'écrire $S^{2n-1}$ non pas comme un produit de deux ensembles, mais comme un fibré, chose que nous nous attacherons à faire dans la suite de ce mémoire.
 \\
 
 Avant d'y venir et pour motiver d'autant plus la décomposition \eqref{eq:decompo2C^n}, revenons sur le cas $n=2$. Hopf a montré, en 1931 \cite{hopf_uber_1931}, que la sphère $S^3$ s'écrit localement (toujours au sens des fibrés) comme le produit $S^1\times S^2$. Le premier étant $\U{1}$ et le second difféomorphe\footnote{\itshape
-	Par le premier théorème d'isomorphisme, la projection $\rho$ est équivalente à la projection canonique de $\C^2$ sur $\PC{1}$, de sorte que $\ \rho(\C^n)\cong S^2\cong \PC{1}$.}
+Par le premier théorème d'isomorphisme, la projection $\rho$ est équivalente à la projection canonique de $\C^2$ sur $\PC{1}$, de sorte que $\ \rho(\C^2)\cong S^2\cong \PC{1}$.}
 au plan projectif complexe $\PC{1}$.
 Ainsi, l'écriture des signaux AM-FM-PM utilise, sans le dire, la ``décomposition'' \eqref{eq:decompo2C^n}, qui n'est alors qu'une généralisation du modèle utilisé plus tôt.
