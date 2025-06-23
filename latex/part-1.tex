@@ -4,7 +4,7 @@ C'est donc de ce point que commencera notre discussion pour introduire la phase 
 Pour cela, seront rapidement introduites quelques notions et résultats d'analyse temps-fréquence dans le cas univarié (sec. \ref{subsec:ana_temp-freq}). Suite à quoi, une notion de phase instantanée sera proposée dans le cas multivarié (sec. \ref{subsec:intro_phased}), ce qui permettra, enfin, de mettre en évidence la phase géométrique (sec. \ref{subsec:intro_phaseg}).
 \\
 
-Dans une seconde partie, seront introduits les signaux bivariés dits AM-FM-PM, dont la phase géométrique sera calculée explicitement (sec. \ref{subsec:AM-FM-PM}), ce qui permettra de mettre en évidence certaines de ses propriétés (sec. \ref{subsec:phase_g2Poincare}). \thoughts{Dans une dernière section, seront proposées des généralisations des signaux AM-FM-PM au-delà du cas bivarié (sec. \ref{subsec:aller_plus_loin}), ce qui mènera au formalisme de la \cref{part:phase_geo} suivante.}
+Dans une seconde partie, seront introduits les signaux bivariés dits AM-FM-PM, dont la phase géométrique sera calculée explicitement (sec. \ref{subsec:AM-FM-PM}), ce qui permettra de mettre en évidence certaines de ses propriétés (sec. \ref{subsec:phase_g2Poincare}). Dans une dernière section, sera présenté une généralisation des signaux AM-FM-PM au-delà du cas bivarié (sec. \ref{subsec:aller_plus_loin}), ce qui mènera au formalisme de la \cref{part:phase_geo} suivante.
 \\
 
 
@@ -53,7 +53,7 @@ Auquel cas, le choix de la paire $(a,\phi)$ n'est pas unique. Il existe tout de 
 \end{definition}
 \skipl
 \\
-\thoughts{Ces conditions sont liées au théorème de Bedrosian, et plus de détails se trouvent dans l'annexe \ref{ann:complement_t-f}. Pour le dire rapidement, exiger que toutes les hautes fréquences de $x$ se trouvent dans la phase traduit l'idée que l'amplitude doit moduler la phase, et non l'inverse. Une autre façon de le dire est que cela évite que toutes les fréquences puissent se trouver dans l'amplitude $a$, auquel cas, $x$ n'aurait ``pas de fréquence'' au sens où $\phi$ pourrait être choisie constante, voire nulle.}
+Ces conditions sont liées au théorème de Bedrosian, et plus de détails se trouvent dans l'annexe \ref{ann:complement_t-f}. Pour le dire rapidement, exiger que toutes les hautes fréquences de $x$ se trouvent dans la phase traduit l'idée que l'amplitude doit moduler la phase, et non l'inverse. Pour que ce soit possible, il est donc nécessaire que les variations de l'amplitude reste marginale par rapport à celle de la phase. Contrainte qui se traduit bien la condition \eqref{eq:condi_AM-FM} sur la distribution des spectres de $a$ et $\cos\phi$.
 \\
 Sous ces conditions, $x$ peut être vu comme le signal complexe $\SA{x}$ tel que :
 \begin{equation}
@@ -335,12 +335,12 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 	\\
 	où $\ \Delta y = y(t) - y(t_0)\ $ pour $\ y = \chi, \theta$. La démonstration se trouve en annexe \ref{ann:demo_phases_2var}.
 \end{proposition}
+\skipl
 
 \begin{figure}[h]
 	\includegraphics[width = 0.6\textwidth]{fig/premier_resultat}
-	\caption[Evolution de la phase géométrique d'un signal AM-FM-PM]{Evolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann (\cf~\cref{part:app&gene}). Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2.}
+	\caption[Evolution de la phase géométrique d'un signal AM-FM-PM]{Evolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann (\cf~\cref{part:app&gene}), fonction reprise des travaux de Le Bihan \etal \cite{le_bihan_modephysiques_2023,le_bihan_geometric_2024}. Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2. Les saut présents sur la figure sont dû au fait que la phase géométrique soit définie modulo $2\pi$.}
 \end{figure}
-\\
 
 Deux remarques sur ces formules. 
 La première est que la phase géométrique ne dépend que des paramètres de polarisations $\theta$ et $\chi$, ce qui reflète son invariance par transformation de jauge.
@@ -457,10 +457,6 @@ Cela étant dit, le fait que $\rho_{\x}$ doive faire deux tours pour que $(\thet
 Toujours à $\chi$ fixé, si $\theta$ se voit ajouter $\pi$, alors l'état de polarisation est le même, comme expliqué plutôt : $\ \rho(\theta+\pi,\chi) = \rho(\theta, \chi)$.
 En revanche, si l'on s'intéresse à un point particulier de l'ellipse, après une rotation de $\pi$, ce même point se retrouvera à l'opposé de là où il était auparavant. 
 En d'autres termes, il a subi une rotation de $\pi$ mais qui apparaît non plus dans l'état de polarisation $\rho_{\x}$ mais dans la phase totale (\cref{eq:phase_g2calotte}).
-\\
-\thoughts{Sachant que $S^2$ est une représentation des rotations $\SO(3)$ de $\R^3$, ce lien entre l'évolution de $\x$ est le nombre de rotations de $\rho_{\x}$ sur $S^2$, n'est pas sans rappeler le fait que $\SU(2)$ est connu pour être un double recouvrement de ce dernier.
-\\
-Là je dis des conneries, c'est à corriger \href{https://www.youtube.com/watch?v=Ay482u6b3Xo}{avec ca} !!!!}
 \\
 
 

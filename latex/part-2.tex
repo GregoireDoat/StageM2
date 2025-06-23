@@ -129,7 +129,7 @@ La classe de $\PC{n}$ de représentant $z = (z^i)_{0\leq i\leq n}\in{\C^{n+1}}^*
 Les $(U_i,\phi_i)$ forment un atlas sur l'espace projectif complexe, faisant de ce dernier une variété de dimension $\dim = 2n$. Les $\phi_i \circ {\phi_j}^{-1}$ étant holomorphes, $\PC{n}$ est plus précisément une variété complexe de dimension complexe $n$ et il est utile d'écrire ses coordonnées locales sous la forme $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$, où :
 \[\forall w\in U_i,\ \forall \mu\neq i,\quad w^\mu = \frac{z^\mu}{z^i},\qquad  \text{ où }\quad [z] = w\]
 \\
-\thoughts{En annexe \ref{ann:VDC} se trouvent plus de détails sur les variétés différentielles complexes.} Pour aller à l'essentiel, même si la notation prête à confusion, il faut considérer les coordonnées $w^\mu$ et $\congu{w}^\mu$ comme complètement indépendantes.
+La construction des variétés complexes est légèrement différentes des variétés différentielles standards, aussi le lecteur est renvoyé vers \cite{nakahara_geometry_2003,ballmann_lectures_2006,huybrechts_complex_2005} pour plus de détail. Pour aller à l'essentiel, même si la notation prête à confusion, il faut considérer les coordonnées $w^\mu$ et $\congu{w}^\mu$ comme complètement indépendantes.
 Par exemple :
 \begin{align*}
 	\bt_\mu(w^\mu) &= \frac{\partial}{\partial w^\mu} w^\mu = 1  &  
@@ -138,7 +138,7 @@ Par exemple :
 	\bt_\mu(\congu{w}^\mu) &= \frac{\partial}{\partial w^\mu} \congu{w}^\mu = 0  &  
 	\bt_{\congu{\mu}}(\congu{w}^\mu) = \frac{\partial}{\partial \congu{w}^\mu} \congu{w}^\mu &= 1
 \end{align*}
-Ce qui fait que $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$ est bien une base de dimension réelle $\ \dim[\R]\PC{n} = 2n$. Par exemple, avec ces ``notations'' (\cf~annexe \ref{ann:VDC}), le fait qu'une fonction $f: \PC{n}\lr \C$ soit holomorphe s'exprime via l'égalité :
+Ce qui fait que $(w^\mu, \congu{w}^\mu)_{1\leq \mu \leq n}$ est bien une base de dimension réelle $\ \dim[\R]\PC{n} = 2n$. Par exemple, avec ces ``notations'', le fait qu'une fonction $f: \PC{n}\lr \C$ soit holomorphe s'exprime via l'égalité :
 \[\forall \mu\in\llbracket1,n\rrbracket,\qquad (f_*)_{\congu{\mu}} = \frac{\partial}{\partial \congu{w}^\mu}f = 0\] 
 \\
 Pour ce qui est des espaces tangents, $(\bt_\mu, \bt_{\congu{\mu}})_\mu$ forme une base de $\tg{\PC{n}}$ et $(dw^\mu, d\congu{w}^\mu)_\mu$ une base de $\tg{^* \PC{n}}$.
@@ -231,7 +231,7 @@ Il existe tout un bestiaire de variétés fibrées en fonction de leurs proprié
 L'ensemble $\big\{(U_i\times G, {h_i}^{-1})\big\}_i$ est l'équivalent d'un atlas pour les variétés différentielles classiques mais adapté pour tenir compte de l'aspect fibré de $P$ et de l'action de $G$. Expliciter les changements de cartes dans $P$, se fait comme suit.
 \\
 D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peut y tracer des graphes appelés \emph{sections locales}, comme sur les \Cref{fig:section_local,fig:section_cano} ci-dessous. Formellement, une section locale au-dessus  de $U_i \subset B$ est une application $\sigma : U_i \lr P$ vérifiant :
-\[\pi\circ \sigma = \id_{{\displaystyle |}U_i}\]
+\[\pi\circ \sigma = \id{{\displaystyle |}U_i}\]
 \\
 
 \begin{figure}[h]
@@ -332,7 +332,7 @@ Tout cela permet d'écrire $\S{n}$ comme une variété fibrée principale :
 		
 		\item Les fonctions de transitions entre deux cartes $U_i$ et $U_j$ s'écrivent :
 		\begin{align}
-			\varphi_{ij}(w) &= e^{-\i  \arg ({z_i}^i)} e^{\i  \arg ({z_j}}^j)}  &  \text{ où }&\qquad z_{i,j} = \phi_{i,j}(w)
+			\varphi_{ij}(w) &= e^{-\i  \arg ({z_i}^i}) e^{\i  \arg ({z_j}^j)}  &  \text{ où }&\qquad z_{i,j} = \phi_{i,j}(w)
 	\end{align}
 \end{itemize}
 \end{proposition}
@@ -503,8 +503,16 @@ Reste alors une question : pourquoi la fréquence instantanée apparaît ici et 
 
 \section{Interprétation des phases sur $\bf{\VFP}$} \label{sec:phases_dans_VFP}
 
-\thoughts{Intro : on va interpréter les phases dans le cadre géo : c'est là qu'est le gros des contributions de ce mémoire.}
+Dans cette partie se trouve le gros des contributions de ce mémoire. Il y est présenté une interprétation de la phase dynamique et expliqué pourquoi elle doit être décrite par rapport à une connexion sur $\VFP$.
+\\ \\
+Ensuite, sont présentés des résultats au sujet de $\phaseg$, aboutissant à ses interprétations sur $\VFP$. Ces résultats, déjà bien connu, sont revus et redémontrés dans un cadre unifié. \\
+Entre autre, la métrique de Fubini-Study et son lien avec la connexion d'Aharonov-Bohm n'a, à notre connaissance, jamais été pleinement explicité dans l'étude de la phase géométrique. 
+Si Mukunda \& Simon font bien mention du fait que cette connexion est induite par sa métrique de $\S{n}$, ils ne font en revanche pas le lien avec celle de $\PC{n}$. \\
+À l'inverse, d'autres \cite{nakahara_geometry_2003,faure_introduction_2022} citent la connexion de Fubini-Study, mais sans clairement faire le lien avec la phase géométrique.
+\\
 
+Enfin, tout au long de cette partie, sera fait le lien entre le formalisme géométrique sur $\VFP$ et le modèle AM-FM-PM, mettant en évidence une des limites de ce dernier.
+\\
 
 \subsection{Fréquence instantanée et phase dynamique sur $\bf{\VFP}$}
 \label{subsec:phased-V_geodiff}
@@ -522,7 +530,7 @@ C'est là qu'intervient la connexion. D'une part, la 1-forme $\conn$ associée e
 D'autre part, le relèvement horizontal $\Tilde{\gamma}$ d'une courbe $\rho\subset\PC{n}$, par définition, n'a pas de variation verticale. Dans notre contexte, cela signifie que $\Tilde{\gamma}$ n'a pas de variation dans la direction de $\U{1}$, donc son état de polarisation (composante sur $\PC{n}$) varie mais pas ses ``fréquences''.
 \\
 Ainsi, le relèvement horizontal $\Tilde{\gamma}$ d'un signal $\gamma$ s'interprète comme une version de ce dernier dénuée de toute fréquence instantanée.
-L'action $\alpha$ permettant de passer de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\ie~$\gamma(t) = e^{\i \alpha(t)} \Tilde{\gamma}(t)$) peut alors être comprise comme l'ajout d'une fréquence instantanée (voir \cref{fig:freq_inst-Vgeodiff,fig:horiz_lift-2var} ci-dessous)	
+L'action $\alpha$ permettant de passer de $\Tilde{\gamma}(t)$ à $\gamma(t)$ (\ie~$\gamma(t) = e^{\i \alpha(t)} \Tilde{\gamma}(t)$) peut alors être comprise comme l'ajout d'une fréquence instantanée (voir \cref{fig:freq_inst-Vgeodiff} ci-dessous)	
 \\
 
 \begin{remarque}
@@ -539,18 +547,10 @@ Cette vision du relèvement horizontal est donc purement formelle et, si elle a 
 \skipl
 
 \begin{figure}[h]
-\begin{floatrow}		
-	\ffigbox{ \caption[Interprétation géométrique de la fréquence instantanée]
-		{Fréquence instantanée d'un signal $x$ vu comme variation verticale de $x$ par rapport à son relèvement horizontal $\Tilde{x}$ associé. À noter que $\Tilde{x}$ ne dépend pas des cartes mais dépend de la trajectoire $\rho_x$ de $x$ sur $\PC{n}$.}
-		\label{fig:freq_inst-Vgeodiff}}
-	{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
-	%{\input{tikz/part-2/freq_inst-Vgeodiff}}
-	
-	%\ffigbox{ \caption[Exemple relèvement horizontal]
-		%	{Exemple du relèvement horizontal d'une signal bivarié ?}
-		%	\label{fig:horiz_lift-2var}}
-	%{\includegraphics[width=0.45\textwidth]{fig/placeholder}}
-\end{floatrow}
+	\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	\caption[Interprétation géométrique de la fréquence instantanée]
+	{Fréquence instantanée d'un signal $x$ vu comme variation verticale de $x$ par rapport à son relèvement horizontal $\Tilde{x}$ associé. À noter que $\Tilde{x}$ ne dépend pas des cartes mais dépend de la trajectoire $\rho_x$ de $x$ sur $\PC{n}$.}
+	\label{fig:freq_inst-Vgeodiff}
 \end{figure}
 
 En admettant l'interprétation de la 1-forme de connexion comme fréquence instantanée, les discussions de première partie (\Cref{subsec:intro_phased}) suggèrent de choisir là encore :
@@ -611,7 +611,7 @@ Cette hypothèse est très restrictive puisqu'elle ne peut être vérifiée que 
 
 Cela étant dit, elle a le bon goût d'énormément simplifier les choses puisque, comme tout ce passe dans la même fibre, il est très simple de calculer et d'annuler individuellement les phases de $\gamma$. 
 \\
-Suivant les travaux de Aharonov \& Anandan \cite{aharonov_phase_1987} et les explications de Bohm \cite{bohm_geometric_2003}, la première remarque est que, comme $\gamma(t_0)$ et $\gamma(t)$ sont dans une même fibre, la phase totale est donné par le paramètre $\alpha$ de \eqref{eq:def2cycl}\footnote{\itshape 
+Suivant les travaux de Aharonov \& Anandan \cite{aharonov_phase_1987} et les explications de Bohm \cite{bohm_geometric_2003}, la première remarque est que, comme $\gamma(t_0)$ et $\gamma(t)$ sont dans une même fibre, la phase totale est donné par le paramètre $\alpha$ de l'équation \eqref{eq:def2cycl}\footnote{\itshape 
 Pour mémoire, $t(p,q)$ est l'élément $e^{i\alpha}$ de $\U{1}$ tel que $q = e^{i\alpha}p$} :
 \begin{equation}\label{eq:phase_t-cycl}
 e^{\i \phaset(t_0,t)} = e^{\i \alpha(t)} = t\big( \gamma(t_0), \gamma(t) \big)
@@ -638,7 +638,7 @@ Elle correspond donc au déplacement vertical de $\Tilde{\gamma}$ dû à la cour
 \begin{figure}[h]
 %\includegraphics[width=0.6\textwidth]{fig/placeholder}
 \input{tikz/part-2/phases2bohm.tex}
-\caption[Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique]{Représentation des trois phases de $\gamma$ dans le cas cyclique. Schéma repris de \cite[fig. 4.1]{bohm_geometric_2003}}
+\caption[\DONE Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique]{Représentation des trois phases de $\gamma$ dans le cas cyclique. Schéma repris de \cite[fig. 4.1]{bohm_geometric_2003}}
 \label{fig:phases-cycl}
 \end{figure}
 
@@ -798,9 +798,6 @@ Ainsi, $\concat{\gamma}{\gamma_g}$ est cyclique et on peut appliquer les résult
 \phaseg(\gamma) = \phaseg(\concat{\gamma }{\gamma_g}) = \frac{1}{2} \iint_{\overset{\frown}{\Sigma}} \Omega
 \end{equation}
 où $\overset{\frown}{\Sigma}$ est la surface entourée par $\gamma \smallfrown \gamma_g$.
-\\
-
-\thoughts{Y'aurait sûrement un truc sympa à dire ici mais j'ai pas encore trouvé quoi...}
 \\
 
 

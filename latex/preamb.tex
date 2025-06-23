@@ -567,7 +567,7 @@
 
 \titlecontents{part}[2em]{\bfseries\large\scshape 
 	\hspace*{-1.5em}\rule{\textwidth}{0.5pt}\vspace{0.1cm}\\*
-	 }{Partie\quad \contentslabel{-0.05em}\quad\ ---\quad}{\contentslabel{-1.5em} ---\quad }{\hfill\contentspage}[\hspace*{-0.5em}
+	 }{Partie\quad \contentslabel{-0.05em}\quad\ ---\quad}{\contentslabel{-1.5em} }{\hfill\contentspage}[\hspace*{-0.5em}
 \rule{\textwidth}{0.5pt}]
 
 \titlecontents{section}[1.5em]{\addvspace{1em}\bfseries}{\contentslabel{1.25em} ---\quad}{\hspace*{-1.75em}}{\titlerule*[0.75pc]{.}\contentspage}[\addvspace{0.25em}]
@@ -581,6 +581,10 @@
 
 \newenvironment{annexe}{%
 	\newpage
+	
+	% changement title part
+	\titleformat{\part}[display]{\bfseries\scshape\Large}{}{15pt}{\centering \rule{10cm}{0.4pt}\\ \vspace{0.5cm} }[\vspace{0.2cm}\rule{8cm}{0.4pt}]
+	\titlespacing{\part}{0pt}{50pt}{70pt}
 	
 	% changement title sec
 	\titleformat{\section}[display]{\bfseries\scshape\Large}{\centering}{15pt}{\centering}

@@ -1,4 +1,81 @@
+%%%% PREAMBULE %%%%
 
+\input{latex/preamb.tex}
+
+
+
+\begin{document}	
+	%\numberwithin{lstlisting}{part}
+	%\renewcommand{\thelstlisting}{\itshape\arabic{part}.\arabic{lstlisting}}
+	
+	
+	
+%%%% PAGE DE GARDE %%%%
+	
+	
+\begin{titlepage}
+	%\AddToShipoutPictureBG*{\put(80,655){%\includegraphics[width=2.9cm]{Logo MIX.png}}}
+	%\AddToShipoutPictureBG*{\put(70,738){%\includegraphics[width=5cm]{logo_lr.png}}}
+	%\hspace{0.0cm} 
+	%\AddToShipoutPictureBG*{\put(440,690){%\includegraphics[width=3.0cm]{logo_sdis17.png}}}\\[5.0cm]
+	%{\color{white}l}\par
+	
+	\centering
+	\vspace{1.5cm}
+	{\huge\textbf{Mémoire de Stage de M2}}\par
+	
+	\vspace{2cm}
+	{\huge\textbf{\textsc{Phase Géométrique de Signal Multivarié}}}\par 
+	\vspace{0.5cm}
+	
+	{\huge\textbf{\textsc{... et puis c'est déjà pas mal}}}\par
+	\vspace{2.0cm}
+	
+	{\large Grégoire \textsc{Doat}}\par
+	\vspace{0.5cm}
+	\vfill
+	
+	% Bottom of the page
+	{\large Encadré par Nicolas \textsc{Le Bihan}, Pierre-Olivier \textsc{Amblard}, Julien \textsc{Flamant} \& Michel \textsc{Berthier}}\par
+	\vspace{0.5cm}
+	
+	\rule{10cm}{0.4pt}\par
+	\vspace{0.7cm}
+	
+	{Master \textsc{Mix} -- Université de La Rochelle}\par
+	\vspace{0.25cm}
+	
+	{\large 2024 -- 2025}
+\end{titlepage}
+	
+	
+	
+%\newpage
+
+\tableofcontents\thispagestyle{empty}
+
+\skipl \\ \\ \\
+\textsc{TO DO de la fin :}
+\begin{itemize}
+	
+	\item intro partie III \& fin de la partie Bargmann
+	
+	\item préambule compréhensible + table des notations
+	
+	\item tikz fig. 2.7 (interpretaiton phased)
+	
+	\item refaire plot partie III
+	
+	\item 2 plot partie 1
+	
+	\item Nettoyage codes et GitHub
+	
+\end{itemize}
+
+\newpage
+
+\setcounter{page}{1}
+	
 %%%% INTRO DU MEMOIRE %%%%
 
 \phantomsection
@@ -10,7 +87,7 @@ La phase géométrique fait partie de ces concepts qui apparaissent régulièrem
 Pour l'introduire rapidement, la phase géométrique à l'instant $t$ d'un signal multivarié complexe (\ie~à valeurs dans $\C^n$) $\x$ est donnée par :
 \[\phaseg(\x, t_0, t) = \arg\big\langle \x(t), \x(t_0)\big\rangle - \Im m\int_{t_0}^t \frac{\big\langle \dot{\x}(s) , \x(s) \big\rangle}{\|\x(s)\|^2} ds\]
 Ce qui rend cette phase si intéressante c'est qu'elle est invariante par transformation de jauge, c'est-à-dire invariante par toute transformation du type :
-\[\x(t)\ \leadsto\ \Tilde{\x}(t) = e^{i\alpha(t)}\x(t) \]
+\[\x(t)\ \leadsto\ \Tilde{\x}(t) = e^{\i\alpha(t)}\x(t) \]
 \\
 Elle est également invariante par reparamétrisation et pour ces raisons, c'est une mesure qui est intrinsèquement liée à la trajectoire du signal dans l'espace, à sa géométrie.
 \\
@@ -31,7 +108,7 @@ L'objectif de ce mémoire est donc de décrire la phase géométrique dans le ca
 	\item Cela mènera à travailler dans une variété dite fibrée principale, $S^{2n-1} \big(\U{1}, \PC{n-1}\big)$, et la seconde partie de ce mémoire sera dédiée à son formalisme. Contrairement à l'état de l'art, les résultats seront présentés et, entre autres, l'accent sera mis sur l'intuition géométrique derrière les concepts abordés.
 	Des résultats, connus par ailleurs, sur la phase géométrique seront redémontrés avec ce formalisme et avec, les notions de fréquences instantanées et de phase géométrique seront reformulées et réinterprétées. 
 	
-	\item Enfin, dans une troisième partie, sera présenté un moyen de calculer la phase géométrique en pratique via l'invariant de Bargmann, tiré de \cite{rabei_bargmann_1999} et déjà repris par Le Bihan \etal~\cite{le_bihan_geometric_2024}. Seront ensuite discutées diverses applications \thoughts{et là ça dépend d'à quel point j'ai le temps}.
+	\item Enfin, dans une troisième partie, sera présenté un moyen de calculer la phase géométrique en pratique via l'invariant de Bargmann, tiré de \cite{rabei_bargmann_1999} et déjà repris par Le Bihan \etal~\cite{le_bihan_geometric_2024}. Suite à la phase géométrique de donnée simulées d'onde gravitationnelle sera calculer. Cela permettra, d'une part de montrer que la phase géométrique est bien une quantité mesurable en pratique, et d'autre part de donner des pistes d'applications à explorer dans la suite des travaux.
 \end{itemize}
 
 
@@ -66,7 +143,6 @@ Notations math :
 	
 	\item les vecteurs seront en gras, leur dérivée en temps notée par un point (ex. : $\dot{\x}(t)$) et celle des scalaires seront noté par un prime (ex. : $a'(t)$)
 	
-	%\item convention de sommation d'Einstein ? (oui mais est-ce qu'on en parle maintenant)
 \end{itemize}
 \skipl
 
@@ -83,26 +159,13 @@ Notations math :
 %%%% COEUR DU MEMOIRE %%%%
 
 
-%\part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
+\part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
 
 
 \part{Aspects Géométriques d'une Phase Éponyme} \label{part:phase_geo} \input{latex/part-2}
 
 
-%\part{Applications et généralisation} \label{part:app&gene} \input{latex/part-3}
-
-
-\begin{annexe}
-	\phantomsection
-	\addcontentsline{toc}{part}{Annexes}
-	\part*{Annexes}
-	
-	\section{Annexes de la partie I} 
-		%\input{latex/part-1_ann}
-	
-	\section{Annexes de la partie II}
-		%\input{latex/part-2_ann}
-\end{annexe}
+\part{Applications et généralisation} \label{part:app&gene} \input{latex/part-3}
 
 %\part{Notes 'n' thoughts} \input{latex/garb}
 	
@@ -117,12 +180,26 @@ Notations math :
 \newpage
 
 
-\phantomsection \addcontentsline{toc}{section}{Table des figures \& références}
-\listoffigures
+
+
+
+\begin{annexe}
+	\phantomsection
+	\addcontentsline{toc}{part}{Annexes}
+	\part*{Annexes}
+	
+	\section{Annexes de la \cref{part:param_instant}} 
+		\input{latex/part-1_ann}
+	
+	\section{Annexes de la partie \cref{part:phase_geo}}
+		\input{latex/part-2_ann}
+\end{annexe}
+
 
 \vfill
 
 
+\phantomsection \addcontentsline{toc}{section}{Table des figures \& références}\listoffigures
 %\phantomsection \addcontentsline{toc}{section}{Table des codes}
 \lstlistoflistings
 
