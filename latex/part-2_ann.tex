@@ -1,65 +1,4 @@
 
-\subsection{\wip Variété différentielle complexe }\label{ann:VDC}
-
-\thoughts{Pas sur que je la garde cette annexe, c'est beaucoup de math pour pas grande chose... enfin c'est plus rigoureux mais pas sur que ca serve le propos vraiment.}
-\\ \\
-\textit{Pour plus de détails, voir \cite{nakahara_geometry_2003, ballmann_lectures_2006}.}
-\\
-
-$\manu$ sera une \emph{variété différentielle complexe} si elle satisfait les propriétés ci-dessus où $\R^n$ est remplacé par $\C^n$ et où la condition de difféomorphisme est remplacée par la condition d'holomorphisme. 
-\\
-Une application $f : \C^n\lr \C^n$ étant holomorphe si chacune de ses composantes vérifie l'équation de Cauchy-Riemann :
-\[\forall x,y\in\R^n,\ \forall \mu,\qquad \frac{\partial f }{\partial y^\mu}(x+iy) = i \frac{\partial f }{\partial x^\mu}(x+iy)\]
-\\
-Les fonctions holomorphes étant automatiquement $C^\infty$, les variétés différentielles complexes sont toujours lisse, c'est-à-dire $C^\infty$. Aussi, $\manu$ est dite de dimension complexe $n$ et dimension (réel) $2n$, notés :
-\begin{align}\label{eq:manuC-base_cano}
-	\dim[\C](\manu) &\defeq n  &  \dim[\R] (\manu) \defeq \dim (\manu) = 2n
-\end{align}
-\\
-
-Ensuite, pour le dire rapidement, la structure complexe de $\manu$ permet de séparer les espaces tangents en deux sous espaces. Pour ce faire, on commence par noter qu'en tout point $p\in\manu$ de coordonnée $z^\nu=x^\nu+iy^\nu$, l'espace tangent $\tg[p]{\manu}$, vu comme variété réelle, admet une base :
-\begin{equation}
-	\tg[p]{\manu} = \vec \left\{ \frac{\partial}{\partial x^1}, \cdots, \frac{\partial}{\partial x^n}, \frac{\partial}{\partial y^1}, \cdots,  \frac{\partial}{\partial y^n} \right\}
-\end{equation}
-\\
-Plus tôt que de se basé sur les $x^\mu$ et $y^\mu$ pour séparer les $\tg[p]{\manu}$, on définit sur ces derniers un tenseur $J_p$ de type (1,1) tel que :
-\begin{align}
-	J_p \frac{\partial}{\partial x^\mu} &= \frac{\partial}{\partial y^\mu}  &  J_p \frac{\partial}{\partial y^\mu} &= -\frac{\partial}{\partial x^\mu}
-\end{align}
-\\
-Ce tenseur est l'équivalent de la multiplication par $\pm i$ et le fait que $\manu$ soit complexe assure qu'il soit défini globalement, \ie~sur $\tg{\manu}$. Il est diagonaliseable dans la base :
-\begin{align}\label{eq:manuC-base_holo}
-	\partial_\mu = \frac{\partial}{\partial z^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} - i\frac{\partial}{\partial y^\mu} \right)  
-	&  
-	\partial_{\bar{\mu}} = \frac{\partial}{\partial \overline{z}^\mu} &\defeq \frac{1}{2}\left( \frac{\partial}{\partial x^\mu} + i\frac{\partial}{\partial y^\mu} \right)
-\end{align}
-\\
-Ainsi en fonction de la base (\eqref{eq:manuC-base_cano} ou \eqref{eq:manuC-base_holo}), $J_p$ va s'écrire :
-\begin{align}
-	J_p &= \begin{pmatrix}
-		\text{\large\ 0\ }\Big. & I_n \\ -I_n & \text{\large\ 0\ }\Big.
-	\end{pmatrix}  &
-	J_p &= \begin{pmatrix}
-		iI_n & \text{\large\ 0\ }\Big. \\ \text{\large\ 0\ }\Big. & -iI_n
-	\end{pmatrix} 
-\end{align}
-\\
-Finalement, $\tg{\manu}$ peut être séparé en deux sous-espaces engendré respectivement par les $\partial_\mu$ et $\partial_{\bar{\nu}}$. On parle de vecteur holomorphe et anti-holomorphe et on note :
-\begin{align}
-	\tg[p]{\manu}^+ &= \Vec\big\{ \partial_\mu\ |\ 1\leq \mu\leq n \big\}  &  \tg[p]{\manu}^- &= \Vec\big\{ \partial_{\bar{\mu}}\ |\ 1\leq \mu\leq n \big\}
-\end{align}
-\\ \\
-
-forme kahlerienne :
-\begin{equation}
-	\Omega = g_{\mu \congu{\alpha}} {J^{\congu{\alpha}}}_{\congu{\nu}} dw^\mu \wedge d\congu{w}^\nu
-\end{equation}
-sur $\PC{n}$ :
-\[\Omega(w) = i\frac{(1+w^\alpha \congu{w}_\alpha)\delta_{\mu\nu} - w_\mu \congu{w}_\nu}{(1+w^\alpha \congu{w}_\alpha)^2} dw^\mu \wedge d\congu{w}^\nu\]
-\skipl
-
-
-
 \subsection{Démonstration des résultats \cref{subsec:phase_g2aire}} \label{ann:stokes}
 
 \subsubsection{Formule pour $\bf{\phaseg}$ sur $\bf{\PC{n}}$} \label{ann:proj2phaseg}
@@ -177,92 +116,11 @@ Ce qui mène finalement à :
 
 
 
-\subsubsection{\wip Idem que \ref{ann:phaseg=aire} depuis $\S{n}$ (plus simple, mais j'arrive à finir le calcul)} \label{ann:wedge2conn}
 
-Cela étant dit, plutôt que de faire le calcul dans $\PC{n}$, qui demanderait de calculer les $\locconn_i = {\sigma_i}^*\conn$, le plus simple est encore de se ramener dans $\S{n}$ :
-\[\oint \locconn_{i\, \rho}(\dot{\rho}) = \oint \omega_{\sigma_i(\rho)}\big(\sigma_{i*}(\dot{\rho})\big)\]
-\\
-Où, en notant $\ z = \sigma_i(\rho)^\mu\ $ et $\ dz = \sigma_{i*}(\dot{\rho})\ $,  $\conn$ s'écrit en coordonnées locales :
-\begin{align*}
-	\conn_z(dz) = i\Im m \langle dz , z\rangle &= \frac{1}{2}\Big( \langle dz , z \rangle - \langle z, dz \rangle \Big) \\
-	&= \frac{1}{2}\Big( \delta_{\mu\nu} \congu{z}^\nu dz^\mu -  \delta_{\mu\nu} z^\mu d\congu{z}^\nu \Big) \\
-	&= \frac{1}{2}\Big( \congu{z}_\nu dz^\mu -  z_\nu d\congu{z}^\nu \Big)
-\end{align*}
-\\
-
-Donc $\conn$ à pour coefficient :
-\begin{align} \label{eq:sym2conn}
-	\conn_\mu &= \frac{1}{2} \congu{z}_\mu  &  \conn_{\congu{\nu}} &= - \frac{1}{2} z_\nu = -\congu{\conn_\nu}
-\end{align}
-\\
-Ce qui donne pour dérivée extérieure :
-\begin{align*}
-	d\conn &= \partial_\lambda\conn_\mu\, dz^\lambda \wedge dz^\mu 
-	+ \partial_\lambda\conn_{\congu{\nu}}\, dz^\lambda \wedge d\congu{z}^\nu
-	+ \partial_{\congu{\lambda}}\conn_\mu\, d\congu{z}^\lambda \wedge dz^\mu 
-	+ \partial_{\congu{\lambda}}\conn_{\congu{\nu}}\, d\congu{z}^\lambda \wedge d\congu{z}^\nu
-\end{align*}
-\\
-avec :
-\begin{align*}
-	\partial_\lambda \conn_\mu &= \frac{1}{2}\partial_\lambda \congu{z}_\mu = 0   &
-	\partial_\lambda\conn_{\congu{\nu}} &= -\frac{1}{2}\partial_\lambda z_\nu = -\delta_{\lambda \nu} \\
-	\partial_{\congu{\lambda}}\conn_\mu &= \frac{1}{2}\partial_{\congu{\lambda}} \congu{z}_\mu = \delta_{\lambda \mu}  &
-	\partial_{\congu{\lambda}} \conn_{\congu{\nu}} &= -\frac{1}{2}\partial_{\congu{\lambda}} z_\nu = 0
-\end{align*}
-\\
-D'où le résultat :
-\begin{align*}
-	d\conn &= \partial_\lambda\conn_\mu\, dz^\lambda \wedge dz^\mu 
-	+ \partial_\lambda\conn_{\congu{\nu}}\, dz^\lambda \wedge d\congu{z}^\nu
-	+ \partial_{\congu{\lambda}}\conn_\mu\, d\congu{z}^\lambda \wedge dz^\mu 
-	+ \partial_{\congu{\lambda}}\conn_{\congu{\nu}}\, d\congu{z}^\lambda \wedge d\congu{z}^\nu \\
-	&= -\frac{1}{2}\delta_{\lambda \nu}\, dz^\lambda \wedge d\congu{z}^\nu
-	+ \frac{1}{2}\delta_{\lambda \mu}\, d\congu{z}^\lambda \wedge dz^\mu \\
-	&= -\frac{1}{2}\Big( \delta_{\lambda \nu}\, dz^\lambda \wedge d\congu{z}^\nu + \delta_{\mu \lambda}\, dz^\mu \wedge d\congu{z}^\lambda \Big)  &  &\text{par anti-symétrique de $\wedge$}\\
-	&= -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu  &  &\text{par simple changement de notations}
-\end{align*}
-\skipl
-
-Pour ramener le résultat dans $\PC{n}$, on a :
-\begin{align*}
-	d\locconn_i(w) &= d(\sigma_i^* \conn_{\sigma_i(w)}) \\
-	&= \sigma_i^* (d\conn_{\sigma_i(w)}) \\
-	&= d\conn_{\sigma_i(w)}\circ \sigma_{i*}  \\
-	\Lr\ d\locconn_i(w)_\mu &= {\sigma_{i*}}^\alpha \big( d\conn_{\sigma_i(w)} \big)_{\alpha\mu}
-	\\ \\
-	&= \sigma_i^* \big( -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu \big) \\
-	&= -\delta_{\mu \nu}\, \sigma_i^* (dz^\mu) \wedge \sigma_{i*}(d\congu{z}^\nu) \\
-	&= -\delta_{\mu \nu}\,  \Big( 
-		dw^\alpha {\sigma_{i*}}_{\alpha}^\mu + d\congu{w}^\beta {\sigma_{i*}}_{\congu{\beta}}^\mu 
-		\Big) \wedge \Big(
-		dw^\lambda {\sigma_{i*}}_{\lambda}^{\congu{\nu}} + d\congu{w}^\kappa {\sigma_{i*}}_{\congu{\kappa}}^{\congu{\nu}} \Big) \\
-	&= -\delta_{\mu \nu}\,  \Big(
-		{\sigma_{i*}}_{\alpha}^\mu {\sigma_{i*}}_{\lambda}^{\congu{\nu}} 
-		dw^\alpha \wedge dw^\lambda + 
-		{\sigma_{i*}}_{\alpha}^\mu {\sigma_{i*}}_{\congu{\kappa}}^{\congu{\nu}}
-		dw^\alpha \wedge d\congu{w}^\kappa + 
-		{\sigma_{i*}}_{\congu{\beta}}^\mu {\sigma_{i*}}_{\lambda}^{\congu{\nu}}
-		d\congu{w}^\beta  \wedge dw^\lambda +
-		{\sigma_{i*}}_{\congu{\beta}}^\mu {\sigma_{i*}}_{\congu{\kappa}}^{\congu{\nu}} 
-		d\congu{w}^\beta \wedge d\congu{w}^\kappa 
-		\Big) \\
-\end{align*}
-\\ \\ \\
-Enfin, comme $\pi$ est une submersion riemannienne, l'on retombe sur :
-\[d\locconn_i(w) = d\sigma_{i*}\conn_w = -\delta_{\mu \nu}\, dz^\mu \wedge d\congu{z}^\nu = -g_{\mu \congu{\nu}}(w) dw^\mu \wedge d\congu{w}^\nu = i\Omega(w)\]
-\skipl
 
 
 \subsection{Géodésique de $\bf{\PC{n}}$} \label{ann:geode2PC^n}
 
-\begin{itemize}
-	
-	\item Géodésique de $\PC{n}$ : \cite[sec. 3.E]{besse_manifolds_1978}
-	
-	\item longueur et aire sur $\PC{n}$ : \cite[p. 119]{huybrechts_complex_2005}
-	
-\end{itemize}
 
 \subsubsection{Métrique relevée dans les espaces horizontaux}
 

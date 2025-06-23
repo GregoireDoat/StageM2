@@ -21,6 +21,34 @@ C'est-à-dire de l'approcher par une suite de géodésiques concaténées les un
 \\
 Sachant que les mesures sont toujours de nature discrète, cette opération n'a pas vraiment de coût en pratique et permet d'exploiter les résultats de la \cref{part:phase_geo}, \cref{subsec:phase_g2geode}. 
 Ainsi, en notant $(\x_i)_{1\leq i\leq k}$ les $k$ mesures du signal, $\x_{i\rightarrow i+1}$ la géodésique reliant $\x_i$ à $\x_{i+1}$, et $\x$ la concaténation de toutes ces géodésiques, on a  :
+
+
+\begin{wrapfigure}[10]{r}{0.43\textwidth}
+	\fbox{\begin{minipage}{18em}
+			\vspace{0.3cm}
+			\begin{algorithmic}[0]
+				\State $(\x_n)_{0\leq n\leq N}$ : signal
+				\State $\x\ \longleftarrow\ 2\iFou{\one_{\R^+}\Fou{\x}}$ 
+				\State
+				\State $\phaset = 0$ : phase totale
+				\State $\phased = 0$ : phase dynamique 
+				\State $\phaseg = 0$ : phase géométrique
+				\State 
+				\For{$n\in \llbracket1,N\rrbracket$}
+				\State $\phaset\ \longleftarrow\  \arg\langle\x_n, \x_1\rangle$
+				\State $\phased\ \longleftarrow\  \phased + \arg\langle\x_n, \x_{n-1}\rangle$
+				\State $\phaseg\ \longleftarrow\  \phaset - \phased$
+				
+				\Return $\phaset$, $\phased$, $\phaseg$
+				\EndFor
+			\end{algorithmic}
+			\vspace{0.2cm}
+	\end{minipage}}
+	\caption{Pseudo-code du calcul des trois phases sur tout un signal $\x$, avec transformation en SA.}
+	\label{fig:p-code_calc_phases}
+\end{wrapfigure}
+
+\par \noindent
 \begin{align*}
 	\phaseg(\x) &= \phaset(\x) - \phased(\x) \\
 	&= \phaset(\x) - \sum_{i=1}^{k-1} \phased(\x_{i\rightarrow i+1}) \\
@@ -29,14 +57,9 @@ Ainsi, en notant $(\x_i)_{1\leq i\leq k}$ les $k$ mesures du signal, $\x_{i\righ
 	&= \arg\langle\x_k, \x_1\rangle - \sum_{i=1}^{k-1} \arg\langle\x_{i+1}, \x_i\rangle
 \end{align*} 
 \\
-%Après quelques opération élémentaires, cette formule ce réécrit par rapport aux $\rho_i \defeq \congu{\x_i}\transp{\x_i}$ :
-%\begin{equation} \label{eq:bargmann}
-%\phaseg(\x) = \arg\langle\x_k, \x_1\rangle - \sum_{i=1}^{k-1} \arg\langle\x_{i+1}, %\x_i\rangle = \arg \left( \tr \prod_{i=1}^{k} \rho_i \right)
-%\end{equation}
-\\
-Cette formule, en plus d'être facilement implémentable, n'est que très peu coûteuse en temps de calcul. Aussi, elle est partiellement itérative, permettant d'obtenir un algorithme de calcul de $\phaseg$ en tout point relativement efficace :
-
-C'est cette formule qui est implémentée dans les codes disponibles sur ce \href{https://github.com/GregoireDoat/StageM2}{GitHub}.
+Cette formule, en plus d'être facilement implémentable, n'est que très peu coûteuse en temps de calcul. *
+Aussi, elle est partiellement itérative, permettant d'obtenir un algorithme de calcul de $\phaseg$ en tout point relativement efficace (\cf~\cref{fig:p-code_calc_phases}). 
+C'est cette formule qui est implémentée dans les codes disponibles sur le \href{https://github.com/GregoireDoat/StageM2}{GitHub}.
 \\
 
 
