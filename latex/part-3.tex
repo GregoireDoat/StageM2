@@ -85,13 +85,13 @@ Avant d'y venir, revenons sur les mesures. Pour pouvoir détecter des ondes auss
 Il est donc prédit que les ondes engendrées par ces phénomènes sont polarisées mais aussi, et surtout, qu'en fonction de l'alignement des axes de rotations des deux étoiles, l'état de polarisation de ces dernières doit varier au cours du temps. Chose qui doit pouvoir être mise en évidence par le calcul de la phase géométrique des ondes.
 \\
 
-Pour cela, sont utilisés quatre jeux de données synthétiques et sans bruit avec des axes de rotations plus ou moins alignés et la \Cref{fig:phase_g2GW} présente l’évolution des trois phases du signal dans chacun des cas.
+Pour cela, sont utilisés quatre jeux de données synthétiques et sans bruit avec des axes de rotations plus ou moins alignés et la  \Cref{fig:phase_g2GW} présente l’évolution des trois phases du signal dans chacun des cas.
 \\
 \begin{figure}[h]
-	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_plot_1.pdf}\hfill
-	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_plot_2.pdf}\\
-	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_plot_3.pdf}\hfill
-	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_plot_4.pdf}
+	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_full_1.pdf}\hfill
+	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_full_2.pdf}\\
+	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_full_3.pdf}\hfill
+	\includegraphics[width=0.5\textwidth]{fig/part-3/GW_full_4.pdf}
 	\caption[Évolution de la phase géométrique sur des données simulées d'ondes gravitationnelles]{Évolution de la phase géométrique sur des données simulées d'ondes gravitationnelles. Sur chaque graphique (de haut en bas et de gauche à droite) les spins des trous noirs sont de moins en moins alignés. Dans les parties hautes sont représentés les signaux simulés et, en dessous, le calcul des différentes phases.}
 	\label{fig:phase_g2GW}
 \end{figure}
@@ -101,12 +101,24 @@ Ces signaux étant à valeurs dans $\R^2$, il a fallu les transformer en signaux
 Ensuite, comme attendu, la phase géométrique de ces signaux n'est pas constante et devient de plus en plus changeante à mesure que la polarisation des ondes devient variable.
 \\
 
+\begin{figure}[h]
+	\includegraphics[width=0.45\textwidth]{fig/part-3/GW_proj_full1.pdf} \hfill	
+	\includegraphics[width=0.45\textwidth]{fig/part-3/GW_proj_full2.pdf} \\
+	\includegraphics[width=0.45\textwidth]{fig/part-3/GW_proj_full3.pdf} \hfill
+	\includegraphics[width=0.45\textwidth]{fig/part-3/GW_proj_full4.pdf}
+	\caption[ Évolution de chacun des signaux projetés sur la sphère de Poincaré]{Évolution de chacun des signaux projetés sur la sphère de Poincaré : Dans le premier cas il n'y a pas de variation et le signal se projette en un point et les deux suivantes ne varie que très peu. Dans le dernier, en revanche, il ne fait aucun doute que la le plan de rotation des trous noirs varie au cours du temps.}
+	\label{fig:GW_sur_Poincare}
+\end{figure}
+
 Ces résultats, bien que très préliminaires, permettent déjà d'entrevoir les difficultés quant à la mesure de la phase géométrique :
 \\
-D'abord, au début de chaque signal, elle présente un saut conséquent par rapport à ses valeurs et il semblerait qu'il soit très sensible à la valeur de départ du signal. Aussi, quand bien même ce saut ne semble pas se faire d'un multiple de $\pi$, il est probable que ce soit en partie lié au choix de représentant de $\phaseg$ (qui est définie modulo $2\pi$).
-Dans tous les cas, cela risque de poser problème pour une utilisation plus avancée.
+D'abord, au début de chaque signal, il a fallu supprimer les premières et dernières valeurs des signaux car la transformation en SA pose des problème au bord (comme c'est toujours le cas avec la transformée de Fourier). 
+Aussi, comme attendu, la phase géométrique reste très marginal dans les premiers cas, où la polarisation ne varie pas, ou très peu. 
+Chose que l'on retrouve dans la projection des signaux sur la sphère de Poincaré (\cref{fig:GW_sur_Poincare}). 
 \\
-Ensuite, même dans le pire des cas, la phase géométrique ne reste que très marginale par rapport aux deux autres, ce qui risque d'être un problème sur des mesures réelles, nécessairement bruitées.
+De plus, même si $\phaseg$ ne peut fournir qu'un information parcellaire sur la polarisation, la \Cref{fig:phase_g2GW} montre que sont évolutions suit les variations de polarisations des simulations.
+\\
+Cela étant dit, même dans le pire des cas, la phase géométrique ne reste que très marginale par rapport aux deux autres, ce qui risque d'être un problème sur des mesures réelles, nécessairement bruitées.
 \\
 
 

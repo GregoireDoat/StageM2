@@ -243,9 +243,9 @@ Apparaît alors un terme de déviation de la phase dynamique par rapport à la p
 Cette déviation s'observe expérimentalement, comme le montre la \Cref{fig:calc_diff_phases} ci-dessous.
 \\
 \begin{figure}[h]
-	\includegraphics[width=0.6\textwidth]{fig/placeholder}
-	\caption[Déviation de la phase dynamique d'un signal bivarié par rapport à sa phase totale]{Sur le graphe de gauche, le signal $\x$ est à valeurs dans $\R^2$. Dans celui de droite, le calcul des phases dynamique et totale de $\SA{\x}$,  ainsi que de leur différence. %Résultat tiré des simulation de Le Bihan \etal~\cite{le_bihan_modephysiques_2023}
-	}
+	\includegraphics[width=0.33\textwidth]{fig/part-1/exp_GW.png} \hfill
+	\includegraphics[width=0.63\textwidth]{fig/part-1/exp_GW_phases.png}
+	\caption[ Déviation de la phase dynamique d'un signal bivarié par rapport à sa phase totale]{Sur le graphe de gauche, le signal $\x$ est à valeurs dans $\R^2$. Dans celui de droite, le calcul des phases dynamique et totale de $\SA{\x}$,  ainsi que de leur différence (qui est donc la phase géométrique).}
 	\label{fig:calc_diff_phases}
 \end{figure}
 \\
@@ -290,7 +290,7 @@ Les paramètres $a$ et $\chi$ caractérisent respectivement la taille et l'excen
 \begin{figure}[H]
 	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
 	\input{tikz/part-1/ellipse2polar}
-	\caption[\DONE Ellipse de polarisation d'un signal bivarié réel]{Ellipse de polarisation du signal $s$ sur laquelle sont représentés ses paramètres $a,\varphi,\theta$ et $\chi$.}
+	\caption[ Ellipse de polarisation d'un signal bivarié réel]{Ellipse de polarisation du signal $s$ sur laquelle sont représentés ses paramètres $a,\varphi,\theta$ et $\chi$.}
 	\label{fig:ellipse2polar}
 \end{figure}
 \skipl \\
@@ -338,8 +338,8 @@ Les trois phases de tels signaux sont données par la \cref{prop:phases_2var} su
 \skipl
 
 \begin{figure}[h]
-	\includegraphics[width = 0.6\textwidth]{fig/premier_resultat}
-	\caption[Evolution de la phase géométrique d'un signal AM-FM-PM]{Evolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann (\cf~\cref{part:app&gene}), fonction reprise des travaux de Le Bihan \etal \cite{le_bihan_modephysiques_2023,le_bihan_geometric_2024}. Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2. Les saut présents sur la figure sont dû au fait que la phase géométrique soit définie modulo $2\pi$.}
+	\includegraphics[width = 0.6\textwidth]{fig/part-1/premier_resultat}
+	\caption[ Évolution de la phase géométrique d'un signal AM-FM-PM]{Évolution de la phase géométrique d'un signal AM-FM-PM généré. En gris la phase géométrique du signal calculé via l'invariant de Bargmann (\cf~\cref{part:app&gene}), fonction reprise des travaux de Le Bihan \etal \cite{le_bihan_modephysiques_2023,le_bihan_geometric_2024}. Les deux autres sont calculées avec la formule \cref{eq:phaseg_2var}, en bleu en utilisant de l'argument pour la phase totale et en orange en utilisant atan2. Les saut présents sur la figure sont dû au choix de représentant de la phase géométrique (qui est définie modulo $2\pi$)  par la fonction \texttt{np.angle}. La fonction \texttt{np.atan2}, elle, est moins appropriée car elle engendre des sauts de $\pi$, même si dans tout les cas, la fonction \texttt{np.unwrap} permet d'éviter des problèmes.}
 \end{figure}
 
 Deux remarques sur ces formules. 
@@ -380,7 +380,7 @@ Aussi ces matrices sont connues \cite{brosseau} pour avoir pour base les matrice
 \begin{wrapfigure}{r}{0.4\textwidth}
 	%\includegraphics[width=0.9\textwidth]{fig/placeholder}
 	\input{tikz/part-1/sphere2poincare}
-	\caption[\DONE Projection sur la sphère de Poincaré]{Représentation de $\rho_{\x}$ sur la sphère de Poincaré en fonction des paramètres $\theta$ et $\chi$.}
+	\caption[ Projection sur la sphère de Poincaré]{Représentation de $\rho_{\x}$ sur la sphère de Poincaré en fonction des paramètres $\theta$ et $\chi$.}
 	\label{fig:sphere2poincare}
 \end{wrapfigure}
 
@@ -409,7 +409,7 @@ Dans les deux cas, la représentation dans la sphère de Poincaré évite ces pr
 \begin{figure}[H]
 	%\includegraphics[width=0.8\textwidth]{fig/placeholder}
 	\input{tikz/part-1/carte2polar}
-	\caption[\DONE États de polarisation associés à divers point de la sphère de Poincaré.]{Représentation des paramètres de polarisation instantanée associés à divers points de la sphère de Poincaré. La couleur donne le sens de parcours de l'ellipse lorsque $\varphi$ varie : en rouge dans le sens trigonométrique et en bleu anti-trigonométrique. Dans les cas de polarisation linéaire, l'orientation n'a pas d'importance.}
+	\caption[ États de polarisation associés à divers point de la sphère de Poincaré.]{Représentation des paramètres de polarisation instantanée associés à divers points de la sphère de Poincaré. La couleur donne le sens de parcours de l'ellipse lorsque $\varphi$ varie : en rouge dans le sens trigonométrique et en bleu anti-trigonométrique. Dans les cas de polarisation linéaire, l'orientation n'a pas d'importance.}
 	%\\ Dans la colonne de gauche $\theta=\nicefrac{\pi}{4}$ est $\chi$ varie. Idem dans celle de droite avec $\theta=-\nicefrac{\pi}{4}$. En bas, $\chi=0$ et $\theta$ varie.}
 	\end{figure}
 	

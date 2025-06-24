@@ -25,10 +25,10 @@
 	{\huge\textbf{Mémoire de Stage de M2}}\par
 	
 	\vspace{2cm}
-	{\huge\textbf{\textsc{Phase Géométrique de Signal Multivarié}}}\par 
+	{\huge\textbf{\textsc{Phase Géométrique et Représentation}}}\par 
 	\vspace{0.5cm}
 	
-	{\huge\textbf{\textsc{... et puis c'est déjà pas mal}}}\par
+	{\huge\textbf{\textsc{des Signaux Multivariés}}}\par
 	\vspace{2.0cm}
 	
 	{\large Grégoire \textsc{Doat}}\par
@@ -52,25 +52,8 @@
 	
 %\newpage
 
-\tableofcontents\thispagestyle{empty}
+%\tableofcontents\thispagestyle{empty}
 
-\skipl \\ \\ \\
-\textsc{TO DO de la fin :}
-\begin{itemize}
-	
-	\item intro partie III \& fin de la partie Bargmann
-	
-	\item préambule compréhensible + table des notations
-	
-	\item tikz fig. 2.7 (interpretaiton phased)
-	
-	\item refaire plot partie III
-	
-	\item 2 plot partie 1
-	
-	\item Nettoyage codes et GitHub
-	
-\end{itemize}
 
 \newpage
 
@@ -117,40 +100,32 @@ L'objectif de ce mémoire est donc de décrire la phase géométrique dans le ca
 
 \newpage
 
-%\phantomsection
-%\addcontentsline{toc}{section}{Préambule}
-\section*{\begin{center}\scshape \todo Préambule \end{center}}\label{sec:index_nota}
+\section*{\begin{center}\scshape Table des Notations \end{center}}\label{sec:index_nota}
 
-\thoughts{Juste des notes, même pas sur qu'il y ait vraiment besoin de garder ce préambule}
-\\ \\
-Généralités :
-\begin{itemize}
-	
-	\item Les références sont en fin de mémoire est en .bib sur le \href{https://github.com/GregoireDoat/StageM2}{GitHub}
-	
-	\item Idem pour les codes et un mot sur \texttt{pygeomphase}
-
-	\item On va parler de géo diff et pour éviter de réécrire un livre, on va admettre beaucoup de résultats, on renvoi vers \cite{lafontaine_introduction_2015,do_carmo_riemannian_1992} pour les bases et  \cite{nakahara_geometry_2003,pham_mau_quan_introduction_1969,ballmann_lectures_2006} pour toute ce qui est variété fibrée principales et variétés complexes.
-	
-	%\item ne seront numérotées que les équations importants
-\end{itemize}
-\skipl
-
-Notations math :
-\begin{itemize}
-	
-	\item Convention sur le produit hermitien (congué à droite)
-	
-	\item les vecteurs seront en gras, leur dérivée en temps notée par un point (ex. : $\dot{\x}(t)$) et celle des scalaires seront noté par un prime (ex. : $a'(t)$)
-	
-\end{itemize}
-\skipl
+ \begin{tabular}{ r  l } 
+	\textsc{Notation}\qquad\qquad  & \qquad\qquad\textsc{Objet/fonction} \\ \\
+	$\congu{x}$  &  : Conjugué complexe  de $x$ \\ 
+	$\transp{A}$   &  : Transposée de la matrice $A$ \\ 
+	$a'$ (resp. $\dot{\x}$)   & :  Dérivée (resp. composante par composante) de la fonction $a$ (resp. du vecteur $\x$) \\ 
+	$\delta$  &  : Distribution de Dirac\\ 
+	$\one_E$  &  : Indicatrice de $E$ \\ 
+	$\sign(x)$  &  : Fonction signe \\ 
+	$\Fou{x}$, $\fou{x}$  &  : Transformée de Fourier de $x$ \\ 
+	$\SA{x}$  &  : Transformée en signal analytique (SA) de $x$\\ 
+	$\hilb{x}$   &  : Transformée de Hilbert de $x$\\ 
+	$\langle \bf{x}, \bf{y}\rangle\defeq \transp{\x}\congu{\bf{y}}$  &  : Produit hermitien entre $\bf{x}$ de$\bf{y}$\\ 
+	$\esp[\densit]{f(t)}$, $\var[\densit]{f(t)}$  &  : Espérance et variance de $f$ suivant $\densit$  \\ 
+	$\supp f \defeq\{x\in\R\ |\ f(x)\neq0\}$  &  : Support d'une fonction $f$\\ 
+	$R_\theta$  &  : Matrice de rotation d'angle $\theta$ \\ 
+	$S^{n}$ (resp. $\S{n}$) &  : Sphère unité de dimension $n$ (resp. $2n+1$) \\
+	$\PC{n}$  &  : espace projectif complexe de dimension complexe $n$
+\end{tabular}
 
 
 
 \newpage
 
-%\tableofcontents\thispagestyle{empty}
+\tableofcontents\thispagestyle{empty}
 
 
 
@@ -159,10 +134,10 @@ Notations math :
 %%%% COEUR DU MEMOIRE %%%%
 
 
-%\part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
+\part{Introduction de la Phase Géométrique} \label{part:param_instant} \input{latex/part-1}
 
 
-%\part{Aspects Géométriques d'une Phase Éponyme} \label{part:phase_geo} \input{latex/part-2}
+\part{Aspects Géométriques d'une Phase Éponyme} \label{part:phase_geo} \input{latex/part-2}
 
 
 \part{Applications et généralisation} \label{part:app&gene} \input{latex/part-3}
@@ -185,14 +160,11 @@ Notations math :
 
 \begin{annexe}
 	\phantomsection
-	\addcontentsline{toc}{part}{Annexes}
-	\part*{Annexes}
 	
-	\section{Annexes de la \cref{part:param_instant}} 
-		%\input{latex/part-1_ann}
+	\part{Annexes} 
+		\input{latex/part-1_ann}
 	
-	\section{Annexes de la partie \cref{part:phase_geo}}
-		%\input{latex/part-2_ann}
+		\input{latex/part-2_ann}
 \end{annexe}
 
 

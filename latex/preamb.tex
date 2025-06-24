@@ -584,8 +584,8 @@
 	\newpage
 	
 	% changement title part
-	\titleformat{\part}[display]{\bfseries\scshape\Large}{}{15pt}{\centering \rule{10cm}{0.4pt}\\ \vspace{0.5cm} }[\vspace{0.2cm}\rule{8cm}{0.4pt}]
-	\titlespacing{\part}{0pt}{50pt}{70pt}
+	\titleformat{\part}[display]{\bfseries\scshape\Large}{\centering}{15pt}{\centering}
+	\titlespacing{\part}{0pt}{30pt}{40pt}
 	
 	% changement title sec
 	\titleformat{\section}[display]{\bfseries\scshape\Large}{\centering}{15pt}{\centering}
@@ -596,6 +596,8 @@
 	\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{15pt}{}
 	
 	% changement title toc
+	\titlecontents{part}[0.25em]{\addvspace{0.5em}\bfseries }{}{\hspace*{-1.5em}}{\titlerule*[0.75pc]{.}\contentspage}
+	
 	\titlecontents{section}[0.25em]{\addvspace{0.5em}\bfseries }{}{\hspace*{-1.5em}}{\titlerule*[0.75pc]{.}\contentspage}
 	
 	\titlecontents{subsection}[1.75em]{\normalfont Annexe \hspace*{1.5em}}{\contentslabel{1.25em} ---\quad}{\hspace*{-2em}}{\titlerule*[0.75pc]{.}\contentspage}
@@ -606,7 +608,9 @@
 	\renewcommand{\thesubsection}{\Alph{subsection}}
 	\renewcommand{\thesubsubsection}{\Alph{subsection}.\arabic{subsubsection}.}
 	% mise à zéro des compters
-	%\setcounter{section}{0}
+	\setcounter{part}{0}
+	%\numberwithin{figure}{section}
+	\renewcommand{\thefigure}{\itshape\Alph{part}.\arabic{figure}}
 }{
 \titlecontents{section}[1.5em]{\addvspace{1em}\bfseries}{\contentslabel{1.25em} ---\quad}{\hspace*{-1.75em}}{\titlerule*[0.75pc]{.}\contentspage}[\addvspace{0.25em}]
 

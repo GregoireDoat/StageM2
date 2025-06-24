@@ -49,7 +49,7 @@ Une variété différentielle se définie comme suit :
 \begin{figure}[h]
 	%\includegraphics[width=0.55\textwidth]{fig/placeholder}
 	\input{tikz/part-2/carte2varietoche}
-	\caption[\DONE La première figure de tout bon livre de géométrie différentielle]{La première figure de tout bon livre de géométrie différentielle : représentation de deux cartes avec l'application de changement de coordonnées. On y voit qu'à un point $x$ peut être associé différentes coordonnées locales et que $\phi_j \circ {\phi_i}^{-1}$ permet de passer d'un repère à l'autre, \ie~d'un système de coordonnées à l'autre.}
+	\caption[ La première figure de tout bon livre de géométrie différentielle]{La première figure de tout bon livre de géométrie différentielle : représentation de deux cartes avec l'application de changement de coordonnées. On y voit qu'à un point $x$ peut être associé différentes coordonnées locales et que $\phi_j \circ {\phi_i}^{-1}$ permet de passer d'un repère à l'autre, \ie~d'un système de coordonnées à l'autre.}
 \end{figure}
 
 Ensuite, les \emph{espaces tangents} de $\manu$  et son fibré tangent seront respectivement notés :
@@ -73,7 +73,7 @@ Aussi, le système de coordonnées locales en $x\in\manu$ induit une base sur $\
 		\manu \arrow[d] \arrow[u]  \arrow[r, "f" above]  & \mathpzc{N} \arrow[d] \arrow[u] \\
 		\tg{^*\manu}  & \tg{^*\mathpzc{N}} \arrow[l, "f^*" above]
 	\end{tikzcd}
-	\caption[\DONE Diagramme de passage de $f$ à $f_*$ et $f^*$.]{Diagramme de passage de $f$ à $f_*$ et $f^*$.}
+	\caption[ Diagramme de passage de $f$ à $f_*$ et $f^*$.]{Diagramme de passage de $f$ à $f_*$ et $f^*$.}
 	\label{fig:diagc_pullb/pushf}
 \end{wrapfigure}
 Plus généralement, si $\manu$ et $\mathpzc{N}$ sont deux variétés différentielles et\\ $f : \manu\lr \mathpzc{N}$ une application différentiable avec $\{\Tilde{\bt}_\nu\}_\nu$ une base de $\tg{\mathpzc{N}}$, sa \emph{différentielle} (ou \emph{application tangente} ou \emph{push forward}) au point $x$ est l'application linéaire qui, avec les conventions de sommation d'Einstein, s'écrit en coordonnées locales :
@@ -224,7 +224,7 @@ Il existe tout un bestiaire de variétés fibrées en fonction de leurs proprié
 \begin{figure}[h]
 	%\includegraphics[width=0.55\textwidth]{fig/placeholder}
 	\input{tikz/part-2/ruban2mobius}
-	\caption[\DONE Ruban de Möbius comme variété fibrée]{Représentation du ruban de Möbius en tant que fibré. Les notations sont reprises de la \cref{def:VFP}.}
+	\caption[ Ruban de Möbius comme variété fibrée]{Représentation du ruban de Möbius en tant que fibré. Les notations sont reprises de la \cref{def:VFP}.}
 	\label{fig:ruban2modius}
 \end{figure}
 
@@ -237,7 +237,7 @@ D'abord, $P$ étant localement difféomorphe à un produit $G\times U_i$, on peu
 \begin{figure}[h]
 	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
 	\input{tikz/part-2/section_locale}
-	\caption[\DONE Représentation d'une section local]
+	\caption[ Représentation d'une section local]
 	{Représentation d'une section locale $\sigma$ au-dessus de $U_i\subset B$ de dimension 2. 
 		Comme $P$ n'est pas un produit à proprement parlé, $\sigma$ est représenté dans $G\times U_i$ à travers $h_i$. \\
 		On voit ici l'idée dernière le nom ``fibré'' : de la base partent toutes les fibres, comme le feraient les fibres d'un tronc d'arbre et une section est littéralement une section, une coupe, de ces fibres.}
@@ -272,7 +272,7 @@ Cela mène à la définition :
 \begin{figure}[h]
 	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
 	\input{tikz/part-2/sections_cano}
-	\caption[\DONE Représentation de la section canonique]
+	\caption[ Représentation de la section canonique]
 	{Représentation de deux sections canoniques $\sigma_{i,j}=h_{i,j}(e,\, \cdot\, )$ au dessus de deux cartes $U_i$ et $U_j$ avec la fonction de transition $\varphi_{ij}$ (\Cref{def:fonc2transi2VFP}). 
 		Est également représentée une section $\sigma$ quelconque avec les translations $g_{i,j}$ telles que $\sigma(x) = \sigma_i(x)\cdot g_i(x) = \sigma_j(x)\cdot g_j(x)$.}
 	\label{fig:section_cano}
@@ -547,9 +547,10 @@ Cette vision du relèvement horizontal est donc purement formelle et, si elle a 
 \skipl
 
 \begin{figure}[h]
-	\includegraphics[width=0.45\textwidth]{fig/placeholder}
-	\caption[Interprétation géométrique de la fréquence instantanée]
-	{Fréquence instantanée d'un signal $x$ vu comme variation verticale de $x$ par rapport à son relèvement horizontal $\Tilde{x}$ associé. À noter que $\Tilde{x}$ ne dépend pas des cartes mais dépend de la trajectoire $\rho_x$ de $x$ sur $\PC{n}$.}
+	%\includegraphics[width=0.45\textwidth]{fig/placeholder}
+	\input{tikz/part-2/rpz2phased.tex}
+	\caption[ Interprétation géométrique de la fréquence instantanée]
+	{Représentation d'un signal $\gamma$ vu comme variation verticale de ce dernier par rapport à son relèvement horizontal $\Tilde{\gamma}$. $\Tilde{\gamma}$ fait office de valeur de référence, autour de laquelle $\gamma$ varie : elle est l'analogue de la droite d'équations $d: x=0$ pour les signaux standards. Le différence ici, est que cette référence dépend du chemin $\pi(\gamma)$ projeté sur $\PC{n}$.}
 	\label{fig:freq_inst-Vgeodiff}
 \end{figure}
 
@@ -638,7 +639,7 @@ Elle correspond donc au déplacement vertical de $\Tilde{\gamma}$ dû à la cour
 \begin{figure}[h]
 %\includegraphics[width=0.6\textwidth]{fig/placeholder}
 \input{tikz/part-2/phases2bohm.tex}
-\caption[\DONE Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique]{Représentation des trois phases de $\gamma$ dans le cas cyclique. Schéma repris de \cite[fig. 4.1]{bohm_geometric_2003}}
+\caption[ Représentation des trois phases de $\gamma$ dans le cas pseudo-cyclique]{Représentation des trois phases de $\gamma$ dans le cas cyclique. Schéma repris de \cite[fig. 4.1]{bohm_geometric_2003}}
 \label{fig:phases-cycl}
 \end{figure}
 

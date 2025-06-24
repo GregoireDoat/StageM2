@@ -8,7 +8,7 @@ Tout le propos portera sur les signaux univariés et est principalement tiré de
 
 
 
-\subsubsection{Formalisme derrière la transformée en SA ou le problème de signaux réels et comment le résoudre} \label{sec:transfo_SA}
+\subsubsection{Formalisme derrière la transformée en SA} \label{sec:transfo_SA}
 
 Les notions de densité d'énergie et d'énergie spectrale (\cref{eq:densi_dE}, \Cref{subsec:intro_phased}) :
 \begin{align*}
@@ -30,7 +30,7 @@ En plus de ne pas être très instructif, ce n'est pas cohérent avec l'interpr�
 \\
 \begin{figure}[h]\centering
 	\includegraphics[width=0.9\textwidth]{fig/part-1/densi_spec_sym}
-	\caption{\DONE Exemple de densité spectrale d'un signal réel}
+	\caption{ Exemple de densité spectrale d'un signal réel}
 	\label{fig:densi_spec_sym}
 \end{figure}
 \\
@@ -85,7 +85,7 @@ Cette transformée permet, à la fois d'avoir un signal propice à une analyse t
 
 
 
-\subsubsection{Interprétabilité de la transformée en SA ou le lien avec le théorème de Bedrosian}\label{ann:bedrosian}
+\subsubsection{Interprétabilité de la transformée en SA et le lien avec le théorème de Bedrosian}\label{ann:bedrosian}
 
 Cela étant dit, même si la transformée en signal analytique est toujours bien définie (modulo des hypothèses de convergence des intégrales), que $x$ peut toujours s'écrire comme partie réelle de sa transformée en SA, les paramètres instantanée qu'elle donne ne sont pas toujours satisfaisant. 
 Pour le comprendre, détaillons le cas où $x$ s'écrit comme produit de deux signaux pures (\cref{fig:exemple_tSA_1/2}) :
@@ -95,7 +95,7 @@ Pour le comprendre, détaillons le cas où $x$ s'écrit comme produit de deux si
 	\includegraphics[width=0.48\textwidth]{fig/part-1/ex SA - 11.png}
 	\hfill
 	\includegraphics[width=0.48\textwidth]{fig/part-1/ex SA - 12.png}
-	\caption[\DONE Décomposition en signal analytique d'un produit de cosinus]{Représentation graphique du signal $x$ (rouge) avec $\nu_1=3$ et $\nu_2=0.1$. Sur l'image de gauche, avec signaux de fréquences pures (bleu et vert). Sur l'image de droite, avec son amplitude (bleu) et sa phase instantanée (vert). Les discontinuités de la phase sont dû à l'arrondi à $2\pi$  près de l'argument de $\SA{x_1}$ et à la façon dont il est calculé lorsque le signal s'annule (mise à 0). Voir \href{https://www.desmos.com/calculator/gcedcdfkhr}{ici} pour un graphique dynamique.}
+	\caption[ Décomposition en signal analytique d'un produit de cosinus]{Représentation graphique du signal $x$ (rouge) avec $\nu_1=3$ et $\nu_2=0.1$. Sur l'image de gauche, avec signaux de fréquences pures (bleu et vert). Sur l'image de droite, avec son amplitude (bleu) et sa phase instantanée (vert). Les discontinuités de la phase sont dû à l'arrondi à $2\pi$  près de l'argument de $\SA{x_1}$ et à la façon dont il est calculé lorsque le signal s'annule (mise à 0). Voir \href{https://www.desmos.com/calculator/gcedcdfkhr}{ici} pour un graphique dynamique.}
 	\label{fig:exemple_tSA_1/2}
 \end{figure}
 
@@ -118,7 +118,7 @@ Cela étant dit, lorsque l'on fait varier $\nu_1$ et $\nu_2$, le résultat n'est
 	\includegraphics[width=0.48\textwidth]{fig/part-1/ex SA - 21.png}
 		\hfill
 	\includegraphics[width=0.48\textwidth]{fig/part-1/ex SA - 22.png}
-	\caption{\DONE Idem que pour la figure \ref{fig:exemple_tSA_1/2} précédente, avec cette fois $\nu_1=1.5$ et $\nu_2=1.3$.}
+	\caption{ Idem que pour la figure \ref{fig:exemple_tSA_1/2} précédente, avec cette fois $\nu_1=1.5$ et $\nu_2=1.3$.}
 	\label{fig:exemple_tSA_2/2}
 \end{figure}
 
@@ -172,7 +172,7 @@ C'est-à-dire qu'il n'y ait pas de chevauchement entre les deux courbes $\ \Gamm
 	\includegraphics[width=0.45\textwidth]{fig/part-1/bedro condi 1.png} 
 	\hfill
 	\includegraphics[width=0.45\textwidth]{fig/part-1/bedro condi 2.png} 
-	\caption[\DONE Représentation de l'hypothèse du Théorème de Bedrosian]{Sur les deux graphiques sont représentés en vert $\fou{a}$ et en violet $\fou{x}_2$. Dans le premier cas l'hypothèse de Bedrosian et respectée mais pas dans le second.}
+	\caption[ Représentation de l'hypothèse du Théorème de Bedrosian]{Sur les deux graphiques sont représentés en vert $\fou{a}$ et en violet $\fou{x}_2$. Dans le premier cas l'hypothèse de Bedrosian et respectée mais pas dans le second.}
 	\label{fig:alising-ish}
 \end{figure}
 
