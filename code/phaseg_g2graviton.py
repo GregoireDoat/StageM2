@@ -1,9 +1,9 @@
 import numpy as np
 import scipy as sp
 
-import pygeomphase as pgp
-import bispy as bsp
-import quaternion
+#import pygeomphase as pgp
+#import bispy as bsp
+#import quaternion
 
 import matplotlib.pyplot as plt
 from matplotlib.colors import LightSource
@@ -150,8 +150,8 @@ def plot2D(t, x, phases, labels=['u(t)', 'v(t)'], save_as = None):
 
 
     if save_as is not None:
-        tpl.clean_figure()
-        tpl.save(f'{save_name}.tex', axis_width=r'\figwidth', axis_height=r'\figheight')
+        #tpl.clean_figure()
+        #tpl.save(f'{save_name}.tex', axis_width=r'\figwidth', axis_height=r'\figheight')
         plt.savefig(f'{save_as}.pdf')
 
 def plot3D(S1, S2, S3, save_as=None):
@@ -192,7 +192,7 @@ if __name__=='__main__':
 
     # chargement
 
-    path2data = '../StageM2/.data_sets/'
+    path2data = 'data_sets/'
     data_load = np.load(path2data + 'data_precession_OG_Pancharatnam.npz')
 
     print(f'\n keys : \n{data_load.keys()}')
@@ -259,16 +259,12 @@ if __name__=='__main__':
     for i, (time_i, h_i, SAh_i, Phis_i) in enumerate(zip(time, h, SAh_nrmlz, Phis)):
 
         plot2D(time_i, h_i, Phis_i, 
-            labels=[r'$h_+$', r'$h_\times$'], 
-            save_as=f'../StageM2/fig/part-3/GW_full_{i+1}'
-            )
+            labels=[r'$h_+$', r'$h_\times$'])
         #plt.close()
         plt.show()
 
         S1, S2, S3 = get_Stokes_param(SAh_i)
-        plot3D(S1, S2, S3
-            ,save_as=f'../StageM2/fig/part-3/GW_proj_full{i+1}'
-            )
+        plot3D(S1, S2, S3)
         #plt.close()
         plt.show()
 
