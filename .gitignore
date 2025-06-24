@@ -24,7 +24,7 @@ tmp
 **/*.lopytx
 **/*.thm
 
-# data osef
+# data 
 **/data_sets
 fig/logo
 

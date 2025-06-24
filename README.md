@@ -1,22 +1,8 @@
-# TO DO
+Ce Projet regroupe tout les fichiers associés à mon Stage de M2 au laboratoire GAIA de Grenoble, qui portait sur la phase géomtrique des signaux mutivirés.
 
-- Bargmann
+Le mémoire complet est le pdf éponyme, les références sont dans le fichier "ref.bib" et les codes dans le dossier code.
+Les données utilisés étant trop lourdes pour être sur le GitHub, merci de me contacter pour les obtenirs.
 
-- Faire la partie 3
-    - code des résultats
-    - présentation des résultats
-    - le gros blabla
+Une partie des codes (le notebook) utilise la bibliothèque pygeomphase crée par Julien Flamant, qui n'est pas disponible au publique à l'heure actuelle.
 
-- Plan pour l'oral
-
-- Fix les pb de la partie 2 
-    - Stokes & géodésiqueq
-
-- Annexes
-    - Retaper l'annexe 1.A
-    - Bloch au propre (vidéo double cover)
-    - VDC ?
-
-- Figure
-    - URGENT : finir les dessins
-    - si le temps : tikzifier les plots
+Les fichier fig et tikz contiennent les figures du mémoire.
